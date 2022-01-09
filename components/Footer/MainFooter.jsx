@@ -14,14 +14,14 @@ export default function MainFooter() {
 
           <div className="flex flex-col md:flex-row md:w-3/5 w-full">
             <div className="flex-1">
-              <p className="uppercase font-extrabold text-gray-500 md:mb-6">
+              <p className="uppercase font-extrabold text-grey_98 md:mb-6">
                 Links
               </p>
               <ul className="list-reset mb-6">
                 <li className="mt-2 block mr-2 md:block md:mr-0">
                   <a
                     href="#"
-                    className="font-light no-underline hover:underline text-gray-800 hover:text-orange-500"
+                    className="font-light no-underline hover:underline text-grey_98 hover:text-orange-500"
                   >
                     FAQ
                   </a>
@@ -29,7 +29,7 @@ export default function MainFooter() {
                 <li className="mt-2 block mr-2 md:block md:mr-0">
                   <a
                     href="#"
-                    className="font-light no-underline hover:underline text-gray-800 hover:text-orange-500"
+                    className="font-light no-underline hover:underline text-grey_98 hover:text-orange-500"
                   >
                     Help
                   </a>
@@ -37,7 +37,7 @@ export default function MainFooter() {
                 <li className="mt-2 block mr-2 md:block md:mr-0">
                   <a
                     href="#"
-                    className="font-light no-underline hover:underline text-gray-800 hover:text-orange-500"
+                    className="font-light no-underline hover:underline text-grey_98 hover:text-orange-500"
                   >
                     Support
                   </a>
@@ -45,14 +45,14 @@ export default function MainFooter() {
               </ul>
             </div>
             <div className="flex-1">
-              <p className="uppercase font-extrabold text-gray-500 md:mb-6">
+              <p className="uppercase font-extrabold text-grey_98 md:mb-6">
                 Legal
               </p>
               <ul className="list-reset mb-6">
                 <li className="mt-2 inline-block mr-2 md:block md:mr-0">
                   <a
                     href="#"
-                    className="font-light no-underline hover:underline text-gray-800 hover:text-orange-500"
+                    className="font-light no-underline hover:underline text-grey_98 hover:text-orange-500"
                   >
                     Terms
                   </a>
@@ -60,7 +60,7 @@ export default function MainFooter() {
                 <li className="mt-2 inline-block mr-2 md:block md:mr-0">
                   <a
                     href="#"
-                    className="font-light no-underline hover:underline text-gray-800 hover:text-orange-500"
+                    className="font-light no-underline hover:underline text-grey_98 hover:text-orange-500"
                   >
                     Privacy
                   </a>
@@ -68,14 +68,14 @@ export default function MainFooter() {
               </ul>
             </div>
             <div className="flex-1">
-              <p className="uppercase font-extrabold text-gray-500 md:mb-6">
+              <p className="uppercase font-extrabold text-grey_98 md:mb-6">
                 Social
               </p>
               <ul className="list-reset mb-6">
                 <li className="mt-2 inline-block mr-2 md:block md:mr-0">
                   <a
                     href="#"
-                    className="font-light no-underline hover:underline text-gray-800 hover:text-orange-500"
+                    className="font-light no-underline hover:underline text-grey_98 hover:text-orange-500"
                   >
                     Facebook
                   </a>
@@ -83,7 +83,7 @@ export default function MainFooter() {
                 <li className="mt-2 inline-block mr-2 md:block md:mr-0">
                   <a
                     href="#"
-                    className="font-light no-underline hover:underline text-gray-800 hover:text-orange-500"
+                    className="font-light no-underline hover:underline text-grey_98 hover:text-orange-500"
                   >
                     Linkedin
                   </a>
@@ -91,7 +91,7 @@ export default function MainFooter() {
                 <li className="mt-2 inline-block mr-2 md:block md:mr-0">
                   <a
                     href="#"
-                    className="font-light no-underline hover:underline text-gray-800 hover:text-orange-500"
+                    className="font-light no-underline hover:underline text-grey_98 hover:text-orange-500"
                   >
                     Twitter
                   </a>
@@ -99,14 +99,14 @@ export default function MainFooter() {
               </ul>
             </div>
             <div className="flex-1">
-              <p className="uppercase font-extrabold text-gray-500 md:mb-6">
+              <p className="uppercase font-extrabold text-grey_98 md:mb-6">
                 Company
               </p>
               <ul className="list-reset mb-6">
                 <li className="mt-2 inline-block mr-2 md:block md:mr-0">
                   <a
                     href="#"
-                    className="font-light no-underline hover:underline text-gray-800 hover:text-orange-500"
+                    className="font-light no-underline hover:underline text-grey_98 hover:text-orange-500"
                   >
                     Official Blog
                   </a>
@@ -114,7 +114,7 @@ export default function MainFooter() {
                 <li className="mt-2 inline-block mr-2 md:block md:mr-0">
                   <a
                     href="#"
-                    className="font-light no-underline hover:underline text-gray-800 hover:text-orange-500"
+                    className="font-light no-underline hover:underline text-grey_98 hover:text-orange-500"
                   >
                     About Us
                   </a>
@@ -122,7 +122,7 @@ export default function MainFooter() {
                 <li className="mt-2 inline-block mr-2 md:block md:mr-0">
                   <a
                     href="#"
-                    className="font-light no-underline hover:underline text-gray-800 hover:text-orange-500"
+                    className="font-light no-underline hover:underline text-grey_98 hover:text-orange-500"
                   >
                     Contact
                   </a>
