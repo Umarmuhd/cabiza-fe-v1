@@ -5,14 +5,22 @@ import styles from "./styles/index.module.css";
 
 import Auth from "../../../layouts/Auth";
 
-export default function Login() {
+export default function ForgetPassword() {
   return (
-    <div className="pt-5 md:pt-24">
-      <div className="min-h-screen h-full flex justify-center items-center place-content-center">
+    <div className="h-full min-h-screen pt-10 md:pt-24">
+      <div className="h-full flex justify-center items-center place-content-center">
         <div className="md:w-3/5 max-w-lg">
           <div className="bg-white py-10 px-10 w-full border border-grey_80 rounded-xl">
             <form>
-              <h1 className="text-4xl mb-8 text-grey_40 font-bold">Login</h1>
+              <div className="mb-8">
+                <h1 className="text-4xl text-grey_40 font-bold">
+                  Reset password
+                </h1>
+                <p className="mt-3 text-grey_60">
+                  Enter your email below and we’ll send you a link to reset your
+                  password.
+                </p>
+              </div>
               <div className="relative w-full mb-6">
                 <label
                   className="block text-grey_40 text-lg font-semibold mb-3"
@@ -28,31 +36,7 @@ export default function Login() {
                   placeholder="e.g cabizahere@gmail.com"
                 />
               </div>
-              <div className="relative w-full mb-3">
-                <label
-                  className="block text-grey_40 text-lg font-semibold mb-3"
-                  htmlFor="password"
-                >
-                  Password
-                </label>
-                <input
-                  type="password"
-                  className="border border-grey_80 px-4 py-3 placeholder-grey_80 text-grey_40 bg-white shadow-sm focus:outline-none focus:ring w-full rounded-lg"
-                  style={{ transition: "all 0.15s ease 0s" }}
-                  id="password"
-                  placeholder="........"
-                />
-              </div>
-              <div className="relative flex justify-end">
-                <p className="text-lg text-right text-grey_40">
-                  Forgot password?{" "}
-                  <Link href="/auth/forget-password">
-                    <span className="ml-1 underline cursor-pointer">
-                      Reset it
-                    </span>
-                  </Link>
-                </p>
-              </div>
+
               <div className="text-center my-6">
                 <button
                   className="bg-secondary text-white active:bg-secondary text-lg font-semibold px-6 py-3 rounded-lg outline-none focus:outline-none w-full"
@@ -62,13 +46,13 @@ export default function Login() {
                     boxShadow: "0px 8px 30px rgba(0, 0, 0, 0.08)",
                   }}
                 >
-                  Login
+                  Send reset email
                 </button>
               </div>
               <p className="text-center text-grey_40 text-lg">
                 Already have an account?{" "}
-                <Link href="/auth/signup">
-                  <a className="text-secondary ml-1">Signup</a>
+                <Link href="/auth/login">
+                  <a className="text-secondary ml-1">Login</a>
                 </Link>
               </p>
             </form>
@@ -79,4 +63,4 @@ export default function Login() {
   );
 }
 
-Login.layout = Auth;
+ForgetPassword.layout = Auth;

@@ -1,7 +1,6 @@
 import React from "react";
-import AuthFooter from "../components/Footer/AuthFooter";
-
 import AuthNavbar from "../components/Navbars/AuthNavbar/index";
+import AuthFooter from "../components/Footer/AuthFooter";
 
 export default function Auth({ children }) {
   return (
