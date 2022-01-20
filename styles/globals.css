@@ -1,3 +1,7 @@
+.main-content {
+  margin-left: 256px;
+}
+
 @tailwind base;
 @tailwind components;
 @tailwind utilities;

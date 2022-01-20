@@ -203,7 +203,7 @@ export default function Home() {
               Membership plans
             </h2>
             <div
-              className=" grid-cols-4
+              className="grid-cols-4
                 space-y-2
                 lg:space-y-0 lg:grid lg:gap-8 lg:grid-rows-1"
             >
