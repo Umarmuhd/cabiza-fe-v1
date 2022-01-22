@@ -1,11 +1,13 @@
 import React from "react";
 import { Tab } from "@headlessui/react";
 
-import Affiliated from "../../../components/Cards/Affiliated";
 import AllProductsEmpty from "../../../components/Cards/AllProductsEmpty";
 
 import Dashboard from "../../../layouts/Dashboard";
 import AllProducts from "../../../components/Cards/AllProducts";
+import Affiliated from "../../../components/Cards/Affiliated";
+import { classNames } from "../../../libs/helper";
+import Link from "next/link";
 
 const PlusIcon = () => (
   <svg
@@ -26,7 +28,7 @@ const PlusIcon = () => (
   </svg>
 );
 
-const Products = () => {
+const Products = ({}) => {
   return (
     <div>
       <Tab.Group>
@@ -37,22 +39,42 @@ const Products = () => {
                 Products
               </h1>
 
-              <button className="py-4 px-8 bg-secondary flex items-center text-lg font-semibold text-white rounded-lg">
-                <span className="mr-2.5">New Product </span> <PlusIcon />
-              </button>
+              <Link href="/dashboard/products/new">
+                <button className="py-4 px-8 bg-cabiza_blue flex items-center text-lg font-semibold text-white rounded-lg">
+                  <span className="mr-2.5">New Product </span> <PlusIcon />
+                </button>
+              </Link>
             </div>
             <div className="mt-8">
               <div className="flex">
                 <Tab.List className="flex">
-                  <Tab>
-                    <button className="py-4 px-8 rounded-lg bg-secondary text-white text-lg font-semibold mr-4">
-                      All Products
-                    </button>
+                  <Tab
+                    as={"button"}
+                    className={({ selected }) =>
+                      classNames(
+                        "py-4 px-8 rounded-lg   text-lg font-semibold mr-4",
+                        "border border-cabiza_tertiary",
+                        selected
+                          ? " bg-cabiza_tertiary text-white "
+                          : " text-cabiza_tertiary bg-transparent "
+                      )
+                    }
+                  >
+                    All Products
                   </Tab>
-                  <Tab as={React.Fragment}>
-                    <button className="py-4 px-8 rounded-lg text-secondary text-lg font-semibold border border-secondary bg-transparent">
-                      Affiliated
-                    </button>
+                  <Tab
+                    as={"button"}
+                    className={({ selected }) =>
+                      classNames(
+                        "py-4 px-8 rounded-lg   text-lg font-semibold mr-4",
+                        "border border-cabiza_tertiary",
+                        selected
+                          ? " bg-cabiza_tertiary text-white "
+                          : " text-cabiza_tertiary bg-transparent "
+                      )
+                    }
+                  >
+                    Affiliated
                   </Tab>
                 </Tab.List>
               </div>

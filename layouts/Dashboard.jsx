@@ -8,6 +8,7 @@ import Sidebar from "../components/Sidebar";
 // import AuthContext from "@/context/AuthContext";
 
 export default function Dashboard({ children }) {
+  console.log(children);
   //   const { user } = useContext(AuthContext);
 
   //   //router

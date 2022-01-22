@@ -474,7 +474,7 @@ const Sidebar = () => {
                 </Link>
               </li>
               <li className="items-center">
-                <Link href="/dashboard">
+                <Link href="/dashboard/products">
                   <a className="text-white text-lg font-semibold py-3 flex items-center">
                     <ProductsIcon />
                     <span className="ml-2">Products</span>
@@ -482,7 +482,7 @@ const Sidebar = () => {
                 </Link>
               </li>
               <li className="items-center">
-                <Link href="/dashboard">
+                <Link href="/dashboard/posts">
                   <a className="text-white text-lg font-semibold py-3 flex items-center">
                     <PostsIcon />
                     <span className="ml-2">Posts</span>
@@ -512,7 +512,7 @@ const Sidebar = () => {
             {/* Navigation */}
             <ul className="md:flex-col md:min-w-full flex flex-col list-none md:mb-4">
               <li className="items-center">
-                <Link href="/dashboard">
+                <Link href="/dashboard/payout">
                   <a className="text-white text-lg font-semibold py-3 flex items-center">
                     <PayoutIcon />
                     <span className="ml-2">Payout</span>

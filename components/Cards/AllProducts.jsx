@@ -1,7 +1,5 @@
 import React from "react";
 
-import gallery from "../../public/images/icons/gallery.svg";
-
 const WarningIcon = () => (
   <svg
     width="16"
