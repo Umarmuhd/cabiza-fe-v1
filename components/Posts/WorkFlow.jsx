@@ -1,27 +1,6 @@
 import React from "react";
 import { RadioGroup } from "@headlessui/react";
 
-const plans = [
-  {
-    name: "Startup",
-    ram: "12GB",
-    cpus: "6 CPUs",
-    disk: "160 GB SSD disk",
-  },
-  {
-    name: "Business",
-    ram: "16GB",
-    cpus: "8 CPUs",
-    disk: "512 GB SSD disk",
-  },
-  {
-    name: "Enterprise",
-    ram: "32GB",
-    cpus: "12 CPUs",
-    disk: "1024 GB SSD disk",
-  },
-];
-
 function CheckIcon(props) {
   return (
     <svg viewBox="0 0 24 24" fill="none" {...props}>
@@ -45,72 +24,86 @@ export default function WorkFlow() {
         <div className="w-[34%] rounded-2xl border border-grey_80 py-8 px-6">
           <h2 className="text-grey_40 font-semibold mb-2">AUDIENCE</h2>
 
-          <ul>
-            <div className="w-full py-10">
-              <div className="w-full max-w-md mx-auto">
-                <RadioGroup value={selected} onChange={setSelected}>
-                  <RadioGroup.Label className="sr-only">
-                    Server size
-                  </RadioGroup.Label>
-                  <div className="space-y-2">
-                    {plans.map((plan) => (
-                      <RadioGroup.Option
-                        key={plan.name}
-                        value={plan}
-                        className={({ active, checked }) =>
-                          `${
-                            active
-                              ? "ring-2 ring-offset-2 ring-offset-sky-300 ring-white ring-opacity-60"
-                              : ""
-                          }
-                  ${
-                    checked ? "bg-sky-900 bg-opacity-75 text-white" : "bg-white"
-                  }
-                    relative rounded-lg shadow-md px-5 py-4 cursor-pointer flex focus:outline-none`
-                        }
-                      >
-                        {({ active, checked }) => (
-                          <>
-                            <div className="flex items-center justify-between w-full">
-                              <div className="flex items-center">
-                                <div className="text-sm">
-                                  <RadioGroup.Label
-                                    as="p"
-                                    className={`font-medium  ${
-                                      checked ? "text-white" : "text-gray-900"
-                                    }`}
-                                  >
-                                    {plan.name}
-                                  </RadioGroup.Label>
-                                  <RadioGroup.Description
-                                    as="span"
-                                    className={`inline ${
-                                      checked ? "text-sky-100" : "text-gray-500"
-                                    }`}
-                                  >
-                                    <span>
-                                      {plan.ram}/{plan.cpus}
-                                    </span>{" "}
-                                    <span aria-hidden="true">&middot;</span>{" "}
-                                    <span>{plan.disk}</span>
-                                  </RadioGroup.Description>
-                                </div>
-                              </div>
-                              {checked && (
-                                <div className="flex-shrink-0 text-white">
-                                  <CheckIcon className="w-6 h-6" />
-                                </div>
-                              )}
-                            </div>
-                          </>
-                        )}
-                      </RadioGroup.Option>
-                    ))}
+          <RadioGroup as={"ul"} value={selected} onChange={setSelected}>
+            <RadioGroup.Option
+              as={"li"}
+              value="everyone"
+              className={({ active, checked }) => `mb-2 ${checked} ${active}`}
+            >
+              {({ checked, active }) => (
+                <>
+                  <div className="flex justify-between items-center">
+                    <span className="text-grey_60 font-medium">Everyone</span>
+                    <div className="w-6 h-6 border border-cabiza_blue rounded-full flex justify-center items-center">
+                      {checked && (
+                        <div className="w-3 h-3 rounded-full inline-block bg-cabiza_blue"></div>
+                      )}
+                    </div>
                   </div>
-                </RadioGroup>
-              </div>
-            </div>
-          </ul>
+                </>
+              )}
+            </RadioGroup.Option>
+            <RadioGroup.Option
+              as={"li"}
+              value="followers"
+              className={({ active, checked }) => `mb-2 ${checked} ${active}`}
+            >
+              {({ checked, active }) => (
+                <>
+                  <div className="flex justify-between items-center">
+                    <span className="text-grey_60 font-medium">
+                      Followers only
+                    </span>
+                    <div className="w-6 h-6 border border-cabiza_blue rounded-full flex justify-center items-center">
+                      {checked && (
+                        <div className="w-3 h-3 rounded-full inline-block bg-cabiza_blue"></div>
+                      )}
+                    </div>
+                  </div>
+                </>
+              )}
+            </RadioGroup.Option>
+            <RadioGroup.Option
+              as={"li"}
+              value="customers"
+              className={({ active, checked }) => `mb-2 ${checked} ${active}`}
+            >
+              {({ checked, active }) => (
+                <>
+                  <div className="flex justify-between items-center">
+                    <span className="text-grey_60 font-medium">
+                      Customers only
+                    </span>
+                    <div className="w-6 h-6 border border-cabiza_blue rounded-full flex justify-center items-center">
+                      {checked && (
+                        <div className="w-3 h-3 rounded-full inline-block bg-cabiza_blue"></div>
+                      )}
+                    </div>
+                  </div>
+                </>
+              )}
+            </RadioGroup.Option>
+            <RadioGroup.Option
+              as={"li"}
+              value="affiliates"
+              className={({ active, checked }) => `mb-2 ${checked} ${active}`}
+            >
+              {({ checked, active }) => (
+                <>
+                  <div className="flex justify-between items-center">
+                    <span className="text-grey_60 font-medium">
+                      Affiliates only
+                    </span>
+                    <div className="w-6 h-6 border border-cabiza_blue rounded-full flex justify-center items-center">
+                      {checked && (
+                        <div className="w-3 h-3 rounded-full inline-block bg-cabiza_blue"></div>
+                      )}
+                    </div>
+                  </div>
+                </>
+              )}
+            </RadioGroup.Option>
+          </RadioGroup>
         </div>
         <div className="w-[62%]">
           <div className="rounded-2xl border border-grey_80 p-6 mb-6 relative">

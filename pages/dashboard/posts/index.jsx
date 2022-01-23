@@ -1,6 +1,6 @@
 import React from "react";
-
 import { Tab } from "@headlessui/react";
+import Link from "next/link";
 
 import { classNames } from "../../../libs/helper";
 
@@ -92,9 +92,11 @@ export default function Posts() {
                   </span>
                 </div>
               </div>
-              <button className="py-4 px-8 bg-cabiza_blue flex items-center text-lg font-semibold text-white rounded-lg">
-                <span className="mr-2.5">New Post </span> <PlusIcon />
-              </button>
+              <Link href="/dashboard/posts/new">
+                <button className="py-4 px-8 bg-cabiza_blue flex items-center text-lg font-semibold text-white rounded-lg">
+                  <span className="mr-2.5">New Post </span> <PlusIcon />
+                </button>
+              </Link>
             </div>
           </div>
         </div>

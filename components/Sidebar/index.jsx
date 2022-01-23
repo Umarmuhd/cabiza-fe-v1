@@ -567,7 +567,7 @@ const Sidebar = () => {
                 </Link>
               </li>
               <li className="items-center">
-                <Link href="/dashboard">
+                <Link href="/dashboard/settings">
                   <a className="text-white text-lg font-semibold py-3 flex items-center">
                     <SettingsIcon />
                     <span className="ml-2">Settings</span>
