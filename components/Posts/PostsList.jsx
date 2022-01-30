@@ -127,13 +127,21 @@ export default function PostsList() {
           )}
 
           {!loading && (
-            <ul>
-              {posts?.map((post, index) => (
-                <React.Fragment key={index}>
-                  <PostItems details />
-                </React.Fragment>
-              ))}
-            </ul>
+            <>
+              {posts.length > 0 ? (
+                <ul>
+                  {posts?.map((post, index) => (
+                    <React.Fragment key={index}>
+                      <PostItems details />
+                    </React.Fragment>
+                  ))}
+                </ul>
+              ) : (
+                <h1 className="text-grey_40 font-semibold text-center">
+                  No posts found
+                </h1>
+              )}
+            </>
           )}
 
           <ul></ul>
