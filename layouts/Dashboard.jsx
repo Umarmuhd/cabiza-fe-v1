@@ -8,7 +8,6 @@ import Sidebar from "../components/Sidebar";
 // import AuthContext from "@/context/AuthContext";
 
 export default function Dashboard({ children }) {
-  console.log(children);
   //   const { user } = useContext(AuthContext);
 
   //   //router
@@ -22,16 +21,14 @@ export default function Dashboard({ children }) {
 
   return (
     <>
-      <>
-        <div className="md:static">
-          <Sidebar />
-          <div className="relative md:ml-64 main-content">
-            <div className="px-0 md:px-0 mx-auto w-full -m-24 content-wrap">
-              {children}
-            </div>
+      <div className="md:static">
+        <Sidebar />
+        <div className="relative md:ml-64 main-content">
+          <div className="px-0 md:px-0 mx-auto w-full -m-24 content-wrap">
+            {children}
           </div>
         </div>
-      </>
+      </div>
     </>
   );
 }

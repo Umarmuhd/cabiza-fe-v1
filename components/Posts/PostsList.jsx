@@ -1,25 +1,25 @@
-import React from "react";
+import React, { useState, useContext, useEffect } from "react";
+import axios from "axios";
+import { API_URL, appKey } from "@/config/index";
+import AuthContext from "@/context/AuthContext";
 
 import { Switch } from "@headlessui/react";
 
-const PostItems = () => {
+const PostItems = (details) => {
   const [enabled, setEnabled] = React.useState(false);
 
   return (
     <li className="p-6 rounded-2xl border border-grey mb-4">
       <div className="mb-10">
         <h2 className="text-4xl leading-9 text-grey_20 font-semibold mb-1">
-          User Post Preview
+          {post.title}
         </h2>
         <p className="text-xs text-grey_80">ABOUT 2 HOURS AGO</p>
       </div>
 
       <div className="">
         <div className="flex justify-between">
-          <div className="text-grey_40">
-            I'm currently testing my account here as a newbie to see how it
-            works.
-          </div>
+          <div className="text-grey_40">{details.description}</div>
           <ul className="flex justify-between items-center w-2/6">
             <li className="mr-2">
               <button className="p-2 rounded-lg border border-[#666666]">
@@ -87,6 +87,31 @@ const PostItems = () => {
 };
 
 export default function PostsList() {
+  const [posts, setPosts] = useState([]);
+  const [loading, setLoading] = useState(false);
+
+  const { user } = useContext(AuthContext);
+
+  const fetchPost = async () => {
+    try {
+      setLoading(true);
+      const response = await axios.get(
+        `${API_URL}/ProductType/all-productuser/${user?.UserId}`,
+        { headers: { appKey } }
+      );
+
+      if (response.status === 200) {
+        setPosts(response.data);
+        setLoading(false);
+      }
+    } catch (error) {
+      setLoading(false);
+    }
+  };
+
+  useEffect(() => {
+    fetchPost();
+  }, []);
   return (
     <main className="h-full w-full relative">
       {(
@@ -95,11 +120,23 @@ export default function PostsList() {
             All Published Posts
           </h1>
 
-          <ul>
-            <PostItems />
-            <PostItems />
-            <PostItems />
-          </ul>
+          {loading && (
+            <h1 className="text-grey_40 font-semibold text-center">
+              loading...
+            </h1>
+          )}
+
+          {!loading && (
+            <ul>
+              {posts?.map((post, index) => (
+                <React.Fragment key={index}>
+                  <PostItems details />
+                </React.Fragment>
+              ))}
+            </ul>
+          )}
+
+          <ul></ul>
         </div>
       ) || (
         <div className="w-4/5 mx-auto md:py-20">

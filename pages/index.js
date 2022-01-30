@@ -1,5 +1,3 @@
-import Head from "next/head";
-import Image from "next/image";
 import styles from "../styles/Home.module.css";
 
 import MainNavigation from "../components/Navbars/MainNav";
@@ -291,7 +289,7 @@ export default function Home() {
           </div>
         </section>
 
-        <section id="membership" className="md:py-20 py-10">
+        <section id="newsletter" className="md:py-20 py-10">
           <div className={`mx-auto ${styles.container}`}>
             <h2 className="font-bold text-grey_40 text-4xl mb-3 text-center md:text-center">
               Subscribe to our newsletter

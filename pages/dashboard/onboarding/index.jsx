@@ -1,8 +1,108 @@
-import React from "react";
+import React, { useState, useContext } from "react";
+import { useForm } from "react-hook-form";
 import { Switch } from "@headlessui/react";
+import axios from "axios";
+import { API_URL, appKey } from "config/index";
+import { useRouter } from "next/router";
+
+import { countries } from "libs/CountriesList";
+
+import AuthContext from "@/context/AuthContext";
+import toast from "react-hot-toast";
+
+const CategoriesSelect = React.forwardRef(
+  ({ onChange, onBlur, name, label, defaultValue }, ref) => (
+    <>
+      <label className="block text-grey_40 text-lg font-semibold mb-3">
+        {label}
+      </label>
+      <select
+        className="border border-grey_80 px-4 py-3 placeholder-grey_80 text-grey_40 bg-white shadow-sm focus:outline-none focus:ring w-full rounded-lg"
+        name={name}
+        ref={ref}
+        onChange={onChange}
+        onBlur={onBlur}
+        defaultValue={defaultValue}
+      >
+        <option />
+        {["Education", "Fitness", "Health"].map((category) => (
+          <option key={category} value={category}>
+            {category}
+          </option>
+        ))}
+      </select>
+    </>
+  )
+);
+
+const CountrySelect = React.forwardRef(
+  ({ onChange, onBlur, name, label, defaultValue }, ref) => (
+    <>
+      <label className="block text-grey_40 text-lg font-semibold mb-3">
+        {label}
+      </label>
+      <select
+        className="border border-grey_80 px-4 py-3 placeholder-grey_80 text-grey_40 bg-white shadow-sm focus:outline-none focus:ring w-full rounded-lg"
+        name={name}
+        ref={ref}
+        onChange={onChange}
+        onBlur={onBlur}
+        defaultValue={defaultValue}
+      >
+        <option />
+        {countries.map((country) => (
+          <option key={country.name} value={country.name}>
+            {country.name}
+          </option>
+        ))}
+      </select>
+    </>
+  )
+);
 
 export const Onboarding = () => {
   const [enabled, setEnabled] = React.useState(false);
+  const [loading, setLoading] = useState(false);
+  const {
+    register,
+    handleSubmit,
+    formState: { errors },
+  } = useForm();
+
+  const router = useRouter();
+
+  const { user } = useContext(AuthContext);
+
+  console.log(user);
+
+  const updateProfile = async (values) => {
+    try {
+      setLoading(true);
+
+      const response = await axios.post(
+        `${API_URL}/UserHomePageSetUp/user-setup-page`,
+        {
+          username: values.username,
+          country: values.country,
+          imageUrl: "https://via.placeholder.com/250",
+          bio: values.bio,
+          userId: user.UserId,
+        },
+        { headers: { appKey } }
+      );
+
+      if (response.status === 200 && response.data.status) {
+        setLoading(false);
+        router.push("/dashboard/posts");
+      } else {
+        toast.error(response.data.message);
+        setLoading(false);
+      }
+    } catch (error) {
+      console.log(error);
+    }
+  };
+
   return (
     <div className="min-h-screen">
       <div className="flex">
@@ -10,7 +110,10 @@ export const Onboarding = () => {
           <div className="sm:w-5/6 mx-auto px-4 sm:px-0">
             <img src="/images/cabiza-logo.png" alt="..." className="w-40" />
 
-            <form action="" className="mt-10 md:mt-24">
+            <form
+              className="mt-10 md:mt-24"
+              onSubmit={handleSubmit(updateProfile)}
+            >
               <div className="relative mb-6">
                 <label
                   className="block text-grey_40 text-lg font-semibold mb-3"
@@ -25,6 +128,7 @@ export const Onboarding = () => {
                     style={{ transition: "all 0.15s ease 0s" }}
                     id="username"
                     placeholder="jake"
+                    {...register("username", { required: true })}
                   />
                   <span className="inline-flex items-center px-3 rounded-r-lg border border-l-0 border-gray-300 bg-gray-50 text-gray-500 text-sm">
                     .cabiza.com
@@ -71,6 +175,8 @@ export const Onboarding = () => {
                   style={{ transition: "all 0.15s ease 0s" }}
                   id="name"
                   placeholder="Pseudonym, organization name or full name"
+                  {...register("name", { required: true })}
+                  defaultValue={user?.CustomerName}
                 />
               </div>
               <div className="relative mb-6">
@@ -86,40 +192,18 @@ export const Onboarding = () => {
                   style={{ transition: "all 0.15s ease 0s" }}
                   id="bio"
                   placeholder="Tell us about yourself and what you do"
+                  {...register("bio", { required: true })}
                 />
               </div>
               <div className="relative mb-6">
-                <label
-                  htmlFor="categories"
-                  className="block text-grey_40 text-lg font-semibold mb-3"
-                >
-                  Categories
-                </label>
-                <select
-                  id="categories"
-                  className="border border-grey_80 px-4 py-3 placeholder-grey_80 text-grey_40 bg-white shadow-sm focus:outline-none focus:ring w-full rounded-lg"
-                >
-                  <option>Education</option>
-                  <option>Fitness & Health</option>
-                  <option>Beauty</option>
-                </select>
+                <CategoriesSelect
+                  label="Categories"
+                  {...register("categories")}
+                />
               </div>
 
               <div className="relative mb-6">
-                <label
-                  htmlFor="country"
-                  className="block text-grey_40 text-lg font-semibold mb-3"
-                >
-                  Country
-                </label>
-                <select
-                  id="country"
-                  className="border border-grey_80 px-4 py-3 placeholder-grey_80 text-grey_40 bg-white shadow-sm focus:outline-none focus:ring w-full rounded-lg"
-                >
-                  <option>Nigeria</option>
-                  <option>Kenya</option>
-                  <option>Ghana</option>
-                </select>
+                <CountrySelect label="Country" {...register("country")} />
                 <small className="text-grey_40 text-sm">
                   You will receive payouts in USD directly into your PayPal
                   account.
@@ -145,8 +229,12 @@ export const Onboarding = () => {
                 </span>
               </div>
 
-              <button className="mt-6 font-semibold text-center text-white text-lg bg-secondary w-full rounded-lg py-4">
-                Update Profile
+              <button
+                className="mt-6 font-semibold text-center text-white text-lg bg-cabiza_blue w-full rounded-lg py-4"
+                type="submit"
+                disabled={loading}
+              >
+                {loading ? "..." : "Update Profile"}
               </button>
             </form>
           </div>

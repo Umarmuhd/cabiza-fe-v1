@@ -10,66 +10,26 @@ export default function Login() {
     <div className="pt-5 md:pt-24">
       <div className="min-h-screen h-full flex justify-center items-center place-content-center">
         <div className="md:w-3/5 max-w-lg">
-          <div className="bg-white py-10 px-10 w-full border border-grey_80 rounded-xl">
-            <form>
-              <h1 className="text-4xl mb-8 text-grey_40 font-bold">Login</h1>
-              <div className="relative w-full mb-6">
-                <label
-                  className="block text-grey_40 text-lg font-semibold mb-3"
-                  htmlFor="email"
-                >
-                  Email Address
-                </label>
-                <input
-                  type="email"
-                  className="border border-grey_80 px-4 py-3 placeholder-grey_80 text-grey_40 bg-white shadow-sm focus:outline-none focus:ring w-full rounded-lg"
-                  style={{ transition: "all 0.15s ease 0s" }}
-                  id="email"
-                  placeholder="e.g cabizahere@gmail.com"
-                />
-              </div>
-              <div className="relative w-full mb-3">
-                <label
-                  className="block text-grey_40 text-lg font-semibold mb-3"
-                  htmlFor="password"
-                >
-                  Password
-                </label>
-                <input
-                  type="password"
-                  className="border border-grey_80 px-4 py-3 placeholder-grey_80 text-grey_40 bg-white shadow-sm focus:outline-none focus:ring w-full rounded-lg"
-                  style={{ transition: "all 0.15s ease 0s" }}
-                  id="password"
-                  placeholder="........"
-                />
-              </div>
-              <div className="relative flex justify-end">
-                <p className="text-lg text-right text-grey_40">
-                  Forgot password?{" "}
-                  <span className="ml-1 underline cursor-pointer">
-                    Reset it
-                  </span>
-                </p>
-              </div>
-              <div className="text-center my-6">
-                <button
-                  className="bg-secondary text-white active:bg-secondary text-lg font-semibold px-6 py-3 rounded-lg outline-none focus:outline-none w-full"
-                  type="submit"
-                  style={{
-                    transition: "all 0.15s ease 0s",
-                    boxShadow: "0px 8px 30px rgba(0, 0, 0, 0.08)",
-                  }}
-                >
-                  Login
-                </button>
-              </div>
-              <p className="text-center text-grey_40 text-lg">
-                Already have an account?{" "}
-                <Link href="/auth/signup">
-                  <a className="text-secondary ml-1">Signup</a>
-                </Link>
+          <div className="bg-white py-10 pb-6 w-full border border-grey_80 rounded-xl">
+            <img src="/images/email.svg" alt="..." className="mx-auto mb-8" />
+            <h1 className="text-4xl text-grey_40 font-bold text-center mb-3">
+              Email Confirmation
+            </h1>
+            <div className="w-4/5 mx-auto text-grey_60 text-center">
+              We have sent email to cabizahere@gmail.com to confirm the validity
+              of your email address. After receiving the email follow the link
+              provided to complete registration.
+            </div>
+            <div className="border-t-2 border-grey_80 mt-6"></div>
+
+            <div className="py-6 text-center">
+              <p className="text-grey_40 text-lg">
+                Email not received?{" "}
+                <span className="text-cabiza_blue ml-1">
+                  Resend confirmation mail
+                </span>
               </p>
-            </form>
+            </div>
           </div>
         </div>
       </div>
