@@ -79,7 +79,7 @@ export default function MainNavigation() {
               <li className="flex items-center">
                 <Link href="/auth/signup">
                   <a
-                    className="border bg-secondary border-secondary text-white font-semibold px-4 py-2 rounded shadow hover:shadow-md outline-none focus:outline-none lg:mr-1 lg:mb-0 md:ml-3 mb-3"
+                    className="border bg-cabiza_blue border-cabiza_blue text-white font-semibold px-4 py-2 rounded shadow hover:shadow-md outline-none focus:outline-none lg:mr-1 lg:mb-0 md:ml-3 mb-3"
                     style={{ transition: "all .15s ease" }}
                   >
                     Get Started

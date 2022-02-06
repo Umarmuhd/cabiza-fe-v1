@@ -21,6 +21,7 @@ export default function Login() {
 
   const { loginUser, user } = useContext(AuthContext);
   const [loading, setLoading] = useState(false);
+  const [error, setError] = useState("");
 
   const router = useRouter();
 
@@ -39,10 +40,7 @@ export default function Login() {
         loginUser(response.data.token);
         setLoading(false);
 
-        if (user.CustomerName === null) {
-          return router.push("/dashboard/onboarding");
-        }
-        router.push("/dashboard/posts");
+        router.push("/dashboard/onboarding");
       } else {
         console.log("Something went wrong");
         toast.error(response.data.data.message);
@@ -50,7 +48,7 @@ export default function Login() {
 
       setLoading(false);
     } catch (error) {
-      console.log(error);
+      setError(error.response.data.data.message);
       setLoading(false);
     }
   };
@@ -62,6 +60,7 @@ export default function Login() {
           <div className="bg-white py-10 px-10 w-full border border-grey_80 rounded-xl">
             <form onSubmit={handleSubmit(handleLogin)}>
               <h1 className="text-4xl mb-8 text-grey_40 font-bold">Login</h1>
+              <p className="my-3 text-sm text-red-500">{error}</p>
               <div className="relative w-full mb-6">
                 <label
                   className="block text-grey_40 text-lg font-semibold mb-3"
@@ -116,7 +115,7 @@ export default function Login() {
               </div>
               <div className="text-center my-6">
                 <button
-                  className="bg-secondary text-white active:bg-secondary text-lg font-semibold px-6 py-3 rounded-lg outline-none focus:outline-none w-full"
+                  className="bg-cabiza_blue text-white active:bg-cabiza_blue text-lg font-semibold px-6 py-3 rounded-lg outline-none focus:outline-none w-full"
                   type="submit"
                   style={{
                     transition: "all 0.15s ease 0s",

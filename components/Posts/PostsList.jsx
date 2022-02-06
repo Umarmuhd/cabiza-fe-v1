@@ -2,24 +2,25 @@ import React, { useState, useContext, useEffect } from "react";
 import axios from "axios";
 import { API_URL, appKey } from "@/config/index";
 import AuthContext from "@/context/AuthContext";
+import Link from "next/link";
 
 import { Switch } from "@headlessui/react";
 
-const PostItems = (details) => {
+const PostItems = (post) => {
   const [enabled, setEnabled] = React.useState(false);
 
   return (
     <li className="p-6 rounded-2xl border border-grey mb-4">
       <div className="mb-10">
         <h2 className="text-4xl leading-9 text-grey_20 font-semibold mb-1">
-          {post.title}
+          {post.post.title}
         </h2>
         <p className="text-xs text-grey_80">ABOUT 2 HOURS AGO</p>
       </div>
 
       <div className="">
         <div className="flex justify-between">
-          <div className="text-grey_40">{details.description}</div>
+          <div className="text-grey_40">{post.post.description}</div>
           <ul className="flex justify-between items-center w-2/6">
             <li className="mr-2">
               <button className="p-2 rounded-lg border border-[#666666]">
@@ -27,9 +28,9 @@ const PostItems = (details) => {
               </button>
             </li>
             <li className="mr-2">
-              <button className="p-2 rounded-lg border border-[#666666]">
-                View
-              </button>
+              <Link href={`/dashboard/view-user/${post.post.userId}/posts/123`}>
+                <a className="p-2 rounded-lg border border-[#666666]">View</a>
+              </Link>
             </li>
             <li className="mr-2">
               <button className="p-2 rounded-lg border border-[#666666]">
@@ -96,7 +97,7 @@ export default function PostsList() {
     try {
       setLoading(true);
       const response = await axios.get(
-        `${API_URL}/ProductType/all-productuser/${user?.UserId}`,
+        `${API_URL}/Post/all-post/${user?.UserId}`,
         { headers: { appKey } }
       );
 
@@ -109,9 +110,8 @@ export default function PostsList() {
     }
   };
 
-  useEffect(() => {
-    fetchPost();
-  }, []);
+  useEffect(() => fetchPost(), []);
+
   return (
     <main className="h-full w-full relative">
       {(
@@ -132,7 +132,7 @@ export default function PostsList() {
                 <ul>
                   {posts?.map((post, index) => (
                     <React.Fragment key={index}>
-                      <PostItems details />
+                      <PostItems post={post} />
                     </React.Fragment>
                   ))}
                 </ul>

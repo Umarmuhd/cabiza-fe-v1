@@ -1,7 +1,9 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
 import Link from "next/link";
-import MainFooter from "../../components/Footer/MainFooter";
-import MainNavigation from "../../components/Navbars/MainNav";
+import axios from "axios";
+import MainFooter from "@/components/Footer/MainFooter";
+import MainNavigation from "@/components/Navbars/MainNav";
+import { API_URL, appKey } from "@/config/index";
 
 const SearchIcon = () => (
   <svg
@@ -22,7 +24,68 @@ const SearchIcon = () => (
   </svg>
 );
 
+const ProductItem = (product) => (
+  <>
+    <div className="shadow">
+      <img src="/images/book-small.png" alt="..." />
+      <div className="p-5 rounded-b">
+        <p className="text-lg text-grey_80 font-medium mb-3">Books</p>
+        <Link href="/discover/123">
+          <h4 className="text-2xl text-dark_ font-bold mb-8 cursor-pointer">
+            {product.product.name}
+          </h4>
+        </Link>
+        <div className="flex items-center">
+          <span className="text-lg text-grey_60 font-medium mr-2">By:</span>
+          <img src="/images/author.png" alt="..." className="h-10 w-10" />
+          <Link href={`/dashboard/view-user/${product.product.userId}/posts`}>
+            <a className="text-lg font-medium ml-2 underline text-grey_60 block">
+              {product.product.user.fullName}
+            </a>
+          </Link>
+        </div>
+        <div className="mt-8 flex items-center justify-between">
+          <div className="flex items-center">
+            <img src="/images/icons/star.svg" alt="..." className="w-6 h-6" />
+            <span className="ml-2 text-lg font-semibold text-grey_40">5.0</span>
+            <div className="px-1 rounded border border-grey_80 ml-3 bg-grey_95">
+              <span className="text-sm font-medium text-grey_60">34567</span>
+            </div>
+          </div>
+          <span className="text-sm font-medium py-3 px-2.5 text-grey_98 bg-secondary rounded">
+            ${product.product.price}+
+          </span>
+        </div>
+      </div>
+    </div>
+  </>
+);
+
 export default function Discover() {
+  const [products, setProducts] = useState([]);
+  const [loading, setLoading] = useState(false);
+
+  const fetchProducts = async () => {
+    try {
+      setLoading(true);
+      const response = await axios.get(`${API_URL}/ProductType/all-product`, {
+        headers: { appKey },
+      });
+
+      console.log(response);
+
+      if (response.status === 200) {
+        setProducts(response.data);
+        setLoading(false);
+      }
+    } catch (error) {
+      console.log(error);
+      setLoading(false);
+    }
+  };
+
+  useEffect(() => fetchProducts(), []);
+
   return (
     <div className="w-full h-full">
       <MainNavigation />
@@ -151,136 +214,18 @@ export default function Discover() {
                 space-y-2
                 lg:space-y-0 lg:grid lg:gap-6 lg:grid-rows-1"
             >
-              <div className="shadow">
-                <img src="/images/book-small.png" alt="..." />
-                <div className="p-5 rounded-b">
-                  <p className="text-lg text-grey_80 font-medium mb-3">Books</p>
-                  <Link href="/discover/123">
-                    <h4 className="text-2xl text-dark_ font-bold mb-8 cursor-pointer">
-                      Emotional Intelligence
-                    </h4>
-                  </Link>
-                  <div className="flex items-center">
-                    <span className="text-lg text-grey_60 font-medium mr-2">
-                      By:
-                    </span>
-                    <img
-                      src="/images/author.png"
-                      alt="..."
-                      className="h-10 w-10"
-                    />
-                    <p className="text-lg font-medium ml-2 underline text-grey_60">
-                      Sara Mitchell
-                    </p>
-                  </div>
-                  <div className="mt-8 flex items-center justify-between">
-                    <div className="flex items-center">
-                      <img
-                        src="/images/icons/star.svg"
-                        alt="..."
-                        className="w-6 h-6"
-                      />
-                      <span className="ml-2 text-lg font-semibold text-grey_40">
-                        5.0
-                      </span>
-                      <div className="px-1 rounded border border-grey_80 ml-3 bg-grey_95">
-                        <span className="text-sm font-medium text-grey_60">
-                          34567
-                        </span>
-                      </div>
-                    </div>
-                    <span className="text-sm font-medium py-3 px-2.5 text-grey_98 bg-secondary rounded">
-                      $5000+
-                    </span>
-                  </div>
-                </div>
-              </div>
-              <div className="shadow">
-                <img src="/images/book-small.png" alt="..." />
-                <div className="p-5 rounded-b">
-                  <p className="text-lg text-grey_80 font-medium mb-3">Books</p>
-                  <Link href="/discover/123">
-                    <h4 className="text-2xl text-dark_ font-bold mb-8 cursor-pointer">
-                      Emotional Intelligence
-                    </h4>
-                  </Link>
-                  <div className="flex items-center">
-                    <span className="text-lg text-grey_60 font-medium mr-2">
-                      By:
-                    </span>
-                    <img
-                      src="/images/author.png"
-                      alt="..."
-                      className="h-10 w-10"
-                    />
-                    <p className="text-lg font-medium ml-2 underline text-grey_60">
-                      Sara Mitchell
-                    </p>
-                  </div>
-                  <div className="mt-8 flex items-center justify-between">
-                    <div className="flex items-center">
-                      <img
-                        src="/images/icons/star.svg"
-                        alt="..."
-                        className="w-6 h-6"
-                      />
-                      <span className="ml-2 text-lg font-semibold text-grey_40">
-                        5.0
-                      </span>
-                      <div className="px-1 rounded border border-grey_80 ml-3 bg-grey_95">
-                        <span className="text-sm font-medium text-grey_60">
-                          34567
-                        </span>
-                      </div>
-                    </div>
-                    <span className="text-sm font-medium py-3 px-2.5 text-grey_98 bg-secondary rounded">
-                      $5000+
-                    </span>
-                  </div>
-                </div>
-              </div>
-              <div className="shadow">
-                <img src="/images/book-small.png" alt="..." />
-                <div className="p-5 rounded-b">
-                  <p className="text-lg text-grey_80 font-medium mb-3">Books</p>
-                  <h4 className="text-2xl text-dark_ font-bold mb-8">
-                    Emotional Intelligence
-                  </h4>
-                  <div className="flex items-center">
-                    <span className="text-lg text-grey_60 font-medium mr-2">
-                      By:
-                    </span>
-                    <img
-                      src="/images/author.png"
-                      alt="..."
-                      className="h-10 w-10"
-                    />
-                    <p className="text-lg font-medium ml-2 underline text-grey_60">
-                      Sara Mitchell
-                    </p>
-                  </div>
-                  <div className="mt-8 flex items-center justify-between">
-                    <div className="flex items-center">
-                      <img
-                        src="/images/icons/star.svg"
-                        alt="..."
-                        className="w-6 h-6"
-                      />
-                      <span className="ml-2 text-lg font-semibold text-grey_40">
-                        5.0
-                      </span>
-                      <div className="px-1 rounded border border-grey_80 ml-3 bg-grey_95">
-                        <span className="text-sm font-medium text-grey_60">
-                          34567
-                        </span>
-                      </div>
-                    </div>
-                    <span className="text-sm font-medium py-3 px-2.5 text-grey_98 bg-secondary rounded">
-                      $5000+
-                    </span>
-                  </div>
-                </div>
-              </div>
+              {loading && <p>loading...</p>}
+              {!loading && (
+                <>
+                  {products.length > 0 && (
+                    <>
+                      {products.map((product) => (
+                        <ProductItem product={product} />
+                      ))}
+                    </>
+                  )}
+                </>
+              )}
             </div>
           </div>
 

@@ -124,7 +124,7 @@ export default function Signup() {
 
               <div className="text-center my-6">
                 <button
-                  className="bg-secondary text-white active:bg-secondary text-lg font-semibold px-6 py-3 rounded-lg outline-none focus:outline-none w-full"
+                  className="bg-cabiza_blue text-white active:bg-cabiza_blue text-lg font-semibold px-6 py-3 rounded-lg outline-none focus:outline-none w-full"
                   type="submit"
                   style={{
                     transition: "all 0.15s ease 0s",

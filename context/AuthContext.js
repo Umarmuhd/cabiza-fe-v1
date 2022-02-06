@@ -1,4 +1,4 @@
-import { createContext, useState, useEffect } from "react";
+import { createContext, useState } from "react";
 import { useRouter } from "next/router"
 import axios from "axios";
 import jwt_decode from "jwt-decode";
@@ -9,11 +9,7 @@ export const AuthProvider = ({ children }) => {
     const [user, setUser] = useState(null);
     const [loading, setLoading] = useState(false);
 
-
-
     const router = useRouter();
-
-    console.log(user);
 
     // axios.defaults.withCredentials = true;
 
