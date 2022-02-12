@@ -7,7 +7,7 @@ import { toast } from "react-hot-toast";
 import Link from "next/link";
 
 import Dashboard from "@/layouts/Dashboard";
-import { API_URL, appKey } from "@/config/index";
+import { API_URL } from "@/config/index";
 import AuthContext from "@/context/AuthContext";
 
 const PlusIcon = () => (
@@ -39,39 +39,36 @@ export default function NewPost() {
   const { user } = useContext(AuthContext);
 
   const [loading, setLoading] = useState(false);
-  const [selected, setSelected] = React.useState(false);
+  const [audience, setAudience] = React.useState(false);
+  const [channel, setChannel] = React.useState(false);
+  const [engagement, setEngagement] = React.useState(false);
 
   const router = useRouter();
 
   const handlePublish = async (values) => {
     setLoading(true);
-    const { title, description, cta, image } = values;
+
+    const { title, description, call_to_action, attachment } = values;
+
+    if (!audience || !channel || !engagement) {
+      toast.error("please complete all required fields");
+      setLoading(false);
+      return;
+    }
 
     try {
-      const reader = new FileReader();
+      const response = await axios.post(`${API_URL}/posts/new`, {
+        title,
+        description,
+        call_to_action,
+      });
 
-      await reader.readAsDataURL(image[0]);
-      reader.onloadend = async function () {
-        console.log("reader", reader.result);
-        const response = await axios.post(
-          `${API_URL}/Post/user-post`,
-          {
-            title,
-            message: description,
-            channelId: "4d3beac4-80f9-4bd0-761c-08d9d7f2b282",
-            imageUpload: reader.result,
-            urlLink: "string",
-            userId: user.userId,
-          },
-          { headers: { appKey } }
-        );
+      setLoading(false);
+      toast.success(response.data.message);
 
-        setLoading(false);
-        toast.success(response.data.message);
-        if (response.status === 200 && response.data.status) {
-          router.push("/dashboard/posts");
-        }
-      };
+      if (response.status === 201) {
+        return router.push("/dashboard/posts");
+      }
     } catch (error) {
       console.log(error);
       setLoading(false);
@@ -120,7 +117,7 @@ export default function NewPost() {
               <div className="mb-8">
                 <h2 className="text-grey_40 font-semibold mb-2">AUDIENCE</h2>
 
-                <RadioGroup as={"ul"} value={selected} onChange={setSelected}>
+                <RadioGroup as={"ul"} value={audience} onChange={setAudience}>
                   <RadioGroup.Option
                     as={"li"}
                     value="everyone"
@@ -214,7 +211,7 @@ export default function NewPost() {
               <div className="mb-8">
                 <h2 className="text-grey_40 font-semibold mb-2">CHANNEL</h2>
 
-                <RadioGroup as={"ul"} value={selected} onChange={setSelected}>
+                <RadioGroup as={"ul"} value={channel} onChange={setChannel}>
                   <RadioGroup.Option
                     as={"li"}
                     value="send-email"
@@ -271,7 +268,11 @@ export default function NewPost() {
               <div className="mb-0">
                 <h2 className="text-grey_40 font-semibold mb-2">ENGAGEMENTS</h2>
 
-                <RadioGroup as={"ul"} value={selected} onChange={setSelected}>
+                <RadioGroup
+                  as={"ul"}
+                  value={engagement}
+                  onChange={setEngagement}
+                >
                   <RadioGroup.Option
                     as={"li"}
                     value="comments"
@@ -362,7 +363,7 @@ export default function NewPost() {
                 className="rounded-lg py-4 w-full border border-grey_80 bg-grey_95 text-lg text-grey_60 text-center outline-none"
                 placeholder="Add call-to-action-button"
                 autoComplete="off"
-                {...register("cta", { required: true })}
+                {...register("call_to_action", { required: true })}
               />
 
               <div className="rounded-2xl border border-grey_80 p-6 mt-6">
@@ -401,7 +402,7 @@ export default function NewPost() {
                       name="file-upload"
                       type="file"
                       className="hidden"
-                      {...register("image", { required: true })}
+                      {...register("attachment", { required: true })}
                     />
                   </label>
                 </div>

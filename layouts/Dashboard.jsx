@@ -3,21 +3,17 @@ import { useRouter } from "next/router";
 
 import Sidebar from "../components/Sidebar";
 
-//component
-// import { Toaster } from "react-hot-toast";
-// import AuthContext from "@/context/AuthContext";
+import { Toaster } from "react-hot-toast";
+import AuthContext from "@/context/AuthContext";
 
 export default function Dashboard({ children }) {
-  //   const { user } = useContext(AuthContext);
+  const { user, loading } = useContext(AuthContext);
 
-  //   //router
-  //   const router = useRouter();
+  const router = useRouter();
 
-  //   if (typeof window !== "undefined") {
-  //     if (!user) {
-  //       router.push("/auth/login");
-  //     }
-  //   }
+  if (typeof window !== "undefined") {
+    if (!user && !loading) router.push("/auth/login");
+  }
 
   return (
     <>

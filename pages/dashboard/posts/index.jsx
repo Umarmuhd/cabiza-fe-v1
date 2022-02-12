@@ -1,6 +1,8 @@
 import React from "react";
 import { Tab } from "@headlessui/react";
 import Link from "next/link";
+import AuthContext from "@/context/AuthContext";
+import axios from "axios";
 
 import { classNames } from "../../../libs/helper";
 

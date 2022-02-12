@@ -8,7 +8,7 @@
       "@/context/*": ["context/*"],
       "@/helpers/*": ["helpers/*"],
       "@/layouts/*": ["layouts/*"],
-      "@/hoc/*": ["hoc/*"]
+      "@/libs/*": ["libs/*"]
     }
   }
 }

@@ -1,22 +1,53 @@
-import { createContext, useState } from "react";
+import { createContext, useState, useEffect } from "react";
 import { useRouter } from "next/router"
 import axios from "axios";
-import jwt_decode from "jwt-decode";
+import { NEXT_URL } from "../config/index";
 
 const AuthContext = createContext({});
 
 export const AuthProvider = ({ children }) => {
     const [user, setUser] = useState(null);
-    const [loading, setLoading] = useState(false);
+    const [loading, setLoading] = useState(true);
 
     const router = useRouter();
 
-    // axios.defaults.withCredentials = true;
+    useEffect(() => checkUserLoggedIn(), []);
 
-    const loginUser = (token) => {
+    const loginUser = (user, token) => {
+        setUser(user);
         axios.defaults.headers.common = { Authorization: `Bearer ${token}` };
-        const result = jwt_decode(token)
-        setUser(JSON.parse(result["http://schemas.microsoft.com/ws/2008/06/identity/claims/userdata"]));
+    };
+
+    const checkUserLoggedIn = async () => {
+        try {
+            setLoading(true);
+            const res = await axios.get(`${NEXT_URL}/api/user`, {
+                withCredentials: true,
+                credentials: "include",
+                method: "GET",
+            });
+
+            console.log(res.data);
+
+            setTimeout(() => {
+                checkUserLoggedIn();
+            }, res.data.expires_in * 1000 - 500);
+
+            if (res.status === 200) {
+                axios.defaults.headers.common = {
+                    Authorization: `Bearer ${res.data.token}`,
+                };
+                setUser(res.data.user);
+                setLoading(false);
+            } else {
+                setUser(null);
+                setLoading(false);
+                router.push("/auth/login");
+            }
+        } catch (error) {
+            console.log(error);
+        }
+        setLoading(false);
     };
 
     return (

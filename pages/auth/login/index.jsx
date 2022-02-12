@@ -29,26 +29,27 @@ export default function Login() {
     try {
       setLoading(true);
 
+      const { email, password } = values;
+
       const response = await axios.post(`${NEXT_URL}/api/login`, {
-        username: values.email,
-        encPassword: values.password,
+        email,
+        password,
       });
 
-      console.log(response.data);
+      const { user, token } = response.data;
 
       if (response.status === 200) {
-        loginUser(response.data.token);
+        loginUser(user, token);
         setLoading(false);
 
-        router.push("/dashboard/onboarding");
-      } else {
-        console.log("Something went wrong");
-        toast.error(response.data.data.message);
+        return router.push(
+          user.username ? "/dashboard/products" : "/dashboard/onboarding"
+        );
       }
 
       setLoading(false);
     } catch (error) {
-      setError(error.response.data.data.message);
+      setError(error.response.data.message);
       setLoading(false);
     }
   };

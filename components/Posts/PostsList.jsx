@@ -6,7 +6,7 @@ import Link from "next/link";
 
 import { Switch } from "@headlessui/react";
 
-const PostItems = (post) => {
+const PostItem = (post) => {
   const [enabled, setEnabled] = React.useState(false);
 
   return (
@@ -20,7 +20,9 @@ const PostItems = (post) => {
 
       <div className="">
         <div className="flex justify-between">
-          <div className="text-grey_40">{post.post.description}</div>
+          <div className="text-grey_40">
+            {post.post.description.slice(0, 200)}
+          </div>
           <ul className="flex justify-between items-center w-2/6">
             <li className="mr-2">
               <button className="p-2 rounded-lg border border-[#666666]">
@@ -28,7 +30,9 @@ const PostItems = (post) => {
               </button>
             </li>
             <li className="mr-2">
-              <Link href={`/dashboard/view-user/${post.post.userId}/posts/123`}>
+              <Link
+                href={`/dashboard/view-user/${post.post.user}/posts/${post.post._id}`}
+              >
                 <a className="p-2 rounded-lg border border-[#666666]">View</a>
               </Link>
             </li>
@@ -96,16 +100,12 @@ export default function PostsList() {
   const fetchPost = async () => {
     try {
       setLoading(true);
-      const response = await axios.get(
-        `${API_URL}/Post/all-post/${user?.UserId}`,
-        { headers: { appKey } }
-      );
+      const response = await axios.get(`${API_URL}/posts/user/${user?._id}`);
 
-      if (response.status === 200) {
-        setPosts(response.data);
-        setLoading(false);
-      }
+      setPosts(response.data.data.posts);
+      setLoading(false);
     } catch (error) {
+      console.log(error);
       setLoading(false);
     }
   };
@@ -132,7 +132,7 @@ export default function PostsList() {
                 <ul>
                   {posts?.map((post, index) => (
                     <React.Fragment key={index}>
-                      <PostItems post={post} />
+                      <PostItem post={post} />
                     </React.Fragment>
                   ))}
                 </ul>

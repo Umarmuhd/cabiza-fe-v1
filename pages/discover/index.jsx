@@ -219,8 +219,10 @@ export default function Discover() {
                 <>
                   {products.length > 0 && (
                     <>
-                      {products.map((product) => (
-                        <ProductItem product={product} />
+                      {products.map((product, index) => (
+                        <React.Fragment key={index}>
+                          <ProductItem product={product} />
+                        </React.Fragment>
                       ))}
                     </>
                   )}

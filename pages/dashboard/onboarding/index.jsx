@@ -10,57 +10,58 @@ import { countries } from "libs/CountriesList";
 import AuthContext from "@/context/AuthContext";
 import toast from "react-hot-toast";
 
-const CategoriesSelect = React.forwardRef(
-  ({ onChange, onBlur, name, label, defaultValue }, ref) => (
-    <>
-      <label className="block text-grey_40 text-lg font-semibold mb-3">
-        {label}
-      </label>
-      <select
-        className="border border-grey_80 px-4 py-3 placeholder-grey_80 text-grey_40 bg-white shadow-sm focus:outline-none focus:ring w-full rounded-lg"
-        name={name}
-        ref={ref}
-        onChange={onChange}
-        onBlur={onBlur}
-        defaultValue={defaultValue}
-      >
-        <option />
-        {["Education", "Fitness", "Health"].map((category) => (
-          <option key={category} value={category}>
-            {category}
-          </option>
-        ))}
-      </select>
-    </>
-  )
-);
+export default function Onboarding() {
+  const CategoriesSelect = React.forwardRef(
+    ({ onChange, onBlur, name, label, defaultValue }, ref) => (
+      <>
+        <label className="block text-grey_40 text-lg font-semibold mb-3">
+          {label}
+        </label>
+        <select
+          className="border border-grey_80 px-4 py-3 placeholder-grey_80 text-grey_40 bg-white shadow-sm focus:outline-none focus:ring w-full rounded-lg"
+          name={name}
+          ref={ref}
+          onChange={onChange}
+          onBlur={onBlur}
+          defaultValue={defaultValue}
+        >
+          <option />
+          {["Education", "Fitness", "Health"].map((category) => (
+            <option key={category} value={category}>
+              {category}
+            </option>
+          ))}
+        </select>
+      </>
+    )
+  );
+  CategoriesSelect.displayName = "CategoriesSelect";
+  const CountrySelect = React.forwardRef(
+    ({ onChange, onBlur, name, label, defaultValue }, ref) => (
+      <>
+        <label className="block text-grey_40 text-lg font-semibold mb-3">
+          {label}
+        </label>
+        <select
+          className="border border-grey_80 px-4 py-3 placeholder-grey_80 text-grey_40 bg-white shadow-sm focus:outline-none focus:ring w-full rounded-lg"
+          name={name}
+          ref={ref}
+          onChange={onChange}
+          onBlur={onBlur}
+          defaultValue={defaultValue}
+        >
+          <option />
+          {countries.map((country) => (
+            <option key={country.name} value={country.name}>
+              {country.name}
+            </option>
+          ))}
+        </select>
+      </>
+    )
+  );
+  CountrySelect.displayName = "CountrySelect";
 
-const CountrySelect = React.forwardRef(
-  ({ onChange, onBlur, name, label, defaultValue }, ref) => (
-    <>
-      <label className="block text-grey_40 text-lg font-semibold mb-3">
-        {label}
-      </label>
-      <select
-        className="border border-grey_80 px-4 py-3 placeholder-grey_80 text-grey_40 bg-white shadow-sm focus:outline-none focus:ring w-full rounded-lg"
-        name={name}
-        ref={ref}
-        onChange={onChange}
-        onBlur={onBlur}
-        defaultValue={defaultValue}
-      >
-        <option />
-        {countries.map((country) => (
-          <option key={country.name} value={country.name}>
-            {country.name}
-          </option>
-        ))}
-      </select>
-    </>
-  )
-);
-
-export const Onboarding = () => {
   const [enabled, setEnabled] = React.useState(false);
   const [loading, setLoading] = useState(false);
   const {
@@ -76,22 +77,19 @@ export const Onboarding = () => {
   console.log(user);
 
   const updateProfile = async (values) => {
+    console.log(values);
+
     try {
       setLoading(true);
 
-      const response = await axios.post(
-        `${API_URL}/UserHomePageSetUp/user-setup-page`,
-        {
-          username: values.username,
-          country: values.country,
-          imageUrl: "https://via.placeholder.com/250",
-          bio: values.bio,
-          userId: user.UserId,
-        },
-        { headers: { appKey } }
-      );
+      const response = await axios.post(`${API_URL}/user/onboarding`, {
+        username: values.username,
+        country: values.country,
+        bio: values.bio,
+        category: values.category,
+      });
 
-      if (response.status === 200 && response.data.status) {
+      if (response.status === 200) {
         setLoading(false);
         router.push("/dashboard/posts");
       } else {
@@ -100,6 +98,7 @@ export const Onboarding = () => {
       }
     } catch (error) {
       console.log(error);
+      setLoading(false);
     }
   };
 
@@ -176,7 +175,7 @@ export const Onboarding = () => {
                   id="name"
                   placeholder="Pseudonym, organization name or full name"
                   {...register("name", { required: true })}
-                  defaultValue={user?.CustomerName}
+                  defaultValue={user?.full_name}
                 />
               </div>
               <div className="relative mb-6">
@@ -264,6 +263,4 @@ export const Onboarding = () => {
       </div>
     </div>
   );
-};
-
-export default Onboarding;
+}

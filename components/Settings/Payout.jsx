@@ -1,7 +1,7 @@
 import React from "react";
 
 const PayoutItem = ({ name }) => (
-  <div className="px-6 py-9 rounded-2xl border border-grey_80 flex justify-between">
+  <div className="px-6 py-9 rounded-2xl border border-grey_80 flex justify-between mb-6">
     <span className="text-2xl font-semibold text-secondary">{name}</span>
     <div className="w-[70%]">
       <p className="text-sm text-grey_40">
