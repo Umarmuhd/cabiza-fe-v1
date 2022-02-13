@@ -1,13 +1,32 @@
 import React, { useState, useContext, useEffect } from "react";
 import axios from "axios";
-import { API_URL, appKey } from "@/config/index";
+import { toast } from "react-hot-toast";
+import { API_URL } from "@/config/index";
 import AuthContext from "@/context/AuthContext";
 import Link from "next/link";
 
 import { Switch } from "@headlessui/react";
 
 const PostItem = (post) => {
-  const [enabled, setEnabled] = React.useState(false);
+  const [enabled, setEnabled] = React.useState(post.post.published);
+  const [loading, setLoading] = useState(false);
+
+  const handlePublish = async () => {
+    try {
+      setLoading(true);
+      const response = await axios.put(
+        `${API_URL}/posts/publishing/${post.post._id}`
+      );
+
+      setLoading(false);
+      toast.success(response.data.message);
+      setEnabled(response.data.data.post.published);
+    } catch (error) {
+      console.log(error);
+      toast.error(error.response.data.message);
+      setLoading(false);
+    }
+  };
 
   return (
     <li className="p-6 rounded-2xl border border-grey mb-4">
@@ -70,7 +89,8 @@ const PostItem = (post) => {
           <div className="flex items-center">
             <Switch
               checked={enabled}
-              onChange={setEnabled}
+              onChange={handlePublish}
+              disabled={loading}
               className={`${enabled ? "bg-cabiza_blue" : "bg-grey_80"}
   relative inline-flex flex-shrink-0 h-[18px] w-[32px] border-2 border-transparent rounded-full cursor-pointer transition-colors ease-in-out duration-200 focus:outline-none focus-visible:ring-2  focus-visible:ring-white focus-visible:ring-opacity-75`}
             >
@@ -82,7 +102,7 @@ const PostItem = (post) => {
               />
             </Switch>
             <span className="ml-2 block text-grey_40 text-lg font-medium">
-              Unpublished
+              {enabled ? "Published" : "Unpublished"}
             </span>
           </div>
         </div>

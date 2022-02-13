@@ -1,5 +1,6 @@
-import React from "react";
-import { Switch } from "@headlessui/react";
+import React, { useState } from "react";
+import { useForm } from "react-hook-form";
+import { Switch, RadioGroup } from "@headlessui/react";
 import Link from "next/link";
 import BuildFollowing from "../../../components/MiniCards/BuildFollowing";
 
@@ -44,7 +45,16 @@ const PlusIcon = () => (
 );
 
 export default function NewProduct() {
+  const [loading, setLoading] = useState(false);
   const [enabled, setEnabled] = React.useState(false);
+  const [category, setCategory] = useState(null);
+
+  const {
+    register,
+    handleSubmit,
+    formState: { errors },
+  } = useForm();
+
   return (
     <div>
       <div className="bg-grey_95 md:py-10">
@@ -99,32 +109,88 @@ export default function NewProduct() {
             Our <span className="text-secondary underline">Help Center</span>{" "}
             has everything you need to know.
           </p>
-          <ul className="mb-6">
-            <li className="p-4 rounded-lg border-[1.5px] border-grey focus:border-secondary flex items-center mb-4">
-              <img src="/images/icons/note.svg" alt="..." />
-              <p className="ml-2">
-                Classic:
-                <span className="text-grey_40"> start selling today</span>
-              </p>
-            </li>
-            <li className="p-4 rounded-lg border-[1.5px] border-grey focus:border-secondary flex items-center mb-4">
-              <img src="/images/icons/clock.svg" alt="..." />
-              <p className="ml-2">
-                Pre-order:
-                <span className="text-grey_40">
-                  {" "}
-                  sell before a release date
-                </span>
-              </p>
-            </li>
-            <li className="p-4 rounded-lg border-[1.5px] border-grey focus:border-secondary flex items-center mb">
-              <img src="/images/icons/refresh-circle.svg" alt="..." />
-              <p className="ml-2">
-                Membership:
-                <span className="text-grey_40"> charge on recurring basis</span>
-              </p>
-            </li>
-          </ul>
+          <RadioGroup
+            as={"ul"}
+            className="mb-6"
+            value={category}
+            onChange={setCategory}
+          >
+            <RadioGroup.Option
+              as={"li"}
+              value="everyone"
+              className={({ active, checked }) =>
+                `p-4 rounded-lg border-[1.5px] border-grey focus:border-secondary flex items-center mb-4 ${checked} ${active}`
+              }
+            >
+              {({ checked, active }) => (
+                <>
+                  {/* <div className="flex justify-between items-center">
+                    <span className="text-grey_60 font-medium">Everyone</span>
+                    <div className="w-6 h-6 border border-cabiza_blue rounded-full flex justify-center items-center">
+                      {checked && (
+                        <div className="w-3 h-3 rounded-full inline-block bg-cabiza_blue"></div>
+                      )}
+                    </div>
+                  </div> */}
+
+                  <img src="/images/icons/note.svg" alt="..." />
+                  <p className="ml-2">
+                    Classic:
+                    <span className="text-grey_40"> start selling today</span>
+                  </p>
+                </>
+              )}
+            </RadioGroup.Option>
+            <RadioGroup.Option
+              as={"li"}
+              value="everyone"
+              className={({ active, checked }) =>
+                `p-4 rounded-lg border-[1.5px] border-grey focus:border-secondary flex items-center mb-4 ${checked} ${active}`
+              }
+            >
+              {({ checked, active }) => (
+                <>
+                  {/* <div className="flex justify-between items-center">
+                    <span className="text-grey_60 font-medium">Everyone</span>
+                    <div className="w-6 h-6 border border-cabiza_blue rounded-full flex justify-center items-center">
+                      {checked && (
+                        <div className="w-3 h-3 rounded-full inline-block bg-cabiza_blue"></div>
+                      )}
+                    </div>
+                  </div> */}
+
+                  <img src="/images/icons/clock.svg" alt="..." />
+                  <p className="ml-2">
+                    Pre-order:
+                    <span className="text-grey_40">
+                      {" "}
+                      sell before a release date
+                    </span>
+                  </p>
+                </>
+              )}
+            </RadioGroup.Option>
+            <RadioGroup.Option
+              as={"li"}
+              value="everyone"
+              className={({ active, checked }) =>
+                `p-4 rounded-lg border-[1.5px] border-grey focus:border-secondary flex items-center mb-4 ${checked} ${active}`
+              }
+            >
+              {({ checked, active }) => (
+                <>
+                  <img src="/images/icons/refresh-circle.svg" alt="..." />
+                  <p className="ml-2">
+                    Membership:
+                    <span className="text-grey_40">
+                      charge on recurring basis
+                    </span>
+                  </p>
+                </>
+              )}
+            </RadioGroup.Option>
+          </RadioGroup>
+
           <div className="relative mb-6">
             <label
               className="block text-grey_40 text-lg font-semibold mb-3"
