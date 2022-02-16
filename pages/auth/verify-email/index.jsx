@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { useRouter } from "next/router";
 import toast from "react-hot-toast";
-import { API_URL, appKey } from "config/index";
+import { API_URL } from "config/index";
 import axios from "axios";
 
 const SpinIcon = () => (
@@ -31,22 +31,18 @@ export default function VerifyEmail() {
   const [loading, setLoading] = useState(false);
 
   const router = useRouter();
-  const { email, token } = router.query;
+  const { id, token } = router.query;
 
   useEffect(() => {
     const verify = async () => {
       try {
         setLoading(true);
-        const response = await axios.post(
-          `${API_URL}/account/confirm-email`,
-          {
-            email,
-            token,
-          },
-          { headers: { appKey } }
-        );
+        const response = await axios.post(`${API_URL}/auth/activation`, {
+          id,
+          token,
+        });
 
-        if (response.status === 200 && response.data.status) {
+        if (response.status === 200) {
           setLoading(false);
           toast.success("Email verified successfully");
           return router.push("/auth/login");
