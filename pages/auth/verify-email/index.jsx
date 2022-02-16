@@ -33,13 +33,15 @@ export default function VerifyEmail() {
   const router = useRouter();
   const { id, token } = router.query;
 
+  console.log(id, token);
+
   useEffect(() => {
     const verify = async () => {
       try {
         setLoading(true);
         const response = await axios.post(`${API_URL}/auth/activation`, {
           id,
-          token,
+          activation_code: token,
         });
 
         if (response.status === 200) {
