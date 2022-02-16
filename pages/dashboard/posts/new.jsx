@@ -33,6 +33,7 @@ export default function NewPost() {
   const {
     register,
     handleSubmit,
+    watch,
     formState: { errors },
   } = useForm();
 
@@ -61,6 +62,7 @@ export default function NewPost() {
         title,
         description,
         call_to_action,
+        audience,
       });
 
       setLoading(false);
@@ -74,6 +76,8 @@ export default function NewPost() {
       setLoading(false);
     }
   };
+
+  console.log(watch("attachment"));
 
   return (
     <>
@@ -120,7 +124,7 @@ export default function NewPost() {
                 <RadioGroup as={"ul"} value={audience} onChange={setAudience}>
                   <RadioGroup.Option
                     as={"li"}
-                    value="everyone"
+                    value="0"
                     className={({ active, checked }) =>
                       `mb-2 ${checked} ${active}`
                     }
@@ -142,7 +146,7 @@ export default function NewPost() {
                   </RadioGroup.Option>
                   <RadioGroup.Option
                     as={"li"}
-                    value="followers"
+                    value="1"
                     className={({ active, checked }) =>
                       `mb-2 ${checked} ${active}`
                     }
@@ -164,7 +168,7 @@ export default function NewPost() {
                   </RadioGroup.Option>
                   <RadioGroup.Option
                     as={"li"}
-                    value="customers"
+                    value="2"
                     className={({ active, checked }) =>
                       `mb-2 ${checked} ${active}`
                     }
@@ -186,7 +190,7 @@ export default function NewPost() {
                   </RadioGroup.Option>
                   <RadioGroup.Option
                     as={"li"}
-                    value="affiliates"
+                    value="3"
                     className={({ active, checked }) =>
                       `mb-2 ${checked} ${active}`
                     }
@@ -378,25 +382,34 @@ export default function NewPost() {
                     className="w-full rounded-lg py-4 border border-dotted border-grey_80 flex items-center justify-center"
                     htmlFor="file-upload"
                   >
-                    <span className="text-xs mr-2 text-grey_40 leading-[14px]">
-                      Add file
-                    </span>
-                    <svg
-                      width="25"
-                      height="24"
-                      viewBox="0 0 25 24"
-                      fill="none"
-                      xmlns="http://www.w3.org/2000/svg"
-                    >
-                      <path
-                        d="M18.5 12.75H6.5C6.09 12.75 5.75 12.41 5.75 12C5.75 11.59 6.09 11.25 6.5 11.25H18.5C18.91 11.25 19.25 11.59 19.25 12C19.25 12.41 18.91 12.75 18.5 12.75Z"
-                        fill="#666666"
-                      />
-                      <path
-                        d="M12.5 18.75C12.09 18.75 11.75 18.41 11.75 18V6C11.75 5.59 12.09 5.25 12.5 5.25C12.91 5.25 13.25 5.59 13.25 6V18C13.25 18.41 12.91 18.75 12.5 18.75Z"
-                        fill="#666666"
-                      />
-                    </svg>
+                    {watch("attachment") !== undefined ? (
+                      <span className="text-xs mr-2 text-grey_40 leading-[14px]">
+                        {watch("attachment")[0]?.name}
+                      </span>
+                    ) : (
+                      <div className="flex items-center">
+                        <span className="text-xs mr-2 text-grey_40 leading-[14px]">
+                          Add file
+                        </span>
+                        <svg
+                          width="25"
+                          height="24"
+                          viewBox="0 0 25 24"
+                          fill="none"
+                          xmlns="http://www.w3.org/2000/svg"
+                        >
+                          <path
+                            d="M18.5 12.75H6.5C6.09 12.75 5.75 12.41 5.75 12C5.75 11.59 6.09 11.25 6.5 11.25H18.5C18.91 11.25 19.25 11.59 19.25 12C19.25 12.41 18.91 12.75 18.5 12.75Z"
+                            fill="#666666"
+                          />
+                          <path
+                            d="M12.5 18.75C12.09 18.75 11.75 18.41 11.75 18V6C11.75 5.59 12.09 5.25 12.5 5.25C12.91 5.25 13.25 5.59 13.25 6V18C13.25 18.41 12.91 18.75 12.5 18.75Z"
+                            fill="#666666"
+                          />
+                        </svg>
+                      </div>
+                    )}
+
                     <input
                       id="file-upload"
                       name="file-upload"

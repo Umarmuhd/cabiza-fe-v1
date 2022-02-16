@@ -1,5 +1,5 @@
 import React from "react";
-import ReviewDropdown from "../../../../../components/Dropdowns/ReviewDropdown";
+import ReviewDropdown from "../../../components/Dropdowns/ReviewDropdown";
 
 export default function UserProduct() {
   return (

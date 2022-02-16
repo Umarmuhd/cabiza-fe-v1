@@ -7,15 +7,15 @@ import Link from "next/link";
 
 import { Switch } from "@headlessui/react";
 
-const PostItem = (post) => {
-  const [enabled, setEnabled] = React.useState(post.post.published);
+const PostItem = ({ post, deletePost }) => {
+  const [enabled, setEnabled] = React.useState(post.published);
   const [loading, setLoading] = useState(false);
 
   const handlePublish = async () => {
     try {
       setLoading(true);
       const response = await axios.put(
-        `${API_URL}/posts/publishing/${post.post._id}`
+        `${API_URL}/posts/publishing/${post._id}`
       );
 
       setLoading(false);
@@ -32,16 +32,14 @@ const PostItem = (post) => {
     <li className="p-6 rounded-2xl border border-grey mb-4">
       <div className="mb-10">
         <h2 className="text-4xl leading-9 text-grey_20 font-semibold mb-1">
-          {post.post.title}
+          {post.title}
         </h2>
         <p className="text-xs text-grey_80">ABOUT 2 HOURS AGO</p>
       </div>
 
       <div className="">
         <div className="flex justify-between">
-          <div className="text-grey_40">
-            {post.post.description.slice(0, 200)}
-          </div>
+          <div className="text-grey_40">{post.description.slice(0, 200)}</div>
           <ul className="flex justify-between items-center w-2/6">
             <li className="mr-2">
               <button className="p-2 rounded-lg border border-[#666666]">
@@ -49,9 +47,7 @@ const PostItem = (post) => {
               </button>
             </li>
             <li className="mr-2">
-              <Link
-                href={`/dashboard/view-user/${post.post.user}/posts/${post.post._id}`}
-              >
+              <Link href={`/${post.user}/posts/${post._id}`}>
                 <a className="p-2 rounded-lg border border-[#666666]">View</a>
               </Link>
             </li>
@@ -61,7 +57,10 @@ const PostItem = (post) => {
               </button>
             </li>
             <li className="mr-2">
-              <button className="p-2 rounded-lg border border-cabiza_red bg-cabiza_red text-white">
+              <button
+                className="p-2 rounded-lg border border-cabiza_red bg-cabiza_red text-white"
+                onClick={() => deletePost(post._id)}
+              >
                 Delete
               </button>
             </li>
@@ -132,9 +131,30 @@ export default function PostsList() {
 
   useEffect(() => fetchPost(), []);
 
+  const deletePost = async (post_id) => {
+    try {
+      setLoading(true);
+
+      if (confirm("Are you sure you want to delete this post!?") == false) {
+        setLoading(false);
+        return;
+      }
+
+      const response = await axios.delete(`${API_URL}/posts/post/${post_id}`);
+
+      fetchPost();
+      toast.success(response.data.message);
+      setLoading(false);
+    } catch (error) {
+      console.log(error);
+      toast.error(error.response.data.message);
+      setLoading(false);
+    }
+  };
+
   return (
     <main className="h-full w-full relative">
-      {(
+      {
         <div className="w-4/5 mx-auto md:py-10">
           <h1 className="text-grey_40 font-semibold mb-4">
             All Published Posts
@@ -152,34 +172,32 @@ export default function PostsList() {
                 <ul>
                   {posts?.map((post, index) => (
                     <React.Fragment key={index}>
-                      <PostItem post={post} />
+                      <PostItem post={post} deletePost={deletePost} />
                     </React.Fragment>
                   ))}
                 </ul>
               ) : (
-                <h1 className="text-grey_40 font-semibold text-center">
-                  No posts found
-                </h1>
+                <div className="w-4/5 mx-auto md:py-20">
+                  <div className="text-center">
+                    <img
+                      src="/images/empty.svg"
+                      alt="..."
+                      className="mx-auto mb-8"
+                    />
+
+                    <h1 className="text-dark_ text-4xl leading-9 font-semibold mb-2">
+                      Empty post
+                    </h1>
+                    <p className="text-dark_">
+                      Click on New Post to create your first post!
+                    </p>
+                  </div>
+                </div>
               )}
             </>
           )}
-
-          <ul></ul>
         </div>
-      ) || (
-        <div className="w-4/5 mx-auto md:py-20">
-          <div className="text-center">
-            <img src="/images/empty.svg" alt="..." className="mx-auto mb-8" />
-
-            <h1 className="text-dark_ text-4xl leading-9 font-semibold mb-2">
-              Empty post
-            </h1>
-            <p className="text-dark_">
-              Click on New Post to create your first post!
-            </p>
-          </div>
-        </div>
-      )}
+      }
     </main>
   );
 }

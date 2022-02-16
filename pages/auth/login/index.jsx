@@ -19,7 +19,7 @@ export default function Login() {
     formState: { errors },
   } = useForm();
 
-  const { loginUser, user } = useContext(AuthContext);
+  const { loginUser } = useContext(AuthContext);
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState("");
 

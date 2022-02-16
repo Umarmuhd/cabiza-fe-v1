@@ -18,6 +18,7 @@ export default function Signup() {
     formState: { errors },
   } = useForm();
   const [loading, setLoading] = useState(false);
+  const [error, setError] = useState("");
 
   const router = useRouter();
 
@@ -25,28 +26,22 @@ export default function Signup() {
     try {
       setLoading(true);
 
-      const response = await axios.post(
-        `${API_URL}/account/sign-up`,
-        {
-          FullName: values.name,
-          email: values.email,
-          password: values.password,
-          confirmPassword: values.password,
-        },
-        { headers: { appKey } }
-      );
+      const response = await axios.post(`${API_URL}/auth/signup`, {
+        full_name: values.name,
+        email: values.email,
+        password: values.password,
+      });
 
       if (response.status === 200) {
-        if (response.data.status) {
-          toast.success("Signup successful");
-          setLoading(false);
-          return router.push("/auth/email-verification");
-        } else {
-          toast.error("Something went wrong. Try again");
-        }
+        toast.success("Signup successful");
+        setLoading(false);
+        return router.push("/auth/email-verification");
+      } else {
+        toast.error("Something went wrong. Try again");
       }
     } catch (error) {
       console.log(error);
+      setError(error.response.data.message);
       setLoading(false);
     }
   };
@@ -60,6 +55,7 @@ export default function Signup() {
               <h1 className="text-4xl mb-8 text-grey_40 font-bold">
                 Sign up for free
               </h1>
+              <p className="my-3 text-sm text-red-500">{error}</p>
               <div className="relative w-full mb-6">
                 <label
                   className="block text-grey_40 text-lg font-semibold mb-3"
@@ -72,10 +68,15 @@ export default function Signup() {
                   className="border border-grey_80 px-4 py-3 placeholder-grey_80 text-grey_40 bg-white shadow-sm focus:outline-none focus:ring w-full rounded-lg"
                   style={{ transition: "all 0.15s ease 0s" }}
                   id="name"
-                  placeholder="Cabiza  Abiza"
+                  placeholder="Cabiza Abiza"
                   autoComplete="off"
-                  {...register("username", { required: true })}
+                  {...register("name", { required: true })}
                 />
+                {errors.name?.type === "required" && (
+                  <p className="text-left text-red-600 text-xs mt-1">
+                    Full name is required
+                  </p>
+                )}
               </div>
               <div className="relative w-full mb-6">
                 <label
