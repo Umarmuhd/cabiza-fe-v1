@@ -33,8 +33,6 @@ export default function VerifyEmail() {
   const router = useRouter();
   const { id, token } = router.query;
 
-  console.log(id, token);
-
   useEffect(() => {
     const verify = async () => {
       try {

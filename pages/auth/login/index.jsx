@@ -42,6 +42,8 @@ export default function Login() {
         loginUser(user, token);
         setLoading(false);
 
+        console.log(user);
+
         return router.push(
           user.username ? "/dashboard/products" : "/dashboard/onboarding"
         );
