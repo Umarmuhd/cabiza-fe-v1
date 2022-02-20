@@ -2,6 +2,7 @@ import React, { useEffect, useState } from "react";
 import { useRouter } from "next/router";
 import { toast } from "react-hot-toast";
 import { API_URL } from "@/config/index";
+import axios from "axios";
 
 const SpinIcon = () => (
   <svg
