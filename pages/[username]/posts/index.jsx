@@ -30,7 +30,7 @@ export default function UserPosts() {
 
   console.log(router);
 
-  const { userId } = router.query;
+  const { username } = router.query;
 
   const [posts, setPosts] = useState([]);
   const [loading, setLoading] = useState(false);
@@ -38,7 +38,7 @@ export default function UserPosts() {
   const fetchPosts = async () => {
     try {
       setLoading(true);
-      const response = await axios.get(`${API_URL}/Post/all-post/${userId}`, {
+      const response = await axios.get(`${API_URL}/posts/user/${username}`, {
         headers: { appKey },
       });
 

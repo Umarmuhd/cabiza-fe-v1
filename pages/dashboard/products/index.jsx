@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState, useContext, useEffect } from "react";
 import { Tab } from "@headlessui/react";
 
 import AllProductsEmpty from "../../../components/Cards/AllProductsEmpty";
@@ -8,6 +8,10 @@ import AllProducts from "../../../components/Cards/AllProducts";
 import Affiliated from "../../../components/Cards/Affiliated";
 import { classNames } from "../../../libs/helper";
 import Link from "next/link";
+import { API_URL } from "@/config/index";
+import AuthContext from "@/context/AuthContext";
+import axios from "axios";
+import { toast } from "react-hot-toast";
 
 const PlusIcon = () => (
   <svg
@@ -29,6 +33,28 @@ const PlusIcon = () => (
 );
 
 const Products = ({}) => {
+  const [products, setProducts] = useState([]);
+  const [loading, setLoading] = useState(false);
+
+  const { user } = useContext(AuthContext);
+
+  const fetchProducts = async () => {
+    try {
+      setLoading(true);
+      const response = await axios.get(`${API_URL}/products/user/${user?._id}`);
+
+      setProducts(response.data.data.products);
+      setLoading(false);
+    } catch (error) {
+      console.log(error);
+      setLoading(false);
+    }
+  };
+
+  useEffect(() => fetchProducts(), []);
+
+  console.log(products);
+
   return (
     <div>
       <Tab.Group>
@@ -82,12 +108,24 @@ const Products = ({}) => {
           </div>
         </div>
         <div className="py-12">
-          <Tab.Panels>
-            <Tab.Panel>{<AllProducts /> || <AllProductsEmpty />}</Tab.Panel>
-            <Tab.Panel>
-              <Affiliated />
-            </Tab.Panel>
-          </Tab.Panels>
+          {loading ? (
+            <>
+              <h1 className="text-center">...</h1>
+            </>
+          ) : (
+            <Tab.Panels>
+              <Tab.Panel>
+                {products.length > 0 ? (
+                  <AllProducts products={products} />
+                ) : (
+                  <AllProductsEmpty />
+                )}
+              </Tab.Panel>
+              <Tab.Panel>
+                <Affiliated />
+              </Tab.Panel>
+            </Tab.Panels>
+          )}
         </div>
       </Tab.Group>
     </div>

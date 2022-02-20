@@ -22,9 +22,7 @@ export default function Username({ children }) {
     }
   };
 
-  useEffect(() => {
-    fetchUserData();
-  }, [username]);
+  useEffect(() => fetchUserData(), [username]);
 
   return (
     <div className="min-h-screen w-full">

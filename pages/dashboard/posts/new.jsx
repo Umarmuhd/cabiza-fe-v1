@@ -341,6 +341,11 @@ export default function NewPost() {
                     placeholder="Post Title"
                     {...register("title", { required: true })}
                   />
+                  {errors.title?.type === "required" && (
+                    <p className="text-left text-red-600 text-xs mt-1">
+                      Post title is required
+                    </p>
+                  )}
                 </div>
                 <div className="mb-6 relative">
                   <label
@@ -358,6 +363,11 @@ export default function NewPost() {
                     rows={4}
                     {...register("description", { required: true })}
                   ></textarea>
+                  {errors.description?.type === "required" && (
+                    <p className="text-left text-red-600 text-xs mt-1">
+                      Post description is required
+                    </p>
+                  )}
                 </div>
               </div>
 
@@ -369,6 +379,11 @@ export default function NewPost() {
                 autoComplete="off"
                 {...register("call_to_action", { required: true })}
               />
+              {errors.call_to_action?.type === "required" && (
+                <p className="text-left text-red-600 text-xs mt-1">
+                  Post call to action is required
+                </p>
+              )}
 
               <div className="rounded-2xl border border-grey_80 p-6 mt-6">
                 <div className="mb-6 relative">
@@ -418,6 +433,11 @@ export default function NewPost() {
                       {...register("attachment", { required: true })}
                     />
                   </label>
+                  {errors.attachment?.type === "required" && (
+                    <p className="text-left text-red-600 text-xs mt-1">
+                      Post attachment is required
+                    </p>
+                  )}
                 </div>
               </div>
             </div>

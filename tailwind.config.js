@@ -8,6 +8,7 @@ module.exports = {
       colors: {
         cabiza_blue: "#24BAD4",
         secondary: "#912CDB",
+        cabiza_secondary: "#02BDDC",
         secondary_light: "#BF85EA",
         cabiza_grey: "#828080",
         tertiary: "#5B188B",

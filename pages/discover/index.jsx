@@ -3,7 +3,7 @@ import Link from "next/link";
 import axios from "axios";
 import MainFooter from "@/components/Footer/MainFooter";
 import MainNavigation from "@/components/Navbars/MainNav";
-import { API_URL, appKey } from "@/config/index";
+import { API_URL } from "@/config/index";
 
 const SearchIcon = () => (
   <svg
@@ -24,23 +24,27 @@ const SearchIcon = () => (
   </svg>
 );
 
-const ProductItem = (product) => (
+const ProductItem = ({ product }) => (
   <>
     <div className="shadow">
-      <img src="/images/book-small.png" alt="..." />
+      <img src={product.image} alt="..." className="w-full" />
       <div className="p-5 rounded-b">
         <p className="text-lg text-grey_80 font-medium mb-3">Books</p>
-        <Link href="/discover/123">
+        <Link href={`/discover/${product.product_id}`}>
           <h4 className="text-2xl text-dark_ font-bold mb-8 cursor-pointer">
-            {product.product.name}
+            {product.name}
           </h4>
         </Link>
         <div className="flex items-center">
           <span className="text-lg text-grey_60 font-medium mr-2">By:</span>
-          <img src="/images/author.png" alt="..." className="h-10 w-10" />
-          <Link href={`/dashboard/view-user/${product.product.userId}/posts`}>
+          <img
+            src={product.user.profile_picture}
+            alt="..."
+            className="h-10 w-10 rounded-full"
+          />
+          <Link href={`/${product.user.username}/products`}>
             <a className="text-lg font-medium ml-2 underline text-grey_60 block">
-              {product.product.user.fullName}
+              {product.user.full_name}
             </a>
           </Link>
         </div>
@@ -53,7 +57,7 @@ const ProductItem = (product) => (
             </div>
           </div>
           <span className="text-sm font-medium py-3 px-2.5 text-grey_98 bg-secondary rounded">
-            ${product.product.price}+
+            ${product.price}+
           </span>
         </div>
       </div>
@@ -68,14 +72,10 @@ export default function Discover() {
   const fetchProducts = async () => {
     try {
       setLoading(true);
-      const response = await axios.get(`${API_URL}/ProductType/all-product`, {
-        headers: { appKey },
-      });
-
-      console.log(response);
+      const response = await axios.get(`${API_URL}/products/all`);
 
       if (response.status === 200) {
-        setProducts(response.data);
+        setProducts(response.data.data.products);
         setLoading(false);
       }
     } catch (error) {
@@ -214,8 +214,9 @@ export default function Discover() {
                 space-y-2
                 lg:space-y-0 lg:grid lg:gap-6 lg:grid-rows-1"
             >
-              {loading && <p>loading...</p>}
-              {!loading && (
+              {loading ? (
+                <p>loading...</p>
+              ) : (
                 <>
                   {products.length > 0 && (
                     <>

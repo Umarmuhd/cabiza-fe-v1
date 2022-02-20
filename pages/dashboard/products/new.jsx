@@ -1,7 +1,11 @@
 import React, { useState } from "react";
 import { useForm } from "react-hook-form";
+import { useRouter } from "next/router";
+import axios from "axios";
 import { Switch, RadioGroup } from "@headlessui/react";
 import Link from "next/link";
+import { toast } from "react-hot-toast";
+import { API_URL } from "@/config/index";
 import BuildFollowing from "../../../components/MiniCards/BuildFollowing";
 
 import Dashboard from "../../../layouts/Dashboard";
@@ -55,6 +59,40 @@ export default function NewProduct() {
     formState: { errors },
   } = useForm();
 
+  const router = useRouter();
+
+  const handleCreate = async (values) => {
+    setLoading(true);
+
+    const { name, price, currency, description } = values;
+
+    if (category == null) {
+      toast.error("please complete all required fields");
+      setLoading(false);
+      return;
+    }
+
+    try {
+      const response = await axios.post(`${API_URL}/products/new`, {
+        name,
+        price,
+        currency,
+        category,
+        description,
+      });
+
+      setLoading(false);
+      toast.success(response.data.message);
+
+      if (response.status === 201) {
+        return router.push("/dashboard/products");
+      }
+    } catch (error) {
+      console.log(error);
+      setLoading(false);
+    }
+  };
+
   return (
     <div>
       <div className="bg-grey_95 md:py-10">
@@ -99,7 +137,10 @@ export default function NewProduct() {
         </div>
       </div>
 
-      <div className="md:w-3/5 mx-auto text-left py-12">
+      <form
+        className="md:w-3/5 mx-auto text-left py-12"
+        onSubmit={handleSubmit(handleCreate)}
+      >
         <h1 className="text-2xl font-semibold text-dark_ mb-4 leading-6">
           Publish your first product
         </h1>
@@ -117,7 +158,7 @@ export default function NewProduct() {
           >
             <RadioGroup.Option
               as={"li"}
-              value="everyone"
+              value={0}
               className={({ active, checked }) =>
                 `p-4 rounded-lg border-[1.5px] border-grey focus:border-secondary flex items-center mb-4 ${checked} ${active}`
               }
@@ -143,7 +184,7 @@ export default function NewProduct() {
             </RadioGroup.Option>
             <RadioGroup.Option
               as={"li"}
-              value="everyone"
+              value={1}
               className={({ active, checked }) =>
                 `p-4 rounded-lg border-[1.5px] border-grey focus:border-secondary flex items-center mb-4 ${checked} ${active}`
               }
@@ -172,7 +213,7 @@ export default function NewProduct() {
             </RadioGroup.Option>
             <RadioGroup.Option
               as={"li"}
-              value="everyone"
+              value={2}
               className={({ active, checked }) =>
                 `p-4 rounded-lg border-[1.5px] border-grey focus:border-secondary flex items-center mb-4 ${checked} ${active}`
               }
@@ -204,7 +245,13 @@ export default function NewProduct() {
               style={{ transition: "all 0.15s ease 0s" }}
               id="name"
               placeholder="Name of product"
+              {...register("name", { required: true })}
             />
+            {errors.name?.type === "required" && (
+              <p className="text-left text-red-600 text-xs mt-1">
+                Product name is required
+              </p>
+            )}
           </div>
           <div className="relative mb-6">
             <label
@@ -222,10 +269,11 @@ export default function NewProduct() {
                   id="currency"
                   name="currency"
                   className="focus:ring-indigo-500 focus:border-indigo-500 h-full py-0 pl-2 pr-2 border-transparent bg-transparent text-gray-500 rounded-l-lg border border-grey_80"
+                  {...register("currency", { required: true })}
                 >
-                  <option>$</option>
-                  <option>€</option>
-                  <option>₦</option>
+                  <option value={1}>$</option>
+                  <option value={2}>€</option>
+                  <option value={0}>₦</option>
                 </select>
               </div>
               <input
@@ -234,8 +282,36 @@ export default function NewProduct() {
                 style={{ transition: "all 0.15s ease 0s" }}
                 id="price"
                 placeholder="Price your product"
+                {...register("price", { required: true })}
               />
             </div>
+            {errors.price?.type === "required" && (
+              <p className="text-left text-red-600 text-xs mt-1">
+                Product price is required
+              </p>
+            )}
+          </div>
+          <div className="mb-6 relative">
+            <label
+              className="block text-grey_40 text-lg font-semibold mb-3"
+              htmlFor="description"
+            >
+              Description
+            </label>
+            <textarea
+              type="text"
+              className="border border-grey_80 px-4 py-3 placeholder-grey_80 text-grey_40 bg-white shadow-sm focus:outline-none focus:ring w-full rounded-lg"
+              style={{ transition: "all 0.15s ease 0s" }}
+              id="description"
+              placeholder="Post Description"
+              rows={4}
+              {...register("description", { required: true })}
+            ></textarea>
+            {errors.description?.type === "required" && (
+              <p className="text-left text-red-600 text-xs mt-1">
+                Post description is required
+              </p>
+            )}
           </div>
 
           <div className="flex items-center">
@@ -257,7 +333,10 @@ export default function NewProduct() {
             </span>
           </div>
 
-          <button className="w-full mt-6 py-4 rounded-lg flex items-center text-center justify-center bg-cabiza_blue text-lg font-semibold text-white">
+          <button
+            className="w-full mt-6 py-4 rounded-lg flex items-center text-center justify-center bg-cabiza_blue text-lg font-semibold text-white"
+            type="submit"
+          >
             <span className="mr-2">Next: Customize</span>
             <ArrowRight />
           </button>
@@ -272,7 +351,7 @@ export default function NewProduct() {
 
           <BuildFollowing />
         </div>
-      </div>
+      </form>
     </div>
   );
 }

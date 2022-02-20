@@ -398,7 +398,7 @@ const SettingsIcon = () => (
   </svg>
 );
 
-const Sidebar = () => {
+const Sidebar = ({ user }) => {
   const [collapseShow, setCollapseShow] = React.useState("hidden");
   return (
     <>
@@ -580,12 +580,16 @@ const Sidebar = () => {
             <hr className="my-4 md:min-w-full" />
 
             <div className="flex items-center">
-              <img src="/images/avatar.png" alt="" className="mr-2 w-10 h-10" />
+              <img
+                src={user?.profile_picture}
+                alt="..."
+                className="mr-2 w-10 h-10 rounded-full"
+              />
               <div className="">
                 <span className="block font-medium text-lg mb-1 text-white">
-                  John Doe
+                  {user?.full_name}
                 </span>
-                <span className="text-xs text-grey_95">Footballer</span>
+                <span className="text-xs text-grey_95">{user?.username}</span>
               </div>
             </div>
           </div>

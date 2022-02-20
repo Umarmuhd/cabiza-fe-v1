@@ -39,7 +39,7 @@ const people = [
   // More people...
 ];
 
-export default function AllProducts() {
+export default function AllProducts({ products }) {
   return (
     <div className="w-4/5 mx-auto text-left py-12">
       <div className="mb-16">
@@ -120,8 +120,8 @@ export default function AllProducts() {
                   </tr>
                 </thead>
                 <tbody className="bg-white divide-y divide-grey_20">
-                  {people.map((person) => (
-                    <tr key={person.email}>
+                  {products.map((product) => (
+                    <tr key={product._id}>
                       <td className="px-6 py-4 whitespace-nowrap border-l border-grey_20">
                         <div className="flex items-center">
                           <div className="flex-shrink-0 h-10 w-10">
@@ -133,11 +133,11 @@ export default function AllProducts() {
                           </div>
                           <div className="ml-4">
                             <div className="font-semibold text-grey_20">
-                              ui dashboard
+                              {product.name}
                             </div>
                             <div className="text-sm text-grey_20">
                               <span className="underline">
-                                app.gumroad.com/l/PRJtq
+                                app.cabiza.com/l/${product.product_id}
                               </span>
                             </div>
                           </div>
@@ -155,7 +155,7 @@ export default function AllProducts() {
                       </td>
                       <td className="px-6 py-4 whitespace-nowrap">
                         <span className="text-lg text-grey_20 font-semibold">
-                          $0
+                          ${product.price}
                         </span>
                       </td>
                       <td className="px-6 py-4 whitespace-nowrap flex items-center">
