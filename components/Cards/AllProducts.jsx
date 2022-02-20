@@ -54,7 +54,7 @@ export default function AllProducts({ products, balance }) {
               <WarningIcon />
             </p>
             <span className="inline-block text-grey_40 text-4xl leading-9 font-semibold text-left">
-              ${balance.earnings}
+              ${balance?.earnings}
             </span>
           </div>
           <div className="rounded-2xl border border-grey_40 p-6">
@@ -81,7 +81,7 @@ export default function AllProducts({ products, balance }) {
               <WarningIcon />
             </p>
             <span className="inline-block text-grey_40 text-4xl leading-9 font-semibold text-left">
-              $0
+              ${balance?.earnings}
             </span>
           </div>
         </div>
