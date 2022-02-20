@@ -5,9 +5,9 @@ export default function MainFooter() {
     <footer className="bg-grey_20 text-white">
       <div className="container mx-auto mt-8 px-8">
         <div className="w-full flex flex-col md:flex-row py-6">
-          <div className="flex-1 mb-6 w-2/5">
+          <div className="flex-1 mb-6 md:w-2/5">
             <img src="/images/cabiza-logo.png" alt="..." />
-            <p className="w-2/4 font-medium text-xl mt-5">
+            <p className="md:w-2/4 font-medium text-xl mt-5">
               2120 Broadway, Suite 112 Los Angeles, CA 12345
             </p>
           </div>

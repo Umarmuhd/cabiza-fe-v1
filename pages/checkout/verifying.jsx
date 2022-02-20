@@ -1,5 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { useRouter } from "next/router";
+import { toast } from "react-hot-toast";
+import { API_URL } from "@/config/index";
 
 const SpinIcon = () => (
   <svg
@@ -29,45 +31,45 @@ export default function Verifying() {
 
   const router = useRouter();
 
-  console.log(router);
+  const { transaction_id, tx_ref, status } = router.query;
 
-  // const trxn_id = query.get("transaction_id");
-  // const tx_ref = query.get("tx_ref");
-  // const status = query.get("status");
+  if (status === "failed") {
+    router.push("/discover");
+    toast.error("Payment failed please try again");
+  }
 
-  // if (status === "failed") {
-  //   history.push(`/agreement/${tx_ref}`);
-  //   toast.error("Payment failed please try again");
-  // }
+  useEffect(() => {
+    const verify = async () => {
+      try {
+        setLoading(true);
+        const response = await axios.get(
+          `${API_URL}/orders/verify/${transaction_id}/${tx_ref}`
+        );
 
-  // useEffect(() => {
-  //   const verify = async () => {
-  //     try {
-  //       setLoading(true);
-  //       const response = await axios.get(`/orders/verify/${trxn_id}/${tx_ref}`);
+        if (response.status === 200) {
+          setLoading(false);
+          toast.success("Payment verified successfully");
+          router.push("/checkout/success");
+        }
 
-  //       if (response.status === 200) {
-  //         setLoading(false);
-  //         toast.success("Payment verified successfully");
-  //         history.push(`/order/${tx_ref}`);
-  //       }
+        if (response.status === 202) {
+          setLoading(false);
+          toast.success("Order is already paid");
+          router.push(`/checkout/success`);
+        }
 
-  //       if (response.status === 202) {
-  //         setLoading(false);
-  //         toast.success("Order is already paid");
-  //         history.push(`/order/${tx_ref}`);
-  //       }
-
-  //       setLoading(false);
-  //     } catch (error) {
-  //       setLoading(false);
-  //       console.log(error);
-  //       toast.error(error.response.data.message);
-  //       history.push(`/agreement/${tx_ref}`);
-  //     }
-  //   };
-  //   verify();
-  // }, [history, trxn_id, tx_ref]);
+        setLoading(false);
+      } catch (error) {
+        setLoading(false);
+        console.log(error);
+        if (error.response) {
+          toast.error(error.response.data.message);
+        }
+        router.push(`/discover`);
+      }
+    };
+    verify();
+  }, [router, transaction_id, tx_ref]);
 
   return (
     <div className="bg-grey_95 min-h-screen grid place-content-center">
