@@ -1,6 +1,8 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
+import axios from "axios";
 
-import Dashboard from "../../../layouts/Dashboard";
+import Dashboard from "@/layouts/Dashboard";
+import { API_URL } from "@/config/index";
 
 const CogIcon = () => (
   <svg
@@ -22,6 +24,25 @@ const CogIcon = () => (
 );
 
 export default function Payout() {
+  const [loading, setLoading] = useState(false);
+  const [balance, setBalance] = useState(null);
+
+  const fetchBalance = async () => {
+    try {
+      setLoading(true);
+      const response = await axios.get(`${API_URL}/user/balance/me`);
+      setBalance(response.data.data.wallet);
+      setLoading(false);
+    } catch (error) {
+      console.log(error);
+      setLoading(false);
+    }
+  };
+
+  useEffect(() => fetchBalance(), []);
+
+  console.log(balance);
+
   return (
     <div>
       <div className="bg-grey_95 border-b border-grey_60 py-6 md:px-0 px-4">
@@ -56,7 +77,7 @@ export default function Payout() {
           </div>
           <div className="rounded-2xl border border-grey_40 p-6">
             <span className="inline-block text-grey_40 text-4xl leading-9 font-semibold text-left">
-              $0
+              {loading ? "--" : `$${balance && balance.earnings}`}
             </span>
             <p className="text-lg font-semibold text-grey_40 flex items-center mt-12">
               <span className="mr-1">PAST 7 DAYS</span>
@@ -72,7 +93,7 @@ export default function Payout() {
           </div>
           <div className="rounded-2xl border border-grey_40 p-6">
             <span className="inline-block text-grey_40 text-4xl leading-9 font-semibold text-left">
-              $0
+              {loading ? "--" : `$${balance && balance.earnings}`}
             </span>
             <p className="text-lg font-semibold text-grey_40 flex items-center mt-12">
               <span className="mr-1">TOTAL EARNINGS</span>
