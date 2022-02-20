@@ -53,7 +53,21 @@ const Products = ({}) => {
 
   useEffect(() => fetchProducts(), []);
 
-  console.log(products);
+  const [balance, setBalance] = useState(null);
+
+  const fetchBalance = async () => {
+    try {
+      setLoading(true);
+      const response = await axios.get(`${API_URL}/user/balance/me`);
+      setBalance(response.data.data.wallet);
+      setLoading(false);
+    } catch (error) {
+      console.log(error);
+      setLoading(false);
+    }
+  };
+
+  useEffect(() => fetchBalance(), []);
 
   return (
     <div>
@@ -116,7 +130,7 @@ const Products = ({}) => {
             <Tab.Panels>
               <Tab.Panel>
                 {products.length > 0 ? (
-                  <AllProducts products={products} />
+                  <AllProducts products={products} balance={balance} />
                 ) : (
                   <AllProductsEmpty />
                 )}

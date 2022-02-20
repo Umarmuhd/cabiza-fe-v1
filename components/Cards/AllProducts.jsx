@@ -39,7 +39,7 @@ const people = [
   // More people...
 ];
 
-export default function AllProducts({ products }) {
+export default function AllProducts({ products, balance }) {
   return (
     <div className="w-4/5 mx-auto text-left py-12">
       <div className="mb-16">
@@ -54,7 +54,7 @@ export default function AllProducts({ products }) {
               <WarningIcon />
             </p>
             <span className="inline-block text-grey_40 text-4xl leading-9 font-semibold text-left">
-              $0
+              ${balance.earnings}
             </span>
           </div>
           <div className="rounded-2xl border border-grey_40 p-6">
