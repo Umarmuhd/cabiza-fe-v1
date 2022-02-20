@@ -86,6 +86,33 @@ export default function DiscoverSingle() {
     }
   };
 
+  // const verifyAccountId = async () => {
+  //   setLoading(true);
+
+  //   try {
+  //     const response = await axios.get(`/saver/saver/${values.accountId}`);
+  //     if (response.status === 200) {
+  //       document.getElementById("accountId").classList.remove("border-red-500");
+  //       document.getElementById("accountId").classList.add("border-green-500");
+  //       setCurrentSaver(response.data.data);
+  //     }
+
+  //     setLoading(false);
+  //     setDisable(false);
+  //   } catch (error) {
+  //     if (document.getElementById("accountId")) {
+  //       document
+  //         .getElementById("accountId")
+  //         .classList.remove("border-green-500");
+  //       document.getElementById("accountId").classList.add("border-red-500");
+  //     }
+
+  //     setCurrentSaver(null);
+  //     setLoading(false);
+  //     setDisable(true);
+  //   }
+  // };
+
   return (
     <div className="h-full w-full">
       <MainNavigation />
