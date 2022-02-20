@@ -85,7 +85,7 @@ export default function Payout() {
           </div>
           <div className="rounded-2xl border border-grey_40 p-6">
             <span className="inline-block text-grey_40 text-4xl leading-9 font-semibold text-left">
-              $0
+              {loading ? "--" : `$${balance && balance.earnings}`}
             </span>
             <p className="text-lg font-semibold text-grey_40 flex items-center mt-12">
               <span className="mr-1">PAST 30 DAYS</span>
