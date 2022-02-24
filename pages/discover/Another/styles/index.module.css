@@ -37,7 +37,7 @@
 @media screen and (max-width: 530px) {
     .form {
         width: 95%;
-        padding: 1rem .7rem
+        padding: 0 .7rem
     }
 }
 
@@ -151,6 +151,9 @@
 @media screen and (max-width: 530px) {
     .card-container h5 {
         font-size: 1rem;
+    }
+    .cancel-btn-container {
+        display: none;
     }
 }
 
