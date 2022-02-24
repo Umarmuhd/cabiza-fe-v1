@@ -11,7 +11,7 @@ export default function PFooter() {
         alignItems: "flex-end",
         color: "#828080"
         }}>
-          POWERED BY  <img src="/images/Cabiza-logo2.png" alt="..." style={{display: "inline", marginLeft: "10px"}}/>
+          POWERED BY  <img src="/images/Cabiza-logo2.png" alt="..." style={{display: "inline", marginLeft: "10px", width:"10%", height:"30%"}}/>
         </p>
     </footer>
   );
