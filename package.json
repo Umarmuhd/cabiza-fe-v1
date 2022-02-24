@@ -1,31 +1,35 @@
 {
-  "name": "cabiza-fe-v1",
-  "private": true,
-  "scripts": {
-    "dev": "next dev",
-    "build": "next build",
-    "start": "next start",
-    "lint": "next lint"
-  },
-  "dependencies": {
-    "@headlessui/react": "^1.4.2",
-    "axios": "^0.25.0",
-    "cookie": "^0.4.2",
-    "date-fns": "^2.28.0",
-    "dayjs": "^1.10.7",
-    "jwt-decode": "^3.1.2",
-    "next": "^12.0.9",
-    "react": "17.0.2",
-    "react-dom": "17.0.2",
-    "react-hook-form": "^7.25.1",
-    "react-hot-toast": "^2.2.0",
-    "recoil": "^0.6.1"
-  },
-  "devDependencies": {
-    "autoprefixer": "^10.4.1",
-    "eslint": "8.5.0",
-    "eslint-config-next": "12.0.7",
-    "postcss": "^8.4.5",
-    "tailwindcss": "^3.0.8"
-  }
+    "name": "cabiza-fe-v1",
+    "private": true,
+    "proxy": "https://cabiza-fe-v1.vercel.app",
+    "scripts": {
+        "dev": "next dev",
+        "build": "next build",
+        "start": "next start",
+        "lint": "next lint"
+    },
+    "dependencies": {
+        "@headlessui/react": "^1.4.2",
+        "axios": "^0.25.0",
+        "cookie": "^0.4.2",
+        "date-fns": "^2.28.0",
+        "dayjs": "^1.10.7",
+        "fannypack": "^4.21.38",
+        "jwt-decode": "^3.1.2",
+        "next": "^12.0.9",
+        "react": "17.0.2",
+        "react-dom": "17.0.2",
+        "react-hook-form": "^7.25.1",
+        "react-hot-toast": "^2.2.0",
+        "react-payment-inputs": "^1.1.9",
+        "recoil": "^0.6.1",
+        "styled-components": "^5.3.3"
+    },
+    "devDependencies": {
+        "autoprefixer": "^10.4.1",
+        "eslint": "8.5.0",
+        "eslint-config-next": "12.0.7",
+        "postcss": "^8.4.5",
+        "tailwindcss": "^3.0.8"
+    }
 }
