@@ -23,7 +23,7 @@ const PaymentPage = () => {
           background: "#24BAD4",
         }}
       ></div>
-      <div action="" className={styles.form}>
+      <div className={styles.form}>
         <div className={styles["cancel-btn-container"]}>
           <div className={styles["cancel-btn"]}>x</div>
         </div>
@@ -74,7 +74,7 @@ const PaymentPage = () => {
           <div className={`${styles["input-box"]} mt-8`}>
             <div className={styles["card-container"]}>
               <h5>
-                Cards{" "}
+                Cards
                 <img
                   src="/images/icons/cards.svg"
                   alt="..."
@@ -94,12 +94,10 @@ const PaymentPage = () => {
             <div className={`${styles["input-cnum"]}`}>
               <FieldSet isHorizontal>
                 <InputField
-                  // Here is where React Payment Inputs injects itself into the input element.
                   {...getCardNumberProps()}
                   placeholder="0000 0000 0000 0000"
                   label="Card number"
                   inputRef={getCardNumberProps().ref}
-                  // You can retrieve error state by making use of the error & touched attributes in `meta`.
                   state={
                     erroredInputs.cardNumber && touchedInputs.cardNumber
                       ? "danger"
