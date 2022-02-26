@@ -61,14 +61,14 @@ export default function MainNavigation() {
             <ul className="flex flex-col lg:flex-row list-none lg:ml-auto">
               <li className="flex items-center">
                 <Link href="/">
-                  <a className="px-3 py-4 lg:py-2 flex items-center text-base hover:font-semibold">
+                  <a className="px-3 py-4 lg:py-2 flex items-center text-base text-cabiza_grey hover:font-semibold hover:text-cabiza_blue mr-5">
                     Home
                   </a>
                 </Link>
               </li>
               <li className="flex items-center">
                 <Link href="/discover">
-                  <a className="px-3 py-4 lg:py-2 flex items-center text-base hover:font-semibold">
+                  <a className="px-3 py-4 lg:py-2 flex items-center text-base  text-cabiza_grey hover:font-semibold hover:text-cabiza_blue mr-5">
                     Discover
                   </a>
                 </Link>
@@ -76,12 +76,15 @@ export default function MainNavigation() {
 
               <li className="flex items-center">
                 <Link href="/membership">
-                  <a className="px-3 py-4 lg:py-2 flex items-center text-base hover:font-semibold">
+                  <a className="px-3 py-4 lg:py-2 flex items-center text-base text-cabiza_grey hover:font-semibold hover:text-cabiza_blue">
                     Membership
                   </a>
                 </Link>
               </li>
+              </ul>
 
+
+              <ul className="flex flex-col lg:flex-row list-none lg:ml-auto">
               <li className="flex items-center">
                 <Link href="/auth/login">
                   <a
