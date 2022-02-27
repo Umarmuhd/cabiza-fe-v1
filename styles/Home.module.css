@@ -11,6 +11,10 @@
     width: 100vw;
 }
 
+.main {
+    position: relative;
+}
+
 .flex {
     display: flex;
     align-items: center;
@@ -537,7 +541,15 @@ section.testimony h3 {
 }
 
 .input-container input {
+    padding: 0 2rem;
+    border: none;
+    background: transparent;
+    outline: 0;
     width: 90%;
+}
+
+.main::placeholder {
+    color: #CCCCCC;
 }
 
 .input-container button {
@@ -553,6 +565,10 @@ section.testimony h3 {
 
 .features svg {
     display: none;
+}
+
+.features .controls {
+    justify-content: center;
 }
 
 @media only screen and (width:1024px) {
@@ -636,7 +652,7 @@ section.testimony h3 {
     }
 }
 
-@media only screen and (width:768px) {
+@media only screen and (max-width:768px) {
     .hero {
         padding: 7rem 1rem;
         height: 100vh;
@@ -648,8 +664,14 @@ section.testimony h3 {
         width: 100%;
         margin-bottom: 4rem;
     }
+    .features-container {
+        background-color: #fff;
+    }
     .cards {
         grid-template-columns: repeat(2, 50%);
+    }
+    .card {
+        box-shadow: 0px 4px 20px rgba(0, 0, 0, 0.04);
     }
     .categories {
         display: none;
@@ -789,5 +811,158 @@ section.testimony h3 {
     }
     .features svg:last-of-type {
         margin-left: -1rem;
+    }
+}
+
+@media only screen and (max-width:700px) {
+    .hero {
+        padding: 7rem 0;
+    }
+    .content {
+        margin: 0;
+        margin-bottom: 4rem
+    }
+    .cards {
+        grid-template-columns: repeat(2, 50%);
+    }
+    .categories {
+        display: block;
+    }
+    .categories h3 {
+        margin-bottom: 2rem;
+    }
+    .categories .flex {
+        flex-direction: column-reverse;
+        padding: 0;
+        margin-bottom: 2rem;
+    }
+    .categories .flex .col {
+        width: 100%;
+    }
+    .categories .flex.col {
+        flex-direction: row;
+    }
+    .categories .flex a {
+        border: 1px solid #24BAD4;
+        padding: 1rem 2rem;
+        border-radius: 10px;
+    }
+    .main {
+        margin-top: 0;
+    }
+    .input-container {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        width: 80%;
+        height: 3.5rem;
+        margin: auto;
+        margin-top: 2rem;
+        background: #FFFFFF;
+        border: 1px solid #CCCCCC;
+        box-sizing: border-box;
+        border-radius: 100px;
+    }
+    .controls .flex:last-of-type {
+        margin: 0;
+        margin-left: auto;
+    }
+    .reviews-container {
+        width: 800vw;
+    }
+    .membership .plans {
+        width: 80%;
+    }
+    .membership .plans.flex {
+        display: flex;
+        flex-direction: column;
+    }
+    .plans.flex .col:not(:last-of-type) {
+        margin-right: 0
+    }
+    .plans .col {
+        padding: 3rem 2rem;
+    }
+    .cards {
+        display: flex;
+        width: 850vw;
+        grid-gap: 5rem;
+    }
+    .card p {
+        margin-top: 0;
+        margin-bottom: 2rem;
+    }
+    .controls svg,
+    .features svg {
+        display: block;
+        width: 5rem;
+        height: 5rem
+    }
+    .features svg:last-of-type {
+        margin-left: -1rem;
+    }
+    .reviews-container {
+        width: 1300vw;
+    }
+}
+
+@media only screen and (max-width:600px) {
+    .hero {
+        padding: 3rem 1rem;
+        height: 80vh;
+    }
+    .hero .content {
+        width: 90%;
+        margin: auto;
+        margin-top: 2rem;
+        margin-bottom: 0;
+        margin-left: 0;
+    }
+    .hero .content h1 {
+        font-size: 3rem;
+    }
+    .hero .flex {
+        align-items: flex-start;
+    }
+    .categories .flex .col.flex {
+        flex-direction: column;
+    }
+    .categories .flex .col ul {
+        margin: 0;
+    }
+    .testimony {
+        padding: 4rem 2rem !important;
+    }
+    .subscribe {
+        padding: 4rem 2rem;
+    }
+    .input-container {
+        width: 100%;
+    }
+    .subscribe h3 {
+        line-height: 30px
+    }
+}
+
+@media screen and (max-width:375px) {
+    .hero {
+        height: fit-content;
+    }
+    .hero .flex {
+        justify-content: flex-start;
+        padding: 0
+    }
+    .membership .plans {
+        width: 100%;
+    }
+}
+
+@media screen and (max-width: 768px) {
+    .hero-image {
+        width: 70vw;
+        margin-top: 2rem;
+    }
+    .hero .flex {
+        justify-content: flex-start;
     }
 }
