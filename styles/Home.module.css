@@ -49,6 +49,7 @@
     grid-template-columns: repeat(3, 33%);
     grid-gap: 1rem;
     overflow: hidden;
+    transition: all 0.3s ease-in-out;
 }
 
 .card {
@@ -453,6 +454,8 @@ section.testimony h3 {
 .controls {
     display: flex;
     margin-top: 2rem;
+    align-items: center;
+    justify-content: space-between;
 }
 
 .controls .flex {
@@ -546,4 +549,245 @@ section.testimony h3 {
 .input-container button img {
     width: 1.5rem;
     height: 1.5rem;
+}
+
+.features svg {
+    display: none;
+}
+
+@media only screen and (width:1024px) {
+    .hero {
+        padding: 7rem 3rem;
+        height: 100vh;
+    }
+    .hero-image {
+        width: 45rem;
+    }
+    .hero .flex {
+        flex-direction: column;
+    }
+    .content {
+        width: 100%;
+        margin-bottom: 4rem;
+    }
+    .cards {
+        grid-template-columns: repeat(2, 50%);
+    }
+    .categories {
+        display: none;
+    }
+    .categories .flex .col {
+        width: 100%;
+    }
+    .categories .flex.col {
+        flex-direction: row;
+    }
+    .main {
+        margin-top: 0;
+    }
+    .input-container {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        width: 80%;
+        height: 3.5rem;
+        margin: auto;
+        margin-top: 2rem;
+        background: #FFFFFF;
+        border: 1px solid #CCCCCC;
+        box-sizing: border-box;
+        border-radius: 100px;
+    }
+    .controls .flex:last-of-type {
+        margin: 0;
+        margin-left: auto;
+    }
+    .reviews-container {
+        width: 800vw;
+    }
+    .membership .plans.flex {
+        display: grid;
+        grid-template-columns: repeat(2, 47%);
+        grid-gap: 2rem;
+    }
+    .plans.flex .col:not(:last-of-type) {
+        margin-right: 0
+    }
+    .plans .col {
+        padding: 3rem 2rem;
+    }
+    .cards {
+        /* display: flex;
+        width: 850vw; */
+        grid-gap: 3rem;
+    }
+    .card p {
+        margin-top: 0;
+        margin-bottom: 2rem;
+    }
+    .controls svg,
+    .features svg {
+        display: block;
+        width: 5rem;
+        height: 5rem
+    }
+    .features svg:last-of-type {
+        margin-left: -1rem;
+    }
+}
+
+@media only screen and (width:768px) {
+    .hero {
+        padding: 7rem 1rem;
+        height: 100vh;
+    }
+    .hero .flex {
+        flex-direction: column;
+    }
+    .content {
+        width: 100%;
+        margin-bottom: 4rem;
+    }
+    .cards {
+        grid-template-columns: repeat(2, 50%);
+    }
+    .categories {
+        display: none;
+    }
+    .categories .flex .col {
+        width: 100%;
+    }
+    .categories .flex.col {
+        flex-direction: row;
+    }
+    .main {
+        margin-top: 0;
+    }
+    .input-container {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        width: 80%;
+        height: 3.5rem;
+        margin: auto;
+        margin-top: 2rem;
+        background: #FFFFFF;
+        border: 1px solid #CCCCCC;
+        box-sizing: border-box;
+        border-radius: 100px;
+    }
+    .controls .flex:last-of-type {
+        margin: 0;
+        margin-left: auto;
+    }
+    .reviews-container {
+        width: 800vw;
+    }
+    .membership .plans.flex {
+        display: grid;
+        grid-template-columns: repeat(2, 47%);
+        grid-gap: 2rem;
+    }
+    .plans.flex .col:not(:last-of-type) {
+        margin-right: 0
+    }
+    .plans .col {
+        padding: 3rem 2rem;
+    }
+    .cards {
+        display: flex;
+        width: 850vw;
+        grid-gap: 5rem;
+    }
+    .card p {
+        margin-top: 0;
+        margin-bottom: 2rem;
+    }
+    .controls svg,
+    .features svg {
+        display: block;
+        width: 5rem;
+        height: 5rem
+    }
+    .features svg:last-of-type {
+        margin-left: -1rem;
+    }
+}
+
+@media only screen and (min-device-width: 768px) and (max-device-width: 1024px) and (max-device-height:1024px) and (-webkit-min-device-pixel-ratio: 1) {
+    .hero {
+        padding: 7rem 3rem;
+        height: 100vh;
+    }
+    .hero .flex {
+        flex-direction: column;
+    }
+    .content {
+        width: 100%;
+        margin-bottom: 2rem;
+    }
+    .cards {
+        grid-template-columns: repeat(2, 50%);
+    }
+    .categories {
+        display: none;
+    }
+    .categories .flex .col {
+        width: 100%;
+    }
+    .categories .flex.col {
+        flex-direction: row;
+    }
+    .main {
+        margin-top: 20rem;
+    }
+    .input-container {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        width: 80%;
+        height: 3.5rem;
+        margin: auto;
+        margin-top: 2rem;
+        background: #FFFFFF;
+        border: 1px solid #CCCCCC;
+        box-sizing: border-box;
+        border-radius: 100px;
+    }
+    .controls .flex:last-of-type {
+        margin: 0;
+        margin-left: auto;
+    }
+    .reviews-container {
+        width: 800vw;
+    }
+    .membership .plans.flex {
+        display: grid;
+        grid-template-columns: repeat(2, 47%);
+        grid-gap: 2rem;
+    }
+    .plans.flex .col:not(:last-of-type) {
+        margin-right: 0
+    }
+    .plans .col {
+        padding: 3rem 2rem;
+    }
+    .cards {
+        display: flex;
+        width: 850vw;
+        grid-gap: 5rem;
+    }
+    .card p {
+        margin-top: 0;
+        margin-bottom: 2rem;
+    }
+    .controls svg,
+    .features svg {
+        display: block;
+        width: 5rem;
+        height: 5rem
+    }
+    .features svg:last-of-type {
+        margin-left: -1rem;
+    }
 }
