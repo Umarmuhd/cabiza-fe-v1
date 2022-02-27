@@ -30,6 +30,32 @@ export default function Home() {
       setPosition(0)
     }
   }
+
+  const [featurePosition, setFeaturePosition] = useState(0)
+
+  function moveFeatureForward() {
+    if(featurePosition === 0){
+      let newPosition = 0;
+      newPosition += 95;
+      setFeaturePosition(newPosition);
+    }else if(featurePosition >= 760){
+      setFeaturePosition(0);
+    }else{
+      setFeaturePosition(prev => prev + 95);
+    }
+  }
+
+  useEffect(() => {
+    console.log(featurePosition)
+  }, [featurePosition]);
+
+  function moveFeatureBackward() {
+    if(featurePosition > 0){
+      setFeaturePosition(prev => prev - 95)
+    }else{
+      setFeaturePosition(0)
+    }
+  }
   return (
     <div className="w-full h-full">
       <MainNavigation />
@@ -66,13 +92,15 @@ export default function Home() {
           </div>
         </div>
       </header>
-      <main>
+      <main className={styles.main}>
         <section id="features" className="md:py-20 py-10 bg-grey_95">
-          <div className="features px-11">
+          <div className={`${styles.features} px-11`}>
             <h2 className="font-semibold text-grey_20 text-4xl mb-8 text-center md:text-left">
               Our Features
             </h2>
-            <div className={styles.cards}>
+            <div className={styles.cards} style={{
+              transform: `translateX(-${featurePosition}vw)`
+            }}>
               <div className={styles.card}>
                 <img src="/images/setup-1.svg" alt="..." />
                 <p>
@@ -161,8 +189,49 @@ export default function Home() {
                   <a className="rounded bg-grey_98 text-secondary font-semibold">
                     LEARN MORE
                   </a>
-              </div>
+              </div>              
             </div>
+
+                      
+          <div className="flex">
+            <svg width="56" height="56" viewBox="0 0 76 76" fill="none" xmlns="http://www.w3.org/2000/svg" onClick={moveFeatureBackward}>
+              <g filter="url(#filter0_d_731_28024)">
+              <circle cx="38" cy="30" r="17" stroke="#CCCCCC" stroke-width="2"/>
+              <path d="M40.625 36.9301L34.92 31.2251C34.2462 30.5513 34.2462 29.4488 34.92 28.7751L40.625 23.0701" stroke="#CCCCCC" stroke-width="1.5" stroke-miterlimit="10" stroke-linecap="round" stroke-linejoin="round"/>
+              </g>
+              <defs>
+              <filter id="filter0_d_731_28024" x="0" y="0" width="76" height="76" filterUnits="userSpaceOnUse" color-interpolation-filters="sRGB">
+              <feFlood flood-opacity="0" result="BackgroundImageFix"/>
+              <feColorMatrix in="SourceAlpha" type="matrix" values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 127 0" result="hardAlpha"/>
+              <feOffset dy="8"/>
+              <feGaussianBlur stdDeviation="10"/>
+              <feComposite in2="hardAlpha" operator="out"/>
+              <feColorMatrix type="matrix" values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0.12 0"/>
+              <feBlend mode="normal" in2="BackgroundImageFix" result="effect1_dropShadow_731_28024"/>
+              <feBlend mode="normal" in="SourceGraphic" in2="effect1_dropShadow_731_28024" result="shape"/>
+              </filter>
+              </defs>
+              </svg>
+              
+              <svg width="56" height="56" viewBox="0 0 76 76" fill="none" xmlns="http://www.w3.org/2000/svg" onClick={moveFeatureForward}>
+              <g filter="url(#filter0_d_731_28025)">
+              <circle cx="38" cy="30" r="17" stroke="#CCCCCC" stroke-width="2"/>
+              <path d="M35.2963 36.9301L41.0013 31.2251C41.675 30.5513 41.675 29.4488 41.0013 28.7751L35.2963 23.0701" stroke="#CCCCCC" stroke-width="1.5" stroke-miterlimit="10" stroke-linecap="round" stroke-linejoin="round"/>
+              </g>
+              <defs>
+              <filter id="filter0_d_731_28025" x="0" y="0" width="76" height="76" filterUnits="userSpaceOnUse" color-interpolation-filters="sRGB">
+              <feFlood flood-opacity="0" result="BackgroundImageFix"/>
+              <feColorMatrix in="SourceAlpha" type="matrix" values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 127 0" result="hardAlpha"/>
+              <feOffset dy="8"/>
+              <feGaussianBlur stdDeviation="10"/>
+              <feComposite in2="hardAlpha" operator="out"/>
+              <feColorMatrix type="matrix" values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0.12 0"/>
+              <feBlend mode="normal" in2="BackgroundImageFix" result="effect1_dropShadow_731_28025"/>
+              <feBlend mode="normal" in="SourceGraphic" in2="effect1_dropShadow_731_28025" result="shape"/>
+              </filter>
+              </defs>
+              </svg>
+              </div>         
           </div>
         </section>
 
