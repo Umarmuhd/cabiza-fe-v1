@@ -93,7 +93,7 @@ export default function Home() {
         </div>
       </header>
       <main className={styles.main}>
-        <section id="features" className="md:py-20 py-10 bg-grey_95">
+        <section id="features" className={`${styles["features-container"]} md:py-20 py-10 bg-grey_95`}>
           <div className={`${styles.features} px-11`}>
             <h2 className="font-semibold text-grey_20 text-4xl mb-8 text-center md:text-left">
               Our Features
@@ -193,7 +193,7 @@ export default function Home() {
             </div>
 
                       
-          <div className="flex">
+          <div className={`flex ${styles.controls}`}>
             <svg width="56" height="56" viewBox="0 0 76 76" fill="none" xmlns="http://www.w3.org/2000/svg" onClick={moveFeatureBackward}>
               <g filter="url(#filter0_d_731_28024)">
               <circle cx="38" cy="30" r="17" stroke="#CCCCCC" stroke-width="2"/>
@@ -596,7 +596,7 @@ export default function Home() {
           <p>Get helpful tips and content to grow as a creator and digital entrepreneur.</p>
 
         <div className={styles["input-container"]}>
-          <input type="email" name="email" id="email" />
+          <input type="email" name="email" id="email" placeholder="Email Address..."/>
           <button><img src="/images/icons/Send.svg" alt="..." /></button>
         </div>
         </section>
