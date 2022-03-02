@@ -25,6 +25,18 @@ const SearchIcon = () => (
   </svg>
 );
 
+const RightIcon = () => (
+  <svg width="27" height="28" viewBox="0 0 27 28" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <path d="M13.4998 0.666748C6.13984 0.666748 0.166504 6.64008 0.166504 14.0001C0.166504 21.3601 6.13984 27.3334 13.4998 27.3334C20.8598 27.3334 26.8332 21.3601 26.8332 14.0001C26.8332 6.64008 20.8598 0.666748 13.4998 0.666748ZM18.8732 14.7067L14.8732 18.7067C14.6732 18.9067 14.4198 19.0001 14.1665 19.0001C13.9132 19.0001 13.6598 18.9067 13.4598 18.7067C13.0732 18.3201 13.0732 17.6801 13.4598 17.2934L15.7532 15.0001H8.83317C8.2865 15.0001 7.83317 14.5467 7.83317 14.0001C7.83317 13.4534 8.2865 13.0001 8.83317 13.0001H15.7532L13.4598 10.7067C13.0732 10.3201 13.0732 9.68008 13.4598 9.29342C13.8465 8.90675 14.4865 8.90675 14.8732 9.29342L18.8732 13.2934C19.2598 13.6801 19.2598 14.3201 18.8732 14.7067Z" fill="#CCCCCC"/>
+  </svg>
+);
+
+const LeftIcon = () => (
+  <svg width="27" height="28" viewBox="0 0 27 28" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <path d="M13.4998 0.666748C6.13984 0.666748 0.166504 6.64008 0.166504 14.0001C0.166504 21.3601 6.13984 27.3334 13.4998 27.3334C20.8598 27.3334 26.8332 21.3601 26.8332 14.0001C26.8332 6.64008 20.8598 0.666748 13.4998 0.666748ZM18.1665 15.0001H11.2465L13.5398 17.2934C13.9265 17.6801 13.9265 18.3201 13.5398 18.7067C13.3398 18.9067 13.0865 19.0001 12.8332 19.0001C12.5798 19.0001 12.3265 18.9067 12.1265 18.7067L8.1265 14.7067C7.73984 14.3201 7.73984 13.6801 8.1265 13.2934L12.1265 9.29342C12.5132 8.90675 13.1532 8.90675 13.5398 9.29342C13.9265 9.68008 13.9265 10.3201 13.5398 10.7067L11.2465 13.0001H18.1665C18.7132 13.0001 19.1665 13.4534 19.1665 14.0001C19.1665 14.5467 18.7132 15.0001 18.1665 15.0001Z" fill="#CCCCCC"/>
+</svg>
+)
+
 const ProductItem = ({ product }) => (
   <>
     <div className="shadow">
@@ -127,12 +139,11 @@ export default function Discover() {
             and examples from others.
           </p>
 
-          <div
-            className="grid-cols-6
+          <div className={`${styles.cards} mb-7`}>
+            <div className={`grid-cols-6
                 space-y-2
-                lg:space-y-0 lg:grid lg:gap-6 lg:grid-rows-1 mb-8"
-          >
-            <div className="p-4 rounded-lg hover:bg-cabiza_blue group cursor-pointer" style={{
+                lg:space-y-0 grid gap-6 grid-rows-1 mb-8 ${styles.container}`}>
+              <div className="p-4 rounded-lg hover:bg-cabiza_blue group cursor-pointer" style={{
               "&:hover":{
                 "box-shadow": "0px 20px 40px rgba(0, 0, 0, 0.12)",
                 "border-radius": "8px"
@@ -272,6 +283,8 @@ export default function Discover() {
                 </p>
               </div>
             </div>
+            </div>
+            
           </div>
 
           <div className="mb-8">
@@ -284,7 +297,7 @@ export default function Discover() {
             <div
               className="grid-cols-3
                 space-y-2
-                lg:space-y-0 lg:grid lg:gap-6 lg:grid-rows-1"
+                lg:space-y-0 grid lg:gap-6 grid-rows-1"
             >
               {loading ? (
                 <p>loading...</p>
@@ -311,13 +324,15 @@ export default function Discover() {
               </h3>
               <a href="" className="text-cabiza_blue">View All</a>
             </header>
-            <div
+            
+            <div className={styles.cards}>
+                  <div
               className={`grid-cols-5
                 space-y-2
-                lg:space-y-0 lg:grid lg:gap-[17.5rem] lg:grid-rows-1
-                w-[130%] overflow-x-auto ${styles.container}`              }
+                lg:space-y-0 grid lg:gap-[17.5rem] grid-rows-1
+                w-[100%] ${styles.container}`              }
             >
-              <div className={`shadow w-[400px] mr-1 h-[max-content] ${styles.card}`}>
+              <div className={`shadow w-[max-content] mr-1 h-[max-content]  ${styles.card}`}>
                 <img src="/images/book-small.png" alt="..." className="w-[100%] h-[350px]"/>
                 <div className="p-5 rounded-b">
                   <p className="text-lg text-grey_80 font-medium mb-1">Books</p>
@@ -353,14 +368,18 @@ export default function Discover() {
                         </span>
                       </div>
                     </div>
-                    <span className="text-sm font-medium py-3 px-2.5 text-grey_98 bg-cabiza_blue rounded">
+                    <span className={`text-sm font-medium py-3 px-5 pl-3 bg-yellow rounded ${styles.price}`}>
                       $5000+
                     </span>
                   </div>
+                    <div className="rounded border border-grey_20 flex justify-between items-center mt-5 px-3 py-2">
+                      <p>40% Affiliate Commission</p>
+                      <a href="" className="bg-grey_20 text-yellow rounded px-3 py-2">Become Affiliate</a>
+                    </div>
                 </div>
               </div>
 
-            <div className={`shadow w-[400px] mr-1 h-[max-content] ${styles.card}`}>
+            <div className={`shadow w-[max-content] mr-1 h-[max-content]  ${styles.card}`}>
                 <img src="/images/book-small.png" alt="..." className="w-[100%] h-[350px]"/>
                 <div className="p-5 rounded-b">
                   <p className="text-lg text-grey_80 font-medium mb-1">Books</p>
@@ -396,14 +415,18 @@ export default function Discover() {
                         </span>
                       </div>
                     </div>
-                    <span className="text-sm font-medium py-3 px-2.5 text-grey_98 bg-cabiza_blue rounded">
+                    <span className={`text-sm font-medium py-3 px-5 pl-3 bg-yellow rounded ${styles.price}`}>
                       $5000+
                     </span>
                   </div>
+                    <div className="rounded border border-grey_20 flex justify-between items-center mt-5 px-3 py-2">
+                      <p>40% Affiliate Commission</p>
+                      <a href="" className="bg-grey_20 text-yellow rounded px-3 py-2">Become Affiliate</a>
+                    </div>
                 </div>
               </div>
 
-            <div className={`shadow w-[400px] mr-1 h-[max-content] ${styles.card}`}>
+            <div className={`shadow w-[max-content] mr-1 h-[max-content]  ${styles.card}`}>
                 <img src="/images/book-small.png" alt="..." className="w-[100%] h-[350px]"/>
                 <div className="p-5 rounded-b">
                   <p className="text-lg text-grey_80 font-medium mb-1">Books</p>
@@ -439,16 +462,20 @@ export default function Discover() {
                         </span>
                       </div>
                     </div>
-                    <span className="text-sm font-medium py-3 px-2.5 text-grey_98 bg-cabiza_blue rounded">
+                    <span className={`text-sm font-medium py-3 px-5 pl-3 bg-yellow rounded ${styles.price}`}>
                       $5000+
                     </span>
                   </div>
+                    <div className="rounded border border-grey_20 flex justify-between items-center mt-5 px-3 py-2">
+                      <p>40% Affiliate Commission</p>
+                      <a href="" className="bg-grey_20 text-yellow rounded px-3 py-2">Become Affiliate</a>
+                    </div>
                 </div>
               </div>
 
               
 
-            <div className={`shadow w-[400px] mr-1 h-[max-content] ${styles.card}`}>
+            <div className={`shadow w-[max-content] mr-1 h-[max-content]  ${styles.card}`}>
                 <img src="/images/book-small.png" alt="..." className="w-[100%] h-[350px]"/>
                 <div className="p-5 rounded-b">
                   <p className="text-lg text-grey_80 font-medium mb-1">Books</p>
@@ -484,13 +511,17 @@ export default function Discover() {
                         </span>
                       </div>
                     </div>
-                    <span className="text-sm font-medium py-3 px-2.5 text-grey_98 bg-cabiza_blue rounded">
+                    <span className={`text-sm font-medium py-3 px-5 pl-3 bg-yellow rounded ${styles.price}`}>
                       $5000+
                     </span>
                   </div>
+                    <div className="rounded border border-grey_20 flex justify-between items-center mt-5 px-3 py-2">
+                      <p>40% Affiliate Commission</p>
+                      <a href="" className="bg-grey_20 text-yellow rounded px-3 py-2">Become Affiliate</a>
+                    </div>
                 </div>
               </div>
-            <div className={`shadow w-[400px] mr-1 h-[max-content] ${styles.card}`}>
+            <div className={`shadow w-[max-content] mr-1 h-[max-content]  ${styles.card}`}>
                 <img src="/images/book-small.png" alt="..." className="w-[100%] h-[350px]"/>
                 <div className="p-5 rounded-b">
                   <p className="text-lg text-grey_80 font-medium mb-1">Books</p>
@@ -526,12 +557,17 @@ export default function Discover() {
                         </span>
                       </div>
                     </div>
-                    <span className="text-sm font-medium py-3 px-2.5 text-grey_98 bg-cabiza_blue rounded">
+                    <span className={`text-sm font-medium py-3 px-5 pl-3 bg-yellow rounded ${styles.price}`}>
                       $5000+
                     </span>
                   </div>
+                    <div className="rounded border border-grey_20 flex justify-between items-center mt-5 px-3 py-2">
+                      <p>40% Affiliate Commission</p>
+                      <a href="" className="bg-grey_20 text-yellow rounded px-3 py-2">Become Affiliate</a>
+                    </div>
                 </div>
               </div>
+            </div>            
             </div>
           </div>
 
@@ -542,13 +578,14 @@ export default function Discover() {
               </h3>
               <a href="" className="text-cabiza_blue">View All</a>
             </header>
-            <div
-              className="grid-cols-5
+            <div className={styles.cards}>
+                  <div
+              className={`grid-cols-5
                 space-y-2
-                lg:space-y-0 lg:grid lg:gap-[17.5rem] lg:grid-rows-1
-                w-[130%] overflow-x-auto"
+                lg:space-y-0 grid lg:gap-[17.5rem] grid-rows-1
+                w-[100%] ${styles.container}`              }
             >
-            <div className={`shadow w-[400px] mr-1 h-[max-content] ${styles.card}`}>
+              <div className={`shadow w-[max-content] mr-1 h-[max-content]  ${styles.card}`}>
                 <img src="/images/book-small.png" alt="..." className="w-[100%] h-[350px]"/>
                 <div className="p-5 rounded-b">
                   <p className="text-lg text-grey_80 font-medium mb-1">Books</p>
@@ -584,14 +621,18 @@ export default function Discover() {
                         </span>
                       </div>
                     </div>
-                    <span className="text-sm font-medium py-3 px-2.5 text-grey_98 bg-cabiza_blue rounded">
+                    <span className={`text-sm font-medium py-3 px-5 pl-3 bg-yellow rounded ${styles.price}`}>
                       $5000+
                     </span>
                   </div>
+                    <div className="rounded border border-grey_20 flex justify-between items-center mt-5 px-3 py-2">
+                      <p>40% Affiliate Commission</p>
+                      <a href="" className="bg-grey_20 text-yellow rounded px-3 py-2">Become Affiliate</a>
+                    </div>
                 </div>
               </div>
 
-            <div className={`shadow w-[400px] mr-1 h-[max-content] ${styles.card}`}>
+            <div className={`shadow w-[max-content] mr-1 h-[max-content]  ${styles.card}`}>
                 <img src="/images/book-small.png" alt="..." className="w-[100%] h-[350px]"/>
                 <div className="p-5 rounded-b">
                   <p className="text-lg text-grey_80 font-medium mb-1">Books</p>
@@ -627,14 +668,18 @@ export default function Discover() {
                         </span>
                       </div>
                     </div>
-                    <span className="text-sm font-medium py-3 px-2.5 text-grey_98 bg-cabiza_blue rounded">
+                    <span className={`text-sm font-medium py-3 px-5 pl-3 bg-yellow rounded ${styles.price}`}>
                       $5000+
                     </span>
                   </div>
+                    <div className="rounded border border-grey_20 flex justify-between items-center mt-5 px-3 py-2">
+                      <p>40% Affiliate Commission</p>
+                      <a href="" className="bg-grey_20 text-yellow rounded px-3 py-2">Become Affiliate</a>
+                    </div>
                 </div>
               </div>
 
-            <div className={`shadow w-[400px] mr-1 h-[max-content] ${styles.card}`}>
+            <div className={`shadow w-[max-content] mr-1 h-[max-content]  ${styles.card}`}>
                 <img src="/images/book-small.png" alt="..." className="w-[100%] h-[350px]"/>
                 <div className="p-5 rounded-b">
                   <p className="text-lg text-grey_80 font-medium mb-1">Books</p>
@@ -670,16 +715,20 @@ export default function Discover() {
                         </span>
                       </div>
                     </div>
-                    <span className="text-sm font-medium py-3 px-2.5 text-grey_98 bg-cabiza_blue rounded">
+                    <span className={`text-sm font-medium py-3 px-5 pl-3 bg-yellow rounded ${styles.price}`}>
                       $5000+
                     </span>
                   </div>
+                    <div className="rounded border border-grey_20 flex justify-between items-center mt-5 px-3 py-2">
+                      <p>40% Affiliate Commission</p>
+                      <a href="" className="bg-grey_20 text-yellow rounded px-3 py-2">Become Affiliate</a>
+                    </div>
                 </div>
               </div>
 
               
 
-            <div className={`shadow w-[400px] mr-1 h-[max-content] ${styles.card}`}>
+            <div className={`shadow w-[max-content] mr-1 h-[max-content]  ${styles.card}`}>
                 <img src="/images/book-small.png" alt="..." className="w-[100%] h-[350px]"/>
                 <div className="p-5 rounded-b">
                   <p className="text-lg text-grey_80 font-medium mb-1">Books</p>
@@ -715,13 +764,17 @@ export default function Discover() {
                         </span>
                       </div>
                     </div>
-                    <span className="text-sm font-medium py-3 px-2.5 text-grey_98 bg-cabiza_blue rounded">
+                    <span className={`text-sm font-medium py-3 px-5 pl-3 bg-yellow rounded ${styles.price}`}>
                       $5000+
                     </span>
                   </div>
+                    <div className="rounded border border-grey_20 flex justify-between items-center mt-5 px-3 py-2">
+                      <p>40% Affiliate Commission</p>
+                      <a href="" className="bg-grey_20 text-yellow rounded px-3 py-2">Become Affiliate</a>
+                    </div>
                 </div>
               </div>
-            <div className={`shadow w-[400px] mr-1 h-[max-content] ${styles.card}`}>
+            <div className={`shadow w-[max-content] mr-1 h-[max-content]  ${styles.card}`}>
                 <img src="/images/book-small.png" alt="..." className="w-[100%] h-[350px]"/>
                 <div className="p-5 rounded-b">
                   <p className="text-lg text-grey_80 font-medium mb-1">Books</p>
@@ -757,16 +810,27 @@ export default function Discover() {
                         </span>
                       </div>
                     </div>
-                    <span className="text-sm font-medium py-3 px-2.5 text-grey_98 bg-cabiza_blue rounded">
+                    <span className={`text-sm font-medium py-3 px-5 pl-3 bg-yellow rounded ${styles.price}`}>
                       $5000+
                     </span>
                   </div>
+                    <div className="rounded border border-grey_20 flex justify-between items-center mt-5 px-3 py-2">
+                      <p>40% Affiliate Commission</p>
+                      <a href="" className="bg-grey_20 text-yellow rounded px-3 py-2">Become Affiliate</a>
+                    </div>
                 </div>
               </div>
-            </div>
+            </div>            
           </div>
         </div>
+      <div className="flex w-[max-content] border border-grey_80 p-2 rounded mt-3" style={{"border-radius": "20px"}}>
+        <LeftIcon/>
+          <p className="mx-2">Page 1 of  8</p>
+        <RightIcon/>
       </div>
+      </div>
+      </div>
+      
       <MainFooter />
     </div>
   );
