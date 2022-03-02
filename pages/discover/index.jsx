@@ -4,6 +4,7 @@ import axios from "axios";
 import MainFooter from "@/components/Footer/MainFooter";
 import MainNavigation from "@/components/Navbars/MainNav";
 import { API_URL } from "@/config/index";
+import styles from './index.module.css'
 
 const SearchIcon = () => (
   <svg
@@ -311,13 +312,13 @@ export default function Discover() {
               <a href="" className="text-cabiza_blue">View All</a>
             </header>
             <div
-              className="grid-cols-5
+              className={`grid-cols-5
                 space-y-2
                 lg:space-y-0 lg:grid lg:gap-[17.5rem] lg:grid-rows-1
-                w-[130%] overflow-x-auto"
+                w-[130%] overflow-x-auto ${styles.container}`              }
             >
-              <div className="shadow w-[400px] mr-1 h-[max-content]">
-                <img src="/images/book-small.png" alt="..." className="w-[100%] h-[350px]" />
+              <div className={`shadow w-[400px] mr-1 h-[max-content] ${styles.card}`}>
+                <img src="/images/book-small.png" alt="..." className="w-[100%] h-[350px]"/>
                 <div className="p-5 rounded-b">
                   <p className="text-lg text-grey_80 font-medium mb-1">Books</p>
                   <h4 className="text-2xl text-dark_ font-bold mb-8">
@@ -359,8 +360,8 @@ export default function Discover() {
                 </div>
               </div>
 
-              <div className="shadow w-[400px] mr-1 h-[max-content]">
-                <img src="/images/book-small.png" alt="..." className="w-[100%] h-[350px]" />
+            <div className={`shadow w-[400px] mr-1 h-[max-content] ${styles.card}`}>
+                <img src="/images/book-small.png" alt="..." className="w-[100%] h-[350px]"/>
                 <div className="p-5 rounded-b">
                   <p className="text-lg text-grey_80 font-medium mb-1">Books</p>
                   <h4 className="text-2xl text-dark_ font-bold mb-8">
@@ -402,8 +403,8 @@ export default function Discover() {
                 </div>
               </div>
 
-              <div className="shadow w-[400px] mr-1 h-[max-content]">
-                <img src="/images/book-small.png" alt="..." className="w-[100%] h-[350px]" />
+            <div className={`shadow w-[400px] mr-1 h-[max-content] ${styles.card}`}>
+                <img src="/images/book-small.png" alt="..." className="w-[100%] h-[350px]"/>
                 <div className="p-5 rounded-b">
                   <p className="text-lg text-grey_80 font-medium mb-1">Books</p>
                   <h4 className="text-2xl text-dark_ font-bold mb-8">
@@ -447,8 +448,8 @@ export default function Discover() {
 
               
 
-              <div className="shadow w-[400px] mr-1 h-[max-content]">
-                <img src="/images/book-small.png" alt="..." className="w-[100%] h-[350px]" />
+            <div className={`shadow w-[400px] mr-1 h-[max-content] ${styles.card}`}>
+                <img src="/images/book-small.png" alt="..." className="w-[100%] h-[350px]"/>
                 <div className="p-5 rounded-b">
                   <p className="text-lg text-grey_80 font-medium mb-1">Books</p>
                   <h4 className="text-2xl text-dark_ font-bold mb-8">
@@ -489,8 +490,8 @@ export default function Discover() {
                   </div>
                 </div>
               </div>
-              <div className="shadow w-[400px] mr-1 h-[max-content]">
-                <img src="/images/book-small.png" alt="..." className="w-[100%] h-[350px]" />
+            <div className={`shadow w-[400px] mr-1 h-[max-content] ${styles.card}`}>
+                <img src="/images/book-small.png" alt="..." className="w-[100%] h-[350px]"/>
                 <div className="p-5 rounded-b">
                   <p className="text-lg text-grey_80 font-medium mb-1">Books</p>
                   <h4 className="text-2xl text-dark_ font-bold mb-8">
@@ -547,8 +548,8 @@ export default function Discover() {
                 lg:space-y-0 lg:grid lg:gap-[17.5rem] lg:grid-rows-1
                 w-[130%] overflow-x-auto"
             >
-              <div className="shadow w-[400px] mr-1 h-[max-content]">
-                <img src="/images/book-small.png" alt="..." className="w-[100%] h-[350px]" />
+            <div className={`shadow w-[400px] mr-1 h-[max-content] ${styles.card}`}>
+                <img src="/images/book-small.png" alt="..." className="w-[100%] h-[350px]"/>
                 <div className="p-5 rounded-b">
                   <p className="text-lg text-grey_80 font-medium mb-1">Books</p>
                   <h4 className="text-2xl text-dark_ font-bold mb-8">
@@ -590,8 +591,8 @@ export default function Discover() {
                 </div>
               </div>
 
-              <div className="shadow w-[400px] mr-1 h-[max-content]">
-                <img src="/images/book-small.png" alt="..." className="w-[100%] h-[350px]" />
+            <div className={`shadow w-[400px] mr-1 h-[max-content] ${styles.card}`}>
+                <img src="/images/book-small.png" alt="..." className="w-[100%] h-[350px]"/>
                 <div className="p-5 rounded-b">
                   <p className="text-lg text-grey_80 font-medium mb-1">Books</p>
                   <h4 className="text-2xl text-dark_ font-bold mb-8">
@@ -633,8 +634,8 @@ export default function Discover() {
                 </div>
               </div>
 
-              <div className="shadow w-[400px] mr-1 h-[max-content]">
-                <img src="/images/book-small.png" alt="..." className="w-[100%] h-[350px]" />
+            <div className={`shadow w-[400px] mr-1 h-[max-content] ${styles.card}`}>
+                <img src="/images/book-small.png" alt="..." className="w-[100%] h-[350px]"/>
                 <div className="p-5 rounded-b">
                   <p className="text-lg text-grey_80 font-medium mb-1">Books</p>
                   <h4 className="text-2xl text-dark_ font-bold mb-8">
@@ -678,8 +679,8 @@ export default function Discover() {
 
               
 
-              <div className="shadow w-[400px] mr-1 h-[max-content]">
-                <img src="/images/book-small.png" alt="..." className="w-[100%] h-[350px]" />
+            <div className={`shadow w-[400px] mr-1 h-[max-content] ${styles.card}`}>
+                <img src="/images/book-small.png" alt="..." className="w-[100%] h-[350px]"/>
                 <div className="p-5 rounded-b">
                   <p className="text-lg text-grey_80 font-medium mb-1">Books</p>
                   <h4 className="text-2xl text-dark_ font-bold mb-8">
@@ -720,8 +721,8 @@ export default function Discover() {
                   </div>
                 </div>
               </div>
-              <div className="shadow w-[400px] mr-1 h-[max-content]">
-                <img src="/images/book-small.png" alt="..." className="w-[100%] h-[350px]" />
+            <div className={`shadow w-[400px] mr-1 h-[max-content] ${styles.card}`}>
+                <img src="/images/book-small.png" alt="..." className="w-[100%] h-[350px]"/>
                 <div className="p-5 rounded-b">
                   <p className="text-lg text-grey_80 font-medium mb-1">Books</p>
                   <h4 className="text-2xl text-dark_ font-bold mb-8">
