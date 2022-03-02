@@ -7,8 +7,8 @@ import { API_URL } from "@/config/index";
 
 const SearchIcon = () => (
   <svg
-    width="28"
-    height="28"
+    width="20"
+    height="20"
     viewBox="0 0 28 28"
     fill="none"
     xmlns="http://www.w3.org/2000/svg"
@@ -29,7 +29,7 @@ const ProductItem = ({ product }) => (
     <div className="shadow">
       <img src={product.image} alt="..." className="w-full" />
       <div className="p-5 rounded-b">
-        <p className="text-lg text-grey_80 font-medium mb-3">Books</p>
+        <p className="text-lg text-grey_80 font-medium mb-1">Books</p>
         <Link href={`/discover/${product.product_id}`}>
           <h4 className="text-2xl text-dark_ font-bold mb-8 cursor-pointer">
             {product.name}
@@ -56,7 +56,7 @@ const ProductItem = ({ product }) => (
               <span className="text-sm font-medium text-grey_60">34567</span>
             </div>
           </div>
-          <span className="text-sm font-medium py-3 px-2.5 text-grey_98 bg-secondary rounded">
+          <span className="text-sm font-medium py-3 px-2.5 text-grey_98 bg-cabiza_blue rounded">
             ${product.price}+
           </span>
         </div>
@@ -89,12 +89,12 @@ export default function Discover() {
   return (
     <div className="w-full h-full">
       <MainNavigation />
-      <header className="py-16 bg-grey_95 mx-auto max-w-[1300px]">
-        <div className="w-[74%] mx-auto">
+      <header className="py-16 bg-grey_95 mx-auto max-w-[1100px]">
+        <div className="w-[90%] mx-auto">
           <form className="flex">
             <select
               name="category"
-              className="block py-2 px-3 border border-gray-300 bg-grey_95 shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 text-lg w-1/6 rounded-l-3xl text-grey_40"
+              className="block py-2 px-3 border border-gray-300 bg-grey_40 shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 text-lg lg:w-1/6 sm:w-2/6 rounded-l-3xl text-grey_40 px-12 text-white"
             >
               <option>Education</option>
               <option>Fitness</option>
@@ -108,7 +108,7 @@ export default function Discover() {
               />
               <button
                 type="submit"
-                className="bg-secondary p-3 rounded-full text-md"
+                className="bg-grey_40 p-3 rounded-full text-md"
               >
                 <SearchIcon />
               </button>
@@ -117,8 +117,8 @@ export default function Discover() {
         </div>
       </header>
       <div id="explore_cat" className="md:py-20 py-10">
-        <div className="mx-auto w-[90%] max-w-[1300px]">
-          <h2 className="text-lg text-secondary font-medium mb-6">
+        <div className="mx-auto w-[100%] px-5 max-w-[1500px] overflow-hidden">
+          <h2 className="text-lg text-cabiza_blue font-medium mb-6">
             Explore Cabiza
           </h2>
           <p className="font-bold text-dark_ text-4xl mb-8">
@@ -127,11 +127,16 @@ export default function Discover() {
           </p>
 
           <div
-            className="grid-cols-4
+            className="grid-cols-6
                 space-y-2
                 lg:space-y-0 lg:grid lg:gap-6 lg:grid-rows-1 mb-8"
           >
-            <div className="p-4 rounded-lg hover:bg-tertiary group cursor-pointer">
+            <div className="p-4 rounded-lg hover:bg-cabiza_blue group cursor-pointer" style={{
+              "&:hover":{
+                "box-shadow": "0px 20px 40px rgba(0, 0, 0, 0.12)",
+                "border-radius": "8px"
+              }
+              }}>
               <img
                 src="images/education.svg"
                 alt="..."
@@ -141,15 +146,20 @@ export default function Discover() {
                 <h3 className="font-bold text-2xl mb-2 text-dark_ group-hover:text-white">
                   Education
                 </h3>
-                <p className="mb-4 text-xs font-medium text-grey_80 group-hover:text-grey_95">
+                <p className="mb-4 text-sm font-medium text-grey_80 group-hover:text-grey_95">
                   Books, stories and guides
                 </p>
-                <p className="font-medium text-sm text-secondary group-hover:text-secondary_light">
+                <p className="font-medium text-md text-cabiza_blue group-hover:text-grey_40">
                   Explore products
                 </p>
               </div>
             </div>
-            <div className="p-4 rounded-lg hover:bg-tertiary group cursor-pointer">
+            <div className="p-4 rounded-lg hover:bg-cabiza_blue group cursor-pointer" style={{
+              "&:hover":{
+                "box-shadow": "0px 20px 40px rgba(0, 0, 0, 0.12)",
+                "border-radius": "8px"
+              }
+              }}>
               <img
                 src="images/education.svg"
                 alt="..."
@@ -159,15 +169,68 @@ export default function Discover() {
                 <h3 className="font-bold text-2xl mb-2 text-dark_ group-hover:text-white">
                   Crafts & DIY
                 </h3>
-                <p className="mb-4 text-xs font-medium text-grey_80 group-hover:text-grey_95">
+                <p className="mb-4 text-sm font-medium text-grey_80 group-hover:text-grey_95">
                   Books, stories and guides
                 </p>
-                <p className="font-medium text-sm text-secondary group-hover:text-secondary_light">
+                <p className="font-medium text-md text-cabiza_blue group-hover:text-grey_40">
                   Explore products
                 </p>
               </div>
             </div>
-            <div className="p-4 rounded-lg hover:bg-tertiary group cursor-pointer">
+
+            <div className="p-4 rounded-lg hover:bg-cabiza_blue group cursor-pointer" style={{
+              "&:hover":{
+                "box-shadow": "0px 20px 40px rgba(0, 0, 0, 0.12)",
+                "border-radius": "8px"
+              }
+              }}>
+              <img
+                src="images/education.svg"
+                alt="..."
+                className="mb-4 mx-auto"
+              />
+              <div className="text-left">
+                <h3 className="font-bold text-2xl mb-2 text-dark_ group-hover:text-white">
+                  Books and Writings
+                </h3>
+                <p className="mb-4 text-sm font-medium text-grey_80 group-hover:text-grey_95">
+                  Books, stories and guides
+                </p>
+                <p className="font-medium text-md text-cabiza_blue group-hover:text-grey_40">
+                  Explore products
+                </p>
+              </div>
+            </div>
+
+            <div className="p-4 rounded-lg hover:bg-cabiza_blue group cursor-pointer" style={{
+              "&:hover":{
+                "box-shadow": "0px 20px 40px rgba(0, 0, 0, 0.12)",
+                "border-radius": "8px"
+              }
+              }}>
+              <img
+                src="images/education.svg"
+                alt="..."
+                className="mb-4 mx-auto"
+              />
+              <div className="text-left">
+                <h3 className="font-bold text-2xl mb-2 text-dark_ group-hover:text-white">
+                  Games and Softwares
+                </h3>
+                <p className="mb-4 text-sm font-medium text-grey_80 group-hover:text-grey_95">
+                  Books, stories and guides
+                </p>
+                <p className="font-medium text-md text-cabiza_blue group-hover:text-grey_40">
+                  Explore products
+                </p>
+              </div>
+            </div>
+            <div className="p-4 rounded-lg hover:bg-cabiza_blue group cursor-pointer" style={{
+              "&:hover":{
+                "box-shadow": "0px 20px 40px rgba(0, 0, 0, 0.12)",
+                "border-radius": "8px"
+              }
+              }}>
               <img
                 src="images/education.svg"
                 alt="..."
@@ -177,15 +240,20 @@ export default function Discover() {
                 <h3 className="font-bold text-2xl mb-2 text-dark_ group-hover:text-white">
                   Design & Tech
                 </h3>
-                <p className="mb-4 text-xs font-medium text-grey_80 group-hover:text-grey_95">
+                <p className="mb-4 text-sm font-medium text-grey_80 group-hover:text-grey_95">
                   Books, stories and guides
                 </p>
-                <p className="font-medium text-sm text-secondary group-hover:text-secondary_light">
+                <p className="font-medium text-md text-cabiza_blue group-hover:text-grey_40">
                   Explore products
                 </p>
               </div>
             </div>
-            <div className="p-4 rounded-lg hover:bg-tertiary group cursor-pointer">
+            <div className="p-4 rounded-lg hover:bg-cabiza_blue group cursor-pointer" style={{
+              "&:hover":{
+                "box-shadow": "0px 20px 40px rgba(0, 0, 0, 0.12)",
+                "border-radius": "8px"
+              }
+              }}>
               <img
                 src="images/education.svg"
                 alt="..."
@@ -195,10 +263,10 @@ export default function Discover() {
                 <h3 className="font-bold text-2xl mb-2 text-dark_ group-hover:text-white">
                   Film and Videos
                 </h3>
-                <p className="mb-4 text-xs font-medium text-grey_80 group-hover:text-grey_95">
+                <p className="mb-4 text-sm font-medium text-grey_80 group-hover:text-grey_95">
                   Books, stories and guides
                 </p>
-                <p className="font-medium text-sm text-secondary group-hover:text-secondary_light">
+                <p className="font-medium text-md text-cabiza_blue group-hover:text-grey_40">
                   Explore products
                 </p>
               </div>
@@ -206,9 +274,12 @@ export default function Discover() {
           </div>
 
           <div className="mb-8">
-            <h3 className="text-lg text-dark_ font-bold mb-6">
-              Best selling in Education
-            </h3>
+            <header className="flex justify-between items-center mb-6">
+              <h3 className="text-lg text-grey_60 font-bold">
+                Best selling in Education
+              </h3>
+              <a href="" className="text-cabiza_blue">View All</a>
+            </header>
             <div
               className="grid-cols-3
                 space-y-2
@@ -233,18 +304,22 @@ export default function Discover() {
           </div>
 
           <div className="mb-8">
-            <h3 className="text-lg text-dark_ font-bold mb-6">
-              Best selling in Education
-            </h3>
+            <header className="flex justify-between items-center mb-6">
+              <h3 className="text-lg text-grey_60 font-bold">
+                Best selling in Education
+              </h3>
+              <a href="" className="text-cabiza_blue">View All</a>
+            </header>
             <div
-              className="grid-cols-3
+              className="grid-cols-5
                 space-y-2
-                lg:space-y-0 lg:grid lg:gap-6 lg:grid-rows-1"
+                lg:space-y-0 lg:grid lg:gap-[17.5rem] lg:grid-rows-1
+                w-[130%] overflow-x-auto"
             >
-              <div className="shadow">
-                <img src="/images/book-small.png" alt="..." />
+              <div className="shadow w-[400px] mr-1 h-[max-content]">
+                <img src="/images/book-small.png" alt="..." className="w-[100%] h-[350px]" />
                 <div className="p-5 rounded-b">
-                  <p className="text-lg text-grey_80 font-medium mb-3">Books</p>
+                  <p className="text-lg text-grey_80 font-medium mb-1">Books</p>
                   <h4 className="text-2xl text-dark_ font-bold mb-8">
                     Emotional Intelligence
                   </h4>
@@ -277,16 +352,17 @@ export default function Discover() {
                         </span>
                       </div>
                     </div>
-                    <span className="text-sm font-medium py-3 px-2.5 text-grey_98 bg-secondary rounded">
+                    <span className="text-sm font-medium py-3 px-2.5 text-grey_98 bg-cabiza_blue rounded">
                       $5000+
                     </span>
                   </div>
                 </div>
               </div>
-              <div className="shadow">
-                <img src="/images/book-small.png" alt="..." />
+
+              <div className="shadow w-[400px] mr-1 h-[max-content]">
+                <img src="/images/book-small.png" alt="..." className="w-[100%] h-[350px]" />
                 <div className="p-5 rounded-b">
-                  <p className="text-lg text-grey_80 font-medium mb-3">Books</p>
+                  <p className="text-lg text-grey_80 font-medium mb-1">Books</p>
                   <h4 className="text-2xl text-dark_ font-bold mb-8">
                     Emotional Intelligence
                   </h4>
@@ -319,16 +395,17 @@ export default function Discover() {
                         </span>
                       </div>
                     </div>
-                    <span className="text-sm font-medium py-3 px-2.5 text-grey_98 bg-secondary rounded">
+                    <span className="text-sm font-medium py-3 px-2.5 text-grey_98 bg-cabiza_blue rounded">
                       $5000+
                     </span>
                   </div>
                 </div>
               </div>
-              <div className="shadow">
-                <img src="/images/book-small.png" alt="..." />
+
+              <div className="shadow w-[400px] mr-1 h-[max-content]">
+                <img src="/images/book-small.png" alt="..." className="w-[100%] h-[350px]" />
                 <div className="p-5 rounded-b">
-                  <p className="text-lg text-grey_80 font-medium mb-3">Books</p>
+                  <p className="text-lg text-grey_80 font-medium mb-1">Books</p>
                   <h4 className="text-2xl text-dark_ font-bold mb-8">
                     Emotional Intelligence
                   </h4>
@@ -361,7 +438,94 @@ export default function Discover() {
                         </span>
                       </div>
                     </div>
-                    <span className="text-sm font-medium py-3 px-2.5 text-grey_98 bg-secondary rounded">
+                    <span className="text-sm font-medium py-3 px-2.5 text-grey_98 bg-cabiza_blue rounded">
+                      $5000+
+                    </span>
+                  </div>
+                </div>
+              </div>
+
+              
+
+              <div className="shadow w-[400px] mr-1 h-[max-content]">
+                <img src="/images/book-small.png" alt="..." className="w-[100%] h-[350px]" />
+                <div className="p-5 rounded-b">
+                  <p className="text-lg text-grey_80 font-medium mb-1">Books</p>
+                  <h4 className="text-2xl text-dark_ font-bold mb-8">
+                    Emotional Intelligence
+                  </h4>
+                  <div className="flex items-center">
+                    <span className="text-lg text-grey_60 font-medium mr-2">
+                      By:
+                    </span>
+                    <img
+                      src="/images/author.png"
+                      alt="..."
+                      className="h-10 w-10"
+                    />
+                    <p className="text-lg font-medium ml-2 underline text-grey_60">
+                      Sara Mitchell
+                    </p>
+                  </div>
+                  <div className="mt-8 flex items-center justify-between">
+                    <div className="flex items-center">
+                      <img
+                        src="/images/icons/star.svg"
+                        alt="..."
+                        className="w-6 h-6"
+                      />
+                      <span className="ml-2 text-lg font-semibold text-grey_40">
+                        5.0
+                      </span>
+                      <div className="px-1 rounded border border-grey_80 ml-3 bg-grey_95">
+                        <span className="text-sm font-medium text-grey_60">
+                          34567
+                        </span>
+                      </div>
+                    </div>
+                    <span className="text-sm font-medium py-3 px-2.5 text-grey_98 bg-cabiza_blue rounded">
+                      $5000+
+                    </span>
+                  </div>
+                </div>
+              </div>
+              <div className="shadow w-[400px] mr-1 h-[max-content]">
+                <img src="/images/book-small.png" alt="..." className="w-[100%] h-[350px]" />
+                <div className="p-5 rounded-b">
+                  <p className="text-lg text-grey_80 font-medium mb-1">Books</p>
+                  <h4 className="text-2xl text-dark_ font-bold mb-8">
+                    Emotional Intelligence
+                  </h4>
+                  <div className="flex items-center">
+                    <span className="text-lg text-grey_60 font-medium mr-2">
+                      By:
+                    </span>
+                    <img
+                      src="/images/author.png"
+                      alt="..."
+                      className="h-10 w-10"
+                    />
+                    <p className="text-lg font-medium ml-2 underline text-grey_60">
+                      Sara Mitchell
+                    </p>
+                  </div>
+                  <div className="mt-8 flex items-center justify-between">
+                    <div className="flex items-center">
+                      <img
+                        src="/images/icons/star.svg"
+                        alt="..."
+                        className="w-6 h-6"
+                      />
+                      <span className="ml-2 text-lg font-semibold text-grey_40">
+                        5.0
+                      </span>
+                      <div className="px-1 rounded border border-grey_80 ml-3 bg-grey_95">
+                        <span className="text-sm font-medium text-grey_60">
+                          34567
+                        </span>
+                      </div>
+                    </div>
+                    <span className="text-sm font-medium py-3 px-2.5 text-grey_98 bg-cabiza_blue rounded">
                       $5000+
                     </span>
                   </div>
@@ -371,18 +535,22 @@ export default function Discover() {
           </div>
 
           <div className="mb-0">
-            <h3 className="text-lg text-dark_ font-bold mb-6">
-              Best selling in Education
-            </h3>
+            <header className="flex justify-between items-center mb-6">
+              <h3 className="text-lg text-grey_60 font-bold">
+                Best selling in Education
+              </h3>
+              <a href="" className="text-cabiza_blue">View All</a>
+            </header>
             <div
-              className="grid-cols-3
+              className="grid-cols-5
                 space-y-2
-                lg:space-y-0 lg:grid lg:gap-6 lg:grid-rows-1"
+                lg:space-y-0 lg:grid lg:gap-[17.5rem] lg:grid-rows-1
+                w-[130%] overflow-x-auto"
             >
-              <div className="shadow">
-                <img src="/images/book-small.png" alt="..." />
+              <div className="shadow w-[400px] mr-1 h-[max-content]">
+                <img src="/images/book-small.png" alt="..." className="w-[100%] h-[350px]" />
                 <div className="p-5 rounded-b">
-                  <p className="text-lg text-grey_80 font-medium mb-3">Books</p>
+                  <p className="text-lg text-grey_80 font-medium mb-1">Books</p>
                   <h4 className="text-2xl text-dark_ font-bold mb-8">
                     Emotional Intelligence
                   </h4>
@@ -415,16 +583,17 @@ export default function Discover() {
                         </span>
                       </div>
                     </div>
-                    <span className="text-sm font-medium py-3 px-2.5 text-grey_98 bg-secondary rounded">
+                    <span className="text-sm font-medium py-3 px-2.5 text-grey_98 bg-cabiza_blue rounded">
                       $5000+
                     </span>
                   </div>
                 </div>
               </div>
-              <div className="shadow">
-                <img src="/images/book-small.png" alt="..." />
+
+              <div className="shadow w-[400px] mr-1 h-[max-content]">
+                <img src="/images/book-small.png" alt="..." className="w-[100%] h-[350px]" />
                 <div className="p-5 rounded-b">
-                  <p className="text-lg text-grey_80 font-medium mb-3">Books</p>
+                  <p className="text-lg text-grey_80 font-medium mb-1">Books</p>
                   <h4 className="text-2xl text-dark_ font-bold mb-8">
                     Emotional Intelligence
                   </h4>
@@ -457,16 +626,17 @@ export default function Discover() {
                         </span>
                       </div>
                     </div>
-                    <span className="text-sm font-medium py-3 px-2.5 text-grey_98 bg-secondary rounded">
+                    <span className="text-sm font-medium py-3 px-2.5 text-grey_98 bg-cabiza_blue rounded">
                       $5000+
                     </span>
                   </div>
                 </div>
               </div>
-              <div className="shadow">
-                <img src="/images/book-small.png" alt="..." />
+
+              <div className="shadow w-[400px] mr-1 h-[max-content]">
+                <img src="/images/book-small.png" alt="..." className="w-[100%] h-[350px]" />
                 <div className="p-5 rounded-b">
-                  <p className="text-lg text-grey_80 font-medium mb-3">Books</p>
+                  <p className="text-lg text-grey_80 font-medium mb-1">Books</p>
                   <h4 className="text-2xl text-dark_ font-bold mb-8">
                     Emotional Intelligence
                   </h4>
@@ -499,7 +669,94 @@ export default function Discover() {
                         </span>
                       </div>
                     </div>
-                    <span className="text-sm font-medium py-3 px-2.5 text-grey_98 bg-secondary rounded">
+                    <span className="text-sm font-medium py-3 px-2.5 text-grey_98 bg-cabiza_blue rounded">
+                      $5000+
+                    </span>
+                  </div>
+                </div>
+              </div>
+
+              
+
+              <div className="shadow w-[400px] mr-1 h-[max-content]">
+                <img src="/images/book-small.png" alt="..." className="w-[100%] h-[350px]" />
+                <div className="p-5 rounded-b">
+                  <p className="text-lg text-grey_80 font-medium mb-1">Books</p>
+                  <h4 className="text-2xl text-dark_ font-bold mb-8">
+                    Emotional Intelligence
+                  </h4>
+                  <div className="flex items-center">
+                    <span className="text-lg text-grey_60 font-medium mr-2">
+                      By:
+                    </span>
+                    <img
+                      src="/images/author.png"
+                      alt="..."
+                      className="h-10 w-10"
+                    />
+                    <p className="text-lg font-medium ml-2 underline text-grey_60">
+                      Sara Mitchell
+                    </p>
+                  </div>
+                  <div className="mt-8 flex items-center justify-between">
+                    <div className="flex items-center">
+                      <img
+                        src="/images/icons/star.svg"
+                        alt="..."
+                        className="w-6 h-6"
+                      />
+                      <span className="ml-2 text-lg font-semibold text-grey_40">
+                        5.0
+                      </span>
+                      <div className="px-1 rounded border border-grey_80 ml-3 bg-grey_95">
+                        <span className="text-sm font-medium text-grey_60">
+                          34567
+                        </span>
+                      </div>
+                    </div>
+                    <span className="text-sm font-medium py-3 px-2.5 text-grey_98 bg-cabiza_blue rounded">
+                      $5000+
+                    </span>
+                  </div>
+                </div>
+              </div>
+              <div className="shadow w-[400px] mr-1 h-[max-content]">
+                <img src="/images/book-small.png" alt="..." className="w-[100%] h-[350px]" />
+                <div className="p-5 rounded-b">
+                  <p className="text-lg text-grey_80 font-medium mb-1">Books</p>
+                  <h4 className="text-2xl text-dark_ font-bold mb-8">
+                    Emotional Intelligence
+                  </h4>
+                  <div className="flex items-center">
+                    <span className="text-lg text-grey_60 font-medium mr-2">
+                      By:
+                    </span>
+                    <img
+                      src="/images/author.png"
+                      alt="..."
+                      className="h-10 w-10"
+                    />
+                    <p className="text-lg font-medium ml-2 underline text-grey_60">
+                      Sara Mitchell
+                    </p>
+                  </div>
+                  <div className="mt-8 flex items-center justify-between">
+                    <div className="flex items-center">
+                      <img
+                        src="/images/icons/star.svg"
+                        alt="..."
+                        className="w-6 h-6"
+                      />
+                      <span className="ml-2 text-lg font-semibold text-grey_40">
+                        5.0
+                      </span>
+                      <div className="px-1 rounded border border-grey_80 ml-3 bg-grey_95">
+                        <span className="text-sm font-medium text-grey_60">
+                          34567
+                        </span>
+                      </div>
+                    </div>
+                    <span className="text-sm font-medium py-3 px-2.5 text-grey_98 bg-cabiza_blue rounded">
                       $5000+
                     </span>
                   </div>
