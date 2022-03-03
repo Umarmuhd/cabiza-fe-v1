@@ -520,7 +520,7 @@ const Sidebar = ({ user }) => {
                 </Link>
               </li>
               <li className="items-center">
-                <Link href="/dashboard">
+                <Link href="/discover">
                   <a className="text-white text-lg font-semibold py-3 flex items-center">
                     <DiscoverIcon />
                     <span className="ml-2">Discover</span>
