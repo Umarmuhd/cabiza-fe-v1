@@ -2,6 +2,8 @@ import React from "react";
 import MainFooter from "../../components/Footer/MainFooter";
 import MainNavigation from "../../components/Navbars/MainNav";
 
+import styles from "../../styles/Home.module.css";
+
 const TickIcon = () => (
   <svg
     width="24"
@@ -70,10 +72,10 @@ export default function Membership() {
               </div>
             </div>
           </div>
-              <p className="text-grey_40 mb-12 text-right">
+              <p className="text-grey_40 mb-12 lg:text-right">
                 Save 12% on annual subscription
               </p>
-          <div
+          {/* <div
             className=" grid-cols-4
                 space-y-2
                 lg:space-y-0 lg:grid lg:gap-8 lg:grid-rows-1"
@@ -148,7 +150,54 @@ export default function Membership() {
                 Learn More
               </p>
             </div>            
+          </div> */}
+
+          <section id="membership" className={styles.membership}>
+          <h2>Membership plans</h2>
+
+          <div className="flex">
+            <div className={`${styles.plans} mt-10 ${styles.flex}`}>
+              <div className={styles.col}>
+                <h4>FREE ZONE</h4>
+                <h3>Starter</h3>
+                <p className={styles.price}>£0</p>
+                <a href="">Sign Up</a>
+                <p>Limited access (intro module or 7 day trial) to the specific/main course on this subscription.</p>
+                <a href="" className={styles["btn-secondary"]}>Learn More</a>
+              </div>
+
+              <div className={`${styles.col} ${styles.popular}`}>
+                <aside>Most popular</aside>
+                <h4>BUYERS ZONE</h4>
+                <h3>Owner</h3>
+                <p className={styles.price}>£50/Annum</p>
+                <a href="">Sign Up</a>
+                <p className={styles.description}>
+                  Everyone is entitled to have access to only 1 free course on this subscription per annum.</p>
+                <a href="" className={styles["btn-secondary"]}>Learn More</a>
+              </div>
+
+              <div className={styles.col}>
+                <h4>MAKERS ZONE</h4>
+                <h3>Shaper</h3>
+                <p className={styles.price}>£500/Annum</p>
+                <a href="">Sign Up</a>
+                <p>Everyone is entitled to have access to 5 free courses/items on this subscription per annum.</p>
+                <a href="" className={styles["btn-secondary"]}>Learn More</a>
+              </div>
+
+              <div className={styles.col}>
+                <h4>CORPORATE ZONE</h4>
+                <h3>Innovator</h3>
+                <p className={styles.price}>£5000/Annum</p>
+                <a href="">Sign Up</a>
+                <p>This member has access to 20 free courses/items on this subscription per annum.</p>
+                <a href="" className={styles["btn-secondary"]}>Learn More</a>
+              </div>
+            </div>
           </div>
+        </section>
+
         </div>
       </section>
       <section className="py-16 bg-grey_95">
