@@ -7,6 +7,7 @@ module.exports = {
     extend: {
       colors: {
         cabiza_blue: "#24BAD4",
+        cabiza_blue_secondary: "#4CCBE1",
         secondary: "#912CDB",
         yellow: "#FCCA03",
         cabiza_secondary: "#02BDDC",
