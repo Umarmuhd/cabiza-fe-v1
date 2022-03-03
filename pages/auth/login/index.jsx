@@ -6,8 +6,6 @@ import { useRouter } from "next/router";
 
 import AuthContext from "@/context/AuthContext";
 
-import styles from "./styles/index.module.css";
-
 import Auth from "layouts/Auth";
 import { NEXT_URL } from "config/index";
 import toast from "react-hot-toast";

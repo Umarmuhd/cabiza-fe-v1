@@ -1,7 +1,7 @@
 import React from "react";
 import { FieldSet, InputField } from "fannypack";
 import { css } from "styled-components";
-import { PaymentInputsWrapper, usePaymentInputs } from "react-payment-inputs";
+import { usePaymentInputs } from "react-payment-inputs";
 import images from "react-payment-inputs/images";
 import PFooter from "@/components/Footer/PFooter";
 import styles from "./styles/index.module.css";

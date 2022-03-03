@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 import ReviewDropdown from "@/components/Dropdowns/ReviewDropdown";
 import { useForm } from "react-hook-form";
-import { Link } from "next/link";
+import Link from "next/link";
 import axios from "axios";
 import MainFooter from "@/components/Footer/MainFooter";
 import MainNavigation from "@/components/Navbars/MainNav";
