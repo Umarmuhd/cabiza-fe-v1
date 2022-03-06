@@ -102,7 +102,7 @@ const PaymentPage = () => {
               <form action="" className="w-full">
                 <div className="mb-4 px-3 py-1 bg-white rounded-sm border border-gray-300 focus-within:text-gray-900 focus-within:border-gray-500">
                   <label
-                    for="cc-name"
+                    htmlFor="cc-name"
                     className="text-xs tracking-wide uppercase font-semibold"
                   >
                     Name on card
@@ -119,7 +119,7 @@ const PaymentPage = () => {
                 <div className="mb-6 w-full relative">
                   <label
                     className="block text-grey_40 text-lg font-semibold mb-3"
-                    htmlFor="card_number"
+                    htmlhtmlFor="card_number"
                   >
                     Card number
                   </label>
@@ -137,7 +137,7 @@ const PaymentPage = () => {
                   <div className="mb-6 w-full relative">
                     <label
                       className="block text-grey_40 text-lg font-semibold mb-3"
-                      htmlFor="name"
+                      htmlhtmlFor="name"
                     >
                       Full name
                     </label>
@@ -154,7 +154,7 @@ const PaymentPage = () => {
                     <div className="mb-6 w-full relative">
                       <label
                         className="block text-grey_40 text-lg font-semibold mb-3"
-                        htmlFor="date"
+                        htmlhtmlFor="date"
                       >
                         Expiry date
                       </label>
@@ -170,7 +170,7 @@ const PaymentPage = () => {
                     <div className="mb-6 w-full relative">
                       <label
                         className="block text-grey_40 text-lg font-semibold mb-3"
-                        htmlFor="cvv"
+                        htmlhtmlFor="cvv"
                       >
                         CVV
                       </label>
