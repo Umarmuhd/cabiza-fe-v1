@@ -85,17 +85,20 @@ export default function ResetPassword() {
               <div className="relative w-full mb-6">
                 <label
                   className="block text-grey_40 text-lg font-semibold mb-3"
-                  htmlFor="password"
+                  htmlFor="repeat_password"
                 >
-                  Password
+                  Repeat Password
                 </label>
                 <input
                   type="password"
                   className="border border-grey_80 px-4 py-3 placeholder-grey_80 text-grey_40 bg-white shadow-sm focus:outline-none focus:ring w-full rounded-lg"
                   style={{ transition: "all 0.15s ease 0s" }}
-                  id="password"
+                  id="repeat_password"
                   placeholder="........"
-                  {...register("password", { required: true, minLength: 6 })}
+                  {...register("repeat_password", {
+                    required: true,
+                    minLength: 6,
+                  })}
                 />
                 {errors?.repeat_password ? (
                   <p className="text-left text-red-600 text-xs mt-1">
