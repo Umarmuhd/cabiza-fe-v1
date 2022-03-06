@@ -56,53 +56,51 @@ const LeftIcon = () => (
 );
 
 const ProductItem = ({ product }) => (
-  <>
-    <div
-      className={`shadow w-[max-content] mr-1 h-[max-content]  ${styles.card}`}
-    >
-      <img src={product.image} alt="..." className="w-[100%] h-[350px]" />
-      <div className="p-5 rounded-b">
-        <p className="text-lg text-grey_80 font-medium mb-1">Books</p>
-        <Link href={`/discover/${product.product_id}`}>
-          <h4 className="text-2xl text-dark_ font-bold mb-8">{product.name}</h4>
-        </Link>
-        <div className="flex items-center">
-          <span className="text-lg text-grey_60 font-medium mr-2">By:</span>
-          <img
-            src={product.user.profile_picture}
-            alt="..."
-            className="h-10 w-10 rounded-full"
-          />
+  <div
+    className={`shadow w-[max-content] mr-1 h-[max-content]  ${styles.card}`}
+  >
+    <img src={product.image} alt="..." className="w-[100%] h-[350px]" />
+    <div className="p-5 rounded-b">
+      <p className="text-lg text-grey_80 font-medium mb-1">Books</p>
+      <Link href={`/discover/${product.product_id}`}>
+        <h4 className="text-2xl text-dark_ font-bold mb-8">{product.name}</h4>
+      </Link>
+      <div className="flex items-center">
+        <span className="text-lg text-grey_60 font-medium mr-2">By:</span>
+        <img
+          src={product.user.profile_picture}
+          alt="..."
+          className="h-10 w-10 rounded-full"
+        />
 
-          <Link href={`/${product.user.username}/products`}>
-            <a className="text-lg font-medium ml-2 underline text-grey_60 block">
-              {product.user.full_name}
-            </a>
-          </Link>
-        </div>
-        <div className="mt-8 flex items-center justify-between">
-          <div className="flex items-center">
-            <img src="/images/icons/star.svg" alt="..." className="w-6 h-6" />
-            <span className="ml-2 text-lg font-semibold text-grey_40">5.0</span>
-            <div className="px-1 rounded border border-grey_80 ml-3 bg-grey_95">
-              <span className="text-sm font-medium text-grey_60">34567</span>
-            </div>
-          </div>
-          <span
-            className={`text-sm font-medium py-3 px-5 pl-3 bg-yellow rounded ${styles.price}`}
-          >
-            ${product.price}+
-          </span>
-        </div>
-        <div className="rounded border border-grey_20 flex justify-between items-center mt-5 px-3 py-2">
-          <p>40% Affiliate Commission</p>
-          <a href="" className="bg-grey_20 text-yellow rounded px-3 py-2">
-            Become Affiliate
+        <Link href={`/${product.user.username}/products`}>
+          <a className="text-lg font-medium ml-2 underline text-grey_60 block">
+            {product.user.full_name}
           </a>
+        </Link>
+      </div>
+      <div className="mt-8 flex items-center justify-between">
+        <div className="flex items-center">
+          <img src="/images/icons/star.svg" alt="..." className="w-6 h-6" />
+          <span className="ml-2 text-lg font-semibold text-grey_40">5.0</span>
+          <div className="px-1 rounded border border-grey_80 ml-3 bg-grey_95">
+            <span className="text-sm font-medium text-grey_60">34567</span>
+          </div>
         </div>
+        <span
+          className={`text-sm font-medium py-3 px-5 pl-3 bg-yellow rounded ${styles.price}`}
+        >
+          ${product.price}+
+        </span>
+      </div>
+      <div className="rounded border border-grey_20 flex justify-between items-center mt-5 px-3 py-2">
+        <p>40% Affiliate Commission</p>
+        <a href="" className="bg-grey_20 text-yellow rounded px-3 py-2">
+          Become Affiliate
+        </a>
       </div>
     </div>
-  </>
+  </div>
 );
 
 export default function Discover() {
@@ -344,26 +342,29 @@ export default function Discover() {
                 View All
               </a>
             </header>
-            <div
-              className="grid-cols-3
+            <div className={styles.cards}>
+              <div
+                className={`grid-cols-5
                 space-y-2
-                lg:space-y-0 grid lg:gap-6 grid-rows-1"
-            >
-              {loading ? (
-                <p>loading...</p>
-              ) : (
-                <>
-                  {products.length > 0 && (
-                    <>
-                      {products.map((product, index) => (
-                        <React.Fragment key={index}>
-                          <ProductItem product={product} />
-                        </React.Fragment>
-                      ))}
-                    </>
-                  )}
-                </>
-              )}
+                lg:space-y-0 grid lg:gap-[17.5rem] grid-rows-1
+                w-[100%] ${styles.container}`}
+              >
+                {loading ? (
+                  <p>loading...</p>
+                ) : (
+                  <>
+                    {products.length > 0 && (
+                      <>
+                        {products.map((product, index) => (
+                          <React.Fragment key={index}>
+                            <ProductItem product={product} />
+                          </React.Fragment>
+                        ))}
+                      </>
+                    )}
+                  </>
+                )}
+              </div>
             </div>
           </div>
 

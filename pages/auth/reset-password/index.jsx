@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useState } from "react";
 import { useRouter } from "next/router";
 import { useForm } from "react-hook-form";
 import * as Yup from "yup";
@@ -30,16 +30,14 @@ export default function ResetPassword() {
   const handleReset = async (value) => {
     try {
       setLoading(true);
-      const response = await axios.post(`${API_URL}/auth/reset-password`, {
+      await axios.post(`${API_URL}/auth/reset-password`, {
         email,
         password: value.password,
         token,
       });
-      console.log(response.data);
       setLoading(false);
       router.push("/auth/login");
     } catch (error) {
-      console.log(error);
       setLoading(false);
       toast.error(error.response.data.message);
     }
