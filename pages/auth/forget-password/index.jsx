@@ -3,7 +3,7 @@ import Link from "next/link";
 import { useForm } from "react-hook-form";
 import axios from "axios";
 
-import Auth from "../../../layouts/Auth";
+import Auth from "@/layouts/Auth";
 import toast from "react-hot-toast";
 import { API_URL } from "@/config/index";
 
@@ -39,7 +39,7 @@ export default function ForgetPassword() {
             <form onSubmit={handleSubmit(handleForget)}>
               <div className="mb-8">
                 <h1 className="text-4xl text-grey_40 font-bold">
-                  Reset password
+                  Forget password
                 </h1>
                 <p className="mt-3 text-grey_60">
                   Enter your email below and we’ll send you a link to reset your

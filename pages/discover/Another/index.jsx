@@ -5,11 +5,18 @@ import { usePaymentInputs } from "react-payment-inputs";
 import images from "react-payment-inputs/images";
 import PFooter from "@/components/Footer/PFooter";
 import styles from "./styles/index.module.css";
+import { useForm } from "react-hook-form";
 
 const PaymentPage = () => {
   const { meta, getCardNumberProps, getExpiryDateProps, getCVCProps } =
     usePaymentInputs();
   const { erroredInputs, touchedInputs } = meta;
+
+  const {
+    register,
+    handleSubmit,
+    formState: { errors },
+  } = useForm();
 
   return (
     <div
@@ -71,7 +78,7 @@ const PaymentPage = () => {
             </div>
           </div>
 
-          <div className={`${styles["input-box"]} mt-8`}>
+          <div className={`${styles["input-box"]} mt-8 w-full`}>
             <div className={styles["card-container"]}>
               <h5>
                 Cards
@@ -91,7 +98,97 @@ const PaymentPage = () => {
               </div>
             </div>
 
-            <div className={`${styles["input-cnum"]}`}>
+            <div className="w-full text-left">
+              <form action="" className="w-full">
+                <div className="mb-4 px-3 py-1 bg-white rounded-sm border border-gray-300 focus-within:text-gray-900 focus-within:border-gray-500">
+                  <label
+                    for="cc-name"
+                    className="text-xs tracking-wide uppercase font-semibold"
+                  >
+                    Name on card
+                  </label>
+                  <input
+                    id="cc-name"
+                    type="text"
+                    name="cc-name"
+                    className="w-full h-8 focus:outline-none"
+                    placeholder="e.g. John E Cash"
+                  />
+                </div>
+
+                <div className="mb-6 w-full relative">
+                  <label
+                    className="block text-grey_40 text-lg font-semibold mb-3"
+                    htmlFor="card_number"
+                  >
+                    Card number
+                  </label>
+                  <input
+                    type="text"
+                    className="border border-grey_80 px-4 py-3 placeholder-grey_80 text-grey_40 bg-white shadow-sm focus:outline-none focus:ring w-full rounded-lg"
+                    style={{ transition: "all 0.15s ease 0s" }}
+                    id="card_number"
+                    placeholder="0000 0000 0000 0000"
+                    {...register("card_number", { required: true })}
+                  />
+                </div>
+
+                <div className="flex items-center justify-between">
+                  <div className="mb-6 w-full relative">
+                    <label
+                      className="block text-grey_40 text-lg font-semibold mb-3"
+                      htmlFor="name"
+                    >
+                      Full name
+                    </label>
+                    <input
+                      type="text"
+                      className="border border-grey_80 px-4 py-3 placeholder-grey_80 text-grey_40 bg-white shadow-sm focus:outline-none focus:ring w-full rounded-lg"
+                      style={{ transition: "all 0.15s ease 0s" }}
+                      id="name"
+                      placeholder="Full name"
+                      {...register("name", { required: true })}
+                    />
+                  </div>
+                  <div className="flex items-center justify-between">
+                    <div className="mb-6 w-full relative">
+                      <label
+                        className="block text-grey_40 text-lg font-semibold mb-3"
+                        htmlFor="date"
+                      >
+                        Expiry date
+                      </label>
+                      <input
+                        type="text"
+                        className="border border-grey_80 px-4 py-3 placeholder-grey_80 text-grey_40 bg-white shadow-sm focus:outline-none focus:ring w-full rounded-lg"
+                        style={{ transition: "all 0.15s ease 0s" }}
+                        id="date"
+                        placeholder="MM/YY"
+                        {...register("date", { required: true })}
+                      />
+                    </div>
+                    <div className="mb-6 w-full relative">
+                      <label
+                        className="block text-grey_40 text-lg font-semibold mb-3"
+                        htmlFor="cvv"
+                      >
+                        CVV
+                      </label>
+                      <input
+                        type="text"
+                        className="border border-grey_80 px-4 py-3 placeholder-grey_80 text-grey_40 bg-white shadow-sm focus:outline-none focus:ring w-full rounded-lg"
+                        style={{ transition: "all 0.15s ease 0s" }}
+                        id="cvv"
+                        placeholder="123"
+                        {...register("cvv", { required: true })}
+                      />
+                    </div>
+                  </div>
+                </div>
+              </form>
+            </div>
+
+            {/* <div className={`${styles["input-cnum"]}`}>
               <FieldSet isHorizontal>
                 <InputField
                   {...getCardNumberProps()}
@@ -158,9 +255,9 @@ const PaymentPage = () => {
                   }}
                 />
               </FieldSet>
-            </div>
+            </div> */}
 
-            <div className={`${styles.flex} mb-5 mt-4`}>
+            {/* <div className={`${styles.flex} mb-5 mt-4`}>
               <InputField
                 {...getExpiryDateProps()}
                 label="Expiry date"
@@ -187,7 +284,7 @@ const PaymentPage = () => {
                 validationText={touchedInputs.cvc && erroredInputs.cvc}
                 maxWidth="5rem"
               />
-            </div>
+            </div> */}
           </div>
 
           <div

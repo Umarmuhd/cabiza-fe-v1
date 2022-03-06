@@ -1,9 +1,7 @@
 import React from "react";
 import Link from "next/link";
 
-import styles from "./styles/index.module.css";
-
-import Auth from "../../../layouts/Auth";
+import Auth from "@/layouts/Auth";
 
 export default function Login() {
   return (

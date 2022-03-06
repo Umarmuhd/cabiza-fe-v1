@@ -60,7 +60,7 @@ export default function VerifyEmail() {
       }
     };
     verify();
-  }, []);
+  }, [id, token, router]);
 
   return (
     <div className="bg-light min-h-screen grid place-content-center">
