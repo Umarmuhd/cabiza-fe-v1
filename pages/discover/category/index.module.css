@@ -1,0 +1,32 @@
+.nav {
+    margin: auto;
+    width: max-content;
+}
+
+.nav li {
+    margin-right: 2rem;
+    font-style: normal;
+    font-weight: 500;
+    color: #666666;
+}
+
+@media screen and (min-width: 320px) and (max-width: 500px) {
+    .nav li {
+        margin-right: 1rem;
+    }
+}
+
+.price {
+    position: relative;
+}
+
+.price::after {
+    content: "";
+    position: absolute;
+    width: 20%;
+    height: 100%;
+    top: 0;
+    right: -1%;
+    background-color: #fff;
+    clip-path: polygon(0 50%, 100% 100%, 100% 0);
+}
