@@ -2,6 +2,7 @@ import React from "react";
 import PFooter from "@/components/Footer/PFooter";
 import styles from "./styles/index.module.css";
 import { useForm } from "react-hook-form";
+import BankCard from "@/components/Forms/BankCard";
 
 const PaymentPage = () => {
   const {
@@ -14,6 +15,8 @@ const PaymentPage = () => {
     console.log(values);
   };
 
+  console.log(errors);
+
   return (
     <div className="bg-grey_85">
       <div style={{ height: "20vh", background: "#24BAD4" }}></div>
@@ -22,55 +25,63 @@ const PaymentPage = () => {
           <div className={styles["cancel-btn"]}>x</div>
         </div>
         <section className="wrapper">
-          <h2>CHECKOUT</h2>
-          <h4>Freedom Pack (ALL COURSES)</h4>
-          <p>Enter your info to complete your purchase</p>
+          <div className="text-center">
+            <h2 className="font-semibold text-grey_60 mb-2">CHECKOUT</h2>
+            <h4 className="font-bold text-2xl text-dark_ md:text-4xl mb-2 md:leading-9">
+              Freedom Pack Book
+            </h4>
+            <p className="text-grey_40">
+              Enter your info to complete your purchase
+            </p>
+          </div>
 
           <form
-            id="info_form"
-            className={`${styles["input-box"]} mt-8`}
+            className={`md:mt-8 mt-6 ${styles["input-box"]}`}
             onSubmit={handleSubmit(handlePay)}
           >
-            <div className={styles["input-container"]}>
-              <input
-                type="text"
-                name="fullName"
-                id="fullName"
-                placeholder="Your full name"
-              />
+            <div className={`border border-grey_20 ${styles["wrapper_form"]}`}>
+              <div className={styles["input-container"]}>
+                <input
+                  type="text"
+                  name="fullName"
+                  id="fullName"
+                  placeholder="Your full name"
+                  {...register("name", { required: true })}
+                />
+              </div>
+
+              <div className={styles["input-container"]}>
+                <input
+                  type="email"
+                  name="email"
+                  id="email"
+                  placeholder="Your email address"
+                  {...register("email", { required: true })}
+                />
+                <img
+                  src="/images/icons/envelope.svg"
+                  alt="..."
+                  style={{ display: "inline", marginLeft: "10px" }}
+                />
+              </div>
+
+              <div className={styles["input-container"]}>
+                <input
+                  type="text"
+                  name="discountCount"
+                  id="discountCount"
+                  placeholder="Discount code (optional)"
+                  {...register("discount_code", { required: false })}
+                />
+                <img
+                  src="/images/icons/gift.svg"
+                  alt="..."
+                  style={{ display: "inline", marginLeft: "10px" }}
+                />
+              </div>
             </div>
 
-            <div className={styles["input-container"]}>
-              <input
-                type="email"
-                name="email"
-                id="email"
-                placeholder="Your email address"
-              />
-              <img
-                src="/images/icons/envelope.svg"
-                alt="..."
-                style={{ display: "inline", marginLeft: "10px" }}
-              />
-            </div>
-
-            <div className={styles["input-container"]}>
-              <input
-                type="text"
-                name="discountCount"
-                id="discountCount"
-                placeholder="Discount code (optional)"
-              />
-              <img
-                src="/images/icons/gift.svg"
-                alt="..."
-                style={{ display: "inline", marginLeft: "10px" }}
-              />
-            </div>
-          </form>
-
-          <div className={`${styles["input-box"]} mt-8 w-full`}>
-            <div className={styles["card-container"]}>
+            <div className="mt-5 flex justify-between items-center p-4 bg-grey_20 text-white rounded-t-lg">
               <h5>
                 Cards
                 <img
@@ -80,101 +91,19 @@ const PaymentPage = () => {
                 />
               </h5>
               <p>or pay with</p>
-              <button className={styles["payment-image"]} form="info_form">
-                <img
-                  src="/images/icons/flutterwave.svg"
-                  alt="..."
-                  className="inline"
-                />
-              </button>
-            </div>
-
-            <div className="w-full text-left">
-              <form action="" className="pt-4" style={{ width: "100%" }}>
-                <div className="mb-6 w-full relative">
-                  <label
-                    className="block text-grey_40 text-lg font-semibold mb-3"
-                    htmlFor="card_number"
-                  >
-                    Card number
-                  </label>
-                  <input
-                    type="text"
-                    className="border border-grey_80 px-4 py-3 placeholder-grey_80 text-grey_40 bg-white shadow-sm focus:outline-none focus:ring w-full rounded-lg"
-                    style={{ transition: "all 0.15s ease 0s" }}
-                    id="card_number"
-                    placeholder="0000 0000 0000 0000"
-                    {...register("card_number", { required: true })}
+              <div className="bg-white flex items-center justify-center">
+                <button className={styles["payment-image"]}>
+                  <img
+                    src="/images/icons/flutterwave.svg"
+                    alt="..."
+                    className="inline"
                   />
-                </div>
-
-                <div className="flex flex-col md:flex-row items-center justify-between">
-                  <div className="mb-6 w-full md:w-5/12 relative">
-                    <label
-                      className="block text-grey_40 text-lg font-semibold mb-3"
-                      htmlFor="name"
-                    >
-                      Full name
-                    </label>
-                    <input
-                      type="text"
-                      className="border border-grey_80 px-4 py-3 placeholder-grey_80 text-grey_40 bg-white shadow-sm focus:outline-none focus:ring w-full rounded-lg"
-                      style={{ transition: "all 0.15s ease 0s" }}
-                      id="name"
-                      placeholder="Full name"
-                      {...register("name", { required: true })}
-                    />
-                  </div>
-                  <div className="flex w-full md:w-7/12 items-center justify-between pl-2">
-                    <div className="mb-6 w-7/12 relative">
-                      <label
-                        className="block text-grey_40 text-lg font-semibold mb-3"
-                        htmlFor="date"
-                      >
-                        Expiry date
-                      </label>
-                      <input
-                        type="text"
-                        className="border border-grey_80 px-3 py-3 placeholder-grey_80 text-grey_40 bg-white shadow-sm focus:outline-none focus:ring w-full rounded-lg"
-                        style={{ transition: "all 0.15s ease 0s" }}
-                        id="date"
-                        placeholder="MM/YY"
-                        {...register("date", { required: true })}
-                      />
-                    </div>
-                    <div className="mb-6 w-2/5 relative">
-                      <label
-                        className="block text-grey_40 text-lg font-semibold mb-3"
-                        htmlFor="cvv"
-                      >
-                        CVV
-                      </label>
-                      <input
-                        type="text"
-                        className="border border-grey_80 px-3 py-3 placeholder-grey_80 text-grey_40 bg-white shadow-sm focus:outline-none focus:ring w-full rounded-lg"
-                        style={{ transition: "all 0.15s ease 0s" }}
-                        id="cvv"
-                        placeholder="123"
-                        {...register("cvv", { required: true })}
-                      />
-                    </div>
-                  </div>
-                </div>
-              </form>
+                </button>
+              </div>
             </div>
-          </div>
+          </form>
 
-          <div
-            className={`${styles["input-box"]} mt-3`}
-            style={{
-              color: "#CCCCCC",
-              padding: ".4rem",
-            }}
-          >
-            You'll be charged US$900.
-          </div>
-
-          <button className={`${styles.btn} my-5`}>Pay</button>
+          <BankCard />
         </section>
       </div>
       <PFooter />

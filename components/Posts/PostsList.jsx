@@ -4,6 +4,7 @@ import { toast } from "react-hot-toast";
 import { API_URL } from "@/config/index";
 import AuthContext from "@/context/AuthContext";
 import Link from "next/link";
+import Image from "next/image";
 
 import { Switch } from "@headlessui/react";
 
@@ -179,10 +180,12 @@ export default function PostsList() {
               ) : (
                 <div className="w-4/5 mx-auto md:py-20">
                   <div className="text-center">
-                    <img
+                    <Image
                       src="/images/empty.svg"
                       alt="..."
                       className="mx-auto mb-8"
+                      width={245}
+                      height={240}
                     />
 
                     <h1 className="text-dark_ text-4xl leading-9 font-semibold mb-2">

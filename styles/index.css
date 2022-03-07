@@ -1,19 +1,22 @@
-@import url("https://fonts.googleapis.com/css2?family=Source+Sans+Pro:wght@200;300;400;600;700;900&display=swap");
-@import url("https://fonts.googleapis.com/css2?family=Karla:wght@200;300;400;500;600;700;900&display=swap");
-@import url("https://fonts.googleapis.com/css2?family=Mulish:wght@200;300;400;500;600;700;900&display=swap");
+@import url("http://fonts.cdnfonts.com/css/sofia-pro");
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
 html {
-    overflow-x: hidden;
+  overflow-x: hidden;
 }
 
 body {
-    overflow-x: hidden;
-    font-family: "Source Sans Pro", sans-serif;
-    /* font-family: "Karla", sans-serif; */
-    /* font-family: "Mulish", sans-serif; */
+  overflow-x: hidden;
+  font-family: "Sofia Pro", sans-serif;
 }
 
-@media only screen and (max-width:600px) {
-    html {
-        font-size: 14px;
-    }
+@media only screen and (max-width: 600px) {
+  html {
+    font-size: 14px;
+  }
 }

@@ -1,28 +1,37 @@
 import React, { useState, useEffect } from "react";
 import Link from "next/link";
 import { useRouter } from "next/router";
+import { useRecoilState } from "recoil";
 import axios from "axios";
 import { API_URL } from "../config/index";
+
+import { user_profile } from "@/atoms/user_profile";
+import Image from "next/image";
 
 export default function Username({ children }) {
   const router = useRouter();
   const { username } = router.query;
   const [user, setUser] = useState(null);
+  const [, setSelectedUser] = useRecoilState(user_profile);
   const [loading, setLoading] = useState(false);
 
-  const fetchUserData = async () => {
-    try {
-      setLoading(true);
-      const response = await axios.get(`${API_URL}/user/username/${username}`);
-      setUser(response.data.data.user);
-      setLoading(false);
-    } catch (error) {
-      console.log(error);
-      setLoading(false);
-    }
-  };
-
-  useEffect(() => fetchUserData(), [username]);
+  useEffect(() => {
+    const fetchUserData = async () => {
+      try {
+        setLoading(true);
+        const response = await axios.get(
+          `${API_URL}/user/username/${username}`
+        );
+        setUser(response.data.data.user);
+        setSelectedUser({ user: response.data.data.user });
+        setLoading(false);
+      } catch (error) {
+        console.log(error);
+        setLoading(false);
+      }
+    };
+    fetchUserData();
+  }, [username, router, setSelectedUser]);
 
   return (
     <div className="min-h-screen w-full">
@@ -83,7 +92,17 @@ export default function Username({ children }) {
           <p className="text-lg font-bold uppercase text-grey_60 mr-2">
             POWERED BY
           </p>
-          <img src="/images/cabiza-logo.png" alt="..." className="h-10 w-40" />
+          <Link href="/">
+            <a className="cursor-pointer">
+              <Image
+                src="/images/cabiza-logo.png"
+                alt="..."
+                className="h-10 w-40"
+                width={160}
+                height={40}
+              />
+            </a>
+          </Link>
         </div>
       </div>
     </div>

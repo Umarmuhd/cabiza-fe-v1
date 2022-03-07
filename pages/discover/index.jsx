@@ -24,7 +24,6 @@ const SearchIcon = () => (
     />
   </svg>
 );
-
 const RightIcon = () => (
   <svg
     width="27"
@@ -39,7 +38,6 @@ const RightIcon = () => (
     />
   </svg>
 );
-
 const LeftIcon = () => (
   <svg
     width="27"
@@ -59,7 +57,11 @@ const ProductItem = ({ product }) => (
   <div
     className={`shadow w-[max-content] mr-1 h-[max-content]  ${styles.card}`}
   >
-    <img src={product.image} alt="..." className="w-[100%] h-[350px]" />
+    <img
+      src="/images/book-small.png"
+      alt="..."
+      className="w-[100%] h-[350px]"
+    />
     <div className="p-5 rounded-b">
       <p className="text-lg text-grey_80 font-medium mb-1">Books</p>
       <Link href={`/discover/${product.product_id}`}>

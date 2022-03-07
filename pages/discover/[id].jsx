@@ -273,11 +273,9 @@ export default function DiscoverSingle() {
                         </div>
                       </div>
 
-                      {/* {discount && (
-                        <div className="py-3 text-center text-grey_80 rounded-lg w-full border border-grey_80">
-                          You'll be charged US$9.
-                        </div>
-                      )} */}
+                      <div className="py-3 text-center text-grey_80 rounded-lg w-full border border-grey_80">
+                        You'll be charged US$9.
+                      </div>
 
                       {!order && (
                         <div className="mt-4">

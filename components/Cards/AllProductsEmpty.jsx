@@ -23,7 +23,7 @@ export default function AllProductsEmpty() {
   return (
     <div className="w-4/5 mx-auto bg-grey_95 rounded-2xl border border-dashed border-dark_ text-center py-12">
       <div className="w-3/4 mx-auto">
-        <h2 className="text-lg font-medium text-secondary mb-10">
+        <h2 className="text-lg font-medium text-cabiza_blue mb-10">
           Create your first product
         </h2>
         <div
@@ -31,7 +31,7 @@ export default function AllProductsEmpty() {
               space-y-2
               lg:space-y-0 lg:grid lg:gap-6 lg:grid-rows-1 mb-8"
         >
-          <div className="p-4 rounded-lg hover:bg-tertiary group cursor-pointer">
+          <div className="p-4 rounded-lg hover:bg-cabiza_blue group cursor-pointer">
             <img
               src="/images/education.svg"
               alt="..."
@@ -44,12 +44,12 @@ export default function AllProductsEmpty() {
               <p className="mb-4 text-xs font-medium text-grey_80 group-hover:text-grey_95">
                 Books, stories and guides
               </p>
-              <p className="font-medium text-sm text-secondary group-hover:text-secondary_light">
+              <p className="font-medium text-sm text-cabiza_blue group-hover:text-white">
                 Explore products
               </p>
             </div>
           </div>
-          <div className="p-4 rounded-lg hover:bg-tertiary group cursor-pointer">
+          <div className="p-4 rounded-lg hover:bg-cabiza_blue group cursor-pointer">
             <img
               src="/images/education.svg"
               alt="..."
@@ -62,12 +62,12 @@ export default function AllProductsEmpty() {
               <p className="mb-4 text-xs font-medium text-grey_80 group-hover:text-grey_95">
                 Books, stories and guides
               </p>
-              <p className="font-medium text-sm text-secondary group-hover:text-secondary_light">
+              <p className="font-medium text-sm text-cabiza_blue group-hover:text-white">
                 Explore products
               </p>
             </div>
           </div>
-          <div className="p-4 rounded-lg hover:bg-tertiary group cursor-pointer">
+          <div className="p-4 rounded-lg hover:bg-cabiza_blue group cursor-pointer">
             <img
               src="/images/education.svg"
               alt="..."
@@ -80,7 +80,7 @@ export default function AllProductsEmpty() {
               <p className="mb-4 text-xs font-medium text-grey_80 group-hover:text-grey_95">
                 Books, stories and guides
               </p>
-              <p className="font-medium text-sm text-secondary group-hover:text-secondary_light">
+              <p className="font-medium text-sm text-cabiza_blue group-hover:text-white">
                 Explore products
               </p>
             </div>
@@ -98,7 +98,7 @@ export default function AllProductsEmpty() {
         </div>
 
         <div className="flex justify-center">
-          <button className="py-4 px-8 bg-secondary flex items-center text-lg font-semibold text-white rounded-lg">
+          <button className="py-4 px-8 bg-cabiza_blue flex items-center text-lg font-semibold text-white rounded-lg">
             <span className="mr-2.5">New Product </span> <PlusIcon />
           </button>
         </div>

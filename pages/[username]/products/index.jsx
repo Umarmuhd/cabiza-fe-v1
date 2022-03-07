@@ -1,8 +1,10 @@
 import React, { useEffect, useState } from "react";
-import { useRouter } from "next/router";
+import { useRecoilValue } from "recoil";
 import Link from "next/link";
 import axios from "axios";
-import { API_URL, appKey } from "@/config/index";
+import { API_URL } from "@/config/index";
+
+import { user_profile } from "@/atoms/user_profile";
 
 import Username from "@/layouts/Username";
 
@@ -12,9 +14,9 @@ const ProductItem = (product) => (
     <div className="p-5 rounded-b">
       <p className="text-lg text-grey_80 font-medium mb-3">Books</p>
       <Link href="/discover/123">
-        <h4 className="text-2xl text-dark_ font-bold mb-8 cursor-pointer">
+        <a className="text-2xl text-dark_ font-bold mb-8 cursor-pointer">
           {product.product.name}
-        </h4>
+        </a>
       </Link>
       <div className="flex items-center">
         <span className="text-lg text-grey_60 font-medium mr-2">By:</span>
@@ -40,34 +42,27 @@ const ProductItem = (product) => (
 );
 
 export default function Products() {
-  const router = useRouter();
-
-  const { userId } = router.query;
+  const { user } = useRecoilValue(user_profile);
 
   const [products, setProducts] = useState([]);
   const [loading, setLoading] = useState(false);
 
-  const fetchProducts = async () => {
-    try {
-      setLoading(true);
-      const response = await axios.get(
-        `${API_URL}/ProductType/all-productuser/${userId}`,
-        {
-          headers: { appKey },
-        }
-      );
-
-      if (response.status === 200) {
-        setProducts(response.data);
+  useEffect(() => {
+    const fetchProducts = async () => {
+      try {
+        setLoading(true);
+        const response = await axios.get(
+          `${API_URL}/products/user/${user._id}`
+        );
+        setProducts(response.data.data.products);
+        setLoading(false);
+      } catch (error) {
+        console.log(error);
         setLoading(false);
       }
-    } catch (error) {
-      console.log(error);
-      setLoading(false);
-    }
-  };
-
-  useEffect(() => fetchProducts(), []);
+    };
+    fetchProducts();
+  }, [user]);
 
   return (
     <main className="mx-auto max-w-[90%] md:w-4/5 py-10 md:my-20">

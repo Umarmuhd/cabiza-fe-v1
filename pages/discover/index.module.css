@@ -1,56 +1,53 @@
 .price {
-    position: relative;
-    /* border-top: 3px solid #fff;
-    border-right: 10px solid #C4C4C4;
-    border-bottom: 5px solid #fff; */
+  position: relative;
 }
 
 .price::after {
-    content: "";
-    position: absolute;
-    width: 20%;
-    height: 100%;
-    top: 0;
-    right: -1%;
-    background-color: #fff;
-    clip-path: polygon(0 50%, 100% 100%, 100% 0);
+  content: "";
+  position: absolute;
+  width: 20%;
+  height: 100%;
+  top: 0;
+  right: -1%;
+  background-color: #fff;
+  clip-path: polygon(0 50%, 100% 100%, 100% 0);
 }
 
 .cards {
-    width: 100%;
-    overflow-x: auto;
+  width: 100%;
+  overflow-x: auto;
 }
 
 .card {
-    margin-top: 0 !important;
+  margin-top: 0 !important;
 }
 
-@media only screen and (min-width:320px) {
-    .container {
-        width: 550%;
-    }
+@media only screen and (min-width: 320px) {
+  .container {
+    width: 550%;
+  }
 }
 
-@media only screen and (min-width:470px) {
-    .container {
-        width: 450%;
-    }
+@media only screen and (min-width: 470px) {
+  .container {
+    width: 450%;
+  }
 }
 
-@media only screen and (min-width:730px) {
-    .container {
-        width: 300%;
-    }
+@media only screen and (min-width: 730px) {
+  .container {
+    width: 300%;
+  }
 }
 
 @media only screen and (min-width: 1250px) {
-    .container {
-        width: 120%;
-    }
+  .container {
+    width: 120%;
+  }
 }
 
-@media only screen and (min-width:1024px) and (max-width: 1250px) {
-    .container {
-        width: 200%;
-    }
+@media only screen and (min-width: 1024px) and (max-width: 1250px) {
+  .container {
+    width: 200%;
+  }
 }

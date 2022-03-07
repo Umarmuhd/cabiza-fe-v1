@@ -95,9 +95,9 @@ export default function Posts() {
                 </div>
               </div>
               <Link href="/dashboard/posts/new">
-                <button className="py-4 px-8 bg-cabiza_blue flex items-center text-lg font-semibold text-white rounded-lg">
+                <a className="py-4 px-8 bg-cabiza_blue flex items-center text-lg font-semibold text-white rounded-lg">
                   <span className="mr-2.5">New Post </span> <PlusIcon />
-                </button>
+                </a>
               </Link>
             </div>
           </div>
