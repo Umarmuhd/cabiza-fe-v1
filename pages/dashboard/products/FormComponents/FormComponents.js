@@ -1,16 +1,15 @@
-import { useState } from 'react';
 import { GrList } from 'react-icons/gr';
-import { FaBold, FaItalic } from 'react-icons/fa';
-import { MdOutlineFormatUnderlined } from 'react-icons/md';
 import { BiStrikethrough, BiLinkAlt, BiImage } from 'react-icons/bi';
-import { BsCode } from "react-icons/bs";
+import { BsCode, BsTypeItalic } from 'react-icons/bs';
 import { CgFormatUppercase } from "react-icons/cg"
 import {
   RiListOrdered,
   RiDoubleQuotesL,
   RiArrowGoBackLine,
+  RiUnderline,
 } from 'react-icons/ri';
 import { AiOutlineAlignCenter } from 'react-icons/ai';
+import { VscBold } from 'react-icons/vsc'
 // import { IoReturnDownBack } from 'react-icons/io';
 import Toggle from './Toggle';
 
@@ -44,15 +43,15 @@ const FirstComponent = () => {
             <div className='flex text-lg items-end border-bottom border-b-2 border-grey_80 px-4 py-2 pb-5'>
               <div className='flex items-end'>
                 <button className='mr-4'>
-                  <FaBold />
+                  <VscBold />
                 </button>
 
                 <button className='mr-4'>
-                  <FaItalic />
+                  <BsTypeItalic />
                 </button>
 
                 <button className='mr-4'>
-                  <MdOutlineFormatUnderlined />
+                  <RiUnderline />
                 </button>
 
                 <button className='mr-4'>
