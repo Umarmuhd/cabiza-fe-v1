@@ -11,6 +11,7 @@ module.exports = {
         secondary: "#912CDB",
         yellow: "#FCCA03",
         cabiza_secondary: "#02BDDC",
+        cabiza_secondary_tertiary: "#E5F7FB",
         secondary_light: "#BF85EA",
         cabiza_grey: "#828080",
         tertiary: "#5B188B",
