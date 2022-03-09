@@ -305,7 +305,7 @@ const FourthComponent = () => {
                   <h3 className='text-xl text-grey_20'>Settings</h3>
                   <p className="text-grey_40">Let customers pay what they want?</p>
                 </div>
-                  <Toggle                                                label="Toggle"  />            
+                  <Toggle                                                label="TogglePayment"  />            
               </div>
             </div>
           </div>
@@ -320,38 +320,130 @@ const FinalComponent = () => {
     <>
       <h1 className='text-4xl font-semibold text-grey_20'>Product Settings</h1>
 
-      <div className='bg-white mt-3'>
-        <div className='flex flex-col mt-5'>
-          <div className='flex flex-col mt-5'>
-            <label htmlFor='product_name' className='text-xl'>
-              Amount{' '}
-            </label>
-            <div className='flex items-center mt-2 justify-between rounded-xl border border-solid border-grey_85'>
-              <input
-                className='px-4 rounded-xl text-grey_20 p-3 w-[4rem] border-r-0 rounded z-0 bg-grey_95 text-center outline-none'
-                value='$'
-                readOnly
-              />
-              <input
-                type='text'
-                name='Amount'
-                id='Amount'
-                placeholder='0+'
-                className=' outline-none w-[98%] p-3 rounded-xl z-10'
-              />
-            </div>
+      <div className='bg-white mt-5 border border-solid border-grey_80 p-3 rounded-xl'>
+        <div className='bg-grey_95 p-3 rounded flex items-center justify-between px-5 mb-2'>
+          <p className='text-grey_40'>Limit product sales</p>
+          <Toggle label='LimitSales' />
+        </div>
 
-            <div>
-              <div className='flex justify-between items-center mt-5'>
-                <div>
-                  <h3 className='text-xl text-grey_20'>Settings</h3>
-                  <p className='text-grey_40'>
-                    Let customers pay what they want?
-                  </p>
-                </div>
-                <Toggle label='Toggle' />
-              </div>
-            </div>
+        <div className='bg-grey_95 p-3 rounded flex items-center justify-between px-5 mb-2'>
+          <p className='text-grey_40'>Allow customers to choose a quantity</p>
+          <Toggle label='Quantity' />
+        </div>
+
+        <div className='bg-grey_95 p-3 rounded flex items-center justify-between px-5 mb-2'>
+          <p className='text-grey_40'>
+            Publicly show the number of sales on your product page
+          </p>
+          <Toggle label='showSales' />
+        </div>
+
+        <div className='bg-grey_95 p-3 rounded flex items-center justify-between px-5 mb-2'>
+          <p className='text-grey_40'>
+            Generate a unique license key per sale{' '}
+            <a
+              href=''
+              className='text-cabiza_blue ml-2 border-bottom border-b border-cabiza_blue'
+            >
+              Learn more
+            </a>
+          </p>
+          <Toggle label='license' />
+        </div>
+
+        <div className='bg-grey_95 p-3 rounded flex items-center justify-between px-5 mb-2'>
+          <p className='text-grey_40'>
+            Add custom affiliate percentage{' '}
+            <a
+              href=''
+              className='text-cabiza_blue ml-2 border-bottom border-b border-cabiza_blue'
+            >
+              Learn more
+            </a>
+          </p>
+          <Toggle label='affliate' />
+        </div>
+
+        <div className='bg-grey_95 p-3 rounded flex items-center justify-between px-5 mb-2'>
+          <p className='text-grey_40'>
+            Mark product as e-publication for VAT purposes{' '}
+            <a
+              href=''
+              className='text-cabiza_blue ml-2 border-bottom border-b border-cabiza_blue'
+            >
+              Learn more
+            </a>
+          </p>
+          <Toggle label='VAT' />
+        </div>
+      </div>
+
+      <div className='bg-white mt-5 border border-solid border-grey_60 p-3 rounded-xl'>
+        <h4 className='text-grey_20 text-xl mt-1 pl-5 font-semibold'>
+          Version
+        </h4>
+        <div className='p-3 rounded flex items-center justify-between px-5 mb-2'>
+          <p className='text-grey_40'>
+            Is there any variation for this product?
+          </p>
+          <Toggle label='LimitSales' />
+        </div>
+      </div>
+
+      <div className='bg-white mt-5 border border-solid border-grey_60 p-3 rounded-xl'>
+        <h4 className='text-grey_20 text-xl mt-1 pl-5 font-semibold'>
+          Discover
+        </h4>
+
+        <div className='p-3 rounded px-5 mb-2'>
+          <p className='text-grey_40 font-semibold text-lg'>Tags</p>
+          <div className='flex items-center justify-between mt-2 p-3 border border-solid border-grey_85 rounded-xl'>
+            <input
+              type='text'
+              name='Tags'
+              id='Tags'
+              placeholder='Begin typing to add tag...'
+              className='w-[95%] outline-none'
+            />
+            <svg
+              width='24'
+              height='24'
+              viewBox='0 0 24 24'
+              fill='none'
+              xmlns='http://www.w3.org/2000/svg'
+            >
+              <path
+                d='M11.9995 16.8C11.2995 16.8 10.5995 16.53 10.0695 16L3.54953 9.48C3.25953 9.19 3.25953 8.71 3.54953 8.42C3.83953 8.13 4.31953 8.13 4.60953 8.42L11.1295 14.94C11.6095 15.42 12.3895 15.42 12.8695 14.94L19.3895 8.42C19.6795 8.13 20.1595 8.13 20.4495 8.42C20.7395 8.71 20.7395 9.19 20.4495 9.48L13.9295 16C13.3995 16.53 12.6995 16.8 11.9995 16.8Z'
+                fill='#666666'
+              />
+            </svg>
+          </div>
+        </div>
+
+        <div className="px-3">
+          <div className='bg-grey_95 p-3 rounded flex items-center justify-between px-5 mb-2'>
+            <p className='text-grey_40'>Allow “Become Affiliate” button</p>
+            <Toggle label='LimitSales' />
+          </div>
+
+          <div className='bg-grey_95 p-3 rounded flex items-center justify-between px-5 mb-2'>
+            <p className='text-grey_40'>Show custom affiliate percentage</p>
+            <Toggle label='LimitSales' />
+          </div>
+
+          <div className='bg-grey_95 p-3 rounded flex items-center justify-between px-5 mb-2'>
+            <p className='text-grey_40'>
+              Display your product's 1-5 star rating to prospective customers
+            </p>
+            <Toggle label='LimitSales' />
+          </div>
+
+          <div className='bg-grey_95 p-3 rounded flex items-center justify-between px-5 mb-2'>
+            <p className='text-grey_40'>
+              This product contains content meant only for adults, including the
+              preview
+            </p>
+            <Toggle label='LimitSales' />
           </div>
         </div>
       </div>

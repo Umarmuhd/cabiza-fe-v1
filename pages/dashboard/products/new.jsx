@@ -165,7 +165,7 @@ export default function NewProduct() {
 
   return (
     <div>
-      <div className='bg-grey_95 md:py-8 border-bottom border-b border-grey_80'>
+      <div className='bg-grey_95 md:py-4 border-bottom border-b border-grey_80'>
         <div className='w-4/5 mx-auto'>
           <div className='flex justify-between items-center'></div>
           <div className='mt-8'>
@@ -175,7 +175,7 @@ export default function NewProduct() {
                   <a
                     className={classNames(
                       'py-4 px-8 rounded-lg font-semibold',
-                      'text-cabiza_tertiary text-xl'
+                      'text-cabiza_tertiary text-lg'
                     )}
                   >
                     Product
@@ -185,8 +185,8 @@ export default function NewProduct() {
                 <Link href='/dashboard/products'>
                   <a
                     className={classNames(
-                      'py-4 px-8 rounded-lg  text-lg font-semibold',
-                      'text-grey_40  text-xl'
+                      'py-4 px-8 rounded-lg text-lg font-semibold',
+                      'text-grey_40'
                     )}
                   >
                     Checkout
@@ -197,7 +197,7 @@ export default function NewProduct() {
                   <a
                     className={classNames(
                       'py-4 px-8 rounded-lg  text-lg font-semibold',
-                      'text-grey_40  text-xl'
+                      'text-grey_40 '
                     )}
                   >
                     Share
@@ -209,8 +209,8 @@ export default function NewProduct() {
                 <Link href='/dashboard/products'>
                   <button
                     className={classNames(
-                      'py-4 px-8 rounded-lg font-semibold',
-                      'text-grey_20 bg-white border border-solid border-grey_20 text-xl mr-4'
+                      'py-2 px-8 rounded-lg font-semibold',
+                      'text-grey_20 bg-white border border-solid border-grey_20 text-lg mr-4'
                     )}
                   >
                     Save changes
@@ -220,8 +220,8 @@ export default function NewProduct() {
                 <Link href='/dashboard/products'>
                   <button
                     className={classNames(
-                      'py-4 px-8 rounded-lg  text-lg font-semibold',
-                      'border border-solid bg-cabiza_blue text-white text-xl'
+                      'py-2 px-8 rounded-lg  text-lg font-semibold',
+                      'border border-solid bg-cabiza_blue text-white'
                     )}
                   >
                     Publish
