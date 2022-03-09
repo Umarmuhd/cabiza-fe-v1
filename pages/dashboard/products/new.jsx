@@ -10,7 +10,13 @@ import BuildFollowing from "../../../components/MiniCards/BuildFollowing";
 
 import Dashboard from "../../../layouts/Dashboard";
 import { classNames } from "../../../libs/helper";
-import { FirstComponent, SecondComponent, ThirdComponent, FinalComponent } from "./FormComponents/FormComponents"
+import {
+  FirstComponent,
+  SecondComponent,
+  ThirdComponent,
+  FourthComponent,
+  FinalComponent,
+} from './FormComponents/FormComponents';
 
 
 const ArrowRight = () => (
@@ -73,6 +79,12 @@ export default function NewProduct() {
       label: 'My Third Step',
       isDone: false,
       component: ThirdComponent,
+    },
+    {
+      key: 'fourthStep',
+      label: 'My Fourth Step',
+      isDone: false,
+      component: FourthComponent,
     },
     {
       key: 'finalStep',
@@ -232,7 +244,7 @@ export default function NewProduct() {
         <input
           type='button'
           value={
-            steps[steps.length - 1].key !== activeStep.key ? 'Next' : 'Submit'
+            steps[steps.length - 1].key !== activeStep.key ? 'Next' : 'Publish'
           }
           onClick={handleNext}
           className="w-[100%] mt-4 bg-cabiza_blue text-white p-4 cursor-pointer"
