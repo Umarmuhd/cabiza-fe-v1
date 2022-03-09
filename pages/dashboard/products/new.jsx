@@ -10,6 +10,14 @@ import BuildFollowing from "../../../components/MiniCards/BuildFollowing";
 
 import Dashboard from "../../../layouts/Dashboard";
 import { classNames } from "../../../libs/helper";
+import {
+  FirstComponent,
+  SecondComponent,
+  ThirdComponent,
+  FourthComponent,
+  FinalComponent,
+} from './FormComponents/FormComponents';
+
 
 const ArrowRight = () => (
   <svg
@@ -52,6 +60,68 @@ export default function NewProduct() {
   const [loading, setLoading] = useState(false);
   const [enabled, setEnabled] = React.useState(false);
   const [category, setCategory] = useState(null);
+  
+  const [steps, setSteps] = useState([
+    {
+      key: 'firstStep',
+      label: 'My First Step',
+      isDone: true,
+      component: FirstComponent,
+    },
+    {
+      key: 'secondStep',
+      label: 'My Second Step',
+      isDone: false,
+      component: SecondComponent,
+    },
+    {
+      key: 'thirdStep',
+      label: 'My Third Step',
+      isDone: false,
+      component: ThirdComponent,
+    },
+    {
+      key: 'fourthStep',
+      label: 'My Fourth Step',
+      isDone: false,
+      component: FourthComponent,
+    },
+    {
+      key: 'finalStep',
+      label: 'My Final Step',
+      isDone: false,
+      component: FinalComponent,
+    },
+  ]);
+
+  const [activeStep, setActiveStep] = useState(steps[0]);
+
+  const handleNext = () => {
+    if (steps[steps.length - 1].key === activeStep.key) {
+      alert('You have completed all steps.');
+      return;
+    }
+
+    const index = steps.findIndex((x) => x.key === activeStep.key);
+    setSteps((prevStep) =>
+      prevStep.map((x) => {
+        if (x.key === activeStep.key) x.isDone = true;
+        return x;
+      })
+    );
+    setActiveStep(steps[index + 1]);
+  };
+
+  const handleBack = () => {
+    const index = steps.findIndex(x => x.key === activeStep.key);
+    if (index === 0) return;
+ 
+    setSteps(prevStep => prevStep.map(x => {
+      if (x.key === activeStep.key) x.isDone = false;
+      return x;
+    }))
+    setActiveStep(steps[index - 1]);
+    };
 
   const {
     register,
@@ -95,262 +165,90 @@ export default function NewProduct() {
 
   return (
     <div>
-      <div className="bg-grey_95 md:py-10">
-        <div className="w-4/5 mx-auto">
-          <div className="flex justify-between items-center">
-            <h1 className="text-4xl leading-9 font-semibold text-dark_">
-              Products
-            </h1>
+      <div className='bg-grey_95 md:py-4 border-bottom border-b border-grey_80'>
+        <div className='w-4/5 mx-auto'>
+          <div className='flex justify-between items-center'></div>
+          <div className='mt-8'>
+            <div className='flex items-center justify-between'>
+              <div>
+                <Link href='/dashboard/products'>
+                  <a
+                    className={classNames(
+                      'py-4 px-8 rounded-lg font-semibold',
+                      'text-cabiza_tertiary text-lg'
+                    )}
+                  >
+                    Product
+                  </a>
+                </Link>
 
-            <button className="py-4 px-8 bg-cabiza_blue flex items-center text-lg font-semibold text-white rounded-lg">
-              <span className="mr-2.5">New Product </span> <PlusIcon />
-            </button>
-          </div>
-          <div className="mt-8">
-            <div className="flex">
-              <Link href="/dashboard/products">
-                <button
-                  className={classNames(
-                    "py-4 px-8 rounded-lg   text-lg font-semibold mr-4",
-                    "border border-cabiza_tertiary",
-                    " bg-cabiza_tertiary text-white "
-                  )}
-                >
-                  All Products
-                </button>
-              </Link>
+                <Link href='/dashboard/products'>
+                  <a
+                    className={classNames(
+                      'py-4 px-8 rounded-lg text-lg font-semibold',
+                      'text-grey_40'
+                    )}
+                  >
+                    Checkout
+                  </a>
+                </Link>
 
-              <Link href="/dashboard/products">
-                <button
-                  className={classNames(
-                    "py-4 px-8 rounded-lg   text-lg font-semibold mr-4",
-                    "border border-cabiza_tertiary",
+                <Link href='/dashboard/products'>
+                  <a
+                    className={classNames(
+                      'py-4 px-8 rounded-lg  text-lg font-semibold',
+                      'text-grey_40 '
+                    )}
+                  >
+                    Share
+                  </a>
+                </Link>
+              </div>
 
-                    " text-cabiza_tertiary bg-transparent "
-                  )}
-                >
-                  Affiliated
-                </button>
-              </Link>
+              <div>
+                <Link href='/dashboard/products'>
+                  <button
+                    className={classNames(
+                      'py-2 px-8 rounded-lg font-semibold',
+                      'text-grey_20 bg-white border border-solid border-grey_20 text-lg mr-4'
+                    )}
+                  >
+                    Save changes
+                  </button>
+                </Link>
+
+                <Link href='/dashboard/products'>
+                  <button
+                    className={classNames(
+                      'py-2 px-8 rounded-lg  text-lg font-semibold',
+                      'border border-solid bg-cabiza_blue text-white'
+                    )}
+                  >
+                    Publish
+                  </button>
+                </Link>
+              </div>
             </div>
           </div>
         </div>
       </div>
 
+      <div></div>
+
       <form
-        className="md:w-3/5 mx-auto text-left py-12"
+        className='md:w-4/5 mx-auto text-left py-12 px-7'
         onSubmit={handleSubmit(handleCreate)}
       >
-        <h1 className="text-2xl font-semibold text-dark_ mb-4 leading-6">
-          Publish your first product
-        </h1>
-        <p>Make some selections, fill in some boxes, and go live in minutes.</p>
-        <div className="mt-8">
-          <p className="text-lg mb-6">
-            Our <span className="text-secondary underline">Help Center</span>{" "}
-            has everything you need to know.
-          </p>
-          <RadioGroup
-            as={"ul"}
-            className="mb-6"
-            value={category}
-            onChange={setCategory}
-          >
-            <RadioGroup.Option
-              as={"li"}
-              value={0}
-              className={({ active, checked }) =>
-                `p-4 rounded-lg border-[1.5px] border-grey focus:border-secondary flex items-center mb-4 ${checked} ${active}`
-              }
-            >
-              {({ checked, active }) => (
-                <>
-                  {/* <div className="flex justify-between items-center">
-                    <span className="text-grey_60 font-medium">Everyone</span>
-                    <div className="w-6 h-6 border border-cabiza_blue rounded-full flex justify-center items-center">
-                      {checked && (
-                        <div className="w-3 h-3 rounded-full inline-block bg-cabiza_blue"></div>
-                      )}
-                    </div>
-                  </div> */}
+        <div className='step-component'>{activeStep.component()}</div>
 
-                  <img src="/images/icons/note.svg" alt="..." />
-                  <p className="ml-2">
-                    Classic:
-                    <span className="text-grey_40"> start selling today</span>
-                  </p>
-                </>
-              )}
-            </RadioGroup.Option>
-            <RadioGroup.Option
-              as={"li"}
-              value={1}
-              className={({ active, checked }) =>
-                `p-4 rounded-lg border-[1.5px] border-grey focus:border-secondary flex items-center mb-4 ${checked} ${active}`
-              }
-            >
-              {({ checked, active }) => (
-                <>
-                  {/* <div className="flex justify-between items-center">
-                    <span className="text-grey_60 font-medium">Everyone</span>
-                    <div className="w-6 h-6 border border-cabiza_blue rounded-full flex justify-center items-center">
-                      {checked && (
-                        <div className="w-3 h-3 rounded-full inline-block bg-cabiza_blue"></div>
-                      )}
-                    </div>
-                  </div> */}
-
-                  <img src="/images/icons/clock.svg" alt="..." />
-                  <p className="ml-2">
-                    Pre-order:
-                    <span className="text-grey_40">
-                      {" "}
-                      sell before a release date
-                    </span>
-                  </p>
-                </>
-              )}
-            </RadioGroup.Option>
-            <RadioGroup.Option
-              as={"li"}
-              value={2}
-              className={({ active, checked }) =>
-                `p-4 rounded-lg border-[1.5px] border-grey focus:border-secondary flex items-center mb-4 ${checked} ${active}`
-              }
-            >
-              {({ checked, active }) => (
-                <>
-                  <img src="/images/icons/refresh-circle.svg" alt="..." />
-                  <p className="ml-2">
-                    Membership:
-                    <span className="text-grey_40">
-                      charge on recurring basis
-                    </span>
-                  </p>
-                </>
-              )}
-            </RadioGroup.Option>
-          </RadioGroup>
-
-          <div className="relative mb-6">
-            <label
-              className="block text-grey_40 text-lg font-semibold mb-3"
-              htmlFor="name"
-            >
-              Name
-            </label>
-            <input
-              type="text"
-              className="border border-grey_80 px-4 py-3 placeholder-grey_80 text-grey_40 bg-white shadow-sm focus:outline-none focus:ring w-full rounded-lg"
-              style={{ transition: "all 0.15s ease 0s" }}
-              id="name"
-              placeholder="Name of product"
-              {...register("name", { required: true })}
-            />
-            {errors.name?.type === "required" && (
-              <p className="text-left text-red-600 text-xs mt-1">
-                Product name is required
-              </p>
-            )}
-          </div>
-          <div className="relative mb-6">
-            <label
-              className="block text-grey_40 text-lg font-semibold mb-3"
-              htmlFor="price"
-            >
-              Price
-            </label>
-            <div className="flex rounded-lg shadow-sm mb-4 relative">
-              <div className="absolute inset-y-0 left-0 flex items-center bg-grey_95 rounded-l-lg border border-grey_80">
-                <label htmlFor="currency" className="sr-only">
-                  Currency
-                </label>
-                <select
-                  id="currency"
-                  name="currency"
-                  className="focus:ring-indigo-500 focus:border-indigo-500 h-full py-0 pl-2 pr-2 border-transparent bg-transparent text-gray-500 rounded-l-lg border border-grey_80"
-                  {...register("currency", { required: true })}
-                >
-                  <option value={1}>$</option>
-                  <option value={2}>€</option>
-                  <option value={0}>₦</option>
-                </select>
-              </div>
-              <input
-                type="text"
-                className="border border-r-0 border-grey_80 px-4 py-3 placeholder-grey_80 text-grey_40 bg-white shadow-sm focus:outline-none focus:ring w-full rounded-l-lg pl-14"
-                style={{ transition: "all 0.15s ease 0s" }}
-                id="price"
-                placeholder="Price your product"
-                {...register("price", { required: true })}
-              />
-            </div>
-            {errors.price?.type === "required" && (
-              <p className="text-left text-red-600 text-xs mt-1">
-                Product price is required
-              </p>
-            )}
-          </div>
-          <div className="mb-6 relative">
-            <label
-              className="block text-grey_40 text-lg font-semibold mb-3"
-              htmlFor="description"
-            >
-              Description
-            </label>
-            <textarea
-              type="text"
-              className="border border-grey_80 px-4 py-3 placeholder-grey_80 text-grey_40 bg-white shadow-sm focus:outline-none focus:ring w-full rounded-lg"
-              style={{ transition: "all 0.15s ease 0s" }}
-              id="description"
-              placeholder="Post Description"
-              rows={4}
-              {...register("description", { required: true })}
-            ></textarea>
-            {errors.description?.type === "required" && (
-              <p className="text-left text-red-600 text-xs mt-1">
-                Post description is required
-              </p>
-            )}
-          </div>
-
-          <div className="flex items-center">
-            <Switch
-              checked={enabled}
-              onChange={setEnabled}
-              className={`${enabled ? "bg-cabiza_blue" : "bg-grey_80"}
-          relative inline-flex flex-shrink-0 h-[18px] w-[32px] border-2 border-transparent rounded-full cursor-pointer transition-colors ease-in-out duration-200 focus:outline-none focus-visible:ring-2  focus-visible:ring-white focus-visible:ring-opacity-75`}
-            >
-              <span className="sr-only">Use setting</span>
-              <span
-                aria-hidden="true"
-                className={`${enabled ? "translate-x-4" : "translate-x-0"}
-            pointer-events-none inline-block h-[14px] w-[13px] rounded-full bg-white shadow-lg transform ring-0 transition ease-in-out duration-200`}
-              />
-            </Switch>
-            <span className="ml-2 block text-grey_20 text-sm">
-              This product contains one or more physical goods
-            </span>
-          </div>
-
-          <button
-            className="w-full mt-6 py-4 rounded-lg flex items-center text-center justify-center bg-cabiza_blue text-lg font-semibold text-white"
-            type="submit"
-          >
-            <span className="mr-2">Next: Customize</span>
-            <ArrowRight />
-          </button>
-
-          <div className="my-8 flex items-center justify-between">
-            <div className="border-b border-grey_60 w-5/12"></div>
-            <span className="text-lg uppercase text-grey_40 font-semibold">
-              OR
-            </span>
-            <div className="border-b border-grey_60 w-5/12"></div>
-          </div>
-
-          <BuildFollowing />
-        </div>
+        <input
+          type='button'
+          value={
+            steps[steps.length - 1].key !== activeStep.key ? 'Next' : 'Publish'
+          }
+          onClick={handleNext}
+          className="w-[100%] mt-4 bg-cabiza_blue text-white p-4 cursor-pointer"
+        />
       </form>
     </div>
   );
