@@ -28,7 +28,8 @@ module.exports = {
         dark_pri: "#013D47",
         cabiza_red: "#D12424", 
         white: "#ffffff",
-        pink: "#FEF4CD"
+        pink: "#FEF4CD",
+        sky_light: "#E3E5E5"
       },
     },
   },

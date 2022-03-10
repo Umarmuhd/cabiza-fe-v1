@@ -1,3 +1,4 @@
+import React, { useState } from 'react';
 import { GrList } from 'react-icons/gr';
 import { BiStrikethrough, BiLinkAlt, BiImage } from 'react-icons/bi';
 import { BsCode, BsTypeItalic } from 'react-icons/bs';
@@ -169,7 +170,15 @@ const FirstComponent = () => {
     </>
   );
 };
+
+
 const SecondComponent = () => {
+  const [x, setX] = useState(0);
+  const handleDetails = () => {
+      setX(x++);
+    }
+  console.log(x)
+  
   return (
     <>
       <h1 className='text-4xl font-semibold text-grey_20'>
@@ -220,9 +229,14 @@ const SecondComponent = () => {
               <h3 className='text-grey_40 text-2xl font-semibold'>
                 Add Details
               </h3>
-              <p className="mt-2 text-grey_60">Make your product more convincing to your customers.</p>
-              <button className="flex w-[max-content] mx-auto border border-solid border-black p-3 mt-3 rounded-xl">
-                Add Details <p className="ml-2 text-grey_40">+</p>
+              <p className='mt-2 text-grey_60'>
+                Make your product more convincing to your customers.
+              </p>
+              <button
+                className='flex w-[max-content] mx-auto border border-solid border-black p-3 mt-3 rounded-xl'
+                onClick={handleDetails}
+              >
+                Add Details <p className='ml-2 text-grey_40'>+</p>
               </button>
             </div>
           </div>
