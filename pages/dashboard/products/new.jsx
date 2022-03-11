@@ -12,13 +12,11 @@ import Dashboard from "../../../layouts/Dashboard";
 import { classNames } from "../../../libs/helper";
 import {
   FirstComponent,
-  // SecondComponent,
+  SecondComponent,
   ThirdComponent,
   FourthComponent,
   FinalComponent,
 } from './FormComponents/FormComponents';
-
-import SecondComponent from './FormComponents/SecondComponent';
 
 let progressInterval = null;
 
@@ -70,35 +68,35 @@ export default function NewProduct() {
       id: 1,
       label: 'My First Step',
       isDone: true,
-      component: FirstComponent(),
+      component: <FirstComponent/>,
     },
     {
       key: 'secondStep',
       id: 2,
       label: 'My Second Step',
       isDone: false,
-      component: SecondComponent(),
+      component: <SecondComponent/>,
     },
     {
       key: 'thirdStep',
       id: 3,
       label: 'My Third Step',
       isDone: false,
-      component: ThirdComponent(),
+      component: <ThirdComponent/>,
     },
     {
       key: 'fourthStep',
       id: 4,
       label: 'My Fourth Step',
       isDone: false,
-      component: FourthComponent(),
+      component: <FourthComponent/>,
     },
     {
       key: 'finalStep',
       id: 5,
       label: 'My Final Step',
       isDone: false,
-      component: FinalComponent(),
+      component: <FinalComponent/>,
     },
   ]);
 

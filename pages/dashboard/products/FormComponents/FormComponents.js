@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import { GrList } from 'react-icons/gr';
 import { BiStrikethrough, BiLinkAlt, BiImage } from 'react-icons/bi';
 import { BsCode, BsTypeItalic } from 'react-icons/bs';
-import { CgFormatUppercase } from "react-icons/cg"
+import { CgFormatUppercase } from 'react-icons/cg';
 import {
   RiListOrdered,
   RiDoubleQuotesL,
@@ -10,10 +10,9 @@ import {
   RiUnderline,
 } from 'react-icons/ri';
 import { AiOutlineAlignCenter } from 'react-icons/ai';
-import { VscBold } from 'react-icons/vsc'
+import { VscBold } from 'react-icons/vsc';
 // import { IoReturnDownBack } from 'react-icons/io';
 import Toggle from './Toggle';
-
 
 const FirstComponent = () => {
   return (
@@ -171,14 +170,26 @@ const FirstComponent = () => {
   );
 };
 
-
 const SecondComponent = () => {
-  const [x, setX] = useState(0);
-  const handleDetails = () => {
-      setX(x++);
-    }
-  console.log(x)
-  
+  const [addDetails, setAddDetails] = useState([]);
+  const [CTA, setCTA] = useState(false);
+
+  const handleAddDetails = () => {
+    setAddDetails((prev) => {
+      if (prev.length === 0) {
+        return [...prev, 0];
+      }
+      if (prev.length < 5) {
+        return [...prev, `${prev[prev.length - 1]}++`];
+      } else if (prev.length >= 5) {
+        return prev;
+      }
+    });
+  };
+
+  const handleCustomizeCTA = () => {
+    setCTA(true);
+  }
   return (
     <>
       <h1 className='text-4xl font-semibold text-grey_20'>
@@ -203,10 +214,19 @@ const SecondComponent = () => {
               Pay
             </button>
 
-            <button className='border border-solid border-cabiza_blue bg-cabiza_secondary_tertiary text-cabiza_blue p-2 px-4 rounded flex items-center justify-between rounded-xl'>
+            <button className='border border-solid border-cabiza_blue bg-cabiza_secondary_tertiary text-cabiza_blue p-2 px-4 rounded flex items-center justify-between rounded-xl' onClick={handleCustomizeCTA}>
               Customize <p className='ml-3'>+</p>
             </button>
           </div>
+            {
+              CTA ? <input
+                  type='text'
+                  name='Selling for...'
+                  id='summary'
+                  placeholder='Selling for...'
+                  className='border border-solid border-grey_85 p-3 rounded-xl mt-4 outline-none'
+                /> : null
+            }
         </div>
 
         <div className='flex flex-col mt-5'>
@@ -222,29 +242,62 @@ const SecondComponent = () => {
           />
         </div>
 
-        <div className='flex flex-col mt-5 rounded-xl'>
+        <div className='flex flex-col mt-5 rounded-xl   border border-solid border-grey_80 p-4'>
           <p className='text-xl'>Additional Details</p>
-          <div className='border border-dashed border-2 border-cabiza_blue mt-5 p-7'>
-            <div className='w-[50%] mx-auto text-center'>
-              <h3 className='text-grey_40 text-2xl font-semibold'>
-                Add Details
-              </h3>
-              <p className='mt-2 text-grey_60'>
-                Make your product more convincing to your customers.
-              </p>
-              <button
-                className='flex w-[max-content] mx-auto border border-solid border-black p-3 mt-3 rounded-xl'
-                onClick={handleDetails}
-              >
-                Add Details <p className='ml-2 text-grey_40'>+</p>
-              </button>
+
+          {addDetails.length > 0 ? (
+            addDetails.map((index) => {
+              return (
+                <div key={index}>
+                  <div className='flex justify-between items-center mb-3'>
+                    <input
+                      type='text'
+                      placeholder='Attribute'
+                      className='flex w-[45%] border border-solid border-grey_80 p-3 mt-3 rounded-xl outline-none'
+                    />
+
+                    <input
+                      type='text'
+                      placeholder='Value'
+                      className='flex w-[45%] border border-solid border-grey_80 p-3 mt-3 rounded-xl outline-none'
+                    />
+                  </div>
+                </div>
+              );
+            })
+          ) : (
+            <div className='border border-dashed border-2 border-cabiza_blue mt-5 p-7'>
+              <div className='w-[50%] mx-auto text-center'>
+                <h3 className='text-grey_40 text-2xl font-semibold'>
+                  Add Details
+                </h3>
+                <p className='mt-2 text-grey_60'>
+                  Make your product more convincing to your customers.
+                </p>
+                <button
+                  className='flex w-[max-content] mx-auto border border-solid border-black p-3 mt-3 rounded-xl'
+                  onClick={() => handleAddDetails()}
+                >
+                  Add Details <p className='ml-2 text-grey_40'>+</p>
+                </button>
+              </div>
             </div>
-          </div>
+          )}
+
+          {addDetails.length > 0 && (
+            <button
+              className='flex w-[max-content] border border-solid border-black p-3 mt-3 rounded-xl'
+              onClick={handleAddDetails}
+            >
+              Add Details <p className='ml-2 text-grey_40'>+</p>
+            </button>
+          )}
         </div>
       </div>
     </>
   );
 };
+
 const ThirdComponent = () => {
   return (
     <>
@@ -254,15 +307,16 @@ const ThirdComponent = () => {
         <div className='flex flex-col mt-5'>
           <p className='text-xl'>Files</p>
           <div className='border border-dashed border-2 border-cabiza_blue mt-5 p-7'>
-            <div className='w-[50%] mx-auto text-center'>
+              <input type="file" name="add_files" id="add_files" className="hidden" />
+            <label htmlFor="add_files" className='w-[50%] mx-auto text-center'>
               <h3 className='text-grey_40 text-2xl font-semibold'>Add Files</h3>
               <p className='mt-2 text-grey_60'>
                 Upload your product files here
               </p>
-              <button className='flex w-[max-content] mx-auto border border-solid border-black p-3 mt-3 rounded-xl'>
+              <p className='flex w-[max-content] mx-auto border border-solid border-black p-3 mt-3 rounded-xl cursor-pointer'>
                 Upload Files <p className='ml-2 text-grey_40'>+</p>
-              </button>
-            </div>
+              </p>
+            </label>
           </div>
 
           <div className='flex flex-col mt-5'>
@@ -277,7 +331,9 @@ const ThirdComponent = () => {
                 placeholder='Redirect URL after purchase'
                 className=' outline-none w-[90%]'
               />
-              <button className="border border-solid border-grey_20 px-4 rounded text-grey_20 py-2">Test</button>
+              <button className='border border-solid border-grey_20 px-4 rounded text-grey_20 py-2'>
+                Test
+              </button>
             </div>
           </div>
         </div>
@@ -316,9 +372,11 @@ const FourthComponent = () => {
               <div className='flex justify-between items-center mt-5'>
                 <div>
                   <h3 className='text-xl text-grey_20'>Settings</h3>
-                  <p className="text-grey_40">Let customers pay what they want?</p>
+                  <p className='text-grey_40'>
+                    Let customers pay what they want?
+                  </p>
                 </div>
-                  <Toggle                                                label="TogglePayment"  />            
+                <Toggle label='TogglePayment' />
               </div>
             </div>
           </div>
@@ -433,7 +491,7 @@ const FinalComponent = () => {
           </div>
         </div>
 
-        <div className="px-3">
+        <div className='px-3'>
           <div className='bg-grey_95 p-3 rounded flex items-center justify-between px-5 mb-2'>
             <p className='text-grey_40'>Allow “Become Affiliate” button</p>
             <Toggle label='LimitSales' />
@@ -464,4 +522,10 @@ const FinalComponent = () => {
   );
 };
 
-export { FirstComponent, SecondComponent, ThirdComponent, FourthComponent, FinalComponent };
+export {
+  FirstComponent,
+  SecondComponent,
+  ThirdComponent,
+  FourthComponent,
+  FinalComponent,
+};
