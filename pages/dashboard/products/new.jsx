@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { useForm } from "react-hook-form";
 import { useRouter } from "next/router";
 import axios from "axios";
@@ -18,6 +18,7 @@ import {
   FinalComponent,
 } from './FormComponents/FormComponents';
 
+let progressInterval = null;
 
 const ArrowRight = () => (
   <svg
@@ -64,35 +65,42 @@ export default function NewProduct() {
   const [steps, setSteps] = useState([
     {
       key: 'firstStep',
+      id: 1,
       label: 'My First Step',
       isDone: true,
-      component: FirstComponent,
+      component: <FirstComponent/>,
     },
     {
       key: 'secondStep',
+      id: 2,
       label: 'My Second Step',
       isDone: false,
-      component: SecondComponent,
+      component: <SecondComponent/>,
     },
     {
       key: 'thirdStep',
+      id: 3,
       label: 'My Third Step',
       isDone: false,
-      component: ThirdComponent,
+      component: <ThirdComponent/>,
     },
     {
       key: 'fourthStep',
+      id: 4,
       label: 'My Fourth Step',
       isDone: false,
-      component: FourthComponent,
+      component: <FourthComponent/>,
     },
     {
       key: 'finalStep',
+      id: 5,
       label: 'My Final Step',
       isDone: false,
-      component: FinalComponent,
+      component: <FinalComponent/>,
     },
   ]);
+
+  const [progress, setProgress] = useState(0);
 
   const [activeStep, setActiveStep] = useState(steps[0]);
 
@@ -112,16 +120,28 @@ export default function NewProduct() {
     setActiveStep(steps[index + 1]);
   };
 
-  const handleBack = () => {
-    const index = steps.findIndex(x => x.key === activeStep.key);
-    if (index === 0) return;
+  useEffect(() => {  
+    progressInterval = setProgress((activeStep.id / steps.length) * 100);
+    // progressInterval = setInterval(() => {
+    // }, 100);
+  }, [activeStep]);
+
+  useEffect(() => {
+    if (progress >= 100) {
+      clearInterval(progressInterval);
+    }
+  }, [progress]);
+
+  // const handleBack = () => {
+  //   const index = steps.findIndex(x => x.key === activeStep.key);
+  //   if (index === 0) return;
  
-    setSteps(prevStep => prevStep.map(x => {
-      if (x.key === activeStep.key) x.isDone = false;
-      return x;
-    }))
-    setActiveStep(steps[index - 1]);
-    };
+  //   setSteps(prevStep => prevStep.map(x => {
+  //     if (x.key === activeStep.key) x.isDone = false;
+  //     return x;
+  //   }))
+  //   setActiveStep(steps[index - 1]);
+  //   };
 
   const {
     register,
@@ -161,7 +181,7 @@ export default function NewProduct() {
       console.log(error);
       setLoading(false);
     }
-  };
+  };   
 
   return (
     <div>
@@ -233,13 +253,18 @@ export default function NewProduct() {
         </div>
       </div>
 
-      <div></div>
-
       <form
         className='md:w-4/5 mx-auto text-left py-12 px-7'
         onSubmit={handleSubmit(handleCreate)}
       >
-        <div className='step-component'>{activeStep.component()}</div>
+        <div className='w-full bg-sky_light h-2 rounded-xl mb-10'>
+          <div
+            className='bg-cabiza_blue h-2 rounded-xl'
+            role='progressbar'
+            style={{ width: `${progress}%`, transition: "all 0.3s ease-in-out 0s" }}
+          ></div>
+        </div>
+        <div className='step-component'>{activeStep.component}</div>
 
         <input
           type='button'
@@ -247,7 +272,7 @@ export default function NewProduct() {
             steps[steps.length - 1].key !== activeStep.key ? 'Next' : 'Publish'
           }
           onClick={handleNext}
-          className="w-[100%] mt-4 bg-cabiza_blue text-white p-4 cursor-pointer"
+          className='w-[100%] mt-4 bg-tertiary text-white p-4 cursor-pointer'
         />
       </form>
     </div>
