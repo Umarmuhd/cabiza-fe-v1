@@ -685,19 +685,19 @@ const FinalComponent = () => {
         <div className='px-3'>
           <div className='bg-grey_95 p-3 rounded flex items-center justify-between px-5 mb-2'>
             <p className='text-grey_40'>Allow “Become Affiliate” button</p>
-            <Toggle label='LimitSales' />
+            <Toggle label='Become_Affiliate' />
           </div>
 
           <div className='bg-grey_95 p-3 rounded flex items-center justify-between px-5 mb-2'>
             <p className='text-grey_40'>Show custom affiliate percentage</p>
-            <Toggle label='LimitSales' />
+            <Toggle label='custom_affiliate' />
           </div>
 
           <div className='bg-grey_95 p-3 rounded flex items-center justify-between px-5 mb-2'>
             <p className='text-grey_40'>
               Display your product's 1-5 star rating to prospective customers
             </p>
-            <Toggle label='LimitSales' />
+            <Toggle label='rating' />
           </div>
 
           <div className='bg-grey_95 p-3 rounded flex items-center justify-between px-5 mb-2'>
@@ -705,7 +705,7 @@ const FinalComponent = () => {
               This product contains content meant only for adults, including the
               preview
             </p>
-            <Toggle label='LimitSales' />
+            <Toggle label='preview' />
           </div>
         </div>
       </div>
