@@ -291,28 +291,6 @@ export default function NewProduct() {
               </p>
             )}
           </div>
-          <div className="mb-6 relative">
-            <label
-              className="block text-grey_40 text-lg font-semibold mb-3"
-              htmlFor="description"
-            >
-              Description
-            </label>
-            <textarea
-              type="text"
-              className="border border-grey_80 px-4 py-3 placeholder-grey_80 text-grey_40 bg-white shadow-sm focus:outline-none focus:ring w-full rounded-lg"
-              style={{ transition: "all 0.15s ease 0s" }}
-              id="description"
-              placeholder="Post Description"
-              rows={4}
-              {...register("description", { required: true })}
-            ></textarea>
-            {errors.description?.type === "required" && (
-              <p className="text-left text-red-600 text-xs mt-1">
-                Post description is required
-              </p>
-            )}
-          </div>
 
           <div className="flex items-center">
             <Switch
