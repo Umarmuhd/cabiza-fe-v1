@@ -52,7 +52,7 @@ export default function Signup() {
         <div className="md:w-3/5 max-w-lg">
           <div className="bg-white py-10 px-10 w-full border border-grey_80 rounded-xl">
             <form onSubmit={handleSubmit(handleSignup)}>
-              <h1 className="text-4xl mb-8 text-grey_40 font-bold">
+              <h1 className="text-4xl mb-8 text-dark font-bold">
                 Sign up for free
               </h1>
               <p className="my-3 text-sm text-red-500">{error}</p>
@@ -125,7 +125,7 @@ export default function Signup() {
 
               <div className="text-center my-6">
                 <button
-                  className="bg-cabiza_blue text-white active:bg-cabiza_blue text-lg font-semibold px-6 py-3 rounded-lg outline-none focus:outline-none w-full"
+                  className="bg-primary text-white active:bg-primary text-lg font-semibold px-6 py-3 rounded-lg outline-none focus:outline-none w-full"
                   type="submit"
                   style={{
                     transition: "all 0.15s ease 0s",

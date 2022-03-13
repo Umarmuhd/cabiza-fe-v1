@@ -38,7 +38,7 @@ export default function ForgetPassword() {
           <div className="bg-white py-10 px-10 w-full border border-grey_80 rounded-xl">
             <form onSubmit={handleSubmit(handleForget)}>
               <div className="mb-8">
-                <h1 className="text-4xl text-grey_40 font-bold">
+                <h1 className="text-4xl text-dark font-bold">
                   Forget password
                 </h1>
                 <p className="mt-3 text-grey_60">
@@ -71,7 +71,7 @@ export default function ForgetPassword() {
 
               <div className="text-center my-6">
                 <button
-                  className="bg-cabiza_blue text-white active:bg-cabiza_blue text-lg font-semibold px-6 py-3 rounded-lg outline-none focus:outline-none w-full"
+                  className="bg-primary text-white active:bg-primary text-lg font-semibold px-6 py-3 rounded-lg outline-none focus:outline-none w-full"
                   type="submit"
                   style={{
                     transition: "all 0.15s ease 0s",
@@ -85,7 +85,7 @@ export default function ForgetPassword() {
               <p className="text-center text-grey_40 text-lg">
                 Already have an account?{" "}
                 <Link href="/auth/login">
-                  <a className="text-cabiza_blue ml-1">Login</a>
+                  <a className="text-primary ml-1">Login</a>
                 </Link>
               </p>
             </form>

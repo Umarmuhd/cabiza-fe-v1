@@ -80,9 +80,9 @@ const Products = ({}) => {
               </h1>
 
               <Link href="/dashboard/products/new">
-                <button className="py-4 px-8 bg-cabiza_blue flex items-center text-lg font-semibold text-white rounded-lg">
+                <a className="py-4 px-8 bg-primary flex items-center text-lg font-semibold text-white rounded-lg">
                   <span className="mr-2.5">New Product </span> <PlusIcon />
-                </button>
+                </a>
               </Link>
             </div>
             <div className="mt-8">
@@ -93,10 +93,10 @@ const Products = ({}) => {
                     className={({ selected }) =>
                       classNames(
                         "py-4 px-8 rounded-lg   text-lg font-semibold mr-4",
-                        "border border-cabiza_tertiary",
+                        "border border-primary",
                         selected
-                          ? " bg-cabiza_tertiary text-white "
-                          : " text-cabiza_tertiary bg-transparent "
+                          ? " bg-primary text-white "
+                          : " text-primary bg-transparent "
                       )
                     }
                   >
@@ -107,10 +107,10 @@ const Products = ({}) => {
                     className={({ selected }) =>
                       classNames(
                         "py-4 px-8 rounded-lg   text-lg font-semibold mr-4",
-                        "border border-cabiza_tertiary",
+                        "border border-primary",
                         selected
-                          ? " bg-cabiza_tertiary text-white "
-                          : " text-cabiza_tertiary bg-transparent "
+                          ? " bg-primary text-white "
+                          : " text-primary bg-transparent "
                       )
                     }
                   >

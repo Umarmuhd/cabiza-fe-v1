@@ -23,7 +23,7 @@ export default function Login() {
             <div className="py-6 text-center">
               <p className="text-grey_40 text-lg">
                 Email not received?{" "}
-                <span className="text-cabiza_blue ml-1">
+                <span className="text-primary ml-1">
                   Resend confirmation mail
                 </span>
               </p>

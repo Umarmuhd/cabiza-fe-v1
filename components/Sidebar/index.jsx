@@ -192,14 +192,14 @@ const PayoutIcon = () => (
   >
     <path
       d="M8.67188 14.3298C8.67188 15.6198 9.66188 16.6598 10.8919 16.6598H13.4019C14.4719 16.6598 15.3419 15.7498 15.3419 14.6298C15.3419 13.4098 14.8119 12.9798 14.0219 12.6998L9.99187 11.2998C9.20187 11.0198 8.67188 10.5898 8.67188 9.36984C8.67188 8.24984 9.54187 7.33984 10.6119 7.33984H13.1219C14.3519 7.33984 15.3419 8.37984 15.3419 9.66984"
-      stroke="#24BAD4"
+      stroke="#5B44E9"
       strokeWidth="1.5"
       strokeLinecap="round"
       strokeLinejoin="round"
     />
     <path
       d="M12 6V18"
-      stroke="#24BAD4"
+      stroke="#5B44E9"
       strokeWidth="1.5"
       strokeLinecap="round"
       strokeLinejoin="round"
@@ -223,7 +223,7 @@ const DiscoverIcon = () => (
   >
     <path
       d="M11 20C15.9706 20 20 15.9706 20 11C20 6.02944 15.9706 2 11 2C6.02944 2 2 6.02944 2 11C2 15.9706 6.02944 20 11 20Z"
-      stroke="#24BAD4"
+      stroke="#5B44E9"
       strokeWidth="1.5"
       strokeLinecap="round"
       strokeLinejoin="round"
@@ -247,7 +247,7 @@ const LibraryIcon = () => (
   >
     <path
       d="M8.5 19H8C4 19 2 18 2 13V8C2 4 4 2 8 2H16C20 2 22 4 22 8V13C22 17 20 19 16 19H15.5C15.19 19 14.89 19.15 14.7 19.4L13.2 21.4C12.54 22.28 11.46 22.28 10.8 21.4L9.3 19.4C9.14 19.18 8.77 19 8.5 19Z"
-      stroke="#24BAD4"
+      stroke="#5B44E9"
       strokeWidth="1.5"
       strokeMiterlimit="10"
       strokeLinecap="round"
@@ -255,7 +255,7 @@ const LibraryIcon = () => (
     />
     <path
       d="M7 8H17"
-      stroke="#24BAD4"
+      stroke="#5B44E9"
       strokeWidth="1.5"
       strokeLinecap="round"
       strokeLinejoin="round"
@@ -279,29 +279,29 @@ const ShopIcon = () => (
     xmlns="http://www.w3.org/2000/svg"
   >
     <path
-      d="M3.01001 11.22V15.71C3.01001 20.2 4.81001 22 9.30001 22H14.69C19.18 22 20.98 20.2 20.98 15.71V11.22"
-      stroke="#24BAD4"
+      d="M3.01001 11.2202V15.7102C3.01001 20.2002 4.81001 22.0002 9.30001 22.0002H14.69C19.18 22.0002 20.98 20.2002 20.98 15.7102V11.2202"
+      stroke="#5B44E9"
       strokeWidth="1.5"
       strokeLinecap="round"
       strokeLinejoin="round"
     />
     <path
       d="M12 12C13.83 12 15.18 10.51 15 8.68L14.34 2H9.66999L8.99999 8.68C8.81999 10.51 10.17 12 12 12Z"
-      stroke="#24BAD4"
+      stroke="#5B44E9"
       strokeWidth="1.5"
       strokeLinecap="round"
       strokeLinejoin="round"
     />
     <path
       d="M18.31 12C20.33 12 21.81 10.36 21.61 8.35L21.33 5.6C20.97 3 19.97 2 17.35 2H14.3L15 9.01C15.17 10.66 16.66 12 18.31 12Z"
-      stroke="#24BAD4"
+      stroke="#5B44E9"
       strokeWidth="1.5"
       strokeLinecap="round"
       strokeLinejoin="round"
     />
     <path
-      d="M5.64 12C7.29 12 8.78 10.66 8.94 9.01L9.16 6.8L9.64001 2H6.59C3.97001 2 2.97 3 2.61 5.6L2.34 8.35C2.14 10.36 3.62 12 5.64 12Z"
-      stroke="#24BAD4"
+      d="M5.63988 12C7.28988 12 8.77988 10.66 8.93988 9.01L9.15988 6.8L9.63988 2H6.58988C3.96988 2 2.96988 3 2.60988 5.6L2.33988 8.35C2.13988 10.36 3.61988 12 5.63988 12Z"
+      stroke="#5B44E9"
       strokeWidth="1.5"
       strokeLinecap="round"
       strokeLinejoin="round"
@@ -402,7 +402,7 @@ const Sidebar = ({ user }) => {
   const [collapseShow, setCollapseShow] = React.useState("hidden");
   return (
     <>
-      <nav className="md:left-0 md:block md:fixed md:top-0 md:bottom-0 md:overflow-y-auto md:flex-row md:flex-nowrap md:overflow-hidden shadow-xl bg-[#1A1A19] flex flex-wrap items-center justify-between relative md:w-64 z-10 py-4 px-6">
+      <nav className="md:left-0 md:block md:fixed md:top-0 md:bottom-0 md:overflow-y-auto md:flex-row md:flex-nowrap md:overflow-hidden shadow-xl bg-[#202325] flex flex-wrap items-center justify-between relative md:w-64 z-10 py-4 px-6">
         <div className="md:flex-col md:items-stretch md:min-h-full md:flex-nowrap px-0 flex flex-wrap items-center justify-between w-full mx-auto">
           {/* Toggler */}
           <button

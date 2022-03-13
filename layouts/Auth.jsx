@@ -19,7 +19,7 @@ export default function Auth({ children }) {
       <div className="bg-grey_98 min-h-screen h-full">
         <AuthNavbar />
         <main className="h-full min-h-screen">{children}</main>
-        <AuthFooter />
+        {/* <AuthFooter /> */}
       </div>
     </>
   );

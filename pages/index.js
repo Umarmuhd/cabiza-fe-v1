@@ -81,7 +81,7 @@ export default function Home() {
 
 
               <div className="flex md:justify-start justify-center">
-                <a className={`p-3 px-12 bg-cabiza_blue text-lg font-semibold text-white rounded ${styles.pointer}`}>
+                <a className={`p-3 px-12 bg-primary text-lg font-semibold text-white rounded ${styles.pointer}`}>
                   Get started
                 </a>
               </div>
