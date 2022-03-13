@@ -11,6 +11,7 @@ module.exports = {
         secondary: "#912CDB",
         yellow: "#FCCA03",
         cabiza_secondary: "#02BDDC",
+        cabiza_secondary_tertiary: "#E5F7FB",
         secondary_light: "#BF85EA",
         cabiza_grey: "#828080",
         tertiary: "#5B188B",
@@ -27,7 +28,8 @@ module.exports = {
         dark_pri: "#013D47",
         cabiza_red: "#D12424", 
         white: "#ffffff",
-        pink: "#FEF4CD"
+        pink: "#FEF4CD",
+        sky_light: "#E3E5E5"
       },
     },
   },
