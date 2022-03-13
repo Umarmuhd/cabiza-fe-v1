@@ -1,12 +1,12 @@
-import React from 'react';
-import styles from './Toggle.module.css';
+import React from "react";
+import styles from "./Toggle.module.css";
 
 const ToggleSwitch = ({ label, click }) => {
   return (
     <div className={`${styles.container}`}>
-      <div className={`${styles['toggle-switch']}`}>
+      <div className={`${styles["toggle-switch"]}`}>
         <input
-          type='checkbox'
+          type="checkbox"
           className={`${styles.checkbox}`}
           name={label}
           id={label}

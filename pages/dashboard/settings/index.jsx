@@ -1,5 +1,4 @@
 import React from "react";
-import { useForm } from "react-hook-form";
 import { Tab } from "@headlessui/react";
 
 import Dashboard from "@/layouts/Dashboard";
@@ -8,14 +7,9 @@ import { classNames } from "../../../libs/helper";
 import Payout from "@/components/Settings/Payout";
 import Password from "@/components/Settings/Password";
 import Setting from "@/components/Settings/Setting";
+import Payment from "@/components/Settings/Payment";
 
 export default function Settings() {
-  const {
-    register,
-    handleSubmit,
-    formState: { errors },
-  } = useForm();
-
   return (
     <div>
       <Tab.Group>
@@ -98,7 +92,9 @@ export default function Settings() {
           <Tab.Panel>
             <Payout />
           </Tab.Panel>
-          <Tab.Panel>{/* <WorkFlow /> */}</Tab.Panel>
+          <Tab.Panel>
+            <Payment />
+          </Tab.Panel>
           <Tab.Panel>
             <Password />
           </Tab.Panel>

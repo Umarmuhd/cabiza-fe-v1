@@ -1,17 +1,16 @@
 import React, { useState, useContext, useEffect } from "react";
 import { Tab } from "@headlessui/react";
 
-import AllProductsEmpty from "../../../components/Cards/AllProductsEmpty";
+import AllProductsEmpty from "@/components/Cards/AllProductsEmpty";
 
-import Dashboard from "../../../layouts/Dashboard";
-import AllProducts from "../../../components/Cards/AllProducts";
-import Affiliated from "../../../components/Cards/Affiliated";
+import Dashboard from "@/layouts/Dashboard";
+import AllProducts from "@/components/Cards/AllProducts";
+import Affiliated from "@/components/Cards/Affiliated";
 import { classNames } from "../../../libs/helper";
 import Link from "next/link";
 import { API_URL } from "@/config/index";
 import AuthContext from "@/context/AuthContext";
 import axios from "axios";
-import { toast } from "react-hot-toast";
 
 const PlusIcon = () => (
   <svg
@@ -79,7 +78,7 @@ const Products = ({}) => {
                 Products
               </h1>
 
-              <Link href="/dashboard/products/new">
+              <Link href="/dashboard/products/create">
                 <a className="py-4 px-8 bg-primary flex items-center text-lg font-semibold text-white rounded-lg">
                   <span className="mr-2.5">New Product </span> <PlusIcon />
                 </a>
