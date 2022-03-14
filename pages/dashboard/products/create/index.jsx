@@ -2,101 +2,61 @@ import React, { useState, useEffect } from "react";
 import { useForm } from "react-hook-form";
 import { useRouter } from "next/router";
 import axios from "axios";
-import { Switch, RadioGroup } from "@headlessui/react";
 import Link from "next/link";
 import { toast } from "react-hot-toast";
 import { API_URL } from "@/config/index";
-import BuildFollowing from "../../../components/MiniCards/BuildFollowing";
 
-import Dashboard from "../../../layouts/Dashboard";
-import { classNames } from "../../../libs/helper";
-import {
-  FirstComponent,
-  SecondComponent,
-  ThirdComponent,
-  FourthComponent,
-  FinalComponent,
-} from './FormComponents/FormComponents';
+import Dashboard from "@/layouts/Dashboard";
+import { classNames } from "@/libs/helper";
+
+import CreateProduct from "./create-product";
+import ProductInfo from "./product-info";
+import ProductContent from "./product-content";
+import ProductPricing from "./product-pricing";
+import ProductSettings from "./product-settings";
 
 let progressInterval = null;
 
-const ArrowRight = () => (
-  <svg
-    width="24"
-    height="24"
-    viewBox="0 0 24 24"
-    fill="none"
-    xmlns="http://www.w3.org/2000/svg"
-  >
-    <path
-      d="M14.4301 18.82C14.2401 18.82 14.0501 18.75 13.9001 18.6C13.6101 18.31 13.6101 17.83 13.9001 17.54L19.4401 12L13.9001 6.46C13.6101 6.17 13.6101 5.69 13.9001 5.4C14.1901 5.11 14.6701 5.11 14.9601 5.4L21.0301 11.47C21.3201 11.76 21.3201 12.24 21.0301 12.53L14.9601 18.6C14.8101 18.75 14.6201 18.82 14.4301 18.82Z"
-      fill="white"
-    />
-    <path
-      d="M20.33 12.75H3.5C3.09 12.75 2.75 12.41 2.75 12C2.75 11.59 3.09 11.25 3.5 11.25H20.33C20.74 11.25 21.08 11.59 21.08 12C21.08 12.41 20.74 12.75 20.33 12.75Z"
-      fill="white"
-    />
-  </svg>
-);
-const PlusIcon = () => (
-  <svg
-    width="24"
-    height="24"
-    viewBox="0 0 24 24"
-    fill="none"
-    xmlns="http://www.w3.org/2000/svg"
-  >
-    <path
-      d="M18 12.75H6C5.59 12.75 5.25 12.41 5.25 12C5.25 11.59 5.59 11.25 6 11.25H18C18.41 11.25 18.75 11.59 18.75 12C18.75 12.41 18.41 12.75 18 12.75Z"
-      fill="white"
-    />
-    <path
-      d="M12 18.75C11.59 18.75 11.25 18.41 11.25 18V6C11.25 5.59 11.59 5.25 12 5.25C12.41 5.25 12.75 5.59 12.75 6V18C12.75 18.41 12.41 18.75 12 18.75Z"
-      fill="white"
-    />
-  </svg>
-);
-
-export default function NewProduct() {
+export default function Create() {
   const [loading, setLoading] = useState(false);
   const [enabled, setEnabled] = React.useState(false);
   const [category, setCategory] = useState(null);
-  
+
   const [steps, setSteps] = useState([
     {
-      key: 'firstStep',
+      key: "firstStep",
       id: 1,
-      label: 'My First Step',
+      label: "My First Step",
       isDone: true,
-      component: <FirstComponent/>,
+      component: <CreateProduct />,
     },
     {
-      key: 'secondStep',
+      key: "secondStep",
       id: 2,
-      label: 'My Second Step',
+      label: "My Second Step",
       isDone: false,
-      component: <SecondComponent/>,
+      component: <ProductInfo />,
     },
     {
-      key: 'thirdStep',
+      key: "thirdStep",
       id: 3,
-      label: 'My Third Step',
+      label: "My Third Step",
       isDone: false,
-      component: <ThirdComponent/>,
+      component: <ProductContent />,
     },
     {
-      key: 'fourthStep',
+      key: "fourthStep",
       id: 4,
-      label: 'My Fourth Step',
+      label: "My Fourth Step",
       isDone: false,
-      component: <FourthComponent/>,
+      component: <ProductPricing />,
     },
     {
-      key: 'finalStep',
+      key: "finalStep",
       id: 5,
-      label: 'My Final Step',
+      label: "My Final Step",
       isDone: false,
-      component: <FinalComponent/>,
+      component: <ProductSettings />,
     },
   ]);
 
@@ -106,7 +66,7 @@ export default function NewProduct() {
 
   const handleNext = () => {
     if (steps[steps.length - 1].key === activeStep.key) {
-      alert('You have completed all steps.');
+      alert("You have completed all steps.");
       return;
     }
 
@@ -120,7 +80,7 @@ export default function NewProduct() {
     setActiveStep(steps[index + 1]);
   };
 
-  useEffect(() => {  
+  useEffect(() => {
     progressInterval = setProgress((activeStep.id / steps.length) * 100);
     // progressInterval = setInterval(() => {
     // }, 100);
@@ -131,17 +91,6 @@ export default function NewProduct() {
       clearInterval(progressInterval);
     }
   }, [progress]);
-
-  // const handleBack = () => {
-  //   const index = steps.findIndex(x => x.key === activeStep.key);
-  //   if (index === 0) return;
- 
-  //   setSteps(prevStep => prevStep.map(x => {
-  //     if (x.key === activeStep.key) x.isDone = false;
-  //     return x;
-  //   }))
-  //   setActiveStep(steps[index - 1]);
-  //   };
 
   const {
     register,
@@ -181,20 +130,20 @@ export default function NewProduct() {
       console.log(error);
       setLoading(false);
     }
-  };   
+  };
 
   return (
     <div>
       <div className='bg-grey_95 md:py-4 border-bottom border-b border-grey_80'>
-        <div className='w-4/5 mx-auto'>
+        <div className='xl:w-4/5 lg:w-5/5 lg:px-2 xl:mx-auto lg:ml-[1rem]'>
           <div className='flex justify-between items-center'></div>
           <div className='mt-8'>
-            <div className='flex items-center justify-between'>
+            <div className='flex items-center justify-between md:ml-5'>
               <div>
                 <Link href='/dashboard/products'>
                   <a
                     className={classNames(
-                      'py-4 px-8 rounded-lg font-semibold',
+                      'lg:py-4 md:mr-3 lg:px-3 xl:px-8 rounded-lg font-semibold',
                       'text-cabiza_tertiary text-lg'
                     )}
                   >
@@ -205,7 +154,7 @@ export default function NewProduct() {
                 <Link href='/dashboard/products'>
                   <a
                     className={classNames(
-                      'py-4 px-8 rounded-lg text-lg font-semibold',
+                      'lg:py-4 xl:px-8 lg:px-3 md:mr-3 rounded-lg text-lg font-semibold',
                       'text-grey_40'
                     )}
                   >
@@ -216,7 +165,7 @@ export default function NewProduct() {
                 <Link href='/dashboard/products'>
                   <a
                     className={classNames(
-                      'py-4 px-8 rounded-lg  text-lg font-semibold',
+                      'lg:py-4 xl:px-8 lg:px-3 md:mr-3 rounded-lg  text-lg font-semibold',
                       'text-grey_40 '
                     )}
                   >
@@ -225,28 +174,24 @@ export default function NewProduct() {
                 </Link>
               </div>
 
-              <div>
-                <Link href='/dashboard/products'>
-                  <button
-                    className={classNames(
-                      'py-2 px-8 rounded-lg font-semibold',
-                      'text-grey_20 bg-white border border-solid border-grey_20 text-lg mr-4'
-                    )}
-                  >
-                    Save changes
-                  </button>
-                </Link>
+              <div className='flex'>
+                <button
+                  className={classNames(
+                    'lg:py-4 md:py-1 md:px-1 lg:px-8 rounded-lg font-semibold',
+                    'text-grey_20 bg-white border border-solid border-grey_20 text-lg lg:mr-4 md:mr-2'
+                  )}
+                >
+                  Save changes
+                </button>
 
-                <Link href='/dashboard/products'>
-                  <button
-                    className={classNames(
-                      'py-2 px-8 rounded-lg  text-lg font-semibold',
-                      'border border-solid bg-cabiza_blue text-white'
-                    )}
-                  >
-                    Publish
-                  </button>
-                </Link>
+                <button
+                  className={classNames(
+                    'py-2 px-8 rounded-lg  text-lg font-semibold',
+                    'border border-solid bg-primary text-white'
+                  )}
+                >
+                  Publish
+                </button>
               </div>
             </div>
           </div>
@@ -254,14 +199,17 @@ export default function NewProduct() {
       </div>
 
       <form
-        className='md:w-4/5 mx-auto text-left py-12 px-7'
+        className='lg:w-4/5 mx-auto text-left py-12 px-7'
         onSubmit={handleSubmit(handleCreate)}
       >
         <div className='w-full bg-sky_light h-2 rounded-xl mb-10'>
           <div
             className='bg-cabiza_blue h-2 rounded-xl'
             role='progressbar'
-            style={{ width: `${progress}%`, transition: "all 0.3s ease-in-out 0s" }}
+            style={{
+              width: `${progress}%`,
+              transition: 'all 0.3s ease-in-out 0s',
+            }}
           ></div>
         </div>
         <div className='step-component'>{activeStep.component}</div>
@@ -279,4 +227,4 @@ export default function NewProduct() {
   );
 }
 
-NewProduct.layout = Dashboard;
+Create.layout = Dashboard;

@@ -16,15 +16,21 @@ export default function Dashboard({ children }) {
   }
 
   return (
-    <>
-      <div className="md:static">
-        <Sidebar user={user} />
-        <div className="relative md:ml-64 main-content">
-          <div className="px-0 md:px-0 mx-auto w-full -m-24 content-wrap">
-            {children}
-          </div>
+    <div className="md:static">
+      <Sidebar user={user} />
+      <div className="main_content relative">
+        <div className="px-0 md:px-0 mx-auto w-full -m-24 content-wrap">
+          {children}
         </div>
+
+        <style jsx>{`
+          @media screen and (min-width: 768px) {
+            .main_content {
+              margin-left: 256px;
+            }
+          }
+        `}</style>
       </div>
-    </>
+    </div>
   );
 }

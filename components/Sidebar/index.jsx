@@ -192,14 +192,14 @@ const PayoutIcon = () => (
   >
     <path
       d="M8.67188 14.3298C8.67188 15.6198 9.66188 16.6598 10.8919 16.6598H13.4019C14.4719 16.6598 15.3419 15.7498 15.3419 14.6298C15.3419 13.4098 14.8119 12.9798 14.0219 12.6998L9.99187 11.2998C9.20187 11.0198 8.67188 10.5898 8.67188 9.36984C8.67188 8.24984 9.54187 7.33984 10.6119 7.33984H13.1219C14.3519 7.33984 15.3419 8.37984 15.3419 9.66984"
-      stroke="#24BAD4"
+      stroke="#5B44E9"
       strokeWidth="1.5"
       strokeLinecap="round"
       strokeLinejoin="round"
     />
     <path
       d="M12 6V18"
-      stroke="#24BAD4"
+      stroke="#5B44E9"
       strokeWidth="1.5"
       strokeLinecap="round"
       strokeLinejoin="round"
@@ -223,7 +223,7 @@ const DiscoverIcon = () => (
   >
     <path
       d="M11 20C15.9706 20 20 15.9706 20 11C20 6.02944 15.9706 2 11 2C6.02944 2 2 6.02944 2 11C2 15.9706 6.02944 20 11 20Z"
-      stroke="#24BAD4"
+      stroke="#5B44E9"
       strokeWidth="1.5"
       strokeLinecap="round"
       strokeLinejoin="round"
@@ -247,7 +247,7 @@ const LibraryIcon = () => (
   >
     <path
       d="M8.5 19H8C4 19 2 18 2 13V8C2 4 4 2 8 2H16C20 2 22 4 22 8V13C22 17 20 19 16 19H15.5C15.19 19 14.89 19.15 14.7 19.4L13.2 21.4C12.54 22.28 11.46 22.28 10.8 21.4L9.3 19.4C9.14 19.18 8.77 19 8.5 19Z"
-      stroke="#24BAD4"
+      stroke="#5B44E9"
       strokeWidth="1.5"
       strokeMiterlimit="10"
       strokeLinecap="round"
@@ -255,7 +255,7 @@ const LibraryIcon = () => (
     />
     <path
       d="M7 8H17"
-      stroke="#24BAD4"
+      stroke="#5B44E9"
       strokeWidth="1.5"
       strokeLinecap="round"
       strokeLinejoin="round"
@@ -279,29 +279,29 @@ const ShopIcon = () => (
     xmlns="http://www.w3.org/2000/svg"
   >
     <path
-      d="M3.01001 11.22V15.71C3.01001 20.2 4.81001 22 9.30001 22H14.69C19.18 22 20.98 20.2 20.98 15.71V11.22"
-      stroke="#24BAD4"
+      d="M3.01001 11.2202V15.7102C3.01001 20.2002 4.81001 22.0002 9.30001 22.0002H14.69C19.18 22.0002 20.98 20.2002 20.98 15.7102V11.2202"
+      stroke="#5B44E9"
       strokeWidth="1.5"
       strokeLinecap="round"
       strokeLinejoin="round"
     />
     <path
       d="M12 12C13.83 12 15.18 10.51 15 8.68L14.34 2H9.66999L8.99999 8.68C8.81999 10.51 10.17 12 12 12Z"
-      stroke="#24BAD4"
+      stroke="#5B44E9"
       strokeWidth="1.5"
       strokeLinecap="round"
       strokeLinejoin="round"
     />
     <path
       d="M18.31 12C20.33 12 21.81 10.36 21.61 8.35L21.33 5.6C20.97 3 19.97 2 17.35 2H14.3L15 9.01C15.17 10.66 16.66 12 18.31 12Z"
-      stroke="#24BAD4"
+      stroke="#5B44E9"
       strokeWidth="1.5"
       strokeLinecap="round"
       strokeLinejoin="round"
     />
     <path
-      d="M5.64 12C7.29 12 8.78 10.66 8.94 9.01L9.16 6.8L9.64001 2H6.59C3.97001 2 2.97 3 2.61 5.6L2.34 8.35C2.14 10.36 3.62 12 5.64 12Z"
-      stroke="#24BAD4"
+      d="M5.63988 12C7.28988 12 8.77988 10.66 8.93988 9.01L9.15988 6.8L9.63988 2H6.58988C3.96988 2 2.96988 3 2.60988 5.6L2.33988 8.35C2.13988 10.36 3.61988 12 5.63988 12Z"
+      stroke="#5B44E9"
       strokeWidth="1.5"
       strokeLinecap="round"
       strokeLinejoin="round"
@@ -324,8 +324,8 @@ const MessageIcon = () => (
     xmlns="http://www.w3.org/2000/svg"
   >
     <path
-      d="M18.47 16.83L18.86 19.99C18.96 20.82 18.07 21.4 17.36 20.97L13.17 18.48C12.71 18.48 12.26 18.45 11.82 18.39C12.56 17.52 13 16.42 13 15.23C13 12.39 10.54 10.09 7.49997 10.09C6.33997 10.09 5.26997 10.42 4.37997 11C4.34997 10.75 4.33997 10.5 4.33997 10.24C4.33997 5.68999 8.28997 2 13.17 2C18.05 2 22 5.68999 22 10.24C22 12.94 20.61 15.33 18.47 16.83Z"
-      stroke="#24BAD4"
+      d="M18.4701 16.83L18.8601 19.99C18.9601 20.82 18.0701 21.4 17.3601 20.97L13.1701 18.48C12.7101 18.48 12.2601 18.45 11.8201 18.39C12.5601 17.52 13.0001 16.42 13.0001 15.23C13.0001 12.39 10.5401 10.09 7.50009 10.09C6.34009 10.09 5.2701 10.42 4.3801 11C4.3501 10.75 4.34009 10.5 4.34009 10.24C4.34009 5.68999 8.29009 2 13.1701 2C18.0501 2 22.0001 5.68999 22.0001 10.24C22.0001 12.94 20.6101 15.33 18.4701 16.83Z"
+      stroke="#5B44E9"
       strokeWidth="1.5"
       strokeLinecap="round"
       strokeLinejoin="round"
@@ -349,14 +349,14 @@ const SupportIcon = () => (
   >
     <path
       d="M17 18.4301H13L8.54999 21.39C7.88999 21.83 7 21.3601 7 20.5601V18.4301C4 18.4301 2 16.4301 2 13.4301V7.42999C2 4.42999 4 2.42999 7 2.42999H17C20 2.42999 22 4.42999 22 7.42999V13.4301C22 16.4301 20 18.4301 17 18.4301Z"
-      stroke="#24BAD4"
+      stroke="#5B44E9"
       strokeWidth="1.5"
       strokeMiterlimit="10"
       strokeLinecap="round"
       strokeLinejoin="round"
     />
     <path
-      d="M12 11.36V11.15C12 10.47 12.42 10.11 12.84 9.82001C13.25 9.54001 13.66 9.18002 13.66 8.52002C13.66 7.60002 12.92 6.85999 12 6.85999C11.08 6.85999 10.34 7.60002 10.34 8.52002"
+      d="M12.0001 11.36V11.15C12.0001 10.47 12.4201 10.11 12.8401 9.82001C13.2501 9.54001 13.66 9.18002 13.66 8.52002C13.66 7.60002 12.9201 6.85999 12.0001 6.85999C11.0801 6.85999 10.3401 7.60002 10.3401 8.52002"
       stroke="white"
       strokeWidth="1.5"
       strokeLinecap="round"
@@ -389,7 +389,7 @@ const SettingsIcon = () => (
     />
     <path
       d="M2 12.88V11.12C2 10.08 2.85 9.22 3.9 9.22C5.71 9.22 6.45 7.94 5.54 6.37C5.02 5.47 5.33 4.3 6.24 3.78L7.97 2.79C8.76 2.32 9.78 2.6 10.25 3.39L10.36 3.58C11.26 5.15 12.74 5.15 13.65 3.58L13.76 3.39C14.23 2.6 15.25 2.32 16.04 2.79L17.77 3.78C18.68 4.3 18.99 5.47 18.47 6.37C17.56 7.94 18.3 9.22 20.11 9.22C21.15 9.22 22.01 10.07 22.01 11.12V12.88C22.01 13.92 21.16 14.78 20.11 14.78C18.3 14.78 17.56 16.06 18.47 17.63C18.99 18.54 18.68 19.7 17.77 20.22L16.04 21.21C15.25 21.68 14.23 21.4 13.76 20.61L13.65 20.42C12.75 18.85 11.27 18.85 10.36 20.42L10.25 20.61C9.78 21.4 8.76 21.68 7.97 21.21L6.24 20.22C5.33 19.7 5.02 18.53 5.54 17.63C6.45 16.06 5.71 14.78 3.9 14.78C2.85 14.78 2 13.92 2 12.88Z"
-      stroke="#24BAD4"
+      stroke="#5B44E9"
       strokeWidth="1.5"
       strokeMiterlimit="10"
       strokeLinecap="round"
@@ -402,15 +402,28 @@ const Sidebar = ({ user }) => {
   const [collapseShow, setCollapseShow] = React.useState("hidden");
   return (
     <>
-      <nav className="md:left-0 md:block md:fixed md:top-0 md:bottom-0 md:overflow-y-auto md:flex-row md:flex-nowrap md:overflow-hidden shadow-xl bg-[#1A1A19] flex flex-wrap items-center justify-between relative md:w-64 z-10 py-4 px-6">
+      <nav className="md:left-0 md:block md:fixed md:top-0 md:bottom-0 md:overflow-y-auto md:flex-row md:flex-nowrap md:overflow-hidden shadow-xl bg-[#202325] flex flex-wrap items-center justify-between relative md:w-64 z-10 py-4 px-6">
         <div className="md:flex-col md:items-stretch md:min-h-full md:flex-nowrap px-0 flex flex-wrap items-center justify-between w-full mx-auto">
           {/* Toggler */}
           <button
             className="cursor-pointer text-black opacity-50 md:hidden px-3 py-1 text-xl leading-none bg-transparent rounded border border-solid border-transparent"
             type="button"
-            onClick={() => setCollapseShow("bg-white m-2 py-3 px-6")}
+            onClick={() => setCollapseShow("bg-[#202325] m-2 py-3 px-6")}
           >
-            <i className="fas fa-bars"></i>
+            <svg
+              className="w-6 h-6"
+              fill="none"
+              stroke="white"
+              viewBox="0 0 24 24"
+              xmlns="http://www.w3.org/2000/svg"
+            >
+              <path
+                strokeLinecap="round"
+                strokeLinejoin="round"
+                strokeWidth="2"
+                d="M4 6h16M4 12h16M4 18h16"
+              ></path>
+            </svg>
           </button>
           {/* Brand */}
           <Link href="/">
@@ -437,32 +450,35 @@ const Sidebar = ({ user }) => {
               <div className="flex flex-wrap">
                 <div className="w-6/12">
                   <Link href="/">
-                    <a className="md:block text-left md:pb-2 text-blueGray-600 mr-0 inline-block whitespace-nowrap text-sm uppercase font-bold p-4 px-0">
-                      Tailwind Starter Kit
+                    <a className="md:block text-left md:pb-2 text-white mr-0 inline-block whitespace-nowrap text-sm uppercase font-bold p-4 px-0">
+                      Cabiza
                     </a>
                   </Link>
                 </div>
                 <div className="w-6/12 flex justify-end">
                   <button
                     type="button"
-                    className="cursor-pointer text-black opacity-50 md:hidden px-3 py-1 text-xl leading-none bg-transparent rounded border border-solid border-transparent"
+                    className="cursor-pointer text-white opacity-50 md:hidden px-3 py-1 text-xl leading-none bg-transparent rounded border border-solid border-transparent"
                     onClick={() => setCollapseShow("hidden")}
                   >
-                    <i className="fas fa-times"></i>
+                    <svg
+                      className="w-6 h-6"
+                      fill="none"
+                      stroke="currentColor"
+                      viewBox="0 0 24 24"
+                      xmlns="http://www.w3.org/2000/svg"
+                    >
+                      <path
+                        strokeLinecap="round"
+                        strokeLinejoin="round"
+                        strokeWidth="2"
+                        d="M6 18L18 6M6 6l12 12"
+                      ></path>
+                    </svg>
                   </button>
                 </div>
               </div>
             </div>
-            {/* Form */}
-            <form className="mt-6 mb-4 md:hidden">
-              <div className="mb-3 pt-0">
-                <input
-                  type="text"
-                  placeholder="Search"
-                  className="border-0 px-3 py-2 h-12 border border-solid  border-blueGray-500 placeholder-blueGray-300 text-blueGray-600 bg-white rounded text-base leading-snug shadow-none outline-none focus:outline-none w-full font-normal"
-                />
-              </div>
-            </form>
             {/* Navigation */}
             <ul className="md:flex-col md:min-w-full flex flex-col list-none">
               <li className="items-center">

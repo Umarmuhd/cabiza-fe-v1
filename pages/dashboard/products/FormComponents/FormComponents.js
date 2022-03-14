@@ -21,7 +21,7 @@ const FirstComponent = () => {
         Create your product
       </h1>
 
-      <div className='bg-white border border-solid border-grey_80 p-6 rounded-xl mt-8'>
+      <div className='bg-white border border-solid border-grey_80 p-6 rounded-xl mt-8 hidden'>
         <div className='flex flex-col'>
           <label htmlFor='product_name' className='text-xl'>
             Name{' '}
@@ -40,41 +40,41 @@ const FirstComponent = () => {
             Description{' '}
           </label>
           <div className='border border-solid border-grey_85 py-3 rounded-xl mt-2'>
-            <div className='flex text-lg items-end border-bottom border-b-2 border-grey_80 px-4 py-2 pb-5'>
+            <div className='flex text-lg items-end border-bottom border-b-2 border-grey_80 lg:px-4 md:px-1 py-2 pb-5'>
               <div className='flex items-end'>
-                <button className='mr-4'>
+                <button className='lg:mr-4'>
                   <VscBold />
                 </button>
 
-                <button className='mr-4'>
+                <button className='lg:mr-4'>
                   <BsTypeItalic />
                 </button>
 
-                <button className='mr-4'>
+                <button className='lg:mr-4'>
                   <RiUnderline />
                 </button>
 
-                <button className='mr-4'>
+                <button className='lg:mr-4'>
                   <BiStrikethrough />
                 </button>
 
-                <button className='mr-4'>
+                <button className='lg:mr-4'>
                   <BsCode />
                 </button>
 
-                <button className='mr-4'>
+                <button className='lg:mr-4'>
                   <CgFormatUppercase />
                 </button>
 
-                <button className='mr-4'>
+                <button className='lg:mr-4'>
                   <GrList />
                 </button>
 
-                <button className='mr-4'>
+                <button className='lg:mr-4'>
                   <RiListOrdered />
                 </button>
 
-                <button className='mr-4'>
+                <button className='lg:mr-4'>
                   <AiOutlineAlignCenter />
                 </button>
 
@@ -91,7 +91,7 @@ const FirstComponent = () => {
                 </button>
               </div>
 
-              <div className='flex ml-12'>
+              <div className='flex ml-12 md:hidden'>
                 <button className='mr-2'>
                   <RiArrowGoBackLine />
                 </button>

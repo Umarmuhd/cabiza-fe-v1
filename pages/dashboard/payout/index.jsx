@@ -49,19 +49,19 @@ export default function Payout() {
         <div className="flex justify-between items-center md:w-4/5 mx-auto">
           <p className="">
             <span>Overview</span>
-            <a className="text-lg font-bold text-cabiza_blue underline ml-2">
+            <a className="text-lg font-bold text-primary underline ml-2">
               Learn More
             </a>
           </p>
 
-          <button className="py-2 px-2 bg-cabiza_blue flex items-center text-lg font-semibold text-white rounded-lg ">
+          <button className="py-2 px-2 bg-primary flex items-center text-lg font-semibold text-white rounded-lg ">
             <span className="mr-2.5">Payout Settings</span>
             <CogIcon />
           </button>
         </div>
       </div>
 
-      <main className="w-4/5 mx-auto md:py-20">
+      <main className="md:w-4/5 mx-auto md:py-20 md:px-0 px-4">
         <div
           className="grid-cols-4
                 space-y-2
