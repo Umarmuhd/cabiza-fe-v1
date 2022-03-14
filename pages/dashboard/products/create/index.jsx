@@ -138,7 +138,7 @@ export default function Create() {
         <div className='xl:w-4/5 lg:w-5/5 lg:px-2 xl:mx-auto lg:ml-[1rem]'>
           <div className='flex justify-between items-center'></div>
           <div className='mt-8'>
-            <div className='flex items-center justify-between md:ml-5'>
+            <div className='sm:flex items-center justify-between md:ml-5 hidden'>
               <div>
                 <Link href='/dashboard/products'>
                   <a
@@ -199,7 +199,7 @@ export default function Create() {
       </div>
 
       <form
-        className='lg:w-4/5 mx-auto text-left py-12 px-7'
+        className='lg:w-4/5 mx-auto text-left sm:py-12 sm:px-7 p-4'
         onSubmit={handleSubmit(handleCreate)}
       >
         <div className='w-full bg-sky_light h-2 rounded-xl mb-10'>
