@@ -451,8 +451,10 @@ const FinalComponent = () => {
   const [addPercentage, setAddPercentage] = useState(false);
   const [addVersion, setAddVersion] = useState(false);
   const [newVersion, setNewVersion] = useState();
+  const [variablePercentage, setVariablePercentage] = useState()
 
   const inputtedVersion = useRef();
+  const addInputPercentage = useRef();
 
   const handleVersionSetting = () => {
     setVersion(prev => !prev);
@@ -461,6 +463,16 @@ const FinalComponent = () => {
   
   const handleAddVersion = () => {
     setAddVersion(prev => !prev);
+  }
+
+  const handleEditPercentage = () => {
+    setVariablePercentage(0);
+    setAddPercentage((prev) => !prev);
+  }
+
+  const handleSavePercentage = () => {
+    setVariablePercentage(addInputPercentage.current.value);
+    setAddPercentage((prev) => !prev);
   }
 
   const handleRemoveVersion = () => {
@@ -538,31 +550,37 @@ const FinalComponent = () => {
           {affliate ? (
             <div className='mt-5 border border-solid border-grey_80 p-3 rounded-xl w-[60%]'>
               <div className='flex w-[100%] border border-solid border-grey_80 rounded-xl'>
-                <input
-                  type='text'
-                  name='Tags'
-                  id='Tags'
-                  placeholder={
-                    !addPercentage ? 'Add variable percentage' : '40%'
-                  }
-                  className='outline-none bg-transparent w-[90%] mr-auto rounded-xl p-3'
-                />
-                {addPercentage ? (
-                  <button
-                    className='h-[100%] py-2 rounded-xl my-auto px-4 bg-cabiza_blue text-white mr-3'
-                    onClick={handleAddPercentage}
-                  >
-                    Edit
-                  </button>
+                {!variablePercentage && (
+                  <input
+                    type='text'
+                    name='Tags'
+                    id='Tags'
+                    placeholder='Add variable percentage'
+                    className='outline-none bg-transparent w-[90%] mr-auto rounded-xl p-3'
+                    ref={addInputPercentage}
+                  />
+                )}
+                {addInputPercentage && variablePercentage ? (
+                  <div className='flex w-[100%] border border-solid border-grey_80 rounded-xl'>
+                    <p className='outline-none bg-transparent w-[90%] mr-auto rounded-xl p-3'>
+                      {variablePercentage}
+                    </p>
+                    <button
+                      className='h-[100%] py-2 rounded-xl my-auto px-4 bg-cabiza_blue text-white mr-3'
+                      onClick={handleEditPercentage}
+                    >
+                      Edit
+                    </button>
+                  </div>
                 ) : null}
               </div>
-              {!addPercentage ? (
+              {!addPercentage || variablePercentage === 0 ? (
                 <input
                   type='button'
                   value='Add percentage'
                   // onClick={handleNext}
                   className='w-[100%] mt-4 bg-cabiza_blue text-white p-4 cursor-pointer'
-                  onClick={handleAddPercentage}
+                  onClick={handleSavePercentage}
                 />
               ) : null}
             </div>
@@ -593,7 +611,7 @@ const FinalComponent = () => {
           </p>
           <Toggle label='Version' click={handleVersionSetting} />
         </div>
-        {version ? (
+        {version && !addVersion ? (
           <span
             className='flex w-[max-content] ml-4 border border-solid border-black p-3 mt-1 rounded-xl cursor-pointer'
             onClick={handleAddVersion}
