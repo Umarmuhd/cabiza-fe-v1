@@ -134,39 +134,39 @@ export default function Create() {
 
   return (
     <div>
-      <div className="bg-grey_95 md:py-4 border-bottom border-b border-grey_80">
-        <div className="w-4/5 mx-auto">
-          <div className="flex justify-between items-center"></div>
-          <div className="mt-8">
-            <div className="flex items-center justify-between">
+      <div className='bg-grey_95 md:py-4 border-bottom border-b border-grey_80'>
+        <div className='xl:w-4/5 lg:w-5/5 lg:px-2 xl:mx-auto lg:ml-[1rem]'>
+          <div className='flex justify-between items-center'></div>
+          <div className='mt-8'>
+            <div className='flex items-center justify-between md:ml-5'>
               <div>
-                <Link href="/dashboard/products">
+                <Link href='/dashboard/products'>
                   <a
                     className={classNames(
-                      "py-4 px-8 rounded-lg font-semibold",
-                      "text-cabiza_tertiary text-lg"
+                      'lg:py-4 md:mr-3 lg:px-3 xl:px-8 rounded-lg font-semibold',
+                      'text-cabiza_tertiary text-lg'
                     )}
                   >
                     Product
                   </a>
                 </Link>
 
-                <Link href="/dashboard/products">
+                <Link href='/dashboard/products'>
                   <a
                     className={classNames(
-                      "py-4 px-8 rounded-lg text-lg font-semibold",
-                      "text-grey_40"
+                      'lg:py-4 xl:px-8 lg:px-3 md:mr-3 rounded-lg text-lg font-semibold',
+                      'text-grey_40'
                     )}
                   >
                     Checkout
                   </a>
                 </Link>
 
-                <Link href="/dashboard/products">
+                <Link href='/dashboard/products'>
                   <a
                     className={classNames(
-                      "py-4 px-8 rounded-lg  text-lg font-semibold",
-                      "text-grey_40 "
+                      'lg:py-4 xl:px-8 lg:px-3 md:mr-3 rounded-lg  text-lg font-semibold',
+                      'text-grey_40 '
                     )}
                   >
                     Share
@@ -174,11 +174,11 @@ export default function Create() {
                 </Link>
               </div>
 
-              <div>
+              <div className='flex'>
                 <button
                   className={classNames(
-                    "py-2 px-8 rounded-lg font-semibold",
-                    "text-grey_20 bg-white border border-solid border-grey_20 text-lg mr-4"
+                    'lg:py-4 md:py-1 md:px-1 lg:px-8 rounded-lg font-semibold',
+                    'text-grey_20 bg-white border border-solid border-grey_20 text-lg lg:mr-4 md:mr-2'
                   )}
                 >
                   Save changes
@@ -186,8 +186,8 @@ export default function Create() {
 
                 <button
                   className={classNames(
-                    "py-2 px-8 rounded-lg  text-lg font-semibold",
-                    "border border-solid bg-primary text-white"
+                    'py-2 px-8 rounded-lg  text-lg font-semibold',
+                    'border border-solid bg-primary text-white'
                   )}
                 >
                   Publish
@@ -199,28 +199,28 @@ export default function Create() {
       </div>
 
       <form
-        className="md:w-4/5 mx-auto text-left py-12 px-7"
+        className='lg:w-4/5 mx-auto text-left py-12 px-7'
         onSubmit={handleSubmit(handleCreate)}
       >
-        <div className="w-full bg-sky_light h-2 rounded-xl mb-10">
+        <div className='w-full bg-sky_light h-2 rounded-xl mb-10'>
           <div
-            className="bg-cabiza_blue h-2 rounded-xl"
-            role="progressbar"
+            className='bg-cabiza_blue h-2 rounded-xl'
+            role='progressbar'
             style={{
               width: `${progress}%`,
-              transition: "all 0.3s ease-in-out 0s",
+              transition: 'all 0.3s ease-in-out 0s',
             }}
           ></div>
         </div>
-        <div className="step-component">{activeStep.component}</div>
+        <div className='step-component'>{activeStep.component}</div>
 
         <input
-          type="button"
+          type='button'
           value={
-            steps[steps.length - 1].key !== activeStep.key ? "Next" : "Publish"
+            steps[steps.length - 1].key !== activeStep.key ? 'Next' : 'Publish'
           }
           onClick={handleNext}
-          className="w-[100%] mt-4 bg-tertiary text-white p-4 cursor-pointer"
+          className='w-[100%] mt-4 bg-tertiary text-white p-4 cursor-pointer'
         />
       </form>
     </div>
