@@ -118,7 +118,7 @@ export default function Discover() {
             <form className='flex'>
                 <select
                   name='category'
-                  className='xs:block py-2 px-3 border border-gray-300 bg-primary shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 text-lg lg:w-1/6 sm:w-2/6 rounded-l-3xl text-grey_40 px-12 text-white hidden'
+                  className='py-2 px-3 border border-gray-300 bg-primary shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 text-lg lg:w-1/6 sm:w-2/6 rounded-l-3xl text-grey_40 px-12 text-white hidden sm:block'
                 >
                   <option>Education</option>
                   <option>Fitness</option>
