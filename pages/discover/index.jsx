@@ -112,7 +112,7 @@ export default function Discover() {
   return (
     <div className='w-full h-full'>
       <MainNavigation />
-      <div className='bg-grey_95'>
+      <div className='bg-secondary_sky_lighter'>
         <header className='py-16 mx-auto max-w-[1100px]'>
           <div className='w-[90%] mx-auto'>
             <form className='flex'>

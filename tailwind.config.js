@@ -40,6 +40,9 @@ module.exports = {
         primary_brand_light:'#8E7FF0',
         secondary_ink_lighter: '#72777A',
         secondary_52: '#912CDB',
+        footer: '#090425',
+        secondary_sky_lighter: '#F2F4F5',
+        dark: '#040212'
       },
     },
   },
