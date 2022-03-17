@@ -25,32 +25,16 @@ const SearchIcon = () => (
   </svg>
 );
 const RightIcon = () => (
-  <svg
-    width="27"
-    height="28"
-    viewBox="0 0 27 28"
-    fill="none"
-    xmlns="http://www.w3.org/2000/svg"
-  >
-    <path
-      d="M13.4998 0.666748C6.13984 0.666748 0.166504 6.64008 0.166504 14.0001C0.166504 21.3601 6.13984 27.3334 13.4998 27.3334C20.8598 27.3334 26.8332 21.3601 26.8332 14.0001C26.8332 6.64008 20.8598 0.666748 13.4998 0.666748ZM18.8732 14.7067L14.8732 18.7067C14.6732 18.9067 14.4198 19.0001 14.1665 19.0001C13.9132 19.0001 13.6598 18.9067 13.4598 18.7067C13.0732 18.3201 13.0732 17.6801 13.4598 17.2934L15.7532 15.0001H8.83317C8.2865 15.0001 7.83317 14.5467 7.83317 14.0001C7.83317 13.4534 8.2865 13.0001 8.83317 13.0001H15.7532L13.4598 10.7067C13.0732 10.3201 13.0732 9.68008 13.4598 9.29342C13.8465 8.90675 14.4865 8.90675 14.8732 9.29342L18.8732 13.2934C19.2598 13.6801 19.2598 14.3201 18.8732 14.7067Z"
-      fill="#CCCCCC"
-    />
-  </svg>
+    <svg width="28" height="28" viewBox="0 0 28 28" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <path d="M13.9998 0.666748C6.63984 0.666748 0.666504 6.64008 0.666504 14.0001C0.666504 21.3601 6.63984 27.3334 13.9998 27.3334C21.3598 27.3334 27.3332 21.3601 27.3332 14.0001C27.3332 6.64008 21.3598 0.666748 13.9998 0.666748ZM19.3732 14.7067L15.3732 18.7067C15.1732 18.9067 14.9198 19.0001 14.6665 19.0001C14.4132 19.0001 14.1598 18.9067 13.9598 18.7067C13.5732 18.3201 13.5732 17.6801 13.9598 17.2934L16.2532 15.0001H9.33317C8.7865 15.0001 8.33317 14.5467 8.33317 14.0001C8.33317 13.4534 8.7865 13.0001 9.33317 13.0001H16.2532L13.9598 10.7067C13.5732 10.3201 13.5732 9.68008 13.9598 9.29342C14.3465 8.90675 14.9865 8.90675 15.3732 9.29342L19.3732 13.2934C19.7598 13.6801 19.7598 14.3201 19.3732 14.7067Z" fill="#5B44E9"/>
+      </svg>
+
 );
 const LeftIcon = () => (
-  <svg
-    width='24'
-    height='24'
-    viewBox='0 0 24 24'
-    fill='none'
-    xmlns='http://www.w3.org/2000/svg'
-  >
-    <path
-      d='M12 16.8C11.3 16.8 10.6 16.53 10.07 16L3.55002 9.48001C3.26002 9.19001 3.26002 8.71001 3.55002 8.42001C3.84002 8.13001 4.32002 8.13001 4.61002 8.42001L11.13 14.94C11.61 15.42 12.39 15.42 12.87 14.94L19.39 8.42001C19.68 8.13001 20.16 8.13001 20.45 8.42001C20.74 8.71001 20.74 9.19001 20.45 9.48001L13.93 16C13.4 16.53 12.7 16.8 12 16.8Z'
-      fill='white'
-    />
-  </svg>
+      <svg width="28" height="28" viewBox="0 0 28 28" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <path d="M13.9998 0.666748C6.63984 0.666748 0.666504 6.64008 0.666504 14.0001C0.666504 21.3601 6.63984 27.3334 13.9998 27.3334C21.3598 27.3334 27.3332 21.3601 27.3332 14.0001C27.3332 6.64008 21.3598 0.666748 13.9998 0.666748ZM18.6665 15.0001H11.7465L14.0398 17.2934C14.4265 17.6801 14.4265 18.3201 14.0398 18.7067C13.8398 18.9067 13.5865 19.0001 13.3332 19.0001C13.0798 19.0001 12.8265 18.9067 12.6265 18.7067L8.6265 14.7067C8.23984 14.3201 8.23984 13.6801 8.6265 13.2934L12.6265 9.29342C13.0132 8.90675 13.6532 8.90675 14.0398 9.29342C14.4265 9.68008 14.4265 10.3201 14.0398 10.7067L11.7465 13.0001H18.6665C19.2132 13.0001 19.6665 13.4534 19.6665 14.0001C19.6665 14.5467 19.2132 15.0001 18.6665 15.0001Z" fill="#BFB6F6"/>
+      </svg>
+
 );
 
 const ProductItem = ({ product }) => (
@@ -169,9 +153,7 @@ export default function Discover() {
 
           <div className={`${styles.cards} mb-7`}>
             <div
-              className={`grid-cols-6
-                space-y-2
-                lg:space-y-0 grid gap-6 grid-rows-1 mb-8 ${styles.container}`}
+              className={`flex ${styles["product-cards"]}`}
             >
               <div
                 className='p-4 rounded-lg hover:bg-primary group cursor-pointer'
@@ -338,7 +320,7 @@ export default function Discover() {
             </div>
           </div>
 
-          <div className='mb-8'>
+          <div className='mb-12'>
             <header className='flex justify-between items-center mb-6'>
               <h3 className='text-4xl text-secondary font-semibold'>
                 Best selling in Education
@@ -372,668 +354,770 @@ export default function Discover() {
           </div>
 
 
-          <div className='mb-8'>
+          <div className='mb-12 mt-12'>
             <header className='flex justify-between items-center mb-6'>
-              <h3 className='text-lg text-grey_60 font-bold'>
-                Best selling in Education
+              <h3 className='text-4xl text-secondary font-semibold'>
+                Best selling in Crafts & DIY
               </h3>
-              <a href='' className='text-cabiza_blue'>
+              <a href='' className='text-primary_brand_light'>
                 View All
               </a>
             </header>
 
             <div className={styles.cards}>
               <div
-                className={`grid-cols-5
-                space-y-2
-                lg:space-y-0 grid lg:gap-[17.5rem] grid-rows-1
-                w-[100%] ${styles.container}`}
+                className={`flex ${styles["product-cards"]}`}
               >
                 <div
-                  className={`shadow w-[max-content] mr-1 h-[max-content]  ${styles.card}`}
+                  className={`shadow w-[max-content] mr-5 h-[max-content]  ${styles.card}`}
                 >
                   <img
-                    src='/images/book-small.png'
-                    alt='...'
-                    className='w-[100%] h-[350px]'
+                    src="/images/book-small.png"
+                    alt="..."
+                    className="w-[100%] h-[auto]"
                   />
-                  <div className='p-5 rounded-b'>
-                    <p className='text-lg text-grey_80 font-medium mb-1'>
-                      Books
-                    </p>
-                    <h4 className='text-2xl text-dark_ font-bold mb-8'>
-                      Emotional Intelligence
-                    </h4>
-                    <div className='flex items-center'>
-                      <span className='text-lg text-grey_60 font-medium mr-2'>
-                        By:
-                      </span>
+                  <div className="p-5 rounded-b">
+                    <p className="text-lg text-secondary_sky_dark font-normal mb-1">Books</p>
+                      <h4 className="text-2xl text-secondary font-medium mb-3">Emotional Intelligence</h4>
+                    <div className="flex items-center">
+                      {/* <span className="text-lg text-grey_60 font-medium mr-2"></span> */}
                       <img
-                        src='/images/author.png'
-                        alt='...'
-                        className='h-10 w-10'
+                        src="./images/author.png"
+                        alt="..."
+                        className="h-6 w-6 rounded-full"
                       />
-                      <p className='text-lg font-medium ml-2 underline text-grey_60'>
-                        Sara Mitchell
-                      </p>
+
+                        <a className="font-medium ml-2 text-secondary_ink_lighter block border-bottom border-b-secondary_ink_lighter">
+                          Sara Mitchell
+                        </a>
                     </div>
-                    <div className='mt-8 flex items-center justify-between'>
-                      <div className='flex items-center'>
-                        <img
-                          src='/images/icons/star.svg'
-                          alt='...'
-                          className='w-6 h-6'
-                        />
-                        <span className='ml-2 text-lg font-semibold text-grey_40'>
-                          5.0
+                    <div className="mt-3 flex items-center justify-between">
+                      <div className="flex items-center">
+                        <img src="/images/icons/star.svg" alt="..." className="w-4 h-4" />
+                        <span className="ml-2 text-sm font-semibold text-secondary_ink_lighter">5.0
+                        <span className="font-normal ml-1 text-xs">(25)</span>
                         </span>
-                        <div className='px-1 rounded border border-grey_80 ml-3 bg-grey_95'>
-                          <span className='text-sm font-medium text-grey_60'>
-                            34567
-                          </span>
-                        </div>
                       </div>
                       <span
-                        className={`text-sm font-medium py-3 px-5 pl-3 bg-yellow rounded ${styles.price}`}
+                        className={`text-sm font-normal py-2 px-5 pl-3 bg-secondary_52 rounded ${styles.price} text-white`}
                       >
                         $5000+
                       </span>
                     </div>
-                    <div className='rounded border border-grey_20 flex justify-between items-center mt-5 px-3 py-2'>
-                      <p>40% Affiliate Commission</p>
-                      <a
-                        href=''
-                        className='bg-grey_20 text-yellow rounded px-3 py-2'
-                      >
+                    <div className="rounded border border-sky_light flex justify-between items-center mt-5 px-3 py-2">
+                      <p className="text-xs text-secondary_sky_dark">40% Affiliate Commission</p>
+                      <a href="" className="bg-primary text-white font-medium text-sm rounded px-3 py-2">
                         Become Affiliate
                       </a>
                     </div>
                   </div>
                 </div>
 
-                <div
-                  className={`shadow w-[max-content] mr-1 h-[max-content]  ${styles.card}`}
+                              <div
+                  className={`shadow w-[max-content] mr-5 h-[max-content]  ${styles.card}`}
                 >
                   <img
-                    src='/images/book-small.png'
-                    alt='...'
-                    className='w-[100%] h-[350px]'
+                    src="/images/book-small.png"
+                    alt="..."
+                    className="w-[100%] h-[auto]"
                   />
-                  <div className='p-5 rounded-b'>
-                    <p className='text-lg text-grey_80 font-medium mb-1'>
-                      Books
-                    </p>
-                    <h4 className='text-2xl text-dark_ font-bold mb-8'>
-                      Emotional Intelligence
-                    </h4>
-                    <div className='flex items-center'>
-                      <span className='text-lg text-grey_60 font-medium mr-2'>
-                        By:
-                      </span>
+                  <div className="p-5 rounded-b">
+                    <p className="text-lg text-secondary_sky_dark font-normal mb-1">Books</p>
+                      <h4 className="text-2xl text-secondary font-medium mb-3">Emotional Intelligence</h4>
+                    <div className="flex items-center">
+                      {/* <span className="text-lg text-grey_60 font-medium mr-2"></span> */}
                       <img
-                        src='/images/author.png'
-                        alt='...'
-                        className='h-10 w-10'
+                        src="./images/author.png"
+                        alt="..."
+                        className="h-6 w-6 rounded-full"
                       />
-                      <p className='text-lg font-medium ml-2 underline text-grey_60'>
-                        Sara Mitchell
-                      </p>
+
+                        <a className="font-medium ml-2 text-secondary_ink_lighter block border-bottom border-b-secondary_ink_lighter">
+                          Sara Mitchell
+                        </a>
                     </div>
-                    <div className='mt-8 flex items-center justify-between'>
-                      <div className='flex items-center'>
-                        <img
-                          src='/images/icons/star.svg'
-                          alt='...'
-                          className='w-6 h-6'
-                        />
-                        <span className='ml-2 text-lg font-semibold text-grey_40'>
-                          5.0
+                    <div className="mt-3 flex items-center justify-between">
+                      <div className="flex items-center">
+                        <img src="/images/icons/star.svg" alt="..." className="w-4 h-4" />
+                        <span className="ml-2 text-sm font-semibold text-secondary_ink_lighter">5.0
+                        <span className="font-normal ml-1 text-xs">(25)</span>
                         </span>
-                        <div className='px-1 rounded border border-grey_80 ml-3 bg-grey_95'>
-                          <span className='text-sm font-medium text-grey_60'>
-                            34567
-                          </span>
-                        </div>
                       </div>
                       <span
-                        className={`text-sm font-medium py-3 px-5 pl-3 bg-yellow rounded ${styles.price}`}
+                        className={`text-sm font-normal py-2 px-5 pl-3 bg-secondary_52 rounded ${styles.price} text-white`}
                       >
                         $5000+
                       </span>
                     </div>
-                    <div className='rounded border border-grey_20 flex justify-between items-center mt-5 px-3 py-2'>
-                      <p>40% Affiliate Commission</p>
-                      <a
-                        href=''
-                        className='bg-grey_20 text-yellow rounded px-3 py-2'
-                      >
+                    <div className="rounded border border-sky_light flex justify-between items-center mt-5 px-3 py-2">
+                      <p className="text-xs text-secondary_sky_dark">40% Affiliate Commission</p>
+                      <a href="" className="bg-primary text-white font-medium text-sm rounded px-3 py-2">
                         Become Affiliate
                       </a>
                     </div>
                   </div>
                 </div>
 
-                <div
-                  className={`shadow w-[max-content] mr-1 h-[max-content]  ${styles.card}`}
+                              <div
+                  className={`shadow w-[max-content] mr-5 h-[max-content]  ${styles.card}`}
                 >
                   <img
-                    src='/images/book-small.png'
-                    alt='...'
-                    className='w-[100%] h-[350px]'
+                    src="/images/book-small.png"
+                    alt="..."
+                    className="w-[100%] h-[auto]"
                   />
-                  <div className='p-5 rounded-b'>
-                    <p className='text-lg text-grey_80 font-medium mb-1'>
-                      Books
-                    </p>
-                    <h4 className='text-2xl text-dark_ font-bold mb-8'>
-                      Emotional Intelligence
-                    </h4>
-                    <div className='flex items-center'>
-                      <span className='text-lg text-grey_60 font-medium mr-2'>
-                        By:
-                      </span>
+                  <div className="p-5 rounded-b">
+                    <p className="text-lg text-secondary_sky_dark font-normal mb-1">Books</p>
+                      <h4 className="text-2xl text-secondary font-medium mb-3">Emotional Intelligence</h4>
+                    <div className="flex items-center">
+                      {/* <span className="text-lg text-grey_60 font-medium mr-2"></span> */}
                       <img
-                        src='/images/author.png'
-                        alt='...'
-                        className='h-10 w-10'
+                        src="./images/author.png"
+                        alt="..."
+                        className="h-6 w-6 rounded-full"
                       />
-                      <p className='text-lg font-medium ml-2 underline text-grey_60'>
-                        Sara Mitchell
-                      </p>
+
+                        <a className="font-medium ml-2 text-secondary_ink_lighter block border-bottom border-b-secondary_ink_lighter">
+                          Sara Mitchell
+                        </a>
                     </div>
-                    <div className='mt-8 flex items-center justify-between'>
-                      <div className='flex items-center'>
-                        <img
-                          src='/images/icons/star.svg'
-                          alt='...'
-                          className='w-6 h-6'
-                        />
-                        <span className='ml-2 text-lg font-semibold text-grey_40'>
-                          5.0
+                    <div className="mt-3 flex items-center justify-between">
+                      <div className="flex items-center">
+                        <img src="/images/icons/star.svg" alt="..." className="w-4 h-4" />
+                        <span className="ml-2 text-sm font-semibold text-secondary_ink_lighter">5.0
+                        <span className="font-normal ml-1 text-xs">(25)</span>
                         </span>
-                        <div className='px-1 rounded border border-grey_80 ml-3 bg-grey_95'>
-                          <span className='text-sm font-medium text-grey_60'>
-                            34567
-                          </span>
-                        </div>
                       </div>
                       <span
-                        className={`text-sm font-medium py-3 px-5 pl-3 bg-yellow rounded ${styles.price}`}
+                        className={`text-sm font-normal py-2 px-5 pl-3 bg-secondary_52 rounded ${styles.price} text-white`}
                       >
                         $5000+
                       </span>
                     </div>
-                    <div className='rounded border border-grey_20 flex justify-between items-center mt-5 px-3 py-2'>
-                      <p>40% Affiliate Commission</p>
-                      <a
-                        href=''
-                        className='bg-grey_20 text-yellow rounded px-3 py-2'
-                      >
+                    <div className="rounded border border-sky_light flex justify-between items-center mt-5 px-3 py-2">
+                      <p className="text-xs text-secondary_sky_dark">40% Affiliate Commission</p>
+                      <a href="" className="bg-primary text-white font-medium text-sm rounded px-3 py-2">
                         Become Affiliate
                       </a>
                     </div>
                   </div>
                 </div>
 
-                <div
-                  className={`shadow w-[max-content] mr-1 h-[max-content]  ${styles.card}`}
+                              <div
+                  className={`shadow w-[max-content] mr-5 h-[max-content]  ${styles.card}`}
                 >
                   <img
-                    src='/images/book-small.png'
-                    alt='...'
-                    className='w-[100%] h-[350px]'
+                    src="/images/book-small.png"
+                    alt="..."
+                    className="w-[100%] h-[auto]"
                   />
-                  <div className='p-5 rounded-b'>
-                    <p className='text-lg text-grey_80 font-medium mb-1'>
-                      Books
-                    </p>
-                    <h4 className='text-2xl text-dark_ font-bold mb-8'>
-                      Emotional Intelligence
-                    </h4>
-                    <div className='flex items-center'>
-                      <span className='text-lg text-grey_60 font-medium mr-2'>
-                        By:
-                      </span>
+                  <div className="p-5 rounded-b">
+                    <p className="text-lg text-secondary_sky_dark font-normal mb-1">Books</p>
+                      <h4 className="text-2xl text-secondary font-medium mb-3">Emotional Intelligence</h4>
+                    <div className="flex items-center">
+                      {/* <span className="text-lg text-grey_60 font-medium mr-2"></span> */}
                       <img
-                        src='/images/author.png'
-                        alt='...'
-                        className='h-10 w-10'
+                        src="./images/author.png"
+                        alt="..."
+                        className="h-6 w-6 rounded-full"
                       />
-                      <p className='text-lg font-medium ml-2 underline text-grey_60'>
-                        Sara Mitchell
-                      </p>
+
+                        <a className="font-medium ml-2 text-secondary_ink_lighter block border-bottom border-b-secondary_ink_lighter">
+                          Sara Mitchell
+                        </a>
                     </div>
-                    <div className='mt-8 flex items-center justify-between'>
-                      <div className='flex items-center'>
-                        <img
-                          src='/images/icons/star.svg'
-                          alt='...'
-                          className='w-6 h-6'
-                        />
-                        <span className='ml-2 text-lg font-semibold text-grey_40'>
-                          5.0
+                    <div className="mt-3 flex items-center justify-between">
+                      <div className="flex items-center">
+                        <img src="/images/icons/star.svg" alt="..." className="w-4 h-4" />
+                        <span className="ml-2 text-sm font-semibold text-secondary_ink_lighter">5.0
+                        <span className="font-normal ml-1 text-xs">(25)</span>
                         </span>
-                        <div className='px-1 rounded border border-grey_80 ml-3 bg-grey_95'>
-                          <span className='text-sm font-medium text-grey_60'>
-                            34567
-                          </span>
-                        </div>
                       </div>
                       <span
-                        className={`text-sm font-medium py-3 px-5 pl-3 bg-yellow rounded ${styles.price}`}
+                        className={`text-sm font-normal py-2 px-5 pl-3 bg-secondary_52 rounded ${styles.price} text-white`}
                       >
                         $5000+
                       </span>
                     </div>
-                    <div className='rounded border border-grey_20 flex justify-between items-center mt-5 px-3 py-2'>
-                      <p>40% Affiliate Commission</p>
-                      <a
-                        href=''
-                        className='bg-grey_20 text-yellow rounded px-3 py-2'
-                      >
+                    <div className="rounded border border-sky_light flex justify-between items-center mt-5 px-3 py-2">
+                      <p className="text-xs text-secondary_sky_dark">40% Affiliate Commission</p>
+                      <a href="" className="bg-primary text-white font-medium text-sm rounded px-3 py-2">
                         Become Affiliate
                       </a>
                     </div>
                   </div>
                 </div>
-                <div
-                  className={`shadow w-[max-content] mr-1 h-[max-content]  ${styles.card}`}
+
+                              <div
+                  className={`shadow w-[max-content] mr-5 h-[max-content]  ${styles.card}`}
                 >
                   <img
-                    src='/images/book-small.png'
-                    alt='...'
-                    className='w-[100%] h-[350px]'
+                    src="/images/book-small.png"
+                    alt="..."
+                    className="w-[100%] h-[auto]"
                   />
-                  <div className='p-5 rounded-b'>
-                    <p className='text-lg text-grey_80 font-medium mb-1'>
-                      Books
-                    </p>
-                    <h4 className='text-2xl text-dark_ font-bold mb-8'>
-                      Emotional Intelligence
-                    </h4>
-                    <div className='flex items-center'>
-                      <span className='text-lg text-grey_60 font-medium mr-2'>
-                        By:
-                      </span>
+                  <div className="p-5 rounded-b">
+                    <p className="text-lg text-secondary_sky_dark font-normal mb-1">Books</p>
+                      <h4 className="text-2xl text-secondary font-medium mb-3">Emotional Intelligence</h4>
+                    <div className="flex items-center">
+                      {/* <span className="text-lg text-grey_60 font-medium mr-2"></span> */}
                       <img
-                        src='/images/author.png'
-                        alt='...'
-                        className='h-10 w-10'
+                        src="./images/author.png"
+                        alt="..."
+                        className="h-6 w-6 rounded-full"
                       />
-                      <p className='text-lg font-medium ml-2 underline text-grey_60'>
-                        Sara Mitchell
-                      </p>
+
+                        <a className="font-medium ml-2 text-secondary_ink_lighter block border-bottom border-b-secondary_ink_lighter">
+                          Sara Mitchell
+                        </a>
                     </div>
-                    <div className='mt-8 flex items-center justify-between'>
-                      <div className='flex items-center'>
-                        <img
-                          src='/images/icons/star.svg'
-                          alt='...'
-                          className='w-6 h-6'
-                        />
-                        <span className='ml-2 text-lg font-semibold text-grey_40'>
-                          5.0
+                    <div className="mt-3 flex items-center justify-between">
+                      <div className="flex items-center">
+                        <img src="/images/icons/star.svg" alt="..." className="w-4 h-4" />
+                        <span className="ml-2 text-sm font-semibold text-secondary_ink_lighter">5.0
+                        <span className="font-normal ml-1 text-xs">(25)</span>
                         </span>
-                        <div className='px-1 rounded border border-grey_80 ml-3 bg-grey_95'>
-                          <span className='text-sm font-medium text-grey_60'>
-                            34567
-                          </span>
-                        </div>
                       </div>
                       <span
-                        className={`text-sm font-medium py-3 px-5 pl-3 bg-yellow rounded ${styles.price}`}
+                        className={`text-sm font-normal py-2 px-5 pl-3 bg-secondary_52 rounded ${styles.price} text-white`}
                       >
                         $5000+
                       </span>
                     </div>
-                    <div className='rounded border border-grey_20 flex justify-between items-center mt-5 px-3 py-2'>
-                      <p>40% Affiliate Commission</p>
-                      <a
-                        href=''
-                        className='bg-grey_20 text-yellow rounded px-3 py-2'
-                      >
+                    <div className="rounded border border-sky_light flex justify-between items-center mt-5 px-3 py-2">
+                      <p className="text-xs text-secondary_sky_dark">40% Affiliate Commission</p>
+                      <a href="" className="bg-primary text-white font-medium text-sm rounded px-3 py-2">
                         Become Affiliate
                       </a>
                     </div>
                   </div>
                 </div>
-              </div>
+
+                              <div
+                  className={`shadow w-[max-content] mr-5 h-[max-content]  ${styles.card}`}
+                >
+                  <img
+                    src="/images/book-small.png"
+                    alt="..."
+                    className="w-[100%] h-[auto]"
+                  />
+                  <div className="p-5 rounded-b">
+                    <p className="text-lg text-secondary_sky_dark font-normal mb-1">Books</p>
+                      <h4 className="text-2xl text-secondary font-medium mb-3">Emotional Intelligence</h4>
+                    <div className="flex items-center">
+                      {/* <span className="text-lg text-grey_60 font-medium mr-2"></span> */}
+                      <img
+                        src="./images/author.png"
+                        alt="..."
+                        className="h-6 w-6 rounded-full"
+                      />
+
+                        <a className="font-medium ml-2 text-secondary_ink_lighter block border-bottom border-b-secondary_ink_lighter">
+                          Sara Mitchell
+                        </a>
+                    </div>
+                    <div className="mt-3 flex items-center justify-between">
+                      <div className="flex items-center">
+                        <img src="/images/icons/star.svg" alt="..." className="w-4 h-4" />
+                        <span className="ml-2 text-sm font-semibold text-secondary_ink_lighter">5.0
+                        <span className="font-normal ml-1 text-xs">(25)</span>
+                        </span>
+                      </div>
+                      <span
+                        className={`text-sm font-normal py-2 px-5 pl-3 bg-secondary_52 rounded ${styles.price} text-white`}
+                      >
+                        $5000+
+                      </span>
+                    </div>
+                    <div className="rounded border border-sky_light flex justify-between items-center mt-5 px-3 py-2">
+                      <p className="text-xs text-secondary_sky_dark">40% Affiliate Commission</p>
+                      <a href="" className="bg-primary text-white font-medium text-sm rounded px-3 py-2">
+                        Become Affiliate
+                      </a>
+                    </div>
+                  </div>
+                </div>
+
+                              <div
+                  className={`shadow w-[max-content] mr-5 h-[max-content]  ${styles.card}`}
+                >
+                  <img
+                    src="/images/book-small.png"
+                    alt="..."
+                    className="w-[100%] h-[auto]"
+                  />
+                  <div className="p-5 rounded-b">
+                    <p className="text-lg text-secondary_sky_dark font-normal mb-1">Books</p>
+                      <h4 className="text-2xl text-secondary font-medium mb-3">Emotional Intelligence</h4>
+                    <div className="flex items-center">
+                      {/* <span className="text-lg text-grey_60 font-medium mr-2"></span> */}
+                      <img
+                        src="./images/author.png"
+                        alt="..."
+                        className="h-6 w-6 rounded-full"
+                      />
+
+                        <a className="font-medium ml-2 text-secondary_ink_lighter block border-bottom border-b-secondary_ink_lighter">
+                          Sara Mitchell
+                        </a>
+                    </div>
+                    <div className="mt-3 flex items-center justify-between">
+                      <div className="flex items-center">
+                        <img src="/images/icons/star.svg" alt="..." className="w-4 h-4" />
+                        <span className="ml-2 text-sm font-semibold text-secondary_ink_lighter">5.0
+                        <span className="font-normal ml-1 text-xs">(25)</span>
+                        </span>
+                      </div>
+                      <span
+                        className={`text-sm font-normal py-2 px-5 pl-3 bg-secondary_52 rounded ${styles.price} text-white`}
+                      >
+                        $5000+
+                      </span>
+                    </div>
+                    <div className="rounded border border-sky_light flex justify-between items-center mt-5 px-3 py-2">
+                      <p className="text-xs text-secondary_sky_dark">40% Affiliate Commission</p>
+                      <a href="" className="bg-primary text-white font-medium text-sm rounded px-3 py-2">
+                        Become Affiliate
+                      </a>
+                    </div>
+                  </div>
+                </div>
+
+                              <div
+                  className={`shadow w-[max-content] mr-5 h-[max-content]  ${styles.card}`}
+                >
+                  <img
+                    src="/images/book-small.png"
+                    alt="..."
+                    className="w-[100%] h-[auto]"
+                  />
+                  <div className="p-5 rounded-b">
+                    <p className="text-lg text-secondary_sky_dark font-normal mb-1">Books</p>
+                      <h4 className="text-2xl text-secondary font-medium mb-3">Emotional Intelligence</h4>
+                    <div className="flex items-center">
+                      {/* <span className="text-lg text-grey_60 font-medium mr-2"></span> */}
+                      <img
+                        src="./images/author.png"
+                        alt="..."
+                        className="h-6 w-6 rounded-full"
+                      />
+
+                        <a className="font-medium ml-2 text-secondary_ink_lighter block border-bottom border-b-secondary_ink_lighter">
+                          Sara Mitchell
+                        </a>
+                    </div>
+                    <div className="mt-3 flex items-center justify-between">
+                      <div className="flex items-center">
+                        <img src="/images/icons/star.svg" alt="..." className="w-4 h-4" />
+                        <span className="ml-2 text-sm font-semibold text-secondary_ink_lighter">5.0
+                        <span className="font-normal ml-1 text-xs">(25)</span>
+                        </span>
+                      </div>
+                      <span
+                        className={`text-sm font-normal py-2 px-5 pl-3 bg-secondary_52 rounded ${styles.price} text-white`}
+                      >
+                        $5000+
+                      </span>
+                    </div>
+                    <div className="rounded border border-sky_light flex justify-between items-center mt-5 px-3 py-2">
+                      <p className="text-xs text-secondary_sky_dark">40% Affiliate Commission</p>
+                      <a href="" className="bg-primary text-white font-medium text-sm rounded px-3 py-2">
+                        Become Affiliate
+                      </a>
+                    </div>
+                  </div>
+                </div>
+              </div>                
             </div>
           </div>
 
           <div className='mb-0'>
-            <header className='flex justify-between items-center mb-6'>
-              <h3 className='text-lg text-grey_60 font-bold'>
-                Best selling in Education
+            <header className='flex justify-between items-center mb-6'>              
+              <h3 className='text-4xl text-secondary font-semibold'>
+                Best selling in Design & Tech
               </h3>
-              <a href='' className='text-cabiza_blue'>
+              <a href='' className='text-primary_brand_light'>
                 View All
               </a>
             </header>
             <div className={styles.cards}>
               <div
-                className={`grid-cols-5
-                space-y-2
-                lg:space-y-0 grid lg:gap-[17.5rem] grid-rows-1
-                w-[100%] ${styles.container}`}
+                className={`flex ${styles["product-cards"]}`}
+              >
+                <div className={styles.cards}>
+              <div
+                className={`flex ${styles["product-cards"]}`}
               >
                 <div
-                  className={`shadow w-[max-content] mr-1 h-[max-content]  ${styles.card}`}
+                  className={`shadow w-[max-content] mr-5 h-[max-content]  ${styles.card}`}
                 >
                   <img
-                    src='/images/book-small.png'
-                    alt='...'
-                    className='w-[100%] h-[350px]'
+                    src="/images/book-small.png"
+                    alt="..."
+                    className="w-[100%] h-[auto]"
                   />
-                  <div className='p-5 rounded-b'>
-                    <p className='text-lg text-grey_80 font-medium mb-1'>
-                      Books
-                    </p>
-                    <h4 className='text-2xl text-dark_ font-bold mb-8'>
-                      Emotional Intelligence
-                    </h4>
-                    <div className='flex items-center'>
-                      <span className='text-lg text-grey_60 font-medium mr-2'>
-                        By:
-                      </span>
+                  <div className="p-5 rounded-b">
+                    <p className="text-lg text-secondary_sky_dark font-normal mb-1">Books</p>
+                      <h4 className="text-2xl text-secondary font-medium mb-3">Emotional Intelligence</h4>
+                    <div className="flex items-center">
+                      {/* <span className="text-lg text-grey_60 font-medium mr-2"></span> */}
                       <img
-                        src='/images/author.png'
-                        alt='...'
-                        className='h-10 w-10'
+                        src="./images/author.png"
+                        alt="..."
+                        className="h-6 w-6 rounded-full"
                       />
-                      <p className='text-lg font-medium ml-2 underline text-grey_60'>
-                        Sara Mitchell
-                      </p>
+
+                        <a className="font-medium ml-2 text-secondary_ink_lighter block border-bottom border-b-secondary_ink_lighter">
+                          Sara Mitchell
+                        </a>
                     </div>
-                    <div className='mt-8 flex items-center justify-between'>
-                      <div className='flex items-center'>
-                        <img
-                          src='/images/icons/star.svg'
-                          alt='...'
-                          className='w-6 h-6'
-                        />
-                        <span className='ml-2 text-lg font-semibold text-grey_40'>
-                          5.0
+                    <div className="mt-3 flex items-center justify-between">
+                      <div className="flex items-center">
+                        <img src="/images/icons/star.svg" alt="..." className="w-4 h-4" />
+                        <span className="ml-2 text-sm font-semibold text-secondary_ink_lighter">5.0
+                        <span className="font-normal ml-1 text-xs">(25)</span>
                         </span>
-                        <div className='px-1 rounded border border-grey_80 ml-3 bg-grey_95'>
-                          <span className='text-sm font-medium text-grey_60'>
-                            34567
-                          </span>
-                        </div>
                       </div>
                       <span
-                        className={`text-sm font-medium py-3 px-5 pl-3 bg-yellow rounded ${styles.price}`}
+                        className={`text-sm font-normal py-2 px-5 pl-3 bg-secondary_52 rounded ${styles.price} text-white`}
                       >
                         $5000+
                       </span>
                     </div>
-                    <div className='rounded border border-grey_20 flex justify-between items-center mt-5 px-3 py-2'>
-                      <p>40% Affiliate Commission</p>
-                      <a
-                        href=''
-                        className='bg-grey_20 text-yellow rounded px-3 py-2'
-                      >
+                    <div className="rounded border border-sky_light flex justify-between items-center mt-5 px-3 py-2">
+                      <p className="text-xs text-secondary_sky_dark">40% Affiliate Commission</p>
+                      <a href="" className="bg-primary text-white font-medium text-sm rounded px-3 py-2">
                         Become Affiliate
                       </a>
                     </div>
                   </div>
                 </div>
 
-                <div
-                  className={`shadow w-[max-content] mr-1 h-[max-content]  ${styles.card}`}
+                              <div
+                  className={`shadow w-[max-content] mr-5 h-[max-content]  ${styles.card}`}
                 >
                   <img
-                    src='/images/book-small.png'
-                    alt='...'
-                    className='w-[100%] h-[350px]'
+                    src="/images/book-small.png"
+                    alt="..."
+                    className="w-[100%] h-[auto]"
                   />
-                  <div className='p-5 rounded-b'>
-                    <p className='text-lg text-grey_80 font-medium mb-1'>
-                      Books
-                    </p>
-                    <h4 className='text-2xl text-dark_ font-bold mb-8'>
-                      Emotional Intelligence
-                    </h4>
-                    <div className='flex items-center'>
-                      <span className='text-lg text-grey_60 font-medium mr-2'>
-                        By:
-                      </span>
+                  <div className="p-5 rounded-b">
+                    <p className="text-lg text-secondary_sky_dark font-normal mb-1">Books</p>
+                      <h4 className="text-2xl text-secondary font-medium mb-3">Emotional Intelligence</h4>
+                    <div className="flex items-center">
+                      {/* <span className="text-lg text-grey_60 font-medium mr-2"></span> */}
                       <img
-                        src='/images/author.png'
-                        alt='...'
-                        className='h-10 w-10'
+                        src="./images/author.png"
+                        alt="..."
+                        className="h-6 w-6 rounded-full"
                       />
-                      <p className='text-lg font-medium ml-2 underline text-grey_60'>
-                        Sara Mitchell
-                      </p>
+
+                        <a className="font-medium ml-2 text-secondary_ink_lighter block border-bottom border-b-secondary_ink_lighter">
+                          Sara Mitchell
+                        </a>
                     </div>
-                    <div className='mt-8 flex items-center justify-between'>
-                      <div className='flex items-center'>
-                        <img
-                          src='/images/icons/star.svg'
-                          alt='...'
-                          className='w-6 h-6'
-                        />
-                        <span className='ml-2 text-lg font-semibold text-grey_40'>
-                          5.0
+                    <div className="mt-3 flex items-center justify-between">
+                      <div className="flex items-center">
+                        <img src="/images/icons/star.svg" alt="..." className="w-4 h-4" />
+                        <span className="ml-2 text-sm font-semibold text-secondary_ink_lighter">5.0
+                        <span className="font-normal ml-1 text-xs">(25)</span>
                         </span>
-                        <div className='px-1 rounded border border-grey_80 ml-3 bg-grey_95'>
-                          <span className='text-sm font-medium text-grey_60'>
-                            34567
-                          </span>
-                        </div>
                       </div>
                       <span
-                        className={`text-sm font-medium py-3 px-5 pl-3 bg-yellow rounded ${styles.price}`}
+                        className={`text-sm font-normal py-2 px-5 pl-3 bg-secondary_52 rounded ${styles.price} text-white`}
                       >
                         $5000+
                       </span>
                     </div>
-                    <div className='rounded border border-grey_20 flex justify-between items-center mt-5 px-3 py-2'>
-                      <p>40% Affiliate Commission</p>
-                      <a
-                        href=''
-                        className='bg-grey_20 text-yellow rounded px-3 py-2'
-                      >
+                    <div className="rounded border border-sky_light flex justify-between items-center mt-5 px-3 py-2">
+                      <p className="text-xs text-secondary_sky_dark">40% Affiliate Commission</p>
+                      <a href="" className="bg-primary text-white font-medium text-sm rounded px-3 py-2">
                         Become Affiliate
                       </a>
                     </div>
                   </div>
                 </div>
 
-                <div
-                  className={`shadow w-[max-content] mr-1 h-[max-content]  ${styles.card}`}
+                  <div
+                  className={`shadow w-[max-content] mr-5 h-[max-content]  ${styles.card}`}
                 >
                   <img
-                    src='/images/book-small.png'
-                    alt='...'
-                    className='w-[100%] h-[350px]'
+                    src="/images/book-small.png"
+                    alt="..."
+                    className="w-[100%] h-[auto]"
                   />
-                  <div className='p-5 rounded-b'>
-                    <p className='text-lg text-grey_80 font-medium mb-1'>
-                      Books
-                    </p>
-                    <h4 className='text-2xl text-dark_ font-bold mb-8'>
-                      Emotional Intelligence
-                    </h4>
-                    <div className='flex items-center'>
-                      <span className='text-lg text-grey_60 font-medium mr-2'>
-                        By:
-                      </span>
+                  <div className="p-5 rounded-b">
+                    <p className="text-lg text-secondary_sky_dark font-normal mb-1">Books</p>
+                      <h4 className="text-2xl text-secondary font-medium mb-3">Emotional Intelligence</h4>
+                    <div className="flex items-center">
+                      {/* <span className="text-lg text-grey_60 font-medium mr-2"></span> */}
                       <img
-                        src='/images/author.png'
-                        alt='...'
-                        className='h-10 w-10'
+                        src="./images/author.png"
+                        alt="..."
+                        className="h-6 w-6 rounded-full"
                       />
-                      <p className='text-lg font-medium ml-2 underline text-grey_60'>
-                        Sara Mitchell
-                      </p>
+
+                        <a className="font-medium ml-2 text-secondary_ink_lighter block border-bottom border-b-secondary_ink_lighter">
+                          Sara Mitchell
+                        </a>
                     </div>
-                    <div className='mt-8 flex items-center justify-between'>
-                      <div className='flex items-center'>
-                        <img
-                          src='/images/icons/star.svg'
-                          alt='...'
-                          className='w-6 h-6'
-                        />
-                        <span className='ml-2 text-lg font-semibold text-grey_40'>
-                          5.0
+                    <div className="mt-3 flex items-center justify-between">
+                      <div className="flex items-center">
+                        <img src="/images/icons/star.svg" alt="..." className="w-4 h-4" />
+                        <span className="ml-2 text-sm font-semibold text-secondary_ink_lighter">5.0
+                        <span className="font-normal ml-1 text-xs">(25)</span>
                         </span>
-                        <div className='px-1 rounded border border-grey_80 ml-3 bg-grey_95'>
-                          <span className='text-sm font-medium text-grey_60'>
-                            34567
-                          </span>
-                        </div>
                       </div>
                       <span
-                        className={`text-sm font-medium py-3 px-5 pl-3 bg-yellow rounded ${styles.price}`}
+                        className={`text-sm font-normal py-2 px-5 pl-3 bg-secondary_52 rounded ${styles.price} text-white`}
                       >
                         $5000+
                       </span>
                     </div>
-                    <div className='rounded border border-grey_20 flex justify-between items-center mt-5 px-3 py-2'>
-                      <p>40% Affiliate Commission</p>
-                      <a
-                        href=''
-                        className='bg-grey_20 text-yellow rounded px-3 py-2'
-                      >
+                    <div className="rounded border border-sky_light flex justify-between items-center mt-5 px-3 py-2">
+                      <p className="text-xs text-secondary_sky_dark">40% Affiliate Commission</p>
+                      <a href="" className="bg-primary text-white font-medium text-sm rounded px-3 py-2">
                         Become Affiliate
                       </a>
                     </div>
                   </div>
                 </div>
 
-                <div
-                  className={`shadow w-[max-content] mr-1 h-[max-content]  ${styles.card}`}
+                              <div
+                  className={`shadow w-[max-content] mr-5 h-[max-content]  ${styles.card}`}
                 >
                   <img
-                    src='/images/book-small.png'
-                    alt='...'
-                    className='w-[100%] h-[350px]'
+                    src="/images/book-small.png"
+                    alt="..."
+                    className="w-[100%] h-[auto]"
                   />
-                  <div className='p-5 rounded-b'>
-                    <p className='text-lg text-grey_80 font-medium mb-1'>
-                      Books
-                    </p>
-                    <h4 className='text-2xl text-dark_ font-bold mb-8'>
-                      Emotional Intelligence
-                    </h4>
-                    <div className='flex items-center'>
-                      <span className='text-lg text-grey_60 font-medium mr-2'>
-                        By:
-                      </span>
+                  <div className="p-5 rounded-b">
+                    <p className="text-lg text-secondary_sky_dark font-normal mb-1">Books</p>
+                      <h4 className="text-2xl text-secondary font-medium mb-3">Emotional Intelligence</h4>
+                    <div className="flex items-center">
+                      {/* <span className="text-lg text-grey_60 font-medium mr-2"></span> */}
                       <img
-                        src='/images/author.png'
-                        alt='...'
-                        className='h-10 w-10'
+                        src="./images/author.png"
+                        alt="..."
+                        className="h-6 w-6 rounded-full"
                       />
-                      <p className='text-lg font-medium ml-2 underline text-grey_60'>
-                        Sara Mitchell
-                      </p>
+
+                        <a className="font-medium ml-2 text-secondary_ink_lighter block border-bottom border-b-secondary_ink_lighter">
+                          Sara Mitchell
+                        </a>
                     </div>
-                    <div className='mt-8 flex items-center justify-between'>
-                      <div className='flex items-center'>
-                        <img
-                          src='/images/icons/star.svg'
-                          alt='...'
-                          className='w-6 h-6'
-                        />
-                        <span className='ml-2 text-lg font-semibold text-grey_40'>
-                          5.0
+                    <div className="mt-3 flex items-center justify-between">
+                      <div className="flex items-center">
+                        <img src="/images/icons/star.svg" alt="..." className="w-4 h-4" />
+                        <span className="ml-2 text-sm font-semibold text-secondary_ink_lighter">5.0
+                        <span className="font-normal ml-1 text-xs">(25)</span>
                         </span>
-                        <div className='px-1 rounded border border-grey_80 ml-3 bg-grey_95'>
-                          <span className='text-sm font-medium text-grey_60'>
-                            34567
-                          </span>
-                        </div>
                       </div>
                       <span
-                        className={`text-sm font-medium py-3 px-5 pl-3 bg-yellow rounded ${styles.price}`}
+                        className={`text-sm font-normal py-2 px-5 pl-3 bg-secondary_52 rounded ${styles.price} text-white`}
                       >
                         $5000+
                       </span>
                     </div>
-                    <div className='rounded border border-grey_20 flex justify-between items-center mt-5 px-3 py-2'>
-                      <p>40% Affiliate Commission</p>
-                      <a
-                        href=''
-                        className='bg-grey_20 text-yellow rounded px-3 py-2'
-                      >
+                    <div className="rounded border border-sky_light flex justify-between items-center mt-5 px-3 py-2">
+                      <p className="text-xs text-secondary_sky_dark">40% Affiliate Commission</p>
+                      <a href="" className="bg-primary text-white font-medium text-sm rounded px-3 py-2">
                         Become Affiliate
                       </a>
                     </div>
                   </div>
                 </div>
-                <div
-                  className={`shadow w-[max-content] mr-1 h-[max-content]  ${styles.card}`}
+
+                              <div
+                  className={`shadow w-[max-content] mr-5 h-[max-content]  ${styles.card}`}
                 >
                   <img
-                    src='/images/book-small.png'
-                    alt='...'
-                    className='w-[100%] h-[350px]'
+                    src="/images/book-small.png"
+                    alt="..."
+                    className="w-[100%] h-[auto]"
                   />
-                  <div className='p-5 rounded-b'>
-                    <p className='text-lg text-grey_80 font-medium mb-1'>
-                      Books
-                    </p>
-                    <h4 className='text-2xl text-dark_ font-bold mb-8'>
-                      Emotional Intelligence
-                    </h4>
-                    <div className='flex items-center'>
-                      <span className='text-lg text-grey_60 font-medium mr-2'>
-                        By:
-                      </span>
+                  <div className="p-5 rounded-b">
+                    <p className="text-lg text-secondary_sky_dark font-normal mb-1">Books</p>
+                      <h4 className="text-2xl text-secondary font-medium mb-3">Emotional Intelligence</h4>
+                    <div className="flex items-center">
+                      {/* <span className="text-lg text-grey_60 font-medium mr-2"></span> */}
                       <img
-                        src='/images/author.png'
-                        alt='...'
-                        className='h-10 w-10'
+                        src="./images/author.png"
+                        alt="..."
+                        className="h-6 w-6 rounded-full"
                       />
-                      <p className='text-lg font-medium ml-2 underline text-grey_60'>
-                        Sara Mitchell
-                      </p>
+
+                        <a className="font-medium ml-2 text-secondary_ink_lighter block border-bottom border-b-secondary_ink_lighter">
+                          Sara Mitchell
+                        </a>
                     </div>
-                    <div className='mt-8 flex items-center justify-between'>
-                      <div className='flex items-center'>
-                        <img
-                          src='/images/icons/star.svg'
-                          alt='...'
-                          className='w-6 h-6'
-                        />
-                        <span className='ml-2 text-lg font-semibold text-grey_40'>
-                          5.0
+                    <div className="mt-3 flex items-center justify-between">
+                      <div className="flex items-center">
+                        <img src="/images/icons/star.svg" alt="..." className="w-4 h-4" />
+                        <span className="ml-2 text-sm font-semibold text-secondary_ink_lighter">5.0
+                        <span className="font-normal ml-1 text-xs">(25)</span>
                         </span>
-                        <div className='px-1 rounded border border-grey_80 ml-3 bg-grey_95'>
-                          <span className='text-sm font-medium text-grey_60'>
-                            34567
-                          </span>
-                        </div>
                       </div>
                       <span
-                        className={`text-sm font-medium py-3 px-5 pl-3 bg-yellow rounded ${styles.price}`}
+                        className={`text-sm font-normal py-2 px-5 pl-3 bg-secondary_52 rounded ${styles.price} text-white`}
                       >
                         $5000+
                       </span>
                     </div>
-                    <div className='rounded border border-grey_20 flex justify-between items-center mt-5 px-3 py-2'>
-                      <p>40% Affiliate Commission</p>
-                      <a
-                        href=''
-                        className='bg-grey_20 text-yellow rounded px-3 py-2'
-                      >
+                    <div className="rounded border border-sky_light flex justify-between items-center mt-5 px-3 py-2">
+                      <p className="text-xs text-secondary_sky_dark">40% Affiliate Commission</p>
+                      <a href="" className="bg-primary text-white font-medium text-sm rounded px-3 py-2">
                         Become Affiliate
                       </a>
                     </div>
                   </div>
+                </div>
+
+                              <div
+                  className={`shadow w-[max-content] mr-5 h-[max-content]  ${styles.card}`}
+                >
+                  <img
+                    src="/images/book-small.png"
+                    alt="..."
+                    className="w-[100%] h-[auto]"
+                  />
+                  <div className="p-5 rounded-b">
+                    <p className="text-lg text-secondary_sky_dark font-normal mb-1">Books</p>
+                      <h4 className="text-2xl text-secondary font-medium mb-3">Emotional Intelligence</h4>
+                    <div className="flex items-center">
+                      {/* <span className="text-lg text-grey_60 font-medium mr-2"></span> */}
+                      <img
+                        src="./images/author.png"
+                        alt="..."
+                        className="h-6 w-6 rounded-full"
+                      />
+
+                        <a className="font-medium ml-2 text-secondary_ink_lighter block border-bottom border-b-secondary_ink_lighter">
+                          Sara Mitchell
+                        </a>
+                    </div>
+                    <div className="mt-3 flex items-center justify-between">
+                      <div className="flex items-center">
+                        <img src="/images/icons/star.svg" alt="..." className="w-4 h-4" />
+                        <span className="ml-2 text-sm font-semibold text-secondary_ink_lighter">5.0
+                        <span className="font-normal ml-1 text-xs">(25)</span>
+                        </span>
+                      </div>
+                      <span
+                        className={`text-sm font-normal py-2 px-5 pl-3 bg-secondary_52 rounded ${styles.price} text-white`}
+                      >
+                        $5000+
+                      </span>
+                    </div>
+                    <div className="rounded border border-sky_light flex justify-between items-center mt-5 px-3 py-2">
+                      <p className="text-xs text-secondary_sky_dark">40% Affiliate Commission</p>
+                      <a href="" className="bg-primary text-white font-medium text-sm rounded px-3 py-2">
+                        Become Affiliate
+                      </a>
+                    </div>
+                  </div>
+                </div>
+
+                              <div
+                  className={`shadow w-[max-content] mr-5 h-[max-content]  ${styles.card}`}
+                >
+                  <img
+                    src="/images/book-small.png"
+                    alt="..."
+                    className="w-[100%] h-[auto]"
+                  />
+                  <div className="p-5 rounded-b">
+                    <p className="text-lg text-secondary_sky_dark font-normal mb-1">Books</p>
+                      <h4 className="text-2xl text-secondary font-medium mb-3">Emotional Intelligence</h4>
+                    <div className="flex items-center">
+                      {/* <span className="text-lg text-grey_60 font-medium mr-2"></span> */}
+                      <img
+                        src="./images/author.png"
+                        alt="..."
+                        className="h-6 w-6 rounded-full"
+                      />
+
+                        <a className="font-medium ml-2 text-secondary_ink_lighter block border-bottom border-b-secondary_ink_lighter">
+                          Sara Mitchell
+                        </a>
+                    </div>
+                    <div className="mt-3 flex items-center justify-between">
+                      <div className="flex items-center">
+                        <img src="/images/icons/star.svg" alt="..." className="w-4 h-4" />
+                        <span className="ml-2 text-sm font-semibold text-secondary_ink_lighter">5.0
+                        <span className="font-normal ml-1 text-xs">(25)</span>
+                        </span>
+                      </div>
+                      <span
+                        className={`text-sm font-normal py-2 px-5 pl-3 bg-secondary_52 rounded ${styles.price} text-white`}
+                      >
+                        $5000+
+                      </span>
+                    </div>
+                    <div className="rounded border border-sky_light flex justify-between items-center mt-5 px-3 py-2">
+                      <p className="text-xs text-secondary_sky_dark">40% Affiliate Commission</p>
+                      <a href="" className="bg-primary text-white font-medium text-sm rounded px-3 py-2">
+                        Become Affiliate
+                      </a>
+                    </div>
+                  </div>
+                </div>
+
+                              <div
+                  className={`shadow w-[max-content] mr-5 h-[max-content]  ${styles.card}`}
+                >
+                  <img
+                    src="/images/book-small.png"
+                    alt="..."
+                    className="w-[100%] h-[auto]"
+                  />
+                  <div className="p-5 rounded-b">
+                    <p className="text-lg text-secondary_sky_dark font-normal mb-1">Books</p>
+                      <h4 className="text-2xl text-secondary font-medium mb-3">Emotional Intelligence</h4>
+                    <div className="flex items-center">
+                      {/* <span className="text-lg text-grey_60 font-medium mr-2"></span> */}
+                      <img
+                        src="./images/author.png"
+                        alt="..."
+                        className="h-6 w-6 rounded-full"
+                      />
+
+                        <a className="font-medium ml-2 text-secondary_ink_lighter block border-bottom border-b-secondary_ink_lighter">
+                          Sara Mitchell
+                        </a>
+                    </div>
+                    <div className="mt-3 flex items-center justify-between">
+                      <div className="flex items-center">
+                        <img src="/images/icons/star.svg" alt="..." className="w-4 h-4" />
+                        <span className="ml-2 text-sm font-semibold text-secondary_ink_lighter">5.0
+                        <span className="font-normal ml-1 text-xs">(25)</span>
+                        </span>
+                      </div>
+                      <span
+                        className={`text-sm font-normal py-2 px-5 pl-3 bg-secondary_52 rounded ${styles.price} text-white`}
+                      >
+                        $5000+
+                      </span>
+                    </div>
+                    <div className="rounded border border-sky_light flex justify-between items-center mt-5 px-3 py-2">
+                      <p className="text-xs text-secondary_sky_dark">40% Affiliate Commission</p>
+                      <a href="" className="bg-primary text-white font-medium text-sm rounded px-3 py-2">
+                        Become Affiliate
+                      </a>
+                    </div>
+                  </div>
+                </div>
+                </div>
                 </div>
               </div>
             </div>
           </div>
           <div
-            className='flex w-[max-content] border border-grey_80 p-2 rounded mt-3'
+            className='flex w-[max-content] border border-grey_80 p-2 rounded mt-7'
             style={{ 'border-radius': '20px' }}
           >
             <LeftIcon />
-            <p className='mx-2'>Page 1 of 8</p>
+            <p className='mx-5'>Page 1 of 8</p>
             <RightIcon />
           </div>
         </div>
