@@ -31,21 +31,27 @@ const NavIcon = () => (
   </svg>
 );
 
+const RightIcon = () => (
+  <svg width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg" className="ml-3">
+  <path d="M1 8H15M15 8L7.99998 0.999878M15 8L7.99998 14.9999" stroke="#5B44E9" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+  </svg>
+)
+
 export default function MainNavigation() {
   const [navbarOpen, setNavbarOpen] = React.useState(false);
   return (
     <>
-      <nav className="relative flex flex-wrap items-center justify-between px-0 md:px-4 py-3">
-        <div className="container px-4 mx-auto flex flex-wrap items-center justify-between">
-          <div className="w-full relative flex justify-between lg:w-auto lg:static lg:block lg:justify-start">
-            <Link href="/">
-              <a className="text-white text-sm font-bold leading-relaxed inline-block mr-4 py-2 whitespace-nowrap uppercase">
-                <img src="/images/logo.png" alt="..." />
+      <nav className='relative flex flex-wrap items-center justify-between px-0 md:px-4 py-3'>
+        <div className='container px-4 mx-auto flex flex-wrap items-center justify-between'>
+          <div className='w-full relative flex justify-between lg:w-auto lg:static lg:block lg:justify-start'>
+            <Link href='/'>
+              <a className='text-white text-sm font-bold leading-relaxed inline-block mr-4 py-2 whitespace-nowrap uppercase'>
+                <img src='/images/logo.png' alt='...' />
               </a>
             </Link>
             <button
-              className="cursor-pointer text-xl leading-none px-3 py-1 border border-solid border-transparent rounded bg-transparent block lg:hidden outline-none focus:outline-none"
-              type="button"
+              className='cursor-pointer text-xl leading-none px-3 py-1 border border-solid border-transparent rounded bg-transparent block lg:hidden outline-none focus:outline-none'
+              type='button'
               onClick={() => setNavbarOpen(!navbarOpen)}
             >
               <NavIcon />
@@ -53,55 +59,55 @@ export default function MainNavigation() {
           </div>
           <div
             className={
-              "lg:flex flex-grow items-center bg-primary lg:bg-transparent lg:shadow-none" +
-              (navbarOpen ? " block rounded shadow-lg" : " hidden")
+              'lg:flex flex-grow items-center bg-primary lg:bg-transparent lg:shadow-none' +
+              (navbarOpen ? ' block rounded shadow-lg' : ' hidden')
             }
-            id="example-navbar-warning"
+            id='example-navbar-warning'
           >
-            <ul className="flex flex-col lg:flex-row list-none lg:ml-auto">
-              <li className="flex items-center">
-                <Link href="/">
-                  <a className="px-3 py-4 lg:py-2 flex items-center text-base text-cabiza_grey hover:font-semibold hover:text-cabiza_blue mr-5">
+            <ul className='flex flex-col lg:flex-row list-none lg:ml-auto'>
+              <li className='flex items-center'>
+                <Link href='/'>
+                  <a className='px-3 py-4 lg:py-2 flex items-center text-base text-cabiza_grey hover:font-semibold hover:text-primary mr-5'>
                     Home
                   </a>
                 </Link>
               </li>
-              <li className="flex items-center">
-                <Link href="/discover">
-                  <a className="px-3 py-4 lg:py-2 flex items-center text-base  text-cabiza_grey hover:font-semibold hover:text-cabiza_blue mr-5">
+              <li className='flex items-center'>
+                <Link href='/discover'>
+                  <a className='px-3 py-4 lg:py-2 flex items-center text-base  text-cabiza_grey hover:font-semibold hover:text-primary mr-5'>
                     Discover
                   </a>
                 </Link>
               </li>
 
-              <li className="flex items-center">
-                <Link href="/membership">
-                  <a className="px-3 py-4 lg:py-2 flex items-center text-base text-cabiza_grey hover:font-semibold hover:text-cabiza_blue">
+              <li className='flex items-center'>
+                <Link href='/membership'>
+                  <a className='px-3 py-4 lg:py-2 flex items-center text-base text-cabiza_grey hover:font-semibold hover:text-primary'>
                     Membership
                   </a>
                 </Link>
               </li>
             </ul>
 
-            <ul className="flex flex-col lg:flex-row list-none lg:ml-auto">
-              <li className="flex items-center">
-                <Link href="/auth/login">
+            <ul className='flex flex-col lg:flex-row list-none lg:ml-auto'>
+              <li className='flex items-center'>
+                <Link href='/auth/login'>
                   <a
-                    className="font-medium md:px-4 py-2 hover:font-semibold focus:outline-none lg:mr-1 lg:mb-0 ml-3 mb-3"
-                    style={{ transition: "all .15s ease" }}
+                    className='font-medium md:px-4 py-2 hover:font-semibold focus:outline-none lg:mr-1 lg:mb-0 ml-3 mb-3'
+                    style={{ transition: 'all .15s ease' }}
                   >
                     Login
                   </a>
                 </Link>
               </li>
 
-              <li className="flex items-center">
-                <Link href="/auth/signup">
+              <li className='flex items-center'>
+                <Link href='/auth/signup'>
                   <a
-                    className="border bg-primary border-primary text-white font-semibold px-4 py-2 rounded shadow hover:shadow-md outline-none focus:outline-none lg:mr-1 lg:mb-0 md:ml-3 mb-3"
-                    style={{ transition: "all .15s ease" }}
+                    className='border text-primary border-primary font-semibold px-4 py-2 rounded-xl shadow hover:shadow-md outline-none focus:outline-none lg:mr-1 lg:mb-0 md:ml-3 mb-3 flex items-center'
+                    style={{ transition: 'all .15s ease' }}
                   >
-                    Get Started
+                    Sign up <RightIcon/>
                   </a>
                 </Link>
               </li>
