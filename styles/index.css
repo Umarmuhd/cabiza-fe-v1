@@ -1,22 +1,21 @@
-@import url("http://fonts.cdnfonts.com/css/sofia-pro");
-
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;700&display=swap');
 * {
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
 }
 
 html {
-  overflow-x: hidden;
+    overflow-x: hidden;
 }
 
 body {
-  overflow-x: hidden;
-  font-family: "Sofia Pro", sans-serif;
+    overflow-x: hidden;
+    font-family: 'Inter', sans-serif;
 }
 
 @media only screen and (max-width: 600px) {
-  html {
-    font-size: 14px;
-  }
+    html {
+        font-size: 14px;
+    }
 }
