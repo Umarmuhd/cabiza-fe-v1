@@ -118,7 +118,7 @@ export default function Discover() {
             <form className='flex'>
                 <select
                   name='category'
-                  className='block py-2 px-3 border border-gray-300 bg-primary shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 text-lg lg:w-1/6 sm:w-2/6 rounded-l-3xl text-grey_40 px-12 text-white'
+                  className='xs:block py-2 px-3 border border-gray-300 bg-primary shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 text-lg lg:w-1/6 sm:w-2/6 rounded-l-3xl text-grey_40 px-12 text-white hidden'
                 >
                   <option>Education</option>
                   <option>Fitness</option>
@@ -146,7 +146,7 @@ export default function Discover() {
           <h2 className='text-lg text-lighter font-medium mb-6'>
             Explore Cabiza
           </h2>
-          <p className='font-bold text-dark_ text-3xl mb-12 w-[70%]'>
+          <p className='font-bold text-dark_ text-3xl mb-12 xs:w-[70%]'>
             Perfect your career with tested and proven resources from experts
             and examples from others.
           </p>
@@ -322,7 +322,7 @@ export default function Discover() {
 
           <div className='mb-12'>
             <header className='flex justify-between items-center mb-6'>
-              <h3 className='text-4xl text-secondary font-semibold'>
+              <h3 className='text-lg xs:text-4xl text-secondary font-semibold'>
                 Best selling in Education
               </h3>
               <a href='' className='text-primary_brand_light'>
@@ -356,7 +356,7 @@ export default function Discover() {
 
           <div className='mb-12 mt-12'>
             <header className='flex justify-between items-center mb-6'>
-              <h3 className='text-4xl text-secondary font-semibold'>
+              <h3 className='text-lg xs:text-4xl text-secondary font-semibold'>
                 Best selling in Crafts & DIY
               </h3>
               <a href='' className='text-primary_brand_light'>
@@ -733,7 +733,7 @@ export default function Discover() {
 
           <div className='mb-0'>
             <header className='flex justify-between items-center mb-6'>              
-              <h3 className='text-4xl text-secondary font-semibold'>
+              <h3 className='text-lg xs:text-4xl text-secondary font-semibold'>
                 Best selling in Design & Tech
               </h3>
               <a href='' className='text-primary_brand_light'>
@@ -1117,7 +1117,7 @@ export default function Discover() {
             style={{ 'border-radius': '20px' }}
           >
             <LeftIcon />
-            <p className='mx-5'>Page 1 of 8</p>
+            <p className='mx-5 text-secondary'>Page 1 of 8</p>
             <RightIcon />
           </div>
         </div>
