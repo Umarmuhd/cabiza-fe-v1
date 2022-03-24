@@ -9,6 +9,8 @@ module.exports = {
         primary: '#5B44E9',
         cabiza_blue: '#24BAD4',
         cabiza_blue_secondary: '#4CCBE1',
+        secondary: '#404446',
+
         yellow: '#FCCA03',
         cabiza_secondary: '#02BDDC',
         cabiza_secondary_tertiary: '#E5F7FB',
@@ -27,8 +29,11 @@ module.exports = {
         dark_: '#220934',
         dark_pri: '#013D47',
         cabiza_red: '#D12424',
+        white: '#ffffff',
         pink: '#FEF4CD',
-        
+        sky_light: '#E3E5E5',
+        dark: '#303437',
+
         //New colors
         lighter: '#BFB6F6',
         primary_brand_lightest: '#EFEDFD',
