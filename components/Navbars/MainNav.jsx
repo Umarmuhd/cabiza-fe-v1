@@ -43,9 +43,9 @@ const RightIcon = () => (
     <path
       d="M1 8H15M15 8L7.99998 0.999878M15 8L7.99998 14.9999"
       stroke="#5B44E9"
-      stroke-width="1.5"
-      stroke-linecap="round"
-      stroke-linejoin="round"
+      strokeWidth="1.5"
+      strokeLinecap="round"
+      strokeLinejoin="round"
     />
   </svg>
 );
@@ -81,31 +81,37 @@ export default function MainNavigation() {
         </a>
         <ul className="flex items-center hidden space-x-8 lg:flex">
           <li>
-            <a
-              aria-label="Our product"
-              title="Our product"
-              className="font-medium tracking-wide text-gray-700 transition-colors duration-200 hover:text-deep-purple-accent-400"
-            >
-              Home
-            </a>
+            <Link href="/">
+              <a
+                aria-label="Our product"
+                title="Our product"
+                className="font-medium tracking-wide text-gray-700 transition-colors duration-200 hover:text-deep-purple-accent-400"
+              >
+                Home
+              </a>
+            </Link>
           </li>
           <li>
-            <a
-              aria-label="Our product"
-              title="Our product"
-              className="font-medium tracking-wide text-gray-700 transition-colors duration-200 hover:text-deep-purple-accent-400"
-            >
-              Discover
-            </a>
+            <Link href="/discover">
+              <a
+                aria-label="Our product"
+                title="Our product"
+                className="font-medium tracking-wide text-gray-700 transition-colors duration-200 hover:text-deep-purple-accent-400"
+              >
+                Discover
+              </a>
+            </Link>
           </li>
           <li>
-            <a
-              aria-label="Product pricing"
-              title="Product pricing"
-              className="font-medium tracking-wide text-gray-700 transition-colors duration-200 hover:text-deep-purple-accent-400"
-            >
-              Membership
-            </a>
+            <Link href="/membership">
+              <a
+                aria-label="Product pricing"
+                title="Product pricing"
+                className="font-medium tracking-wide text-gray-700 transition-colors duration-200 hover:text-deep-purple-accent-400"
+              >
+                Membership
+              </a>
+            </Link>
           </li>
         </ul>
         <ul className="flex items-center hidden space-x-8 lg:flex">
