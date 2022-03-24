@@ -6,6 +6,8 @@ import MainNavigation from "@/components/Navbars/MainNav";
 import { API_URL } from "@/config/index";
 import styles from "./index.module.css";
 
+// Reduce the padding right to .5rem of the become affliate button
+
 const SearchIcon = () => (
   <svg
     width="20"
@@ -24,22 +26,22 @@ const SearchIcon = () => (
     />
   </svg>
 );
+
 const RightIcon = () => (
     <svg width="28" height="28" viewBox="0 0 28 28" fill="none" xmlns="http://www.w3.org/2000/svg">
         <path d="M13.9998 0.666748C6.63984 0.666748 0.666504 6.64008 0.666504 14.0001C0.666504 21.3601 6.63984 27.3334 13.9998 27.3334C21.3598 27.3334 27.3332 21.3601 27.3332 14.0001C27.3332 6.64008 21.3598 0.666748 13.9998 0.666748ZM19.3732 14.7067L15.3732 18.7067C15.1732 18.9067 14.9198 19.0001 14.6665 19.0001C14.4132 19.0001 14.1598 18.9067 13.9598 18.7067C13.5732 18.3201 13.5732 17.6801 13.9598 17.2934L16.2532 15.0001H9.33317C8.7865 15.0001 8.33317 14.5467 8.33317 14.0001C8.33317 13.4534 8.7865 13.0001 9.33317 13.0001H16.2532L13.9598 10.7067C13.5732 10.3201 13.5732 9.68008 13.9598 9.29342C14.3465 8.90675 14.9865 8.90675 15.3732 9.29342L19.3732 13.2934C19.7598 13.6801 19.7598 14.3201 19.3732 14.7067Z" fill="#5B44E9"/>
       </svg>
-
 );
-const LeftIcon = () => (
-      <svg width="28" height="28" viewBox="0 0 28 28" fill="none" xmlns="http://www.w3.org/2000/svg">
-        <path d="M13.9998 0.666748C6.63984 0.666748 0.666504 6.64008 0.666504 14.0001C0.666504 21.3601 6.63984 27.3334 13.9998 27.3334C21.3598 27.3334 27.3332 21.3601 27.3332 14.0001C27.3332 6.64008 21.3598 0.666748 13.9998 0.666748ZM18.6665 15.0001H11.7465L14.0398 17.2934C14.4265 17.6801 14.4265 18.3201 14.0398 18.7067C13.8398 18.9067 13.5865 19.0001 13.3332 19.0001C13.0798 19.0001 12.8265 18.9067 12.6265 18.7067L8.6265 14.7067C8.23984 14.3201 8.23984 13.6801 8.6265 13.2934L12.6265 9.29342C13.0132 8.90675 13.6532 8.90675 14.0398 9.29342C14.4265 9.68008 14.4265 10.3201 14.0398 10.7067L11.7465 13.0001H18.6665C19.2132 13.0001 19.6665 13.4534 19.6665 14.0001C19.6665 14.5467 19.2132 15.0001 18.6665 15.0001Z" fill="#BFB6F6"/>
-      </svg>
 
+const LeftIcon = () => (
+      <svg width="27" height="28" viewBox="0 0 27 28" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <path d="M13.4998 0.666626C6.13984 0.666626 0.166504 6.63996 0.166504 14C0.166504 21.36 6.13984 27.3333 13.4998 27.3333C20.8598 27.3333 26.8332 21.36 26.8332 14C26.8332 6.63996 20.8598 0.666626 13.4998 0.666626ZM18.1665 15H11.2465L13.5398 17.2933C13.9265 17.68 13.9265 18.32 13.5398 18.7066C13.3398 18.9066 13.0865 19 12.8332 19C12.5798 19 12.3265 18.9066 12.1265 18.7066L8.1265 14.7066C7.73984 14.32 7.73984 13.68 8.1265 13.2933L12.1265 9.29329C12.5132 8.90663 13.1532 8.90663 13.5398 9.29329C13.9265 9.67996 13.9265 10.32 13.5398 10.7066L11.2465 13H18.1665C18.7132 13 19.1665 13.4533 19.1665 14C19.1665 14.5466 18.7132 15 18.1665 15Z" fill="#BFB6F6"/>
+      </svg>
 );
 
 const ProductItem = ({ product }) => (
   <div
-    className={`shadow w-[max-content] mr-5 h-[max-content]  ${styles.card}`}
+    className={`shadow sm:w-sm:[max-content] mr-5 h-[max-content]  ${styles.card}`}
   >
     <img
       src="/images/book-small.png"
@@ -78,7 +80,7 @@ const ProductItem = ({ product }) => (
           ${product.price}+
         </span>
       </div>
-      <div className="rounded border border-sky_light flex justify-between items-center mt-5 px-3 py-2">
+      <div className='rounded border border-sky_light flex justify-between items-center mt-5 px-1 sm:px-3 py-2 pr-2'>
         <p className="text-xs text-secondary_sky_dark">40% Affiliate Commission</p>
         <a href="" className="bg-primary text-white font-medium text-sm rounded px-3 py-2">
           Become Affiliate
@@ -142,7 +144,7 @@ export default function Discover() {
         </header>
       </div>
       <div id='explore_cat' className='md:py-20 py-10'>
-        <div className='mx-auto w-[100%] px-5 max-w-[1500px] overflow-hidden'>
+        <div className='mx-auto w-[100%] px-3 max-w-[1500px] overflow-hidden'>
           <h2 className='text-lg text-lighter font-medium mb-6'>
             Explore Cabiza
           </h2>
@@ -369,7 +371,7 @@ export default function Discover() {
                 className={`flex ${styles["product-cards"]}`}
               >
                 <div
-                  className={`shadow w-[max-content] mr-5 h-[max-content]  ${styles.card}`}
+                  className={`shadow sm:w-sm:[max-content] mr-5 h-[max-content]  ${styles.card}`}
                 >
                   <img
                     src="/images/book-small.png"
@@ -404,17 +406,20 @@ export default function Discover() {
                         $5000+
                       </span>
                     </div>
-                    <div className="rounded border border-sky_light flex justify-between items-center mt-5 px-3 py-2">
+                    <div className='rounded border border-sky_light flex justify-between items-center mt-5 px-1 sm:px-3 py-2 pr-2'>
                       <p className="text-xs text-secondary_sky_dark">40% Affiliate Commission</p>
-                      <a href="" className="bg-primary text-white font-medium text-sm rounded px-3 py-2">
-                        Become Affiliate
-                      </a>
+                      <a
+                          href=''
+                          className='bg-primary text-white font-medium text-sm rounded px-3 py-2 sm:ml-10'
+                        >
+                          Become Affiliate
+                        </a>
                     </div>
                   </div>
                 </div>
 
                               <div
-                  className={`shadow w-[max-content] mr-5 h-[max-content]  ${styles.card}`}
+                  className={`shadow sm:w-sm:[max-content] mr-5 h-[max-content]  ${styles.card}`}
                 >
                   <img
                     src="/images/book-small.png"
@@ -449,17 +454,20 @@ export default function Discover() {
                         $5000+
                       </span>
                     </div>
-                    <div className="rounded border border-sky_light flex justify-between items-center mt-5 px-3 py-2">
+                    <div className='rounded border border-sky_light flex justify-between items-center mt-5 px-1 sm:px-3 py-2 pr-2'>
                       <p className="text-xs text-secondary_sky_dark">40% Affiliate Commission</p>
-                      <a href="" className="bg-primary text-white font-medium text-sm rounded px-3 py-2">
-                        Become Affiliate
-                      </a>
+                      <a
+                          href=''
+                          className='bg-primary text-white font-medium text-sm rounded px-3 py-2 sm:ml-10'
+                        >
+                          Become Affiliate
+                        </a>
                     </div>
                   </div>
                 </div>
 
                               <div
-                  className={`shadow w-[max-content] mr-5 h-[max-content]  ${styles.card}`}
+                  className={`shadow sm:w-sm:[max-content] mr-5 h-[max-content]  ${styles.card}`}
                 >
                   <img
                     src="/images/book-small.png"
@@ -494,17 +502,20 @@ export default function Discover() {
                         $5000+
                       </span>
                     </div>
-                    <div className="rounded border border-sky_light flex justify-between items-center mt-5 px-3 py-2">
+                    <div className='rounded border border-sky_light flex justify-between items-center mt-5 px-1 sm:px-3 py-2 pr-2'>
                       <p className="text-xs text-secondary_sky_dark">40% Affiliate Commission</p>
-                      <a href="" className="bg-primary text-white font-medium text-sm rounded px-3 py-2">
-                        Become Affiliate
-                      </a>
+                      <a
+                          href=''
+                          className='bg-primary text-white font-medium text-sm rounded px-3 py-2 sm:ml-10'
+                        >
+                          Become Affiliate
+                        </a>
                     </div>
                   </div>
                 </div>
 
                               <div
-                  className={`shadow w-[max-content] mr-5 h-[max-content]  ${styles.card}`}
+                  className={`shadow sm:w-sm:[max-content] mr-5 h-[max-content]  ${styles.card}`}
                 >
                   <img
                     src="/images/book-small.png"
@@ -539,17 +550,20 @@ export default function Discover() {
                         $5000+
                       </span>
                     </div>
-                    <div className="rounded border border-sky_light flex justify-between items-center mt-5 px-3 py-2">
+                    <div className='rounded border border-sky_light flex justify-between items-center mt-5 px-1 sm:px-3 py-2 pr-2'>
                       <p className="text-xs text-secondary_sky_dark">40% Affiliate Commission</p>
-                      <a href="" className="bg-primary text-white font-medium text-sm rounded px-3 py-2">
-                        Become Affiliate
-                      </a>
+                      <a
+                          href=''
+                          className='bg-primary text-white font-medium text-sm rounded px-3 py-2 sm:ml-10'
+                        >
+                          Become Affiliate
+                        </a>
                     </div>
                   </div>
                 </div>
 
                               <div
-                  className={`shadow w-[max-content] mr-5 h-[max-content]  ${styles.card}`}
+                  className={`shadow sm:w-sm:[max-content] mr-5 h-[max-content]  ${styles.card}`}
                 >
                   <img
                     src="/images/book-small.png"
@@ -584,17 +598,20 @@ export default function Discover() {
                         $5000+
                       </span>
                     </div>
-                    <div className="rounded border border-sky_light flex justify-between items-center mt-5 px-3 py-2">
+                    <div className='rounded border border-sky_light flex justify-between items-center mt-5 px-1 sm:px-3 py-2 pr-2'>
                       <p className="text-xs text-secondary_sky_dark">40% Affiliate Commission</p>
-                      <a href="" className="bg-primary text-white font-medium text-sm rounded px-3 py-2">
-                        Become Affiliate
-                      </a>
+                      <a
+                          href=''
+                          className='bg-primary text-white font-medium text-sm rounded px-3 py-2 sm:ml-10'
+                        >
+                          Become Affiliate
+                        </a>
                     </div>
                   </div>
                 </div>
 
                               <div
-                  className={`shadow w-[max-content] mr-5 h-[max-content]  ${styles.card}`}
+                  className={`shadow sm:w-sm:[max-content] mr-5 h-[max-content]  ${styles.card}`}
                 >
                   <img
                     src="/images/book-small.png"
@@ -629,17 +646,20 @@ export default function Discover() {
                         $5000+
                       </span>
                     </div>
-                    <div className="rounded border border-sky_light flex justify-between items-center mt-5 px-3 py-2">
+                    <div className='rounded border border-sky_light flex justify-between items-center mt-5 px-1 sm:px-3 py-2 pr-2'>
                       <p className="text-xs text-secondary_sky_dark">40% Affiliate Commission</p>
-                      <a href="" className="bg-primary text-white font-medium text-sm rounded px-3 py-2">
-                        Become Affiliate
-                      </a>
+                      <a
+                          href=''
+                          className='bg-primary text-white font-medium text-sm rounded px-3 py-2 sm:ml-10'
+                        >
+                          Become Affiliate
+                        </a>
                     </div>
                   </div>
                 </div>
 
                               <div
-                  className={`shadow w-[max-content] mr-5 h-[max-content]  ${styles.card}`}
+                  className={`shadow sm:w-sm:[max-content] mr-5 h-[max-content]  ${styles.card}`}
                 >
                   <img
                     src="/images/book-small.png"
@@ -674,17 +694,20 @@ export default function Discover() {
                         $5000+
                       </span>
                     </div>
-                    <div className="rounded border border-sky_light flex justify-between items-center mt-5 px-3 py-2">
+                    <div className='rounded border border-sky_light flex justify-between items-center mt-5 px-1 sm:px-3 py-2 pr-2'>
                       <p className="text-xs text-secondary_sky_dark">40% Affiliate Commission</p>
-                      <a href="" className="bg-primary text-white font-medium text-sm rounded px-3 py-2">
-                        Become Affiliate
-                      </a>
+                      <a
+                          href=''
+                          className='bg-primary text-white font-medium text-sm rounded px-3 py-2 sm:ml-10'
+                        >
+                          Become Affiliate
+                        </a>
                     </div>
                   </div>
                 </div>
 
                               <div
-                  className={`shadow w-[max-content] mr-5 h-[max-content]  ${styles.card}`}
+                  className={`shadow sm:w-sm:[max-content] mr-5 h-[max-content]  ${styles.card}`}
                 >
                   <img
                     src="/images/book-small.png"
@@ -719,11 +742,14 @@ export default function Discover() {
                         $5000+
                       </span>
                     </div>
-                    <div className="rounded border border-sky_light flex justify-between items-center mt-5 px-3 py-2">
+                    <div className='rounded border border-sky_light flex justify-between items-center mt-5 px-1 sm:px-3 py-2 pr-2'>
                       <p className="text-xs text-secondary_sky_dark">40% Affiliate Commission</p>
-                      <a href="" className="bg-primary text-white font-medium text-sm rounded px-3 py-2">
-                        Become Affiliate
-                      </a>
+                      <a
+                          href=''
+                          className='bg-primary text-white font-medium text-sm rounded px-3 py-2 sm:ml-10'
+                        >
+                          Become Affiliate
+                        </a>
                     </div>
                   </div>
                 </div>
@@ -749,7 +775,7 @@ export default function Discover() {
                 className={`flex ${styles["product-cards"]}`}
               >
                 <div
-                  className={`shadow w-[max-content] mr-5 h-[max-content]  ${styles.card}`}
+                  className={`shadow sm:w-sm:[max-content] mr-5 h-[max-content]  ${styles.card}`}
                 >
                   <img
                     src="/images/book-small.png"
@@ -784,17 +810,20 @@ export default function Discover() {
                         $5000+
                       </span>
                     </div>
-                    <div className="rounded border border-sky_light flex justify-between items-center mt-5 px-3 py-2">
+                    <div className='rounded border border-sky_light flex justify-between items-center mt-5 px-1 sm:px-3 py-2 pr-2'>
                       <p className="text-xs text-secondary_sky_dark">40% Affiliate Commission</p>
-                      <a href="" className="bg-primary text-white font-medium text-sm rounded px-3 py-2">
-                        Become Affiliate
-                      </a>
+                      <a
+                          href=''
+                          className='bg-primary text-white font-medium text-sm rounded px-3 py-2 sm:ml-10'
+                        >
+                          Become Affiliate
+                        </a>
                     </div>
                   </div>
                 </div>
 
                               <div
-                  className={`shadow w-[max-content] mr-5 h-[max-content]  ${styles.card}`}
+                  className={`shadow sm:w-sm:[max-content] mr-5 h-[max-content]  ${styles.card}`}
                 >
                   <img
                     src="/images/book-small.png"
@@ -829,17 +858,20 @@ export default function Discover() {
                         $5000+
                       </span>
                     </div>
-                    <div className="rounded border border-sky_light flex justify-between items-center mt-5 px-3 py-2">
+                    <div className='rounded border border-sky_light flex justify-between items-center mt-5 px-1 sm:px-3 py-2 pr-2'>
                       <p className="text-xs text-secondary_sky_dark">40% Affiliate Commission</p>
-                      <a href="" className="bg-primary text-white font-medium text-sm rounded px-3 py-2">
-                        Become Affiliate
-                      </a>
+                      <a
+                          href=''
+                          className='bg-primary text-white font-medium text-sm rounded px-3 py-2 sm:ml-10'
+                        >
+                          Become Affiliate
+                        </a>
                     </div>
                   </div>
                 </div>
 
                   <div
-                  className={`shadow w-[max-content] mr-5 h-[max-content]  ${styles.card}`}
+                  className={`shadow sm:w-sm:[max-content] mr-5 h-[max-content]  ${styles.card}`}
                 >
                   <img
                     src="/images/book-small.png"
@@ -874,17 +906,20 @@ export default function Discover() {
                         $5000+
                       </span>
                     </div>
-                    <div className="rounded border border-sky_light flex justify-between items-center mt-5 px-3 py-2">
+                    <div className='rounded border border-sky_light flex justify-between items-center mt-5 px-1 sm:px-3 py-2 pr-2'>
                       <p className="text-xs text-secondary_sky_dark">40% Affiliate Commission</p>
-                      <a href="" className="bg-primary text-white font-medium text-sm rounded px-3 py-2">
-                        Become Affiliate
-                      </a>
+                      <a
+                          href=''
+                          className='bg-primary text-white font-medium text-sm rounded px-3 py-2 sm:ml-10'
+                        >
+                          Become Affiliate
+                        </a>
                     </div>
                   </div>
                 </div>
 
                               <div
-                  className={`shadow w-[max-content] mr-5 h-[max-content]  ${styles.card}`}
+                  className={`shadow sm:w-sm:[max-content] mr-5 h-[max-content]  ${styles.card}`}
                 >
                   <img
                     src="/images/book-small.png"
@@ -919,17 +954,20 @@ export default function Discover() {
                         $5000+
                       </span>
                     </div>
-                    <div className="rounded border border-sky_light flex justify-between items-center mt-5 px-3 py-2">
+                    <div className='rounded border border-sky_light flex justify-between items-center mt-5 px-1 sm:px-3 py-2 pr-2'>
                       <p className="text-xs text-secondary_sky_dark">40% Affiliate Commission</p>
-                      <a href="" className="bg-primary text-white font-medium text-sm rounded px-3 py-2">
-                        Become Affiliate
-                      </a>
+                      <a
+                          href=''
+                          className='bg-primary text-white font-medium text-sm rounded px-3 py-2 sm:ml-10'
+                        >
+                          Become Affiliate
+                        </a>
                     </div>
                   </div>
                 </div>
 
                               <div
-                  className={`shadow w-[max-content] mr-5 h-[max-content]  ${styles.card}`}
+                  className={`shadow sm:w-sm:[max-content] mr-5 h-[max-content]  ${styles.card}`}
                 >
                   <img
                     src="/images/book-small.png"
@@ -964,17 +1002,20 @@ export default function Discover() {
                         $5000+
                       </span>
                     </div>
-                    <div className="rounded border border-sky_light flex justify-between items-center mt-5 px-3 py-2">
+                    <div className='rounded border border-sky_light flex justify-between items-center mt-5 px-1 sm:px-3 py-2 pr-2'>
                       <p className="text-xs text-secondary_sky_dark">40% Affiliate Commission</p>
-                      <a href="" className="bg-primary text-white font-medium text-sm rounded px-3 py-2">
-                        Become Affiliate
-                      </a>
+                      <a
+                          href=''
+                          className='bg-primary text-white font-medium text-sm rounded px-3 py-2 sm:ml-10'
+                        >
+                          Become Affiliate
+                        </a>
                     </div>
                   </div>
                 </div>
 
                               <div
-                  className={`shadow w-[max-content] mr-5 h-[max-content]  ${styles.card}`}
+                  className={`shadow sm:w-sm:[max-content] mr-5 h-[max-content]  ${styles.card}`}
                 >
                   <img
                     src="/images/book-small.png"
@@ -1009,17 +1050,20 @@ export default function Discover() {
                         $5000+
                       </span>
                     </div>
-                    <div className="rounded border border-sky_light flex justify-between items-center mt-5 px-3 py-2">
+                    <div className='rounded border border-sky_light flex justify-between items-center mt-5 px-1 sm:px-3 py-2 pr-2'>
                       <p className="text-xs text-secondary_sky_dark">40% Affiliate Commission</p>
-                      <a href="" className="bg-primary text-white font-medium text-sm rounded px-3 py-2">
-                        Become Affiliate
-                      </a>
+                      <a
+                          href=''
+                          className='bg-primary text-white font-medium text-sm rounded px-3 py-2 sm:ml-10'
+                        >
+                          Become Affiliate
+                        </a>
                     </div>
                   </div>
                 </div>
 
                               <div
-                  className={`shadow w-[max-content] mr-5 h-[max-content]  ${styles.card}`}
+                  className={`shadow sm:w-sm:[max-content] mr-5 h-[max-content]  ${styles.card}`}
                 >
                   <img
                     src="/images/book-small.png"
@@ -1054,17 +1098,20 @@ export default function Discover() {
                         $5000+
                       </span>
                     </div>
-                    <div className="rounded border border-sky_light flex justify-between items-center mt-5 px-3 py-2">
+                    <div className='rounded border border-sky_light flex justify-between items-center mt-5 px-1 sm:px-3 py-2 pr-2'>
                       <p className="text-xs text-secondary_sky_dark">40% Affiliate Commission</p>
-                      <a href="" className="bg-primary text-white font-medium text-sm rounded px-3 py-2">
-                        Become Affiliate
-                      </a>
+                      <a
+                          href=''
+                          className='bg-primary text-white font-medium text-sm rounded px-3 py-2 sm:ml-10'
+                        >
+                          Become Affiliate
+                        </a>
                     </div>
                   </div>
                 </div>
 
                               <div
-                  className={`shadow w-[max-content] mr-5 h-[max-content]  ${styles.card}`}
+                  className={`shadow sm:w-sm:[max-content] mr-5 h-[max-content]  ${styles.card}`}
                 >
                   <img
                     src="/images/book-small.png"
@@ -1099,11 +1146,14 @@ export default function Discover() {
                         $5000+
                       </span>
                     </div>
-                    <div className="rounded border border-sky_light flex justify-between items-center mt-5 px-3 py-2">
+                    <div className='rounded border border-sky_light flex justify-between items-center mt-5 px-1 sm:px-3 py-2 pr-2'>
                       <p className="text-xs text-secondary_sky_dark">40% Affiliate Commission</p>
-                      <a href="" className="bg-primary text-white font-medium text-sm rounded px-3 py-2">
-                        Become Affiliate
-                      </a>
+                      <a
+                          href=''
+                          className='bg-primary text-white font-medium text-sm rounded px-3 py-2 sm:ml-10'
+                        >
+                          Become Affiliate
+                        </a>
                     </div>
                   </div>
                 </div>
