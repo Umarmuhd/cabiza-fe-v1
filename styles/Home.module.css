@@ -162,8 +162,7 @@
 
 .membership {
     /* margin-top: 2rem; */
-    padding: 4rem 2.75rem;
-    background: #F2F2F2;
+    /* padding: 2rem 0; */
 }
 
 .membership h2 {
@@ -176,8 +175,6 @@
 
 .plans {
     text-align: center;
-    margin-top: 4rem;
-    margin-bottom: 2rem;
     padding: 0;
 }
 
@@ -197,30 +194,28 @@
 }
 
 .plans h4 {
-    background: #4CCBE1;
-    border-radius: 16px;
+    background: #8E7FF0;
+    border-radius: 20px;
     width: max-content;
     margin: auto;
-    padding: .4rem 1.4rem;
+    padding: .4rem 1rem;
     color: #fff;
-    margin-bottom: 1rem;
+    margin-bottom: 2rem;
     margin-top: 2rem;
 }
 
 .plans.flex .col:not(:last-of-type) {
-    margin-right: 2rem;
+    margin-right: 1rem;
 }
 
 .plans h3 {
     font-style: normal;
     font-weight: 500;
-    font-size: 1.7rem;
+    font-size: 1.9rem;
     line-height: 36px;
-    /* identical to box height */
     text-align: center;
-    /* Cabiza / blue */
-    color: #24BAD4;
-    margin-bottom: 1rem;
+    color: #5B44E9;
+    margin-bottom: 2rem;
 }
 
 .plans p.price {
@@ -228,22 +223,19 @@
     font-weight: bold;
     font-size: 1.5rem;
     line-height: 24px;
-    /* identical to box height, or 75% */
     text-align: center;
-    /* Gray/40 */
-    color: #666666;
+    color: #404446;
     margin-bottom: 2.5rem;
 }
 
 .plans a {
-    background: #24BAD4;
-    /* Elevation / 4 */
+    background: #5B44E9;
     box-shadow: 0px 4px 20px rgba(0, 0, 0, 0.08);
-    border-radius: 12px;
+    border-radius: 20px;
     width: max-content;
     margin: auto;
     color: #fff;
-    padding: .5rem 2rem;
+    padding: .5rem 5rem;
     margin-bottom: 1rem
 }
 
@@ -255,26 +247,24 @@
     /* or 160% */
     text-align: center;
     /* Cabiza / gray */
-    color: #828080;
+    color: #72777A;
     margin-bottom: 1rem;
 }
 
 .plans .btn-secondary {
     font-style: normal;
     font-weight: normal;
-    font-size: 18px;
-    line-height: 24px;
-    /* identical to box height, or 133% */
+    font-size: 16px;
+    line-height: 16px;
     text-align: center;
     text-decoration-line: underline;
-    /* Cabiza / blue */
-    color: #24BAD4;
+    color: #5B44E9;
     background: transparent;
     box-shadow: none;
 }
 
 .col.popular {
-    background: #24BAD4;
+    background: #5B44E9;
     /* Elevation / 6 */
     box-shadow: 0px 20px 40px rgba(0, 0, 0, 0.06);
     border-radius: 24px;
@@ -310,6 +300,7 @@
     transform: translate(0%, -24%);
     background-image: url("../public/images/popular-plans-2.png");
     background-repeat: no-repeat;
+    z-index: 20;
 }
 
 .col.popular h3,
@@ -320,6 +311,10 @@
     border: none;
 }
 
+.col.popular .btn-secondary {
+    text-decoration-line: underline;
+}
+
 .col.popular h3,
 .col.popular .description {
     color: #F2F2F2;
@@ -327,7 +322,8 @@
 
 .col.popular a {
     background: #fff;
-    color: #24BAD4;
+    color: #5B44E9;
+    z-index: 20;
 }
 
 .col.popular p.description {
@@ -341,18 +337,20 @@
     width: 100%;
     top: -60%;
     right: -2%;
-    background: linear-gradient(244.36deg, rgba(101, 231, 254, 0.7) 0%, rgba(36, 187, 214, 0) 39.92%);
+    background: linear-gradient(244.36deg, #8E7FF0 0%, #5B44E9 39.92%);
+    z-index: -999999999;
     border-radius: 24px;
 }
 
 .col.popular aside {
     position: absolute;
-    top: 2%;
+    top: 6%;
     right: 6%;
-    background: #FCCA03;
+    background: #FFD188;
     border-radius: 16px;
     font-size: .9rem;
-    padding: .3rem 1.4rem;
+    padding: .1rem 1rem;
+    color: #404446;
 }
 
 section.testimony {
@@ -544,6 +542,10 @@ section.testimony h3 {
     background: transparent;
     outline: 0;
     width: 90%;
+}
+
+.table-body tr:nth-child(2n) {
+    background: #E3E5E6;
 }
 
 .main::placeholder {
