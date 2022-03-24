@@ -564,7 +564,7 @@ const Index = () => {
                           $5000+
                         </span>
                       </div>
-                      <div className='rounded border border-sky_light flex justify-between items-center mt-5 px-1 sm:px-3 py-2 pr-2'>
+                      <div className='rounded border border-sky_light flex justify-between items-center mt-5 px-1 sm:px-3 px-2 py-1 pr-1'>
                         <p className='text-xs text-secondary_sky_dark'>
                           40% Affiliate Commission
                         </p>
@@ -625,7 +625,7 @@ const Index = () => {
                           $5000+
                         </span>
                       </div>
-                      <div className='rounded border border-sky_light flex justify-between items-center mt-5 px-1 sm:px-3 py-2 pr-2'>
+                      <div className='rounded border border-sky_light flex justify-between items-center mt-5 px-1 sm:px-3 px-2 py-1 pr-1'>
                         <p className='text-xs text-secondary_sky_dark'>
                           40% Affiliate Commission
                         </p>
@@ -688,7 +688,7 @@ const Index = () => {
                           $5000+
                         </span>
                       </div>
-                      <div className='rounded border border-sky_light flex justify-between items-center mt-5 px-1 sm:px-3 py-2 pr-2'>
+                      <div className='rounded border border-sky_light flex justify-between items-center mt-5 px-1 sm:px-3 px-2 py-1 pr-1'>
                         <p className='text-xs text-secondary_sky_dark'>
                           40% Affiliate Commission
                         </p>
@@ -750,7 +750,7 @@ const Index = () => {
                           $5000+
                         </span>
                       </div>
-                      <div className='rounded border border-sky_light flex justify-between items-center mt-5 px-1 sm:px-3 py-2 pr-2'>
+                      <div className='rounded border border-sky_light flex justify-between items-center mt-5 px-1 sm:px-3 px-2 py-1 pr-1'>
                         <p className='text-xs text-secondary_sky_dark'>
                           40% Affiliate Commission
                         </p>
