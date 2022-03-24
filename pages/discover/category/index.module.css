@@ -1,13 +1,12 @@
 .nav {
-    margin: auto;
+    /* margin: auto; */
     width: max-content;
 }
 
 .nav li {
-    margin-right: 2rem;
+    margin-right: 1rem;
     font-style: normal;
     font-weight: 500;
-    color: #666666;
 }
 
 @media screen and (min-width: 320px) and (max-width: 500px) {
