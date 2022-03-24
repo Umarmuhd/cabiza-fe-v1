@@ -1,11 +1,11 @@
 module.exports = {
   content: [
-    './pages/**/*.{js,ts,jsx,tsx}',
-    './components/**/*.{js,ts,jsx,tsx}',
+    "./pages/**/*.{js,ts,jsx,tsx}",
+    "./components/**/*.{js,ts,jsx,tsx}",
   ],
   theme: {
     extend: {
-      colors: {
+      colors: {        
         primary: '#5B44E9',
         cabiza_blue: '#24BAD4',
         cabiza_blue_secondary: '#4CCBE1',

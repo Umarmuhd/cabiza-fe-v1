@@ -4,6 +4,24 @@ import styles from "../styles/Home.module.css";
 
 import MainNavigation from "../components/Navbars/MainNav";
 import MainFooter from "../components/Footer/MainFooter";
+import { HeroSection } from "@/components/HeroSection";
+import { Feature } from "@/components/FeatureSection";
+import { CategoriesSection } from "@/components/CategoriesSection";
+
+const SendIcon = () => (
+  <svg
+    width="26"
+    height="27"
+    viewBox="0 0 26 27"
+    fill="none"
+    xmlns="http://www.w3.org/2000/svg"
+  >
+    <path
+      d="M15.96 26.5125C14.3867 26.5125 12.16 25.4058 10.4 20.1125L9.44001 17.2325L6.56001 16.2725C1.28001 14.5125 0.17334 12.2858 0.17334 10.7125C0.17334 9.15246 1.28001 6.91246 6.56001 5.13912L17.88 1.36579C20.7067 0.419125 23.0667 0.699125 24.52 2.13912C25.9733 3.57912 26.2533 5.95246 25.3067 8.77912L21.5333 20.0991C19.76 25.4058 17.5333 26.5125 15.96 26.5125ZM7.18667 7.04579C3.48001 8.28579 2.16001 9.75246 2.16001 10.7125C2.16001 11.6725 3.48001 13.1391 7.18667 14.3658L10.5467 15.4858C10.84 15.5791 11.08 15.8191 11.1733 16.1125L12.2933 19.4725C13.52 23.1791 15 24.4991 15.96 24.4991C16.92 24.4991 18.3867 23.1791 19.6267 19.4725L23.4 8.15246C24.08 6.09912 23.96 4.41912 23.0933 3.55246C22.2267 2.68579 20.5467 2.57912 18.5067 3.25912L7.18667 7.04579Z"
+      fill="white"
+    />
+  </svg>
+);
 
 export default function Home() {
   const [position, setPosition] = useState(0);
@@ -49,304 +67,11 @@ export default function Home() {
   return (
     <div className="w-full h-full">
       <MainNavigation />
-      <header className={`${styles.hero}`}>
-        <div>
-          <div className={styles.flex}>
-            <div className={styles.content}>
-              <p className="text-lg font-semibold mb-6 text-grey_80">
-                Welcome to your company
-              </p>
-
-              <h1 className="font-bold text-5xl text-grey_40">
-                The platform designed to help you{" "}
-                <span className="text-primary">own</span> and{" "}
-                <span className="text-primary">grow</span> your business.
-              </h1>
-
-              <p className="my-6 text-cabiza_grey">
-                Earn a living while you learn within an international community
-                of experts and peers. Get the support you need to grow your
-                business from anywhere, to any size possible.
-              </p>
-
-              <div className="flex md:justify-start justify-center">
-                <Link href="/auth/signup">
-                  <a
-                    className={`p-3 px-12 bg-primary text-lg font-semibold text-white rounded ${styles.pointer}`}
-                  >
-                    Get started
-                  </a>
-                </Link>
-              </div>
-            </div>
-            <div className={styles["hero-image"]}>
-              <img src="/images/hero.png" alt="..." />
-            </div>
-          </div>
-        </div>
-      </header>
+      <HeroSection />
       <main className={styles.main}>
-        <section
-          id="features"
-          className={`${styles["features-container"]} md:py-20 py-10 bg-grey_95`}
-        >
-          <div className={`${styles.features} px-11`}>
-            <h2 className="font-semibold text-grey_20 text-4xl mb-8 text-center md:text-left">
-              Our Features
-            </h2>
-            <div
-              className={styles.cards}
-              style={{
-                transform: `translateX(-${featurePosition}vw)`,
-              }}
-            >
-              <div className={styles.card}>
-                <img src="/images/setup-1.svg" alt="..." />
-                <p>Set up your business right away</p>
-                <a className="rounded bg-grey_98 text-secondary font-semibold">
-                  LEARN MORE
-                </a>
-              </div>
+        <Feature />
 
-              <div className={styles.card}>
-                <img src="/images/setup-2.svg" alt="..." />
-                <p>Earn big while you learn</p>
-                <a className="rounded bg-grey_98 text-secondary font-semibold">
-                  LEARN MORE
-                </a>
-              </div>
-
-              <div className={styles.card}>
-                <img src="/images/setup-3.svg" alt="..." />
-                <p>Work from home</p>
-                <a className="rounded bg-grey_98 text-secondary font-semibold">
-                  LEARN MORE
-                </a>
-              </div>
-
-              <div className={styles.card}>
-                <img src="/images/setup-4.svg" alt="..." />
-                <p>Train up to become even better</p>
-                <a className="rounded bg-grey_98 text-secondary font-semibold">
-                  LEARN MORE
-                </a>
-              </div>
-
-              <div className={styles.card}>
-                <img src="/images/setup-5.svg" alt="..." />
-                <p>Sell your works</p>
-                <a className="rounded bg-grey_98 text-secondary font-semibold">
-                  LEARN MORE
-                </a>
-              </div>
-
-              <div className={styles.card}>
-                <img src="/images/setup-6.svg" alt="..." />
-                <p>Escape the 9 to 5 hassles</p>
-                <a className="rounded bg-grey_98 text-secondary font-semibold">
-                  LEARN MORE
-                </a>
-              </div>
-
-              <div className={styles.card}>
-                <img src="/images/setup-7.svg" alt="..." />
-                <p>Collaborate with peers globally</p>
-                <a className="rounded bg-grey_98 text-secondary font-semibold">
-                  LEARN MORE
-                </a>
-              </div>
-
-              <div className={styles.card}>
-                <img src="/images/setup-8.svg" alt="..." />
-                <p>Grow your business to any size</p>
-                <a className="rounded bg-grey_98 text-secondary font-semibold">
-                  LEARN MORE
-                </a>
-              </div>
-
-              <div className={styles.card}>
-                <img src="/images/setup-9.svg" alt="..." />
-                <p>Get unlimited support</p>
-                <a className="rounded bg-grey_98 text-secondary font-semibold">
-                  LEARN MORE
-                </a>
-              </div>
-            </div>
-
-            <div className={`flex ${styles.controls}`}>
-              <svg
-                width="56"
-                height="56"
-                viewBox="0 0 76 76"
-                fill="none"
-                xmlns="http://www.w3.org/2000/svg"
-                onClick={moveFeatureBackward}
-              >
-                <g filter="url(#filter0_d_731_28024)">
-                  <circle
-                    cx="38"
-                    cy="30"
-                    r="17"
-                    stroke="#CCCCCC"
-                    strokeWidth="2"
-                  />
-                  <path
-                    d="M40.625 36.9301L34.92 31.2251C34.2462 30.5513 34.2462 29.4488 34.92 28.7751L40.625 23.0701"
-                    stroke="#CCCCCC"
-                    strokeWidth="1.5"
-                    strokeMiterlimit="10"
-                    strokeLinecap="round"
-                    strokeLinejoin="round"
-                  />
-                </g>
-                <defs>
-                  <filter
-                    id="filter0_d_731_28024"
-                    x="0"
-                    y="0"
-                    width="76"
-                    height="76"
-                    filterUnits="userSpaceOnUse"
-                    colorInterpolationFilters="sRGB"
-                  >
-                    <feFlood floodOpacity="0" result="BackgroundImageFix" />
-                    <feColorMatrix
-                      in="SourceAlpha"
-                      type="matrix"
-                      values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 127 0"
-                      result="hardAlpha"
-                    />
-                    <feOffset dy="8" />
-                    <feGaussianBlur stdDeviation="10" />
-                    <feComposite in2="hardAlpha" operator="out" />
-                    <feColorMatrix
-                      type="matrix"
-                      values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0.12 0"
-                    />
-                    <feBlend
-                      mode="normal"
-                      in2="BackgroundImageFix"
-                      result="effect1_dropShadow_731_28024"
-                    />
-                    <feBlend
-                      mode="normal"
-                      in="SourceGraphic"
-                      in2="effect1_dropShadow_731_28024"
-                      result="shape"
-                    />
-                  </filter>
-                </defs>
-              </svg>
-
-              <svg
-                width="56"
-                height="56"
-                viewBox="0 0 76 76"
-                fill="none"
-                xmlns="http://www.w3.org/2000/svg"
-                onClick={moveFeatureForward}
-              >
-                <g filter="url(#filter0_d_731_28025)">
-                  <circle
-                    cx="38"
-                    cy="30"
-                    r="17"
-                    stroke="#CCCCCC"
-                    strokeWidth="2"
-                  />
-                  <path
-                    d="M35.2963 36.9301L41.0013 31.2251C41.675 30.5513 41.675 29.4488 41.0013 28.7751L35.2963 23.0701"
-                    stroke="#CCCCCC"
-                    strokeWidth="1.5"
-                    strokeMiterlimit="10"
-                    strokeLinecap="round"
-                    strokeLinejoin="round"
-                  />
-                </g>
-                <defs>
-                  <filter
-                    id="filter0_d_731_28025"
-                    x="0"
-                    y="0"
-                    width="76"
-                    height="76"
-                    filterUnits="userSpaceOnUse"
-                    colorInterpolationFilters="sRGB"
-                  >
-                    <feFlood floodOpacity="0" result="BackgroundImageFix" />
-                    <feColorMatrix
-                      in="SourceAlpha"
-                      type="matrix"
-                      values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 127 0"
-                      result="hardAlpha"
-                    />
-                    <feOffset dy="8" />
-                    <feGaussianBlur stdDeviation="10" />
-                    <feComposite in2="hardAlpha" operator="out" />
-                    <feColorMatrix
-                      type="matrix"
-                      values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0.12 0"
-                    />
-                    <feBlend
-                      mode="normal"
-                      in2="BackgroundImageFix"
-                      result="effect1_dropShadow_731_28025"
-                    />
-                    <feBlend
-                      mode="normal"
-                      in="SourceGraphic"
-                      in2="effect1_dropShadow_731_28025"
-                      result="shape"
-                    />
-                  </filter>
-                </defs>
-              </svg>
-            </div>
-          </div>
-        </section>
-
-        <section id="categories" className={styles.categories}>
-          <h3 className="mb-12">Business Categories</h3>
-
-          <div className={styles.flex}>
-            <div className={styles.col}>
-              <h4 className={`${styles["categories-header"]} mb-7`}>
-                Browse, explore and find an area of your business interest or
-                business speciality.
-              </h4>
-              <a className="rounded bg-grey_98 text-secondary font-semibold">
-                LEARN MORE
-              </a>
-            </div>
-            <div className={`${styles.col} ${styles.flex}`}>
-              <div className={styles.col}>
-                <ul className="mr-10">
-                  <li>Education</li>
-                  <li>Crafts & DIY</li>
-                  <li>Design & Tech</li>
-                  <li>Film and Video</li>
-                  <li>Books & Writing</li>
-                  <li>Apps & Software</li>
-                  <li>Animation & Games</li>
-                  <li>Drawing & Painting</li>
-                </ul>
-              </div>
-
-              <div className={styles.col}>
-                <ul>
-                  <li>Merchandising </li>
-                  <li>Food & Cooking</li>
-                  <li>Music & Sound Design</li>
-                  <li>Podcasts & Audiobooks</li>
-                  <li>Photography & Photo Editing</li>
-                  <li>Marketing (Social Media, Affiliate, etc.)</li>
-                  <li>eCommerce, Amazon FBA & Drop Shipping</li>
-                  <li>More</li>
-                </ul>
-              </div>
-            </div>
-          </div>
-        </section>
+        <CategoriesSection />
 
         <section id="membership" className={styles.membership}>
           <h2>Membership plans</h2>
@@ -872,7 +597,7 @@ export default function Home() {
         </section>
 
         <section className={styles.subscribe}>
-          <h3> Subscribe to our newsletter</h3>
+          <h3 className="text-secondary"> Subscribe to our newsletter</h3>
           <p>
             Get helpful tips and content to grow as a creator and digital
             entrepreneur.
@@ -886,7 +611,7 @@ export default function Home() {
               placeholder="Email Address..."
             />
             <button>
-              <img src="/images/icons/Send.svg" alt="..." />
+              <SendIcon />
             </button>
           </div>
         </section>
