@@ -12,7 +12,7 @@ import {
 import { AiOutlineAlignCenter } from "react-icons/ai";
 import { VscBold } from "react-icons/vsc";
 // import { IoReturnDownBack } from 'react-icons/io';
-import Toggle from "../../../../components/Toggle";
+import Toggle from "../../../../components/Toggle/Toggle";
 
 const FirstComponent = () => {
   return (
