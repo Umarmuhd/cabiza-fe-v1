@@ -9,6 +9,7 @@ import { API_URL } from "@/config/index";
 
 export default function ForgetPassword() {
   const {
+    reset,
     register,
     handleSubmit,
     formState: { errors },
@@ -16,14 +17,14 @@ export default function ForgetPassword() {
 
   const [loading, setLoading] = useState(false);
 
-  const handleForget = async (value) => {
+  const handleForget = async ({ email }) => {
     try {
       setLoading(true);
-      const response = await axios.post(`${API_URL}/auth/forget-password`, {
-        email: value.email,
-      });
-      console.log(response.data);
+      const url = `${API_URL}/auth/forget-password`;
+      const { data } = await axios.post(url, { email });
+      toast.success(data.message);
       setLoading(false);
+      reset({ email: "" });
     } catch (error) {
       console.log(error);
       setLoading(false);
