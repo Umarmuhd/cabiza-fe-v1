@@ -77,7 +77,7 @@ const Index = () => {
               <form className='flex'>
                 <select
                   name='category'
-                  className='py-2 px-3 border border-gray-300 bg-primary shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 text-lg lg:w-1/6 sm:w-2/6 rounded-l-3xl text-grey_40 px-12 text-white hidden sm:block'
+                  className='py-2 px-3 border border-gray-300 bg-primary shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 text-lg lg:w-[13rem] sm:w-2/6 rounded-l-3xl px-12 text-white hidden sm:block'
                 >
                   <option>Education</option>
                   <option>Fitness</option>
@@ -101,683 +101,685 @@ const Index = () => {
           </header>
         </div>
 
-        <div
-          id='explore_cat'
-          className='md:py-20 py-10 flex flex-col-reverse lg:flex-row px-12 md:px-10 lg:justify-center justify-start'
-        >
-          <div>
-            <img src='/images/Education-large.png' alt='...' className='' />
-          </div>
-          <div className='lg:ml-11 lg:px-5 lg:w-[50%] overflow-hidden self-center'>
-            <h2 className='text-2xl text-primary font-semibold mb-6'>
-              Education
-            </h2>
-            <p className='font-medium text-grey_40 text-2xl md:text-4xl mb-8 sm:w-[80%]'>
-              Perfect your career with tested and proven resources from experts
-              and examples from others.
-            </p>
-          </div>
-        </div>
-
-        <main className='mb-12 mx-auto w-[100%] px-3 max-w-[1500px] overflow-hidden'>
-          <nav
-            className='mb-10 pl-7 pb-5 hidden'
-            style={{
-              'box-shadow': '0px 20px 40px rgba(0, 0, 0, 0.06)',
-              'border-radius': '0px 0px 40px 40px',
-            }}
+        <div className='px-4 py-16 mx-auto sm:max-w-xl md:max-w-full lg:max-w-screen-xl md:px-24 lg:px-8 lg:py-20'>
+          <div
+            id='explore_cat'
+            className='md:py-20 py-10 flex flex-col-reverse lg:flex-row px-12 md:px-10 lg:justify-center justify-start'
           >
-            <ul className={`flex ${styles.nav} lg:ml-12 md:ml-[0]`}>
-              <li className='hover:bg-primary hover:text-white bg-primary_brand_lightest text-primary rounded-2xl px-4 py-1'>
-                <a
-                  href=''
-                  className='text-inherit'
-                  onClick={(e) => e.preventDefault()}
-                >
-                  All
-                </a>
-              </li>
-
-              <li className='hover:bg-primary hover:text-white bg-primary_brand_lightest text-primary rounded-2xl px-4 py-1'>
-                <a
-                  href=''
-                  className='text-inherit'
-                  onClick={(e) => e.preventDefault()}
-                >
-                  Ebook
-                </a>
-              </li>
-
-              <li className='hover:bg-primary hover:text-white bg-primary_brand_lightest text-primary rounded-2xl px-4 py-1'>
-                <a
-                  href=''
-                  className='text-inherit'
-                  onClick={(e) => e.preventDefault()}
-                >
-                  Journal
-                </a>
-              </li>
-
-              <li className='hover:bg-primary hover:text-white bg-primary_brand_lightest text-primary rounded-2xl px-4 py-1'>
-                <a
-                  href=''
-                  className='text-inherit'
-                  onClick={(e) => e.preventDefault()}
-                >
-                  Webinar
-                </a>
-              </li>
-
-              <li className='hover:bg-primary hover:text-white bg-primary_brand_lightest text-primary rounded-2xl px-4 py-1'>
-                <a
-                  href=''
-                  className='text-inherit'
-                  onClick={(e) => e.preventDefault()}
-                >
-                  Tutorials
-                </a>
-              </li>
-
-              <li className='hover:bg-primary hover:text-white bg-primary_brand_lightest text-primary rounded-2xl px-4 py-1'>
-                <a
-                  href=''
-                  className='text-inherit'
-                  onClick={(e) => e.preventDefault()}
-                >
-                  Documentation
-                </a>
-              </li>
-            </ul>
-          </nav>
-
-          <div className='flex xl:px-12'>
-            <div className='border border-sky_light p-8 w-[30%] xl:mr-10 lg:px-8 lg:pt-8 hidden lg:block rounded-xl h-[max-content]'>
-              <h4 className='text-secondary_brand_light pb-3 mb-4 border-bottom border-solid border-b border-secondary_sky_base'>
-                Showing 1 - 8 of 200 results
-              </h4>
-              <form>
-                <h5 className='text-secondary font-medium mb-3'>SORT BY</h5>
-                <select
-                  name=''
-                  id=''
-                  className='bg-primary rounded w-[100%] py-2 px-3 text-white'
-                >
-                  <option value='Popular' selected>
-                    Popular
-                  </option>
-                </select>
-                <h5 className='mt-4 text-secondary font-medium mb-1'>PRICE</h5>
-                <div className='flex w-[100%]'>
-                  <div>
-                    <p className='text-secondary_sky_dark mb-2'>Minimum</p>
-                    <div className='input-group flex mr-2'>
-                      <input
-                        type='text'
-                        value='$'
-                        readOnly
-                        className='w-[3rem] h-[2.5rem] rounded text-center bg-primary_brand_lightest text-secondary outline-none'
-                      />
-                      <input
-                        type='number'
-                        placeholder='0'
-                        className='px-4 w-[90%] text-secondary_ink_lighter'
-                      />
-                    </div>
-                  </div>
-                  <div>
-                    <p className='text-secondary_sky_dark mb-2'>Maximum</p>
-                    <div className='input-group flex mr-2'>
-                      <input
-                        type='text'
-                        value='$'
-                        readOnly
-                        className='w-[3rem] h-[2.5rem] rounded text-center bg-primary_brand_lightest text-secondary outline-none'
-                      />
-                      <input
-                        type='number'
-                        placeholder='0'
-                        className='px-4 w-[90%] text-secondary_ink_lighter'
-                      />
-                    </div>
-                  </div>
-                </div>
-
-                <div className='mt-5'>
-                  <h5 className='text-secondary font-medium mb-1'>RATING</h5>
-                  <div>
-                    <div className='flex items-center mb-1'>
-                      <div className='flex'>
-                        <StarCheckedIcon />
-                        <StarCheckedIcon />
-                        <StarCheckedIcon />
-                        <StarCheckedIcon />
-                        <StarCheckedIcon />
-                      </div>
-                      <input
-                        type='radio'
-                        name='ratings'
-                        id='ratings'
-                        className='ml-auto border-2 border-primary'
-                      />
-                    </div>
-
-                    <div className='flex items-center mb-1'>
-                      <div className='flex'>
-                        <StarCheckedIcon />
-                        <StarCheckedIcon />
-                        <StarCheckedIcon />
-                        <StarCheckedIcon />
-                        <StarUncheckedIcon />
-                      </div>
-                      <input
-                        type='radio'
-                        name='ratings'
-                        id='ratings'
-                        className='ml-auto border-2 border-primary'
-                      />
-                    </div>
-
-                    <div className='flex items-center mb-1'>
-                      <div className='flex'>
-                        <StarCheckedIcon />
-                        <StarCheckedIcon />
-                        <StarCheckedIcon />
-                        <StarUncheckedIcon />
-                        <StarUncheckedIcon />
-                      </div>
-                      <input
-                        type='radio'
-                        name='ratings'
-                        id='ratings'
-                        className='ml-auto border-2 border-primary'
-                      />
-                    </div>
-
-                    <div className='flex items-center mb-1'>
-                      <div className='flex'>
-                        <StarCheckedIcon />
-                        <StarCheckedIcon />
-                        <StarUncheckedIcon />
-                        <StarUncheckedIcon />
-                        <StarUncheckedIcon />
-                      </div>
-                      <input
-                        type='radio'
-                        name='ratings'
-                        id='ratings'
-                        className='ml-auto border-2 border-primary'
-                      />
-                    </div>
-
-                    <div className='flex items-center mb-1'>
-                      <div className='flex'>
-                        <StarCheckedIcon />
-                        <StarUncheckedIcon />
-                        <StarUncheckedIcon />
-                        <StarUncheckedIcon />
-                        <StarUncheckedIcon />
-                      </div>
-                      <input
-                        type='radio'
-                        name='ratings'
-                        id='ratings'
-                        className='ml-auto border-2 border-primary'
-                      />
-                    </div>
-                  </div>
-
-                  <div className='mt-5 text-cabiza_grey'>
-                    <h5 className='text-secondary font-medium mb-1'>
-                      CONTAINS
-                    </h5>
-
-                    <div>
-                      <div className='flex mb-1 text-secondary font-medium'>
-                        <p>.zip</p>
-
-                        <div className='ml-auto flex items-center'>
-                          <p className='mr-4 text-primary_brand_light border border-primary_brand_light rounded px-1'>
-                            34567
-                          </p>
-                          <input type='radio' name='contains' id='contains' />
-                        </div>
-                      </div>
-
-                      <div className='flex mb-1 text-secondary font-medium'>
-                        <p>.rar</p>
-
-                        <div className='ml-auto flex items-center'>
-                          <p className='mr-4 text-primary_brand_light border border-primary_brand_light rounded px-1'>
-                            34567
-                          </p>
-                          <input type='radio' name='contains' id='contains' />
-                        </div>
-                      </div>
-
-                      <div className='flex mb-1 text-secondary font-medium'>
-                        <p>.pdf</p>
-
-                        <div className='ml-auto flex items-center'>
-                          <p className='mr-4 text-primary_brand_light border border-primary_brand_light rounded px-1'>
-                            34567
-                          </p>
-                          <input type='radio' name='contains' id='contains' />
-                        </div>
-                      </div>
-
-                      <div className='flex mb-1 text-secondary font-medium'>
-                        <p>.mp3</p>
-
-                        <div className='ml-auto flex items-center'>
-                          <p className='mr-4 text-primary_brand_light border border-primary_brand_light rounded px-1'>
-                            34567
-                          </p>
-                          <input type='radio' name='contains' id='contains' />
-                        </div>
-                      </div>
-
-                      <div className='flex mb-1 text-secondary font-medium'>
-                        <p>.mp4</p>
-
-                        <div className='ml-auto flex items-center'>
-                          <p className='mr-4 text-primary_brand_light border border-primary_brand_light rounded px-1'>
-                            34567
-                          </p>
-                          <input type='radio' name='contains' id='contains' />
-                        </div>
-                      </div>
-
-                      <div className='flex mb-1 text-secondary font-medium'>
-                        <p>.fig</p>
-
-                        <div className='ml-auto flex items-center'>
-                          <p className='mr-4 text-primary_brand_light border border-primary_brand_light rounded px-1'>
-                            34567
-                          </p>
-                          <input type='radio' name='contains' id='contains' />
-                        </div>
-                      </div>
-
-                      <div className='flex mb-1 text-secondary font-medium'>
-                        <p>.doc</p>
-
-                        <div className='ml-auto flex items-center'>
-                          <p className='mr-4 text-primary_brand_light border border-primary_brand_light rounded px-1'>
-                            34567
-                          </p>
-                          <input type='radio' name='contains' id='contains' />
-                        </div>
-                      </div>
-
-                      <div className='flex mb-1 text-secondary font-medium'>
-                        <p>.doc</p>
-
-                        <div className='ml-auto flex items-center'>
-                          <p className='mr-4 text-primary_brand_light border border-primary_brand_light rounded px-1'>
-                            34567
-                          </p>
-                          <input type='radio' name='contains' id='contains' />
-                        </div>
-                      </div>
-
-                      <div className='flex mb-1 text-secondary font-medium'>
-                        <p>.doc</p>
-
-                        <div className='ml-auto flex items-center'>
-                          <p className='mr-4 text-primary_brand_light border border-primary_brand_light rounded px-1'>
-                            34567
-                          </p>
-                          <input type='radio' name='contains' id='contains' />
-                        </div>
-                      </div>
-
-                      <div className='flex mb-1 text-secondary font-medium'>
-                        <p>.ai</p>
-
-                        <div className='ml-auto flex items-center'>
-                          <p className='mr-4 text-primary_brand_light border border-primary_brand_light rounded px-1'>
-                            34567
-                          </p>
-                          <input type='radio' name='contains' id='contains' />
-                        </div>
-                      </div>
-
-                      <div className='flex mb-1 text-secondary font-medium'>
-                        <p>.cdr</p>
-
-                        <div className='ml-auto flex items-center'>
-                          <p className='mr-4 text-primary_brand_light border border-primary_brand_light rounded px-1'>
-                            34567
-                          </p>
-                          <input type='radio' name='contains' id='contains' />
-                        </div>
-                      </div>
-
-                      <div className='flex mb-1 text-secondary font-medium'>
-                        <p>.psd</p>
-
-                        <div className='ml-auto flex items-center'>
-                          <p className='mr-4 text-primary_brand_light border border-primary_brand_light rounded px-1'>
-                            34567
-                          </p>
-                          <input type='radio' name='contains' id='contains' />
-                        </div>
-                      </div>
-
-                      <div className='flex mb-1 text-secondary font-medium'>
-                        <p>.doc</p>
-
-                        <div className='ml-auto flex items-center'>
-                          <p className='mr-4 text-primary_brand_light border border-primary_brand_light rounded px-1'>
-                            34567
-                          </p>
-                          <input type='radio' name='contains' id='contains' />
-                        </div>
-                      </div>
-
-                      <div className='flex mb-1 text-secondary font-medium'>
-                        <p>.png</p>
-
-                        <div className='ml-auto flex items-center'>
-                          <p className='mr-4 text-primary_brand_light border border-primary_brand_light rounded px-1'>
-                            34567
-                          </p>
-                          <input type='radio' name='contains' id='contains' />
-                        </div>
-                      </div>
-
-                      <div className='flex mb-1 text-secondary font-medium'>
-                        <p>.blend</p>
-
-                        <div className='ml-auto flex items-center'>
-                          <p className='mr-4 text-primary_brand_light border border-primary_brand_light rounded px-1'>
-                            34567
-                          </p>
-                          <input type='radio' name='contains' id='contains' />
-                        </div>
-                      </div>
-
-                      <div className='flex mb-1 text-secondary font-medium'>
-                        <p>.mov</p>
-
-                        <div className='ml-auto flex items-center'>
-                          <p className='mr-4 text-primary_brand_light border border-primary_brand_light rounded px-1'>
-                            34567
-                          </p>
-                          <input type='radio' name='contains' id='contains' />
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-
-                  <button className='flex mx-auto items-center justify-center w-[max-content] px-4 bg-primary_brand_lightest mt-8 rounded-xl py-2 text-primary text-md'>
-                    See More
-                  </button>
-                </div>
-              </form>
+            <div>
+              <img src='/images/Education-large.png' alt='...' className='' />
             </div>
-            <div className='mx-auto lg:ml-auto md:mr-0 md:ml-0 sm:mr-5 md:px-5'>
-              <div className='sm:flex mt-12 md:flex-row sm:flex-col justify-center pl-2'>
-                <div className='shadow sm:w-[max-content] mr-1 h-[max-content]'>
-                  <img
-                    src='/images/book-small.png'
-                    alt='...'
-                    className='w-[100%] h-[270px]'
-                  />
-                  <div className='px-1 py-2 rounded-b'>
-                    <div className='p-5 rounded-b'>
-                      <p className='text-lg text-secondary_sky_dark font-normal mb-1'>
-                        Books
-                      </p>
-                      <h4 className='text-2xl text-secondary font-medium mb-3'>
-                        Emotional Intelligence
-                      </h4>
-                      <div className='flex items-center'>
-                        {/* <span className="text-lg text-grey_60 font-medium mr-2"></span> */}
-                        <img
-                          src='/images/author.png'
-                          alt='...'
-                          className='h-6 w-6 rounded-full'
-                        />
-
-                        <a className='font-medium ml-2 text-secondary_ink_lighter block border-bottom border-b-secondary_ink_lighter'>
-                          Sara Mitchell
-                        </a>
-                      </div>
-                      <div className='mt-3 flex items-center justify-between'>
-                        <div className='flex items-center'>
-                          <img
-                            src='/images/icons/star.svg'
-                            alt='...'
-                            className='w-4 h-4'
-                          />
-                          <span className='ml-2 text-sm font-semibold text-secondary_ink_lighter'>
-                            5.0
-                            <span className='font-normal ml-1 text-xs'>
-                              (25)
-                            </span>
-                          </span>
-                        </div>
-                        <span
-                          className={`text-sm font-normal py-2 px-5 pl-3 bg-secondary_52 rounded ${styles.price} text-white`}
-                        >
-                          $5000+
-                        </span>
-                      </div>
-                      <div className='rounded border border-sky_light flex justify-between items-center mt-5 px-1 sm:px-3 px-2 py-1 pr-1'>
-                        <p className='text-xs text-secondary_sky_dark'>
-                          40% Affiliate Commission
-                        </p>
-                        <a
-                          href=''
-                          className='bg-primary text-white font-medium text-sm rounded px-1 sm:px-3 py-2 sm:ml-10'
-                        >
-                          Become Affiliate
-                        </a>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-
-                <div className='shadow sm:w-[max-content] mr-1 h-[max-content] md:ml-12 mt-5 md:mt-0'>
-                  <img
-                    src='/images/book-small-2.png'
-                    alt='...'
-                    className='w-[100%] h-[270px]'
-                  />
-                  <div className='px-1 py-2 rounded-b'>
-                    <div className='p-5 rounded-b'>
-                      <p className='text-lg text-secondary_sky_dark font-normal mb-1'>
-                        Books
-                      </p>
-                      <h4 className='text-2xl text-secondary font-medium mb-3'>
-                        Emotional Intelligence
-                      </h4>
-                      <div className='flex items-center'>
-                        {/* <span className="text-lg text-grey_60 font-medium mr-2"></span> */}
-                        <img
-                          src='/images/author.png'
-                          alt='...'
-                          className='h-6 w-6 rounded-full'
-                        />
-
-                        <a className='font-medium ml-2 text-secondary_ink_lighter block border-bottom border-b-secondary_ink_lighter'>
-                          Sara Mitchell
-                        </a>
-                      </div>
-                      <div className='mt-3 flex items-center justify-between'>
-                        <div className='flex items-center'>
-                          <img
-                            src='/images/icons/star.svg'
-                            alt='...'
-                            className='w-4 h-4'
-                          />
-                          <span className='ml-2 text-sm font-semibold text-secondary_ink_lighter'>
-                            5.0
-                            <span className='font-normal ml-1 text-xs'>
-                              (25)
-                            </span>
-                          </span>
-                        </div>
-                        <span
-                          className={`text-sm font-normal py-2 px-5 pl-3 bg-secondary_52 rounded ${styles.price} text-white`}
-                        >
-                          $5000+
-                        </span>
-                      </div>
-                      <div className='rounded border border-sky_light flex justify-between items-center mt-5 px-1 sm:px-3 px-2 py-1 pr-1'>
-                        <p className='text-xs text-secondary_sky_dark'>
-                          40% Affiliate Commission
-                        </p>
-                        <a
-                          href=''
-                          className='bg-primary text-white font-medium text-sm rounded px-1 sm:px-3 py-2 sm:ml-10'
-                        >
-                          Become Affiliate
-                        </a>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-              </div>
-
-              <div className='sm:flex mt-12 md:flex-row sm:flex-col justify-center'>
-                <div className='shadow sm:w-[max-content] mr-1 h-[max-content]'>
-                  <img
-                    src='/images/book-small-3.png'
-                    alt='...'
-                    className='w-[100%] h-[270px]'
-                  />
-                  <div className='px-1 py-2 rounded-b'>
-                    <div className='p-5 rounded-b'>
-                      <p className='text-lg text-secondary_sky_dark font-normal mb-1'>
-                        Books
-                      </p>
-                      <h4 className='text-2xl text-secondary font-medium mb-3'>
-                        Emotional Intelligence
-                      </h4>
-                      <div className='flex items-center'>
-                        {/* <span className="text-lg text-grey_60 font-medium mr-2"></span> */}
-                        <img
-                          src='/images/author.png'
-                          alt='...'
-                          className='h-6 w-6 rounded-full'
-                        />
-
-                        <a className='font-medium ml-2 text-secondary_ink_lighter block border-bottom border-b-secondary_ink_lighter'>
-                          Sara Mitchell
-                        </a>
-                      </div>
-                      <div className='mt-3 flex items-center justify-between'>
-                        <div className='flex items-center'>
-                          <img
-                            src='/images/icons/star.svg'
-                            alt='...'
-                            className='w-4 h-4'
-                          />
-                          <span className='ml-2 text-sm font-semibold text-secondary_ink_lighter'>
-                            5.0
-                            <span className='font-normal ml-1 text-xs'>
-                              (25)
-                            </span>
-                          </span>
-                        </div>
-                        <span
-                          className={`text-sm font-normal py-2 px-5 pl-3 bg-secondary_52 rounded ${styles.price} text-white`}
-                        >
-                          $5000+
-                        </span>
-                      </div>
-                      <div className='rounded border border-sky_light flex justify-between items-center mt-5 px-1 sm:px-3 px-2 py-1 pr-1'>
-                        <p className='text-xs text-secondary_sky_dark'>
-                          40% Affiliate Commission
-                        </p>
-                        <a
-                          href=''
-                          className='bg-primary text-white font-medium text-sm rounded px-1 sm:px-3 py-2 sm:ml-10'
-                        >
-                          Become Affiliate
-                        </a>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-
-
-                <div className='shadow sm:w-[max-content] mr-1 h-[max-content] md:ml-12 mt-5 md:mt-0'>
-                  <img
-                    src='/images/book-small-4.png'
-                    alt='...'
-                    className='w-[100%] h-[270px]'
-                  />
-                  <div className='px-1 py-2 rounded-b'>
-                    <div className='p-5 rounded-b'>
-                      <p className='text-lg text-secondary_sky_dark font-normal mb-1'>
-                        Books
-                      </p>
-                      <h4 className='text-2xl text-secondary font-medium mb-3'>
-                        Emotional Intelligence
-                      </h4>
-                      <div className='flex items-center'>
-                        {/* <span className="text-lg text-grey_60 font-medium mr-2"></span> */}
-                        <img
-                          src='/images/author.png'
-                          alt='...'
-                          className='h-6 w-6 rounded-full'
-                        />
-
-                        <a className='font-medium ml-2 text-secondary_ink_lighter block border-bottom border-b-secondary_ink_lighter'>
-                          Sara Mitchell
-                        </a>
-                      </div>
-                      <div className='mt-3 flex items-center justify-between'>
-                        <div className='flex items-center'>
-                          <img
-                            src='/images/icons/star.svg'
-                            alt='...'
-                            className='w-4 h-4'
-                          />
-                          <span className='ml-2 text-sm font-semibold text-secondary_ink_lighter'>
-                            5.0
-                            <span className='font-normal ml-1 text-xs'>
-                              (25)
-                            </span>
-                          </span>
-                        </div>
-                        <span
-                          className={`text-sm font-normal py-2 px-5 pl-3 bg-secondary_52 rounded ${styles.price} text-white`}
-                        >
-                          $5000+
-                        </span>
-                      </div>
-                      <div className='rounded border border-sky_light flex justify-between items-center mt-5 px-1 sm:px-3 px-2 py-1 pr-1'>
-                        <p className='text-xs text-secondary_sky_dark'>
-                          40% Affiliate Commission
-                        </p>
-                        <a
-                          href=''
-                          className='bg-primary text-white font-medium text-sm rounded px-1 sm:px-3 py-2 sm:ml-10'
-                        >
-                          Become Affiliate
-                        </a>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-              </div>
-              
-              <div
-                className='flex w-[max-content] border border-grey_80 p-2 rounded mt-7'
-                style={{ 'border-radius': '20px' }}
-              >
-                <LeftIcon />
-                <p className='mx-3 text-secondary text-md '>Page 1 of 8</p>
-                <RightIcon />
-              </div>
-
+            <div className='lg:ml-11 lg:px-5 lg:w-[50%] overflow-hidden self-center'>
+              <h2 className='text-2xl text-primary font-semibold mb-6'>
+                Education
+              </h2>
+              <p className='font-medium text-grey_40 text-2xl md:text-4xl mb-8 sm:w-[80%]'>
+                Perfect your career with tested and proven resources from
+                experts and examples from others.
+              </p>
             </div>
           </div>
-        </main>
+
+          <main className='mb-12 mx-auto w-[100%] px-3 max-w-[1500px] overflow-hidden'>
+            <nav
+              className='mb-10 pl-7 pb-5 hidden'
+              style={{
+                'box-shadow': '0px 20px 40px rgba(0, 0, 0, 0.06)',
+                'border-radius': '0px 0px 40px 40px',
+              }}
+            >
+              <ul className={`flex ${styles.nav} lg:ml-12 md:ml-[0]`}>
+                <li className='hover:bg-primary hover:text-white bg-primary_brand_lightest text-primary rounded-2xl px-4 py-1'>
+                  <a
+                    href=''
+                    className='text-inherit'
+                    onClick={(e) => e.preventDefault()}
+                  >
+                    All
+                  </a>
+                </li>
+
+                <li className='hover:bg-primary hover:text-white bg-primary_brand_lightest text-primary rounded-2xl px-4 py-1'>
+                  <a
+                    href=''
+                    className='text-inherit'
+                    onClick={(e) => e.preventDefault()}
+                  >
+                    Ebook
+                  </a>
+                </li>
+
+                <li className='hover:bg-primary hover:text-white bg-primary_brand_lightest text-primary rounded-2xl px-4 py-1'>
+                  <a
+                    href=''
+                    className='text-inherit'
+                    onClick={(e) => e.preventDefault()}
+                  >
+                    Journal
+                  </a>
+                </li>
+
+                <li className='hover:bg-primary hover:text-white bg-primary_brand_lightest text-primary rounded-2xl px-4 py-1'>
+                  <a
+                    href=''
+                    className='text-inherit'
+                    onClick={(e) => e.preventDefault()}
+                  >
+                    Webinar
+                  </a>
+                </li>
+
+                <li className='hover:bg-primary hover:text-white bg-primary_brand_lightest text-primary rounded-2xl px-4 py-1'>
+                  <a
+                    href=''
+                    className='text-inherit'
+                    onClick={(e) => e.preventDefault()}
+                  >
+                    Tutorials
+                  </a>
+                </li>
+
+                <li className='hover:bg-primary hover:text-white bg-primary_brand_lightest text-primary rounded-2xl px-4 py-1'>
+                  <a
+                    href=''
+                    className='text-inherit'
+                    onClick={(e) => e.preventDefault()}
+                  >
+                    Documentation
+                  </a>
+                </li>
+              </ul>
+            </nav>
+
+            <div className='flex xl:px-12'>
+              <div className='border border-sky_light p-8 w-[30%] xl:mr-10 lg:px-8 lg:pt-8 hidden lg:block rounded-xl h-[max-content]'>
+                <h4 className='text-secondary_brand_light pb-3 mb-4 border-bottom border-solid border-b border-secondary_sky_base'>
+                  Showing 1 - 8 of 200 results
+                </h4>
+                <form>
+                  <h5 className='text-secondary font-medium mb-3'>SORT BY</h5>
+                  <select
+                    name=''
+                    id=''
+                    className='bg-primary rounded w-[100%] py-2 px-3 text-white'
+                  >
+                    <option value='Popular' selected>
+                      Popular
+                    </option>
+                  </select>
+                  <h5 className='mt-4 text-secondary font-medium mb-1'>
+                    PRICE
+                  </h5>
+                  <div className='flex w-[100%]'>
+                    <div>
+                      <p className='text-secondary_sky_dark mb-2'>Minimum</p>
+                      <div className='input-group flex mr-2'>
+                        <input
+                          type='text'
+                          value='$'
+                          readOnly
+                          className='w-[3rem] h-[2.5rem] rounded text-center bg-primary_brand_lightest text-secondary outline-none'
+                        />
+                        <input
+                          type='number'
+                          placeholder='0'
+                          className='px-4 w-[90%] text-secondary_ink_lighter'
+                        />
+                      </div>
+                    </div>
+                    <div>
+                      <p className='text-secondary_sky_dark mb-2'>Maximum</p>
+                      <div className='input-group flex mr-2'>
+                        <input
+                          type='text'
+                          value='$'
+                          readOnly
+                          className='w-[3rem] h-[2.5rem] rounded text-center bg-primary_brand_lightest text-secondary outline-none'
+                        />
+                        <input
+                          type='number'
+                          placeholder='0'
+                          className='px-4 w-[90%] text-secondary_ink_lighter'
+                        />
+                      </div>
+                    </div>
+                  </div>
+
+                  <div className='mt-5'>
+                    <h5 className='text-secondary font-medium mb-1'>RATING</h5>
+                    <div>
+                      <div className='flex items-center mb-1'>
+                        <div className='flex'>
+                          <StarCheckedIcon />
+                          <StarCheckedIcon />
+                          <StarCheckedIcon />
+                          <StarCheckedIcon />
+                          <StarCheckedIcon />
+                        </div>
+                        <input
+                          type='radio'
+                          name='ratings'
+                          id='ratings'
+                          className='ml-auto border-2 border-primary'
+                        />
+                      </div>
+
+                      <div className='flex items-center mb-1'>
+                        <div className='flex'>
+                          <StarCheckedIcon />
+                          <StarCheckedIcon />
+                          <StarCheckedIcon />
+                          <StarCheckedIcon />
+                          <StarUncheckedIcon />
+                        </div>
+                        <input
+                          type='radio'
+                          name='ratings'
+                          id='ratings'
+                          className='ml-auto border-2 border-primary'
+                        />
+                      </div>
+
+                      <div className='flex items-center mb-1'>
+                        <div className='flex'>
+                          <StarCheckedIcon />
+                          <StarCheckedIcon />
+                          <StarCheckedIcon />
+                          <StarUncheckedIcon />
+                          <StarUncheckedIcon />
+                        </div>
+                        <input
+                          type='radio'
+                          name='ratings'
+                          id='ratings'
+                          className='ml-auto border-2 border-primary'
+                        />
+                      </div>
+
+                      <div className='flex items-center mb-1'>
+                        <div className='flex'>
+                          <StarCheckedIcon />
+                          <StarCheckedIcon />
+                          <StarUncheckedIcon />
+                          <StarUncheckedIcon />
+                          <StarUncheckedIcon />
+                        </div>
+                        <input
+                          type='radio'
+                          name='ratings'
+                          id='ratings'
+                          className='ml-auto border-2 border-primary'
+                        />
+                      </div>
+
+                      <div className='flex items-center mb-1'>
+                        <div className='flex'>
+                          <StarCheckedIcon />
+                          <StarUncheckedIcon />
+                          <StarUncheckedIcon />
+                          <StarUncheckedIcon />
+                          <StarUncheckedIcon />
+                        </div>
+                        <input
+                          type='radio'
+                          name='ratings'
+                          id='ratings'
+                          className='ml-auto border-2 border-primary'
+                        />
+                      </div>
+                    </div>
+
+                    <div className='mt-5 text-cabiza_grey'>
+                      <h5 className='text-secondary font-medium mb-1'>
+                        CONTAINS
+                      </h5>
+
+                      <div>
+                        <div className='flex mb-1 text-secondary font-medium'>
+                          <p>.zip</p>
+
+                          <div className='ml-auto flex items-center'>
+                            <p className='mr-4 text-primary_brand_light border border-primary_brand_light rounded px-1'>
+                              34567
+                            </p>
+                            <input type='radio' name='contains' id='contains' />
+                          </div>
+                        </div>
+
+                        <div className='flex mb-1 text-secondary font-medium'>
+                          <p>.rar</p>
+
+                          <div className='ml-auto flex items-center'>
+                            <p className='mr-4 text-primary_brand_light border border-primary_brand_light rounded px-1'>
+                              34567
+                            </p>
+                            <input type='radio' name='contains' id='contains' />
+                          </div>
+                        </div>
+
+                        <div className='flex mb-1 text-secondary font-medium'>
+                          <p>.pdf</p>
+
+                          <div className='ml-auto flex items-center'>
+                            <p className='mr-4 text-primary_brand_light border border-primary_brand_light rounded px-1'>
+                              34567
+                            </p>
+                            <input type='radio' name='contains' id='contains' />
+                          </div>
+                        </div>
+
+                        <div className='flex mb-1 text-secondary font-medium'>
+                          <p>.mp3</p>
+
+                          <div className='ml-auto flex items-center'>
+                            <p className='mr-4 text-primary_brand_light border border-primary_brand_light rounded px-1'>
+                              34567
+                            </p>
+                            <input type='radio' name='contains' id='contains' />
+                          </div>
+                        </div>
+
+                        <div className='flex mb-1 text-secondary font-medium'>
+                          <p>.mp4</p>
+
+                          <div className='ml-auto flex items-center'>
+                            <p className='mr-4 text-primary_brand_light border border-primary_brand_light rounded px-1'>
+                              34567
+                            </p>
+                            <input type='radio' name='contains' id='contains' />
+                          </div>
+                        </div>
+
+                        <div className='flex mb-1 text-secondary font-medium'>
+                          <p>.fig</p>
+
+                          <div className='ml-auto flex items-center'>
+                            <p className='mr-4 text-primary_brand_light border border-primary_brand_light rounded px-1'>
+                              34567
+                            </p>
+                            <input type='radio' name='contains' id='contains' />
+                          </div>
+                        </div>
+
+                        <div className='flex mb-1 text-secondary font-medium'>
+                          <p>.doc</p>
+
+                          <div className='ml-auto flex items-center'>
+                            <p className='mr-4 text-primary_brand_light border border-primary_brand_light rounded px-1'>
+                              34567
+                            </p>
+                            <input type='radio' name='contains' id='contains' />
+                          </div>
+                        </div>
+
+                        <div className='flex mb-1 text-secondary font-medium'>
+                          <p>.doc</p>
+
+                          <div className='ml-auto flex items-center'>
+                            <p className='mr-4 text-primary_brand_light border border-primary_brand_light rounded px-1'>
+                              34567
+                            </p>
+                            <input type='radio' name='contains' id='contains' />
+                          </div>
+                        </div>
+
+                        <div className='flex mb-1 text-secondary font-medium'>
+                          <p>.doc</p>
+
+                          <div className='ml-auto flex items-center'>
+                            <p className='mr-4 text-primary_brand_light border border-primary_brand_light rounded px-1'>
+                              34567
+                            </p>
+                            <input type='radio' name='contains' id='contains' />
+                          </div>
+                        </div>
+
+                        <div className='flex mb-1 text-secondary font-medium'>
+                          <p>.ai</p>
+
+                          <div className='ml-auto flex items-center'>
+                            <p className='mr-4 text-primary_brand_light border border-primary_brand_light rounded px-1'>
+                              34567
+                            </p>
+                            <input type='radio' name='contains' id='contains' />
+                          </div>
+                        </div>
+
+                        <div className='flex mb-1 text-secondary font-medium'>
+                          <p>.cdr</p>
+
+                          <div className='ml-auto flex items-center'>
+                            <p className='mr-4 text-primary_brand_light border border-primary_brand_light rounded px-1'>
+                              34567
+                            </p>
+                            <input type='radio' name='contains' id='contains' />
+                          </div>
+                        </div>
+
+                        <div className='flex mb-1 text-secondary font-medium'>
+                          <p>.psd</p>
+
+                          <div className='ml-auto flex items-center'>
+                            <p className='mr-4 text-primary_brand_light border border-primary_brand_light rounded px-1'>
+                              34567
+                            </p>
+                            <input type='radio' name='contains' id='contains' />
+                          </div>
+                        </div>
+
+                        <div className='flex mb-1 text-secondary font-medium'>
+                          <p>.doc</p>
+
+                          <div className='ml-auto flex items-center'>
+                            <p className='mr-4 text-primary_brand_light border border-primary_brand_light rounded px-1'>
+                              34567
+                            </p>
+                            <input type='radio' name='contains' id='contains' />
+                          </div>
+                        </div>
+
+                        <div className='flex mb-1 text-secondary font-medium'>
+                          <p>.png</p>
+
+                          <div className='ml-auto flex items-center'>
+                            <p className='mr-4 text-primary_brand_light border border-primary_brand_light rounded px-1'>
+                              34567
+                            </p>
+                            <input type='radio' name='contains' id='contains' />
+                          </div>
+                        </div>
+
+                        <div className='flex mb-1 text-secondary font-medium'>
+                          <p>.blend</p>
+
+                          <div className='ml-auto flex items-center'>
+                            <p className='mr-4 text-primary_brand_light border border-primary_brand_light rounded px-1'>
+                              34567
+                            </p>
+                            <input type='radio' name='contains' id='contains' />
+                          </div>
+                        </div>
+
+                        <div className='flex mb-1 text-secondary font-medium'>
+                          <p>.mov</p>
+
+                          <div className='ml-auto flex items-center'>
+                            <p className='mr-4 text-primary_brand_light border border-primary_brand_light rounded px-1'>
+                              34567
+                            </p>
+                            <input type='radio' name='contains' id='contains' />
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+
+                    <button className='flex mx-auto items-center justify-center w-[max-content] px-4 bg-primary_brand_lightest mt-8 rounded-xl py-2 text-primary text-md'>
+                      See More
+                    </button>
+                  </div>
+                </form>
+              </div>
+              <div className='mx-auto lg:ml-auto md:mr-0 md:ml-0 sm:mr-5 md:px-5'>
+                <div className='sm:flex mt-12 md:flex-row sm:flex-col justify-center pl-2'>
+                  <div className='shadow sm:w-[max-content] mr-1 h-[max-content]'>
+                    <img
+                      src='/images/book-small.png'
+                      alt='...'
+                      className='w-[100%] h-[270px]'
+                    />
+                    <div className='px-1 py-2 rounded-b'>
+                      <div className='p-5 rounded-b'>
+                        <p className='text-lg text-secondary_sky_dark font-normal mb-1'>
+                          Books
+                        </p>
+                        <h4 className='text-2xl text-secondary font-medium mb-3'>
+                          Emotional Intelligence
+                        </h4>
+                        <div className='flex items-center'>
+                          {/* <span className="text-lg text-grey_60 font-medium mr-2"></span> */}
+                          <img
+                            src='/images/author.png'
+                            alt='...'
+                            className='h-6 w-6 rounded-full'
+                          />
+
+                          <a className='font-medium ml-2 text-secondary_ink_lighter block border-bottom border-b-secondary_ink_lighter'>
+                            Sara Mitchell
+                          </a>
+                        </div>
+                        <div className='mt-3 flex items-center justify-between'>
+                          <div className='flex items-center'>
+                            <img
+                              src='/images/icons/star.svg'
+                              alt='...'
+                              className='w-4 h-4'
+                            />
+                            <span className='ml-2 text-sm font-semibold text-secondary_ink_lighter'>
+                              5.0
+                              <span className='font-normal ml-1 text-xs'>
+                                (25)
+                              </span>
+                            </span>
+                          </div>
+                          <span
+                            className={`text-sm font-normal py-2 px-5 pl-3 bg-secondary_52 rounded ${styles.price} text-white`}
+                          >
+                            $5000+
+                          </span>
+                        </div>
+                        <div className='rounded border border-sky_light flex justify-between items-center mt-5 px-1 sm:px-3 px-2 py-1 pr-1'>
+                          <p className='text-xs text-secondary_sky_dark'>
+                            40% Affiliate Commission
+                          </p>
+                          <a
+                            href=''
+                            className='bg-primary text-white font-medium text-sm rounded px-1 sm:px-3 py-2 sm:ml-10'
+                          >
+                            Become Affiliate
+                          </a>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+
+                  <div className='shadow sm:w-[max-content] mr-1 h-[max-content] md:ml-12 mt-5 md:mt-0'>
+                    <img
+                      src='/images/book-small-2.png'
+                      alt='...'
+                      className='w-[100%] h-[270px]'
+                    />
+                    <div className='px-1 py-2 rounded-b'>
+                      <div className='p-5 rounded-b'>
+                        <p className='text-lg text-secondary_sky_dark font-normal mb-1'>
+                          Books
+                        </p>
+                        <h4 className='text-2xl text-secondary font-medium mb-3'>
+                          Emotional Intelligence
+                        </h4>
+                        <div className='flex items-center'>
+                          {/* <span className="text-lg text-grey_60 font-medium mr-2"></span> */}
+                          <img
+                            src='/images/author.png'
+                            alt='...'
+                            className='h-6 w-6 rounded-full'
+                          />
+
+                          <a className='font-medium ml-2 text-secondary_ink_lighter block border-bottom border-b-secondary_ink_lighter'>
+                            Sara Mitchell
+                          </a>
+                        </div>
+                        <div className='mt-3 flex items-center justify-between'>
+                          <div className='flex items-center'>
+                            <img
+                              src='/images/icons/star.svg'
+                              alt='...'
+                              className='w-4 h-4'
+                            />
+                            <span className='ml-2 text-sm font-semibold text-secondary_ink_lighter'>
+                              5.0
+                              <span className='font-normal ml-1 text-xs'>
+                                (25)
+                              </span>
+                            </span>
+                          </div>
+                          <span
+                            className={`text-sm font-normal py-2 px-5 pl-3 bg-secondary_52 rounded ${styles.price} text-white`}
+                          >
+                            $5000+
+                          </span>
+                        </div>
+                        <div className='rounded border border-sky_light flex justify-between items-center mt-5 px-1 sm:px-3 px-2 py-1 pr-1'>
+                          <p className='text-xs text-secondary_sky_dark'>
+                            40% Affiliate Commission
+                          </p>
+                          <a
+                            href=''
+                            className='bg-primary text-white font-medium text-sm rounded px-1 sm:px-3 py-2 sm:ml-10'
+                          >
+                            Become Affiliate
+                          </a>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+
+                <div className='sm:flex mt-12 md:flex-row sm:flex-col justify-center'>
+                  <div className='shadow sm:w-[max-content] mr-1 h-[max-content]'>
+                    <img
+                      src='/images/book-small-3.png'
+                      alt='...'
+                      className='w-[100%] h-[270px]'
+                    />
+                    <div className='px-1 py-2 rounded-b'>
+                      <div className='p-5 rounded-b'>
+                        <p className='text-lg text-secondary_sky_dark font-normal mb-1'>
+                          Books
+                        </p>
+                        <h4 className='text-2xl text-secondary font-medium mb-3'>
+                          Emotional Intelligence
+                        </h4>
+                        <div className='flex items-center'>
+                          {/* <span className="text-lg text-grey_60 font-medium mr-2"></span> */}
+                          <img
+                            src='/images/author.png'
+                            alt='...'
+                            className='h-6 w-6 rounded-full'
+                          />
+
+                          <a className='font-medium ml-2 text-secondary_ink_lighter block border-bottom border-b-secondary_ink_lighter'>
+                            Sara Mitchell
+                          </a>
+                        </div>
+                        <div className='mt-3 flex items-center justify-between'>
+                          <div className='flex items-center'>
+                            <img
+                              src='/images/icons/star.svg'
+                              alt='...'
+                              className='w-4 h-4'
+                            />
+                            <span className='ml-2 text-sm font-semibold text-secondary_ink_lighter'>
+                              5.0
+                              <span className='font-normal ml-1 text-xs'>
+                                (25)
+                              </span>
+                            </span>
+                          </div>
+                          <span
+                            className={`text-sm font-normal py-2 px-5 pl-3 bg-secondary_52 rounded ${styles.price} text-white`}
+                          >
+                            $5000+
+                          </span>
+                        </div>
+                        <div className='rounded border border-sky_light flex justify-between items-center mt-5 px-1 sm:px-3 px-2 py-1 pr-1'>
+                          <p className='text-xs text-secondary_sky_dark'>
+                            40% Affiliate Commission
+                          </p>
+                          <a
+                            href=''
+                            className='bg-primary text-white font-medium text-sm rounded px-1 sm:px-3 py-2 sm:ml-10'
+                          >
+                            Become Affiliate
+                          </a>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+
+                  <div className='shadow sm:w-[max-content] mr-1 h-[max-content] md:ml-12 mt-5 md:mt-0'>
+                    <img
+                      src='/images/book-small-4.png'
+                      alt='...'
+                      className='w-[100%] h-[270px]'
+                    />
+                    <div className='px-1 py-2 rounded-b'>
+                      <div className='p-5 rounded-b'>
+                        <p className='text-lg text-secondary_sky_dark font-normal mb-1'>
+                          Books
+                        </p>
+                        <h4 className='text-2xl text-secondary font-medium mb-3'>
+                          Emotional Intelligence
+                        </h4>
+                        <div className='flex items-center'>
+                          {/* <span className="text-lg text-grey_60 font-medium mr-2"></span> */}
+                          <img
+                            src='/images/author.png'
+                            alt='...'
+                            className='h-6 w-6 rounded-full'
+                          />
+
+                          <a className='font-medium ml-2 text-secondary_ink_lighter block border-bottom border-b-secondary_ink_lighter'>
+                            Sara Mitchell
+                          </a>
+                        </div>
+                        <div className='mt-3 flex items-center justify-between'>
+                          <div className='flex items-center'>
+                            <img
+                              src='/images/icons/star.svg'
+                              alt='...'
+                              className='w-4 h-4'
+                            />
+                            <span className='ml-2 text-sm font-semibold text-secondary_ink_lighter'>
+                              5.0
+                              <span className='font-normal ml-1 text-xs'>
+                                (25)
+                              </span>
+                            </span>
+                          </div>
+                          <span
+                            className={`text-sm font-normal py-2 px-5 pl-3 bg-secondary_52 rounded ${styles.price} text-white`}
+                          >
+                            $5000+
+                          </span>
+                        </div>
+                        <div className='rounded border border-sky_light flex justify-between items-center mt-5 px-1 sm:px-3 px-2 py-1 pr-1'>
+                          <p className='text-xs text-secondary_sky_dark'>
+                            40% Affiliate Commission
+                          </p>
+                          <a
+                            href=''
+                            className='bg-primary text-white font-medium text-sm rounded px-1 sm:px-3 py-2 sm:ml-10'
+                          >
+                            Become Affiliate
+                          </a>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+
+                <div
+                  className='flex w-[max-content] border border-grey_80 p-2 rounded mt-7'
+                  style={{ 'border-radius': '20px' }}
+                >
+                  <LeftIcon />
+                  <p className='mx-3 text-secondary text-md '>Page 1 of 8</p>
+                  <RightIcon />
+                </div>
+              </div>
+            </div>
+          </main>
+        </div>
         <MainFooter />
       </div>
     );
