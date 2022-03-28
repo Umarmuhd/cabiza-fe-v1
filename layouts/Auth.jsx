@@ -7,10 +7,10 @@ import AuthFooter from "../components/Footer/AuthFooter";
 import AuthContext from "@/context/AuthContext";
 
 export default function Auth({ children }) {
-  const { user, loading } = useContext(AuthContext);
+  const { user } = useContext(AuthContext);
 
   const router = useRouter();
-  if (typeof window !== "undefined" && !loading && user) {
+  if (typeof window !== "undefined" && user) {
     router.replace("/dashboard/products");
   }
 

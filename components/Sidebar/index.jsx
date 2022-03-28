@@ -398,6 +398,41 @@ const SettingsIcon = () => (
   </svg>
 );
 
+const LogoutIcon = () => (
+  <svg
+    width="24"
+    height="24"
+    viewBox="0 0 24 24"
+    fill="none"
+    xmlns="http://www.w3.org/2000/svg"
+  >
+    <path
+      d="M17.44 14.62L20 12.06L17.44 9.5"
+      stroke="#5B44E9"
+      strokeWidth="1.5"
+      strokeMiterlimit="10"
+      strokeLinecap="round"
+      strokeLinejoin="round"
+    />
+    <path
+      d="M9.76 12.0601H19.93"
+      stroke="#5B44E9"
+      strokeWidth="1.5"
+      strokeMiterlimit="10"
+      strokeLinecap="round"
+      strokeLinejoin="round"
+    />
+    <path
+      d="M11.76 20C7.34 20 3.76 17 3.76 12C3.76 7 7.34 4 11.76 4"
+      stroke="#5B44E9"
+      strokeWidth="1.5"
+      strokeMiterlimit="10"
+      strokeLinecap="round"
+      strokeLinejoin="round"
+    />
+  </svg>
+);
+
 const Sidebar = ({ user }) => {
   const [collapseShow, setCollapseShow] = React.useState("hidden");
   return (
@@ -596,17 +631,12 @@ const Sidebar = ({ user }) => {
             <hr className="my-4 md:min-w-full" />
 
             <div className="flex items-center">
-              <img
-                src={user?.profile_picture}
-                alt="..."
-                className="mr-2 w-10 h-10 rounded-full"
-              />
-              <div className="">
-                <span className="block font-medium text-lg mb-1 text-white">
-                  {user?.full_name}
+              <button className="flex">
+                <LogoutIcon />
+                <span className="ml-2 text-white text-lg font-semibold">
+                  Logout
                 </span>
-                <span className="text-xs text-grey_95">{user?.username}</span>
-              </div>
+              </button>
             </div>
           </div>
         </div>

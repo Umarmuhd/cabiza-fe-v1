@@ -7,12 +7,12 @@ import { Toaster } from "react-hot-toast";
 import AuthContext from "@/context/AuthContext";
 
 export default function Dashboard({ children }) {
-  const { user, loading } = useContext(AuthContext);
+  const { user } = useContext(AuthContext);
 
   const router = useRouter();
 
   if (typeof window !== "undefined") {
-    if (!user && !loading) router.push("/auth/login");
+    if (!user) router.push("/auth/login");
   }
 
   return (

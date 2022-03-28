@@ -44,7 +44,7 @@ export default function Posts() {
                   classNames(
                     "text-lg mr-10",
                     selected
-                      ? " font-bold text-cabiza_blue"
+                      ? " font-bold text-primary"
                       : " font-medium text-cabiza_grey"
                   )
                 }
@@ -57,25 +57,12 @@ export default function Posts() {
                   classNames(
                     "text-lg mr-10",
                     selected
-                      ? " font-bold text-cabiza_blue"
+                      ? " font-bold text-primary"
                       : " font-medium text-cabiza_grey"
                   )
                 }
               >
                 Scheduled
-              </Tab>
-              <Tab
-                as={"button"}
-                className={({ selected }) =>
-                  classNames(
-                    "text-lg mr-0",
-                    selected
-                      ? " font-bold text-cabiza_blue"
-                      : " font-medium text-cabiza_grey"
-                  )
-                }
-              >
-                Workflows
               </Tab>
             </Tab.List>
 
@@ -83,20 +70,20 @@ export default function Posts() {
               <div className="flex rounded-[100px] shadow-sm mr-6">
                 <input
                   type="text"
-                  className="border border-r-0 border-grey_80 px-4 py-3 placeholder-grey_80 text-grey_40 bg-white shadow-sm focus:outline-none focus:ring w-full rounded-l-[100px]"
+                  className="border border-r-0 border-grey_80 px-4 py-2 placeholder-grey_80 text-grey_40 bg-white shadow-sm focus:outline-none focus:ring w-full rounded-l-[100px]"
                   style={{ transition: "all 0.15s ease 0s" }}
                   id="search"
                   placeholder="Search..."
                 />
                 <div className="inline-flex items-center px-3 border border-l-0 border-gray-300 text-gray-500 text-sm rounded-r-[100px]">
-                  <span className="rounded-full p-2 bg-cabiza_blue h-7 w-7">
+                  <span className="rounded-full p-2 bg-primary h-7 w-7">
                     <img src="/images/icons/search.svg" alt="..." />
                   </span>
                 </div>
               </div>
               <Link href="/dashboard/posts/new">
-                <a className="py-4 px-8 bg-cabiza_blue flex items-center text-lg font-semibold text-white rounded-lg">
-                  <span className="mr-2.5">New Post </span> <PlusIcon />
+                <a className="py-2 px-4 bg-primary flex items-center font-medium text-white rounded-[48px]">
+                  <PlusIcon /> <span className="ml-2">New Post </span>
                 </a>
               </Link>
             </div>
@@ -109,9 +96,6 @@ export default function Posts() {
           </Tab.Panel>
           <Tab.Panel>
             <Scheduled />
-          </Tab.Panel>
-          <Tab.Panel>
-            <WorkFlow />
           </Tab.Panel>
         </Tab.Panels>
       </Tab.Group>
