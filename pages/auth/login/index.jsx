@@ -36,18 +36,16 @@ export default function Login() {
 
       const { user, token } = response.data;
 
-      if (response.status === 200) {
-        loginUser(user, token);
-        setLoading(false);
-
-        console.log(user);
-
-        return router.push(
-          user.username ? "/dashboard/products" : "/dashboard/onboarding"
-        );
-      }
-
+      loginUser(user, token);
       setLoading(false);
+
+      console.log(user);
+
+      const status = user.username ? "products" : "onboarding";
+
+      console.log(status);
+
+      return router.push("/dashboard/" + status);
     } catch (error) {
       setError(error.response.data.message);
       setLoading(false);

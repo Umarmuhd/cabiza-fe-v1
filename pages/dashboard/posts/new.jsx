@@ -77,10 +77,8 @@ export default function NewPost() {
     }
   };
 
-  console.log(watch("attachment"));
-
   return (
-    <>
+    <div>
       <div className="bg-grey_95 border-b border-grey_60 py-6 md:px-0 px-4">
         <div className="flex justify-between items-center md:w-4/5 mx-auto">
           <div className="flex">
@@ -444,7 +442,7 @@ export default function NewPost() {
           </div>
         </form>
       </main>
-    </>
+    </div>
   );
 }
 
