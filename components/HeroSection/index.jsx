@@ -11,7 +11,7 @@ export const HeroSection = () => {
                 Welcome to your company
               </p>
             </div>
-            <h1 className="font-bold text-5xl text-secondary">
+            <h1 className="font-bold text-3xl sm:text-5xl text-secondary">
               The platform designed to help you{" "}
               <span className="text-primary">own</span> and{" "}
               <span className="text-primary">grow</span> your business.

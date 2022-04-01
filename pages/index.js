@@ -34,17 +34,17 @@ export default function Home() {
   function moveReviewForward() {
     if (position === 0) {
       let newPosition = 0;
-      newPosition += 28;
+      newPosition += 33;
       setPosition(newPosition);
-    } else if (position >= 112) {
+    } else if (position >= 132) {
       setPosition(0);
     } else {
-      setPosition((prev) => prev + 28);
+      setPosition((prev) => prev + 33);
     }
   }
   function moveReviewBackward() {
     if (position > 0) {
-      setPosition((prev) => prev - 28);
+      setPosition((prev) => prev - 33);
     } else {
       setPosition(0);
     }
@@ -154,12 +154,12 @@ export default function Home() {
             <div
               className={`${styles.testimony} px-4 py-16 mx-auto sm:max-w-xl md:max-w-full lg:max-w-screen-xl md:px-24 lg:px-8 lg:py-20`}
             >
-              <div className='flex mt-10 gap-16'>
+              <div className='flex flex-col lg:flex-row mt-10 md:gap-16'>
                 <div>
                   <img src='/images/testimony.png' alt='' />
                 </div>
 
-                <div className='w-[50%]'>
+                <div className='lg:w-[50%]'>
                   <h3 className='font-semibold text-secondary text-4xl text-center md:text-left mb-10'>
                     Testimonies
                   </h3>
@@ -168,7 +168,11 @@ export default function Home() {
                       <div
                         className={styles['reviews-container']}
                         style={{
-                          transform: `translateX(-${position}vw)`,
+                          transform: `translateX(-${position}rem)`,
+
+                          '@media (max-width: 768px)': {
+                            display: 'none',
+                          },
                         }}
                       >
                         <div className={styles.review}>
@@ -312,12 +316,32 @@ export default function Home() {
                             stroke-linecap='round'
                             stroke-linejoin='round'
                           />
-                        </svg>                        
+                        </svg>
 
-                        <svg width="27" height="27" viewBox="0 0 37 37" fill="none" xmlns="http://www.w3.org/2000/svg" onClick={moveReviewForward}>
-                        <circle cx="18.0307" cy="18.6792" r="17" stroke="#5B44E9" stroke-width="2"/>
-                        <path d="M15.3269 25.609L21.0319 19.904C21.7057 19.2303 21.7057 18.1278 21.0319 17.454L15.3269 11.749" stroke="#5B44E9" stroke-width="1.5" stroke-miterlimit="10" stroke-linecap="round" stroke-linejoin="round"/>
-                        </svg>                      
+                        <svg
+                          width='27'
+                          height='27'
+                          viewBox='0 0 37 37'
+                          fill='none'
+                          xmlns='http://www.w3.org/2000/svg'
+                          onClick={moveReviewForward}
+                        >
+                          <circle
+                            cx='18.0307'
+                            cy='18.6792'
+                            r='17'
+                            stroke='#5B44E9'
+                            stroke-width='2'
+                          />
+                          <path
+                            d='M15.3269 25.609L21.0319 19.904C21.7057 19.2303 21.7057 18.1278 21.0319 17.454L15.3269 11.749'
+                            stroke='#5B44E9'
+                            stroke-width='1.5'
+                            stroke-miterlimit='10'
+                            stroke-linecap='round'
+                            stroke-linejoin='round'
+                          />
+                        </svg>
                       </div>
 
                       <div className={styles.flex}>
@@ -328,22 +352,22 @@ export default function Home() {
                         ></div>
                         <div
                           className={`${styles['review-location-step']} ${
-                            position === 28 ? styles.active : 'null'
+                            position === 33 ? styles.active : 'null'
                           } `}
                         ></div>
                         <div
                           className={`${styles['review-location-step']} ${
-                            position === 56 ? styles.active : 'null'
+                            position === 66 ? styles.active : 'null'
                           }`}
                         ></div>
                         <div
                           className={`${styles['review-location-step']} ${
-                            position === 84 ? styles.active : 'null'
+                            position === 99 ? styles.active : 'null'
                           }`}
                         ></div>
                         <div
                           className={`${styles['review-location-step']} ${
-                            position === 112 ? styles.active : 'null'
+                            position === 132 ? styles.active : 'null'
                           }`}
                         ></div>
                       </div>
