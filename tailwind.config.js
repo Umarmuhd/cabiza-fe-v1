@@ -47,6 +47,7 @@ module.exports = {
         secondary_sky_base: "#CDCFD0",
         footer: "#090425",
         secondary_sky_lighter: "#F2F4F5",
+        secondary_sky_lightest: "#F7F9FA",
         dark: "#040212",
         secondary: "#404446",
         secondary_ink_dark: "#303437",
@@ -56,6 +57,9 @@ module.exports = {
       },
       backgroundImage: {
         "onboarding-pattern": "url('/images/onboarding-bg.svg')",
+      },
+      width: {
+        "43/50": "86%",
       },
     },
   },
