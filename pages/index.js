@@ -23,22 +23,28 @@ const SendIcon = () => (
   </svg>
 );
 
+const ArrowRight = () => (
+  <svg width="12" height="12" viewBox="0 0 12 12" fill="none" xmlns="http://www.w3.org/2000/svg">
+    <path d="M1.36401 5.67944H10.6973M10.6973 5.67944L6.03067 1.0127M10.6973 5.67944L6.03067 10.346" stroke="#5B44E9" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+  </svg>
+)
+
 export default function Home() {
   const [position, setPosition] = useState(0);
   function moveReviewForward() {
     if (position === 0) {
       let newPosition = 0;
-      newPosition += 100;
+      newPosition += 28;
       setPosition(newPosition);
-    } else if (position === 400) {
+    } else if (position >= 112) {
       setPosition(0);
     } else {
-      setPosition((prev) => prev + 100);
+      setPosition((prev) => prev + 28);
     }
   }
   function moveReviewBackward() {
     if (position > 0) {
-      setPosition((prev) => prev - 100);
+      setPosition((prev) => prev - 28);
     } else {
       setPosition(0);
     }
@@ -65,556 +71,309 @@ export default function Home() {
   }
 
   return (
-    <div className="w-full h-full">
+    <div className='w-full h-full'>
       <MainNavigation />
       <HeroSection />
-      <main className={styles.main}>
+      <main>
         <Feature />
-
         <CategoriesSection />
-
-        <section id="membership" className={styles.membership}>
-          <h2>Membership plans</h2>
-
-          <div className="flex">
-            <div className={`${styles.plans} mt-10 ${styles.flex}`}>
-              <div className={styles.col}>
-                <h4>FREE ZONE</h4>
-                <h3>Starter</h3>
-                <p className={styles.price}>£0</p>
-                <a href="">Sign Up</a>
-                <p>
-                  Limited access (intro module or 7 day trial) to the
-                  specific/main course on this subscription.
-                </p>
-                <a href="" className={styles["btn-secondary"]}>
-                  Learn More
-                </a>
-              </div>
-
-              <div className={`${styles.col} ${styles.popular}`}>
-                <aside>Most popular</aside>
-                <h4>BUYERS ZONE</h4>
-                <h3>Owner</h3>
-                <p className={styles.price}>£50/Annum</p>
-                <a href="">Sign Up</a>
-                <p className={styles.description}>
-                  Everyone is entitled to have access to only 1 free course on
-                  this subscription per annum.
-                </p>
-                <a href="" className={styles["btn-secondary"]}>
-                  Learn More
-                </a>
-              </div>
-
-              <div className={styles.col}>
-                <h4>MAKERS ZONE</h4>
-                <h3>Shaper</h3>
-                <p className={styles.price}>£500/Annum</p>
-                <a href="">Sign Up</a>
-                <p>
-                  Everyone is entitled to have access to 5 free courses/items on
-                  this subscription per annum.
-                </p>
-                <a href="" className={styles["btn-secondary"]}>
-                  Learn More
-                </a>
-              </div>
-
-              <div className={styles.col}>
-                <h4>CORPORATE ZONE</h4>
-                <h3>Innovator</h3>
-                <p className={styles.price}>£5000/Annum</p>
-                <a href="">Sign Up</a>
-                <p>
-                  This member has access to 20 free courses/items on this
-                  subscription per annum.
-                </p>
-                <a href="" className={styles["btn-secondary"]}>
-                  Learn More
-                </a>
-              </div>
-            </div>
-          </div>
-        </section>
-
-        <section className={styles.testimony}>
-          <h3>Testimonies</h3>
-          <div className={styles.reviews}>
+        <div className={`${styles.main}`}>
+          <section className='bg-secondary_sky_lighter px-4 py-7 md:px-24 lg:px-8 lg:py-7 mt-16'>
             <div
-              className={styles["reviews-container"]}
-              style={{
-                transform: `translateX(-${position}vw)`,
-              }}
+              id='membership'
+              className={`${styles.membership} mx-auto sm:max-w-xl md:max-w-full lg:max-w-screen-xl`}
             >
-              <div className={styles.review}>
-                <div className={styles["review-header"]}>
-                  <img src="/images/review-profile-pic.png" alt="" />
-                  <div className={styles["header-content"]}>
-                    <h5>Emmanuel Jacob</h5>
-                    <p>Ui/Ux Design Expert</p>
-                    <p>Jacnet Tech.</p>
+              <h2 className='font-semibold text-secondary text-4xl mb-10 text-center md:text-left mt-16'>
+                Membership plans
+              </h2>
+
+              <div className='flex'>
+                <div className={`${styles.plans} mt-10 ${styles.flex}`}>
+                  <div className={styles.col}>
+                    <h4>FREE ZONE</h4>
+                    <h3>Starter</h3>
+                    <p className={styles.price}>£0</p>
+                    <a href=''>Sign Up</a>
+                    <p>
+                      Limited access (intro module or 7 day trial) to the
+                      specific/main course on this subscription.
+                    </p>
+                    <a href='' className={styles['btn-secondary']}>
+                      Learn More
+                    </a>
+                  </div>
+
+                  <div className={`${styles.col} ${styles.popular}`}>
+                    <aside>Most popular</aside>
+                    <h4>BUYERS ZONE</h4>
+                    <h3>Owner</h3>
+                    <p className={styles.price}>£50/Annum</p>
+                    <a href=''>Sign Up</a>
+                    <p className={styles.description}>
+                      Everyone is entitled to have access to only 1 free course
+                      on this subscription per annum.
+                    </p>
+                    <a href='' className={styles['btn-secondary']}>
+                      Learn More
+                    </a>
+                  </div>
+
+                  <div className={styles.col}>
+                    <h4>MAKERS ZONE</h4>
+                    <h3>Shaper</h3>
+                    <p className={styles.price}>£500/Annum</p>
+                    <a href=''>Sign Up</a>
+                    <p>
+                      Everyone is entitled to have access to 5 free
+                      courses/items on this subscription per annum.
+                    </p>
+                    <a href='' className={styles['btn-secondary']}>
+                      Learn More
+                    </a>
+                  </div>
+
+                  <div className={styles.col}>
+                    <h4>CORPORATE ZONE</h4>
+                    <h3>Innovator</h3>
+                    <p className={styles.price}>£5000/Annum</p>
+                    <a href=''>Sign Up</a>
+                    <p>
+                      This member has access to 20 free courses/items on this
+                      subscription per annum.
+                    </p>
+                    <a href='' className={styles['btn-secondary']}>
+                      Learn More
+                    </a>
                   </div>
                 </div>
-                <div className={styles.description}>
-                  Lorem Ipsum is simply dummy text of the printing and
-                  typesetting industry. Lorem Ipsum has been the industry's
-                  standard dummy text ever since the 1500s, when an unknown
-                  printer took a galley of type and scrambled it to make a type
-                  specimen book.
-                </div>
-
-                <a href="">
-                  Read More <img src="/images/icons/arrow-right.svg" alt="" />
-                </a>
-              </div>
-
-              <div className={styles.review}>
-                <div className={styles["review-header"]}>
-                  <img src="/images/review-profile-pic.png" alt="" />
-                  <div className={styles["header-content"]}>
-                    <h5>Emmanuel Jacob</h5>
-                    <p>Ui/Ux Design Expert</p>
-                    <p>Jacnet Tech.</p>
-                  </div>
-                </div>
-                <div className={styles.description}>
-                  Lorem Ipsum is simply dummy text of the printing and
-                  typesetting industry. Lorem Ipsum has been the industry's
-                  standard dummy text ever since the 1500s, when an unknown
-                  printer took a galley of type and scrambled it to make a type
-                  specimen book.
-                </div>
-
-                <a href="">
-                  Read More <img src="/images/icons/arrow-right.svg" alt="" />
-                </a>
-              </div>
-
-              <div className={styles.review}>
-                <div className={styles["review-header"]}>
-                  <img src="/images/review-profile-pic.png" alt="" />
-                  <div className={styles["header-content"]}>
-                    <h5>Emmanuel Jacob</h5>
-                    <p>Ui/Ux Design Expert</p>
-                    <p>Jacnet Tech.</p>
-                  </div>
-                </div>
-                <div className={styles.description}>
-                  Lorem Ipsum is simply dummy text of the printing and
-                  typesetting industry. Lorem Ipsum has been the industry's
-                  standard dummy text ever since the 1500s, when an unknown
-                  printer took a galley of type and scrambled it to make a type
-                  specimen book.
-                </div>
-
-                <a href="">
-                  Read More <img src="/images/icons/arrow-right.svg" alt="" />
-                </a>
-              </div>
-
-              <div className={styles.review}>
-                <div className={styles["review-header"]}>
-                  <img src="/images/review-profile-pic.png" alt="" />
-                  <div className={styles["header-content"]}>
-                    <h5>Emmanuel Jacob</h5>
-                    <p>Ui/Ux Design Expert</p>
-                    <p>Jacnet Tech.</p>
-                  </div>
-                </div>
-                <div className={styles.description}>
-                  Lorem Ipsum is simply dummy text of the printing and
-                  typesetting industry. Lorem Ipsum has been the industry's
-                  standard dummy text ever since the 1500s, when an unknown
-                  printer took a galley of type and scrambled it to make a type
-                  specimen book.
-                </div>
-
-                <a href="">
-                  Read More <img src="/images/icons/arrow-right.svg" alt="" />
-                </a>
-              </div>
-
-              <div className={styles.review}>
-                <div className={styles["review-header"]}>
-                  <img src="/images/review-profile-pic.png" alt="" />
-                  <div className={styles["header-content"]}>
-                    <h5>Emmanuel Jacob</h5>
-                    <p>Ui/Ux Design Expert</p>
-                    <p>Jacnet Tech.</p>
-                  </div>
-                </div>
-                <div className={styles.description}>
-                  Lorem Ipsum is simply dummy text of the printing and
-                  typesetting industry. Lorem Ipsum has been the industry's
-                  standard dummy text ever since the 1500s, when an unknown
-                  printer took a galley of type and scrambled it to make a type
-                  specimen book.
-                </div>
-
-                <a href="">
-                  Read More <img src="/images/icons/arrow-right.svg" alt="" />
-                </a>
-              </div>
-
-              <div className={styles.review}>
-                <div className={styles["review-header"]}>
-                  <img src="/images/review-profile-pic.png" alt="" />
-                  <div className={styles["header-content"]}>
-                    <h5>Emmanuel Jacob</h5>
-                    <p>Ui/Ux Design Expert</p>
-                    <p>Jacnet Tech.</p>
-                  </div>
-                </div>
-                <div className={styles.description}>
-                  Lorem Ipsum is simply dummy text of the printing and
-                  typesetting industry. Lorem Ipsum has been the industry's
-                  standard dummy text ever since the 1500s, when an unknown
-                  printer took a galley of type and scrambled it to make a type
-                  specimen book.
-                </div>
-
-                <a href="">
-                  Read More <img src="/images/icons/arrow-right.svg" alt="" />
-                </a>
-              </div>
-
-              <div className={styles.review}>
-                <div className={styles["review-header"]}>
-                  <img src="/images/review-profile-pic.png" alt="" />
-                  <div className={styles["header-content"]}>
-                    <h5>Emmanuel Jacob</h5>
-                    <p>Ui/Ux Design Expert</p>
-                    <p>Jacnet Tech.</p>
-                  </div>
-                </div>
-                <div className={styles.description}>
-                  Lorem Ipsum is simply dummy text of the printing and
-                  typesetting industry. Lorem Ipsum has been the industry's
-                  standard dummy text ever since the 1500s, when an unknown
-                  printer took a galley of type and scrambled it to make a type
-                  specimen book.
-                </div>
-
-                <a href="">
-                  Read More <img src="/images/icons/arrow-right.svg" alt="" />
-                </a>
-              </div>
-
-              <div className={styles.review}>
-                <div className={styles["review-header"]}>
-                  <img src="/images/review-profile-pic.png" alt="" />
-                  <div className={styles["header-content"]}>
-                    <h5>Emmanuel Jacob</h5>
-                    <p>Ui/Ux Design Expert</p>
-                    <p>Jacnet Tech.</p>
-                  </div>
-                </div>
-                <div className={styles.description}>
-                  Lorem Ipsum is simply dummy text of the printing and
-                  typesetting industry. Lorem Ipsum has been the industry's
-                  standard dummy text ever since the 1500s, when an unknown
-                  printer took a galley of type and scrambled it to make a type
-                  specimen book.
-                </div>
-
-                <a href="">
-                  Read More <img src="/images/icons/arrow-right.svg" alt="" />
-                </a>
-              </div>
-
-              <div className={styles.review}>
-                <div className={styles["review-header"]}>
-                  <img src="/images/review-profile-pic.png" alt="" />
-                  <div className={styles["header-content"]}>
-                    <h5>Emmanuel Jacob</h5>
-                    <p>Ui/Ux Design Expert</p>
-                    <p>Jacnet Tech.</p>
-                  </div>
-                </div>
-                <div className={styles.description}>
-                  Lorem Ipsum is simply dummy text of the printing and
-                  typesetting industry. Lorem Ipsum has been the industry's
-                  standard dummy text ever since the 1500s, when an unknown
-                  printer took a galley of type and scrambled it to make a type
-                  specimen book.
-                </div>
-
-                <a href="">
-                  Read More <img src="/images/icons/arrow-right.svg" alt="" />
-                </a>
-              </div>
-
-              <div className={styles.review}>
-                <div className={styles["review-header"]}>
-                  <img src="/images/review-profile-pic.png" alt="" />
-                  <div className={styles["header-content"]}>
-                    <h5>Emmanuel Jacob</h5>
-                    <p>Ui/Ux Design Expert</p>
-                    <p>Jacnet Tech.</p>
-                  </div>
-                </div>
-                <div className={styles.description}>
-                  Lorem Ipsum is simply dummy text of the printing and
-                  typesetting industry. Lorem Ipsum has been the industry's
-                  standard dummy text ever since the 1500s, when an unknown
-                  printer took a galley of type and scrambled it to make a type
-                  specimen book.
-                </div>
-
-                <a href="">
-                  Read More <img src="/images/icons/arrow-right.svg" alt="" />
-                </a>
-              </div>
-
-              <div className={styles.review}>
-                <div className={styles["review-header"]}>
-                  <img src="/images/review-profile-pic.png" alt="" />
-                  <div className={styles["header-content"]}>
-                    <h5>Emmanuel Jacob</h5>
-                    <p>Ui/Ux Design Expert</p>
-                    <p>Jacnet Tech.</p>
-                  </div>
-                </div>
-                <div className={styles.description}>
-                  Lorem Ipsum is simply dummy text of the printing and
-                  typesetting industry. Lorem Ipsum has been the industry's
-                  standard dummy text ever since the 1500s, when an unknown
-                  printer took a galley of type and scrambled it to make a type
-                  specimen book.
-                </div>
-
-                <a href="">
-                  Read More <img src="/images/icons/arrow-right.svg" alt="" />
-                </a>
-              </div>
-
-              <div className={styles.review}>
-                <div className={styles["review-header"]}>
-                  <img src="/images/review-profile-pic.png" alt="" />
-                  <div className={styles["header-content"]}>
-                    <h5>Emmanuel Jacob</h5>
-                    <p>Ui/Ux Design Expert</p>
-                    <p>Jacnet Tech.</p>
-                  </div>
-                </div>
-                <div className={styles.description}>
-                  Lorem Ipsum is simply dummy text of the printing and
-                  typesetting industry. Lorem Ipsum has been the industry's
-                  standard dummy text ever since the 1500s, when an unknown
-                  printer took a galley of type and scrambled it to make a type
-                  specimen book.
-                </div>
-
-                <a href="">
-                  Read More <img src="/images/icons/arrow-right.svg" alt="" />
-                </a>
-              </div>
-
-              <div className={styles.review}>
-                <div className={styles["review-header"]}>
-                  <img src="/images/review-profile-pic.png" alt="" />
-                  <div className={styles["header-content"]}>
-                    <h5>Emmanuel Jacob</h5>
-                    <p>Ui/Ux Design Expert</p>
-                    <p>Jacnet Tech.</p>
-                  </div>
-                </div>
-                <div className={styles.description}>
-                  Lorem Ipsum is simply dummy text of the printing and
-                  typesetting industry. Lorem Ipsum has been the industry's
-                  standard dummy text ever since the 1500s, when an unknown
-                  printer took a galley of type and scrambled it to make a type
-                  specimen book.
-                </div>
-
-                <a href="">
-                  Read More <img src="/images/icons/arrow-right.svg" alt="" />
-                </a>
               </div>
             </div>
-          </div>
+          </section>
 
-          <div className={styles.controls}>
-            <div className={styles.flex}>
-              <svg
-                width="56"
-                height="56"
-                viewBox="0 0 76 76"
-                fill="none"
-                xmlns="http://www.w3.org/2000/svg"
-                onClick={moveReviewBackward}
-              >
-                <g filter="url(#filter0_d_731_28024)">
-                  <circle
-                    cx="38"
-                    cy="30"
-                    r="17"
-                    stroke="#CCCCCC"
-                    strokeWidth="2"
-                  />
-                  <path
-                    d="M40.625 36.9301L34.92 31.2251C34.2462 30.5513 34.2462 29.4488 34.92 28.7751L40.625 23.0701"
-                    stroke="#CCCCCC"
-                    strokeWidth="1.5"
-                    strokeMiterlimit="10"
-                    strokeLinecap="round"
-                    strokeLinejoin="round"
-                  />
-                </g>
-                <defs>
-                  <filter
-                    id="filter0_d_731_28024"
-                    x="0"
-                    y="0"
-                    width="76"
-                    height="76"
-                    filterUnits="userSpaceOnUse"
-                    colorInterpolationFilters="sRGB"
-                  >
-                    <feFlood floodOpacity="0" result="BackgroundImageFix" />
-                    <feColorMatrix
-                      in="SourceAlpha"
-                      type="matrix"
-                      values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 127 0"
-                      result="hardAlpha"
-                    />
-                    <feOffset dy="8" />
-                    <feGaussianBlur stdDeviation="10" />
-                    <feComposite in2="hardAlpha" operator="out" />
-                    <feColorMatrix
-                      type="matrix"
-                      values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0.12 0"
-                    />
-                    <feBlend
-                      mode="normal"
-                      in2="BackgroundImageFix"
-                      result="effect1_dropShadow_731_28024"
-                    />
-                    <feBlend
-                      mode="normal"
-                      in="SourceGraphic"
-                      in2="effect1_dropShadow_731_28024"
-                      result="shape"
-                    />
-                  </filter>
-                </defs>
-              </svg>
+          <section className='bg-white'>
+            <div
+              className={`${styles.testimony} px-4 py-16 mx-auto sm:max-w-xl md:max-w-full lg:max-w-screen-xl md:px-24 lg:px-8 lg:py-20`}
+            >
+              <div className='flex mt-10 gap-16'>
+                <div>
+                  <img src='/images/testimony.png' alt='' />
+                </div>
 
-              <svg
-                width="56"
-                height="56"
-                viewBox="0 0 76 76"
-                fill="none"
-                xmlns="http://www.w3.org/2000/svg"
-                onClick={moveReviewForward}
-              >
-                <g filter="url(#filter0_d_731_28025)">
-                  <circle
-                    cx="38"
-                    cy="30"
-                    r="17"
-                    stroke="#CCCCCC"
-                    strokeWidth="2"
-                  />
-                  <path
-                    d="M35.2963 36.9301L41.0013 31.2251C41.675 30.5513 41.675 29.4488 41.0013 28.7751L35.2963 23.0701"
-                    stroke="#CCCCCC"
-                    strokeWidth="1.5"
-                    strokeMiterlimit="10"
-                    strokeLinecap="round"
-                    strokeLinejoin="round"
-                  />
-                </g>
-                <defs>
-                  <filter
-                    id="filter0_d_731_28025"
-                    x="0"
-                    y="0"
-                    width="76"
-                    height="76"
-                    filterUnits="userSpaceOnUse"
-                    colorInterpolationFilters="sRGB"
-                  >
-                    <feFlood floodOpacity="0" result="BackgroundImageFix" />
-                    <feColorMatrix
-                      in="SourceAlpha"
-                      type="matrix"
-                      values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 127 0"
-                      result="hardAlpha"
-                    />
-                    <feOffset dy="8" />
-                    <feGaussianBlur stdDeviation="10" />
-                    <feComposite in2="hardAlpha" operator="out" />
-                    <feColorMatrix
-                      type="matrix"
-                      values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0.12 0"
-                    />
-                    <feBlend
-                      mode="normal"
-                      in2="BackgroundImageFix"
-                      result="effect1_dropShadow_731_28025"
-                    />
-                    <feBlend
-                      mode="normal"
-                      in="SourceGraphic"
-                      in2="effect1_dropShadow_731_28025"
-                      result="shape"
-                    />
-                  </filter>
-                </defs>
-              </svg>
+                <div className='w-[50%]'>
+                  <h3 className='font-semibold text-secondary text-4xl text-center md:text-left mb-10'>
+                    Testimonies
+                  </h3>
+                  <div>
+                    <div className={styles.reviews}>
+                      <div
+                        className={styles['reviews-container']}
+                        style={{
+                          transform: `translateX(-${position}vw)`,
+                        }}
+                      >
+                        <div className={styles.review}>
+                          <div className={styles['review-header']}>
+                            <img src='/images/review-profile-pic.png' alt='' />
+                            <div className={styles['header-content']}>
+                              <h5>Emmanuel Jacob</h5>
+                              <p>Ui/Ux Design Expert</p>
+                              <p>Jacnet Tech.</p>
+                            </div>
+                          </div>
+                          <div className={styles.description}>
+                            Lorem Ipsum is simply dummy text of the printing and
+                            typesetting industry. Lorem Ipsum has been the
+                            industry's standard dummy text ever since the 1500s,
+                            when an unknown printer took a galley of type and
+                            scrambled it to make a type specimen book.
+                          </div>
+
+                          <a href=''>
+                            Read More <ArrowRight />
+                          </a>
+                        </div>
+
+                        <div className={styles.review}>
+                          <div className={styles['review-header']}>
+                            <img src='/images/review-profile-pic.png' alt='' />
+                            <div className={styles['header-content']}>
+                              <h5>Emmanuel Jacob</h5>
+                              <p>Ui/Ux Design Expert</p>
+                              <p>Jacnet Tech.</p>
+                            </div>
+                          </div>
+                          <div className={styles.description}>
+                            Lorem Ipsum is simply dummy text of the printing and
+                            typesetting industry. Lorem Ipsum has been the
+                            industry's standard dummy text ever since the 1500s,
+                            when an unknown printer took a galley of type and
+                            scrambled it to make a type specimen book.
+                          </div>
+
+                          <a href=''>
+                            Read More{' '}
+                            <img src='/images/icons/arrow-right.svg' alt='' />
+                          </a>
+                        </div>
+
+                        <div className={styles.review}>
+                          <div className={styles['review-header']}>
+                            <img src='/images/review-profile-pic.png' alt='' />
+                            <div className={styles['header-content']}>
+                              <h5>Emmanuel Jacob</h5>
+                              <p>Ui/Ux Design Expert</p>
+                              <p>Jacnet Tech.</p>
+                            </div>
+                          </div>
+                          <div className={styles.description}>
+                            Lorem Ipsum is simply dummy text of the printing and
+                            typesetting industry. Lorem Ipsum has been the
+                            industry's standard dummy text ever since the 1500s,
+                            when an unknown printer took a galley of type and
+                            scrambled it to make a type specimen book.
+                          </div>
+
+                          <a href=''>
+                            Read More{' '}
+                            <img src='/images/icons/arrow-right.svg' alt='' />
+                          </a>
+                        </div>
+
+                        <div className={styles.review}>
+                          <div className={styles['review-header']}>
+                            <img src='/images/review-profile-pic.png' alt='' />
+                            <div className={styles['header-content']}>
+                              <h5>Emmanuel Jacob</h5>
+                              <p>Ui/Ux Design Expert</p>
+                              <p>Jacnet Tech.</p>
+                            </div>
+                          </div>
+                          <div className={styles.description}>
+                            Lorem Ipsum is simply dummy text of the printing and
+                            typesetting industry. Lorem Ipsum has been the
+                            industry's standard dummy text ever since the 1500s,
+                            when an unknown printer took a galley of type and
+                            scrambled it to make a type specimen book.
+                          </div>
+
+                          <a href=''>
+                            Read More{' '}
+                            <img src='/images/icons/arrow-right.svg' alt='' />
+                          </a>
+                        </div>
+
+                        <div className={styles.review}>
+                          <div className={styles['review-header']}>
+                            <img src='/images/review-profile-pic.png' alt='' />
+                            <div className={styles['header-content']}>
+                              <h5>Emmanuel Jacob</h5>
+                              <p>Ui/Ux Design Expert</p>
+                              <p>Jacnet Tech.</p>
+                            </div>
+                          </div>
+                          <div className={styles.description}>
+                            Lorem Ipsum is simply dummy text of the printing and
+                            typesetting industry. Lorem Ipsum has been the
+                            industry's standard dummy text ever since the 1500s,
+                            when an unknown printer took a galley of type and
+                            scrambled it to make a type specimen book.
+                          </div>
+
+                          <a href=''>
+                            Read More{' '}
+                            <img src='/images/icons/arrow-right.svg' alt='' />
+                          </a>
+                        </div>
+                      </div>
+                    </div>
+
+                    <div className={styles.controls}>
+                      <div className={styles.flex}>
+                        <svg
+                          width='27'
+                          height='27'
+                          viewBox='0 0 37 37'
+                          fill='none'
+                          xmlns='http://www.w3.org/2000/svg'
+                          onClick={moveReviewBackward}
+                        >
+                          <circle
+                            cx='18.0307'
+                            cy='18.6792'
+                            r='17'
+                            stroke='#EFEDFD'
+                            stroke-width='2'
+                          />
+                          <path
+                            d='M20.6557 25.609L14.9507 19.904C14.277 19.2303 14.277 18.1278 14.9507 17.454L20.6557 11.749'
+                            stroke='#EFEDFD'
+                            stroke-width='1.5'
+                            stroke-miterlimit='10'
+                            stroke-linecap='round'
+                            stroke-linejoin='round'
+                          />
+                        </svg>                        
+
+                        <svg width="27" height="27" viewBox="0 0 37 37" fill="none" xmlns="http://www.w3.org/2000/svg" onClick={moveReviewForward}>
+                        <circle cx="18.0307" cy="18.6792" r="17" stroke="#5B44E9" stroke-width="2"/>
+                        <path d="M15.3269 25.609L21.0319 19.904C21.7057 19.2303 21.7057 18.1278 21.0319 17.454L15.3269 11.749" stroke="#5B44E9" stroke-width="1.5" stroke-miterlimit="10" stroke-linecap="round" stroke-linejoin="round"/>
+                        </svg>                      
+                      </div>
+
+                      <div className={styles.flex}>
+                        <div
+                          className={`${styles['review-location-step']} ${
+                            position === 0 ? styles.active : 'null'
+                          }`}
+                        ></div>
+                        <div
+                          className={`${styles['review-location-step']} ${
+                            position === 28 ? styles.active : 'null'
+                          } `}
+                        ></div>
+                        <div
+                          className={`${styles['review-location-step']} ${
+                            position === 56 ? styles.active : 'null'
+                          }`}
+                        ></div>
+                        <div
+                          className={`${styles['review-location-step']} ${
+                            position === 84 ? styles.active : 'null'
+                          }`}
+                        ></div>
+                        <div
+                          className={`${styles['review-location-step']} ${
+                            position === 112 ? styles.active : 'null'
+                          }`}
+                        ></div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
             </div>
+          </section>
 
-            <div className={styles.flex}>
-              <div
-                className={`${styles["review-location-step"]} ${
-                  position === 0 ? styles.active : "null"
-                }`}
-              ></div>
-              <div
-                className={`${styles["review-location-step"]} ${
-                  position === 100 ? styles.active : "null"
-                } `}
-              ></div>
-              <div
-                className={`${styles["review-location-step"]} ${
-                  position === 200 ? styles.active : "null"
-                }`}
-              ></div>
-              <div
-                className={`${styles["review-location-step"]} ${
-                  position === 300 ? styles.active : "null"
-                }`}
-              ></div>
-              <div
-                className={`${styles["review-location-step"]} ${
-                  position === 400 ? styles.active : "null"
-                }`}
-              ></div>
+          <section className={`${styles.subscribe} mt-16`}>
+            <h3 className='text-secondary'> Subscribe to our newsletter</h3>
+            <p>
+              Get helpful tips and content to grow as a creator and digital
+              entrepreneur.
+            </p>
+
+            <div className={styles['input-container']}>
+              <input
+                type='email'
+                name='email'
+                id='email'
+                placeholder='Email Address...'
+              />
+              <button>
+                <SendIcon />
+              </button>
             </div>
-          </div>
-        </section>
-
-        <section className={styles.subscribe}>
-          <h3 className="text-secondary"> Subscribe to our newsletter</h3>
-          <p>
-            Get helpful tips and content to grow as a creator and digital
-            entrepreneur.
-          </p>
-
-          <div className={styles["input-container"]}>
-            <input
-              type="email"
-              name="email"
-              id="email"
-              placeholder="Email Address..."
-            />
-            <button>
-              <SendIcon />
-            </button>
-          </div>
-        </section>
+          </section>
+        </div>
       </main>
       <MainFooter />
     </div>

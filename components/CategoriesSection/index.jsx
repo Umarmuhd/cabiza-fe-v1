@@ -118,7 +118,7 @@ const CategoriesIcon = () => (
 
 export const CategoriesSection = () => {
   return (
-    <div className="px-4 py-16 mx-auto sm:max-w-xl md:max-w-full lg:max-w-screen-xl md:px-24 lg:px-8 lg:py-20 bg-footer">
+    <div className="px-4 py-16 mx-auto sm:max-w-xl md:max-w-full lg:max-w-screen-xl md:px-24 lg:px-8 lg:py-20 bg-footer mt-16">
       <div className="text-center text-white mb-10">
         <h3 className="mb-4 text-5xl font-bold">Business Categories</h3>
         <p className="text-lg font-semibold">

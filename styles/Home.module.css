@@ -3,8 +3,6 @@
     max-width: 1300px;
 }
 
-
-
 .main {
     position: relative;
 }
@@ -23,7 +21,6 @@
     margin-right: auto;
     width: 50%;
 }
-
 
 .pointer {
     cursor: pointer;
@@ -89,8 +86,6 @@
     background: none;
     cursor: pointer;
 }
-
-
 
 .flex .col ul li {
     background: #FFFFFF;
@@ -298,7 +293,7 @@
 }
 
 section.testimony {
-    padding: 4rem 4rem;
+    overflow-x: hidden;
 }
 
 section.testimony h3 {
@@ -313,11 +308,13 @@ section.testimony h3 {
 
 .reviews {
     margin-top: 3rem;
+    width: 100%;
+    overflow: hidden;
 }
 
 .reviews-container {
     display: flex;
-    width: 480vw;
+    width: max-content;
     transition: all 0.3s ease-in-out;
 }
 
@@ -329,6 +326,7 @@ section.testimony h3 {
     box-sizing: border-box;
     border-radius: 24px;
     padding: 2rem;
+    width: 30rem;
 }
 
 .review-header {
@@ -338,42 +336,39 @@ section.testimony h3 {
 
 .review-header img {
     margin-right: 2rem;
-    width: 7rem;
-    height: 7rem;
+    width: 6rem;
+    height: 6rem;
 }
 
 .review h5 {
     font-style: normal;
     font-weight: bold;
-    font-size: 1.4rem;
+    font-size: 1.2rem;
     line-height: 1.3rem;
-    /* identical to box height, or 67% */
-    /* Gray/40 */
-    color: #666666;
+    color: #6C7072;
+    margin-bottom: .5rem;
 }
 
 .review .header-content p:first-of-type {
     font-style: normal;
     font-weight: 600;
-    font-size: 1.05rem;
+    font-size: 1rem;
     line-height: 1.7rem;
-    /* identical to box height, or 89% */
-    /* Cabiza / gray */
-    color: #828080;
+    color: #5B44E9;
+    margin-bottom: .5rem;
 }
 
 .review .header-content p:last-of-type {
     font-style: normal;
     font-weight: 500;
-    font-size: 1rem;
+    font-size: .8rem;
     line-height: 16px;
-    /* identical to box height, or 89% */
-    /* Gray / 80 */
-    color: #CCCCCC;
+    color: #979C9E;
 }
 
 .testimony .description {
     margin-top: 1.3rem;
+    color: #979C9E;
 }
 
 .testimony a {
@@ -385,14 +380,15 @@ section.testimony h3 {
     font-style: normal;
     font-weight: 500;
     line-height: 16px;
-    /* identical to box height, or 89% */
-    text-decoration-line: underline;
-    /* Gray / 80 */
-    color: #CCCCCC;
+    border: 1px solid #5B44E9;
+    color: #5B44E9;
+    border-radius: 1rem;
+    padding: .5rem 1rem;
 }
 
-.testimony a img {
-    margin-left: 1rem;
+.testimony a svg {
+    margin-left: .4rem;
+    align-self: end;
 }
 
 .controls {
@@ -418,7 +414,7 @@ section.testimony h3 {
 }
 
 .controls .flex:first-of-type svg:last-of-type {
-    margin-left: -1rem;
+    margin-left: .5rem;
 }
 
 .review-location-step {
@@ -434,7 +430,7 @@ section.testimony h3 {
 }
 
 .review-location-step.active {
-    background: #02BDDC;
+    background: #5B44E9;
     border-radius: 20px;
     width: 1.6rem
 }
@@ -462,7 +458,7 @@ section.testimony h3 {
     line-height: 24px;
     /* identical to box height, or 133% */
     /* Cabiza / gray */
-    color: #828080;
+    color: #72777A;
 }
 
 .input-container {
@@ -470,7 +466,7 @@ section.testimony h3 {
     justify-content: center;
     align-items: center;
     width: 40%;
-    height: 3rem;
+    height: 4rem;
     margin: auto;
     margin-top: 2rem;
     background: #FFFFFF;
@@ -483,7 +479,7 @@ section.testimony h3 {
 .input-container input {
     padding: 0 2rem;
     border: none;
-    background: transparent;
+    background: white;
     outline: 0;
     width: 90%;
 }
@@ -759,7 +755,6 @@ section.testimony h3 {
 }
 
 @media only screen and (max-width:700px) {
-  
     .content {
         margin: 0;
         margin-bottom: 4rem
@@ -767,7 +762,6 @@ section.testimony h3 {
     .cards {
         grid-template-columns: repeat(2, 50%);
     }
- 
     .main {
         margin-top: 0;
     }
@@ -819,17 +813,14 @@ section.testimony h3 {
         width: 5rem;
         height: 5rem
     }
-  
     .reviews-container {
         width: 1300vw;
     }
 }
 
 @media only screen and (max-width:600px) {
-
-   
     .testimony {
-        padding: 4rem 2rem !important;
+        /* padding: 4rem 2rem !important; */
     }
     .subscribe {
         padding: 4rem 2rem;
@@ -843,9 +834,13 @@ section.testimony h3 {
 }
 
 @media screen and (max-width:375px) {
- 
     .membership .plans {
         width: 100%;
     }
 }
 
+@media screen and (max-width:375px) {
+    .membership .plans {
+        width: 100%;
+    }
+}
