@@ -5,10 +5,12 @@ import { API_URL } from "@/config/index";
 import AuthContext from "@/context/AuthContext";
 import Link from "next/link";
 import Image from "next/image";
+import moment from "moment";
 
 import { Switch } from "@headlessui/react";
 
 const PostItem = ({ post, deletePost }) => {
+  const [expanded, setExpanded] = useState(false);
   const [enabled, setEnabled] = React.useState(post.published);
   const [loading, setLoading] = useState(false);
 
@@ -30,80 +32,43 @@ const PostItem = ({ post, deletePost }) => {
   };
 
   return (
-    <li className="p-6 rounded-2xl border border-grey mb-4">
-      <div className="mb-10">
-        <h2 className="text-4xl leading-9 text-grey_20 font-semibold mb-1">
-          {post.title}
-        </h2>
-        <p className="text-xs text-grey_80">ABOUT 2 HOURS AGO</p>
-      </div>
-
-      <div className="">
-        <div className="flex justify-between">
-          <div className="text-grey_40">{post.description.slice(0, 200)}</div>
-          <ul className="flex justify-between items-center w-2/6">
-            <li className="mr-2">
-              <button className="p-2 rounded-lg border border-[#666666]">
-                Edit
-              </button>
-            </li>
-            <li className="mr-2">
-              <Link href={`/${post.user}/posts/${post._id}`}>
-                <a className="p-2 rounded-lg border border-[#666666]">View</a>
-              </Link>
-            </li>
-            <li className="mr-2">
-              <button className="p-2 rounded-lg border border-[#666666]">
-                Duplicate
-              </button>
-            </li>
-            <li className="mr-2">
-              <button
-                className="p-2 rounded-lg border border-cabiza_red bg-cabiza_red text-white"
-                onClick={() => deletePost(post._id)}
-              >
-                Delete
-              </button>
-            </li>
-          </ul>
-        </div>
-
-        <div className="border-b border-grey_80 my-6"></div>
-
-        <div className="flex justify-between">
-          <button className="p-2 rounded-lg border border-[#666666]">
-            Download Attachments
-          </button>
-
-          <div className="flex items-center">
-            <div className="mr-6 text-center">
-              <span className="block text-grey_40">0%</span>
-              <span className="block text-grey_40">Opens</span>
-            </div>
-            <div className="text-center">
-              <span className="block text-grey_40">0%</span>
-              <span className="block text-grey_40">Clicks</span>
-            </div>
-          </div>
-
-          <div className="flex items-center">
-            <Switch
-              checked={enabled}
-              onChange={handlePublish}
-              disabled={loading}
-              className={`${enabled ? "bg-cabiza_blue" : "bg-grey_80"}
-  relative inline-flex flex-shrink-0 h-[18px] w-[32px] border-2 border-transparent rounded-full cursor-pointer transition-colors ease-in-out duration-200 focus:outline-none focus-visible:ring-2  focus-visible:ring-white focus-visible:ring-opacity-75`}
-            >
-              <span className="sr-only">Use setting</span>
-              <span
-                aria-hidden="true"
-                className={`${enabled ? "translate-x-4" : "translate-x-0"}
-  pointer-events-none inline-block h-[14px] w-[13px] rounded-full bg-white shadow-lg transform ring-0 transition ease-in-out duration-200`}
-              />
-            </Switch>
-            <span className="ml-2 block text-grey_40 text-lg font-medium">
-              {enabled ? "Published" : "Unpublished"}
+    <li className="p-6 rounded-2xl border border-secondary_sky_dark mb-4">
+      <div className="flex justify-between">
+        <div className="flex">
+          <Image
+            src="/images/placeholder-image.svg"
+            alt="placeholder"
+            width={80}
+            height={80}
+          />
+          <div className="ml-6">
+            <h2 className="text-lg font-medium text-secondary_ink_darkest mb-2">
+              {post.title}
+            </h2>
+            <p className="text-secondary_brand_light mb-2">
+              {post.description.slice(0, 45)} ...
+            </p>
+            <span className="block text-xs text-secondary_sky_base leading-3 uppercase">
+              {moment(post.updatedAt).fromNow()}
             </span>
+          </div>
+        </div>
+        <div className="grid grid-cols-2 row-gap-8 md:grid-cols-4 border border-secondary_sky_dark bg-secondary_sky_lightest">
+          <div className="text-center md:border-r border-secondary_sky_dark py-2.5 px-4">
+            <p className="text-secondary mb-6">Emailed</p>
+            <span className="block font-medium">0</span>
+          </div>
+          <div className="text-center md:border-r border-secondary_sky_dark py-2.5 px-4">
+            <p className="text-secondary mb-6">Opened</p>
+            <span className="block font-medium">0</span>
+          </div>
+          <div className="text-center md:border-r border-secondary_sky_dark py-2.5 px-4">
+            <p className="text-secondary mb-6">Clicks</p>
+            <span className="block font-medium">0</span>
+          </div>
+          <div className="text-center py-2.5 px-4">
+            <p className="text-secondary mb-6">Views</p>
+            <span className="block font-medium">0</span>
           </div>
         </div>
       </div>
@@ -155,18 +120,19 @@ export default function PostsList() {
 
   return (
     <main className="h-full w-full relative">
-      {
-        <div className="w-4/5 mx-auto md:py-10">
-          <h1 className="text-grey_40 font-semibold mb-4">
+      <div className="w-43/50 mx-auto md:my-10">
+        <div
+          className="p-8 bg-white rounded-2xl"
+          style={{ boxShadow: "0px 20px 40px rgba(0, 0, 0, 0.06)" }}
+        >
+          <h1 className="text-secondary_ink_dark font-medium text-xl mb-6">
             All Published Posts
           </h1>
-
           {loading && (
             <h1 className="text-grey_40 font-semibold text-center">
               loading...
             </h1>
           )}
-
           {!loading && (
             <>
               {posts.length > 0 ? (
@@ -200,7 +166,7 @@ export default function PostsList() {
             </>
           )}
         </div>
-      }
+      </div>
     </main>
   );
 }

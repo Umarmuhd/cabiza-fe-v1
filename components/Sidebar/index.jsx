@@ -387,7 +387,7 @@ const Sidebar = ({ user }) => {
           <button
             className="cursor-pointer text-black opacity-50 md:hidden px-3 py-1 text-xl leading-none bg-transparent rounded border border-solid border-transparent"
             type="button"
-            onClick={() => setCollapseShow("bg-[#202325] m-2 py-3 px-6")}
+            onClick={() => setCollapseShow("bg-white m-2 py-3 px-6")}
           >
             <svg
               className="w-6 h-6"

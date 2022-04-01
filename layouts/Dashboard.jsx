@@ -18,7 +18,7 @@ export default function Dashboard({ children }) {
   return (
     <div className="md:static">
       <Sidebar user={user} />
-      <div className="main_content relative">
+      <div className="main_content relative min-h-screen bg-secondary_sky_lighter">
         <div className="px-0 md:px-0 mx-auto w-full -m-24 content-wrap">
           {children}
         </div>
