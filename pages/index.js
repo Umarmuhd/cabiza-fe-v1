@@ -25,7 +25,7 @@ const SendIcon = () => (
 
 const ArrowRight = () => (
   <svg width="12" height="12" viewBox="0 0 12 12" fill="none" xmlns="http://www.w3.org/2000/svg">
-    <path d="M1.36401 5.67944H10.6973M10.6973 5.67944L6.03067 1.0127M10.6973 5.67944L6.03067 10.346" stroke="#5B44E9" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+    <path d="M1.36401 5.67944H10.6973M10.6973 5.67944L6.03067 1.0127M10.6973 5.67944L6.03067 10.346" stroke="#5B44E9" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"/>
   </svg>
 )
 
@@ -305,16 +305,16 @@ export default function Home() {
                             cx='18.0307'
                             cy='18.6792'
                             r='17'
-                            stroke='#EFEDFD'
-                            stroke-width='2'
+                            stroke='#EFEDFD'                            
+                            strokeWidth='2'
                           />
                           <path
                             d='M20.6557 25.609L14.9507 19.904C14.277 19.2303 14.277 18.1278 14.9507 17.454L20.6557 11.749'
                             stroke='#EFEDFD'
-                            stroke-width='1.5'
-                            stroke-miterlimit='10'
-                            stroke-linecap='round'
-                            stroke-linejoin='round'
+                            strokeWidth='1.5'
+                            strokeMiterlimit='10'
+                            strokeLinecap='round'
+                            strokeLinejoin='round'
                           />
                         </svg>
 
@@ -331,15 +331,15 @@ export default function Home() {
                             cy='18.6792'
                             r='17'
                             stroke='#5B44E9'
-                            stroke-width='2'
+                            strokeWidth='2'
                           />
                           <path
                             d='M15.3269 25.609L21.0319 19.904C21.7057 19.2303 21.7057 18.1278 21.0319 17.454L15.3269 11.749'
                             stroke='#5B44E9'
-                            stroke-width='1.5'
-                            stroke-miterlimit='10'
-                            stroke-linecap='round'
-                            stroke-linejoin='round'
+                            strokeWidth='1.5'
+                            strokeMiterlimit='10'
+                            strokeLinecap='round'
+                            strokeLinejoin='round'
                           />
                         </svg>
                       </div>
