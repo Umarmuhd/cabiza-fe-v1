@@ -35,8 +35,11 @@ export default function Posts() {
   return (
     <div>
       <Tab.Group>
-        <div className="bg-grey_95 border-b border-grey_60 py-6 md:px-0 px-4">
-          <div className="flex justify-between items-center md:w-4/5 mx-auto">
+        <div
+          className="bg-secondary_sky_lightest py-6 md:px-0 px-4"
+          style={{ boxShadow: "0px 4px 20px rgba(0, 0, 0, 0.04)" }}
+        >
+          <div className="flex justify-between items-center md:w-43/50 mx-auto">
             <Tab.List as={"div"} className="flex items-center">
               <Tab
                 as={"button"}
