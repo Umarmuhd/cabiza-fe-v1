@@ -24,10 +24,22 @@ const SendIcon = () => (
 );
 
 const ArrowRight = () => (
-  <svg width="12" height="12" viewBox="0 0 12 12" fill="none" xmlns="http://www.w3.org/2000/svg">
-    <path d="M1.36401 5.67944H10.6973M10.6973 5.67944L6.03067 1.0127M10.6973 5.67944L6.03067 10.346" stroke="#5B44E9" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+  <svg
+    width="12"
+    height="12"
+    viewBox="0 0 12 12"
+    fill="none"
+    xmlns="http://www.w3.org/2000/svg"
+  >
+    <path
+      d="M1.36401 5.67944H10.6973M10.6973 5.67944L6.03067 1.0127M10.6973 5.67944L6.03067 10.346"
+      stroke="#5B44E9"
+      strokeWidth="1.5"
+      strokeLinecap="round"
+      strokeLinejoin="round"
+    />
   </svg>
-)
+);
 
 export default function Home() {
   const [position, setPosition] = useState(0);
@@ -71,34 +83,34 @@ export default function Home() {
   }
 
   return (
-    <div className='w-full h-full'>
+    <div className="w-full h-full">
       <MainNavigation />
       <HeroSection />
       <main>
         <Feature />
         <CategoriesSection />
         <div className={`${styles.main}`}>
-          <section className='bg-secondary_sky_lighter px-4 py-7 md:px-24 lg:px-8 lg:py-7 mt-16'>
+          <section className="bg-secondary_sky_lighter px-4 py-7 md:px-24 lg:px-8 lg:py-7 mt-16">
             <div
-              id='membership'
+              id="membership"
               className={`${styles.membership} mx-auto sm:max-w-xl md:max-w-full lg:max-w-screen-xl`}
             >
-              <h2 className='font-semibold text-secondary text-4xl mb-10 text-center md:text-left mt-16'>
+              <h2 className="font-semibold text-secondary text-4xl mb-10 text-center md:text-left mt-16">
                 Membership plans
               </h2>
 
-              <div className='flex'>
+              <div className="flex">
                 <div className={`${styles.plans} mt-10 ${styles.flex}`}>
                   <div className={styles.col}>
                     <h4>FREE ZONE</h4>
                     <h3>Starter</h3>
                     <p className={styles.price}>£0</p>
-                    <a href=''>Sign Up</a>
+                    <a href="">Sign Up</a>
                     <p>
                       Limited access (intro module or 7 day trial) to the
                       specific/main course on this subscription.
                     </p>
-                    <a href='' className={styles['btn-secondary']}>
+                    <a href="" className={styles["btn-secondary"]}>
                       Learn More
                     </a>
                   </div>
@@ -108,12 +120,12 @@ export default function Home() {
                     <h4>BUYERS ZONE</h4>
                     <h3>Owner</h3>
                     <p className={styles.price}>£50/Annum</p>
-                    <a href=''>Sign Up</a>
+                    <a href="">Sign Up</a>
                     <p className={styles.description}>
                       Everyone is entitled to have access to only 1 free course
                       on this subscription per annum.
                     </p>
-                    <a href='' className={styles['btn-secondary']}>
+                    <a href="" className={styles["btn-secondary"]}>
                       Learn More
                     </a>
                   </div>
@@ -122,12 +134,12 @@ export default function Home() {
                     <h4>MAKERS ZONE</h4>
                     <h3>Shaper</h3>
                     <p className={styles.price}>£500/Annum</p>
-                    <a href=''>Sign Up</a>
+                    <a href="">Sign Up</a>
                     <p>
                       Everyone is entitled to have access to 5 free
                       courses/items on this subscription per annum.
                     </p>
-                    <a href='' className={styles['btn-secondary']}>
+                    <a href="" className={styles["btn-secondary"]}>
                       Learn More
                     </a>
                   </div>
@@ -136,12 +148,12 @@ export default function Home() {
                     <h4>CORPORATE ZONE</h4>
                     <h3>Innovator</h3>
                     <p className={styles.price}>£5000/Annum</p>
-                    <a href=''>Sign Up</a>
+                    <a href="">Sign Up</a>
                     <p>
                       This member has access to 20 free courses/items on this
                       subscription per annum.
                     </p>
-                    <a href='' className={styles['btn-secondary']}>
+                    <a href="" className={styles["btn-secondary"]}>
                       Learn More
                     </a>
                   </div>
@@ -150,31 +162,31 @@ export default function Home() {
             </div>
           </section>
 
-          <section className='bg-white'>
+          <section className="bg-white">
             <div
               className={`${styles.testimony} px-4 py-16 mx-auto sm:max-w-xl md:max-w-full lg:max-w-screen-xl md:px-24 lg:px-8 lg:py-20`}
             >
-              <div className='flex mt-10 gap-16'>
+              <div className="flex mt-10 gap-16">
                 <div>
-                  <img src='/images/testimony.png' alt='' />
+                  <img src="/images/testimony.png" alt="" />
                 </div>
 
-                <div className='w-[50%]'>
-                  <h3 className='font-semibold text-secondary text-4xl text-center md:text-left mb-10'>
+                <div className="w-[50%]">
+                  <h3 className="font-semibold text-secondary text-4xl text-center md:text-left mb-10">
                     Testimonies
                   </h3>
                   <div>
                     <div className={styles.reviews}>
                       <div
-                        className={styles['reviews-container']}
+                        className={styles["reviews-container"]}
                         style={{
                           transform: `translateX(-${position}vw)`,
                         }}
                       >
                         <div className={styles.review}>
-                          <div className={styles['review-header']}>
-                            <img src='/images/review-profile-pic.png' alt='' />
-                            <div className={styles['header-content']}>
+                          <div className={styles["review-header"]}>
+                            <img src="/images/review-profile-pic.png" alt="" />
+                            <div className={styles["header-content"]}>
                               <h5>Emmanuel Jacob</h5>
                               <p>Ui/Ux Design Expert</p>
                               <p>Jacnet Tech.</p>
@@ -188,15 +200,15 @@ export default function Home() {
                             scrambled it to make a type specimen book.
                           </div>
 
-                          <a href=''>
+                          <a href="">
                             Read More <ArrowRight />
                           </a>
                         </div>
 
                         <div className={styles.review}>
-                          <div className={styles['review-header']}>
-                            <img src='/images/review-profile-pic.png' alt='' />
-                            <div className={styles['header-content']}>
+                          <div className={styles["review-header"]}>
+                            <img src="/images/review-profile-pic.png" alt="" />
+                            <div className={styles["header-content"]}>
                               <h5>Emmanuel Jacob</h5>
                               <p>Ui/Ux Design Expert</p>
                               <p>Jacnet Tech.</p>
@@ -210,16 +222,16 @@ export default function Home() {
                             scrambled it to make a type specimen book.
                           </div>
 
-                          <a href=''>
-                            Read More{' '}
-                            <img src='/images/icons/arrow-right.svg' alt='' />
+                          <a href="">
+                            Read More{" "}
+                            <img src="/images/icons/arrow-right.svg" alt="" />
                           </a>
                         </div>
 
                         <div className={styles.review}>
-                          <div className={styles['review-header']}>
-                            <img src='/images/review-profile-pic.png' alt='' />
-                            <div className={styles['header-content']}>
+                          <div className={styles["review-header"]}>
+                            <img src="/images/review-profile-pic.png" alt="" />
+                            <div className={styles["header-content"]}>
                               <h5>Emmanuel Jacob</h5>
                               <p>Ui/Ux Design Expert</p>
                               <p>Jacnet Tech.</p>
@@ -233,16 +245,16 @@ export default function Home() {
                             scrambled it to make a type specimen book.
                           </div>
 
-                          <a href=''>
-                            Read More{' '}
-                            <img src='/images/icons/arrow-right.svg' alt='' />
+                          <a href="">
+                            Read More{" "}
+                            <img src="/images/icons/arrow-right.svg" alt="" />
                           </a>
                         </div>
 
                         <div className={styles.review}>
-                          <div className={styles['review-header']}>
-                            <img src='/images/review-profile-pic.png' alt='' />
-                            <div className={styles['header-content']}>
+                          <div className={styles["review-header"]}>
+                            <img src="/images/review-profile-pic.png" alt="" />
+                            <div className={styles["header-content"]}>
                               <h5>Emmanuel Jacob</h5>
                               <p>Ui/Ux Design Expert</p>
                               <p>Jacnet Tech.</p>
@@ -256,16 +268,16 @@ export default function Home() {
                             scrambled it to make a type specimen book.
                           </div>
 
-                          <a href=''>
-                            Read More{' '}
-                            <img src='/images/icons/arrow-right.svg' alt='' />
+                          <a href="">
+                            Read More{" "}
+                            <img src="/images/icons/arrow-right.svg" alt="" />
                           </a>
                         </div>
 
                         <div className={styles.review}>
-                          <div className={styles['review-header']}>
-                            <img src='/images/review-profile-pic.png' alt='' />
-                            <div className={styles['header-content']}>
+                          <div className={styles["review-header"]}>
+                            <img src="/images/review-profile-pic.png" alt="" />
+                            <div className={styles["header-content"]}>
                               <h5>Emmanuel Jacob</h5>
                               <p>Ui/Ux Design Expert</p>
                               <p>Jacnet Tech.</p>
@@ -279,9 +291,9 @@ export default function Home() {
                             scrambled it to make a type specimen book.
                           </div>
 
-                          <a href=''>
-                            Read More{' '}
-                            <img src='/images/icons/arrow-right.svg' alt='' />
+                          <a href="">
+                            Read More{" "}
+                            <img src="/images/icons/arrow-right.svg" alt="" />
                           </a>
                         </div>
                       </div>
@@ -290,60 +302,80 @@ export default function Home() {
                     <div className={styles.controls}>
                       <div className={styles.flex}>
                         <svg
-                          width='27'
-                          height='27'
-                          viewBox='0 0 37 37'
-                          fill='none'
-                          xmlns='http://www.w3.org/2000/svg'
+                          width="27"
+                          height="27"
+                          viewBox="0 0 37 37"
+                          fill="none"
+                          xmlns="http://www.w3.org/2000/svg"
                           onClick={moveReviewBackward}
                         >
                           <circle
-                            cx='18.0307'
-                            cy='18.6792'
-                            r='17'
-                            stroke='#EFEDFD'
-                            stroke-width='2'
+                            cx="18.0307"
+                            cy="18.6792"
+                            r="17"
+                            stroke="#EFEDFD"
+                            strokeWidth="2"
                           />
                           <path
-                            d='M20.6557 25.609L14.9507 19.904C14.277 19.2303 14.277 18.1278 14.9507 17.454L20.6557 11.749'
-                            stroke='#EFEDFD'
-                            stroke-width='1.5'
-                            stroke-miterlimit='10'
-                            stroke-linecap='round'
-                            stroke-linejoin='round'
+                            d="M20.6557 25.609L14.9507 19.904C14.277 19.2303 14.277 18.1278 14.9507 17.454L20.6557 11.749"
+                            stroke="#EFEDFD"
+                            strokeWidth="1.5"
+                            strokeMiterlimit="10"
+                            strokeLinecap="round"
+                            strokeLinejoin="round"
                           />
-                        </svg>                        
+                        </svg>
 
-                        <svg width="27" height="27" viewBox="0 0 37 37" fill="none" xmlns="http://www.w3.org/2000/svg" onClick={moveReviewForward}>
-                        <circle cx="18.0307" cy="18.6792" r="17" stroke="#5B44E9" stroke-width="2"/>
-                        <path d="M15.3269 25.609L21.0319 19.904C21.7057 19.2303 21.7057 18.1278 21.0319 17.454L15.3269 11.749" stroke="#5B44E9" stroke-width="1.5" stroke-miterlimit="10" stroke-linecap="round" stroke-linejoin="round"/>
-                        </svg>                      
+                        <svg
+                          width="27"
+                          height="27"
+                          viewBox="0 0 37 37"
+                          fill="none"
+                          xmlns="http://www.w3.org/2000/svg"
+                          onClick={moveReviewForward}
+                        >
+                          <circle
+                            cx="18.0307"
+                            cy="18.6792"
+                            r="17"
+                            stroke="#5B44E9"
+                            strokeWidth="2"
+                          />
+                          <path
+                            d="M15.3269 25.609L21.0319 19.904C21.7057 19.2303 21.7057 18.1278 21.0319 17.454L15.3269 11.749"
+                            stroke="#5B44E9"
+                            strokeWidth="1.5"
+                            strokeMiterlimit="10"
+                            strokeLinecap="round"
+                            strokeLinejoin="round"
+                          />
+                        </svg>
                       </div>
 
                       <div className={styles.flex}>
                         <div
-                          className={`${styles['review-location-step']} ${
-                            position === 0 ? styles.active : 'null'
+                          className={`${styles["review-location-step"]} ${
+                            position === 0 ? styles.active : "null"
                           }`}
                         ></div>
                         <div
-                          className={`${styles['review-location-step']} ${
-                            position === 28 ? styles.active : 'null'
+                          className={`${styles["review-location-step"]} ${
+                            position === 28 ? styles.active : "null"
                           } `}
                         ></div>
                         <div
-                          className={`${styles['review-location-step']} ${
-                            position === 56 ? styles.active : 'null'
+                          className={`${styles["review-location-step"]} ${
+                            position === 56 ? styles.active : "null"
                           }`}
                         ></div>
                         <div
-                          className={`${styles['review-location-step']} ${
-                            position === 84 ? styles.active : 'null'
+                          className={`${styles["review-location-step"]} ${
+                            position === 84 ? styles.active : "null"
                           }`}
                         ></div>
                         <div
-                          className={`${styles['review-location-step']} ${
-                            position === 112 ? styles.active : 'null'
+                          className={`${styles["review-location-step"]} ${
+                            position === 112 ? styles.active : "null"
                           }`}
                         ></div>
                       </div>
@@ -355,18 +387,18 @@ export default function Home() {
           </section>
 
           <section className={`${styles.subscribe} mt-16`}>
-            <h3 className='text-secondary'> Subscribe to our newsletter</h3>
+            <h3 className="text-secondary"> Subscribe to our newsletter</h3>
             <p>
               Get helpful tips and content to grow as a creator and digital
               entrepreneur.
             </p>
 
-            <div className={styles['input-container']}>
+            <div className={styles["input-container"]}>
               <input
-                type='email'
-                name='email'
-                id='email'
-                placeholder='Email Address...'
+                type="email"
+                name="email"
+                id="email"
+                placeholder="Email Address..."
               />
               <button>
                 <SendIcon />

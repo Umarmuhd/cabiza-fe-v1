@@ -79,8 +79,8 @@ export default function NewPost() {
 
   return (
     <div>
-      <div className="bg-grey_95 border-b border-grey_60 py-6 md:px-0 px-4">
-        <div className="flex justify-between items-center md:w-4/5 mx-auto">
+      <div className="bg-secondary_sky_lightest border-b border-grey_60 py-6 md:px-0 px-4">
+        <div className="flex justify-between items-center md:w-43/50 mx-auto">
           <div className="flex">
             <button className="py-2 px-3 rounded-lg border border-[#666666]">
               Preview
@@ -114,7 +114,7 @@ export default function NewPost() {
 
       <main className="w-full h-full relative">
         <form id="post-form" onSubmit={handleSubmit(handlePublish)}>
-          <div className="w-4/5 mx-auto md:py-10 flex justify-between">
+          <div className="w-43/50 mx-auto md:py-10 flex justify-between">
             <div className="w-[34%] rounded-2xl border border-grey_80 py-8 px-6">
               <div className="mb-8">
                 <h2 className="text-grey_40 font-semibold mb-2">AUDIENCE</h2>
@@ -323,20 +323,23 @@ export default function NewPost() {
               </div>
             </div>
             <div className="w-[62%]">
-              <div className="rounded-2xl border border-grey_80 p-6">
+              <div
+                className="rounded-3xl p-8 bg-white"
+                style={{ boxShadow: "0px 20px 40px rgba(0, 0, 0, 0.06)" }}
+              >
                 <div className="mb-6 relative">
                   <label
-                    className="block text-grey_40 text-lg font-semibold mb-3"
+                    className="block text-secondary_ink_darkest font-medium mb-4 leading-4"
                     htmlFor="title"
                   >
                     Title
                   </label>
                   <input
                     type="text"
-                    className="border border-grey_80 px-4 py-3 placeholder-grey_80 text-grey_40 bg-white shadow-sm focus:outline-none focus:ring w-full rounded-lg"
+                    className="border border-secondary_sky_light px-4 py-3 placeholder-secondary_sky_dark text-secondary_ink_darkest bg-white  focus:outline-none focus:ring w-full rounded-lg"
                     style={{ transition: "all 0.15s ease 0s" }}
                     id="title"
-                    placeholder="Post Title"
+                    placeholder="Enter your post title"
                     {...register("title", { required: true })}
                   />
                   {errors.title?.type === "required" && (
@@ -347,14 +350,14 @@ export default function NewPost() {
                 </div>
                 <div className="mb-6 relative">
                   <label
-                    className="block text-grey_40 text-lg font-semibold mb-3"
+                    className="block text-secondary_ink_darkest font-medium mb-4 leading-4"
                     htmlFor="description"
                   >
                     Description
                   </label>
                   <textarea
                     type="text"
-                    className="border border-grey_80 px-4 py-3 placeholder-grey_80 text-grey_40 bg-white shadow-sm focus:outline-none focus:ring w-full rounded-lg"
+                    className="border border-secondary_sky_light px-4 py-3 placeholder-secondary_sky_dark text-secondary_ink_darkest bg-white  focus:outline-none focus:ring w-full rounded-lg"
                     style={{ transition: "all 0.15s ease 0s" }}
                     id="description"
                     placeholder="Post Description"
@@ -367,75 +370,43 @@ export default function NewPost() {
                     </p>
                   )}
                 </div>
-              </div>
 
-              <div className="mt-6"></div>
-
-              <input
-                className="rounded-lg py-4 w-full border border-grey_80 bg-grey_95 text-lg text-grey_60 text-center outline-none"
-                placeholder="Add call-to-action-button"
-                autoComplete="off"
-                {...register("call_to_action", { required: true })}
-              />
-              {errors.call_to_action?.type === "required" && (
-                <p className="text-left text-red-600 text-xs mt-1">
-                  Post call to action is required
-                </p>
-              )}
-
-              <div className="rounded-2xl border border-grey_80 p-6 mt-6">
                 <div className="mb-6 relative">
-                  <label
-                    className="block text-grey_40 text-lg font-semibold mb-3"
-                    htmlFor="file"
-                  >
-                    Add Files
-                  </label>
-                  <label
-                    className="w-full rounded-lg py-4 border border-dotted border-grey_80 flex items-center justify-center"
-                    htmlFor="file-upload"
-                  >
-                    {watch("attachment") !== undefined ? (
-                      <span className="text-xs mr-2 text-grey_40 leading-[14px]">
-                        {watch("attachment")[0]?.name}
-                      </span>
-                    ) : (
-                      <div className="flex items-center">
-                        <span className="text-xs mr-2 text-grey_40 leading-[14px]">
-                          Add file
-                        </span>
-                        <svg
-                          width="25"
-                          height="24"
-                          viewBox="0 0 25 24"
-                          fill="none"
-                          xmlns="http://www.w3.org/2000/svg"
-                        >
-                          <path
-                            d="M18.5 12.75H6.5C6.09 12.75 5.75 12.41 5.75 12C5.75 11.59 6.09 11.25 6.5 11.25H18.5C18.91 11.25 19.25 11.59 19.25 12C19.25 12.41 18.91 12.75 18.5 12.75Z"
-                            fill="#666666"
-                          />
-                          <path
-                            d="M12.5 18.75C12.09 18.75 11.75 18.41 11.75 18V6C11.75 5.59 12.09 5.25 12.5 5.25C12.91 5.25 13.25 5.59 13.25 6V18C13.25 18.41 12.91 18.75 12.5 18.75Z"
-                            fill="#666666"
-                          />
-                        </svg>
-                      </div>
-                    )}
-
-                    <input
-                      id="file-upload"
-                      name="file-upload"
-                      type="file"
-                      className="hidden"
-                      {...register("attachment", { required: true })}
-                    />
-                  </label>
-                  {errors.attachment?.type === "required" && (
+                  <input
+                    className="rounded-lg py-4 w-full border border-secondary_sky_light bg-secondary_sky_lightest text-lg text-grey_60 text-center outline-none"
+                    placeholder="Add call-to-action-button"
+                    autoComplete="off"
+                    {...register("call_to_action", { required: true })}
+                  />
+                  {errors.call_to_action?.type === "required" && (
                     <p className="text-left text-red-600 text-xs mt-1">
-                      Post attachment is required
+                      Post call to action is required
                     </p>
                   )}
+                </div>
+
+                <div className="relative">
+                  <span
+                    className="block text-secondary_ink_darkest font-medium mb-4 leading-4"
+                    htmlFor="Files"
+                  >
+                    Files
+                  </span>
+                  <div className="w-full relative border-dotted h-48 rounded-lg border-2 border-darkGrey flex justify-center items-center bg-secondary_sky_lightest">
+                    <div className="absolute">
+                      <div className="flex flex-col items-center text-center">
+                        <p>Lorem ipsum dolor sit amet.</p>
+                        <span className="block text-black opacity-50 font-normal mt-2 mx-4">
+                          Lorem ipsum dolor sit.
+                        </span>
+                      </div>
+                    </div>
+                    <input
+                      type="file"
+                      className="h-full w-full opacity-0"
+                      name="file"
+                    />
+                  </div>
                 </div>
               </div>
             </div>

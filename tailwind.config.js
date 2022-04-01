@@ -54,12 +54,17 @@ module.exports = {
         secondary_ink_darkest: "#090A0A",
         sky_light: "#E3E5E5",
         white: "#ffffff",
+
+        tertiary_red_base: "#FF5247",
       },
       backgroundImage: {
         "onboarding-pattern": "url('/images/onboarding-bg.svg')",
       },
       width: {
         "43/50": "86%",
+      },
+      borderRadius: {
+        "4xl": "48px",
       },
     },
   },
