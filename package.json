@@ -1,4 +1,40 @@
 {
+<<<<<<< HEAD
+    "name": "cabiza-fe-v1",
+    "private": true,
+    "scripts": {
+        "dev": "next dev",
+        "build": "next build",
+        "start": "next start",
+        "lint": "next lint"
+    },
+    "dependencies": {
+        "@headlessui/react": "^1.4.2",
+        "@hookform/resolvers": "^2.8.8",
+        "axios": "^0.25.0",
+        "cookie": "^0.4.2",
+        "date-fns": "^2.28.0",
+        "dayjs": "^1.10.7",
+        "next": "^12.0.9",
+        "react": "17.0.2",
+        "react-dom": "17.0.2",
+        "react-hook-form": "^7.25.1",
+        "react-hot-toast": "^2.2.0",
+        "react-icons": "^4.3.1",
+        "react-switch": "^6.0.0",
+        "recoil": "^0.6.1",
+        "styled-components": "^5.3.3",
+        "yup": "^0.32.11"
+    },
+    "devDependencies": {
+        "autoprefixer": "^10.4.1",
+        "eslint": "8.5.0",
+        "eslint-config-next": "12.0.7",
+        "postcss": "^8.4.5",
+        "tailwindcss": "^3.0.8"
+    }
+}
+=======
   "name": "cabiza-fe-v1",
   "private": true,
   "scripts": {
@@ -34,3 +70,4 @@
     "tailwindcss": "^3.0.8"
   }
 }
+>>>>>>> f816c2491623dac8e101256c9172340da6a460fc

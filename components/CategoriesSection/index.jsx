@@ -1,7 +1,7 @@
 const CategoriesIcon = () => (
   <svg
     width="1360"
-    height="468"
+    height="max-content"
     viewBox="0 0 1360 468"
     className="w-full"
     fill="none"
@@ -129,7 +129,7 @@ export const CategoriesSection = () => {
       <div className="w-full max-w-full">
         <CategoriesIcon />
       </div>
-      <div className="grid gap-8 row-gap-5 md:grid-cols-2 mt-10">
+      <div className="grid md:gap-8 md:row-gap-5 md:grid-cols-2 mt-10">
         <ul className="list-none">
           <li className="py-4 px-8 rounded-3xl bg-white hover:bg-primary_brand_lightest mb-3">
             Education
@@ -152,7 +152,7 @@ export const CategoriesSection = () => {
           <li className="py-4 px-8 rounded-3xl bg-white hover:bg-primary_brand_lightest mb-3">
             Animation & Games
           </li>
-          <li className="py-4 px-8 rounded-3xl bg-white hover:bg-primary_brand_lightest">
+          <li className="py-4 px-8 rounded-3xl bg-white hover:bg-primary_brand_lightest mb-3">
             Drawing & Painting
           </li>
         </ul>

@@ -584,8 +584,6 @@ section.testimony h3 {
     .controls svg,
     .features svg {
         display: block;
-        width: 5rem;
-        height: 5rem
     }
     .features svg:last-of-type {
         margin-left: -1rem;
@@ -668,8 +666,6 @@ section.testimony h3 {
     .controls svg,
     .features svg {
         display: block;
-        width: 5rem;
-        height: 5rem
     }
     .features svg:last-of-type {
         margin-left: -1rem;
@@ -746,8 +742,8 @@ section.testimony h3 {
     .controls svg,
     .features svg {
         display: block;
-        width: 5rem;
-        height: 5rem
+        /* width: 5rem;
+        height: 5rem */
     }
     .features svg:last-of-type {
         margin-left: -1rem;
@@ -810,8 +806,8 @@ section.testimony h3 {
     .controls svg,
     .features svg {
         display: block;
-        width: 5rem;
-        height: 5rem
+        /* width: 5rem;
+        height: 5rem */
     }
     .reviews-container {
         width: 1300vw;
