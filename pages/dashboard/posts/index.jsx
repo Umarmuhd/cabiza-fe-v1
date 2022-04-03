@@ -11,6 +11,7 @@ import Dashboard from "../../../layouts/Dashboard";
 import WorkFlow from "../../../components/Posts/WorkFlow";
 import PostsList from "../../../components/Posts/PostsList";
 import Scheduled from "../../../components/Posts/Scheduled";
+import DashboardNav from "@/components/Navbars/DashboardNav";
 
 const PlusIcon = () => (
   <svg
@@ -35,6 +36,7 @@ export default function Posts() {
   return (
     <div>
       <Tab.Group>
+        <DashboardNav />
         <div
           className="bg-secondary_sky_lightest py-6 md:px-0 px-4"
           style={{ boxShadow: "0px 4px 20px rgba(0, 0, 0, 0.04)" }}

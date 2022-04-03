@@ -63,6 +63,14 @@ module.exports = {
       width: {
         "43/50": "86%",
       },
+      minWidth: {
+        36: "9rem",
+        44: "11rem",
+        56: "14rem",
+        60: "15rem",
+        72: "18rem",
+        80: "20rem",
+      },
       borderRadius: {
         "4xl": "48px",
       },

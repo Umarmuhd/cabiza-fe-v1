@@ -10,7 +10,7 @@ import moment from "moment";
 import { Switch } from "@headlessui/react";
 
 const PostItem = ({ post, deletePost }) => {
-  const [expanded, setExpanded] = useState(true);
+  const [expanded, setExpanded] = useState(false);
   const [enabled, setEnabled] = React.useState(post.published);
   const [loading, setLoading] = useState(false);
 
@@ -212,12 +212,9 @@ export default function PostsList() {
           <h1 className="text-secondary_ink_dark font-medium text-xl mb-6">
             All Published Posts
           </h1>
-          {loading && (
-            <h1 className="text-grey_40 font-semibold text-center">
-              loading...
-            </h1>
-          )}
-          {!loading && (
+          {loading ? (
+            <h1 className="text-grey_40 font-semibold text-center">...</h1>
+          ) : (
             <>
               {posts.length > 0 ? (
                 <div>
