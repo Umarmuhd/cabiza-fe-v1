@@ -1,9 +1,11 @@
+/* eslint-disable react/no-unknown-property */
 import React, { useState, useEffect } from "react";
 import axios from "axios";
 
 import Dashboard from "@/layouts/Dashboard";
 import { API_URL } from "@/config/index";
 import TopNav from '@/components/Navbars/DashboardNav/TopNav';
+import Payoutreview from './payoutReview';
 
 const CogIcon = () => (
   <svg
@@ -46,8 +48,8 @@ export default function Payout() {
 
   return (
     <div>
-      <TopNav title="Payout"/>
-      The Payout page
+      <TopNav title='Payout' />
+      <Payoutreview/>
     </div>
     // <div>
     //   <div className="bg-grey_95 border-b border-grey_60 py-6 md:px-0 px-4">
