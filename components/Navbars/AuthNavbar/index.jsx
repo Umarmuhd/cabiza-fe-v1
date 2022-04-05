@@ -13,7 +13,7 @@ export default function AuthNavbar() {
         <div className="w-full relative flex justify-between lg:w-auto lg:static lg:block lg:justify-start">
           <Link href="/">
             <a className="text-white text-sm font-bold leading-relaxed inline-block mr-4 py-2 whitespace-nowrap uppercase">
-              <img src="/images/logo.png" alt="..." />
+              <img src="/images/logo.png" alt="..." className="w-32" />
             </a>
           </Link>
           <button

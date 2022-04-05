@@ -5,108 +5,144 @@ import { useRouter } from "next/router";
 import axios from "axios";
 import { toast } from "react-hot-toast";
 import Link from "next/link";
+import * as Yup from "yup";
+import { yupResolver } from "@hookform/resolvers/yup";
 
 import Dashboard from "@/layouts/Dashboard";
 import { API_URL } from "@/config/index";
 import AuthContext from "@/context/AuthContext";
-
-const PlusIcon = () => (
-  <svg
-    width="24"
-    height="24"
-    viewBox="0 0 24 24"
-    fill="none"
-    xmlns="http://www.w3.org/2000/svg"
-  >
-    <path
-      d="M18 12.75H6C5.59 12.75 5.25 12.41 5.25 12C5.25 11.59 5.59 11.25 6 11.25H18C18.41 11.25 18.75 11.59 18.75 12C18.75 12.41 18.41 12.75 18 12.75Z"
-      fill="white"
-    />
-    <path
-      d="M12 18.75C11.59 18.75 11.25 18.41 11.25 18V6C11.25 5.59 11.59 5.25 12 5.25C12.41 5.25 12.75 5.59 12.75 6V18C12.75 18.41 12.41 18.75 12 18.75Z"
-      fill="white"
-    />
-  </svg>
-);
+import FormGroup from "@/components/Forms/FormGroup";
 
 export default function NewPost() {
-  const {
-    register,
-    handleSubmit,
-    watch,
-    formState: { errors },
-  } = useForm();
+  const validationSchema = Yup.object().shape({
+    acceptTerms: Yup.bool().oneOf([true], "Accept Ts & Cs is required"),
+  });
+
+  const formOptions = { resolver: yupResolver(validationSchema) };
+
+  const { register, handleSubmit, watch, formState } = useForm(formOptions);
+  const { errors } = formState;
 
   const { user } = useContext(AuthContext);
 
   const [loading, setLoading] = useState(false);
-  const [audience, setAudience] = React.useState(false);
-  const [channel, setChannel] = React.useState(false);
-  const [engagement, setEngagement] = React.useState(false);
+  const [audience, setAudience] = useState(false);
 
   const router = useRouter();
 
   const handlePublish = async (values) => {
-    setLoading(true);
+    console.log(values);
+    alert("SUCCESS!! :-)\n\n" + JSON.stringify(values, null, 6));
+    return false;
 
-    const { title, description, call_to_action, attachment } = values;
+    // setLoading(true);
 
-    if (!audience || !channel || !engagement) {
-      toast.error("please complete all required fields");
-      setLoading(false);
-      return;
-    }
+    // const { title, description, call_to_action, attachment } = values;
 
-    try {
-      const response = await axios.post(`${API_URL}/posts/new`, {
-        title,
-        description,
-        call_to_action,
-        audience,
-      });
+    // if (!audience || !channel || !engagement) {
+    //   toast.error("please complete all required fields");
+    //   setLoading(false);
+    //   return;
+    // }
 
-      setLoading(false);
-      toast.success(response.data.message);
+    // try {
+    //   const response = await axios.post(`${API_URL}/posts/new`, {
+    //     title,
+    //     description,
+    //     call_to_action,
+    //     audience,
+    //   });
 
-      if (response.status === 201) {
-        return router.push("/dashboard/posts");
-      }
-    } catch (error) {
-      console.log(error);
-      setLoading(false);
-    }
+    //   setLoading(false);
+    //   toast.success(response.data.message);
+
+    //   if (response.status === 201) {
+    //     return router.push("/dashboard/posts");
+    //   }
+    // } catch (error) {
+    //   console.log(error);
+    //   setLoading(false);
+    // }
   };
 
   return (
     <div>
-      <div className="bg-secondary_sky_lightest border-b border-grey_60 py-6 md:px-0 px-4">
+      <div
+        className="bg-secondary_sky_lightest py-6 md:px-0 px-4"
+        style={{ boxShadow: "0px 4px 20px rgba(0, 0, 0, 0.04)" }}
+      >
         <div className="flex justify-between items-center md:w-43/50 mx-auto">
           <div className="flex">
-            <button className="py-2 px-3 rounded-lg border border-[#666666]">
-              Preview
-            </button>
+            <a className="leading-4 text-base font-medium text-primary py-2 px-3 rounded-4xl border border-primary flex items-center">
+              <svg
+                width="16"
+                height="16"
+                viewBox="0 0 16 16"
+                fill="none"
+                xmlns="http://www.w3.org/2000/svg"
+              >
+                <path
+                  d="M13.7449 6.36857L13.7448 6.36839C12.2745 4.05784 10.1649 2.78662 8 2.78662C6.91371 2.78662 5.8504 3.10332 4.86923 3.70546C3.88753 4.31459 2.99282 5.21107 2.25505 6.36857H13.7449ZM13.7449 6.36857C14.0161 6.79423 14.1667 7.3838 14.1667 7.99912C14.1667 8.61458 14.016 9.2018 13.7457 9.62345L13.745 9.62455C13.0072 10.7821 12.1125 11.6786 11.1308 12.2878C10.1496 12.8899 9.08628 13.2066 8 13.2066C5.83453 13.2066 3.72534 11.9415 2.25549 9.62537L2.25505 9.62468M13.7449 6.36857L2.25505 9.62468M2.25505 9.62468C1.98379 9.1988 1.83333 8.61081 1.83333 7.99662M2.25505 9.62468L1.83333 7.99662M1.83333 7.99662C1.83333 7.3825 1.98376 6.79455 2.25497 6.36869L1.83333 7.99662ZM4.80666 7.99995C4.80666 9.76196 6.22971 11.1933 8 11.1933C9.77028 11.1933 11.1933 9.76196 11.1933 7.99995C11.1933 6.23795 9.77028 4.80662 8 4.80662C6.22971 4.80662 4.80666 6.23795 4.80666 7.99995Z"
+                  fill="#5B44E9"
+                  stroke="#5B44E9"
+                />
+                <path
+                  d="M8.00001 6.09326C6.95334 6.09326 6.10001 6.94659 6.10001 7.99993C6.10001 9.04659 6.95334 9.89993 8.00001 9.89993C9.04667 9.89993 9.90667 9.04659 9.90667 7.99993C9.90667 6.95326 9.04667 6.09326 8.00001 6.09326Z"
+                  fill="#5B44E9"
+                />
+              </svg>
+
+              <span className="ml-2">Preview</span>
+            </a>
           </div>
 
           <div className="flex items-center justify-between">
             <Link href="/dashboard/posts">
-              <a className="py-2 px-3 mr-6">Cancel</a>
+              <a className="leading-4 text-base font-medium text-primary py-2 px-3 rounded-4xl border border-primary flex items-center mr-6">
+                <svg
+                  width="16"
+                  height="16"
+                  viewBox="0 0 16 16"
+                  fill="none"
+                  xmlns="http://www.w3.org/2000/svg"
+                >
+                  <path
+                    d="M1.83331 7.99992C1.83331 4.60273 4.60279 1.83325 7.99998 1.83325C11.3972 1.83325 14.1666 4.60273 14.1666 7.99992C14.1666 11.3971 11.3972 14.1666 7.99998 14.1666C4.60279 14.1666 1.83331 11.3971 1.83331 7.99992ZM10.5935 10.5935C10.9821 10.2049 10.9821 9.56829 10.5935 9.1797L9.41375 7.99992L10.5935 6.82014C10.9821 6.43154 10.9821 5.79496 10.5935 5.40637C10.2049 5.01777 9.56835 5.01777 9.17976 5.40637L7.99998 6.58615L6.8202 5.40637C6.4316 5.01777 5.79502 5.01777 5.40643 5.40637C5.01783 5.79496 5.01783 6.43154 5.40643 6.82014L6.58621 7.99992L5.40643 9.1797C5.01783 9.56829 5.01783 10.2049 5.40643 10.5935C5.60514 10.7922 5.8612 10.8866 6.11331 10.8866C6.36543 10.8866 6.62149 10.7922 6.8202 10.5935L7.99998 9.41369L9.17976 10.5935C9.37847 10.7922 9.63453 10.8866 9.88665 10.8866C10.1388 10.8866 10.3948 10.7922 10.5935 10.5935Z"
+                    fill="#5B44E9"
+                    stroke="#5B44E9"
+                  />
+                </svg>
+                <span className="ml-2">Cancel</span>
+              </a>
             </Link>
-            <button className="py-2 px-3 rounded-lg border border-[#666666] mr-6">
-              Save
-            </button>
+
+            <a className="leading-4 text-base font-medium text-primary py-2 px-3 rounded-4xl border border-primary mr-6 flex items-center">
+              <span className="mr-2">Publish</span>
+              <svg
+                width="14"
+                height="7"
+                viewBox="0 0 14 7"
+                fill="none"
+                xmlns="http://www.w3.org/2000/svg"
+              >
+                <path
+                  d="M12.28 0.966553L7.9333 5.31322C7.41997 5.82655 6.57997 5.82655 6.06664 5.31322L1.71997 0.966553"
+                  stroke="#5B44E9"
+                  strokeWidth="1.5"
+                  strokeMiterlimit="10"
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                />
+              </svg>
+            </a>
+
             <button
-              className="py-2 px-3 bg-cabiza_blue flex items-center text-lg font-semibold text-white rounded-lg"
+              className="leading-4 text-base font-medium text-white py-2 px-3 rounded-4xl border border-primary bg-primary"
               type="submit"
               form="post-form"
               disabled={loading}
             >
-              {loading ? (
-                <span>...</span>
-              ) : (
-                <>
-                  <span className="mr-2.5">Publish </span> <PlusIcon />
-                </>
-              )}
+              Save
             </button>
           </div>
         </div>
@@ -115,213 +151,177 @@ export default function NewPost() {
       <main className="w-full h-full relative">
         <form id="post-form" onSubmit={handleSubmit(handlePublish)}>
           <div className="w-43/50 mx-auto md:py-10 flex justify-between">
-            <div className="w-[34%] rounded-2xl border border-grey_80 py-8 px-6">
-              <div className="mb-8">
-                <h2 className="text-grey_40 font-semibold mb-2">AUDIENCE</h2>
+            <div className="w-[34%]">
+              <h1 className="font-semibold mb-6 text-secondary_ink_dark text-4xl">
+                New post
+              </h1>
+              <div
+                className="bg-white rounded-2xl py-8 px-6"
+                style={{ boxShadow: "0px 20px 40px rgba(0, 0, 0, 0.06)" }}
+              >
+                <div className="mb-8">
+                  <h2 className="text-secondary_ink_darkest font-medium mb-5 text-base">
+                    Audience
+                  </h2>
 
-                <RadioGroup as={"ul"} value={audience} onChange={setAudience}>
-                  <RadioGroup.Option
-                    as={"li"}
-                    value="0"
-                    className={({ active, checked }) =>
-                      `mb-2 ${checked} ${active}`
-                    }
-                  >
-                    {({ checked, active }) => (
-                      <>
+                  <RadioGroup as={"ul"} value={audience} onChange={setAudience}>
+                    <RadioGroup.Option
+                      as={"li"}
+                      value="0"
+                      className={({ active, checked }) =>
+                        `mb-2 ${checked} ${active}`
+                      }
+                    >
+                      {({ checked, active }) => (
                         <div className="flex justify-between items-center">
-                          <span className="text-grey_60 font-medium">
-                            Everyone
-                          </span>
-                          <div className="w-6 h-6 border border-cabiza_blue rounded-full flex justify-center items-center">
+                          <span className="text-secondary">Everyone</span>
+                          <div className="w-6 h-6 border border-primary rounded-full flex justify-center items-center">
                             {checked && (
-                              <div className="w-3 h-3 rounded-full inline-block bg-cabiza_blue"></div>
+                              <div className="w-3 h-3 rounded-full inline-block bg-primary"></div>
                             )}
                           </div>
                         </div>
-                      </>
-                    )}
-                  </RadioGroup.Option>
-                  <RadioGroup.Option
-                    as={"li"}
-                    value="1"
-                    className={({ active, checked }) =>
-                      `mb-2 ${checked} ${active}`
-                    }
-                  >
-                    {({ checked, active }) => (
-                      <>
+                      )}
+                    </RadioGroup.Option>
+                    <RadioGroup.Option
+                      as={"li"}
+                      value="1"
+                      className={({ active, checked }) =>
+                        `mb-2 ${checked} ${active}`
+                      }
+                    >
+                      {({ checked, active }) => (
                         <div className="flex justify-between items-center">
-                          <span className="text-grey_60 font-medium">
-                            Followers only
-                          </span>
-                          <div className="w-6 h-6 border border-cabiza_blue rounded-full flex justify-center items-center">
+                          <span className="text-secondary">Followers only</span>
+                          <div className="w-6 h-6 border border-primary rounded-full flex justify-center items-center">
                             {checked && (
-                              <div className="w-3 h-3 rounded-full inline-block bg-cabiza_blue"></div>
+                              <div className="w-3 h-3 rounded-full inline-block bg-primary"></div>
                             )}
                           </div>
                         </div>
-                      </>
-                    )}
-                  </RadioGroup.Option>
-                  <RadioGroup.Option
-                    as={"li"}
-                    value="2"
-                    className={({ active, checked }) =>
-                      `mb-2 ${checked} ${active}`
-                    }
-                  >
-                    {({ checked, active }) => (
-                      <>
+                      )}
+                    </RadioGroup.Option>
+                    <RadioGroup.Option
+                      as={"li"}
+                      value="2"
+                      className={({ active, checked }) =>
+                        `mb-2 ${checked} ${active}`
+                      }
+                    >
+                      {({ checked, active }) => (
                         <div className="flex justify-between items-center">
-                          <span className="text-grey_60 font-medium">
-                            Customers only
-                          </span>
-                          <div className="w-6 h-6 border border-cabiza_blue rounded-full flex justify-center items-center">
+                          <span className="text-secondary">Customers only</span>
+                          <div className="w-6 h-6 border border-primary rounded-full flex justify-center items-center">
                             {checked && (
-                              <div className="w-3 h-3 rounded-full inline-block bg-cabiza_blue"></div>
+                              <div className="w-3 h-3 rounded-full inline-block bg-primary"></div>
                             )}
                           </div>
                         </div>
-                      </>
-                    )}
-                  </RadioGroup.Option>
-                  <RadioGroup.Option
-                    as={"li"}
-                    value="3"
-                    className={({ active, checked }) =>
-                      `mb-2 ${checked} ${active}`
-                    }
-                  >
-                    {({ checked, active }) => (
-                      <>
+                      )}
+                    </RadioGroup.Option>
+                    <RadioGroup.Option
+                      as={"li"}
+                      value="3"
+                      className={({ active, checked }) =>
+                        `mb-2 ${checked} ${active}`
+                      }
+                    >
+                      {({ checked, active }) => (
                         <div className="flex justify-between items-center">
-                          <span className="text-grey_60 font-medium">
+                          <span className="text-secondary">
                             Affiliates only
                           </span>
-                          <div className="w-6 h-6 border border-cabiza_blue rounded-full flex justify-center items-center">
+                          <div className="w-6 h-6 border border-primary rounded-full flex justify-center items-center">
                             {checked && (
-                              <div className="w-3 h-3 rounded-full inline-block bg-cabiza_blue"></div>
+                              <div className="w-3 h-3 rounded-full inline-block bg-primary"></div>
                             )}
                           </div>
                         </div>
-                      </>
-                    )}
-                  </RadioGroup.Option>
-                </RadioGroup>
-              </div>
-              <div className="mb-8">
-                <h2 className="text-grey_40 font-semibold mb-2">CHANNEL</h2>
-
-                <RadioGroup as={"ul"} value={channel} onChange={setChannel}>
-                  <RadioGroup.Option
-                    as={"li"}
-                    value="send-email"
-                    className={({ active, checked }) =>
-                      `mb-2 ${checked} ${active}`
-                    }
-                  >
-                    {({ checked, active }) => (
-                      <>
-                        <div className="flex justify-between items-center">
-                          <span className="text-grey_60 font-medium">
-                            Send Email
-                          </span>
-                          <div className="w-6 h-6 border border-cabiza_blue rounded-full flex justify-center items-center">
-                            {checked && (
-                              <div className="w-3 h-3 rounded-full inline-block bg-cabiza_blue"></div>
-                            )}
-                          </div>
-                        </div>
-                      </>
-                    )}
-                  </RadioGroup.Option>
-                  <RadioGroup.Option
-                    as={"li"}
-                    value="to-profile"
-                    className={({ active, checked }) =>
-                      `mb-2 ${checked} ${active}`
-                    }
-                  >
-                    {({ checked, active }) => (
-                      <>
-                        <div className="flex justify-between items-center">
-                          <div className="inline w-4/5">
-                            <span className="text-grey_60 font-medium block mb-2">
-                              Post to profile
-                            </span>
-                            <p className="text-grey_60 text-xs w-4/5">
-                              This post will be visible to anyone who visits
-                              your profile.
-                            </p>
-                          </div>
-
-                          <div className="w-6 h-6 border border-cabiza_blue rounded-full flex justify-center items-center ml-2">
-                            {checked && (
-                              <div className="w-3 h-3 rounded-full inline-block bg-cabiza_blue"></div>
-                            )}
-                          </div>
-                        </div>
-                      </>
-                    )}
-                  </RadioGroup.Option>
-                </RadioGroup>
-              </div>
-              <div className="mb-0">
-                <h2 className="text-grey_40 font-semibold mb-2">ENGAGEMENTS</h2>
-
-                <RadioGroup
-                  as={"ul"}
-                  value={engagement}
-                  onChange={setEngagement}
-                >
-                  <RadioGroup.Option
-                    as={"li"}
-                    value="comments"
-                    className={({ active, checked }) =>
-                      `mb-2 ${checked} ${active}`
-                    }
-                  >
-                    {({ checked, active }) => (
-                      <>
-                        <div className="flex justify-between items-center">
-                          <span className="text-grey_60 font-medium">
-                            Allow comments
-                          </span>
-                          <div className="w-6 h-6 border border-cabiza_blue rounded-full flex justify-center items-center">
-                            {checked && (
-                              <div className="w-3 h-3 rounded-full inline-block bg-cabiza_blue"></div>
-                            )}
-                          </div>
-                        </div>
-                      </>
-                    )}
-                  </RadioGroup.Option>
-                  <RadioGroup.Option
-                    as={"li"}
-                    value="likes"
-                    className={({ active, checked }) =>
-                      `mb-2 ${checked} ${active}`
-                    }
-                  >
-                    {({ checked, active }) => (
-                      <>
-                        <div className="flex justify-between items-center">
-                          <span className="text-grey_60 font-medium">
-                            Allow Likes
-                          </span>
-                          <div className="w-6 h-6 border border-cabiza_blue rounded-full flex justify-center items-center">
-                            {checked && (
-                              <div className="w-3 h-3 rounded-full inline-block bg-cabiza_blue"></div>
-                            )}
-                          </div>
-                        </div>
-                      </>
-                    )}
-                  </RadioGroup.Option>
-                </RadioGroup>
+                      )}
+                    </RadioGroup.Option>
+                  </RadioGroup>
+                </div>
+                <div className="mb-8">
+                  <h2 className="text-secondary_ink_darkest font-medium mb-5 text-base">
+                    Channel
+                  </h2>
+                  <FormGroup className="my-2">
+                    <div className="w-full flex items-center justify-between">
+                      <label
+                        className="text-secondary leading-4"
+                        htmlFor="send-email"
+                      >
+                        Send Email
+                      </label>
+                      <input
+                        type="checkbox"
+                        name="send-email"
+                        defaultChecked={false}
+                        className="appearance-none w-6 h-6 border border-gray-300 rounded-sm outline-none cursor-pointer checked:bg-primary"
+                        {...register("send_email")}
+                      />
+                    </div>
+                  </FormGroup>
+                  <FormGroup className="my-2">
+                    <div className="w-full flex items-center justify-between">
+                      <label
+                        className="text-secondary leading-4"
+                        htmlFor="post-to-profile"
+                      >
+                        Post to profile
+                      </label>
+                      <input
+                        type="checkbox"
+                        name="post-to-profile"
+                        defaultChecked={false}
+                        className="appearance-none w-6 h-6 border border-gray-300 rounded-sm outline-none cursor-pointer checked:bg-primary"
+                        {...register("post_to_profile")}
+                      />
+                    </div>
+                  </FormGroup>
+                </div>
+                <div className="mb-0">
+                  <h2 className="text-secondary_ink_darkest font-medium mb-5 text-base">
+                    Engagements
+                  </h2>
+                  <FormGroup className="my-2">
+                    <div className="w-full flex items-center justify-between">
+                      <label
+                        className="text-secondary leading-4"
+                        htmlFor="allow-comments"
+                      >
+                        Allow Comments
+                      </label>
+                      <input
+                        type="checkbox"
+                        name="allow-comments"
+                        defaultChecked={false}
+                        className="appearance-none w-6 h-6 border border-gray-300 rounded-sm outline-none cursor-pointer checked:bg-primary"
+                        {...register("allow_comments")}
+                      />
+                    </div>
+                  </FormGroup>
+                  <FormGroup className="my-2">
+                    <div className="w-full flex items-center justify-between">
+                      <label
+                        className="text-secondary leading-4"
+                        htmlFor="allow-likes"
+                      >
+                        Allow Likes
+                      </label>
+                      <input
+                        type="checkbox"
+                        name="allow-likes"
+                        defaultChecked={false}
+                        className="appearance-none w-6 h-6 border border-gray-300 rounded-sm outline-none cursor-pointer checked:bg-primary"
+                        {...register("allow_likes")}
+                      />
+                    </div>
+                  </FormGroup>
+                </div>
               </div>
             </div>
+
             <div className="w-[62%]">
               <div
                 className="rounded-3xl p-8 bg-white"
@@ -395,9 +395,11 @@ export default function NewPost() {
                   <div className="w-full relative border-dotted h-48 rounded-lg border-2 border-darkGrey flex justify-center items-center bg-secondary_sky_lightest">
                     <div className="absolute">
                       <div className="flex flex-col items-center text-center">
-                        <p>Lorem ipsum dolor sit amet.</p>
-                        <span className="block text-black opacity-50 font-normal mt-2 mx-4">
-                          Lorem ipsum dolor sit.
+                        <p className="font-medium text-secondary mb-4">
+                          Add Files
+                        </p>
+                        <span className="block text-secondary_brand_light font-normal mt-2 mx-4">
+                          Upload your post files here
                         </span>
                       </div>
                     </div>
