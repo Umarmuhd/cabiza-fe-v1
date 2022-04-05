@@ -381,77 +381,77 @@ const Sidebar = ({ user }) => {
   const [collapseShow, setCollapseShow] = React.useState("hidden");
   return (
     <>
-      <nav className="md:left-0 md:block md:fixed md:top-0 md:bottom-0 md:overflow-y-auto md:flex-row md:flex-nowrap md:overflow-hidden shadow-xl bg-white flex flex-wrap items-center justify-between relative md:w-64 z-10 py-4 px-6">
-        <div className="md:flex-col md:items-stretch md:min-h-full md:flex-nowrap px-0 flex flex-wrap items-center justify-between w-full mx-auto">
+      <nav className='md:left-0 md:block md:fixed md:top-0 md:bottom-0 md:overflow-y-auto md:flex-row md:flex-nowrap md:overflow-hidden shadow-xl bg-white flex flex-wrap items-center justify-between relative md:w-64 z-10 py-4 px-6'>
+        <div className='md:flex-col md:items-stretch md:min-h-full md:flex-nowrap px-0 flex flex-wrap items-center justify-between w-full mx-auto'>
           {/* Toggler */}
           <button
-            className="cursor-pointer text-black opacity-50 md:hidden px-3 py-1 text-xl leading-none bg-transparent rounded border border-solid border-transparent"
-            type="button"
-            onClick={() => setCollapseShow("bg-white m-2 py-3 px-6")}
+            className='cursor-pointer text-black opacity-50 md:hidden px-3 py-1 text-xl leading-none bg-transparent rounded border border-solid border-transparent'
+            type='button'
+            onClick={() => setCollapseShow('bg-white m-2 py-3 px-6')}
           >
             <svg
-              className="w-6 h-6"
-              fill="none"
-              stroke="white"
-              viewBox="0 0 24 24"
-              xmlns="http://www.w3.org/2000/svg"
+              className='w-6 h-6'
+              fill='none'
+              stroke='white'
+              viewBox='0 0 24 24'
+              xmlns='http://www.w3.org/2000/svg'
             >
               <path
-                strokeLinecap="round"
-                strokeLinejoin="round"
-                strokeWidth="2"
-                d="M4 6h16M4 12h16M4 18h16"
+                strokeLinecap='round'
+                strokeLinejoin='round'
+                strokeWidth='2'
+                d='M4 6h16M4 12h16M4 18h16'
               ></path>
             </svg>
           </button>
           {/* Brand */}
-          <Link href="/">
-            <a className="md:block text-left md:pb-2 text-blueGray-600 mr-0 inline-block whitespace-nowrap text-sm uppercase font-bold p-4 px-0">
-              <img src="/images/cabiza-logo.png" alt="..." className="w-40" />
+          <Link href='/'>
+            <a className='md:block text-left md:pb-2 text-blueGray-600 mr-0 inline-block whitespace-nowrap text-sm uppercase font-bold p-4 px-0'>
+              <img src='/images/cabiza-logo.png' alt='...' className='w-40' />
             </a>
           </Link>
           {/* User */}
-          <ul className="md:hidden items-center flex flex-wrap list-none">
-            <li className="inline-block relative">
+          <ul className='md:hidden items-center flex flex-wrap list-none'>
+            <li className='inline-block relative'>
               {/* <NotificationDropdown /> */}
             </li>
-            <li className="inline-block relative">{/* <UserDropdown /> */}</li>
+            <li className='inline-block relative'>{/* <UserDropdown /> */}</li>
           </ul>
           {/* Collapse */}
           <div
             className={
-              "md:flex md:flex-col md:items-stretch md:opacity-100 md:relative md:mt-4 md:shadow-none shadow absolute top-0 left-0 right-0 z-40 overflow-y-auto overflow-x-hidden h-auto items-center flex-1 rounded " +
+              'md:flex md:flex-col md:items-stretch md:opacity-100 md:relative md:mt-4 md:shadow-none shadow absolute top-0 left-0 right-0 z-40 overflow-y-auto overflow-x-hidden h-auto items-center flex-1 rounded ' +
               collapseShow
             }
           >
             {/* Collapse header */}
-            <div className="md:min-w-full md:hidden block pb-4 mb-4 border-b border-solid border-blueGray-200">
-              <div className="flex flex-wrap">
-                <div className="w-6/12">
-                  <Link href="/">
-                    <a className="md:block text-left md:pb-2 text-secondary_ink_dark mr-0 inline-block whitespace-nowrap text-sm uppercase font-bold p-4 px-0">
+            <div className='md:min-w-full md:hidden block pb-4 mb-4 border-b border-solid border-blueGray-200'>
+              <div className='flex flex-wrap'>
+                <div className='w-6/12'>
+                  <Link href='/'>
+                    <a className='md:block text-left md:pb-2 text-secondary_ink_dark mr-0 inline-block whitespace-nowrap text-sm uppercase font-bold p-4 px-0'>
                       Cabiza
                     </a>
                   </Link>
                 </div>
-                <div className="w-6/12 flex justify-end">
+                <div className='w-6/12 flex justify-end'>
                   <button
-                    type="button"
-                    className="cursor-pointer text-secondary_ink_dark opacity-50 md:hidden px-3 py-1 text-xl leading-none bg-transparent rounded border border-solid border-transparent"
-                    onClick={() => setCollapseShow("hidden")}
+                    type='button'
+                    className='cursor-pointer text-secondary_ink_dark opacity-50 md:hidden px-3 py-1 text-xl leading-none bg-transparent rounded border border-solid border-transparent'
+                    onClick={() => setCollapseShow('hidden')}
                   >
                     <svg
-                      className="w-6 h-6"
-                      fill="none"
-                      stroke="currentColor"
-                      viewBox="0 0 24 24"
-                      xmlns="http://www.w3.org/2000/svg"
+                      className='w-6 h-6'
+                      fill='none'
+                      stroke='currentColor'
+                      viewBox='0 0 24 24'
+                      xmlns='http://www.w3.org/2000/svg'
                     >
                       <path
-                        strokeLinecap="round"
-                        strokeLinejoin="round"
-                        strokeWidth="2"
-                        d="M6 18L18 6M6 6l12 12"
+                        strokeLinecap='round'
+                        strokeLinejoin='round'
+                        strokeWidth='2'
+                        d='M6 18L18 6M6 6l12 12'
                       ></path>
                     </svg>
                   </button>
@@ -459,121 +459,112 @@ const Sidebar = ({ user }) => {
               </div>
             </div>
             {/* Navigation */}
-            <ul className="md:flex-col md:min-w-full flex flex-col list-none">
-              <li className="items-center">
-                <Link href="/dashboard">
-                  <a className="text-secondary_ink_dark text-lg font-medium py-3 flex items-center">
+            <ul className='md:flex-col md:min-w-full flex flex-col list-none mt-8'>
+              <li className='items-center'>
+                <Link href='/dashboard'>
+                  <a className='text-secondary_ink_dark text-lg font-medium py-3 flex items-center'>
                     <ProfileIcon />
-                    <span className="ml-2">Profile</span>
+                    <span className='ml-2'>Profile</span>
                   </a>
                 </Link>
               </li>
-              <li className="items-center">
-                <Link href="/dashboard/products">
-                  <a className="text-secondary_ink_dark text-lg font-medium py-3 flex items-center">
+              <li className='items-center'>
+                <Link href='/dashboard/products'>
+                  <a className='text-secondary_ink_dark text-lg font-medium py-3 flex items-center'>
                     <ProductsIcon />
-                    <span className="ml-2">Products</span>
+                    <span className='ml-2'>Products</span>
                   </a>
                 </Link>
               </li>
-              <li className="items-center">
-                <Link href="/dashboard/posts">
-                  <a className="text-secondary_ink_dark text-lg font-medium py-3 flex items-center">
+              <li className='items-center'>
+                <Link href='/dashboard/posts'>
+                  <a className='text-secondary_ink_dark text-lg font-medium py-3 flex items-center'>
                     <PostsIcon />
-                    <span className="ml-2">Posts</span>
+                    <span className='ml-2'>Posts</span>
                   </a>
                 </Link>
               </li>
-              <li className="items-center">
-                <Link href="/dashboard">
-                  <a className="text-secondary_ink_dark text-lg font-medium py-3 flex items-center">
+              <li className='items-center border-b border-b-secondary_sky_base pb-2 mb-6'>
+                <Link href='/dashboard'>
+                  <a className='text-secondary_ink_dark text-lg font-medium py-3 flex items-center'>
                     <AudienceIcon />
-                    <span className="ml-2">Audience</span>
+                    <span className='ml-2'>Audience</span>
                   </a>
                 </Link>
               </li>
             </ul>
-            {/* Divider */}
-            <hr className="my-4 md:min-w-full" />
 
             {/* Navigation */}
-            <ul className="md:flex-col md:min-w-full flex flex-col list-none md:mb-4">
-              <li className="items-center">
-                <Link href="/dashboard/payout">
-                  <a className="text-secondary_ink_dark text-lg font-medium py-3 flex items-center">
+            <ul className='md:flex-col md:min-w-full flex flex-col list-none md:mb-4'>
+              <li className='items-center'>
+                <Link href='/dashboard/payout'>
+                  <a className='text-secondary_ink_dark text-lg font-medium py-3 flex items-center'>
                     <PayoutIcon />
-                    <span className="ml-2">Payout</span>
+                    <span className='ml-2'>Payout</span>
                   </a>
                 </Link>
               </li>
-              <li className="items-center">
-                <Link href="/discover">
-                  <a className="text-secondary_ink_dark text-lg font-medium py-3 flex items-center">
+              <li className='items-center'>
+                <Link href='/discover'>
+                  <a className='text-secondary_ink_dark text-lg font-medium py-3 flex items-center'>
                     <DiscoverIcon />
-                    <span className="ml-2">Discover</span>
+                    <span className='ml-2'>Discover</span>
                   </a>
                 </Link>
               </li>
-              <li className="items-center">
-                <Link href="/dashboard">
-                  <a className="text-secondary_ink_dark text-lg font-medium py-3 flex items-center">
+              <li className='items-center border-b border-b-secondary_sky_base pb-2 mb-6'>
+                <Link href='/dashboard'>
+                  <a className='text-secondary_ink_dark text-lg font-medium py-3 flex items-center'>
                     <LibraryIcon />
-                    <span className="ml-2">Library</span>
+                    <span className='ml-2'>Library</span>
                   </a>
                 </Link>
               </li>
             </ul>
-
-            {/* Divider */}
-            <hr className="my-4 md:min-w-full" />
 
             {/* Navigation */}
-            <ul className="md:flex-col md:min-w-full flex flex-col list-none md:mb-4">
-              <li className="items-center">
-                <Link href="/dashboard">
-                  <a className="text-secondary_ink_dark text-lg font-medium py-3 flex items-center">
+            <ul className='md:flex-col md:min-w-full flex flex-col list-none md:mb-4'>
+              <li className='items-center'>
+                <Link href='/dashboard'>
+                  <a className='text-secondary_ink_dark text-lg font-medium py-3 flex items-center'>
                     <ShopIcon />
-                    <span className="ml-2">Start Selling</span>
+                    <span className='ml-2'>Start Selling</span>
                   </a>
                 </Link>
               </li>
-              <li className="items-center">
-                <Link href="/dashboard">
-                  <a className="text-secondary_ink_dark text-lg font-medium py-3 flex items-center">
+              <li className='items-center'>
+                <Link href='/dashboard'>
+                  <a className='text-secondary_ink_dark text-lg font-medium py-3 flex items-center'>
                     <MessageIcon />
-                    <span className="ml-2">Community</span>
+                    <span className='ml-2'>Community</span>
                   </a>
                 </Link>
               </li>
-              <li className="items-center">
-                <Link href="/dashboard">
-                  <a className="text-secondary_ink_dark text-lg font-medium py-3 flex items-center">
+              <li className='items-center'>
+                <Link href='/dashboard'>
+                  <a className='text-secondary_ink_dark text-lg font-medium py-3 flex items-center'>
                     <SupportIcon />
-                    <span className="ml-2">Help</span>
+                    <span className='ml-2'>Help</span>
                   </a>
                 </Link>
               </li>
-              <li className="items-center">
-                <Link href="/dashboard/settings">
-                  <a className="text-secondary_ink_dark text-lg font-medium py-3 flex items-center">
+              <li className='items-center border-b border-b-secondary_sky_base pb-2'>
+                <Link href='/dashboard/settings'>
+                  <a className='text-secondary_ink_dark text-lg font-medium py-3 flex items-center'>
                     <SettingsIcon />
-                    <span className="ml-2">Settings</span>
+                    <span className='ml-2'>Settings</span>
                   </a>
                 </Link>
               </li>
             </ul>
-
-            {/* Divider */}
-            <hr className="my-4 md:min-w-full" />
-
-            <div className="flex items-center">
-              <button className="flex">
-                <LogoutIcon />
-                <span className="ml-2 text-secondary_ink_dark text-lg font-medium">
-                  Logout
-                </span>
-              </button>
-            </div>
+          </div>
+          <div className='flex items-center absolute bottom-3'>
+            <button className='flex'>
+              <LogoutIcon />
+              <span className='ml-2 text-secondary_ink_dark text-lg font-medium'>
+                Logout
+              </span>
+            </button>
           </div>
         </div>
       </nav>
