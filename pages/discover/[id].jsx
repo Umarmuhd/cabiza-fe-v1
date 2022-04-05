@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useCallback } from "react";
 import ReviewDropdown from "@/components/Dropdowns/ReviewDropdown";
 import { useForm } from "react-hook-form";
 import Link from "next/link";
@@ -44,23 +44,23 @@ export default function DiscoverSingle() {
   const router = useRouter();
   const product_id = router.query.id;
 
-  useEffect(() => {
-    const fetchProduct = async () => {
-      try {
-        setLoading(true);
-        const url = `${API_URL}/products/product/${product_id}`;
+  const fetchProduct = useCallback(async () => {
+    try {
+      setLoading(true);
+      const url = `${API_URL}/products/product/${product_id}`;
 
-        const response = await axios.get(url);
-        setProduct(response.data.data.product);
-        setLoading(false);
-      } catch (error) {
-        console.log(error);
-        setLoading(false);
-      }
-    };
-
-    fetchProduct();
+      const response = await axios.get(url);
+      setProduct(response.data.data.product);
+      setLoading(false);
+    } catch (error) {
+      console.log(error);
+      setLoading(false);
+    }
   }, [product_id]);
+
+  useEffect(() => {
+    fetchProduct();
+  }, [product_id, fetchProduct]);
 
   const [showCheckout, setShowCheckout] = useState(false);
   const [ordering, setOrdering] = useState(false);
@@ -153,7 +153,11 @@ export default function DiscoverSingle() {
               >
                 {product && (
                   <div>
-                    <img src={product.image} alt="..." className="w-full" />
+                    <img
+                      src={product.image ?? "/images/book.png"}
+                      alt="..."
+                      className="w-full"
+                    />
                     <div className="md:p-10 p-6 shadow rounded-b-2xl">
                       <div className="flex flex-col justify-between md:flex-row">
                         <div className="md:w-1/2 w-full">
