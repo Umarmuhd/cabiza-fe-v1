@@ -3,6 +3,7 @@ import axios from "axios";
 
 import Dashboard from "@/layouts/Dashboard";
 import { API_URL } from "@/config/index";
+import TopNav from '@/components/Navbars/DashboardNav/TopNav';
 
 const CogIcon = () => (
   <svg
@@ -45,72 +46,76 @@ export default function Payout() {
 
   return (
     <div>
-      <div className="bg-grey_95 border-b border-grey_60 py-6 md:px-0 px-4">
-        <div className="flex justify-between items-center md:w-4/5 mx-auto">
-          <p className="">
-            <span>Overview</span>
-            <a className="text-lg font-bold text-primary underline ml-2">
-              Learn More
-            </a>
-          </p>
-
-          <button className="py-2 px-2 bg-primary flex items-center text-lg font-semibold text-white rounded-lg ">
-            <span className="mr-2.5">Payout Settings</span>
-            <CogIcon />
-          </button>
-        </div>
-      </div>
-
-      <main className="md:w-4/5 mx-auto md:py-20 md:px-0 px-4">
-        <div
-          className="grid-cols-4
-                space-y-2
-                lg:space-y-0 lg:grid lg:gap-6 lg:grid-rows-1 mb-8"
-        >
-          <div className="rounded-2xl border border-grey_40 p-6">
-            <span className="inline-block text-grey_40 text-4xl leading-9 font-semibold text-left">
-              $0
-            </span>
-            <p className="text-lg font-semibold text-grey_40 flex items-center mt-12">
-              <span className="mr-1">BALANCE</span>
-            </p>
-          </div>
-          <div className="rounded-2xl border border-grey_40 p-6">
-            <span className="inline-block text-grey_40 text-4xl leading-9 font-semibold text-left">
-              {loading ? "--" : `$${balance && balance.earnings}`}
-            </span>
-            <p className="text-lg font-semibold text-grey_40 flex items-center mt-12">
-              <span className="mr-1">PAST 7 DAYS</span>
-            </p>
-          </div>
-          <div className="rounded-2xl border border-grey_40 p-6">
-            <span className="inline-block text-grey_40 text-4xl leading-9 font-semibold text-left">
-              {loading ? "--" : `$${balance && balance.earnings}`}
-            </span>
-            <p className="text-lg font-semibold text-grey_40 flex items-center mt-12">
-              <span className="mr-1">PAST 30 DAYS</span>
-            </p>
-          </div>
-          <div className="rounded-2xl border border-grey_40 p-6">
-            <span className="inline-block text-grey_40 text-4xl leading-9 font-semibold text-left">
-              {loading ? "--" : `$${balance && balance.earnings}`}
-            </span>
-            <p className="text-lg font-semibold text-grey_40 flex items-center mt-12">
-              <span className="mr-1">TOTAL EARNINGS</span>
-            </p>
-          </div>
-        </div>
-
-        <div className="mt-8 bg-grey_98 text-center rounded-2xl py-14 border border-grey_60">
-          <h2 className="text-lg text-grey_40 font-semibold mb-2">
-            We can't pay you yet.
-          </h2>
-          <p className="text-grey_40">
-            Reach a balance of at least $10 to be paid out for your sales.
-          </p>
-        </div>
-      </main>
+      <TopNav title="Payout"/>
+      The Payout page
     </div>
+    // <div>
+    //   <div className="bg-grey_95 border-b border-grey_60 py-6 md:px-0 px-4">
+    //     <div className="flex justify-between items-center md:w-4/5 mx-auto">
+    //       <p className="">
+    //         <span>Overview</span>
+    //         <a className="text-lg font-bold text-primary underline ml-2">
+    //           Learn More
+    //         </a>
+    //       </p>
+
+    //       <button className="py-2 px-2 bg-primary flex items-center text-lg font-semibold text-white rounded-lg ">
+    //         <span className="mr-2.5">Payout Settings</span>
+    //         <CogIcon />
+    //       </button>
+    //     </div>
+    //   </div>
+
+    //   <main className="md:w-4/5 mx-auto md:py-20 md:px-0 px-4">
+    //     <div
+    //       className="grid-cols-4
+    //             space-y-2
+    //             lg:space-y-0 lg:grid lg:gap-6 lg:grid-rows-1 mb-8"
+    //     >
+    //       <div className="rounded-2xl border border-grey_40 p-6">
+    //         <span className="inline-block text-grey_40 text-4xl leading-9 font-semibold text-left">
+    //           $0
+    //         </span>
+    //         <p className="text-lg font-semibold text-grey_40 flex items-center mt-12">
+    //           <span className="mr-1">BALANCE</span>
+    //         </p>
+    //       </div>
+    //       <div className="rounded-2xl border border-grey_40 p-6">
+    //         <span className="inline-block text-grey_40 text-4xl leading-9 font-semibold text-left">
+    //           {loading ? "--" : `$${balance && balance.earnings}`}
+    //         </span>
+    //         <p className="text-lg font-semibold text-grey_40 flex items-center mt-12">
+    //           <span className="mr-1">PAST 7 DAYS</span>
+    //         </p>
+    //       </div>
+    //       <div className="rounded-2xl border border-grey_40 p-6">
+    //         <span className="inline-block text-grey_40 text-4xl leading-9 font-semibold text-left">
+    //           {loading ? "--" : `$${balance && balance.earnings}`}
+    //         </span>
+    //         <p className="text-lg font-semibold text-grey_40 flex items-center mt-12">
+    //           <span className="mr-1">PAST 30 DAYS</span>
+    //         </p>
+    //       </div>
+    //       <div className="rounded-2xl border border-grey_40 p-6">
+    //         <span className="inline-block text-grey_40 text-4xl leading-9 font-semibold text-left">
+    //           {loading ? "--" : `$${balance && balance.earnings}`}
+    //         </span>
+    //         <p className="text-lg font-semibold text-grey_40 flex items-center mt-12">
+    //           <span className="mr-1">TOTAL EARNINGS</span>
+    //         </p>
+    //       </div>
+    //     </div>
+
+    //     <div className="mt-8 bg-grey_98 text-center rounded-2xl py-14 border border-grey_60">
+    //       <h2 className="text-lg text-grey_40 font-semibold mb-2">
+    //         We can't pay you yet.
+    //       </h2>
+    //       <p className="text-grey_40">
+    //         Reach a balance of at least $10 to be paid out for your sales.
+    //       </p>
+    //     </div>
+    //   </main>
+    // </div>
   );
 }
 
