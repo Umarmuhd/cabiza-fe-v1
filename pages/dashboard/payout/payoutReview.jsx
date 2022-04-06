@@ -27,7 +27,7 @@ const Payoutreview = () => {
           </button>
         </header>
 
-        <main className='max-w-[1300px] mx-auto mt-20 bg-white rounded-xl px-12 py-10'>
+        <main className='max-w-[1100px] mx-auto mt-20 bg-white rounded-xl px-12 py-10'>
           <div className='flex items-center px-6 py-6 justify-between'>
             <div className='w-[12rem]'>
               <div className='bg-primary_brand_dark px-5 py-3 text-white rounded-t-xl relative'>

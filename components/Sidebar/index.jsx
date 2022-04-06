@@ -558,7 +558,7 @@ const Sidebar = ({ user }) => {
               </li>
             </ul>
           </div>
-          <div className='flex items-center absolute bottom-3'>
+          <div className='flex items-center relative bottom-[3px]'>
             <button className='flex'>
               <LogoutIcon />
               <span className='ml-2 text-secondary_ink_dark text-lg font-medium'>
