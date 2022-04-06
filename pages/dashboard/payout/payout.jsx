@@ -157,7 +157,7 @@ const Payments = () => {
           </div>
         </header>
 
-        <main className='max-w-[1300px] mx-auto mt-20 bg-white rounded-xl px-12 py-10'>
+        <main className='max-w-[1100px] mx-auto mt-20 bg-white rounded-xl px-12 py-10'>
           {payout.previous ? (
             <div className='mb-10'>
               <h3 className='font-medium text-grey_20 text-lg'>Select Date</h3>
