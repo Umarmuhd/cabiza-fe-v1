@@ -84,14 +84,30 @@ const CalendarIcon = () => (
 
 const Payments = () => {
 
+    const [payout, setPayout] = useState({previous: true, next : false});
+
     return (
       <>
         <header className='bg-secondary_sky_lightest px-20 py-4 h-20'>
           <div className='float-left flex mt-1 bg-secondary_ink_light pl-1'>
-            <button className='bg-white text-secondary_ink_darkest py-2 px-4'>
+            <button
+              className={`${
+                payout.previous
+                  ? 'bg-white text-secondary_ink_darkest'
+                  : 'bg-secondary_ink_light text-secondary_brand_light'
+              }  py-2 px-4 `}
+              onClick={() => setPayout({ previous: true, next: false })}
+            >
               Previous payouts
             </button>
-            <button className='text-secondary_brand_light bg-secondary_ink_light py-2 px-4'>
+            <button
+              className={`${
+                payout.next
+                  ? 'bg-white text-secondary_ink_darkest'
+                  : 'bg-secondary_ink_light text-secondary_brand_light'
+              }  py-2 px-4 `}
+              onClick={() => setPayout({ previous: false, next: true })}
+            >
               Next payout
             </button>
           </div>
@@ -142,33 +158,37 @@ const Payments = () => {
         </header>
 
         <main className='max-w-[1300px] mx-auto mt-20 bg-white rounded-xl px-12 py-10'>
-          <h3 className='font-medium text-grey_20 text-lg'>Select Date</h3>
-          <div className='input flex items-center mt-3'>
-            <input
-              type='date'
-              name='date'
-              id='date'
-              className='w-[95%] p-2 px-4 border border-secondary_sky_light rounded-xl appearance-none mr-8'
-              defaultValue='2002-09-03'
-              datepicker
-              datepicker-autohide
-            />
+          {payout.previous ? (
+            <div className='mb-10'>
+              <h3 className='font-medium text-grey_20 text-lg'>Select Date</h3>
+              <div className='input flex items-center mt-3'>
+                <input
+                  type='date'
+                  name='date'
+                  id='date'
+                  className='w-[95%] p-2 px-4 border border-secondary_sky_light rounded-xl appearance-none mr-8'
+                  defaultValue='2002-09-03'
+                  datepicker
+                  datepicker-autohide
+                />
 
-            {/* <input datepicker datepicker-autohide type="text" class="bg-gray-50 border border-gray-300 text-gray-900 sm:text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full pl-10 p-2.5  dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" placeholder="Select date"></input> */}
+                {/* <input datepicker datepicker-autohide type="text" class="bg-gray-50 border border-gray-300 text-gray-900 sm:text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full pl-10 p-2.5  dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" placeholder="Select date"></input> */}
 
-            <button className='bg-primary p-1 rounded-lg'>
-              <label htmlFor='date'>
-                <CalendarIcon datepicker datepicker-autohide />
-              </label>
-            </button>
-          </div>
+                <button className='bg-primary p-1 rounded-lg'>
+                  <label htmlFor='date'>
+                    <CalendarIcon datepicker datepicker-autohide />
+                  </label>
+                </button>
+              </div>
+            </div>
+          ) : null}
 
           <div>
-            <div className='bg-primary_brand_darkest text-white rounded-t-xl flex justify-between relative mt-10 px-10 py-5 items-center'>
+            <div className='bg-primary_brand_darkest text-white rounded-t-xl flex justify-between relative px-10 py-5 items-center'>
               <div className='flex items-center'>
                 <svg
                   width='24'
-                  height='24'
+                  height='20'
                   viewBox='0 0 24 24'
                   fill='none'
                   xmlns='http://www.w3.org/2000/svg'
@@ -243,7 +263,7 @@ const Payments = () => {
                     stroke-linejoin='round'
                   />
                 </svg>
-                <p className='ml-5'>Previous Payout: March 9th, 2022.</p>
+                <p className='ml-3'>Previous Payout: March 9th, 2022.</p>
               </div>
               <p>Activities from 1st January, 2022 to March 9th, 2022. </p>
               <svg
@@ -279,28 +299,28 @@ const Payments = () => {
               </svg>
             </div>
 
-            <div className='border border-secondary_sky_base border-t-0 px-10 py-4 rounded-b-xl'>
-              <div className='flex items-center justify-between py-3 text-secondary'>
+            <div className='border border-secondary_sky_base border-t-0 pt-2 pb-4 rounded-b-xl'>
+              <div className='flex items-center justify-between py-3 text-secondary px-10 mb-1'>
                 <p className='font-normal'>Sales</p>
                 <p className=' font-bold'>$41,567.66</p>
               </div>
 
-              <div className='flex items-center justify-between py-3 text-secondary'>
+              <div className='flex items-center justify-between py-3 text-secondary bg-sky_light px-10 mb-1'>
                 <p className='font-normal'>Fees</p>
                 <p className=' font-bold'>-$567.66</p>
               </div>
 
-              <div className='flex items-center justify-between py-3 text-secondary'>
+              <div className='flex items-center justify-between py-3 text-secondary px-10 mb-1'>
                 <p className='font-normal'>Affiliate commission paid</p>
                 <p className=' font-bold'>-$1,567.66</p>
               </div>
 
-              <div className='flex items-center justify-between py-3 text-secondary'>
+              <div className='flex items-center justify-between py-3 text-secondary bg-sky_light px-10 mb-1'>
                 <p className='font-normal'>Paypal Payout (?)</p>
                 <p className=' font-bold'>$4567.66</p>
               </div>
 
-              <div className='flex items-center justify-between py-3 text-secondary'>
+              <div className='flex items-center justify-between pt-3 text-secondary px-10 mb-1'>
                 <p className='font-normal'>To be sent to Paypal account:</p>
                 <p className=' font-bold'>$8,567.66</p>
               </div>
