@@ -37,7 +37,7 @@ module.exports = {
         //New colors
         lighter: "#BFB6F6",
         secondary_sky_dark: "#979C9E",
-        secondary_sky_light: "#E3E5E5",
+        secondary_sky_light: "#E3E5E6",
         primary_brand_lightest: "#EFEDFD",
         primary_brand_light: "#8E7FF0",
         primary_brand_lighter: "#BFB6F6",
