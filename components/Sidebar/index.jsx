@@ -459,7 +459,7 @@ const Sidebar = ({ user }) => {
               </div>
             </div>
             {/* Navigation */}
-            <ul className='md:flex-col md:min-w-full flex flex-col list-none mt-5'>
+            <ul className='md:flex-col md:min-w-full flex flex-col list-none'>
               <li className='items-center'>
                 <Link href='/dashboard'>
                   <a className='text-secondary_ink_dark text-lg font-medium py-3 flex items-center'>
