@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import { Tab } from "@headlessui/react";
 
 import Dashboard from "@/layouts/Dashboard";
@@ -8,74 +8,76 @@ import Payout from "@/components/Settings/Payout";
 import Password from "@/components/Settings/Password";
 import Setting from "@/components/Settings/Setting";
 import Payment from "@/components/Settings/Payment";
+import TopNav from '@/components/Navbars/DashboardNav/TopNav';
 
-export default function Settings() {
+export default function Settings() {  
   return (
     <div>
+      <TopNav title='Settings' />
       <Tab.Group>
-        <div className="bg-grey_95 border-b border-grey_60 py-6 md:px-0 px-4">
-          <div className="flex justify-start items-center md:w-4/5 mx-auto">
-            <Tab.List as={"div"} className="flex items-center">
+        <div className='bg-secondary_sky_lightest h-22 shadow-md pt-8 md:px-0 px-20'>
+          <div className='flex justify-start items-center w-[max-content] mr-auto ml-20 pl-7 pb-2'>
+            <Tab.List as={'div'} className='flex items-center'>
               <Tab
-                as={"button"}
+                as={'button'}
                 className={({ selected }) =>
                   classNames(
-                    "text-lg mr-10",
+                    'text-lg mr-10 pb-5',
                     selected
-                      ? " font-bold text-cabiza_blue"
-                      : " font-medium text-cabiza_grey"
+                      ? ' font-bold text-primary border-b border-b-primary'
+                      : ' font-medium text-secondary'
                   )
                 }
               >
                 Settings
               </Tab>
               <Tab
-                as={"button"}
+                as={'button'}
                 className={({ selected }) =>
                   classNames(
-                    "text-lg mr-10",
+                    'text-lg mr-10 pb-5',
                     selected
-                      ? " font-bold text-cabiza_blue"
-                      : " font-medium text-cabiza_grey"
+                      ? ' font-bold text-primary border-b border-b-primary'
+                      : ' font-medium text-secondary'
                   )
                 }
               >
                 Payout
               </Tab>
               <Tab
-                as={"button"}
+                as={'button'}
                 className={({ selected }) =>
                   classNames(
-                    "text-lg mr-10",
+                    'text-lg mr-10 pb-5',
                     selected
-                      ? " font-bold text-cabiza_blue"
-                      : " font-medium text-cabiza_grey"
+                      ? ' font-bold text-primary border-b border-b-primary'
+                      : ' font-medium text-secondary'
                   )
                 }
               >
                 Payment
               </Tab>
               <Tab
-                as={"button"}
+                as={'button'}
                 className={({ selected }) =>
                   classNames(
-                    "text-lg mr-10",
+                    'text-lg mr-10 pb-5',
                     selected
-                      ? " font-bold text-cabiza_blue"
-                      : " font-medium text-cabiza_grey"
+                      ? ' font-bold text-primary border-b border-b-primary'
+                      : ' font-medium text-secondary'
                   )
                 }
               >
                 Password
               </Tab>
               <Tab
-                as={"button"}
+                as={'button'}
                 className={({ selected }) =>
                   classNames(
-                    "text-lg mr-0",
+                    'text-lg mr-10 pb-5',
                     selected
-                      ? " font-bold text-cabiza_blue"
-                      : " font-medium text-cabiza_grey"
+                      ? ' font-bold text-primary border-b border-b-primary'
+                      : ' font-medium text-secondary'
                   )
                 }
               >
@@ -86,7 +88,7 @@ export default function Settings() {
         </div>
 
         <Tab.Panels>
-          <Tab.Panel>
+          <Tab.Panel>            
             <Setting />
           </Tab.Panel>
           <Tab.Panel>

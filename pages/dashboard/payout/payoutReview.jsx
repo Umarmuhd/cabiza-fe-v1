@@ -4,7 +4,7 @@ import React from 'react';
 const Payoutreview = () => {
     return (
       <>
-        <header className='bg-secondary_sky_lightest px-20 py-4 h-20'>
+        <header className='bg-secondary_sky_lightest px-20 py-4 h-20 shadow-md'>
           <button className='bg-primary text-white flex items-center py-2 px-4 rounded-full float-right mr-6'>
             <svg
               width='16'
