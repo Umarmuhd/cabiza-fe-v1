@@ -26,7 +26,7 @@ export default function TopNav({title}) {
                 <rect x='4' y='17' width='16' height='2' />
               </svg>
             </button>
-            <span className='hidden md:flex font-medium text-3xl text-secondary_ink_dark border-r border-r-secondary_sky_base h-[100%] items-center pr-5'>
+            <span className='hidden md:flex font-medium text-2xl text-secondary_ink_dark border-r border-r-secondary_sky_base h-[100%] items-center pr-5'>
               {title}
             </span>
 
