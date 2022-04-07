@@ -1,79 +1,203 @@
-import React from "react";
-import { useForm } from "react-hook-form";
+import React, { useContext, useState } from 'react';
+import { useForm } from 'react-hook-form';
+import Card from '@/components/Cards/Card';
+import Toggle from '@/components/Toggle/Toggle';
 
-const InfoIcon = () => (
-  <svg
-    width="24"
-    height="24"
-    viewBox="0 0 24 24"
-    fill="none"
-    xmlns="http://www.w3.org/2000/svg"
-  >
-    <path
-      d="M12 22.75C6.07 22.75 1.25 17.93 1.25 12C1.25 6.07 6.07 1.25 12 1.25C17.93 1.25 22.75 6.07 22.75 12C22.75 17.93 17.93 22.75 12 22.75ZM12 2.75C6.9 2.75 2.75 6.9 2.75 12C2.75 17.1 6.9 21.25 12 21.25C17.1 21.25 21.25 17.1 21.25 12C21.25 6.9 17.1 2.75 12 2.75Z"
-      fill="#24BAD4"
-    />
-    <path
-      d="M12 13.75C11.59 13.75 11.25 13.41 11.25 13V8C11.25 7.59 11.59 7.25 12 7.25C12.41 7.25 12.75 7.59 12.75 8V13C12.75 13.41 12.41 13.75 12 13.75Z"
-      fill="#24BAD4"
-    />
-    <path
-      d="M12 16.9999C11.87 16.9999 11.74 16.9699 11.62 16.9199C11.5 16.8699 11.39 16.7999 11.29 16.7099C11.2 16.6099 11.13 16.5099 11.08 16.3799C11.03 16.2599 11 16.1299 11 15.9999C11 15.8699 11.03 15.7399 11.08 15.6199C11.13 15.4999 11.2 15.3899 11.29 15.2899C11.39 15.1999 11.5 15.1299 11.62 15.0799C11.86 14.9799 12.14 14.9799 12.38 15.0799C12.5 15.1299 12.61 15.1999 12.71 15.2899C12.8 15.3899 12.87 15.4999 12.92 15.6199C12.97 15.7399 13 15.8699 13 15.9999C13 16.1299 12.97 16.2599 12.92 16.3799C12.87 16.5099 12.8 16.6099 12.71 16.7099C12.61 16.7999 12.5 16.8699 12.38 16.9199C12.26 16.9699 12.13 16.9999 12 16.9999Z"
-      fill="#24BAD4"
-    />
-  </svg>
-);
+import AuthContext from '@/context/AuthContext';
 
-export default function Payout() {
+export default function Setting() {
   const {
     register,
     handleSubmit,
     formState: { errors },
   } = useForm();
 
+  const { user } = useContext(AuthContext);
+
+  const [productPricingSettings, setProductPricingSettings] = useState(false);
+
+  const handleTogglePricingSettings = () => {
+    setProductPricingSettings((prev) => !prev);
+  };
+
+  const AccountTypeIcon = () => (
+    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+      <path d="M0 12C0 5.37258 5.37258 0 12 0C18.6274 0 24 5.37258 24 12C24 18.6274 18.6274 24 12 24C5.37258 24 0 18.6274 0 12Z" fill="white"/>
+      <path d="M12 23C5.92487 23 1 18.0751 1 12H-1C-1 19.1797 4.8203 25 12 25V23ZM23 12C23 18.0751 18.0751 23 12 23V25C19.1797 25 25 19.1797 25 12H23ZM12 1C18.0751 1 23 5.92487 23 12H25C25 4.8203 19.1797 -1 12 -1V1ZM12 -1C4.8203 -1 -1 4.8203 -1 12H1C1 5.92487 5.92487 1 12 1V-1Z" fill="#CDCFD0"/>
+    </svg>
+  )
+
+  const AccountTypeActiveIcon = () => (
+    <svg width="25" height="24" viewBox="0 0 25 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+      <path d="M0.5 12C0.5 5.37258 5.87258 0 12.5 0V0C19.1274 0 24.5 5.37258 24.5 12V12C24.5 18.6274 19.1274 24 12.5 24V24C5.87258 24 0.5 18.6274 0.5 12V12Z" fill="#5B44E9"/>
+      <circle cx="12.5" cy="12" r="4" fill="white"/>
+      <path d="M12.5 23C6.42487 23 1.5 18.0751 1.5 12H-0.5C-0.5 19.1797 5.3203 25 12.5 25V23ZM23.5 12C23.5 18.0751 18.5751 23 12.5 23V25C19.6797 25 25.5 19.1797 25.5 12H23.5ZM12.5 1C18.5751 1 23.5 5.92487 23.5 12H25.5C25.5 4.8203 19.6797 -1 12.5 -1V1ZM12.5 -1C5.3203 -1 -0.5 4.8203 -0.5 12H1.5C1.5 5.92487 6.42487 1 12.5 1V-1Z" fill="#5B44E9"/>
+    </svg>
+  )   
+  
+  const WarningIcon = () => (
+    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+      <path d="M13.0445 17.0816L13.064 17.064L13.0816 17.0445C13.198 16.9152 13.3063 16.7657 13.3842 16.566C13.454 16.3964 13.5 16.2033 13.5 16C13.5 15.7941 13.4528 15.5988 13.3815 15.4277C13.3091 15.2538 13.2081 15.096 13.0816 14.9555L13.064 14.936L13.0445 14.9184C12.904 14.7919 12.7462 14.6909 12.5723 14.6185C12.2092 14.4672 11.7908 14.4672 11.4277 14.6185C11.2538 14.6909 11.096 14.7919 10.9555 14.9184L10.936 14.936L10.9184 14.9555C10.7919 15.096 10.6909 15.2538 10.6185 15.4277C10.5472 15.5988 10.5 15.7941 10.5 16C10.5 16.2033 10.546 16.3964 10.6158 16.566C10.6937 16.7657 10.802 16.9152 10.9184 17.0445L10.936 17.064L10.9555 17.0816C11.096 17.2081 11.2538 17.3091 11.4277 17.3815C11.5988 17.4528 11.7941 17.5 12 17.5C12.2059 17.5 12.4012 17.4528 12.5723 17.3815C12.7462 17.3091 12.904 17.2081 13.0445 17.0816ZM2.5 12C2.5 6.76614 6.76614 2.5 12 2.5C17.2339 2.5 21.5 6.76614 21.5 12C21.5 17.2339 17.2339 21.5 12 21.5C6.76614 21.5 2.5 17.2339 2.5 12ZM12 6.75C11.3139 6.75 10.75 7.31386 10.75 8V13C10.75 13.6861 11.3139 14.25 12 14.25C12.6861 14.25 13.25 13.6861 13.25 13V8C13.25 7.31386 12.6861 6.75 12 6.75Z" fill="#979C9E" stroke="#979C9E"/>
+    </svg>
+  )
+
   return (
-    <main className="h-full w-full relative">
-      <form className="w-4/5 mx-auto md:py-10">
-        <div className="mt-8">
-          <div className="mb-6 relative">
-            <label
-              className="block text-grey_40 text-lg font-semibold mb-3"
-              htmlFor="paypal"
-            >
-              Payout PayPal address
-            </label>
-            <input
-              type="text"
-              className="border border-grey_80 px-4 py-3 placeholder-grey_80 text-grey_40 bg-white shadow-sm focus:outline-none focus:ring w-full rounded-lg"
-              style={{ transition: "all 0.15s ease 0s" }}
-              id="paypal"
-              placeholder="Paypal address"
-              {...register("paypal", { required: true })}
-              // defaultValue={user?.username}
-            />
-          </div>
-          <div className="border border-grey_80 px-4 py-3 bg-white shadow-sm focus:outline-none focus:ring w-full rounded-lg">
-            <div className="flex items-center justify-between">
-              <span className="text-grey_40">
-                We encrypt all sensitive info using public key encryption
-                (2048-bit RSA)
+    <form>
+      <Card title='Get Paid'>
+        <p className='mt-2 mb-6 w-[70%] text-secondary_ink_lighter'>
+          Just like a real paycheck, your account balance is deposited to your
+          bank account. Turn things on by filling out the fields below.
+        </p>
+        <div>
+          <div className='flex flex-col mb-8'>
+            <h5 className='text-secondary_ink_darkest'>
+              <span className='float-left'>Account Type</span>
+              <span className='float-right text-primary_brand_light'>
+                What type of account should I choose?{' '}
               </span>
-              <span className="cursor-pointer">
-                <InfoIcon />
-              </span>
+            </h5>
+
+            <div className='flex w-[100%]'>
+              <button className='border border-sky_light mt-3 h-10 rounded text-secondary_ink_lighter bg-white px-4 w-[50%] mr-2 text-left flex justify-between items-center'>
+                {' '}
+                Individual <AccountTypeActiveIcon />
+              </button>
+              <button className='border border-sky_light mt-3 h-10 rounded text-secondary_ink_lighter bg-sky_light px-4 w-[50%] text-left flex justify-between items-center'>
+                {' '}
+                Business <AccountTypeIcon />
+              </button>
             </div>
+          </div>
+
+          <div className='flex flex-col'>
+            <h5 className='text-secondary_ink_darkest font-normal flex justify-between'>
+              <span className='text-lg'>Your Personal Information</span>
+              <span className='text-primary_brand_light text-sm self-end'>
+                Why does Cabiza need this information?{' '}
+              </span>
+            </h5>
+
+            <div className='flex w-[100%]'>
+              <input
+                id='fname'
+                name='fname'
+                className='border border-sky_light mt-3 h-10 rounded text-secondary_ink_lighter bg-white px-4 w-[50%] mr-2 text-left flex justify-between items-center shadow'
+                placeholder='First Name'
+              />
+              <input
+                id='lname'
+                name='lname'
+                className='border border-sky_light mt-3 h-10 rounded text-secondary_ink_lighter bg-white px-4 w-[50%] mr-2 text-left flex justify-between items-center shadow'
+                placeholder='Last Name'
+              />
+            </div>
+
+            <div className='flex w-[100%]'>
+              <input
+                id='address'
+                name='address'
+                className='border border-sky_light h-10 rounded text-secondary_ink_lighter bg-white px-4 w-[100%] mr-2 text-left flex justify-between items-center'
+                placeholder='Street Address'
+              />
+            </div>
+
+            <div className='flex w-[100%]'>
+              <input
+                id='City'
+                name='City'
+                className='border border-sky_light h-10 rounded text-secondary_ink_lighter bg-white px-4 w-[50%] mr-2 text-left flex justify-between items-center'
+                placeholder='City'
+              />
+              <input
+                id='postal-code'
+                name='postal-code'
+                className='border border-sky_light h-10 rounded text-secondary_ink_lighter bg-white px-4 w-[50%] mr-2 text-left flex justify-between items-center'
+                placeholder='Postal Code'
+              />
+            </div>
+
+            <div className='flex w-[100%]'>
+              <input
+                id='country'
+                name='country'
+                className='border border-sky_light h-10 rounded text-secondary_ink_lighter bg-white px-4 w-[100%] mr-2 text-left flex justify-between items-center shadow'
+                placeholder='Nigeria'
+              />
+            </div>
+          </div>
+
+          <div className='flex flex-col mt-8'>
+            <h5 className='text-secondary_ink_darkest font-normal flex justify-between mb-3'>
+              <span className='text-lg'>Identity Verification</span>
+              <span className='text-primary_brand_light text-sm self-end'>
+                Why does Cabiza need this information?{' '}
+              </span>
+            </h5>
+
+            <div className='w-[100%] border border-sky_light rounded-xl p-5 shadow'>
+              <h5 className='font-normal flex justify-between text-secondary_sky_dark'>
+                Date of Birth
+              </h5>
+
+              <div className='flex'>
+                <input
+                  id='Day'
+                  name='Day'
+                  type='number'
+                  className='border border-sky_light mt-3 h-10 rounded  bg-white text-secondary_ink_darkest px-4 w-[50%] mr-2 text-left flex justify-between items-center'
+                  placeholder='Day'
+                />
+                <input
+                  id='Month'
+                  name='Month'
+                  type='number'
+                  className='border border-sky_light mt-3 h-10 rounded text-secondary_ink_darkest bg-white px-4 w-[50%] mr-2 text-left flex justify-between items-center'
+                  placeholder='Month'
+                />
+                <input
+                  id='lname'
+                  name='lname'
+                  type='number'
+                  className='border border-sky_light mt-3 h-10 rounded text-secondary_ink_darkest bg-white px-4 w-[50%] mr-2 text-left flex justify-between items-center'
+                  placeholder='Year'
+                />
+              </div>
+            </div>                        
+          </div>
+
+          <div className='flex flex-col mt-8'>            
+            <div className='w-[100%]'>
+              <h5 className='text-secondary_ink_darkest font-normal mb-1'>
+                Payout PayPal address
+              </h5>
+
+              <div className='flex'>
+                <input
+                  id='Day'
+                  name='Day'
+                  type='text'
+                  className='border border-sky_light mt-3 h-10 rounded  bg-white text-secondary_ink_darkest px-4 w-[100%] mr-2 text-left flex justify-between items-center'
+                  placeholder='Paypal Email'
+                />                
+              </div>
+            </div>
+          </div>
+
+          <div className='flex bg-secondary_sky_lighter py-3 px-4 mt-8 rounded-xl justify-between'>            
+            <p className="text-secondary_ink_lighter">We encrypt all sensitive info using public key encryption (2048-bit RSA)</p>
+            <WarningIcon/>
           </div>
         </div>
 
-        <div className="mt-8">
-          <button
-            type="submit"
-            className="py-4 rounded-lg bg-primary text-white text-lg w-full"
-          >
-            Save
-          </button>
+        <div className='mt-8'>
+          <button className='bg-primary py-3 w-[100%] rounded-full text-white'>
+            Finish
+          </button>          
+            <p className='mt-5 text-center text-grey_60'>
+             By completing this form you agree that information provided is accurate. You also agree to our Terms.
+            </p>
         </div>
-      </form>
-    </main>
+      </Card>
+    </form>
   );
 }
