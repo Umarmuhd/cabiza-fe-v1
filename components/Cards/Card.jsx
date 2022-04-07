@@ -6,7 +6,7 @@ const Card = ({title, children, image}) => {
         <div className='flex items-center'>
           {image ? <img src={image} className="mr-20 h-[100%] w-[25rem] rounded-xl shadow-lg"/> : null}
           {title ? (
-            <div>
+            <div className="w-[100%]">
               <h3 className='text-2xl text-primary_brand_light font-semibold mb-5'>
                 {title}
               </h3>
