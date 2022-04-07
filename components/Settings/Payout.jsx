@@ -5,7 +5,7 @@ import Toggle from '@/components/Toggle/Toggle';
 
 import AuthContext from '@/context/AuthContext';
 
-export default function Setting() {
+export default function Payout() {
   const {
     register,
     handleSubmit,
