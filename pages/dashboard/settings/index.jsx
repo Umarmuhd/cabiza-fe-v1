@@ -9,6 +9,7 @@ import Password from "@/components/Settings/Password";
 import Setting from "@/components/Settings/Setting";
 import Payment from "@/components/Settings/Payment";
 import TopNav from '@/components/Navbars/DashboardNav/TopNav';
+import Advance from '@/components/Settings/Advance';
 
 export default function Settings() {  
   return (
@@ -88,7 +89,7 @@ export default function Settings() {
         </div>
 
         <Tab.Panels>
-          <Tab.Panel>            
+          <Tab.Panel>
             <Setting />
           </Tab.Panel>
           <Tab.Panel>
@@ -99,6 +100,9 @@ export default function Settings() {
           </Tab.Panel>
           <Tab.Panel>
             <Password />
+          </Tab.Panel>
+          <Tab.Panel>
+            <Advance />
           </Tab.Panel>
         </Tab.Panels>
       </Tab.Group>
