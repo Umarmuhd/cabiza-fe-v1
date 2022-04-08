@@ -36,7 +36,7 @@ export default function Posts() {
   return (
     <div>
       <Tab.Group>
-        <DashboardNav />
+        <DashboardNav title="Posts" />
         <div
           className="bg-secondary_sky_lightest py-6 md:px-0 px-4"
           style={{ boxShadow: "0px 4px 20px rgba(0, 0, 0, 0.04)" }}
@@ -86,7 +86,7 @@ export default function Posts() {
                   </span>
                 </div>
               </div>
-              <Link href="/dashboard/posts/new">
+              <Link href="/dashboard/posts/create">
                 <a className="py-2 px-4 bg-primary flex items-center font-medium text-white rounded-[48px]">
                   <PlusIcon /> <span className="ml-2">New Post </span>
                 </a>

@@ -129,12 +129,14 @@ const PostItem = ({ post, deletePost }) => {
           </div>
           <ul className="flex items-center">
             <li className="pl-3">
-              <button className="leading-4 text-base font-medium text-primary py-2 px-3 rounded-4xl border border-primary">
-                Edit
-              </button>
+              <Link href={"/dashboard/posts/" + post._id}>
+                <a className="leading-4 text-base font-medium text-primary py-2 px-3 rounded-4xl border border-primary">
+                  Edit
+                </a>
+              </Link>
             </li>
             <li className="pl-3">
-              <Link href={`/${post.user}/posts/${post._id}`}>
+              <Link href={`/${post.user?.username}/posts/${post._id}`}>
                 <a className="leading-4 text-base font-medium text-primary py-2 px-3 rounded-4xl border border-primary">
                   View
                 </a>

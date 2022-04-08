@@ -7,39 +7,48 @@ import { API_URL } from "@/config/index";
 import { user_profile } from "@/atoms/user_profile";
 
 import Username from "@/layouts/Username";
+import Image from "next/image";
 
-const ProductItem = (product) => (
-  <div className="shadow">
-    <img src="/images/book-small.png" alt="..." />
-    <div className="p-5 rounded-b">
-      <p className="text-lg text-grey_80 font-medium mb-3">Books</p>
-      <Link href="/discover/123">
-        <a className="text-2xl text-dark_ font-bold mb-8 cursor-pointer">
-          {product.product.name}
-        </a>
-      </Link>
-      <div className="flex items-center">
-        <span className="text-lg text-grey_60 font-medium mr-2">By:</span>
-        <img src="/images/author.png" alt="..." className="h-10 w-10" />
-        <p className="text-lg font-medium ml-2 underline text-grey_60">
-          {product.product.user.fullName}
-        </p>
-      </div>
-      <div className="mt-8 flex items-center justify-between">
-        <div className="flex items-center">
-          <img src="/images/icons/star.svg" alt="..." className="w-6 h-6" />
-          <span className="ml-2 text-lg font-semibold text-grey_40">5.0</span>
-          <div className="px-1 rounded border border-grey_80 ml-3 bg-grey_95">
-            <span className="text-sm font-medium text-grey_60">34567</span>
-          </div>
+const ProductItem = ({ product }) => {
+  console.log(product);
+  return (
+    <div className="shadow">
+      <img src="/images/book-small.png" alt="..." />
+      <div className="p-5 rounded-b">
+        <p className="text-lg text-secondary_sky_dark mb-2">Books</p>
+        <Link href={"/discover/" + product.product_id}>
+          <a className="text-xl text-secondary font-medium cursor-pointer block">
+            {product.name}
+          </a>
+        </Link>
+        <div className="flex items-center mt-4">
+          <Image
+            src="/images/author.png"
+            alt="..."
+            className="h-10 w-10"
+            width={40}
+            height={40}
+          />
+          <p className="text-lg font-medium ml-2 underline text-grey_60">
+            {product.user.fullName}
+          </p>
         </div>
-        <span className="text-sm font-medium py-3 px-2.5 text-grey_98 bg-secondary rounded">
-          ${product.product.price}+
-        </span>
+        <div className="mt-8 flex items-center justify-between">
+          <div className="flex items-center">
+            <img src="/images/icons/star.svg" alt="..." className="w-6 h-6" />
+            <span className="ml-2 text-lg font-semibold text-grey_40">5.0</span>
+            <div className="px-1 rounded border border-grey_80 ml-3 bg-grey_95">
+              <span className="text-sm font-medium text-grey_60">34567</span>
+            </div>
+          </div>
+          <span className="text-sm font-medium py-3 px-2.5 text-grey_98 bg-secondary rounded">
+            ${product.price}+
+          </span>
+        </div>
       </div>
     </div>
-  </div>
-);
+  );
+};
 
 export default function Products() {
   const { user } = useRecoilValue(user_profile);

@@ -11,6 +11,7 @@ import Link from "next/link";
 import { API_URL } from "@/config/index";
 import AuthContext from "@/context/AuthContext";
 import axios from "axios";
+import DashboardNav from "@/components/Navbars/DashboardNav";
 
 const PlusIcon = () => (
   <svg
@@ -70,6 +71,7 @@ const Products = ({}) => {
 
   return (
     <div>
+      <DashboardNav title="Products" />
       <Tab.Group>
         <div className="bg-grey_95 md:py-10">
           <div className="w-4/5 mx-auto">

@@ -1,5 +1,4 @@
 import React, { useState, useContext } from "react";
-import { RadioGroup } from "@headlessui/react";
 import { useForm } from "react-hook-form";
 import { useRouter } from "next/router";
 import axios from "axios";
@@ -12,13 +11,17 @@ import Dashboard from "@/layouts/Dashboard";
 import { API_URL } from "@/config/index";
 import AuthContext from "@/context/AuthContext";
 import FormGroup from "@/components/Forms/FormGroup";
+import DashboardNav from "@/components/Navbars/DashboardNav";
 
-export default function NewPost() {
+export default function CreatePost() {
   const validationSchema = Yup.object().shape({
     acceptTerms: Yup.bool().oneOf([true], "Accept Ts & Cs is required"),
   });
 
-  const formOptions = { resolver: yupResolver(validationSchema) };
+  const formOptions = {
+    resolver: yupResolver(validationSchema),
+    defaultValues: { audience: 0, channel: { post_to_profile: true } },
+  };
 
   const { register, handleSubmit, watch, formState } = useForm(formOptions);
   const { errors } = formState;
@@ -26,47 +29,68 @@ export default function NewPost() {
   const { user } = useContext(AuthContext);
 
   const [loading, setLoading] = useState(false);
-  const [audience, setAudience] = useState(false);
 
   const router = useRouter();
 
   const handlePublish = async (values) => {
-    console.log(values);
-    alert("SUCCESS!! :-)\n\n" + JSON.stringify(values, null, 6));
-    return false;
+    setLoading(true);
 
-    // setLoading(true);
+    const channel = [];
+    values.send_email && channel.push(0);
+    values.post_to_profile && channel.push(1);
 
-    // const { title, description, call_to_action, attachment } = values;
+    const engagements = [];
+    values.allow_comments && engagements.push(0);
+    values.allow_likes && engagements.push(1);
 
-    // if (!audience || !channel || !engagement) {
-    //   toast.error("please complete all required fields");
-    //   setLoading(false);
-    //   return;
-    // }
+    const { title, description, call_to_action, attachment, audience } = values;
 
-    // try {
-    //   const response = await axios.post(`${API_URL}/posts/new`, {
-    //     title,
-    //     description,
-    //     call_to_action,
-    //     audience,
-    //   });
+    const form_data = new FormData();
 
-    //   setLoading(false);
-    //   toast.success(response.data.message);
+    form_data.append("title", title);
+    form_data.append("description", description);
+    form_data.append("call_to_action", call_to_action);
+    form_data.append("attachment", attachment[0]);
+    form_data.append("audience", audience);
+    form_data.append("channel", channel);
+    form_data.append("engagements", engagements);
 
-    //   if (response.status === 201) {
-    //     return router.push("/dashboard/posts");
-    //   }
-    // } catch (error) {
-    //   console.log(error);
-    //   setLoading(false);
-    // }
+    form_data.getAll("audience");
+
+    try {
+      const response = await axios.post(`${API_URL}/posts/new`, form_data);
+
+      setLoading(false);
+      toast.custom(
+        <div className="rounded-lg py-4 px-8 bg-[#24C78C] flex items-center">
+          <svg
+            width="24"
+            height="24"
+            viewBox="0 0 24 24"
+            fill="none"
+            xmlns="http://www.w3.org/2000/svg"
+          >
+            <path
+              d="M16.19 2H7.81C4.17 2 2 4.17 2 7.81V16.18C2 19.83 4.17 22 7.81 22H16.18C19.82 22 21.99 19.83 21.99 16.19V7.81C22 4.17 19.83 2 16.19 2ZM15.36 14.3C15.65 14.59 15.65 15.07 15.36 15.36C15.21 15.51 15.02 15.58 14.83 15.58C14.64 15.58 14.45 15.51 14.3 15.36L12 13.06L9.7 15.36C9.55 15.51 9.36 15.58 9.17 15.58C8.98 15.58 8.79 15.51 8.64 15.36C8.35 15.07 8.35 14.59 8.64 14.3L10.94 12L8.64 9.7C8.35 9.41 8.35 8.93 8.64 8.64C8.93 8.35 9.41 8.35 9.7 8.64L12 10.94L14.3 8.64C14.59 8.35 15.07 8.35 15.36 8.64C15.65 8.93 15.65 9.41 15.36 9.7L13.06 12L15.36 14.3Z"
+              fill="white"
+            />
+          </svg>
+          <span className="ml-2.5 font-medium text-lg text-white">
+            {response.data.message} !
+          </span>
+        </div>
+      );
+
+      router.push("/dashboard/posts");
+    } catch (error) {
+      console.log(error);
+      setLoading(false);
+    }
   };
 
   return (
     <div>
+      <DashboardNav title="Posts" />
       <div
         className="bg-secondary_sky_lightest py-6 md:px-0 px-4"
         style={{ boxShadow: "0px 4px 20px rgba(0, 0, 0, 0.04)" }}
@@ -164,82 +188,61 @@ export default function NewPost() {
                     Audience
                   </h2>
 
-                  <RadioGroup as={"ul"} value={audience} onChange={setAudience}>
-                    <RadioGroup.Option
-                      as={"li"}
-                      value="0"
-                      className={({ active, checked }) =>
-                        `mb-2 ${checked} ${active}`
-                      }
+                  <div className="flex items-center justify-between mb-2">
+                    <label htmlFor="everyone" className="block text-secondary">
+                      Everyone
+                    </label>
+                    <input
+                      id="everyone"
+                      name="push-notifications"
+                      {...register("audience", { required: true })}
+                      type="radio"
+                      className="focus:ring-primary w-6 h-6 text-primary border-secondary_sky_base"
+                      value={0}
+                    />
+                  </div>
+                  <div className="flex items-center justify-between mb-2">
+                    <label htmlFor="followers" className="block text-secondary">
+                      Followers only
+                    </label>
+                    <input
+                      id="followers"
+                      {...register("audience", { required: true })}
+                      type="radio"
+                      className="focus:ring-indigo-500 w-6 h-6 text-indigo-600 border-secondary_sky_base"
+                      value={1}
+                    />
+                  </div>
+                  <div className="flex items-center justify-between mb-2">
+                    <label
+                      htmlFor="push-nothing"
+                      className="block text-secondary"
                     >
-                      {({ checked, active }) => (
-                        <div className="flex justify-between items-center">
-                          <span className="text-secondary">Everyone</span>
-                          <div className="w-6 h-6 border border-primary rounded-full flex justify-center items-center">
-                            {checked && (
-                              <div className="w-3 h-3 rounded-full inline-block bg-primary"></div>
-                            )}
-                          </div>
-                        </div>
-                      )}
-                    </RadioGroup.Option>
-                    <RadioGroup.Option
-                      as={"li"}
-                      value="1"
-                      className={({ active, checked }) =>
-                        `mb-2 ${checked} ${active}`
-                      }
+                      Customers only
+                    </label>
+                    <input
+                      id="customers"
+                      {...register("audience", { required: true })}
+                      type="radio"
+                      className="focus:ring-primary w-6 h-6 text-primary border-secondary_sky_base"
+                      value={2}
+                    />
+                  </div>
+                  <div className="flex items-center justify-between">
+                    <label
+                      htmlFor="push-nothing"
+                      className="block text-secondary"
                     >
-                      {({ checked, active }) => (
-                        <div className="flex justify-between items-center">
-                          <span className="text-secondary">Followers only</span>
-                          <div className="w-6 h-6 border border-primary rounded-full flex justify-center items-center">
-                            {checked && (
-                              <div className="w-3 h-3 rounded-full inline-block bg-primary"></div>
-                            )}
-                          </div>
-                        </div>
-                      )}
-                    </RadioGroup.Option>
-                    <RadioGroup.Option
-                      as={"li"}
-                      value="2"
-                      className={({ active, checked }) =>
-                        `mb-2 ${checked} ${active}`
-                      }
-                    >
-                      {({ checked, active }) => (
-                        <div className="flex justify-between items-center">
-                          <span className="text-secondary">Customers only</span>
-                          <div className="w-6 h-6 border border-primary rounded-full flex justify-center items-center">
-                            {checked && (
-                              <div className="w-3 h-3 rounded-full inline-block bg-primary"></div>
-                            )}
-                          </div>
-                        </div>
-                      )}
-                    </RadioGroup.Option>
-                    <RadioGroup.Option
-                      as={"li"}
-                      value="3"
-                      className={({ active, checked }) =>
-                        `mb-2 ${checked} ${active}`
-                      }
-                    >
-                      {({ checked, active }) => (
-                        <div className="flex justify-between items-center">
-                          <span className="text-secondary">
-                            Affiliates only
-                          </span>
-                          <div className="w-6 h-6 border border-primary rounded-full flex justify-center items-center">
-                            {checked && (
-                              <div className="w-3 h-3 rounded-full inline-block bg-primary"></div>
-                            )}
-                          </div>
-                        </div>
-                      )}
-                    </RadioGroup.Option>
-                  </RadioGroup>
+                      Affiliates only
+                    </label>
+                    <input
+                      id="affiliates"
+                      {...register("audience", { required: true })}
+                      type="radio"
+                      className="focus:ring-primary w-6 h-6 text-primary border-secondary_sky_base"
+                      value={3}
+                    />
+                  </div>
                 </div>
                 <div className="mb-8">
                   <h2 className="text-secondary_ink_darkest font-medium mb-5 text-base">
@@ -273,7 +276,7 @@ export default function NewPost() {
                       <input
                         type="checkbox"
                         name="post-to-profile"
-                        defaultChecked={false}
+                        defaultChecked={watch("channel")?.post_to_profile}
                         className="appearance-none w-6 h-6 border border-gray-300 rounded-sm outline-none cursor-pointer checked:bg-primary"
                         {...register("post_to_profile")}
                       />
@@ -396,17 +399,23 @@ export default function NewPost() {
                     <div className="absolute">
                       <div className="flex flex-col items-center text-center">
                         <p className="font-medium text-secondary mb-4">
-                          Add Files
+                          {watch("attachment") !== undefined &&
+                          watch("attachment").length > 0
+                            ? watch("attachment")[0].type
+                            : "Add Files"}
                         </p>
                         <span className="block text-secondary_brand_light font-normal mt-2 mx-4">
-                          Upload your post files here
+                          {watch("attachment") !== undefined &&
+                          watch("attachment").length > 0
+                            ? watch("attachment")[0].name
+                            : "Upload your post files here"}
                         </span>
                       </div>
                     </div>
                     <input
                       type="file"
                       className="h-full w-full opacity-0"
-                      name="file"
+                      {...register("attachment", { required: false })}
                     />
                   </div>
                 </div>
@@ -419,4 +428,4 @@ export default function NewPost() {
   );
 }
 
-NewPost.layout = Dashboard;
+CreatePost.layout = Dashboard;

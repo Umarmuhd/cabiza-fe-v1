@@ -35,16 +35,18 @@ export default function Username({ children }) {
 
   return (
     <div className="min-h-screen w-full">
-      <div className="bg-grey_95 py-6">
+      <div className="bg-white py-6 border border-b border-secondary_sky_base">
         <div className="md:max-w-[88%] max-w-[90%] mx-auto flex justify-between">
           {!loading && user ? (
             <div className="flex items-center">
-              <img
+              <Image
                 src={user.profile_picture}
                 alt="..."
                 className="h-8 w-8 rounded-full"
+                width={32}
+                height={32}
               />
-              <span className="hidden md:block text-lg font-medium text-grey_20 ml-2">
+              <span className="hidden md:block text-lg font-medium text-secondary_ink_dark ml-2">
                 {user.full_name}
               </span>
             </div>
@@ -58,8 +60,8 @@ export default function Username({ children }) {
                 className={
                   "text-lg font-medium mr-4" +
                   (router.pathname.indexOf("/[username]/products") !== -1
-                    ? " text-cabiza_blue"
-                    : " text-cabiza_grey")
+                    ? " text-primary"
+                    : " text-secondary")
                 }
               >
                 Products
@@ -70,8 +72,8 @@ export default function Username({ children }) {
                 className={
                   "text-lg font-medium mr-4" +
                   (router.pathname.indexOf("/[username]/posts") !== -1
-                    ? " text-cabiza_blue"
-                    : " text-cabiza_grey")
+                    ? " text-primary"
+                    : " text-secondary")
                 }
               >
                 Posts
@@ -80,8 +82,8 @@ export default function Username({ children }) {
           </div>
 
           {user && (
-            <button className="rounded-lg p-2 font-semibold text-lg text-white bg-cabiza_blue">
-              Follow
+            <button className="rounded-4xl py-2 px-4 font-medium text-lg text-white bg-primary">
+              + Follow
             </button>
           )}
         </div>
@@ -89,13 +91,13 @@ export default function Username({ children }) {
       {children}
       <div className="w-full flex justify-center md:py-9 py-6">
         <div className="flex items-end">
-          <p className="text-lg font-bold uppercase text-grey_60 mr-2">
+          <p className="text-base font-semibold uppercase text-secondary mr-2">
             POWERED BY
           </p>
           <Link href="/">
             <a className="cursor-pointer">
               <Image
-                src="/images/cabiza-logo.png"
+                src="/images/logo.png"
                 alt="..."
                 className="h-10 w-40"
                 width={160}

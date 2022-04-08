@@ -2,7 +2,7 @@ import UserMenu from "@/components/Dropdowns/UserMenu";
 import Notifications from "@/components/Notifications";
 import React, { useState } from "react";
 
-export default function DashboardNav({ sidebarOpen, setSidebarOpen }) {
+export default function DashboardNav({ sidebarOpen, setSidebarOpen, title }) {
   const [searchModalOpen, setSearchModalOpen] = useState(false);
 
   return (
@@ -31,7 +31,7 @@ export default function DashboardNav({ sidebarOpen, setSidebarOpen }) {
               </svg>
             </button>
             <span className="hidden md:flex font-medium text-3xl text-secondary_ink_dark">
-              Posts
+              {title}
             </span>
           </div>
 
