@@ -1,18 +1,19 @@
+import Image from "next/image";
 import React from "react";
 
 const WarningIcon = () => (
   <svg
-    width="16"
-    height="16"
-    viewBox="0 0 16 16"
+    width="20"
+    height="20"
+    viewBox="0 0 20 20"
     fill="none"
     xmlns="http://www.w3.org/2000/svg"
   >
     <path
       fillRule="evenodd"
       clipRule="evenodd"
-      d="M1.3335 8.00001C1.3335 11.6819 4.31826 14.6667 8.00016 14.6667C11.6821 14.6667 14.6668 11.6819 14.6668 8.00001C14.6668 4.31811 11.6821 1.33334 8.00016 1.33334C4.31826 1.33334 1.3335 4.31811 1.3335 8.00001ZM13.3335 8.00001C13.3335 10.9455 10.9457 13.3333 8.00016 13.3333C5.05464 13.3333 2.66683 10.9455 2.66683 8.00001C2.66683 5.05449 5.05464 2.66668 8.00016 2.66668C10.9457 2.66668 13.3335 5.05449 13.3335 8.00001ZM8.66683 10.6667V12H7.3335V10.6667H8.66683ZM8.66683 9.33334V4.00001H7.3335V9.33334H8.66683Z"
-      fill="#9A9A98"
+      d="M1.66669 9.99996C1.66669 14.6023 5.39765 18.3333 10 18.3333C14.6024 18.3333 18.3334 14.6023 18.3334 9.99996C18.3334 5.39759 14.6024 1.66663 10 1.66663C5.39765 1.66663 1.66669 5.39759 1.66669 9.99996ZM16.6667 9.99996C16.6667 13.6819 13.6819 16.6666 10 16.6666C6.31812 16.6666 3.33335 13.6819 3.33335 9.99996C3.33335 6.31806 6.31812 3.33329 10 3.33329C13.6819 3.33329 16.6667 6.31806 16.6667 9.99996ZM10.8334 13.3333V15H9.16669V13.3333H10.8334ZM10.8334 11.6666V4.99996H9.16669V11.6666H10.8334Z"
+      fill="#CDCFD0"
     />
   </svg>
 );
@@ -41,101 +42,110 @@ const people = [
 
 export default function AllProducts({ products, balance }) {
   return (
-    <div className="w-4/5 mx-auto text-left py-12">
+    <div className="md:w-43/50 mx-auto text-left p-10 bg-white mt-8 rounded-3xl shadow">
       <div className="mb-16">
         <div
           className="grid-cols-4
                 space-y-2
                 lg:space-y-0 lg:grid lg:gap-6 lg:grid-rows-1 mb-8"
         >
-          <div className="rounded-2xl border border-grey_40 p-6">
-            <p className="text-lg font-semibold text-grey_40 flex items-center mb-12">
+          <div className="rounded-2xl border border-secondary_sky_light p-6 bg-secondary_sky_lighter">
+            <p className="text-xl font-medium text-secondary_ink_dark flex items-center mb-12">
               <span className="mr-1">Total Revenue</span>
               <WarningIcon />
             </p>
-            <span className="inline-block text-grey_40 text-4xl leading-9 font-semibold text-left">
+            <span className="inline-block text-secondary_ink_dark text-2xl leading-6 font-medium text-left">
               ${balance?.earnings}
             </span>
           </div>
-          <div className="rounded-2xl border border-grey_40 p-6">
-            <p className="text-lg font-semibold text-grey_40 flex items-center mb-12">
+          <div className="rounded-2xl border border-secondary_sky_light p-6 bg-secondary_sky_lighter">
+            <p className="text-xl font-medium text-secondary_ink_dark flex items-center mb-12">
               <span className="mr-1">Customers</span>
               <WarningIcon />
             </p>
-            <span className="inline-block text-grey_40 text-4xl leading-9 font-semibold text-left">
+            <span className="inline-block text-secondary_ink_dark text-2xl leading-6 font-medium text-left">
               0
             </span>
           </div>
-          <div className="rounded-2xl border border-grey_40 p-6">
-            <p className="text-lg font-semibold text-grey_40 flex items-center mb-12">
+          <div className="rounded-2xl border border-secondary_sky_light p-6 bg-secondary_sky_lighter">
+            <p className="text-xl font-medium text-secondary_ink_dark flex items-center mb-12">
               <span className="mr-1">Active Members</span>
               <WarningIcon />
             </p>
-            <span className="inline-block text-grey_40 text-4xl leading-9 font-semibold text-left">
+            <span className="inline-block text-secondary_ink_dark text-2xl leading-6 font-medium text-left">
               0
             </span>
           </div>
-          <div className="rounded-2xl border border-grey_40 p-6">
-            <p className="text-lg font-semibold text-grey_40 flex items-center mb-12">
+          <div className="rounded-2xl border border-secondary_sky_light p-6 bg-secondary_sky_lighter">
+            <p className="text-xl font-medium text-secondary_ink_dark flex items-center mb-12">
               <span className="mr-1">MRR</span>
               <WarningIcon />
             </p>
-            <span className="inline-block text-grey_40 text-4xl leading-9 font-semibold text-left">
+            <span className="inline-block text-secondary_ink_dark text-2xl leading-6 font-medium text-left">
               ${balance?.earnings}
             </span>
           </div>
         </div>
       </div>
-      <div className="flex flex-col">
-        <div className="-my-2 overflow-x-auto sm:-mx-6 lg:-mx-8">
-          <div className="py-2 align-middle inline-block min-w-full sm:px-6 lg:px-8">
-            <div className="overflow-hidden border-b border-grey_20 sm:rounded-lg">
-              <table className="min-w-full divide-y divide-grey_20">
-                <thead className="bg-transparent">
+
+      <div className="container mx-auto">
+        <div className="py-8">
+          <div className="-mx-4 sm:-mx-8 px-4 sm:px-8 py-4 overflow-x-auto">
+            <div className="inline-block min-w-full shadow rounded-lg rounded-t-none overflow-hidden">
+              <table className="min-w-full leading-normal">
+                <thead>
                   <tr>
                     <th
                       scope="col"
-                      className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider"
+                      className="px-5 py-3 bg-white text-secondary_ink_dark text-left text-2xl leading-5 font-semibold"
                     >
                       Products
                     </th>
                     <th
                       scope="col"
-                      className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider"
+                      className="px-5 py-3 bg-white text-secondary_ink_dark text-left text-2xl leading-5 font-semibold"
                     >
                       Sales
                     </th>
                     <th
                       scope="col"
-                      className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider"
+                      className="px-5 py-3 bg-white text-secondary_ink_dark text-left text-2xl leading-5 font-semibold"
                     >
                       Revenue
                     </th>
-                    <th scope="col" className="relative px-6 py-3">
+                    <th
+                      scope="col"
+                      className="px-5 py-3 bg-white text-secondary_ink_dark text-left text-2xl leading-5 font-semibold"
+                    >
                       Price
                     </th>
-                    <th scope="col" className="relative px-6 py-3">
-                      Status
-                    </th>
+                    <th
+                      scope="col"
+                      className="px-5 py-3 bg-white text-secondary_ink_dark text-left text-2xl leading-5 font-semibold"
+                    ></th>
                   </tr>
                 </thead>
-                <tbody className="bg-white divide-y divide-grey_20">
+                <tbody>
                   {products.map((product) => (
                     <tr key={product._id}>
-                      <td className="px-6 py-4 whitespace-nowrap border-l border-grey_20">
+                      <td className="px-5 py-5 border-b border-gray-200 bg-white text-sm">
                         <div className="flex items-center">
-                          <div className="flex-shrink-0 h-10 w-10">
-                            <img
-                              className="h-10 w-10 rounded-full"
-                              src="/images/icons/gallery.svg"
-                              alt="..."
-                            />
+                          <div className="flex-shrink-0">
+                            <a href="#" className="block relative">
+                              <Image
+                                className="h-10 w-10 rounded-full"
+                                src="/images/icons/gallery.svg"
+                                alt="..."
+                                width={40}
+                                height={40}
+                              />
+                            </a>
                           </div>
                           <div className="ml-4">
-                            <div className="font-semibold text-grey_20">
+                            <div className="mb-1 text-secondary_ink_darkest text-lg font-medium">
                               {product.name}
                             </div>
-                            <div className="text-sm text-grey_20">
+                            <div className="text-sm text-secondary_ink_dark">
                               <span className="underline">
                                 app.cabiza.com/l/${product.product_id}
                               </span>
@@ -143,41 +153,91 @@ export default function AllProducts({ products, balance }) {
                           </div>
                         </div>
                       </td>
-                      <td className="px-6 py-4 whitespace-nowrap">
-                        <span className="text-lg text-grey_20 font-semibold">
+                      <td className="px-5 py-5 border-b border-gray-200 bg-white text-sm">
+                        <p className="text-secondary_ink_dark whitespace-no-wrap">
                           0
-                        </span>
+                        </p>
                       </td>
-                      <td className="px-6 py-4 whitespace-nowrap">
-                        <span className="text-lg text-grey_20 font-semibold">
+                      <td className="px-5 py-5 border-b border-gray-200 bg-white text-sm">
+                        <p className="text-secondary_ink_dark whitespace-no-wrap">
                           $0
-                        </span>
+                        </p>
                       </td>
-                      <td className="px-6 py-4 whitespace-nowrap">
-                        <span className="text-lg text-grey_20 font-semibold">
+                      <td className="px-5 py-5 border-b border-gray-200 bg-white text-sm">
+                        <span className="relative inline-block text-secondary_ink_dark leading-tight">
                           ${product.price}
                         </span>
                       </td>
-                      <td className="px-6 py-4 whitespace-nowrap flex items-center">
-                        <div className="flex items-center">
-                          <input
-                            id="push-nothing"
-                            name="push-notifications"
-                            type="radio"
-                            className="focus:ring-indigo-500 h-4 w-4 text-indigo-600 border-gray-300"
-                          />
-                          <label
-                            htmlFor="push-nothing"
-                            className="ml-3 block text-lg font-medium text-grey_40"
-                          >
-                            Unpublished
-                          </label>
-                        </div>
+                      <td className="px-5 py-5 border-b border-gray-200 bg-white text-sm">
+                        <a
+                          href="#"
+                          className="text-indigo-600 hover:text-indigo-900"
+                        >
+                          Edit
+                        </a>
                       </td>
                     </tr>
                   ))}
                 </tbody>
               </table>
+              <div className="px-5 bg-white py-5 flex flex-col xs:flex-row items-center xs:justify-between">
+                <div className="flex items-center">
+                  <button
+                    type="button"
+                    className="w-full p-4 border text-base rounded-l-xl text-gray-600 bg-white hover:bg-gray-100"
+                  >
+                    <svg
+                      width="9"
+                      fill="currentColor"
+                      height="8"
+                      className=""
+                      viewBox="0 0 1792 1792"
+                      xmlns="http://www.w3.org/2000/svg"
+                    >
+                      <path d="M1427 301l-531 531 531 531q19 19 19 45t-19 45l-166 166q-19 19-45 19t-45-19l-742-742q-19-19-19-45t19-45l742-742q19-19 45-19t45 19l166 166q19 19 19 45t-19 45z"></path>
+                    </svg>
+                  </button>
+                  <button
+                    type="button"
+                    className="w-full px-4 py-2 border-t border-b text-base text-indigo-500 bg-white hover:bg-gray-100 "
+                  >
+                    1
+                  </button>
+                  <button
+                    type="button"
+                    className="w-full px-4 py-2 border text-base text-gray-600 bg-white hover:bg-gray-100"
+                  >
+                    2
+                  </button>
+                  <button
+                    type="button"
+                    className="w-full px-4 py-2 border-t border-b text-base text-gray-600 bg-white hover:bg-gray-100"
+                  >
+                    3
+                  </button>
+                  <button
+                    type="button"
+                    className="w-full px-4 py-2 border text-base text-gray-600 bg-white hover:bg-gray-100"
+                  >
+                    4
+                  </button>
+                  <button
+                    type="button"
+                    className="w-full p-4 border-t border-b border-r text-base  rounded-r-xl text-gray-600 bg-white hover:bg-gray-100"
+                  >
+                    <svg
+                      width="9"
+                      fill="currentColor"
+                      height="8"
+                      className=""
+                      viewBox="0 0 1792 1792"
+                      xmlns="http://www.w3.org/2000/svg"
+                    >
+                      <path d="M1363 877l-742 742q-19 19-45 19t-45-19l-166-166q-19-19-19-45t19-45l531-531-531-531q-19-19-19-45t19-45l166-166q19-19 45-19t45 19l742 742q19 19 19 45t-19 45z"></path>
+                    </svg>
+                  </button>
+                </div>
+              </div>
             </div>
           </div>
         </div>

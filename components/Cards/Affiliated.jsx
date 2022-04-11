@@ -2,7 +2,7 @@ import React from "react";
 
 export default function Affiliated() {
   return (
-    <div className="w-4/5 mx-auto bg-grey_95 rounded-2xl border border-dashed border-dark_ text-center py-12">
+    <div className="md:w-43/50 mx-auto bg-white rounded-3xl text-center p-10 mt-8 shadow">
       <div className="w-3/4 mx-auto">
         <img
           src="/images/affiliated.svg"

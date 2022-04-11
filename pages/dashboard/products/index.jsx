@@ -71,77 +71,77 @@ const Products = ({}) => {
 
   return (
     <div>
-      <DashboardNav title="Products" />
       <Tab.Group>
-        <div className="bg-grey_95 md:py-10">
-          <div className="w-4/5 mx-auto">
-            <div className="flex justify-between items-center">
-              <h1 className="text-4xl leading-9 font-semibold text-dark_">
-                Products
-              </h1>
+        <DashboardNav title="Products" />
+        <div
+          className="bg-secondary_sky_lightest py-6 md:px-0 px-4"
+          style={{ boxShadow: "0px 4px 20px rgba(0, 0, 0, 0.04)" }}
+        >
+          <div className="flex justify-between items-center md:w-43/50 mx-auto">
+            <Tab.List as={"div"} className="flex items-center">
+              <Tab
+                as={"button"}
+                className={({ selected }) =>
+                  classNames(
+                    "text-lg mr-10",
+                    selected
+                      ? " font-bold text-primary"
+                      : " font-medium text-cabiza_grey"
+                  )
+                }
+              >
+                All Products
+              </Tab>
+              <Tab
+                as={"button"}
+                className={({ selected }) =>
+                  classNames(
+                    "text-lg mr-10",
+                    selected
+                      ? " font-bold text-primary"
+                      : " font-medium text-cabiza_grey"
+                  )
+                }
+              >
+                Affiliate
+              </Tab>
+            </Tab.List>
 
+            <div className="flex items-center justify-between">
+              <div className="flex rounded-[100px] shadow-sm mr-6">
+                <input
+                  type="text"
+                  className="border border-r-0 border-grey_80 px-4 py-2 placeholder-grey_80 text-grey_40 bg-white shadow-sm focus:outline-none focus:ring w-full rounded-l-[100px]"
+                  style={{ transition: "all 0.15s ease 0s" }}
+                  id="search"
+                  placeholder="Search..."
+                />
+                <div className="inline-flex items-center px-3 border border-l-0 border-gray-300 text-gray-500 text-sm rounded-r-[100px]">
+                  <span className="rounded-full p-2 bg-primary h-7 w-7">
+                    <img src="/images/icons/search.svg" alt="..." />
+                  </span>
+                </div>
+              </div>
               <Link href="/dashboard/products/create">
-                <a className="py-4 px-8 bg-primary flex items-center text-lg font-semibold text-white rounded-lg">
-                  <span className="mr-2.5">New Product </span> <PlusIcon />
+                <a className="py-2 px-4 bg-primary flex items-center font-medium text-white rounded-[48px]">
+                  <PlusIcon /> <span className="ml-2">New Product </span>
                 </a>
               </Link>
             </div>
-            <div className="mt-8">
-              <div className="flex">
-                <Tab.List className="flex">
-                  <Tab
-                    as={"button"}
-                    className={({ selected }) =>
-                      classNames(
-                        "py-4 px-8 rounded-lg   text-lg font-semibold mr-4",
-                        "border border-primary",
-                        selected
-                          ? " bg-primary text-white "
-                          : " text-primary bg-transparent "
-                      )
-                    }
-                  >
-                    All Products
-                  </Tab>
-                  <Tab
-                    as={"button"}
-                    className={({ selected }) =>
-                      classNames(
-                        "py-4 px-8 rounded-lg   text-lg font-semibold mr-4",
-                        "border border-primary",
-                        selected
-                          ? " bg-primary text-white "
-                          : " text-primary bg-transparent "
-                      )
-                    }
-                  >
-                    Affiliated
-                  </Tab>
-                </Tab.List>
-              </div>
-            </div>
           </div>
         </div>
-        <div className="py-12">
-          {loading ? (
-            <>
-              <h1 className="text-center">...</h1>
-            </>
-          ) : (
-            <Tab.Panels>
-              <Tab.Panel>
-                {products.length > 0 ? (
-                  <AllProducts products={products} balance={balance} />
-                ) : (
-                  <AllProductsEmpty />
-                )}
-              </Tab.Panel>
-              <Tab.Panel>
-                <Affiliated />
-              </Tab.Panel>
-            </Tab.Panels>
-          )}
-        </div>
+        <Tab.Panels>
+          <Tab.Panel>
+            {products.length > 0 ? (
+              <AllProducts products={products} balance={balance} />
+            ) : (
+              <AllProductsEmpty />
+            )}
+          </Tab.Panel>
+          <Tab.Panel>
+            <Affiliated />
+          </Tab.Panel>
+        </Tab.Panels>
       </Tab.Group>
     </div>
   );
