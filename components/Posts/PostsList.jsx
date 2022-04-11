@@ -217,7 +217,7 @@ export default function PostsList() {
           {loading ? (
             <h1 className="text-grey_40 font-semibold text-center">...</h1>
           ) : (
-            <>
+            <React.Fragment>
               {posts.length > 0 ? (
                 <div>
                   {posts?.map((post, index) => (
@@ -246,7 +246,7 @@ export default function PostsList() {
                   </div>
                 </div>
               )}
-            </>
+            </React.Fragment>
           )}
         </div>
       </div>
