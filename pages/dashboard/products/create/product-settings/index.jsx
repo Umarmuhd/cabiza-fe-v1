@@ -1,7 +1,8 @@
 import React, { useState, useRef } from "react";
 import Toggle from "@/components/Toggle/Toggle";
 
-const ProductSettings = () => {
+const ProductSettings = ({ product, handleNext }) => {
+  const [loading, setLoading] = useState(false);
   const [version, setVersion] = useState(false);
   const [affliate, setAffliate] = useState(false);
   const [addPercentage, setAddPercentage] = useState(false);
@@ -43,8 +44,18 @@ const ProductSettings = () => {
     setVersion(true);
   };
   return (
-    <>
-      <h1 className="text-4xl font-semibold text-grey_20">Product Settings</h1>
+    <form>
+      <div className="flex justify-between items-center mb-8">
+        <h1 className="text-4xl font-semibold text-secondary_ink_dark">
+          Product Settings
+        </h1>
+        <span
+          className="text-lg font-medium text-primary_brand_light"
+          onClick={handleNext}
+        >
+          Step: 6 of 6
+        </span>
+      </div>
 
       <div className="bg-white mt-5 border border-solid border-grey_80 p-3 rounded-xl">
         <div className="bg-grey_95 p-3 rounded flex items-center justify-between px-5 mb-2">
@@ -264,7 +275,36 @@ const ProductSettings = () => {
           </div>
         </div>
       </div>
-    </>
+
+      <button
+        type="submit"
+        className="w-full mt-8 bg-primary text-white p-4 cursor-pointer rounded-4xl font-medium flex items-center justify-center"
+        disabled={loading}
+      >
+        {loading ? (
+          <span>...</span>
+        ) : (
+          <React.Fragment>
+            <span className="mr-4">Submit</span>
+            <svg
+              width="25"
+              height="24"
+              viewBox="0 0 25 24"
+              fill="none"
+              xmlns="http://www.w3.org/2000/svg"
+            >
+              <path
+                d="M5.5 12H19.5M19.5 12L12.5 4.99988M19.5 12L12.5 18.9999"
+                stroke="white"
+                strokeWidth="1.5"
+                strokeLinecap="round"
+                strokeLinejoin="round"
+              />
+            </svg>
+          </React.Fragment>
+        )}
+      </button>
+    </form>
   );
 };
 

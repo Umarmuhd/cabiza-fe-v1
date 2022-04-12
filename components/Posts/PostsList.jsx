@@ -9,7 +9,30 @@ import moment from "moment";
 
 import { Switch } from "@headlessui/react";
 
-const PostItem = ({ post, deletePost }) => {
+const SpinIcon = () => (
+  <svg
+    className="animate-spin -ml-1 h-8 w-8 md:h-10 md:w-10 text-white"
+    xmlns="http://www.w3.org/2000/svg"
+    fill="none"
+    viewBox="0 0 24 24"
+  >
+    <circle
+      className="opacity-25"
+      cx="12"
+      cy="12"
+      r="10"
+      stroke="#5F45F2"
+      strokeWidth="4"
+    ></circle>
+    <path
+      className="opacity-75"
+      fill="#5F45F2"
+      d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"
+    ></path>
+  </svg>
+);
+
+const PostItem = ({ post, deletePost, user }) => {
   const [expanded, setExpanded] = useState(false);
   const [enabled, setEnabled] = React.useState(post.published);
   const [loading, setLoading] = useState(false);
@@ -136,7 +159,7 @@ const PostItem = ({ post, deletePost }) => {
               </Link>
             </li>
             <li className="pl-3">
-              <Link href={`/${post.user?.username}/posts/${post._id}`}>
+              <Link href={`/${user?.username}/posts/${post._id}`}>
                 <a className="leading-4 text-base font-medium text-primary py-2 px-3 rounded-4xl border border-primary">
                   View
                 </a>
@@ -215,14 +238,20 @@ export default function PostsList() {
             All Published Posts
           </h1>
           {loading ? (
-            <h1 className="text-grey_40 font-semibold text-center">...</h1>
+            <div className="flex justify-center items-center text-center">
+              <SpinIcon />
+            </div>
           ) : (
             <React.Fragment>
               {posts.length > 0 ? (
                 <div>
                   {posts?.map((post, index) => (
                     <React.Fragment key={index}>
-                      <PostItem post={post} deletePost={deletePost} />
+                      <PostItem
+                        post={post}
+                        deletePost={deletePost}
+                        user={user}
+                      />
                     </React.Fragment>
                   ))}
                 </div>

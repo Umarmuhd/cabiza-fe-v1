@@ -6,6 +6,7 @@ import { Tab, RadioGroup, Switch } from "@headlessui/react";
 import { useRouter } from "next/router";
 import axios from "axios";
 import { API_URL } from "@/config/index";
+import toast from "react-hot-toast";
 
 export default function Create() {
   const productNameRef = useRef();
@@ -24,6 +25,8 @@ export default function Create() {
     const price = productPriceRef.current.value;
 
     if (selected === null || name === "" || price === "") {
+      toast.error("please complete all required fields");
+      setLoading(false);
       return;
     }
 

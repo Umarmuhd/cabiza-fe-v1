@@ -157,7 +157,7 @@ export default function DiscoverSingle() {
               {product && (
                 <div>
                   <img
-                    src={product.image ?? "/images/book.png"}
+                    src={product.thumbnail ?? "/images/book.png"}
                     alt="..."
                     className="w-full"
                   />

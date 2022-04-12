@@ -1,4 +1,5 @@
 import Image from "next/image";
+import Link from "next/link";
 import React from "react";
 
 const WarningIcon = () => (
@@ -147,7 +148,7 @@ export default function AllProducts({ products, balance }) {
                             </div>
                             <div className="text-sm text-secondary_ink_dark">
                               <span className="underline">
-                                app.cabiza.com/l/${product.product_id}
+                                app.cabiza.com/l/{product.product_id}
                               </span>
                             </div>
                           </div>
@@ -169,12 +170,13 @@ export default function AllProducts({ products, balance }) {
                         </span>
                       </td>
                       <td className="px-5 py-5 border-b border-gray-200 bg-white text-sm">
-                        <a
-                          href="#"
-                          className="text-indigo-600 hover:text-indigo-900"
+                        <Link
+                          href={`/dashboard/products/create/${product.product_id}`}
                         >
-                          Edit
-                        </a>
+                          <a className="text-indigo-600 hover:text-indigo-900">
+                            Edit
+                          </a>
+                        </Link>
                       </td>
                     </tr>
                   ))}

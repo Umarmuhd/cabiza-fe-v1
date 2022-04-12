@@ -23,6 +23,11 @@ export default function UpdateProduct() {
   const [loading, setLoading] = useState(false);
   const [enabled, setEnabled] = React.useState(false);
   const [category, setCategory] = useState(null);
+  const [product, setProduct] = useState(null);
+
+  const router = useRouter();
+
+  const productId = router.query.product_id;
 
   const [steps, setSteps] = useState([
     {
@@ -30,35 +35,35 @@ export default function UpdateProduct() {
       id: 1,
       label: "My First Step",
       isDone: true,
-      component: <CreateProduct />,
+      component: CreateProduct,
     },
     {
       key: "secondStep",
       id: 2,
       label: "My Second Step",
       isDone: false,
-      component: <ProductInfo />,
+      component: ProductInfo,
     },
     {
       key: "thirdStep",
       id: 3,
       label: "My Third Step",
       isDone: false,
-      component: <ProductContent />,
+      component: ProductContent,
     },
     {
       key: "fourthStep",
       id: 4,
       label: "My Fourth Step",
       isDone: false,
-      component: <ProductPricing />,
+      component: ProductPricing,
     },
     {
       key: "finalStep",
       id: 5,
       label: "My Final Step",
       isDone: false,
-      component: <ProductSettings />,
+      component: ProductSettings,
     },
   ]);
 
@@ -84,9 +89,7 @@ export default function UpdateProduct() {
 
   useEffect(() => {
     progressInterval = setProgress((activeStep.id / steps.length) * 100);
-    // progressInterval = setInterval(() => {
-    // }, 100);
-  }, [activeStep]);
+  }, [activeStep, steps]);
 
   useEffect(() => {
     if (progress >= 100) {
@@ -94,45 +97,24 @@ export default function UpdateProduct() {
     }
   }, [progress]);
 
-  const {
-    register,
-    handleSubmit,
-    formState: { errors },
-  } = useForm();
-
-  const router = useRouter();
-
-  const handleCreate = async (values) => {
-    setLoading(true);
-
-    const { name, price, currency, description } = values;
-
-    if (category == null) {
-      toast.error("please complete all required fields");
-      setLoading(false);
-      return;
-    }
-
-    try {
-      const response = await axios.post(`${API_URL}/products/new`, {
-        name,
-        price,
-        currency,
-        category,
-        description,
-      });
-
-      setLoading(false);
-      toast.success(response.data.message);
-
-      if (response.status === 201) {
-        return router.push("/dashboard/products");
+  useEffect(() => {
+    const fetchProduct = async () => {
+      try {
+        setLoading(true);
+        const uri = `${API_URL}/products/product/${productId}`;
+        const { data } = await axios.get(uri);
+        setProduct(data.data.product);
+        setLoading(false);
+      } catch (error) {
+        console.error(error.message);
+        setLoading(false);
       }
-    } catch (error) {
-      console.log(error);
-      setLoading(false);
-    }
-  };
+    };
+
+    fetchProduct();
+  }, [productId]);
+
+  const ActiveComponent = () => activeStep.component({ product, handleNext });
 
   return (
     <div>
@@ -226,23 +208,11 @@ export default function UpdateProduct() {
           </div>
         </div>
 
-        <form
-          className="md:w-43/50 mx-auto text-left sm:py-12 sm:px-7 p-4 my-8 bg-white shadow rounded-3xl"
-          onSubmit={handleSubmit(handleCreate)}
-        >
-          <div className="step-component">{activeStep.component}</div>
-
-          <input
-            type="button"
-            value={
-              steps[steps.length - 1].key !== activeStep.key
-                ? "Next"
-                : "Publish"
-            }
-            onClick={handleNext}
-            className="w-full mt-4 bg-primary text-white p-4 cursor-pointer rounded-4xl font-medium"
-          />
-        </form>
+        <div className="md:w-43/50 mx-auto text-left sm:py-12 sm:px-7 p-4 my-8 bg-white shadow rounded-3xl">
+          <div className="step-component">
+            {!loading && product && <ActiveComponent />}
+          </div>
+        </div>
       </Tab.Group>
     </div>
   );
