@@ -1,18 +1,50 @@
-import React, { useState } from "react";
+import React, { useRef, useState } from "react";
 import DashboardNav from "@/components/Navbars/DashboardNav";
 import Dashboard from "@/layouts/Dashboard";
 import { classNames } from "@/libs/helper";
 import { Tab, RadioGroup, Switch } from "@headlessui/react";
-import { useForm } from "react-hook-form";
+import { useRouter } from "next/router";
+import axios from "axios";
+import { API_URL } from "@/config/index";
 
 export default function Create() {
-  const [selected, setSelected] = useState(null);
-  const {
-    register,
-    handleSubmit,
-    formState: { errors },
-  } = useForm();
+  const productNameRef = useRef();
+  const productPriceRef = useRef();
+  const [selected, setSelected] = useState(0);
   const [enabled, setEnabled] = React.useState(false);
+
+  const [loading, setLoading] = useState(false);
+
+  const router = useRouter();
+
+  const handleSubmit = async (event) => {
+    event.preventDefault();
+
+    const name = productNameRef.current.value;
+    const price = productPriceRef.current.value;
+
+    if (selected === null || name === "" || price === "") {
+      return;
+    }
+
+    try {
+      setLoading(true);
+      const payload = {
+        product_type: selected,
+        name,
+        price,
+        contains_physical: enabled,
+      };
+      const { data } = await axios.post(`${API_URL}/products/new`, payload);
+
+      setLoading(false);
+
+      router.push("/dashboard/products/create/" + data.data.product._id);
+    } catch (error) {
+      console.error(error.message);
+      setLoading(false);
+    }
+  };
 
   return (
     <div>
@@ -105,7 +137,10 @@ export default function Create() {
           </div>
         </div>
 
-        <form className="md:w-43/50 mx-auto text-left sm:py-12 sm:px-7 p-4 my-8 bg-white shadow rounded-3xl">
+        <form
+          className="md:w-43/50 mx-auto text-left sm:py-12 sm:px-7 p-4 my-8 bg-white shadow rounded-3xl"
+          onSubmit={handleSubmit}
+        >
           <div className="flex justify-between items-center">
             <h1 className="text-4xl font-semibold text-secondary_ink_dark"></h1>
             <span className="text-lg font-medium text-primary_brand_light">
@@ -279,115 +314,123 @@ export default function Create() {
                   </RadioGroup.Option>
                 </RadioGroup>
               </div>
+            </div>
 
-              <div className="text-left">
-                <div className="flex flex-col">
-                  <label
-                    htmlFor="product_name"
-                    className="leading-4 font-medium text-secondary_ink_darkest mb-3"
-                  >
-                    Product Name
-                  </label>
-                  <input
-                    type="text"
-                    id="product_name"
-                    name="product_name"
-                    placeholder="Enter your product name"
-                    className="border border-solid border-sky_light p-4 rounded-lg mt-2 outline-none"
-                    {...register("name", { required: true })}
-                    autoComplete="off"
-                  />
-                </div>
-
-                <div className="relative mt-6">
-                  <label
-                    htmlFor="price"
-                    className="leading-4 font-medium text-secondary_ink_darkest"
-                  >
-                    Price
-                  </label>
-                  <div className="mt-3 flex rounded-lg">
-                    <span className="inline-flex items-center rounded-l-lg border border-r-0 border-sky_light bg-secondary_sky_lighter text-secondary_ink_dark text-lg px-2 py-4">
-                      ${" "}
-                      <svg
-                        width="13"
-                        height="24"
-                        viewBox="0 0 13 24"
-                        fill="none"
-                        xmlns="http://www.w3.org/2000/svg"
-                        className="ml-4"
-                      >
-                        <path
-                          d="M6.5 0L11.6962 9H1.30385L6.5 0Z"
-                          fill="#CDCFD0"
-                        />
-                        <path
-                          d="M6.5 24L11.6962 15H1.30385L6.5 24Z"
-                          fill="#CDCFD0"
-                        />
-                      </svg>
-                    </span>
-                    <input
-                      type="text"
-                      name="company-website"
-                      id="company-website"
-                      className="flex-1 block w-full rounded-none rounded-r-lg border-sky_light border outline-none pl-4"
-                      placeholder=""
-                    />
-                  </div>
-                </div>
-
-                <div className="flex items-center mt-6">
-                  <Switch
-                    checked={enabled}
-                    onChange={setEnabled}
-                    className={
-                      (enabled
-                        ? "bg-primary_brand_base"
-                        : "bg-secondary_sky_light") +
-                      " relative inline-flex flex-shrink-0 h-[18px] w-[32px] border-2 border-transparent rounded-full cursor-pointer transition-colors ease-in-out duration-200 focus:outline-none focus-visible:ring-2  focus-visible:ring-white focus-visible:ring-opacity-75"
-                    }
-                  >
-                    <span className="sr-only">Use setting</span>
-                    <span
-                      aria-hidden="true"
-                      className={`${enabled ? "translate-x-4" : "translate-x-0"}
-pointer-events-none inline-block h-[14px] w-[13px] rounded-full bg-white shadow-lg transform ring-0 transition ease-in-out duration-200`}
-                    />
-                  </Switch>
-                  <span className="ml-2 block text-base text-grey_20">
-                    {"This product contains physical goods?"}
-                  </span>
-                </div>
-
-                <button
-                  type="button"
-                  className="w-full mt-8 bg-primary text-white p-4 cursor-pointer rounded-4xl font-medium flex items-center justify-center"
+            <div className="text-left">
+              <div className="flex flex-col">
+                <label
+                  htmlFor="product_name"
+                  className="leading-4 font-medium text-secondary_ink_darkest mb-3"
                 >
-                  <span className="mr-4">Next</span>
-                  <svg
-                    width="25"
-                    height="24"
-                    viewBox="0 0 25 24"
-                    fill="none"
-                    xmlns="http://www.w3.org/2000/svg"
-                  >
-                    <path
-                      d="M5.5 12H19.5M19.5 12L12.5 4.99988M19.5 12L12.5 18.9999"
-                      stroke="white"
-                      strokeWidth="1.5"
-                      strokeLinecap="round"
-                      strokeLinejoin="round"
-                    />
-                  </svg>
-                </button>
+                  Product Name
+                </label>
+                <input
+                  type="text"
+                  id="product_name"
+                  name="product_name"
+                  placeholder="Enter your product name"
+                  className="border border-solid border-sky_light p-4 rounded-lg mt-2 outline-none"
+                  ref={productNameRef}
+                  autoComplete="off"
+                />
               </div>
 
-              <p className="mt-6 text-secondary_ink_lighter">
-                Visit <span className="text-primary">Help Center</span> for
-                enquiries, if you have any question.
-              </p>
+              <div className="relative mt-6">
+                <label
+                  htmlFor="price"
+                  className="leading-4 font-medium text-secondary_ink_darkest"
+                >
+                  Price
+                </label>
+                <div className="mt-3 flex rounded-lg">
+                  <span className="inline-flex items-center rounded-l-lg border border-r-0 border-sky_light bg-secondary_sky_lighter text-secondary_ink_dark text-lg px-2 py-4">
+                    ${" "}
+                    <svg
+                      width="13"
+                      height="24"
+                      viewBox="0 0 13 24"
+                      fill="none"
+                      xmlns="http://www.w3.org/2000/svg"
+                      className="ml-4"
+                    >
+                      <path
+                        d="M6.5 0L11.6962 9H1.30385L6.5 0Z"
+                        fill="#CDCFD0"
+                      />
+                      <path
+                        d="M6.5 24L11.6962 15H1.30385L6.5 24Z"
+                        fill="#CDCFD0"
+                      />
+                    </svg>
+                  </span>
+                  <input
+                    type="number"
+                    name="company-website"
+                    id="company-website"
+                    className="flex-1 block w-full rounded-none rounded-r-lg border-sky_light border outline-none pl-4"
+                    placeholder=""
+                    ref={productPriceRef}
+                  />
+                </div>
+              </div>
+
+              <div className="flex items-center mt-6">
+                <Switch
+                  checked={enabled}
+                  onChange={setEnabled}
+                  className={
+                    (enabled
+                      ? "bg-primary_brand_base"
+                      : "bg-secondary_sky_light") +
+                    " relative inline-flex flex-shrink-0 h-[18px] w-[32px] border-2 border-transparent rounded-full cursor-pointer transition-colors ease-in-out duration-200 focus:outline-none focus-visible:ring-2  focus-visible:ring-white focus-visible:ring-opacity-75"
+                  }
+                >
+                  <span className="sr-only">Use setting</span>
+                  <span
+                    aria-hidden="true"
+                    className={`${enabled ? "translate-x-4" : "translate-x-0"}
+pointer-events-none inline-block h-[14px] w-[13px] rounded-full bg-white shadow-lg transform ring-0 transition ease-in-out duration-200`}
+                  />
+                </Switch>
+                <span className="ml-2 block text-base text-grey_20">
+                  {"This product contains physical goods?"}
+                </span>
+              </div>
+
+              <button
+                type="submit"
+                className="w-full mt-8 bg-primary text-white p-4 cursor-pointer rounded-4xl font-medium flex items-center justify-center"
+                disabled={loading}
+              >
+                {loading ? (
+                  <span>...</span>
+                ) : (
+                  <React.Fragment>
+                    <span className="mr-4">Next</span>
+                    <svg
+                      width="25"
+                      height="24"
+                      viewBox="0 0 25 24"
+                      fill="none"
+                      xmlns="http://www.w3.org/2000/svg"
+                    >
+                      <path
+                        d="M5.5 12H19.5M19.5 12L12.5 4.99988M19.5 12L12.5 18.9999"
+                        stroke="white"
+                        strokeWidth="1.5"
+                        strokeLinecap="round"
+                        strokeLinejoin="round"
+                      />
+                    </svg>
+                  </React.Fragment>
+                )}
+              </button>
             </div>
+
+            <p className="mt-6 text-secondary_ink_lighter">
+              Visit <span className="text-primary">Help Center</span> for
+              enquiries, if you have any question.
+            </p>
           </div>
         </form>
       </Tab.Group>
