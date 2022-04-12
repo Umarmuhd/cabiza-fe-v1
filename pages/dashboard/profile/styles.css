@@ -1,0 +1,10 @@
+.content {
+    position: relative;
+}
+
+.content::after {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    /* width:  */
+}
