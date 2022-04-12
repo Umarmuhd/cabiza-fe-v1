@@ -1,107 +1,82 @@
+import Image from "next/image";
 import React from "react";
 
 const PlusIcon = () => (
   <svg
-    width="24"
-    height="24"
-    viewBox="0 0 24 24"
+    width="52"
+    height="52"
+    viewBox="0 0 52 52"
     fill="none"
     xmlns="http://www.w3.org/2000/svg"
   >
     <path
-      d="M18 12.75H6C5.59 12.75 5.25 12.41 5.25 12C5.25 11.59 5.59 11.25 6 11.25H18C18.41 11.25 18.75 11.59 18.75 12C18.75 12.41 18.41 12.75 18 12.75Z"
-      fill="white"
+      d="M1 26H51"
+      stroke="#404446"
+      strokeWidth="2"
+      strokeLinecap="round"
+      strokeLinejoin="round"
     />
     <path
-      d="M12 18.75C11.59 18.75 11.25 18.41 11.25 18V6C11.25 5.59 11.59 5.25 12 5.25C12.41 5.25 12.75 5.59 12.75 6V18C12.75 18.41 12.41 18.75 12 18.75Z"
-      fill="white"
+      d="M26 51V1"
+      stroke="#404446"
+      strokeWidth="2"
+      strokeLinecap="round"
+      strokeLinejoin="round"
     />
   </svg>
 );
 
 export default function AllProductsEmpty() {
   return (
-    <div className="w-4/5 mx-auto bg-grey_95 rounded-2xl border border-dashed border-dark_ text-center py-12">
-      <div className="w-3/4 mx-auto">
-        <h2 className="text-lg font-medium text-cabiza_blue mb-10">
-          Create your first product
-        </h2>
-        <div
-          className="grid-cols-3
+    <div
+      className="w-43/50 mx-auto md:my-10 bg-white rounded-3xl text-center p-10"
+      style={{ boxShadow: "0px 20px 40px rgba(0, 0, 0, 0.06)" }}
+    >
+      <div
+        className="grid-cols-3
               space-y-2
-              lg:space-y-0 lg:grid lg:gap-6 lg:grid-rows-1 mb-8"
-        >
-          <div className="p-4 rounded-lg hover:bg-cabiza_blue group cursor-pointer">
-            <img
-              src="/images/education.svg"
-              alt="..."
-              className="mb-4 mx-auto"
-            />
-            <div className="text-left">
-              <h3 className="font-bold text-2xl mb-2 text-dark_ group-hover:text-white">
-                Education
-              </h3>
-              <p className="mb-4 text-xs font-medium text-grey_80 group-hover:text-grey_95">
-                Books, stories and guides
-              </p>
-              <p className="font-medium text-sm text-cabiza_blue group-hover:text-white">
-                Explore products
-              </p>
-            </div>
-          </div>
-          <div className="p-4 rounded-lg hover:bg-cabiza_blue group cursor-pointer">
-            <img
-              src="/images/education.svg"
-              alt="..."
-              className="mb-4 mx-auto"
-            />
-            <div className="text-left">
-              <h3 className="font-bold text-2xl mb-2 text-dark_ group-hover:text-white">
-                Crafts & DIY
-              </h3>
-              <p className="mb-4 text-xs font-medium text-grey_80 group-hover:text-grey_95">
-                Books, stories and guides
-              </p>
-              <p className="font-medium text-sm text-cabiza_blue group-hover:text-white">
-                Explore products
-              </p>
-            </div>
-          </div>
-          <div className="p-4 rounded-lg hover:bg-cabiza_blue group cursor-pointer">
-            <img
-              src="/images/education.svg"
-              alt="..."
-              className="mb-4 mx-auto"
-            />
-            <div className="text-left">
-              <h3 className="font-bold text-2xl mb-2 text-dark_ group-hover:text-white">
-                Design & Tech
-              </h3>
-              <p className="mb-4 text-xs font-medium text-grey_80 group-hover:text-grey_95">
-                Books, stories and guides
-              </p>
-              <p className="font-medium text-sm text-cabiza_blue group-hover:text-white">
-                Explore products
-              </p>
-            </div>
+              lg:space-y-0 lg:grid lg:gap-6 lg:grid-rows-1 mb-8 min-h-[250px]"
+      >
+        <div className="rounded-3xl cursor-pointer border border-primary w-full h-full relative">
+          <Image
+            src="/images/create-product.png"
+            alt="..."
+            layout="fill"
+            className="object-cover"
+            objectFit="contain"
+          />
+        </div>
+        <div className="flex items-center justify-center rounded-3xl cursor-pointer bg-secondary_sky_lighter border border-secondary_sky_dark border-dashed">
+          <div
+            className="bg-white p-5 rounded-2xl"
+            style={{ boxShadow: "0px 20px 40px rgba(0, 0, 0, 0.06)" }}
+          >
+            <PlusIcon />
           </div>
         </div>
+        <div className="flex items-center justify-center rounded-3xl cursor-pointer bg-secondary_sky_lighter border border-secondary_sky_dark border-dashed">
+          <div
+            className="bg-white p-5 rounded-2xl"
+            style={{ boxShadow: "0px 20px 40px rgba(0, 0, 0, 0.06)" }}
+          >
+            <PlusIcon />
+          </div>
+        </div>
+      </div>
 
-        <div className="mt-10 mb-12">
-          <h3 className="text-2xl font-bold text-dark_ mb-2">
-            We’ve never met an idea we didn’t like.
-          </h3>
-          <p>
-            Your first product doesn’t need to be perfect. Just put it out
-            there, and see if it sticks.
-          </p>
-        </div>
+      <h2 className="md:text-4xl font-semibold text-secondary_ink_dark my-6">
+        Create your first product
+      </h2>
 
-        <div className="flex justify-center">
-          <button className="py-4 px-8 bg-cabiza_blue flex items-center text-lg font-semibold text-white rounded-lg">
-            <span className="mr-2.5">New Product </span> <PlusIcon />
-          </button>
-        </div>
+      <p className="text-lg text-secondary_ink_lighter md:w-2/3 md:mx-auto">
+        Turn your ideas into products, share and connect with people. It’s okay
+        if you make mistakes, first try is not always perfect.
+      </p>
+
+      <div className="flex justify-center mt-6">
+        <button className="py-4 px-8 bg-primary_brand_lightest leading-4 font-medium text-primary rounded-4xl">
+          <span>Create Product</span>
+        </button>
       </div>
     </div>
   );

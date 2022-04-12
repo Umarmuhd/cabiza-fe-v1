@@ -23,22 +23,19 @@ export default function Signup() {
   const router = useRouter();
 
   const handleSignup = async (values) => {
+    const { name, email, password } = values;
     try {
       setLoading(true);
 
       const response = await axios.post(`${API_URL}/auth/signup`, {
-        full_name: values.name,
-        email: values.email,
-        password: values.password,
+        full_name: name,
+        email,
+        password,
       });
 
-      if (response.status === 200) {
-        toast.success("Signup successful");
-        setLoading(false);
-        return router.push("/auth/email-verification");
-      } else {
-        toast.error("Something went wrong. Try again");
-      }
+      toast.success("Signup successful");
+      setLoading(false);
+      return router.push("/auth/email-verification");
     } catch (error) {
       console.log(error);
       setError(error.response.data.message);
