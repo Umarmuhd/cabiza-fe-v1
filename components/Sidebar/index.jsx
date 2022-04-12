@@ -468,7 +468,7 @@ const Sidebar = ({ user }) => {
             {/* Navigation */}
             <ul className="md:flex-col md:min-w-full flex flex-col list-none">
               <li className="items-center">
-                <Link href="/dashboard">
+                <Link href="/dashboard/profile">
                   <a className="text-secondary_ink_dark text-lg font-medium py-3 flex items-center">
                     <ProfileIcon />
                     <span className="ml-2">Profile</span>
