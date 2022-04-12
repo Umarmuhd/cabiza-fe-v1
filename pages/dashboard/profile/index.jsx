@@ -21,7 +21,7 @@ const EmailIcon = () => (
   </svg>
 );
 
-export default function Settings() {
+export default function Profile() {
   return (
     <div>
       <TopNav title='Profile' />
@@ -74,4 +74,4 @@ export default function Settings() {
   );
 }
 
-Settings.layout = Dashboard;
+Profile.layout = Dashboard;
