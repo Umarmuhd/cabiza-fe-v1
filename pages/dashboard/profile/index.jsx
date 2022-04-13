@@ -47,7 +47,7 @@ export default function Profile() {
                 <h3 className='text-3xl text-secondary_ink_dark font-semibold mb-3 mt-[-1.5rem]'>
                   Create your first product
                 </h3>
-                <p className='w-[80%] mx-auto text-secondary_ink_dark text-lg'>
+                <p className='w-[80%] mx-auto text-secondary_ink_lighter text-lg'>
                   Turn your ideas into products, share and connect with people.
                   It’s okay if you make mistakes, first try is not always
                   perfect.

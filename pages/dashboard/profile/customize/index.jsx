@@ -11,6 +11,7 @@ import Payment from '@/components/Settings/Payment';
 import TopNav from '@/components/Navbars/DashboardNav/TopNav';
 import Advance from '@/components/Settings/Advance';
 import ChangePicture from './change-picture';
+import Connections from './connections';
 
 export default function Customize() {
   return (
@@ -72,7 +73,7 @@ export default function Customize() {
             <ChangePicture/>
           </Tab.Panel>
           <Tab.Panel>
-            <Payout />
+            <Connections />
           </Tab.Panel>
           <Tab.Panel>
             <Payment />
