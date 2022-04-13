@@ -2,8 +2,8 @@ import React, { useState, useEffect, useCallback } from "react";
 import ReviewDropdown from "@/components/Dropdowns/ReviewDropdown";
 import { useForm } from "react-hook-form";
 import axios from "axios";
-import MainFooter from "@/components/Footer/MainFooter";
 import MainNavigation from "@/components/Navbars/MainNav";
+import PFooter from '@/components/Footer/PFooter';
 
 import { useSetRecoilState } from "recoil";
 
@@ -258,7 +258,7 @@ export default function DiscoverSingle() {
           </section>
         </main>
       )}
-      <MainFooter />
+      <PFooter />
     </div>
   );
 }
