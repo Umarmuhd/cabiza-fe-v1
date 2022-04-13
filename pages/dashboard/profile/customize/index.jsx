@@ -4,28 +4,24 @@ import { Tab } from '@headlessui/react';
 import Dashboard from '@/layouts/Dashboard';
 import { classNames } from '../../../../libs/helper';
 
-import Payout from '@/components/Settings/Payout';
-import Password from '@/components/Settings/Password';
-import Setting from '@/components/Settings/Setting';
-import Payment from '@/components/Settings/Payment';
 import TopNav from '@/components/Navbars/DashboardNav/TopNav';
-import Advance from '@/components/Settings/Advance';
 import ChangePicture from './change-picture';
 import Connections from './connections';
+import Share from './share';
 
 export default function Customize() {
   return (
     <div>
       <TopNav title='Settings' />
       <Tab.Group>
-        <div className='bg-secondary_sky_lightest h-22 shadow-md pt-8 md:px-0 px-20'>
+        <div className='h-22 pt-8 md:px-0 px-20'>
           <div className='flex justify-start items-center w-[85%] mr-auto ml-20 pl-7 pb-2'>
             <Tab.List as={'div'} className='flex w-[100%]'>
               <Tab
                 as={'button'}
                 className={({ selected }) =>
                   classNames(
-                    'text-lg mr-10 pb-5',
+                    'text-lg mr-8 pb-5',
                     selected
                       ? ' font-bold text-primary border-b border-b-primary'
                       : ' font-medium text-secondary'
@@ -38,7 +34,7 @@ export default function Customize() {
                 as={'button'}
                 className={({ selected }) =>
                   classNames(
-                    'text-lg mr-10 pb-5',
+                    'text-lg mr-8 pb-5',
                     selected
                       ? ' font-bold text-primary border-b border-b-primary'
                       : ' font-medium text-secondary'
@@ -76,7 +72,7 @@ export default function Customize() {
             <Connections />
           </Tab.Panel>
           <Tab.Panel>
-            <Payment />
+            <Share />
           </Tab.Panel>
         </Tab.Panels>
       </Tab.Group>

@@ -45,10 +45,7 @@ export default function Advance() {
           <p className='text-secondary_ink_lighter'>
             Verify domain in third-party service
           </p>
-          <Toggle
-            label='verify-domain'
-            classes='text-left mr-[-1.2rem]'
-          />
+          <Toggle label='verify-domain' classes='text-left mr-[-1.2rem]' />
         </div>
 
         <div className='mt-8'>
@@ -59,10 +56,13 @@ export default function Advance() {
       </Card>
 
       <Card>
-          <div className="text-tertiary_red_darkest bg-[transparent] w-[max-content] mx-auto">
-            <button className="text-lg">Delete your Cabiza Account</button>
-          </div>
-          <p className="mt-2 text-center text-secondary_ink_dark">Deleting your account will delete all of your products and product files, as well as any credit card and payout information.</p>
+        <div className='text-tertiary_red_darkest bg-[transparent] w-[max-content] mx-auto'>
+          <button className='text-lg'>Delete your Cabiza Account</button>
+        </div>
+        <p className='mt-2 text-center text-secondary_ink_dark'>
+          Deleting your account will delete all of your products and product
+          files, as well as any credit card and payout information.
+        </p>
       </Card>
     </form>
   );
