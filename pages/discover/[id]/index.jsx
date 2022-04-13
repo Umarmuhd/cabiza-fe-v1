@@ -197,7 +197,7 @@ export default function DiscoverSingle() {
                         </div>
                       </div>
                       <form
-                        className='md:w-[32%] w-full bg-sky_light p-4'
+                        className='md:w-[32%] w-full bg-sky_light p-8rounded-xl'
                         onSubmit={handleSubmit(handleCheckout)}
                       >
                         <div className='mb-6'>
