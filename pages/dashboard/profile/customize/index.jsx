@@ -18,14 +18,14 @@ export default function Customize() {
     <div>
       <TopNav title='Settings' />
       <Tab.Group>
-        <div className='bg-secondary_sky_lightest h-22 shadow-md pt-8 md:px-0 px-20'>
+        <div className='h-22 pt-8 md:px-0 px-20'>
           <div className='flex justify-start items-center w-[85%] mr-auto ml-20 pl-7 pb-2'>
             <Tab.List as={'div'} className='flex w-[100%]'>
               <Tab
                 as={'button'}
                 className={({ selected }) =>
                   classNames(
-                    'text-lg mr-10 pb-5',
+                    'text-lg mr-8 pb-5',
                     selected
                       ? ' font-bold text-primary border-b border-b-primary'
                       : ' font-medium text-secondary'
@@ -38,7 +38,7 @@ export default function Customize() {
                 as={'button'}
                 className={({ selected }) =>
                   classNames(
-                    'text-lg mr-10 pb-5',
+                    'text-lg mr-8 pb-5',
                     selected
                       ? ' font-bold text-primary border-b border-b-primary'
                       : ' font-medium text-secondary'

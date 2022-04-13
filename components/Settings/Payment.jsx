@@ -93,7 +93,7 @@ export default function Payment() {
   ];
   return (
     <main className="h-full w-full relative">
-      <div className="w-4/5 mx-auto md:py-10">
+      <div className="mx-auto md:py-10">
         {gateways.map((gateway) => (
           <React.Fragment key={gateway.name}>
             <PaymentItem name={gateway.name} url={gateway.url} image={gateway.image} firstText={gateway.firstText} lastText={gateway.secondText}/>
