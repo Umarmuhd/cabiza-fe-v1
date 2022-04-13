@@ -4,14 +4,10 @@ import { Tab } from '@headlessui/react';
 import Dashboard from '@/layouts/Dashboard';
 import { classNames } from '../../../../libs/helper';
 
-import Payout from '@/components/Settings/Payout';
-import Password from '@/components/Settings/Password';
-import Setting from '@/components/Settings/Setting';
-import Payment from '@/components/Settings/Payment';
 import TopNav from '@/components/Navbars/DashboardNav/TopNav';
-import Advance from '@/components/Settings/Advance';
 import ChangePicture from './change-picture';
 import Connections from './connections';
+import Share from './share';
 
 export default function Customize() {
   return (
@@ -76,7 +72,7 @@ export default function Customize() {
             <Connections />
           </Tab.Panel>
           <Tab.Panel>
-            <Payment />
+            <Share />
           </Tab.Panel>
         </Tab.Panels>
       </Tab.Group>
