@@ -141,29 +141,29 @@ export default function Discover() {
   useEffect(() => fetchProducts(), []);
 
   return (
-    <div className="w-full h-full">
+    <div className='w-full h-full'>
       <MainNavigation />
-      <div className="bg-secondary_sky_lighter">
-        <header className="py-16 mx-auto max-w-[1100px]">
-          <div className="w-[90%] mx-auto">
-            <form className="flex">
+      <div className='bg-secondary_sky_lighter'>
+        <header className='py-16 mx-auto max-w-[1100px]'>
+          <div className='w-[90%] mx-auto'>
+            <form className='flex'>
               <select
-                name="category"
-                className="py-2 px-3 border border-gray-300 bg-primary shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 text-lg lg:w-[13rem] sm:w-2/6 rounded-l-3xl px-12 text-white hidden sm:block"
+                name='category'
+                className='py-2 px-3 border border-gray-300 bg-primary shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 text-lg lg:w-[13rem] sm:w-2/6 rounded-l-3xl px-12 text-white hidden sm:block'
               >
                 <option>Education</option>
                 <option>Fitness</option>
                 <option>Health</option>
               </select>
-              <div className="flex justify-center border py-2 px-6 w-full rounded-r-3xl bg-white">
+              <div className='flex justify-center border py-2 px-6 w-full rounded-r-3xl bg-white'>
                 <input
-                  type="text"
-                  placeholder="Search for products..."
-                  className="w-full outline-none text-grey_60 bg-transparent"
+                  type='text'
+                  placeholder='Search for products...'
+                  className='w-full outline-none text-grey_60 bg-transparent'
                 />
                 <button
-                  type="submit"
-                  className="bg-primary p-3 rounded-full text-md"
+                  type='submit'
+                  className='bg-primary p-3 rounded-full text-md'
                 >
                   <SearchIcon />
                 </button>
@@ -173,173 +173,173 @@ export default function Discover() {
         </header>
       </div>
       <div
-        id="explore_cat"
-        className="px-4 py-16 mx-auto sm:max-w-xl md:max-w-full lg:max-w-screen-xl md:px-24 lg:px-8 lg:py-20"
+        id='explore_cat'
+        className='px-4 py-16 mx-auto sm:max-w-xl md:max-w-full lg:max-w-screen-xl md:px-24 lg:px-8 lg:py-20'
       >
-        <div className="mx-auto w-[100%] px-3 max-w-[1500px] overflow-hidden">
-          <h2 className="text-lg text-lighter font-medium mb-6">
+        <div className='mx-auto w-[100%] px-3 max-w-[1500px] overflow-hidden'>
+          <h2 className='text-lg text-lighter font-medium mb-6'>
             Explore Cabiza
           </h2>
-          <p className="font-bold text-dark_ text-3xl mb-12 xs:w-[70%]">
+          <p className='font-bold text-dark_ text-3xl mb-12 xs:w-[70%]'>
             Perfect your career with tested and proven resources from experts
             and examples from others.
           </p>
 
           <div className={`${styles.cards} mb-7`}>
-            <div className={`flex ${styles["product-cards"]}`}>
+            <div className={`flex ${styles['product-cards']}`}>
               <div
-                className="p-4 rounded-lg hover:bg-primary group cursor-pointer"
+                className='p-4 rounded-lg hover:bg-primary group cursor-pointer'
                 style={{
-                  "&:hover": {
-                    "box-shadow": "0px 20px 40px rgba(0, 0, 0, 0.12)",
-                    "border-radius": "8px",
+                  '&:hover': {
+                    'box-shadow': '0px 20px 40px rgba(0, 0, 0, 0.12)',
+                    'border-radius': '8px',
                   },
                 }}
               >
                 <img
-                  src="images/Education.png"
-                  alt="..."
-                  className="mb-4 mx-auto"
+                  src='images/Education.png'
+                  alt='...'
+                  className='mb-4 mx-auto'
                 />
-                <div className="text-left">
-                  <h3 className="font-bold text-2xl mb-2 text-secondary group-hover:text-white">
+                <div className='text-left'>
+                  <h3 className='font-bold text-2xl mb-2 text-secondary group-hover:text-white'>
                     Education
                   </h3>
-                  <p className="mb-4 text-sm font-medium text-secondary_sky_dark group-hover:text-lighter">
+                  <p className='mb-4 text-sm font-medium text-secondary_sky_dark group-hover:text-lighter'>
                     Books, stories and guides
                   </p>
-                  <p className="font-medium text-md  group-hover:bg-white w-[max-content] p-2 px-3 rounded-xl bg-primary_brand_lightest text-primary">
+                  <p className='font-medium text-md  group-hover:bg-white w-[max-content] p-2 px-3 rounded-xl bg-primary_brand_lightest text-primary'>
                     Explore products
                   </p>
                 </div>
               </div>
 
               <div
-                className="p-4 rounded-lg hover:bg-primary group cursor-pointer"
+                className='p-4 rounded-lg hover:bg-primary group cursor-pointer'
                 style={{
-                  "&:hover": {
-                    "box-shadow": "0px 20px 40px rgba(0, 0, 0, 0.12)",
-                    "border-radius": "8px",
+                  '&:hover': {
+                    'box-shadow': '0px 20px 40px rgba(0, 0, 0, 0.12)',
+                    'border-radius': '8px',
                   },
                 }}
               >
                 <img
-                  src="images/crafts.png"
-                  alt="..."
-                  className="mb-4 mx-auto"
+                  src='images/crafts.png'
+                  alt='...'
+                  className='mb-4 mx-auto'
                 />
-                <div className="text-left">
-                  <h3 className="font-bold text-2xl mb-2 text-secondary group-hover:text-white">
+                <div className='text-left'>
+                  <h3 className='font-bold text-2xl mb-2 text-secondary group-hover:text-white'>
                     Crafts & DIY
                   </h3>
-                  <p className="mb-4 text-sm font-medium text-secondary_sky_dark group-hover:text-lighter">
+                  <p className='mb-4 text-sm font-medium text-secondary_sky_dark group-hover:text-lighter'>
                     Books, stories and guides
                   </p>
-                  <p className="font-medium text-md  group-hover:bg-white w-[max-content] p-2 px-3 rounded-xl bg-primary_brand_lightest text-primary">
+                  <p className='font-medium text-md  group-hover:bg-white w-[max-content] p-2 px-3 rounded-xl bg-primary_brand_lightest text-primary'>
                     Explore products
                   </p>
                 </div>
               </div>
 
               <div
-                className="p-4 rounded-lg hover:bg-primary group cursor-pointer"
+                className='p-4 rounded-lg hover:bg-primary group cursor-pointer'
                 style={{
-                  "&:hover": {
-                    "box-shadow": "0px 20px 40px rgba(0, 0, 0, 0.12)",
-                    "border-radius": "8px",
+                  '&:hover': {
+                    'box-shadow': '0px 20px 40px rgba(0, 0, 0, 0.12)',
+                    'border-radius': '8px',
                   },
                 }}
               >
                 <img
-                  src="images/design.png"
-                  alt="..."
-                  className="mb-4 mx-auto"
+                  src='images/design.png'
+                  alt='...'
+                  className='mb-4 mx-auto'
                 />
-                <div className="text-left">
-                  <h3 className="font-bold text-2xl mb-2 text-secondary group-hover:text-white">
+                <div className='text-left'>
+                  <h3 className='font-bold text-2xl mb-2 text-secondary group-hover:text-white'>
                     Design & Tech
                   </h3>
-                  <p className="mb-4 text-sm font-medium text-secondary_sky_dark group-hover:text-lighter">
+                  <p className='mb-4 text-sm font-medium text-secondary_sky_dark group-hover:text-lighter'>
                     Books, stories and guides
                   </p>
-                  <p className="font-medium text-md  group-hover:bg-white w-[max-content] p-2 px-3 rounded-xl bg-primary_brand_lightest text-primary">
+                  <p className='font-medium text-md  group-hover:bg-white w-[max-content] p-2 px-3 rounded-xl bg-primary_brand_lightest text-primary'>
                     Explore products
                   </p>
                 </div>
               </div>
 
               <div
-                className="p-4 rounded-lg hover:bg-primary group cursor-pointer"
+                className='p-4 rounded-lg hover:bg-primary group cursor-pointer'
                 style={{
-                  "&:hover": {
-                    "box-shadow": "0px 20px 40px rgba(0, 0, 0, 0.12)",
-                    "border-radius": "8px",
+                  '&:hover': {
+                    'box-shadow': '0px 20px 40px rgba(0, 0, 0, 0.12)',
+                    'border-radius': '8px',
                   },
                 }}
               >
-                <img src="images/film.png" alt="..." className="mb-4 mx-auto" />
-                <div className="text-left">
-                  <h3 className="font-bold text-2xl mb-2 text-secondary group-hover:text-white">
+                <img src='images/film.png' alt='...' className='mb-4 mx-auto' />
+                <div className='text-left'>
+                  <h3 className='font-bold text-2xl mb-2 text-secondary group-hover:text-white'>
                     Film and Videos
                   </h3>
-                  <p className="mb-4 text-sm font-medium text-secondary_sky_dark group-hover:text-lighter">
+                  <p className='mb-4 text-sm font-medium text-secondary_sky_dark group-hover:text-lighter'>
                     Books, stories and guides
                   </p>
-                  <p className="font-medium text-md  group-hover:bg-white w-[max-content] p-2 px-3 rounded-xl bg-primary_brand_lightest text-primary">
+                  <p className='font-medium text-md  group-hover:bg-white w-[max-content] p-2 px-3 rounded-xl bg-primary_brand_lightest text-primary'>
                     Explore products
                   </p>
                 </div>
               </div>
 
               <div
-                className="p-4 rounded-lg hover:bg-primary group cursor-pointer"
+                className='p-4 rounded-lg hover:bg-primary group cursor-pointer'
                 style={{
-                  "&:hover": {
-                    "box-shadow": "0px 20px 40px rgba(0, 0, 0, 0.12)",
-                    "border-radius": "8px",
+                  '&:hover': {
+                    'box-shadow': '0px 20px 40px rgba(0, 0, 0, 0.12)',
+                    'border-radius': '8px',
                   },
                 }}
               >
                 <img
-                  src="images/Books.png"
-                  alt="..."
-                  className="mb-4 mx-auto"
+                  src='images/Books.png'
+                  alt='...'
+                  className='mb-4 mx-auto'
                 />
-                <div className="text-left">
-                  <h3 className="font-bold text-2xl mb-2 text-secondary group-hover:text-white">
+                <div className='text-left'>
+                  <h3 className='font-bold text-2xl mb-2 text-secondary group-hover:text-white'>
                     Books and Writings
                   </h3>
-                  <p className="mb-4 text-sm font-medium text-secondary_sky_dark group-hover:text-lighter">
+                  <p className='mb-4 text-sm font-medium text-secondary_sky_dark group-hover:text-lighter'>
                     Books, stories and guides
                   </p>
-                  <p className="font-medium text-md  group-hover:bg-white w-[max-content] p-2 px-3 rounded-xl bg-primary_brand_lightest text-primary">
+                  <p className='font-medium text-md  group-hover:bg-white w-[max-content] p-2 px-3 rounded-xl bg-primary_brand_lightest text-primary'>
                     Explore products
                   </p>
                 </div>
               </div>
 
               <div
-                className="p-4 rounded-lg hover:bg-primary group cursor-pointer"
+                className='p-4 rounded-lg hover:bg-primary group cursor-pointer'
                 style={{
-                  "&:hover": {
-                    "box-shadow": "0px 20px 40px rgba(0, 0, 0, 0.12)",
-                    "border-radius": "8px",
+                  '&:hover': {
+                    'box-shadow': '0px 20px 40px rgba(0, 0, 0, 0.12)',
+                    'border-radius': '8px',
                   },
                 }}
               >
                 <img
-                  src="images/Games.png"
-                  alt="..."
-                  className="mb-4 mx-auto"
+                  src='images/Games.png'
+                  alt='...'
+                  className='mb-4 mx-auto'
                 />
-                <div className="text-left">
-                  <h3 className="font-bold text-2xl mb-2 text-secondary group-hover:text-white">
+                <div className='text-left'>
+                  <h3 className='font-bold text-2xl mb-2 text-secondary group-hover:text-white'>
                     Games and Softwares
                   </h3>
-                  <p className="mb-4 text-sm font-medium text-secondary_sky_dark group-hover:text-lighter">
+                  <p className='mb-4 text-sm font-medium text-secondary_sky_dark group-hover:text-lighter'>
                     Books, stories and guides
                   </p>
-                  <p className="font-medium text-md  group-hover:bg-white w-[max-content] p-2 px-3 rounded-xl bg-primary_brand_lightest text-primary">
+                  <p className='font-medium text-md  group-hover:bg-white w-[max-content] p-2 px-3 rounded-xl bg-primary_brand_lightest text-primary'>
                     Explore products
                   </p>
                 </div>
@@ -347,27 +347,24 @@ export default function Discover() {
             </div>
           </div>
 
-          <div className="mb-12">
-            <header className="flex justify-between items-center mb-6">
-              <h3 className="text-lg xs:text-4xl text-secondary font-semibold">
+          <div className='mb-12'>
+            <header className='flex justify-between items-center mb-6'>
+              <h3 className='text-lg xs:text-4xl text-secondary font-semibold'>
                 Best selling in Education
               </h3>
-              <a href="" className="text-primary_brand_light">
+              <a href='' className='text-primary_brand_light'>
                 View All
               </a>
             </header>
             <div className={styles.cards}>
-              <div
-                className={`flex                
-                 ${styles["product-cards"]}`}
-              >
+              <div className={`flex ${styles['product-cards']}`}>
                 {loading ? (
                   <p>loading...</p>
                 ) : (
                   <>
                     {products.length > 0 && (
                       <>
-                        {products.map((product, index) => (                          
+                        {products.map((product, index) => (
                           <React.Fragment key={index}>
                             <ProductItem product={product} />
                           </React.Fragment>
@@ -380,55 +377,55 @@ export default function Discover() {
             </div>
           </div>
 
-          <div className="mb-12 mt-12">
-            <header className="flex justify-between items-center mb-6">
-              <h3 className="text-lg xs:text-4xl text-secondary font-semibold">
+          <div className='mb-12 mt-12'>
+            <header className='flex justify-between items-center mb-6'>
+              <h3 className='text-lg xs:text-4xl text-secondary font-semibold'>
                 Best selling in Crafts & DIY
               </h3>
-              <a href="" className="text-primary_brand_light">
+              <a href='' className='text-primary_brand_light'>
                 View All
               </a>
             </header>
 
             <div className={styles.cards}>
-              <div className={`flex ${styles["product-cards"]}`}>
+              <div className={`flex ${styles['product-cards']}`}>
                 <div
                   className={`shadow sm:w-sm:[max-content] mr-5 h-[max-content]  ${styles.card}`}
                 >
                   <img
-                    src="/images/book-small.png"
-                    alt="..."
-                    className="w-[100%] h-[auto]"
+                    src='/images/book-small.png'
+                    alt='...'
+                    className='w-[100%] h-[auto]'
                   />
-                  <div className="p-5 rounded-b">
-                    <p className="text-lg text-secondary_sky_dark font-normal mb-1">
+                  <div className='p-5 rounded-b'>
+                    <p className='text-lg text-secondary_sky_dark font-normal mb-1'>
                       Books
                     </p>
-                    <h4 className="text-2xl text-secondary font-medium mb-3">
+                    <h4 className='text-2xl text-secondary font-medium mb-3'>
                       Emotional Intelligence
                     </h4>
-                    <div className="flex items-center">
+                    <div className='flex items-center'>
                       {/* <span className="text-lg text-grey_60 font-medium mr-2"></span> */}
                       <img
-                        src="./images/author.png"
-                        alt="..."
-                        className="h-6 w-6 rounded-full"
+                        src='./images/author.png'
+                        alt='...'
+                        className='h-6 w-6 rounded-full'
                       />
 
-                      <a className="font-medium ml-2 text-secondary_ink_lighter block border-bottom border-b-secondary_ink_lighter">
+                      <a className='font-medium ml-2 text-secondary_ink_lighter block border-bottom border-b-secondary_ink_lighter'>
                         Sara Mitchell
                       </a>
                     </div>
-                    <div className="mt-3 flex items-center justify-between">
-                      <div className="flex items-center">
+                    <div className='mt-3 flex items-center justify-between'>
+                      <div className='flex items-center'>
                         <img
-                          src="/images/icons/star.svg"
-                          alt="..."
-                          className="w-4 h-4"
+                          src='/images/icons/star.svg'
+                          alt='...'
+                          className='w-4 h-4'
                         />
-                        <span className="ml-2 text-sm font-semibold text-secondary_ink_lighter">
+                        <span className='ml-2 text-sm font-semibold text-secondary_ink_lighter'>
                           5.0
-                          <span className="font-normal ml-1 text-xs">(25)</span>
+                          <span className='font-normal ml-1 text-xs'>(25)</span>
                         </span>
                       </div>
                       <span
@@ -437,13 +434,13 @@ export default function Discover() {
                         $5000+
                       </span>
                     </div>
-                    <div className="rounded border border-sky_light flex justify-between items-center mt-5 px-1 sm:px-3 py-2 pr-2">
-                      <p className="text-xs text-secondary_sky_dark">
+                    <div className='rounded border border-sky_light flex justify-between items-center mt-5 px-1 sm:px-3 py-2 pr-2'>
+                      <p className='text-xs text-secondary_sky_dark'>
                         40% Affiliate Commission
                       </p>
                       <a
-                        href=""
-                        className="bg-primary text-white font-medium text-sm rounded px-3 py-2 sm:ml-10"
+                        href=''
+                        className='bg-primary text-white font-medium text-sm rounded px-3 py-2 sm:ml-10'
                       >
                         Become Affiliate
                       </a>
@@ -455,39 +452,39 @@ export default function Discover() {
                   className={`shadow sm:w-sm:[max-content] mr-5 h-[max-content]  ${styles.card}`}
                 >
                   <img
-                    src="/images/book-small.png"
-                    alt="..."
-                    className="w-[100%] h-[auto]"
+                    src='/images/book-small.png'
+                    alt='...'
+                    className='w-[100%] h-[auto]'
                   />
-                  <div className="p-5 rounded-b">
-                    <p className="text-lg text-secondary_sky_dark font-normal mb-1">
+                  <div className='p-5 rounded-b'>
+                    <p className='text-lg text-secondary_sky_dark font-normal mb-1'>
                       Books
                     </p>
-                    <h4 className="text-2xl text-secondary font-medium mb-3">
+                    <h4 className='text-2xl text-secondary font-medium mb-3'>
                       Emotional Intelligence
                     </h4>
-                    <div className="flex items-center">
+                    <div className='flex items-center'>
                       {/* <span className="text-lg text-grey_60 font-medium mr-2"></span> */}
                       <img
-                        src="./images/author.png"
-                        alt="..."
-                        className="h-6 w-6 rounded-full"
+                        src='./images/author.png'
+                        alt='...'
+                        className='h-6 w-6 rounded-full'
                       />
 
-                      <a className="font-medium ml-2 text-secondary_ink_lighter block border-bottom border-b-secondary_ink_lighter">
+                      <a className='font-medium ml-2 text-secondary_ink_lighter block border-bottom border-b-secondary_ink_lighter'>
                         Sara Mitchell
                       </a>
                     </div>
-                    <div className="mt-3 flex items-center justify-between">
-                      <div className="flex items-center">
+                    <div className='mt-3 flex items-center justify-between'>
+                      <div className='flex items-center'>
                         <img
-                          src="/images/icons/star.svg"
-                          alt="..."
-                          className="w-4 h-4"
+                          src='/images/icons/star.svg'
+                          alt='...'
+                          className='w-4 h-4'
                         />
-                        <span className="ml-2 text-sm font-semibold text-secondary_ink_lighter">
+                        <span className='ml-2 text-sm font-semibold text-secondary_ink_lighter'>
                           5.0
-                          <span className="font-normal ml-1 text-xs">(25)</span>
+                          <span className='font-normal ml-1 text-xs'>(25)</span>
                         </span>
                       </div>
                       <span
@@ -496,13 +493,13 @@ export default function Discover() {
                         $5000+
                       </span>
                     </div>
-                    <div className="rounded border border-sky_light flex justify-between items-center mt-5 px-1 sm:px-3 py-2 pr-2">
-                      <p className="text-xs text-secondary_sky_dark">
+                    <div className='rounded border border-sky_light flex justify-between items-center mt-5 px-1 sm:px-3 py-2 pr-2'>
+                      <p className='text-xs text-secondary_sky_dark'>
                         40% Affiliate Commission
                       </p>
                       <a
-                        href=""
-                        className="bg-primary text-white font-medium text-sm rounded px-3 py-2 sm:ml-10"
+                        href=''
+                        className='bg-primary text-white font-medium text-sm rounded px-3 py-2 sm:ml-10'
                       >
                         Become Affiliate
                       </a>
@@ -514,39 +511,39 @@ export default function Discover() {
                   className={`shadow sm:w-sm:[max-content] mr-5 h-[max-content]  ${styles.card}`}
                 >
                   <img
-                    src="/images/book-small.png"
-                    alt="..."
-                    className="w-[100%] h-[auto]"
+                    src='/images/book-small.png'
+                    alt='...'
+                    className='w-[100%] h-[auto]'
                   />
-                  <div className="p-5 rounded-b">
-                    <p className="text-lg text-secondary_sky_dark font-normal mb-1">
+                  <div className='p-5 rounded-b'>
+                    <p className='text-lg text-secondary_sky_dark font-normal mb-1'>
                       Books
                     </p>
-                    <h4 className="text-2xl text-secondary font-medium mb-3">
+                    <h4 className='text-2xl text-secondary font-medium mb-3'>
                       Emotional Intelligence
                     </h4>
-                    <div className="flex items-center">
+                    <div className='flex items-center'>
                       {/* <span className="text-lg text-grey_60 font-medium mr-2"></span> */}
                       <img
-                        src="./images/author.png"
-                        alt="..."
-                        className="h-6 w-6 rounded-full"
+                        src='./images/author.png'
+                        alt='...'
+                        className='h-6 w-6 rounded-full'
                       />
 
-                      <a className="font-medium ml-2 text-secondary_ink_lighter block border-bottom border-b-secondary_ink_lighter">
+                      <a className='font-medium ml-2 text-secondary_ink_lighter block border-bottom border-b-secondary_ink_lighter'>
                         Sara Mitchell
                       </a>
                     </div>
-                    <div className="mt-3 flex items-center justify-between">
-                      <div className="flex items-center">
+                    <div className='mt-3 flex items-center justify-between'>
+                      <div className='flex items-center'>
                         <img
-                          src="/images/icons/star.svg"
-                          alt="..."
-                          className="w-4 h-4"
+                          src='/images/icons/star.svg'
+                          alt='...'
+                          className='w-4 h-4'
                         />
-                        <span className="ml-2 text-sm font-semibold text-secondary_ink_lighter">
+                        <span className='ml-2 text-sm font-semibold text-secondary_ink_lighter'>
                           5.0
-                          <span className="font-normal ml-1 text-xs">(25)</span>
+                          <span className='font-normal ml-1 text-xs'>(25)</span>
                         </span>
                       </div>
                       <span
@@ -555,13 +552,13 @@ export default function Discover() {
                         $5000+
                       </span>
                     </div>
-                    <div className="rounded border border-sky_light flex justify-between items-center mt-5 px-1 sm:px-3 py-2 pr-2">
-                      <p className="text-xs text-secondary_sky_dark">
+                    <div className='rounded border border-sky_light flex justify-between items-center mt-5 px-1 sm:px-3 py-2 pr-2'>
+                      <p className='text-xs text-secondary_sky_dark'>
                         40% Affiliate Commission
                       </p>
                       <a
-                        href=""
-                        className="bg-primary text-white font-medium text-sm rounded px-3 py-2 sm:ml-10"
+                        href=''
+                        className='bg-primary text-white font-medium text-sm rounded px-3 py-2 sm:ml-10'
                       >
                         Become Affiliate
                       </a>
@@ -573,39 +570,39 @@ export default function Discover() {
                   className={`shadow sm:w-sm:[max-content] mr-5 h-[max-content]  ${styles.card}`}
                 >
                   <img
-                    src="/images/book-small.png"
-                    alt="..."
-                    className="w-[100%] h-[auto]"
+                    src='/images/book-small.png'
+                    alt='...'
+                    className='w-[100%] h-[auto]'
                   />
-                  <div className="p-5 rounded-b">
-                    <p className="text-lg text-secondary_sky_dark font-normal mb-1">
+                  <div className='p-5 rounded-b'>
+                    <p className='text-lg text-secondary_sky_dark font-normal mb-1'>
                       Books
                     </p>
-                    <h4 className="text-2xl text-secondary font-medium mb-3">
+                    <h4 className='text-2xl text-secondary font-medium mb-3'>
                       Emotional Intelligence
                     </h4>
-                    <div className="flex items-center">
+                    <div className='flex items-center'>
                       {/* <span className="text-lg text-grey_60 font-medium mr-2"></span> */}
                       <img
-                        src="./images/author.png"
-                        alt="..."
-                        className="h-6 w-6 rounded-full"
+                        src='./images/author.png'
+                        alt='...'
+                        className='h-6 w-6 rounded-full'
                       />
 
-                      <a className="font-medium ml-2 text-secondary_ink_lighter block border-bottom border-b-secondary_ink_lighter">
+                      <a className='font-medium ml-2 text-secondary_ink_lighter block border-bottom border-b-secondary_ink_lighter'>
                         Sara Mitchell
                       </a>
                     </div>
-                    <div className="mt-3 flex items-center justify-between">
-                      <div className="flex items-center">
+                    <div className='mt-3 flex items-center justify-between'>
+                      <div className='flex items-center'>
                         <img
-                          src="/images/icons/star.svg"
-                          alt="..."
-                          className="w-4 h-4"
+                          src='/images/icons/star.svg'
+                          alt='...'
+                          className='w-4 h-4'
                         />
-                        <span className="ml-2 text-sm font-semibold text-secondary_ink_lighter">
+                        <span className='ml-2 text-sm font-semibold text-secondary_ink_lighter'>
                           5.0
-                          <span className="font-normal ml-1 text-xs">(25)</span>
+                          <span className='font-normal ml-1 text-xs'>(25)</span>
                         </span>
                       </div>
                       <span
@@ -614,13 +611,13 @@ export default function Discover() {
                         $5000+
                       </span>
                     </div>
-                    <div className="rounded border border-sky_light flex justify-between items-center mt-5 px-1 sm:px-3 py-2 pr-2">
-                      <p className="text-xs text-secondary_sky_dark">
+                    <div className='rounded border border-sky_light flex justify-between items-center mt-5 px-1 sm:px-3 py-2 pr-2'>
+                      <p className='text-xs text-secondary_sky_dark'>
                         40% Affiliate Commission
                       </p>
                       <a
-                        href=""
-                        className="bg-primary text-white font-medium text-sm rounded px-3 py-2 sm:ml-10"
+                        href=''
+                        className='bg-primary text-white font-medium text-sm rounded px-3 py-2 sm:ml-10'
                       >
                         Become Affiliate
                       </a>
@@ -632,39 +629,39 @@ export default function Discover() {
                   className={`shadow sm:w-sm:[max-content] mr-5 h-[max-content]  ${styles.card}`}
                 >
                   <img
-                    src="/images/book-small.png"
-                    alt="..."
-                    className="w-[100%] h-[auto]"
+                    src='/images/book-small.png'
+                    alt='...'
+                    className='w-[100%] h-[auto]'
                   />
-                  <div className="p-5 rounded-b">
-                    <p className="text-lg text-secondary_sky_dark font-normal mb-1">
+                  <div className='p-5 rounded-b'>
+                    <p className='text-lg text-secondary_sky_dark font-normal mb-1'>
                       Books
                     </p>
-                    <h4 className="text-2xl text-secondary font-medium mb-3">
+                    <h4 className='text-2xl text-secondary font-medium mb-3'>
                       Emotional Intelligence
                     </h4>
-                    <div className="flex items-center">
+                    <div className='flex items-center'>
                       {/* <span className="text-lg text-grey_60 font-medium mr-2"></span> */}
                       <img
-                        src="./images/author.png"
-                        alt="..."
-                        className="h-6 w-6 rounded-full"
+                        src='./images/author.png'
+                        alt='...'
+                        className='h-6 w-6 rounded-full'
                       />
 
-                      <a className="font-medium ml-2 text-secondary_ink_lighter block border-bottom border-b-secondary_ink_lighter">
+                      <a className='font-medium ml-2 text-secondary_ink_lighter block border-bottom border-b-secondary_ink_lighter'>
                         Sara Mitchell
                       </a>
                     </div>
-                    <div className="mt-3 flex items-center justify-between">
-                      <div className="flex items-center">
+                    <div className='mt-3 flex items-center justify-between'>
+                      <div className='flex items-center'>
                         <img
-                          src="/images/icons/star.svg"
-                          alt="..."
-                          className="w-4 h-4"
+                          src='/images/icons/star.svg'
+                          alt='...'
+                          className='w-4 h-4'
                         />
-                        <span className="ml-2 text-sm font-semibold text-secondary_ink_lighter">
+                        <span className='ml-2 text-sm font-semibold text-secondary_ink_lighter'>
                           5.0
-                          <span className="font-normal ml-1 text-xs">(25)</span>
+                          <span className='font-normal ml-1 text-xs'>(25)</span>
                         </span>
                       </div>
                       <span
@@ -673,13 +670,13 @@ export default function Discover() {
                         $5000+
                       </span>
                     </div>
-                    <div className="rounded border border-sky_light flex justify-between items-center mt-5 px-1 sm:px-3 py-2 pr-2">
-                      <p className="text-xs text-secondary_sky_dark">
+                    <div className='rounded border border-sky_light flex justify-between items-center mt-5 px-1 sm:px-3 py-2 pr-2'>
+                      <p className='text-xs text-secondary_sky_dark'>
                         40% Affiliate Commission
                       </p>
                       <a
-                        href=""
-                        className="bg-primary text-white font-medium text-sm rounded px-3 py-2 sm:ml-10"
+                        href=''
+                        className='bg-primary text-white font-medium text-sm rounded px-3 py-2 sm:ml-10'
                       >
                         Become Affiliate
                       </a>
@@ -691,39 +688,39 @@ export default function Discover() {
                   className={`shadow sm:w-sm:[max-content] mr-5 h-[max-content]  ${styles.card}`}
                 >
                   <img
-                    src="/images/book-small.png"
-                    alt="..."
-                    className="w-[100%] h-[auto]"
+                    src='/images/book-small.png'
+                    alt='...'
+                    className='w-[100%] h-[auto]'
                   />
-                  <div className="p-5 rounded-b">
-                    <p className="text-lg text-secondary_sky_dark font-normal mb-1">
+                  <div className='p-5 rounded-b'>
+                    <p className='text-lg text-secondary_sky_dark font-normal mb-1'>
                       Books
                     </p>
-                    <h4 className="text-2xl text-secondary font-medium mb-3">
+                    <h4 className='text-2xl text-secondary font-medium mb-3'>
                       Emotional Intelligence
                     </h4>
-                    <div className="flex items-center">
+                    <div className='flex items-center'>
                       {/* <span className="text-lg text-grey_60 font-medium mr-2"></span> */}
                       <img
-                        src="./images/author.png"
-                        alt="..."
-                        className="h-6 w-6 rounded-full"
+                        src='./images/author.png'
+                        alt='...'
+                        className='h-6 w-6 rounded-full'
                       />
 
-                      <a className="font-medium ml-2 text-secondary_ink_lighter block border-bottom border-b-secondary_ink_lighter">
+                      <a className='font-medium ml-2 text-secondary_ink_lighter block border-bottom border-b-secondary_ink_lighter'>
                         Sara Mitchell
                       </a>
                     </div>
-                    <div className="mt-3 flex items-center justify-between">
-                      <div className="flex items-center">
+                    <div className='mt-3 flex items-center justify-between'>
+                      <div className='flex items-center'>
                         <img
-                          src="/images/icons/star.svg"
-                          alt="..."
-                          className="w-4 h-4"
+                          src='/images/icons/star.svg'
+                          alt='...'
+                          className='w-4 h-4'
                         />
-                        <span className="ml-2 text-sm font-semibold text-secondary_ink_lighter">
+                        <span className='ml-2 text-sm font-semibold text-secondary_ink_lighter'>
                           5.0
-                          <span className="font-normal ml-1 text-xs">(25)</span>
+                          <span className='font-normal ml-1 text-xs'>(25)</span>
                         </span>
                       </div>
                       <span
@@ -732,13 +729,13 @@ export default function Discover() {
                         $5000+
                       </span>
                     </div>
-                    <div className="rounded border border-sky_light flex justify-between items-center mt-5 px-1 sm:px-3 py-2 pr-2">
-                      <p className="text-xs text-secondary_sky_dark">
+                    <div className='rounded border border-sky_light flex justify-between items-center mt-5 px-1 sm:px-3 py-2 pr-2'>
+                      <p className='text-xs text-secondary_sky_dark'>
                         40% Affiliate Commission
                       </p>
                       <a
-                        href=""
-                        className="bg-primary text-white font-medium text-sm rounded px-3 py-2 sm:ml-10"
+                        href=''
+                        className='bg-primary text-white font-medium text-sm rounded px-3 py-2 sm:ml-10'
                       >
                         Become Affiliate
                       </a>
@@ -750,39 +747,39 @@ export default function Discover() {
                   className={`shadow sm:w-sm:[max-content] mr-5 h-[max-content]  ${styles.card}`}
                 >
                   <img
-                    src="/images/book-small.png"
-                    alt="..."
-                    className="w-[100%] h-[auto]"
+                    src='/images/book-small.png'
+                    alt='...'
+                    className='w-[100%] h-[auto]'
                   />
-                  <div className="p-5 rounded-b">
-                    <p className="text-lg text-secondary_sky_dark font-normal mb-1">
+                  <div className='p-5 rounded-b'>
+                    <p className='text-lg text-secondary_sky_dark font-normal mb-1'>
                       Books
                     </p>
-                    <h4 className="text-2xl text-secondary font-medium mb-3">
+                    <h4 className='text-2xl text-secondary font-medium mb-3'>
                       Emotional Intelligence
                     </h4>
-                    <div className="flex items-center">
+                    <div className='flex items-center'>
                       {/* <span className="text-lg text-grey_60 font-medium mr-2"></span> */}
                       <img
-                        src="./images/author.png"
-                        alt="..."
-                        className="h-6 w-6 rounded-full"
+                        src='./images/author.png'
+                        alt='...'
+                        className='h-6 w-6 rounded-full'
                       />
 
-                      <a className="font-medium ml-2 text-secondary_ink_lighter block border-bottom border-b-secondary_ink_lighter">
+                      <a className='font-medium ml-2 text-secondary_ink_lighter block border-bottom border-b-secondary_ink_lighter'>
                         Sara Mitchell
                       </a>
                     </div>
-                    <div className="mt-3 flex items-center justify-between">
-                      <div className="flex items-center">
+                    <div className='mt-3 flex items-center justify-between'>
+                      <div className='flex items-center'>
                         <img
-                          src="/images/icons/star.svg"
-                          alt="..."
-                          className="w-4 h-4"
+                          src='/images/icons/star.svg'
+                          alt='...'
+                          className='w-4 h-4'
                         />
-                        <span className="ml-2 text-sm font-semibold text-secondary_ink_lighter">
+                        <span className='ml-2 text-sm font-semibold text-secondary_ink_lighter'>
                           5.0
-                          <span className="font-normal ml-1 text-xs">(25)</span>
+                          <span className='font-normal ml-1 text-xs'>(25)</span>
                         </span>
                       </div>
                       <span
@@ -791,13 +788,13 @@ export default function Discover() {
                         $5000+
                       </span>
                     </div>
-                    <div className="rounded border border-sky_light flex justify-between items-center mt-5 px-1 sm:px-3 py-2 pr-2">
-                      <p className="text-xs text-secondary_sky_dark">
+                    <div className='rounded border border-sky_light flex justify-between items-center mt-5 px-1 sm:px-3 py-2 pr-2'>
+                      <p className='text-xs text-secondary_sky_dark'>
                         40% Affiliate Commission
                       </p>
                       <a
-                        href=""
-                        className="bg-primary text-white font-medium text-sm rounded px-3 py-2 sm:ml-10"
+                        href=''
+                        className='bg-primary text-white font-medium text-sm rounded px-3 py-2 sm:ml-10'
                       >
                         Become Affiliate
                       </a>
@@ -809,39 +806,39 @@ export default function Discover() {
                   className={`shadow sm:w-sm:[max-content] mr-5 h-[max-content]  ${styles.card}`}
                 >
                   <img
-                    src="/images/book-small.png"
-                    alt="..."
-                    className="w-[100%] h-[auto]"
+                    src='/images/book-small.png'
+                    alt='...'
+                    className='w-[100%] h-[auto]'
                   />
-                  <div className="p-5 rounded-b">
-                    <p className="text-lg text-secondary_sky_dark font-normal mb-1">
+                  <div className='p-5 rounded-b'>
+                    <p className='text-lg text-secondary_sky_dark font-normal mb-1'>
                       Books
                     </p>
-                    <h4 className="text-2xl text-secondary font-medium mb-3">
+                    <h4 className='text-2xl text-secondary font-medium mb-3'>
                       Emotional Intelligence
                     </h4>
-                    <div className="flex items-center">
+                    <div className='flex items-center'>
                       {/* <span className="text-lg text-grey_60 font-medium mr-2"></span> */}
                       <img
-                        src="./images/author.png"
-                        alt="..."
-                        className="h-6 w-6 rounded-full"
+                        src='./images/author.png'
+                        alt='...'
+                        className='h-6 w-6 rounded-full'
                       />
 
-                      <a className="font-medium ml-2 text-secondary_ink_lighter block border-bottom border-b-secondary_ink_lighter">
+                      <a className='font-medium ml-2 text-secondary_ink_lighter block border-bottom border-b-secondary_ink_lighter'>
                         Sara Mitchell
                       </a>
                     </div>
-                    <div className="mt-3 flex items-center justify-between">
-                      <div className="flex items-center">
+                    <div className='mt-3 flex items-center justify-between'>
+                      <div className='flex items-center'>
                         <img
-                          src="/images/icons/star.svg"
-                          alt="..."
-                          className="w-4 h-4"
+                          src='/images/icons/star.svg'
+                          alt='...'
+                          className='w-4 h-4'
                         />
-                        <span className="ml-2 text-sm font-semibold text-secondary_ink_lighter">
+                        <span className='ml-2 text-sm font-semibold text-secondary_ink_lighter'>
                           5.0
-                          <span className="font-normal ml-1 text-xs">(25)</span>
+                          <span className='font-normal ml-1 text-xs'>(25)</span>
                         </span>
                       </div>
                       <span
@@ -850,13 +847,13 @@ export default function Discover() {
                         $5000+
                       </span>
                     </div>
-                    <div className="rounded border border-sky_light flex justify-between items-center mt-5 px-1 sm:px-3 py-2 pr-2">
-                      <p className="text-xs text-secondary_sky_dark">
+                    <div className='rounded border border-sky_light flex justify-between items-center mt-5 px-1 sm:px-3 py-2 pr-2'>
+                      <p className='text-xs text-secondary_sky_dark'>
                         40% Affiliate Commission
                       </p>
                       <a
-                        href=""
-                        className="bg-primary text-white font-medium text-sm rounded px-3 py-2 sm:ml-10"
+                        href=''
+                        className='bg-primary text-white font-medium text-sm rounded px-3 py-2 sm:ml-10'
                       >
                         Become Affiliate
                       </a>
@@ -867,56 +864,56 @@ export default function Discover() {
             </div>
           </div>
 
-          <div className="mb-0">
-            <header className="flex justify-between items-center mb-6">
-              <h3 className="text-lg xs:text-4xl text-secondary font-semibold">
+          <div className='mb-0'>
+            <header className='flex justify-between items-center mb-6'>
+              <h3 className='text-lg xs:text-4xl text-secondary font-semibold'>
                 Best selling in Design & Tech
               </h3>
-              <a href="" className="text-primary_brand_light">
+              <a href='' className='text-primary_brand_light'>
                 View All
               </a>
             </header>
             <div className={styles.cards}>
-              <div className={`flex ${styles["product-cards"]}`}>
+              <div className={`flex ${styles['product-cards']}`}>
                 <div className={styles.cards}>
-                  <div className={`flex ${styles["product-cards"]}`}>
+                  <div className={`flex ${styles['product-cards']}`}>
                     <div
                       className={`shadow sm:w-sm:[max-content] mr-5 h-[max-content]  ${styles.card}`}
                     >
                       <img
-                        src="/images/book-small.png"
-                        alt="..."
-                        className="w-[100%] h-[auto]"
+                        src='/images/book-small.png'
+                        alt='...'
+                        className='w-[100%] h-[auto]'
                       />
-                      <div className="p-5 rounded-b">
-                        <p className="text-lg text-secondary_sky_dark font-normal mb-1">
+                      <div className='p-5 rounded-b'>
+                        <p className='text-lg text-secondary_sky_dark font-normal mb-1'>
                           Books
                         </p>
-                        <h4 className="text-2xl text-secondary font-medium mb-3">
+                        <h4 className='text-2xl text-secondary font-medium mb-3'>
                           Emotional Intelligence
                         </h4>
-                        <div className="flex items-center">
+                        <div className='flex items-center'>
                           {/* <span className="text-lg text-grey_60 font-medium mr-2"></span> */}
                           <img
-                            src="./images/author.png"
-                            alt="..."
-                            className="h-6 w-6 rounded-full"
+                            src='./images/author.png'
+                            alt='...'
+                            className='h-6 w-6 rounded-full'
                           />
 
-                          <a className="font-medium ml-2 text-secondary_ink_lighter block border-bottom border-b-secondary_ink_lighter">
+                          <a className='font-medium ml-2 text-secondary_ink_lighter block border-bottom border-b-secondary_ink_lighter'>
                             Sara Mitchell
                           </a>
                         </div>
-                        <div className="mt-3 flex items-center justify-between">
-                          <div className="flex items-center">
+                        <div className='mt-3 flex items-center justify-between'>
+                          <div className='flex items-center'>
                             <img
-                              src="/images/icons/star.svg"
-                              alt="..."
-                              className="w-4 h-4"
+                              src='/images/icons/star.svg'
+                              alt='...'
+                              className='w-4 h-4'
                             />
-                            <span className="ml-2 text-sm font-semibold text-secondary_ink_lighter">
+                            <span className='ml-2 text-sm font-semibold text-secondary_ink_lighter'>
                               5.0
-                              <span className="font-normal ml-1 text-xs">
+                              <span className='font-normal ml-1 text-xs'>
                                 (25)
                               </span>
                             </span>
@@ -927,13 +924,13 @@ export default function Discover() {
                             $5000+
                           </span>
                         </div>
-                        <div className="rounded border border-sky_light flex justify-between items-center mt-5 px-1 sm:px-3 py-2 pr-2">
-                          <p className="text-xs text-secondary_sky_dark">
+                        <div className='rounded border border-sky_light flex justify-between items-center mt-5 px-1 sm:px-3 py-2 pr-2'>
+                          <p className='text-xs text-secondary_sky_dark'>
                             40% Affiliate Commission
                           </p>
                           <a
-                            href=""
-                            className="bg-primary text-white font-medium text-sm rounded px-3 py-2 sm:ml-10"
+                            href=''
+                            className='bg-primary text-white font-medium text-sm rounded px-3 py-2 sm:ml-10'
                           >
                             Become Affiliate
                           </a>
@@ -945,39 +942,39 @@ export default function Discover() {
                       className={`shadow sm:w-sm:[max-content] mr-5 h-[max-content]  ${styles.card}`}
                     >
                       <img
-                        src="/images/book-small.png"
-                        alt="..."
-                        className="w-[100%] h-[auto]"
+                        src='/images/book-small.png'
+                        alt='...'
+                        className='w-[100%] h-[auto]'
                       />
-                      <div className="p-5 rounded-b">
-                        <p className="text-lg text-secondary_sky_dark font-normal mb-1">
+                      <div className='p-5 rounded-b'>
+                        <p className='text-lg text-secondary_sky_dark font-normal mb-1'>
                           Books
                         </p>
-                        <h4 className="text-2xl text-secondary font-medium mb-3">
+                        <h4 className='text-2xl text-secondary font-medium mb-3'>
                           Emotional Intelligence
                         </h4>
-                        <div className="flex items-center">
+                        <div className='flex items-center'>
                           {/* <span className="text-lg text-grey_60 font-medium mr-2"></span> */}
                           <img
-                            src="./images/author.png"
-                            alt="..."
-                            className="h-6 w-6 rounded-full"
+                            src='./images/author.png'
+                            alt='...'
+                            className='h-6 w-6 rounded-full'
                           />
 
-                          <a className="font-medium ml-2 text-secondary_ink_lighter block border-bottom border-b-secondary_ink_lighter">
+                          <a className='font-medium ml-2 text-secondary_ink_lighter block border-bottom border-b-secondary_ink_lighter'>
                             Sara Mitchell
                           </a>
                         </div>
-                        <div className="mt-3 flex items-center justify-between">
-                          <div className="flex items-center">
+                        <div className='mt-3 flex items-center justify-between'>
+                          <div className='flex items-center'>
                             <img
-                              src="/images/icons/star.svg"
-                              alt="..."
-                              className="w-4 h-4"
+                              src='/images/icons/star.svg'
+                              alt='...'
+                              className='w-4 h-4'
                             />
-                            <span className="ml-2 text-sm font-semibold text-secondary_ink_lighter">
+                            <span className='ml-2 text-sm font-semibold text-secondary_ink_lighter'>
                               5.0
-                              <span className="font-normal ml-1 text-xs">
+                              <span className='font-normal ml-1 text-xs'>
                                 (25)
                               </span>
                             </span>
@@ -988,13 +985,13 @@ export default function Discover() {
                             $5000+
                           </span>
                         </div>
-                        <div className="rounded border border-sky_light flex justify-between items-center mt-5 px-1 sm:px-3 py-2 pr-2">
-                          <p className="text-xs text-secondary_sky_dark">
+                        <div className='rounded border border-sky_light flex justify-between items-center mt-5 px-1 sm:px-3 py-2 pr-2'>
+                          <p className='text-xs text-secondary_sky_dark'>
                             40% Affiliate Commission
                           </p>
                           <a
-                            href=""
-                            className="bg-primary text-white font-medium text-sm rounded px-3 py-2 sm:ml-10"
+                            href=''
+                            className='bg-primary text-white font-medium text-sm rounded px-3 py-2 sm:ml-10'
                           >
                             Become Affiliate
                           </a>
@@ -1006,39 +1003,39 @@ export default function Discover() {
                       className={`shadow sm:w-sm:[max-content] mr-5 h-[max-content]  ${styles.card}`}
                     >
                       <img
-                        src="/images/book-small.png"
-                        alt="..."
-                        className="w-[100%] h-[auto]"
+                        src='/images/book-small.png'
+                        alt='...'
+                        className='w-[100%] h-[auto]'
                       />
-                      <div className="p-5 rounded-b">
-                        <p className="text-lg text-secondary_sky_dark font-normal mb-1">
+                      <div className='p-5 rounded-b'>
+                        <p className='text-lg text-secondary_sky_dark font-normal mb-1'>
                           Books
                         </p>
-                        <h4 className="text-2xl text-secondary font-medium mb-3">
+                        <h4 className='text-2xl text-secondary font-medium mb-3'>
                           Emotional Intelligence
                         </h4>
-                        <div className="flex items-center">
+                        <div className='flex items-center'>
                           {/* <span className="text-lg text-grey_60 font-medium mr-2"></span> */}
                           <img
-                            src="./images/author.png"
-                            alt="..."
-                            className="h-6 w-6 rounded-full"
+                            src='./images/author.png'
+                            alt='...'
+                            className='h-6 w-6 rounded-full'
                           />
 
-                          <a className="font-medium ml-2 text-secondary_ink_lighter block border-bottom border-b-secondary_ink_lighter">
+                          <a className='font-medium ml-2 text-secondary_ink_lighter block border-bottom border-b-secondary_ink_lighter'>
                             Sara Mitchell
                           </a>
                         </div>
-                        <div className="mt-3 flex items-center justify-between">
-                          <div className="flex items-center">
+                        <div className='mt-3 flex items-center justify-between'>
+                          <div className='flex items-center'>
                             <img
-                              src="/images/icons/star.svg"
-                              alt="..."
-                              className="w-4 h-4"
+                              src='/images/icons/star.svg'
+                              alt='...'
+                              className='w-4 h-4'
                             />
-                            <span className="ml-2 text-sm font-semibold text-secondary_ink_lighter">
+                            <span className='ml-2 text-sm font-semibold text-secondary_ink_lighter'>
                               5.0
-                              <span className="font-normal ml-1 text-xs">
+                              <span className='font-normal ml-1 text-xs'>
                                 (25)
                               </span>
                             </span>
@@ -1049,13 +1046,13 @@ export default function Discover() {
                             $5000+
                           </span>
                         </div>
-                        <div className="rounded border border-sky_light flex justify-between items-center mt-5 px-1 sm:px-3 py-2 pr-2">
-                          <p className="text-xs text-secondary_sky_dark">
+                        <div className='rounded border border-sky_light flex justify-between items-center mt-5 px-1 sm:px-3 py-2 pr-2'>
+                          <p className='text-xs text-secondary_sky_dark'>
                             40% Affiliate Commission
                           </p>
                           <a
-                            href=""
-                            className="bg-primary text-white font-medium text-sm rounded px-3 py-2 sm:ml-10"
+                            href=''
+                            className='bg-primary text-white font-medium text-sm rounded px-3 py-2 sm:ml-10'
                           >
                             Become Affiliate
                           </a>
@@ -1067,39 +1064,39 @@ export default function Discover() {
                       className={`shadow sm:w-sm:[max-content] mr-5 h-[max-content]  ${styles.card}`}
                     >
                       <img
-                        src="/images/book-small.png"
-                        alt="..."
-                        className="w-[100%] h-[auto]"
+                        src='/images/book-small.png'
+                        alt='...'
+                        className='w-[100%] h-[auto]'
                       />
-                      <div className="p-5 rounded-b">
-                        <p className="text-lg text-secondary_sky_dark font-normal mb-1">
+                      <div className='p-5 rounded-b'>
+                        <p className='text-lg text-secondary_sky_dark font-normal mb-1'>
                           Books
                         </p>
-                        <h4 className="text-2xl text-secondary font-medium mb-3">
+                        <h4 className='text-2xl text-secondary font-medium mb-3'>
                           Emotional Intelligence
                         </h4>
-                        <div className="flex items-center">
+                        <div className='flex items-center'>
                           {/* <span className="text-lg text-grey_60 font-medium mr-2"></span> */}
                           <img
-                            src="./images/author.png"
-                            alt="..."
-                            className="h-6 w-6 rounded-full"
+                            src='./images/author.png'
+                            alt='...'
+                            className='h-6 w-6 rounded-full'
                           />
 
-                          <a className="font-medium ml-2 text-secondary_ink_lighter block border-bottom border-b-secondary_ink_lighter">
+                          <a className='font-medium ml-2 text-secondary_ink_lighter block border-bottom border-b-secondary_ink_lighter'>
                             Sara Mitchell
                           </a>
                         </div>
-                        <div className="mt-3 flex items-center justify-between">
-                          <div className="flex items-center">
+                        <div className='mt-3 flex items-center justify-between'>
+                          <div className='flex items-center'>
                             <img
-                              src="/images/icons/star.svg"
-                              alt="..."
-                              className="w-4 h-4"
+                              src='/images/icons/star.svg'
+                              alt='...'
+                              className='w-4 h-4'
                             />
-                            <span className="ml-2 text-sm font-semibold text-secondary_ink_lighter">
+                            <span className='ml-2 text-sm font-semibold text-secondary_ink_lighter'>
                               5.0
-                              <span className="font-normal ml-1 text-xs">
+                              <span className='font-normal ml-1 text-xs'>
                                 (25)
                               </span>
                             </span>
@@ -1110,13 +1107,13 @@ export default function Discover() {
                             $5000+
                           </span>
                         </div>
-                        <div className="rounded border border-sky_light flex justify-between items-center mt-5 px-1 sm:px-3 py-2 pr-2">
-                          <p className="text-xs text-secondary_sky_dark">
+                        <div className='rounded border border-sky_light flex justify-between items-center mt-5 px-1 sm:px-3 py-2 pr-2'>
+                          <p className='text-xs text-secondary_sky_dark'>
                             40% Affiliate Commission
                           </p>
                           <a
-                            href=""
-                            className="bg-primary text-white font-medium text-sm rounded px-3 py-2 sm:ml-10"
+                            href=''
+                            className='bg-primary text-white font-medium text-sm rounded px-3 py-2 sm:ml-10'
                           >
                             Become Affiliate
                           </a>
@@ -1128,39 +1125,39 @@ export default function Discover() {
                       className={`shadow sm:w-sm:[max-content] mr-5 h-[max-content]  ${styles.card}`}
                     >
                       <img
-                        src="/images/book-small.png"
-                        alt="..."
-                        className="w-[100%] h-[auto]"
+                        src='/images/book-small.png'
+                        alt='...'
+                        className='w-[100%] h-[auto]'
                       />
-                      <div className="p-5 rounded-b">
-                        <p className="text-lg text-secondary_sky_dark font-normal mb-1">
+                      <div className='p-5 rounded-b'>
+                        <p className='text-lg text-secondary_sky_dark font-normal mb-1'>
                           Books
                         </p>
-                        <h4 className="text-2xl text-secondary font-medium mb-3">
+                        <h4 className='text-2xl text-secondary font-medium mb-3'>
                           Emotional Intelligence
                         </h4>
-                        <div className="flex items-center">
+                        <div className='flex items-center'>
                           {/* <span className="text-lg text-grey_60 font-medium mr-2"></span> */}
                           <img
-                            src="./images/author.png"
-                            alt="..."
-                            className="h-6 w-6 rounded-full"
+                            src='./images/author.png'
+                            alt='...'
+                            className='h-6 w-6 rounded-full'
                           />
 
-                          <a className="font-medium ml-2 text-secondary_ink_lighter block border-bottom border-b-secondary_ink_lighter">
+                          <a className='font-medium ml-2 text-secondary_ink_lighter block border-bottom border-b-secondary_ink_lighter'>
                             Sara Mitchell
                           </a>
                         </div>
-                        <div className="mt-3 flex items-center justify-between">
-                          <div className="flex items-center">
+                        <div className='mt-3 flex items-center justify-between'>
+                          <div className='flex items-center'>
                             <img
-                              src="/images/icons/star.svg"
-                              alt="..."
-                              className="w-4 h-4"
+                              src='/images/icons/star.svg'
+                              alt='...'
+                              className='w-4 h-4'
                             />
-                            <span className="ml-2 text-sm font-semibold text-secondary_ink_lighter">
+                            <span className='ml-2 text-sm font-semibold text-secondary_ink_lighter'>
                               5.0
-                              <span className="font-normal ml-1 text-xs">
+                              <span className='font-normal ml-1 text-xs'>
                                 (25)
                               </span>
                             </span>
@@ -1171,13 +1168,13 @@ export default function Discover() {
                             $5000+
                           </span>
                         </div>
-                        <div className="rounded border border-sky_light flex justify-between items-center mt-5 px-1 sm:px-3 py-2 pr-2">
-                          <p className="text-xs text-secondary_sky_dark">
+                        <div className='rounded border border-sky_light flex justify-between items-center mt-5 px-1 sm:px-3 py-2 pr-2'>
+                          <p className='text-xs text-secondary_sky_dark'>
                             40% Affiliate Commission
                           </p>
                           <a
-                            href=""
-                            className="bg-primary text-white font-medium text-sm rounded px-3 py-2 sm:ml-10"
+                            href=''
+                            className='bg-primary text-white font-medium text-sm rounded px-3 py-2 sm:ml-10'
                           >
                             Become Affiliate
                           </a>
@@ -1189,39 +1186,39 @@ export default function Discover() {
                       className={`shadow sm:w-sm:[max-content] mr-5 h-[max-content]  ${styles.card}`}
                     >
                       <img
-                        src="/images/book-small.png"
-                        alt="..."
-                        className="w-[100%] h-[auto]"
+                        src='/images/book-small.png'
+                        alt='...'
+                        className='w-[100%] h-[auto]'
                       />
-                      <div className="p-5 rounded-b">
-                        <p className="text-lg text-secondary_sky_dark font-normal mb-1">
+                      <div className='p-5 rounded-b'>
+                        <p className='text-lg text-secondary_sky_dark font-normal mb-1'>
                           Books
                         </p>
-                        <h4 className="text-2xl text-secondary font-medium mb-3">
+                        <h4 className='text-2xl text-secondary font-medium mb-3'>
                           Emotional Intelligence
                         </h4>
-                        <div className="flex items-center">
+                        <div className='flex items-center'>
                           {/* <span className="text-lg text-grey_60 font-medium mr-2"></span> */}
                           <img
-                            src="./images/author.png"
-                            alt="..."
-                            className="h-6 w-6 rounded-full"
+                            src='./images/author.png'
+                            alt='...'
+                            className='h-6 w-6 rounded-full'
                           />
 
-                          <a className="font-medium ml-2 text-secondary_ink_lighter block border-bottom border-b-secondary_ink_lighter">
+                          <a className='font-medium ml-2 text-secondary_ink_lighter block border-bottom border-b-secondary_ink_lighter'>
                             Sara Mitchell
                           </a>
                         </div>
-                        <div className="mt-3 flex items-center justify-between">
-                          <div className="flex items-center">
+                        <div className='mt-3 flex items-center justify-between'>
+                          <div className='flex items-center'>
                             <img
-                              src="/images/icons/star.svg"
-                              alt="..."
-                              className="w-4 h-4"
+                              src='/images/icons/star.svg'
+                              alt='...'
+                              className='w-4 h-4'
                             />
-                            <span className="ml-2 text-sm font-semibold text-secondary_ink_lighter">
+                            <span className='ml-2 text-sm font-semibold text-secondary_ink_lighter'>
                               5.0
-                              <span className="font-normal ml-1 text-xs">
+                              <span className='font-normal ml-1 text-xs'>
                                 (25)
                               </span>
                             </span>
@@ -1232,13 +1229,13 @@ export default function Discover() {
                             $5000+
                           </span>
                         </div>
-                        <div className="rounded border border-sky_light flex justify-between items-center mt-5 px-1 sm:px-3 py-2 pr-2">
-                          <p className="text-xs text-secondary_sky_dark">
+                        <div className='rounded border border-sky_light flex justify-between items-center mt-5 px-1 sm:px-3 py-2 pr-2'>
+                          <p className='text-xs text-secondary_sky_dark'>
                             40% Affiliate Commission
                           </p>
                           <a
-                            href=""
-                            className="bg-primary text-white font-medium text-sm rounded px-3 py-2 sm:ml-10"
+                            href=''
+                            className='bg-primary text-white font-medium text-sm rounded px-3 py-2 sm:ml-10'
                           >
                             Become Affiliate
                           </a>
@@ -1250,39 +1247,39 @@ export default function Discover() {
                       className={`shadow sm:w-sm:[max-content] mr-5 h-[max-content]  ${styles.card}`}
                     >
                       <img
-                        src="/images/book-small.png"
-                        alt="..."
-                        className="w-[100%] h-[auto]"
+                        src='/images/book-small.png'
+                        alt='...'
+                        className='w-[100%] h-[auto]'
                       />
-                      <div className="p-5 rounded-b">
-                        <p className="text-lg text-secondary_sky_dark font-normal mb-1">
+                      <div className='p-5 rounded-b'>
+                        <p className='text-lg text-secondary_sky_dark font-normal mb-1'>
                           Books
                         </p>
-                        <h4 className="text-2xl text-secondary font-medium mb-3">
+                        <h4 className='text-2xl text-secondary font-medium mb-3'>
                           Emotional Intelligence
                         </h4>
-                        <div className="flex items-center">
+                        <div className='flex items-center'>
                           {/* <span className="text-lg text-grey_60 font-medium mr-2"></span> */}
                           <img
-                            src="./images/author.png"
-                            alt="..."
-                            className="h-6 w-6 rounded-full"
+                            src='./images/author.png'
+                            alt='...'
+                            className='h-6 w-6 rounded-full'
                           />
 
-                          <a className="font-medium ml-2 text-secondary_ink_lighter block border-bottom border-b-secondary_ink_lighter">
+                          <a className='font-medium ml-2 text-secondary_ink_lighter block border-bottom border-b-secondary_ink_lighter'>
                             Sara Mitchell
                           </a>
                         </div>
-                        <div className="mt-3 flex items-center justify-between">
-                          <div className="flex items-center">
+                        <div className='mt-3 flex items-center justify-between'>
+                          <div className='flex items-center'>
                             <img
-                              src="/images/icons/star.svg"
-                              alt="..."
-                              className="w-4 h-4"
+                              src='/images/icons/star.svg'
+                              alt='...'
+                              className='w-4 h-4'
                             />
-                            <span className="ml-2 text-sm font-semibold text-secondary_ink_lighter">
+                            <span className='ml-2 text-sm font-semibold text-secondary_ink_lighter'>
                               5.0
-                              <span className="font-normal ml-1 text-xs">
+                              <span className='font-normal ml-1 text-xs'>
                                 (25)
                               </span>
                             </span>
@@ -1293,13 +1290,13 @@ export default function Discover() {
                             $5000+
                           </span>
                         </div>
-                        <div className="rounded border border-sky_light flex justify-between items-center mt-5 px-1 sm:px-3 py-2 pr-2">
-                          <p className="text-xs text-secondary_sky_dark">
+                        <div className='rounded border border-sky_light flex justify-between items-center mt-5 px-1 sm:px-3 py-2 pr-2'>
+                          <p className='text-xs text-secondary_sky_dark'>
                             40% Affiliate Commission
                           </p>
                           <a
-                            href=""
-                            className="bg-primary text-white font-medium text-sm rounded px-3 py-2 sm:ml-10"
+                            href=''
+                            className='bg-primary text-white font-medium text-sm rounded px-3 py-2 sm:ml-10'
                           >
                             Become Affiliate
                           </a>
@@ -1311,39 +1308,39 @@ export default function Discover() {
                       className={`shadow sm:w-sm:[max-content] mr-5 h-[max-content]  ${styles.card}`}
                     >
                       <img
-                        src="/images/book-small.png"
-                        alt="..."
-                        className="w-[100%] h-[auto]"
+                        src='/images/book-small.png'
+                        alt='...'
+                        className='w-[100%] h-[auto]'
                       />
-                      <div className="p-5 rounded-b">
-                        <p className="text-lg text-secondary_sky_dark font-normal mb-1">
+                      <div className='p-5 rounded-b'>
+                        <p className='text-lg text-secondary_sky_dark font-normal mb-1'>
                           Books
                         </p>
-                        <h4 className="text-2xl text-secondary font-medium mb-3">
+                        <h4 className='text-2xl text-secondary font-medium mb-3'>
                           Emotional Intelligence
                         </h4>
-                        <div className="flex items-center">
+                        <div className='flex items-center'>
                           {/* <span className="text-lg text-grey_60 font-medium mr-2"></span> */}
                           <img
-                            src="./images/author.png"
-                            alt="..."
-                            className="h-6 w-6 rounded-full"
+                            src='./images/author.png'
+                            alt='...'
+                            className='h-6 w-6 rounded-full'
                           />
 
-                          <a className="font-medium ml-2 text-secondary_ink_lighter block border-bottom border-b-secondary_ink_lighter">
+                          <a className='font-medium ml-2 text-secondary_ink_lighter block border-bottom border-b-secondary_ink_lighter'>
                             Sara Mitchell
                           </a>
                         </div>
-                        <div className="mt-3 flex items-center justify-between">
-                          <div className="flex items-center">
+                        <div className='mt-3 flex items-center justify-between'>
+                          <div className='flex items-center'>
                             <img
-                              src="/images/icons/star.svg"
-                              alt="..."
-                              className="w-4 h-4"
+                              src='/images/icons/star.svg'
+                              alt='...'
+                              className='w-4 h-4'
                             />
-                            <span className="ml-2 text-sm font-semibold text-secondary_ink_lighter">
+                            <span className='ml-2 text-sm font-semibold text-secondary_ink_lighter'>
                               5.0
-                              <span className="font-normal ml-1 text-xs">
+                              <span className='font-normal ml-1 text-xs'>
                                 (25)
                               </span>
                             </span>
@@ -1354,13 +1351,13 @@ export default function Discover() {
                             $5000+
                           </span>
                         </div>
-                        <div className="rounded border border-sky_light flex justify-between items-center mt-5 px-1 sm:px-3 py-2 pr-2">
-                          <p className="text-xs text-secondary_sky_dark">
+                        <div className='rounded border border-sky_light flex justify-between items-center mt-5 px-1 sm:px-3 py-2 pr-2'>
+                          <p className='text-xs text-secondary_sky_dark'>
                             40% Affiliate Commission
                           </p>
                           <a
-                            href=""
-                            className="bg-primary text-white font-medium text-sm rounded px-3 py-2 sm:ml-10"
+                            href=''
+                            className='bg-primary text-white font-medium text-sm rounded px-3 py-2 sm:ml-10'
                           >
                             Become Affiliate
                           </a>
@@ -1373,11 +1370,11 @@ export default function Discover() {
             </div>
           </div>
           <div
-            className="flex w-[max-content] border border-grey_80 p-2 rounded mt-7"
-            style={{ "border-radius": "20px" }}
+            className='flex w-[max-content] border border-grey_80 p-2 rounded mt-7'
+            style={{ 'border-radius': '20px' }}
           >
             <LeftIcon />
-            <p className="mx-5 text-secondary">Page 1 of 8</p>
+            <p className='mx-5 text-secondary'>Page 1 of 8</p>
             <RightIcon />
           </div>
         </div>
