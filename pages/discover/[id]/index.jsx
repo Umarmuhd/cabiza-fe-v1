@@ -156,11 +156,11 @@ export default function DiscoverSingle() {
             >
               {product && (
                 <div>
-                  <div className="w-[100%] h-[12rem]">
+                  <div className="w-[100%] h-[32rem]">
                     <img
                       src={product.thumbnail ?? '/images/book.png'}
                       alt='...'
-                      className='w-full'
+                      className='w-full h-full'
                     />
                   </div>
                   <div className='md:p-10 p-6 shadow rounded-b-2xl'>
