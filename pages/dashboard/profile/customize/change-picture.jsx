@@ -42,7 +42,7 @@ const ChangePicture = () => {
             <h3 className='text-3xl text-secondary_ink_dark font-semibold mb-3 mt-[-1.5rem]'>
               Choose your profile image
             </h3>
-            <p className='w-[80%] mx-auto text-secondary_ink_dark text-lg'>
+            <p className='w-[80%] mx-auto text-secondary_ink_lighter text-lg'>
               Upload image or drag image to the avatar to upload. Recommended
               size 100px by 100px, 72 DPI, JPEG or PNG.
             </p>
