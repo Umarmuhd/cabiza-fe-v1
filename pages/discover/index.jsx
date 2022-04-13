@@ -62,53 +62,56 @@ const ProductItem = ({ product }) => (
     className={`shadow sm:w-sm:[max-content] mr-5 h-[max-content]  ${styles.card}`}
   >
     <img
-      src={product.thumbnail ?? "/images/book-small.png"}
-      alt="..."
-      className="w-[300px] h-[auto]"
+      src={product.thumbnail ?? '/images/book-small.png'}
+      alt='...'
+      className='w-[100%] h-[auto]'
     />
-    <div className="p-5 rounded-b">
-      <p className="text-lg text-secondary_sky_dark font-normal mb-1">Books</p>
+    <div className='p-5 rounded-b'>
+        <p className='text-lg text-secondary_sky_dark font-normal mb-1'>
+          Books
+        </p>
       <Link href={`/discover/${product.product_id}`}>
-        <h4 className="text-2xl text-secondary font-medium mb-3">
+        <h4 className='text-2xl text-secondary font-medium mb-3'>
           {product.name}
         </h4>
       </Link>
-      <div className="flex items-center">
+      <div className='flex items-center'>
         {/* <span className="text-lg text-grey_60 font-medium mr-2"></span> */}
         <img
           src={product.user.profile_picture}
-          alt="..."
-          className="h-6 w-6 rounded-full"
+          alt='...'
+          className='h-6 w-6 rounded-full'
         />
 
         <Link href={`/${product.user.username}/products`}>
-          <a className="font-medium ml-2 text-secondary_ink_lighter block border-bottom border-b-secondary_ink_lighter">
+          <a className='font-medium ml-2 text-secondary_ink_lighter block border-bottom border-b-secondary_ink_lighter'>
             {product.user.full_name}
           </a>
         </Link>
       </div>
-      <div className="mt-3 flex items-center justify-between">
-        <div className="flex items-center">
-          <img src="/images/icons/star.svg" alt="..." className="w-4 h-4" />
-          <span className="ml-2 text-sm font-semibold text-secondary_ink_lighter">
+
+      <div className='mt-3 flex items-center justify-between'>
+        <div className='flex items-center'>
+          <img src='/images/icons/star.svg' alt='...' className='w-4 h-4' />
+          <span className='ml-2 text-sm font-semibold text-secondary_ink_lighter'>
             5.0
-            <span className="font-normal ml-1 text-xs">(25)</span>
+            <span className='font-normal ml-1 text-xs'>(25)</span>
           </span>
         </div>
         <span
-          className={`text-sm font-normal py-2 px-5 pl-3 bg-secondary_52 rounded ${styles.price} text-white`}
-        >
+            className={`text-sm font-normal py-2 px-5 pl-3 bg-secondary_52 rounded ${styles.price} text-white`}
+          >
           ${product.price}+
         </span>
       </div>
-      <div className="rounded border border-sky_light flex justify-between items-center mt-5 px-1 sm:px-3 py-2 pr-2">
-        <p className="text-xs text-secondary_sky_dark">
+      <div className='rounded border border-sky_light flex justify-between items-center mt-5 px-1 sm:px-3 py-2 pr-2'>
+        <p className='text-xs text-secondary_sky_dark'>
           40% Affiliate Commission
         </p>
         <a
-          href=""
-          className="bg-primary text-white font-medium text-sm rounded px-3 py-2"
-        >
+            href=''
+            className='bg-primary text-white font-medium text-sm rounded px-3 py-2 sm:ml-10'
+          >
           Become Affiliate
         </a>
       </div>
@@ -364,7 +367,7 @@ export default function Discover() {
                   <>
                     {products.length > 0 && (
                       <>
-                        {products.map((product, index) => (
+                        {products.map((product, index) => (                          
                           <React.Fragment key={index}>
                             <ProductItem product={product} />
                           </React.Fragment>
