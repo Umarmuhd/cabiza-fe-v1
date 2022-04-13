@@ -64,7 +64,7 @@ const ProductItem = ({ product }) => (
     <img
       src={product.thumbnail ?? '/images/book-small.png'}
       alt='...'
-      className='w-[100%] h-[auto]'
+      className='w-[24rem] h-[auto]'
     />
     <div className='p-5 rounded-b'>
         <p className='text-lg text-secondary_sky_dark font-normal mb-1'>
