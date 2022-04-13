@@ -156,11 +156,13 @@ export default function DiscoverSingle() {
             >
               {product && (
                 <div>
-                  <img
-                    src={product.thumbnail ?? '/images/book.png'}
-                    alt='...'
-                    className='w-full'
-                  />
+                  <div className="w-[100%] h-[12rem]">
+                    <img
+                      src={product.thumbnail ?? '/images/book.png'}
+                      alt='...'
+                      className='w-full'
+                    />
+                  </div>
                   <div className='md:p-10 p-6 shadow rounded-b-2xl'>
                     <div className='flex flex-col justify-between md:flex-row'>
                       <div className='md:w-1/2 w-full'>
