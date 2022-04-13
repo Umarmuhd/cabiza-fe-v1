@@ -298,7 +298,7 @@ export default function Discover() {
                 }}
               >
                 <img
-                  src="images/book.png"
+                  src="images/Books.png"
                   alt="..."
                   className="mb-4 mx-auto"
                 />
