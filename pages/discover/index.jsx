@@ -248,7 +248,7 @@ export default function Discover() {
                 }}
               >
                 <img
-                  src="images/Design.png"
+                  src="images/design.png"
                   alt="..."
                   className="mb-4 mx-auto"
                 />
@@ -274,7 +274,7 @@ export default function Discover() {
                   },
                 }}
               >
-                <img src="images/Film.png" alt="..." className="mb-4 mx-auto" />
+                <img src="images/film.png" alt="..." className="mb-4 mx-auto" />
                 <div className="text-left">
                   <h3 className="font-bold text-2xl mb-2 text-secondary group-hover:text-white">
                     Film and Videos
@@ -298,7 +298,7 @@ export default function Discover() {
                 }}
               >
                 <img
-                  src="images/books.png"
+                  src="images/book.png"
                   alt="..."
                   className="mb-4 mx-auto"
                 />
