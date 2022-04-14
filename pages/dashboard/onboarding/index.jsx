@@ -30,6 +30,17 @@ export default function Onboarding() {
               {category}
             </option>
           ))}
+
+          <style jsx>{`
+            select {
+              padding: 1rem;
+              -webkit-appearance: none;
+              -moz-appearance: none;
+              appearance: none;
+              background: url("data:image/svg+xml,%3Csvg width='14' height='8' viewBox='0 0 14 8' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M1 1L7 7L13 1' stroke='%23090A0A' stroke-width='1.5' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E ")
+                97% / 3% no-repeat;
+            }
+          `}</style>
         </select>
       </>
     )
@@ -53,6 +64,17 @@ export default function Onboarding() {
               {country.name}
             </option>
           ))}
+
+          <style jsx>{`
+            select {
+              padding: 1rem;
+              -webkit-appearance: none;
+              -moz-appearance: none;
+              appearance: none;
+              background: url("data:image/svg+xml,%3Csvg width='14' height='8' viewBox='0 0 14 8' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M1 1L7 7L13 1' stroke='%23090A0A' stroke-width='1.5' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E ")
+                97% / 3% no-repeat;
+            }
+          `}</style>
         </select>
       </>
     )
@@ -135,12 +157,14 @@ export default function Onboarding() {
                 placeholder="jake"
                 {...register("username", { required: true })}
               />
-              <span className="inline-flex items-center px-3 rounded-r-lg border border-l-0 border-gray-300 bg-gray-50 text-gray-500 text-sm">
-                .cabiza.com
-              </span>
+              <div className="p-2 border border-secondary_sky_base border-l-0 rounded-r-lg">
+                <span className="flex p-2 rounded-lg border border-primary_brand_light bg-primary_brand_lightest text-primary_brand_light text-base leading-4">
+                  .cabiza.com
+                </span>
+              </div>
             </div>
           </div>
-          <div className="relative mb-6">
+          <div className="relative mb-6 photo_input">
             <label
               className="block text-secondary font-medium mb-2"
               htmlFor="photo"
@@ -148,24 +172,25 @@ export default function Onboarding() {
               Photo
             </label>
             <input
-              className="form-control rounded-lg
-block
-w-full
-px-4
-py-3
-text-base
-font-normal
-text-grey_80
-bg-white bg-clip-padding
-border border-solid border-secondary_sky_base
-transition
-ease-in-out
-m-0
-focus:text-grey_80 focus:bg-white focus:border-blue-600 focus:outline-none"
+              className="form-control rounded-lg block w-full px-2 py-3 text-base font-normal text-secondary_sky_dark bg-white bg-clip-padding border border-solid border-secondary_sky_base transition ease-in-out m-0 focus:text-grey_80 focus:bg-white focus:border-blue-600 focus:outline-none leading-4"
               type="file"
               id="formFile"
               {...register("photo", { required: true })}
             />
+
+            <style jsx>{`           
+              
+              input::file-selector-button{
+                padding: 0.5rem;
+                color: #404446;
+                font-size: 1rem;
+                line-height: 1rem;
+                font-weight: 500;
+                background: #BFB6F6;
+                border-radius: 4px;
+                outline: none;
+                border: none;
+            `}</style>
           </div>
 
           <div className="relative mb-6">
