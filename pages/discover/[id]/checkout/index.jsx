@@ -146,7 +146,7 @@ const PaymentPage = () => {
               </div>
             </div>
 
-            <div className="mt-5 flex justify-between items-center p-4 bg-primary_brand_lighter text-white rounded-t-lg">
+            {/* <div className="mt-5 flex justify-between items-center p-4 bg-primary_brand_lighter text-white rounded-t-lg">
               <h5 className="text-primary_brand_dark font-bold text-2xl flex items-center">
                 <span className="mr-2">Cards</span>
                 <svg
@@ -190,14 +190,15 @@ const PaymentPage = () => {
                   />
                 </button>
               </div>
-            </div>
+            </div> */}
           </form>
 
-          <BankCard data={data} product={product} />
+          {/* <BankCard data={data} product={product} /> */}
 
-          <div className={show ? "block" : "hidden"}>
+          <div className={"block mt-5"}>
             <div className="" id={"braintree-drop-in-div"}></div>
             <button
+              className="mb-8 md:mb-0 bg-primary rounded-lg text-white w-full p-4 text-center mt-6"
               disabled={!data.instance}
               onClick={() => {
                 if (data.instance) {

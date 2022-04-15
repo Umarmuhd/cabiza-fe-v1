@@ -1,8 +1,11 @@
 import React, { useRef, useState } from "react";
 import Toggle from "@/components/Toggle/Toggle";
+import axios from "axios";
 
 export default function ProductPricing({ product, handleNext }) {
-  const [productPricingSettings, setProductPricingSettings] = useState(false);
+  const [productPricingSettings, setProductPricingSettings] = useState(
+    product?.user_priced ?? false
+  );
   const [loading, setLoading] = useState(false);
 
   const handleTogglePricingSettings = () => {
@@ -10,14 +13,23 @@ export default function ProductPricing({ product, handleNext }) {
   };
 
   const priceRef = useRef();
-
-  console.log(productPricingSettings);
+  const minPercentageRef = useRef();
+  const maxPercentageRef = useRef();
 
   const handleSubmit = async (event) => {
     event.preventDefault();
 
     try {
       setLoading(true);
+      const url = `${API_URL}/products/product/${product.product_id}/pricing`;
+
+      const payload = {
+        price: priceRef.current.value,
+        user_priced: productPricingSettings,
+        min_percent: minPercentageRef.current.value,
+        max_percent: maxPercentageRef.current.value,
+      };
+      const { data } = await axios.post(url, payload);
       setLoading(false);
     } catch (error) {
       console.error(error.message);
