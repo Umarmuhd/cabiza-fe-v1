@@ -14,17 +14,17 @@ export default function Customize() {
     <div>
       <TopNav title='Settings' />
       <Tab.Group>
-        <div className='h-22 pt-8 md:px-0 px-20'>
-          <div className='flex justify-start items-center w-[85%] mr-auto ml-20 pl-7 pb-2'>
+        <div className='md:px-0 pt-5'>
+          <div className='flex justify-start items-end mr-auto md:w-43/50 mx-auto'>
             <Tab.List as={'div'} className='flex w-[100%]'>
               <Tab
                 as={'button'}
                 className={({ selected }) =>
                   classNames(
-                    'text-lg mr-8 pb-5',
+                    'text-md mr-8 pb-2 font-medium',
                     selected
                       ? ' font-bold text-primary border-b border-b-primary'
-                      : ' font-medium text-secondary'
+                      : ' text-secondary'
                   )
                 }
               >
@@ -34,10 +34,10 @@ export default function Customize() {
                 as={'button'}
                 className={({ selected }) =>
                   classNames(
-                    'text-lg mr-8 pb-5',
+                    'text-md mr-8 pb-2 font-medium',
                     selected
                       ? ' font-bold text-primary border-b border-b-primary'
-                      : ' font-medium text-secondary'
+                      : ' text-secondary'
                   )
                 }
               >
@@ -47,17 +47,17 @@ export default function Customize() {
                 as={'button'}
                 className={({ selected }) =>
                   classNames(
-                    'text-lg mr-10 pb-5',
+                    'text-md mr-8 pb-2 font-medium',
                     selected
                       ? ' font-bold text-primary border-b border-b-primary'
-                      : ' font-medium text-secondary'
+                      : ' text-secondary'
                   )
                 }
               >
                 Share
               </Tab>
 
-              <button className='text-lg ml-auto bg-primary px-4 py-2 rounded-3xl text-white self-center mt-[-1.2rem]'>
+              <button className='ml-auto bg-primary px-4 py-2 rounded-3xl text-white self-center mt-[-.5rem] text-sm mr-8 pb-2 font-medium'>
                 Save
               </button>
             </Tab.List>
@@ -66,7 +66,7 @@ export default function Customize() {
 
         <Tab.Panels>
           <Tab.Panel>
-            <ChangePicture/>
+            <ChangePicture />
           </Tab.Panel>
           <Tab.Panel>
             <Connections />
