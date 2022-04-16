@@ -16,14 +16,14 @@ export default function Settings() {
     <div>
       <TopNav title='Settings' />
       <Tab.Group>
-        <div className='bg-secondary_sky_lightest h-22 shadow-md pt-8 md:px-0 px-20'>
-          <div className='flex justify-start items-center w-[max-content] mr-auto ml-20 pl-7 pb-2'>
-            <Tab.List as={'div'} className='flex items-center'>
+        <div className='bg-secondary_sky_lightest shadow-md md:px-0 py-3'>
+          <div className='flex justify-start items-center mr-auto md:w-43/50 mx-auto'>
+            <Tab.List as={'div'} className='flex items-center py-[.5rem]'>
               <Tab
                 as={'button'}
                 className={({ selected }) =>
                   classNames(
-                    'text-lg mr-10 pb-5',
+                    'text-lg mr-10 pb-2',
                     selected
                       ? ' font-bold text-primary border-b border-b-primary'
                       : ' font-medium text-secondary'
@@ -36,7 +36,7 @@ export default function Settings() {
                 as={'button'}
                 className={({ selected }) =>
                   classNames(
-                    'text-lg mr-10 pb-5',
+                    'text-lg mr-10 pb-2',
                     selected
                       ? ' font-bold text-primary border-b border-b-primary'
                       : ' font-medium text-secondary'
@@ -49,7 +49,7 @@ export default function Settings() {
                 as={'button'}
                 className={({ selected }) =>
                   classNames(
-                    'text-lg mr-10 pb-5',
+                    'text-lg mr-10 pb-2',
                     selected
                       ? ' font-bold text-primary border-b border-b-primary'
                       : ' font-medium text-secondary'
@@ -62,7 +62,7 @@ export default function Settings() {
                 as={'button'}
                 className={({ selected }) =>
                   classNames(
-                    'text-lg mr-10 pb-5',
+                    'text-lg mr-10 pb-2',
                     selected
                       ? ' font-bold text-primary border-b border-b-primary'
                       : ' font-medium text-secondary'
@@ -75,7 +75,7 @@ export default function Settings() {
                 as={'button'}
                 className={({ selected }) =>
                   classNames(
-                    'text-lg mr-10 pb-5',
+                    'text-lg mr-10 pb-2',
                     selected
                       ? ' font-bold text-primary border-b border-b-primary'
                       : ' font-medium text-secondary'

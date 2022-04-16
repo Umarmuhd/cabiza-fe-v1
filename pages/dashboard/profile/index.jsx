@@ -27,7 +27,7 @@ export default function Profile() {
       <TopNav title='Profile' />
       <Tab.Group>
         <Tab.Panels>
-          <div className='w-[80%] mx-auto pt-5 flex justify-between mt-4'>
+          <div className='md:w-43/50 mx-auto pt-2 flex justify-between mt-4'>
             <div>
               <h1 className='text-3xl'>
                 Welcome, <span className='text-secondary_ink_dark'>Jake</span>
@@ -40,9 +40,9 @@ export default function Profile() {
             </div>
           </div>
 
-          <div className='bg-white rounded-2xl p-10 px-3 w-[70%] mx-auto mt-10 shadow mb-12'>
+          <div className='bg-white rounded-2xl p-10 px-3 md:w-43/50 mx-auto mt-10 shadow mb-12'>
             <div className='text-center relative'>
-              <img src='/images/product.png' className='w-[100%] h-[23rem]' />
+              <img src='/images/product.png' className='w-[100%] h-[auto]' />
               <div className='w-[90%] mx-auto px-10  pb-10 relative border-b border-secondary_sky_base'>
                 <h3 className='text-3xl text-secondary_ink_dark font-semibold mb-3 mt-[-1.5rem]'>
                   Create your first product
