@@ -75,19 +75,19 @@ const Index = () => {
           <header className='py-16 mx-auto max-w-[1100px]'>
             <div className='w-[90%] mx-auto'>
               <form className='flex'>
-                 <label
-                className='flex items-center bg-primary text-lg lg:w-[10rem] sm:w-2/6 rounded-l-3xl px-7 hidden sm:block shadow-sm'
-                style={{ display: 'flex' }}
-              >
-                <select
-                  name='category'
-                  className='bg-transparent m-auto focus:outline-none text-white focus:ring-indigo-500 border-0'
+                <label
+                  className='flex items-center bg-primary text-lg lg:w-[10rem] sm:w-2/6 rounded-l-3xl px-7 hidden sm:block shadow-sm'
+                  style={{ display: 'flex' }}
                 >
-                  <option className="bg-primary">Education</option>
-                  <option className="bg-primary">Fitness</option>
-                  <option className="bg-primary">Health</option>
-                </select>
-              </label>
+                  <select
+                    name='category'
+                    className='bg-transparent m-auto focus:outline-none text-white focus:ring-indigo-500 border-0'
+                  >
+                    <option className='bg-primary'>Education</option>
+                    <option className='bg-primary'>Fitness</option>
+                    <option className='bg-primary'>Health</option>
+                  </select>
+                </label>
                 <div className='flex justify-center border py-2 px-6 w-full rounded-r-3xl bg-white'>
                   <input
                     type='text'
