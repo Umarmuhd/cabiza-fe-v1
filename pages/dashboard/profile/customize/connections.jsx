@@ -62,10 +62,12 @@ const Connections = () => {
   return (
     <div className='bg-white rounded-2xl p-10 px-3 w-[70%] mx-auto mt-10 shadow mb-12'>
       <div className='text-center relative'>
-        <img
-          src='/images/connections-placeholder.png'
-          className='w-[100%] h-[auto] m-auto'
-        />
+        <div style={{"box-shadow": "0px 20px 40px rgba(0, 0, 0, 0.06)"}}>
+          <img
+            src='/images/connections-placeholder.png'
+            className='w-[100%] h-[auto] m-auto border border-2 rounded-2xl'
+          />
+        </div>
         <div className='w-[90%] mx-auto px-10 mt-12'>
           <h3 className='text-3xl text-secondary_ink_dark font-semibold mb-3'>
             Connect social handles
@@ -75,8 +77,8 @@ const Connections = () => {
           </p>
 
           <div className='mt-10'>
-            <div className='bg-sky_light flex justify-between rounded-3xl p-4 py-2'>
-              <button className='bg-[#0078FF] flex px-4 text-white py-2 rounded-full w-[12rem]'>
+            <div className='bg-sky_light flex justify-between rounded-full p-4 py-3'>
+              <button className='bg-[#0078FF] flex px-4 text-white py-2 rounded-full w-[10rem]'>
                 <FacebookIcon />
                 <p className='ml-4'>Facebook</p>
               </button>
@@ -86,8 +88,8 @@ const Connections = () => {
               </button>
             </div>
 
-            <div className='bg-sky_light flex justify-between rounded-3xl p-4 py-2 mt-2'>
-              <button className='bg-[#1DA1F2] flex px-4 text-white py-2 rounded-full w-[12rem]'>
+            <div className='bg-sky_light flex justify-between rounded-full p-4 py-3 mt-2'>
+              <button className='bg-[#1DA1F2] flex px-4 text-white py-2 rounded-full w-[10rem]'>
                 <TwitterIcon />
                 <p className='ml-4'>Twitter</p>
               </button>
@@ -97,9 +99,9 @@ const Connections = () => {
               </button>
             </div>
 
-            <div className='bg-sky_light flex justify-between rounded-3xl p-4 py-2 mt-2'>
+            <div className='bg-sky_light flex justify-between rounded-full p-4 py-3 mt-2'>
               <button
-                className='flex px-4 text-white py-2 rounded-full w-[12rem]'
+                className='flex px-4 text-white py-2 rounded-full w-[10rem]'
                 style={{
                   'background-image':
                     'linear-gradient(to right, #4F5BD5, #962FBF, #D62978, #F97D1D, #FDDA76, yellow)',

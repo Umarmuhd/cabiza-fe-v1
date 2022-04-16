@@ -32,7 +32,7 @@ const ChangePicture = () => {
     return (
       <div className='bg-white rounded-2xl p-10 px-3 w-[70%] mx-auto mt-10 shadow mb-12'>
         <div className='text-center relative'>
-          <div className='rounded-full bg-secondary_sky_light shadow-lg w-[14rem] h-[14rem] mx-auto flex'>
+          <div className='rounded-full bg-secondary_sky_light shadow-lg w-[max-content] p-3 mx-auto flex'>
             <img
               src='/images/profile-placeholder.png'
               className='w-[12rem] h-[auto] m-auto'

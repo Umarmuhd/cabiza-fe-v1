@@ -57,7 +57,7 @@ export default function Customize() {
                 Share
               </Tab>
 
-              <button className='text-lg ml-auto bg-primary px-4 py-2 rounded-3xl text-white self-center mt-[-1.2rem]'>
+              <button className='text-lg ml-auto bg-primary px-4 py-2 rounded-3xl text-white self-center mt-[-1.5rem]'>
                 Save
               </button>
             </Tab.List>
