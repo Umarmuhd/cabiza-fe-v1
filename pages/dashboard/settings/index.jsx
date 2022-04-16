@@ -23,7 +23,7 @@ export default function Settings() {
                 as={'button'}
                 className={({ selected }) =>
                   classNames(
-                    'text-lg mr-10 pb-2 font-medium',
+                    'text-md mr-10 pb-2 font-medium',
                     selected
                       ? ' font-bold text-primary border-b border-b-primary'
                       : ' text-secondary'
@@ -36,7 +36,7 @@ export default function Settings() {
                 as={'button'}
                 className={({ selected }) =>
                   classNames(
-                    'text-lg mr-10 pb-2',
+                    'text-md mr-10 pb-2 font-medium',
                     selected
                       ? ' font-bold text-primary border-b border-b-primary'
                       : ' text-secondary'
@@ -49,7 +49,7 @@ export default function Settings() {
                 as={'button'}
                 className={({ selected }) =>
                   classNames(
-                    'text-lg mr-10 pb-2',
+                    'text-md mr-10 pb-2 font-medium',
                     selected
                       ? ' font-bold text-primary border-b border-b-primary'
                       : ' text-secondary'
@@ -62,7 +62,7 @@ export default function Settings() {
                 as={'button'}
                 className={({ selected }) =>
                   classNames(
-                    'text-lg mr-10 pb-2',
+                    'text-md mr-10 pb-2 font-medium',
                     selected
                       ? ' font-bold text-primary border-b border-b-primary'
                       : ' text-secondary'
@@ -75,7 +75,7 @@ export default function Settings() {
                 as={'button'}
                 className={({ selected }) =>
                   classNames(
-                    'text-lg mr-10 pb-2',
+                    'text-md mr-10 pb-2 font-medium',
                     selected
                       ? ' font-bold text-primary border-b border-b-primary'
                       : ' text-secondary'

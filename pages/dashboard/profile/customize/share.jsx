@@ -60,7 +60,7 @@ const InstagramIcon = () => (
 
 const Share = () => {
   return (
-    <div className='bg-white rounded-2xl p-12 px-3 md:w-43/50 mx-auto mt-10 shadow mb-12'>
+    <div className='bg-white rounded-2xl p-12 px-3 md:w-43/50 mx-auto mt-10 shadow-lg mb-12'>
       <div className='text-center relative'>
         <h1 className='text-3xl font-semibold mb-4'>Share to friends</h1>
         <div className='rounded-2xl bg-secondary_sky_lighter w-[max-content] p-2 mx-auto flex'>

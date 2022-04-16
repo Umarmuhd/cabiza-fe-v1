@@ -60,7 +60,7 @@ const InstagramIcon = () => (
 
 const Connections = () => {
   return (
-    <div className='bg-white rounded-2xl p-10 px-3 md:w-43/50 mx-auto mt-10 shadow mb-12'>
+    <div className='bg-white rounded-2xl p-10 px-3 md:w-43/50 mx-auto mt-10 shadow-lg mb-12'>
       <div className='text-center relative'>
         <div style={{"box-shadow": "0px 20px 40px rgba(0, 0, 0, 0.06)"}}>
           <img

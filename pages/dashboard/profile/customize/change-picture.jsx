@@ -30,7 +30,7 @@ const LeftIcon = () => (
 
 const ChangePicture = () => {
     return (
-      <div className='bg-white rounded-2xl p-10 px-3 md:w-43/50 mx-auto mt-10 shadow mb-12'>
+      <div className='bg-white rounded-2xl p-10 px-3 md:w-43/50 mx-auto mt-10 shadow-lg mb-12'>
         <div className='text-center relative'>
           <div className='rounded-full bg-secondary_sky_light shadow-lg w-[max-content] p-3 mx-auto flex'>
             <img
