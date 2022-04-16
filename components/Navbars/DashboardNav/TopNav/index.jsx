@@ -30,13 +30,14 @@ export default function TopNav({title}) {
               {title}
             </span>
 
-            <select
-              name=''
-              id=''
-              className='ml-3 w-18 h-10 my-auto bg-primary_brand_lightest px-4 rounded-full text-secondary_ink_dark fill-secondary_ink_dark'
-            >
-              <option value='Eng'>Eng</option>
-            </select>
+            <label className='flex items-center ml-3 w-[6rem] h-10 my-auto bg-primary_brand_lightest pl-4 pr-3 rounded-full text-secondary_ink_dark fill-secondary_ink_dark'>
+              <select name='' id='' className='bg-transparent outline-none w-[100%]'>
+                <option value='Eng' selected>
+                  Eng
+                </option>
+                <option value='Spa'>Spa</option>
+              </select>
+            </label>
           </div>
 
           {/* Header: Right side */}
