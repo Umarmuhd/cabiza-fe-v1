@@ -55,8 +55,6 @@ export default function CreatePost() {
     form_data.append("channel", channel);
     form_data.append("engagements", engagements);
 
-    form_data.getAll("audience");
-
     try {
       const response = await axios.post(`${API_URL}/posts/new`, form_data);
 

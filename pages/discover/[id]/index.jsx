@@ -3,7 +3,7 @@ import ReviewDropdown from "@/components/Dropdowns/ReviewDropdown";
 import { useForm } from "react-hook-form";
 import axios from "axios";
 import MainNavigation from "@/components/Navbars/MainNav";
-import PFooter from '@/components/Footer/PFooter';
+import PFooter from "@/components/Footer/PFooter";
 
 import { useSetRecoilState } from "recoil";
 
@@ -132,12 +132,12 @@ export default function DiscoverSingle() {
   // useDebounce(() => verifyAccountId(), 1000, [values.accountId]);
 
   return (
-    <div className='h-full w-full'>
+    <div className="h-full w-full">
       <MainNavigation />
       {loading ? (
-        <div className='min-h-screen grid place-content-center'>
-          <div className='max-w-2xl mx-auto'>
-            <h1 className='text-lg md:text-xl font-semibold text-grey_40'>
+        <div className="min-h-screen grid place-content-center">
+          <div className="max-w-2xl mx-auto">
+            <h1 className="text-lg md:text-xl font-semibold text-grey_40">
               <SpinIcon />
             </h1>
           </div>
@@ -145,106 +145,106 @@ export default function DiscoverSingle() {
       ) : (
         <main>
           <section
-            id='main'
-            className='md:py-20 py-10 bg-secondary_sky_lighter'
+            id="main"
+            className="md:py-20 py-10 bg-secondary_sky_lighter"
           >
             <div
-              className='mx-auto w-[90%] max-w-[1300px] bg-white rounded-b-2xl'
+              className="mx-auto w-[90%] max-w-[1300px] bg-white rounded-b-2xl"
               style={{
-                filter: 'drop-shadow(0px 20px 40px rgba(0, 0, 0, 0.06))',
+                filter: "drop-shadow(0px 20px 40px rgba(0, 0, 0, 0.06))",
               }}
             >
               {product && (
                 <div>
                   <div className="w-[100%] h-[32rem]">
                     <img
-                      src={product.thumbnail ?? '/images/book.png'}
-                      alt='...'
-                      className='w-full h-full'
+                      src={product.thumbnail ?? "/images/book.png"}
+                      alt="..."
+                      className="w-full h-full"
                     />
                   </div>
-                  <div className='md:p-10 p-6 shadow rounded-b-2xl'>
-                    <div className='flex flex-col justify-between md:flex-row'>
-                      <div className='md:w-1/2 w-full'>
-                        <div className='mb-8'>
-                          <span className='text-sm font-medium py-3 px-2.5 text-grey_98 bg-primary_brand_darkest rounded'>
+                  <div className="md:p-10 p-6 shadow rounded-b-2xl">
+                    <div className="flex flex-col justify-between md:flex-row">
+                      <div className="md:w-1/2 w-full">
+                        <div className="mb-8">
+                          <span className="text-sm font-medium py-3 px-2.5 text-grey_98 bg-primary_brand_darkest rounded">
                             ${product.price}+
                           </span>
                         </div>
-                        <p className='text-lg text-secondary_sky_dark font-medium mb-3'>
+                        <p className="text-lg text-secondary_sky_dark font-medium mb-3">
                           Books
                         </p>
-                        <h4 className='text-2xl text-secondary font-bold mb-8'>
+                        <h4 className="text-2xl text-secondary font-bold mb-8">
                           {product.name}
                         </h4>
-                        <div className='flex items-center'>
-                          <span className='text-lg text-secondary_sky_dark font-medium mr-2'>
+                        <div className="flex items-center">
+                          <span className="text-lg text-secondary_sky_dark font-medium mr-2">
                             By:
                           </span>
                           <img
                             src={product.user.profile_picture}
-                            alt='...'
-                            className='h-10 w-10 rounded-full'
+                            alt="..."
+                            className="h-10 w-10 rounded-full"
                           />
-                          <p className='text-lg font-medium ml-2 underline text-secondary_sky_dark'>
+                          <p className="text-lg font-medium ml-2 underline text-secondary_sky_dark">
                             {product.user.full_name}
                           </p>
                         </div>
-                        <div className='mt-8'>
-                          <p className='text-secondary_sky_dark'>
+                        <div className="mt-8">
+                          <p className="text-secondary_sky_dark">
                             {product.description}
                           </p>
                         </div>
                       </div>
                       <form
-                        className='md:w-[32%] w-full bg-sky_light p-8rounded-xl'
+                        className="md:w-[32%] w-full bg-sky_light p-6 rounded-xl"
                         onSubmit={handleSubmit(handleCheckout)}
                       >
-                        <div className='mb-6'>
+                        <div className="mb-6">
                           <label
-                            htmlFor='price'
-                            className='block text-lg font-medium text-secondary_ink_dark'
+                            htmlFor="price"
+                            className="block text-lg font-medium text-secondary_ink_dark"
                           >
                             Name a fair price:
                           </label>
-                          <div className='mt-2 relative rounded-lg shadow-sm border border-primary_brand_lighter rounded-l-lg'>
-                            <div className='absolute inset-y-0 left-0 px-8 flex items-center pointer-events-none rounded-l-lg bg-primary_brand_light border-primary_brand_lighter border-l'>
-                              <span className='text-white text-lg font-medium rounded-l-lg'>
+                          <div className="mt-2 relative rounded-lg shadow-sm border border-primary_brand_lighter rounded-l-lg">
+                            <div className="absolute inset-y-0 left-0 px-8 flex items-center pointer-events-none rounded-l-lg bg-primary_brand_light border-primary_brand_lighter border-l">
+                              <span className="text-white text-lg font-medium rounded-l-lg">
                                 $
                               </span>
                             </div>
                             <input
-                              type='text'
-                              name='price'
-                              className='focus:ring-primary_brand_lighter focus:border-primary_brand_lighter block w-full pl-7 py-3 pr-12 text-lg border-primary_brand_lighter text-center rounded-lg'
+                              type="text"
+                              name="price"
+                              className="focus:ring-primary_brand_lighter focus:border-primary_brand_lighter block w-full pl-7 py-3 pr-12 text-lg border-primary_brand_lighter text-center rounded-lg"
                               placeholder={`$${product.price}+`}
-                              {...register('price', { required: true })}
-                              autoComplete='off'
+                              {...register("price", { required: true })}
+                              autoComplete="off"
                             />
                           </div>
-                          {errors.price?.type === 'required' && (
-                            <p className='text-left text-red-600 text-xs mt-1'>
+                          {errors.price?.type === "required" && (
+                            <p className="text-left text-red-600 text-xs mt-1">
                               Product price is required
                             </p>
                           )}
                         </div>
                         <button
-                          className='rounded-lg w-full text-lg font-medium text-white bg-primary py-3'
-                          type='submit'
+                          className="rounded-lg w-full text-lg font-medium text-white bg-primary py-3"
+                          type="submit"
                         >
                           I want this!
                         </button>
-                        <div className='mt-6'>
+                        <div className="mt-6">
                           <ReviewDropdown />
                         </div>
-                        <div className='mt-6 py-3 flex items-center justify-between rounded-lg border border-grey_80 px-5'>
-                          <div className='w-0 flex-1 flex items-center'>
-                            <span className='flex-1 w-0 truncate text-lg text-grey_80 font-medium'>
+                        <div className="mt-6 py-3 flex items-center justify-between rounded-lg border border-grey_80 px-5">
+                          <div className="w-0 flex-1 flex items-center">
+                            <span className="flex-1 w-0 truncate text-lg text-grey_80 font-medium">
                               Size
                             </span>
                           </div>
-                          <div className='ml-4 flex-shrink-0'>
-                            <a href='#' className='font-medium text-grey_60'>
+                          <div className="ml-4 flex-shrink-0">
+                            <a href="#" className="font-medium text-grey_60">
                               50 MB
                             </a>
                           </div>

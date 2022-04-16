@@ -64,7 +64,9 @@ const PaymentPage = () => {
           {
             authorization: "sandbox_s9gd7m2p_vp62s592633kc5p5",
             container: "#braintree-drop-in-div",
-            paypal: {},
+            paypal: {
+              flow: "checkout",
+            },
           },
           function (error, instance) {
             if (error) console.error(error);

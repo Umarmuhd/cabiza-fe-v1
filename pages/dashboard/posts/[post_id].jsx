@@ -24,16 +24,67 @@ export default function EditPost() {
 
   const formOptions = {
     resolver: yupResolver(validationSchema),
-    defaultValues: { audience: 0, channel: { post_to_profile: true } },
+    defaultValues: {
+      audience: 0,
+      channel: { post_to_profile: true },
+      title: post?.title,
+    },
   };
 
-  const { register, handleSubmit, watch, formState } = useForm(formOptions);
+  const { register, handleSubmit, watch, formState, setValue } =
+    useForm(formOptions);
   const { errors } = formState;
 
-  const handleUpdate = async (data) => {
+  const handleUpdate = async (values) => {
+    const channel = [];
+    values.send_email && channel.push(0);
+    values.post_to_profile && channel.push(1);
+
+    const engagements = [];
+    values.allow_comments && engagements.push(0);
+    values.allow_likes && engagements.push(1);
+
+    const { title, description, call_to_action, attachment, audience } = values;
+
+    const form_data = new FormData();
+
+    form_data.append("title", title);
+    form_data.append("description", description);
+    form_data.append("call_to_action", call_to_action);
+    form_data.append("attachment", attachment[0]);
+    form_data.append("audience", audience);
+    form_data.append("channel", channel);
+    form_data.append("engagements", engagements);
+
     try {
-      console.log(data);
-    } catch (error) {}
+      setLoading(true);
+      await axios.post(`${API_URL}/posts/${post.post_id}`, form_data);
+      setLoading(false);
+      toast.custom(
+        <div className="rounded-lg py-4 px-8 bg-[#24C78C] flex items-center">
+          <svg
+            width="24"
+            height="24"
+            viewBox="0 0 24 24"
+            fill="none"
+            xmlns="http://www.w3.org/2000/svg"
+          >
+            <path
+              d="M16.19 2H7.81C4.17 2 2 4.17 2 7.81V16.18C2 19.83 4.17 22 7.81 22H16.18C19.82 22 21.99 19.83 21.99 16.19V7.81C22 4.17 19.83 2 16.19 2ZM15.36 14.3C15.65 14.59 15.65 15.07 15.36 15.36C15.21 15.51 15.02 15.58 14.83 15.58C14.64 15.58 14.45 15.51 14.3 15.36L12 13.06L9.7 15.36C9.55 15.51 9.36 15.58 9.17 15.58C8.98 15.58 8.79 15.51 8.64 15.36C8.35 15.07 8.35 14.59 8.64 14.3L10.94 12L8.64 9.7C8.35 9.41 8.35 8.93 8.64 8.64C8.93 8.35 9.41 8.35 9.7 8.64L12 10.94L14.3 8.64C14.59 8.35 15.07 8.35 15.36 8.64C15.65 8.93 15.65 9.41 15.36 9.7L13.06 12L15.36 14.3Z"
+              fill="white"
+            />
+          </svg>
+          <span className="ml-2.5 font-medium text-lg text-white">
+            {response.data.message} !
+          </span>
+        </div>
+      );
+
+      router.push("/dashboard/posts");
+    } catch (error) {
+      console.error(error.message);
+      setLoading(false);
+    }
   };
 
   const fetchPost = useCallback(async () => {
@@ -42,6 +93,10 @@ export default function EditPost() {
       const url = `${API_URL}/posts/post/${post_id}`;
       const { data } = await axios.get(url);
       setPost(data.data.post);
+      setValue("title", data.data.post.title);
+      setValue("description", data.data.post.description);
+      setValue("call_to_action", data.data.post.call_to_action);
+      setValue("audience", data.data.post.audience);
       setLoading(false);
     } catch (error) {
       console.log(error);
@@ -50,8 +105,6 @@ export default function EditPost() {
   }, [post_id]);
 
   useEffect(() => fetchPost(), [fetchPost]);
-
-  console.log(post);
 
   return (
     <div>
@@ -159,7 +212,7 @@ export default function EditPost() {
                     </label>
                     <input
                       id="everyone"
-                      name="push-notifications"
+                      name="everyone"
                       {...register("audience", { required: true })}
                       type="radio"
                       className="focus:ring-primary w-6 h-6 text-primary border-secondary_sky_base"
@@ -195,7 +248,7 @@ export default function EditPost() {
                   </div>
                   <div className="flex items-center justify-between">
                     <label
-                      htmlFor="push-nothing"
+                      htmlFor="affiliates"
                       className="block text-secondary"
                     >
                       Affiliates only
