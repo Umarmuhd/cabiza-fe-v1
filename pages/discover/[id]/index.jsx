@@ -65,11 +65,6 @@ export default function DiscoverSingle() {
     fetchProduct();
   }, [product_id, fetchProduct]);
 
-  const [ordering, setOrdering] = useState(false);
-
-  const [discount, setDiscount] = useState(null);
-  const [order, setOrder] = useState(null);
-
   const {
     reset,
     register,
@@ -103,33 +98,9 @@ export default function DiscoverSingle() {
       reset({ price: "" });
       return;
     }
-
     setCheckout({ data: { product, price } });
-
     router.push(`/discover/${product.product_id}/checkout`);
   };
-
-  const createOrder = async (values) => {
-    const { price, name, email, discount_code } = values;
-
-    try {
-      setOrdering(true);
-
-      const res = await axios.post(
-        `${API_URL}/orders/new/${product.product_id}`,
-        { price, name, email, discount_code }
-      );
-
-      setOrder(res.data.data.order);
-      setOrdering(false);
-    } catch (error) {
-      console.log(error);
-      setOrdering(false);
-    }
-  };
-
-  // const verifyAccountId = async () => {};
-  // useDebounce(() => verifyAccountId(), 1000, [values.accountId]);
 
   return (
     <div className="h-full w-full">
@@ -218,7 +189,11 @@ export default function DiscoverSingle() {
                               name="price"
                               className="focus:ring-primary_brand_lighter focus:border-primary_brand_lighter block w-full pl-7 py-3 pr-12 text-lg border-primary_brand_lighter text-center rounded-lg"
                               placeholder={`$${product.price}+`}
-                              {...register("price", { required: true })}
+                              {...register("price", {
+                                required: true,
+                                disabled: !product?.user_priced ?? true,
+                              })}
+                              defaultValue={product.price}
                               autoComplete="off"
                             />
                           </div>
