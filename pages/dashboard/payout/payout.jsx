@@ -88,14 +88,14 @@ const Payments = () => {
 
     return (
       <>
-        <header className='bg-secondary_sky_lightest px-20 py-4 h-20'>
-          <div className='float-left flex mt-1 bg-secondary_ink_light pl-1'>
+        <header className='bg-secondary_sky_lightest px-20 py-4 h-20 shadow'>
+          <div className='float-left flex mt-1 bg-secondary_sky_light rounded-xl border border-secondary_sky_light w-[max-content]'>
             <button
               className={`${
                 payout.previous
-                  ? 'bg-white text-secondary_ink_darkest'
-                  : 'bg-secondary_ink_light text-secondary_brand_light'
-              }  py-2 px-4 `}
+                  ? 'bg-white text-secondary_ink_light rounded-l-xl'
+                  : 'bg-secondary_sky_light text-secondary_brand_light'
+              } h-[2.4rem] w-[11rem] ml-[1px] rounded-l-xl m-auto`}
               onClick={() => setPayout({ previous: true, next: false })}
             >
               Previous payouts
@@ -103,9 +103,9 @@ const Payments = () => {
             <button
               className={`${
                 payout.next
-                  ? 'bg-white text-secondary_ink_darkest'
-                  : 'bg-secondary_ink_light text-secondary_brand_light'
-              }  py-2 px-4 `}
+                  ? 'bg-white text-secondary_ink_light rounded-r-xl'
+                  : 'bg-secondary_sky_light text-secondary_brand_light'
+              } h-[2.5rem] w-[12rem] ml-[1px] rounded-r-xl m-auto`}
               onClick={() => setPayout({ previous: false, next: true })}
             >
               Next payout
@@ -157,7 +157,7 @@ const Payments = () => {
           </div>
         </header>
 
-        <main className='max-w-[1100px] mx-auto mt-20 bg-white rounded-xl px-12 py-10'>
+        <main className='md:w-43/50 mx-auto mt-20 bg-white rounded-xl px-12 py-10'>
           {payout.previous ? (
             <div className='mb-10'>
               <h3 className='font-medium text-grey_20 text-lg'>Select Date</h3>
