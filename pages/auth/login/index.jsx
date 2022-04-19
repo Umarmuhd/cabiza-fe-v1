@@ -54,7 +54,7 @@ export default function Login() {
       loginUser(user, token);
       setLoading(false);
 
-      const status = user.username ? "products" : "onboarding";
+      const status = user.username ? "profile" : "onboarding";
 
       return router.push("/dashboard/" + status);
     } catch (error) {

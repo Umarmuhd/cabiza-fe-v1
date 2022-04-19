@@ -9,6 +9,7 @@ import { useForm } from "react-hook-form";
 import Dashboard from "@/layouts/Dashboard";
 import axios from "axios";
 import { API_URL } from "@/config/index";
+import toast from "react-hot-toast";
 
 export default function EditPost() {
   const [post, setPost] = useState(null);
@@ -24,11 +25,7 @@ export default function EditPost() {
 
   const formOptions = {
     resolver: yupResolver(validationSchema),
-    defaultValues: {
-      audience: 0,
-      channel: { post_to_profile: true },
-      title: post?.title,
-    },
+    defaultValues: { audience: 0, title: post?.title },
   };
 
   const { register, handleSubmit, watch, formState, setValue } =
@@ -36,14 +33,6 @@ export default function EditPost() {
   const { errors } = formState;
 
   const handleUpdate = async (values) => {
-    const channel = [];
-    values.send_email && channel.push(0);
-    values.post_to_profile && channel.push(1);
-
-    const engagements = [];
-    values.allow_comments && engagements.push(0);
-    values.allow_likes && engagements.push(1);
-
     const { title, description, call_to_action, attachment, audience } = values;
 
     const form_data = new FormData();
@@ -51,14 +40,16 @@ export default function EditPost() {
     form_data.append("title", title);
     form_data.append("description", description);
     form_data.append("call_to_action", call_to_action);
-    form_data.append("attachment", attachment[0]);
+    form_data.append("attachment", attachment[0] ?? post?.attachment);
     form_data.append("audience", audience);
-    form_data.append("channel", channel);
-    form_data.append("engagements", engagements);
+    form_data.append("send_email", values.channel.send_email);
+    form_data.append("post_to_profile", values.channel.post_to_profile);
+    form_data.append("allow_comments", values.engagements.allow_comments);
+    form_data.append("allow_likes", values.engagements.allow_likes);
 
     try {
       setLoading(true);
-      await axios.post(`${API_URL}/posts/${post.post_id}`, form_data);
+      await axios.patch(`${API_URL}/posts/post/${post.post_id}`, form_data);
       setLoading(false);
       toast.custom(
         <div className="rounded-lg py-4 px-8 bg-[#24C78C] flex items-center">
@@ -75,7 +66,7 @@ export default function EditPost() {
             />
           </svg>
           <span className="ml-2.5 font-medium text-lg text-white">
-            {response.data.message} !
+            Post update success !
           </span>
         </div>
       );
@@ -90,13 +81,23 @@ export default function EditPost() {
   const fetchPost = useCallback(async () => {
     try {
       setLoading(true);
+
       const url = `${API_URL}/posts/post/${post_id}`;
       const { data } = await axios.get(url);
-      setPost(data.data.post);
       setValue("title", data.data.post.title);
       setValue("description", data.data.post.description);
       setValue("call_to_action", data.data.post.call_to_action);
       setValue("audience", data.data.post.audience);
+      setValue("channel", {
+        send_email: data.data.post.channel.includes("0"),
+        post_to_profile: data.data.post.channel.includes("1"),
+      });
+      setValue("engagements", {
+        allow_comments: data.data.post.engagements.includes("0"),
+        allow_likes: data.data.post.engagements.includes("1"),
+      });
+      setPost(data.data.post);
+
       setLoading(false);
     } catch (error) {
       console.log(error);
@@ -105,6 +106,8 @@ export default function EditPost() {
   }, [post_id]);
 
   useEffect(() => fetchPost(), [fetchPost]);
+
+  console.log(post);
 
   return (
     <div>
@@ -159,7 +162,9 @@ export default function EditPost() {
             </Link>
 
             <a className="leading-4 text-base font-medium text-primary py-2 px-3 rounded-4xl border border-primary mr-6 flex items-center">
-              <span className="mr-2">Publish</span>
+              <span className="mr-2">
+                {post?.published ? "Unpublish" : "Publish"}
+              </span>
               <svg
                 width="14"
                 height="7"
@@ -217,6 +222,7 @@ export default function EditPost() {
                       type="radio"
                       className="focus:ring-primary w-6 h-6 text-primary border-secondary_sky_base"
                       value={0}
+                      checked={post?.audience === 0 ? "checked" : null}
                     />
                   </div>
                   <div className="flex items-center justify-between mb-2">
@@ -229,6 +235,7 @@ export default function EditPost() {
                       type="radio"
                       className="focus:ring-indigo-500 w-6 h-6 text-indigo-600 border-secondary_sky_base"
                       value={1}
+                      checked={post?.audience === 1 ? "checked" : null}
                     />
                   </div>
                   <div className="flex items-center justify-between mb-2">
@@ -244,6 +251,7 @@ export default function EditPost() {
                       type="radio"
                       className="focus:ring-primary w-6 h-6 text-primary border-secondary_sky_base"
                       value={2}
+                      checked={post?.audience === 2 ? "checked" : null}
                     />
                   </div>
                   <div className="flex items-center justify-between">
@@ -259,6 +267,7 @@ export default function EditPost() {
                       type="radio"
                       className="focus:ring-primary w-6 h-6 text-primary border-secondary_sky_base"
                       value={3}
+                      checked={post?.audience === 3 ? "checked" : null}
                     />
                   </div>
                 </div>
@@ -277,9 +286,9 @@ export default function EditPost() {
                       <input
                         type="checkbox"
                         name="send-email"
-                        defaultChecked={false}
+                        defaultChecked={watch("channel")?.send_email}
                         className="appearance-none w-6 h-6 border border-gray-300 rounded-sm outline-none cursor-pointer checked:bg-primary"
-                        {...register("send_email")}
+                        {...register("channel.send_email")}
                       />
                     </div>
                   </FormGroup>
@@ -294,9 +303,11 @@ export default function EditPost() {
                       <input
                         type="checkbox"
                         name="post-to-profile"
-                        defaultChecked={watch("channel")?.post_to_profile}
+                        defaultChecked={
+                          watch("channel")?.post_to_profile ?? true
+                        }
                         className="appearance-none w-6 h-6 border border-gray-300 rounded-sm outline-none cursor-pointer checked:bg-primary"
-                        {...register("post_to_profile")}
+                        {...register("channel.post_to_profile")}
                       />
                     </div>
                   </FormGroup>
@@ -316,9 +327,11 @@ export default function EditPost() {
                       <input
                         type="checkbox"
                         name="allow-comments"
-                        defaultChecked={false}
+                        defaultChecked={
+                          watch("engagements")?.allow_comments ?? true
+                        }
                         className="appearance-none w-6 h-6 border border-gray-300 rounded-sm outline-none cursor-pointer checked:bg-primary"
-                        {...register("allow_comments")}
+                        {...register("engagements.allow_comments")}
                       />
                     </div>
                   </FormGroup>
@@ -333,9 +346,9 @@ export default function EditPost() {
                       <input
                         type="checkbox"
                         name="allow-likes"
-                        defaultChecked={false}
+                        defaultChecked={watch("engagements")?.allow_likes}
                         className="appearance-none w-6 h-6 border border-gray-300 rounded-sm outline-none cursor-pointer checked:bg-primary"
-                        {...register("allow_likes")}
+                        {...register("engagements.allow_likes")}
                       />
                     </div>
                   </FormGroup>
@@ -420,6 +433,7 @@ export default function EditPost() {
                     <div className="absolute">
                       <div className="flex flex-col items-center text-center">
                         <p className="font-medium text-secondary mb-4">
+                          {post?.attachment} <br />
                           {watch("attachment") !== undefined &&
                           watch("attachment").length > 0
                             ? watch("attachment")[0].type

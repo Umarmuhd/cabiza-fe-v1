@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { useForm } from "react-hook-form";
 import { GrList } from "react-icons/gr";
 import { BiStrikethrough, BiLinkAlt, BiImage } from "react-icons/bi";
@@ -54,6 +54,37 @@ export default function CreateProduct({ product, handleNext }) {
       setLoading(false);
     }
   };
+
+  const getBase64StringFromDataURL = (dataURL) =>
+    dataURL.replace("data:", "").replace(/^.+,/, "");
+
+  useEffect(async () => {
+    if (typeof document !== "undefined") {
+      const image = document.getElementById("thumbnail");
+
+      // Get the remote image as a Blob with the fetch API
+      fetch(image.src, {
+        mode: "no-cors", // no-cors, *cors, same-origin
+      })
+        .then((res) => res.blob())
+        .then((blob) => {
+          // Read the Blob as DataURL using the FileReader API
+          const reader = new FileReader();
+          reader.onloadend = () => {
+            console.log(reader.result);
+            // Logs data:image/jpeg;base64,wL2dvYWwgbW9yZ...
+
+            // Convert to Base64 string
+            const base64 = getBase64StringFromDataURL(reader.result);
+            console.log(base64);
+            // Logs wL2dvYWwgbW9yZ...
+          };
+          reader.readAsDataURL(blob);
+
+          console.log(reader);
+        });
+    }
+  }, [document]);
 
   return (
     <form className="" onSubmit={handleSubmit(handleSave)}>
@@ -227,6 +258,12 @@ export default function CreateProduct({ product, handleNext }) {
         </div>
 
         <div className="flex flex-col mt-6">
+          <img
+            src={product?.thumbnail}
+            alt="..."
+            className="hidden"
+            id="thumbnail"
+          />
           <label
             htmlFor="product_cover"
             className="leading-4 font-medium text-secondary_ink_darkest mb-3"

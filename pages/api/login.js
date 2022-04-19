@@ -20,6 +20,7 @@ export default async (req, res) => {
             sameSite: "strict",
             path: "/",
             expires: dayjs().add(14, "days").toDate(),
+            sameSite: "lax",
           })
         );
 

@@ -35,10 +35,6 @@ export default function CreatePost() {
   const handlePublish = async (values) => {
     setLoading(true);
 
-    const channel = [];
-    values.send_email && channel.push(0);
-    values.post_to_profile && channel.push(1);
-
     const engagements = [];
     values.allow_comments && engagements.push(0);
     values.allow_likes && engagements.push(1);
@@ -52,7 +48,8 @@ export default function CreatePost() {
     form_data.append("call_to_action", call_to_action);
     form_data.append("attachment", attachment[0]);
     form_data.append("audience", audience);
-    form_data.append("channel", channel);
+    form_data.append("send_email", values.send_email);
+    form_data.append("post_to_profile", values.post_to_profile);
     form_data.append("engagements", engagements);
 
     try {

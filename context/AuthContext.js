@@ -18,6 +18,22 @@ export const AuthProvider = ({ children }) => {
     axios.defaults.headers.common = { Authorization: `Bearer ${token}` };
   };
 
+  const logout = async () => {
+    setLoading(true);
+    const res = await axios.get(`${NEXT_URL}/api/logout`, {
+      withCredentials: true,
+      credentials: "include",
+      method: "GET",
+    });
+
+    if (res.status === 200) {
+      axios.defaults.headers.common = { Authorization: null };
+      setUser(null);
+      setLoading(false);
+      router.replace("/");
+    }
+  };
+
   const checkUserLoggedIn = async () => {
     try {
       setLoading(true);
@@ -51,7 +67,7 @@ export const AuthProvider = ({ children }) => {
   };
 
   return (
-    <AuthContext.Provider value={{ user, loginUser }}>
+    <AuthContext.Provider value={{ user, loginUser, logout }}>
       {loading ? null : children}
     </AuthContext.Provider>
   );
