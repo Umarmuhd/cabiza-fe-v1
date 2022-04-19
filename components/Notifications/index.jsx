@@ -36,7 +36,7 @@ function Notifications() {
     <div className="relative inline-flex pl-4 ml-5 border-l border-l-secondary_sky_base h-[100%] items-center mr-3">
       <button
         ref={trigger}
-        className={`w-8 h-8 flex items-center justify-center bg-slate-100 hover:bg-slate-200 transition duration-150 rounded-full ${
+        className={`w-10 h-10 flex items-center justify-center bg-slate-100 hover:bg-slate-200 transition duration-150 p-2 rounded-full ${
           dropdownOpen && "bg-slate-200"
         }`}
         aria-haspopup="true"
@@ -45,8 +45,8 @@ function Notifications() {
       >
         <span className="sr-only">Notifications</span>
         <svg
-          width="24"
-          height="24"
+          width="20"
+          height="20"
           viewBox="0 0 24 24"
           fill="none"
           xmlns="http://www.w3.org/2000/svg"
