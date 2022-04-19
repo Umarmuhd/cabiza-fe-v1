@@ -46,7 +46,8 @@ export default function CreatePost() {
     form_data.append("audience", audience);
     form_data.append("send_email", values.send_email);
     form_data.append("post_to_profile", values.post_to_profile);
-    form_data.append("engagements", engagements);
+    form_data.append("allow_comments", values.allow_comments);
+    form_data.append("allow_likes", values.allow_likes);
 
     try {
       const response = await axios.post(`${API_URL}/posts/new`, form_data);
