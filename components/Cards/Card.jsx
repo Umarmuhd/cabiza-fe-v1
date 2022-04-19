@@ -2,7 +2,7 @@ import React from 'react';
 
 const Card = ({title, children, image}) => {
     return (
-      <div className='bg-white rounded-2xl p-10 md:w-43/50 mx-auto mt-10 shadow-md mb-5'>
+      <div className='bg-white rounded-2xl p-10 md:w-43/50 mx-auto mt-10 shadow mb-5'>
         <div className='flex items-center'>
           {image ? (
             <img
