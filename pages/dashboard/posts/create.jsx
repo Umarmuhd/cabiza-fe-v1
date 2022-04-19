@@ -20,7 +20,7 @@ export default function CreatePost() {
 
   const formOptions = {
     resolver: yupResolver(validationSchema),
-    defaultValues: { audience: 0, channel: { post_to_profile: true } },
+    defaultValues: { audience: 0 },
   };
 
   const { register, handleSubmit, watch, formState } = useForm(formOptions);
@@ -78,6 +78,8 @@ export default function CreatePost() {
       setLoading(false);
     }
   };
+
+  console.log(watch("audience"));
 
   return (
     <div>
@@ -190,6 +192,7 @@ export default function CreatePost() {
                       type="radio"
                       className="focus:ring-primary w-6 h-6 text-primary border-secondary_sky_base"
                       value={0}
+                      defaultChecked={true}
                     />
                   </div>
                   <div className="flex items-center justify-between mb-2">
