@@ -27,50 +27,52 @@ export default function Profile() {
 
   return (
     <div>
-      <TopNav title="Profile" />
+      <TopNav title='Profile' />
       <Tab.Group>
         <Tab.Panels>
-          <div className="md:w-43/50 mx-auto pt-2 flex justify-between mt-4">
+          <div className='md:w-43/50 mx-auto pt-2 flex justify-between mt-4'>
             <div>
-              <h1 className="text-3xl">
-                Welcome,{" "}
-                <span className="text-secondary_ink_dark capitalize">
+              <h1 className='text-3xl'>
+                Welcome,{' '}
+                <span className='text-secondary_ink_dark capitalize'>
                   {user?.username}
                 </span>
               </h1>
-              <p className="text-secondary_brand_light text-sm mt-1">
+              <p className='text-secondary_brand_light text-md mt-1'>
                 {user?.bio}
               </p>
             </div>
-            <div className="flex bg-sky_light h-[max-content] p-3 px-4 rounded-lg">
+            <div className='flex bg-sky_light h-[max-content] p-3 px-4 rounded-lg'>
               <EmailIcon />
-              <p className="ml-3 text-sm">{user?.email}</p>
+              <p className='ml-3 text-sm'>{user?.email}</p>
             </div>
           </div>
 
-          <div className="bg-white rounded-2xl p-10 px-3 md:w-43/50 mx-auto mt-10 shadow-lg mb-12">
-            <div className="text-center relative">
-              <img src="/images/product.png" className="w-[100%] h-[auto]" />
-              <div className="w-[90%] mx-auto px-10  pb-10 relative border-b border-secondary_sky_base">
-                <h3 className="text-3xl text-secondary_ink_dark font-semibold mb-3 mt-[-1.5rem]">
+          <div className='bg-white rounded-2xl p-10 px-3 md:w-43/50 mx-auto mt-10 shadow-lg mb-12'>
+            <div className='text-center relative'>
+              <img src='/images/product.png' className='w-[100%] h-[auto]' />
+              <div className='w-[90%] mx-auto px-10  pb-10 relative border-b border-secondary_sky_base'>
+                <h3 className='text-3xl text-secondary_ink_dark font-semibold mb-3 mt-[-1.5rem]'>
                   Create your first product
                 </h3>
-                <p className="w-[80%] mx-auto text-secondary_ink_lighter text-lg">
+                <p className='w-[80%] mx-auto text-secondary_ink_lighter text-lg'>
                   Turn your ideas into products, share and connect with people.
                   It’s okay if you make mistakes, first try is not always
                   perfect.
                 </p>
 
-                <button className="mt-10 bg-primary_brand_lightest text-primary py-3 px-7 rounded-3xl">
-                  Create product
-                </button>
+                <Link href='/dashboard/products/create'>
+                  <button className='mt-10 bg-primary_brand_lightest text-primary py-3 px-7 rounded-3xl'>
+                    Create product
+                  </button>
+                </Link>
 
-                <p className="absolute bottom-[-.7rem] left-[50%] translate-x-[-50%] bg-white z-10 px-20 font-semibold">
+                <p className='absolute bottom-[-.7rem] left-[50%] translate-x-[-50%] bg-white z-10 px-20 font-semibold'>
                   OR
                 </p>
               </div>
-              <div className="mt-12 text-center w-[70%] mx-auto text-primary underline">
-                <Link href="/dashboard/profile/customize">
+              <div className='mt-12 text-center w-[70%] mx-auto text-primary underline'>
+                <Link href='/dashboard/profile/customize'>
                   Customize profile
                 </Link>
               </div>
