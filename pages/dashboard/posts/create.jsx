@@ -35,10 +35,6 @@ export default function CreatePost() {
   const handlePublish = async (values) => {
     setLoading(true);
 
-    const engagements = [];
-    values.allow_comments && engagements.push(0);
-    values.allow_likes && engagements.push(1);
-
     const { title, description, call_to_action, attachment, audience } = values;
 
     const form_data = new FormData();
@@ -271,7 +267,7 @@ export default function CreatePost() {
                       <input
                         type="checkbox"
                         name="post-to-profile"
-                        defaultChecked={watch("channel")?.post_to_profile}
+                        defaultChecked={true}
                         className="appearance-none w-6 h-6 border border-gray-300 rounded-sm outline-none cursor-pointer checked:bg-primary"
                         {...register("post_to_profile")}
                       />
@@ -293,7 +289,7 @@ export default function CreatePost() {
                       <input
                         type="checkbox"
                         name="allow-comments"
-                        defaultChecked={false}
+                        defaultChecked={true}
                         className="appearance-none w-6 h-6 border border-gray-300 rounded-sm outline-none cursor-pointer checked:bg-primary"
                         {...register("allow_comments")}
                       />
