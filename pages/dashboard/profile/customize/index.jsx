@@ -1,15 +1,18 @@
-import React, { useState } from 'react';
+import React, { useState, useContext } from 'react';
 import { Tab } from '@headlessui/react';
 
 import Dashboard from '@/layouts/Dashboard';
-import { classNames } from '../../../../libs/helper';
-
+import AuthContext from '@/context/AuthContext';
 import TopNav from '@/components/Navbars/DashboardNav/TopNav';
+
 import ChangePicture from './change-picture';
 import Connections from './connections';
 import Share from './share';
+import { classNames } from '../../../../libs/helper';
 
 export default function Customize() {
+  const { user } = useContext(AuthContext);
+
   return (
     <div>
       <TopNav title='Settings' />
@@ -66,7 +69,7 @@ export default function Customize() {
 
         <Tab.Panels>
           <Tab.Panel>
-            <ChangePicture />
+            <ChangePicture user={user}/>
           </Tab.Panel>
           <Tab.Panel>
             <Connections />

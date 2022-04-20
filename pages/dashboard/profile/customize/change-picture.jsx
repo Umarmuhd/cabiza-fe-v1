@@ -28,15 +28,17 @@ const LeftIcon = () => (
   </svg>
 );
 
-const ChangePicture = () => {
+const ChangePicture = ({user}) => {
   return (
     <div className='bg-white rounded-2xl p-10 px-3 md:w-43/50 mx-auto mt-10 shadow mb-12'>
       <div className='text-center relative'>
-        <div className='rounded-full bg-secondary_sky_light shadow-lg w-[max-content] p-2 mx-auto flex'>
-          <label htmlFor='image'>
+        <div
+          className="rounded-[50%] bg-secondary_sky_light shadow-lg w-[max-content] h-auto mx-auto flex p-2"
+        >
+          <label htmlFor='image' className='mx-auto'>
             <img
-              src='/images/profile-placeholder.png'
-              className='w-[12rem] h-[auto] m-auto cursor-pointer'
+              src={user?.profile_picture || '/images/profile-placeholder.png'}
+              className='w-[12rem] h-[auto] m-auto cursor-pointer rounded-[50%]'                
             />
           </label>
           <input
@@ -44,7 +46,7 @@ const ChangePicture = () => {
             name='image'
             accept='image/png, image/gif, image/jpeg'
             id='image'
-            className="hidden"
+            className='hidden'
           />
         </div>
         <div className='w-[90%] mx-auto px-10 mt-12'>
