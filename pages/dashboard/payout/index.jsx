@@ -50,8 +50,8 @@ export default function Payout() {
   return (
     <div>
       <TopNav title='Payout' />
-      {/* <Payoutreview/> */}
-      <Payments/>
+      <Payoutreview/>
+      {/* <Payments/> */}
     </div>    
   );
 }

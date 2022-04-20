@@ -47,7 +47,8 @@ export default function TopNav({title}) {
           {/* Header: Right side */}
           <div className='flex items-center h-[100%]'>
             {/* <SearchModal id="search-modal" searchId="search" modalOpen={searchModalOpen} setModalOpen={setSearchModalOpen} /> */}
-            <div className='bg-primary_brand_lightest p-2 rounded-full'>
+            
+            <button className='w-10 h-10 flex items-center justify-center bg-slate-100 hover:bg-slate-200 transition duration-150 p-2 rounded-full'>
               <svg
                 width='25'
                 height='25'
@@ -81,7 +82,7 @@ export default function TopNav({title}) {
                   fill='white'
                 />
               </svg>
-            </div>
+            </button>
 
             <Notifications />
             {/* <Help /> */}

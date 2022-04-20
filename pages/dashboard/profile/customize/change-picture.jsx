@@ -36,7 +36,7 @@ const ChangePicture = () => {
           <label htmlFor='image'>
             <img
               src='/images/profile-placeholder.png'
-              className='w-[12rem] h-[auto] m-auto pointer'
+              className='w-[12rem] h-[auto] m-auto cursor-pointer'
             />
           </label>
           <input

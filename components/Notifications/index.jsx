@@ -74,7 +74,7 @@ function Notifications() {
           />
         </svg>
 
-        <div className="absolute top-[30%] right-0 w-2.5 h-2.5 bg-rose-500 border-2 border-white rounded-full"></div>
+        <div className="absolute top-[23%] right-[8%] text-[7.7px] text-white bg-rose-500 border-2 border-white rounded-[50%] p-[.16rem] px-[.25rem]">7</div>
       </button>
 
       <Transition
