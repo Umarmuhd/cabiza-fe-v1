@@ -4,7 +4,8 @@ import React from 'react';
 const Payoutreview = () => {
     return (
       <>
-        <header className='bg-secondary_sky_lightest px-20 py-4 h-20 shadow'>
+        <header className='bg-secondary_sky_lightest py-4 h-20 shadow'>
+          <div className='md:w-43/50 mx-auto'>
           <button className='bg-primary text-white flex items-center py-2 px-4 rounded-full float-right mr-6'>
             <svg
               width='16'
@@ -25,9 +26,10 @@ const Payoutreview = () => {
             </svg>
             Settings
           </button>
+          </div>
         </header>
 
-        <main className='md:w-43/50 mx-auto mt-20 bg-white rounded-xl px-12 py-10'>
+        <main className='md:w-43/50 mx-auto mt-10 bg-white rounded-xl px-12 py-10'>
           <div className='flex items-center px-6 py-6 justify-between'>
             <div className='w-[12rem]'>
               <div className='bg-primary_brand_dark px-5 py-3 text-white rounded-t-xl relative'>

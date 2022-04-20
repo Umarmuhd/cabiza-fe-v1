@@ -4,8 +4,8 @@ import styles from './styles/index.module.css';
 
 const CalendarIcon = () => (
   <svg
-    width='15'
-    height='15'
+    width='22'
+    height='22'
     viewBox='0 0 24 24'
     fill='none'
     xmlns='http://www.w3.org/2000/svg'
@@ -35,7 +35,7 @@ const CalendarIcon = () => (
       stroke-linejoin='round'
     />
     <path
-      d='M19.21 15.7698L15.6701 19.3098C15.5301 19.4498 15.4 19.7098 15.37 19.8998L15.18 21.2498C15.11 21.7398 15.45 22.0798 15.94 22.0098L17.29 21.8198C17.48 21.7898 17.75 21.6598 17.88 21.5198L21.4201 17.9798C22.0301 17.3698 22.3201 16.6598 21.4201 15.7598C20.5301 14.8698 19.82 15.1598 19.21 15.7698Z'
+      d='M19.21 15.7703L15.6701 19.3103C15.5301 19.4503 15.4 19.7103 15.37 19.9003L15.18 21.2503C15.11 21.7403 15.45 22.0803 15.94 22.0103L17.29 21.8203C17.48 21.7903 17.75 21.6603 17.88 21.5203L21.4201 17.9803C22.0301 17.3703 22.3201 16.6603 21.4201 15.7603C20.5301 14.8703 19.82 15.1603 19.21 15.7703Z'
       stroke='white'
       stroke-width='1.5'
       stroke-miterlimit='10'
@@ -43,7 +43,7 @@ const CalendarIcon = () => (
       stroke-linejoin='round'
     />
     <path
-      d='M18.7001 16.2798C19.0001 17.3598 19.8401 18.1998 20.9201 18.4998'
+      d='M18.7001 16.2803C19.0001 17.3603 19.8401 18.2003 20.9201 18.5003'
       stroke='white'
       stroke-width='1.5'
       stroke-miterlimit='10'
@@ -87,76 +87,78 @@ const Payments = () => {
 
   return (
     <>
-      <header className='bg-secondary_sky_lightest px-20 py-4 h-20 shadow'>
-        <div className='float-left flex mt-1 bg-secondary_sky_light rounded-xl border border-secondary_sky_light w-[max-content]'>
-          <button
-            className={`${
-              payout.previous
-                ? 'bg-white text-secondary_ink_light rounded-l-xl'
-                : 'bg-secondary_sky_light text-secondary_brand_light'
-            } h-[2.4rem] w-[11rem] ml-[1px] rounded-l-xl m-auto`}
-            onClick={() => setPayout({ previous: true, next: false })}
-          >
-            Previous payouts
-          </button>
-          <button
-            className={`${
-              payout.next
-                ? 'bg-white text-secondary_ink_light rounded-r-xl'
-                : 'bg-secondary_sky_light text-secondary_brand_light'
-            } h-[2.5rem] w-[12rem] ml-[1px] rounded-r-xl m-auto`}
-            onClick={() => setPayout({ previous: false, next: true })}
-          >
-            Next payout
-          </button>
-        </div>
-
-        <div className='float-right flex'>
-          <button className='bg-primary text-white flex items-center py-2 px-4 rounded-full mr-6'>
-            <svg
-              width='16'
-              height='16'
-              viewBox='0 0 16 16'
-              fill='none'
-              xmlns='http://www.w3.org/2000/svg'
-              className='mr-2'
+      <header className='bg-secondary_sky_lightest py-4 h-20 shadow'>
+        <div className='md:w-43/50 mx-auto'>
+          <div className='float-left flex mt-1 bg-secondary_sky_light rounded-xl border border-secondary_sky_light w-[max-content]'>
+            <button
+              className={`${
+                payout.previous
+                  ? 'bg-white text-secondary_ink_light rounded-l-xl'
+                  : 'bg-secondary_sky_light text-secondary_brand_light'
+              } h-[2.4rem] w-[11rem] ml-[1px] rounded-l-xl m-auto`}
+              onClick={() => setPayout({ previous: true, next: false })}
             >
-              <path
-                d='M1.33334 8.58679V7.41345C1.33334 6.72012 1.90001 6.14679 2.60001 6.14679C3.80668 6.14679 4.30001 5.29345 3.69334 4.24679C3.34668 3.64679 3.55334 2.86679 4.16001 2.52012L5.31334 1.86012C5.84001 1.54679 6.52001 1.73345 6.83334 2.26012L6.90668 2.38679C7.50668 3.43345 8.49334 3.43345 9.10001 2.38679L9.17334 2.26012C9.48668 1.73345 10.1667 1.54679 10.6933 1.86012L11.8467 2.52012C12.4533 2.86679 12.66 3.64679 12.3133 4.24679C11.7067 5.29345 12.2 6.14679 13.4067 6.14679C14.1 6.14679 14.6733 6.71345 14.6733 7.41345V8.58679C14.6733 9.28012 14.1067 9.85345 13.4067 9.85345C12.2 9.85345 11.7067 10.7068 12.3133 11.7535C12.66 12.3601 12.4533 13.1335 11.8467 13.4801L10.6933 14.1401C10.1667 14.4535 9.48668 14.2668 9.17334 13.7401L9.10001 13.6135C8.50001 12.5668 7.51334 12.5668 6.90668 13.6135L6.83334 13.7401C6.52001 14.2668 5.84001 14.4535 5.31334 14.1401L4.16001 13.4801C3.55334 13.1335 3.34668 12.3535 3.69334 11.7535C4.30001 10.7068 3.80668 9.85345 2.60001 9.85345C1.90001 9.85345 1.33334 9.28012 1.33334 8.58679Z'
-                stroke='white'
-                stroke-width='1.5'
-                stroke-miterlimit='10'
-                stroke-linecap='round'
-                stroke-linejoin='round'
-              />
-            </svg>
-            Settings
-          </button>
-
-          <button className='bg-primary text-white flex items-center p-2 rounded-[50%]'>
-            <svg
-              width='16'
-              height='16'
-              viewBox='0 0 16 16'
-              fill='none'
-              xmlns='http://www.w3.org/2000/svg'
+              Previous payouts
+            </button>
+            <button
+              className={`${
+                payout.next
+                  ? 'bg-white text-secondary_ink_light rounded-r-xl'
+                  : 'bg-secondary_sky_light text-secondary_brand_light'
+              } h-[2.5rem] w-[12rem] ml-[1px] rounded-r-xl m-auto`}
+              onClick={() => setPayout({ previous: false, next: true })}
             >
-              <path
-                d='M7.50008 9.22454V7.49967C7.50008 6.9502 7.04956 6.49967 6.50008 6.49967C5.95061 6.49967 5.50008 6.9502 5.50008 7.49967V9.21556C5.14975 9.09561 4.74463 9.17468 4.46653 9.45279L4.82008 9.80634L4.46653 9.45279C4.07793 9.84138 4.07793 10.478 4.46653 10.8666L5.77094 12.171C5.79661 12.2017 5.82229 12.2251 5.84267 12.2415C5.9101 12.3038 6.00553 12.3752 6.12266 12.422C6.24058 12.4725 6.36556 12.4997 6.50008 12.4997C6.63141 12.4997 6.75365 12.4738 6.8691 12.4255C7.00513 12.3754 7.12096 12.2926 7.20697 12.2066L8.5403 10.8732C8.9289 10.4846 8.9289 9.84805 8.5403 9.45946C8.26043 9.17958 7.85193 9.10128 7.50008 9.22454ZM5.89668 12.2796C5.89711 12.2798 5.89557 12.2789 5.89293 12.2772L5.89563 12.2789L5.89639 12.2794L5.89659 12.2795L5.89668 12.2796ZM5.81318 12.2132L5.8132 12.2132C5.81319 12.2132 5.81319 12.2132 5.81318 12.2132ZM11.7401 7.29301H13.6667C13.7573 7.29301 13.8334 7.36915 13.8334 7.45967V10.953C13.8334 12.0204 13.4648 12.8114 12.9044 13.3377C12.3392 13.8686 11.5396 14.1663 10.6201 14.1663H5.38008C4.46053 14.1663 3.66101 13.8686 3.09572 13.3377C2.53537 12.8114 2.16675 12.0204 2.16675 10.953V5.04634C2.16675 3.979 2.53537 3.18791 3.09572 2.66163C3.66101 2.13071 4.46053 1.83301 5.38008 1.83301H8.20675C8.29727 1.83301 8.37341 1.90915 8.37341 1.99967V3.92634C8.37341 5.78248 9.88394 7.29301 11.7401 7.29301Z'
-                fill='white'
-                stroke='white'
-              />
-              <path
-                d='M11.6252 5.37368L11.6252 5.37365H11.62C10.8762 5.37365 10.2866 4.77776 10.2866 4.09365V1.93417C10.9491 2.59748 11.8894 3.54643 12.7184 4.38298C13.08 4.74781 13.4203 5.09126 13.7072 5.38032C12.9964 5.38028 12.2059 5.37979 11.6252 5.37368Z'
-                fill='white'
-                stroke='white'
-              />
-            </svg>
-          </button>
+              Next payout
+            </button>
+          </div>
+
+          <div className='float-right flex'>
+            <button className='bg-primary text-white flex items-center py-2 px-4 rounded-full mr-6'>
+              <svg
+                width='16'
+                height='16'
+                viewBox='0 0 16 16'
+                fill='none'
+                xmlns='http://www.w3.org/2000/svg'
+                className='mr-2'
+              >
+                <path
+                  d='M1.33334 8.58679V7.41345C1.33334 6.72012 1.90001 6.14679 2.60001 6.14679C3.80668 6.14679 4.30001 5.29345 3.69334 4.24679C3.34668 3.64679 3.55334 2.86679 4.16001 2.52012L5.31334 1.86012C5.84001 1.54679 6.52001 1.73345 6.83334 2.26012L6.90668 2.38679C7.50668 3.43345 8.49334 3.43345 9.10001 2.38679L9.17334 2.26012C9.48668 1.73345 10.1667 1.54679 10.6933 1.86012L11.8467 2.52012C12.4533 2.86679 12.66 3.64679 12.3133 4.24679C11.7067 5.29345 12.2 6.14679 13.4067 6.14679C14.1 6.14679 14.6733 6.71345 14.6733 7.41345V8.58679C14.6733 9.28012 14.1067 9.85345 13.4067 9.85345C12.2 9.85345 11.7067 10.7068 12.3133 11.7535C12.66 12.3601 12.4533 13.1335 11.8467 13.4801L10.6933 14.1401C10.1667 14.4535 9.48668 14.2668 9.17334 13.7401L9.10001 13.6135C8.50001 12.5668 7.51334 12.5668 6.90668 13.6135L6.83334 13.7401C6.52001 14.2668 5.84001 14.4535 5.31334 14.1401L4.16001 13.4801C3.55334 13.1335 3.34668 12.3535 3.69334 11.7535C4.30001 10.7068 3.80668 9.85345 2.60001 9.85345C1.90001 9.85345 1.33334 9.28012 1.33334 8.58679Z'
+                  stroke='white'
+                  stroke-width='1.5'
+                  stroke-miterlimit='10'
+                  stroke-linecap='round'
+                  stroke-linejoin='round'
+                />
+              </svg>
+              Settings
+            </button>
+
+            <button className='bg-primary text-white flex items-center px-[.6rem] rounded-[50%]'>
+              <svg
+                width='18'
+                height='18'
+                viewBox='0 0 16 16'
+                fill='none'
+                xmlns='http://www.w3.org/2000/svg'
+              >
+                <path
+                  d='M7.50008 9.22454V7.49967C7.50008 6.9502 7.04956 6.49967 6.50008 6.49967C5.95061 6.49967 5.50008 6.9502 5.50008 7.49967V9.21556C5.14975 9.09561 4.74463 9.17468 4.46653 9.45279L4.82008 9.80634L4.46653 9.45279C4.07793 9.84138 4.07793 10.478 4.46653 10.8666L5.77094 12.171C5.79661 12.2017 5.82229 12.2251 5.84267 12.2415C5.9101 12.3038 6.00553 12.3752 6.12266 12.422C6.24058 12.4725 6.36556 12.4997 6.50008 12.4997C6.63141 12.4997 6.75365 12.4738 6.8691 12.4255C7.00513 12.3754 7.12096 12.2926 7.20697 12.2066L8.5403 10.8732C8.9289 10.4846 8.9289 9.84805 8.5403 9.45946C8.26043 9.17958 7.85193 9.10128 7.50008 9.22454ZM5.89668 12.2796C5.89711 12.2798 5.89557 12.2789 5.89293 12.2772L5.89563 12.2789L5.89639 12.2794L5.89659 12.2795L5.89668 12.2796ZM5.81318 12.2132L5.8132 12.2132C5.81319 12.2132 5.81319 12.2132 5.81318 12.2132ZM11.7401 7.29301H13.6667C13.7573 7.29301 13.8334 7.36915 13.8334 7.45967V10.953C13.8334 12.0204 13.4648 12.8114 12.9044 13.3377C12.3392 13.8686 11.5396 14.1663 10.6201 14.1663H5.38008C4.46053 14.1663 3.66101 13.8686 3.09572 13.3377C2.53537 12.8114 2.16675 12.0204 2.16675 10.953V5.04634C2.16675 3.979 2.53537 3.18791 3.09572 2.66163C3.66101 2.13071 4.46053 1.83301 5.38008 1.83301H8.20675C8.29727 1.83301 8.37341 1.90915 8.37341 1.99967V3.92634C8.37341 5.78248 9.88394 7.29301 11.7401 7.29301Z'
+                  fill='white'
+                  stroke='white'
+                />
+                <path
+                  d='M11.6252 5.37368L11.6252 5.37365H11.62C10.8762 5.37365 10.2866 4.77776 10.2866 4.09365V1.93417C10.9491 2.59748 11.8894 3.54643 12.7184 4.38298C13.08 4.74781 13.4203 5.09126 13.7072 5.38032C12.9964 5.38028 12.2059 5.37979 11.6252 5.37368Z'
+                  fill='white'
+                  stroke='white'
+                />
+              </svg>
+            </button>
+          </div>
         </div>
       </header>
 
-      <main className='md:w-43/50 mx-auto mt-20 bg-white rounded-xl px-12 py-10'>
+      <main className='md:w-43/50 mx-auto mt-10 bg-white rounded-xl px-12 py-10'>
         {payout.previous ? (
           <div className='mb-10'>
             <h3 className='font-medium text-grey_20 text-lg'>Select Date</h3>
@@ -173,8 +175,8 @@ const Payments = () => {
 
               {/* <input datepicker datepicker-autohide type="text" class="bg-gray-50 border border-gray-300 text-gray-900 sm:text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full pl-10 p-2.5  dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" placeholder="Select date"></input> */}
 
-              <button className='bg-primary p-1 rounded-lg'>
-                <label htmlFor='date'>
+              <button className='bg-primary p-2 rounded-lg'>
+                <label htmlFor='date' className="cursor-pointer">
                   <CalendarIcon datepicker datepicker-autohide />
                 </label>
               </button>

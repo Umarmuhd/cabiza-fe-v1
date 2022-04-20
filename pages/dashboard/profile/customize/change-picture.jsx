@@ -28,13 +28,11 @@ const LeftIcon = () => (
   </svg>
 );
 
-const ChangePicture = ({user}) => {
+const ChangePicture = ({ user }) => {
   return (
     <div className='bg-white rounded-2xl p-10 px-3 md:w-43/50 mx-auto mt-10 shadow mb-12'>
       <div className='text-center relative'>
-        <div
-          className="rounded-[50%] bg-secondary_sky_light shadow-lg w-[max-content] h-auto mx-auto flex p-2 object-cover"
-        >
+        <div className='rounded-[50%] bg-secondary_sky_light w-[max-content] h-auto mx-auto flex p-3 object-cover'>
           <label htmlFor='image' className='mx-auto'>
             <img
               src={user?.profile_picture || '/images/profile-placeholder.png'}
@@ -53,18 +51,19 @@ const ChangePicture = ({user}) => {
             className='hidden'
           />
         </div>
-        <div className='w-[90%] mx-auto px-10 mt-12'>
-          <h3 className='text-3xl text-secondary_ink_dark font-semibold mb-3 mt-[-1.5rem]'>
-            Choose your profile image
-          </h3>
-          <p className='w-[80%] mx-auto text-secondary_ink_lighter text-lg'>
-            Upload image or drag image to the avatar to upload. Recommended size
-            100px by 100px, 72 DPI, JPEG or PNG.
-          </p>
+        
+        <div className='w-[90%] mx-auto px-10 mt-12'>         
+        <h3 className='text-3xl text-secondary_ink_dark font-semibold mb-3 mt-[-1.5rem]'>
+          Choose your profile image
+        </h3>
+        <p className='w-[80%] mx-auto text-secondary_ink_lighter text-lg mb-10'>
+          Upload image or drag image to the avatar to upload. Recommended size
+          100px by 100px, 72 DPI, JPEG or PNG.
+        </p>
 
-          <button className='mt-10 bg-primary_brand_lightest text-primary py-3 px-7 rounded-3xl'>
+        <label htmlFor='image' className='bg-primary_brand_lightest text-primary py-3 px-7 rounded-3xl cursor-pointer'>
             Upload Picture
-          </button>
+        </label>
         </div>
         <div className='mt-7 text-center w-[max-content] mx-auto text-primary'>
           <Link href='/dashboard/profile/customize'>
