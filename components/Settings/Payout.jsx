@@ -62,14 +62,14 @@ export default function Payout() {
               <CheckSwitch
                 label='Individual'
                 name='Account_type'
-                styles='border border-sky_light mt-3 h-10 rounded text-secondary_ink_lighter bg-white px-4 w-[50%] mr-2 text-left flex justify-between items-center'
+                styles='border border-sky_light mt-3 h-10 rounded text-secondary_ink_lighter bg-white px-4 w-[50%] mr-2 text-left flex justify-between items-center cursor-pointer'
                 checked
               />
 
               <CheckSwitch
                 label='Business'
                 name='Account_type'
-                styles='border border-sky_light mt-3 h-10 rounded text-secondary_ink_lighter bg-sky_light px-4 w-[50%] text-left flex justify-between items-center'
+                styles='border border-sky_light mt-3 h-10 rounded text-secondary_ink_lighter bg-sky_light px-4 w-[50%] text-left flex justify-between items-center cursor-pointer'
               />
             </div>
           </div>

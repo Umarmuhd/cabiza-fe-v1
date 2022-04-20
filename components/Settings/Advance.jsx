@@ -27,14 +27,14 @@ export default function Advance() {
           <label htmlFor='uname' className='text-secondary_ink_darkest'>
             Username
           </label>
-          <div className='border border-sky_light mt-3 h-10 rounded text-secondary_ink_lighter bg-white px-4 w-[100%] mr-2 text-left flex justify-between items-center shadow py-6'>
+          <div className='border border-sky_light mt-3 h-10 rounded text-secondary_ink_lighter bg-white px-4 pr-1 w-[100%] mr-2 text-left flex justify-between items-center shadow py-6'>
             <input
               id='uname'
               name='uname'
               className='w-[100%]'
               placeholder='Your domain name (example.com)'
             />
-            <button className='bg-sky_light text-secondary_sky_dark px-3 py-2'>
+            <button className='bg-sky_light text-secondary_sky_dark px-3 py-2 rounded'>
               Verify
             </button>
           </div>
@@ -45,7 +45,7 @@ export default function Advance() {
           <p className='text-secondary_ink_lighter'>
             Verify domain in third-party service
           </p>
-          <Toggle label='verify-domain' classes='text-left mr-[-1.2rem]' />
+          <Toggle label='verify-domain' classes='text-left mr-[-1.2rem] mt-[-.4rem]' />
         </div>
 
         <div className='mt-8'>

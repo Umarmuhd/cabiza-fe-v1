@@ -36,7 +36,7 @@ function Notifications() {
     <div className="relative inline-flex pl-4 ml-5 border-l border-l-secondary_sky_base h-[100%] items-center mr-3">
       <button
         ref={trigger}
-        className={`w-10 h-10 flex items-center justify-center bg-slate-100 hover:bg-slate-200 transition duration-150 p-2 rounded-full ${
+        className={`w-10 h-10 flex items-center justify-center bg-primary_brand_lightest hover:bg-slate-200 transition duration-150 p-2 rounded-full ${
           dropdownOpen && "bg-slate-200"
         }`}
         aria-haspopup="true"

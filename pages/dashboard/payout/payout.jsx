@@ -89,7 +89,7 @@ const Payments = () => {
     <>
       <header className='bg-secondary_sky_lightest py-4 h-20 shadow'>
         <div className='md:w-43/50 mx-auto'>
-          <div className='float-left flex mt-1 bg-secondary_sky_light rounded-xl border border-secondary_sky_light w-[max-content]'>
+          <div className='float-left flex mt-1 bg-secondary_sky_light rounded-xl border border-secondary_sky_light w-[max-content] p-[.1rem]'>
             <button
               className={`${
                 payout.previous
@@ -105,7 +105,7 @@ const Payments = () => {
                 payout.next
                   ? 'bg-white text-secondary_ink_light rounded-r-xl'
                   : 'bg-secondary_sky_light text-secondary_brand_light'
-              } h-[2.5rem] w-[12rem] ml-[1px] rounded-r-xl m-auto`}
+              } h-[2.4rem] w-[12rem] ml-[1px] rounded-r-xl m-auto`}
               onClick={() => setPayout({ previous: false, next: true })}
             >
               Next payout

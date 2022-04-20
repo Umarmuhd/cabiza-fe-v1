@@ -28,7 +28,7 @@ const PaymentItem = ({ name, url, image, firstText, lastText }) => {
       </p>
 
       <div className="mt-5 flex">
-        <button className="bg-primary text-white px-5 py-2 rounded-2xl mr-5">
+        <button className="bg-primary text-white px-5 py-2 rounded-full mr-5">
           Connect
         </button>
 
@@ -36,28 +36,7 @@ const PaymentItem = ({ name, url, image, firstText, lastText }) => {
           Learn more
         </button>
       </div>
-  </Card>
-    // <div className='px-6 py-9 rounded-2xl border border-grey_80 flex justify-between mb-6'>
-    //   <span className='text-2xl font-semibold text-secondary'>{name}</span>
-    //   <div className='w-[70%]'>
-    //     <p className='text-sm text-grey_40'>
-    //       Connecting a personal or business PayPal account will allow you to
-    //       accept payments with PayPal. Each purchase made with PayPal will be
-    //       deposited into your PayPal account immediately. Payments via PayPal
-    //       are supported in every country except Brazil, India, Israel, Japan,
-    //       Micronesia, Turkey.
-    //     </p>
-    //     <div className='mt-6'>
-    //       <button
-    //         className='rounded-lg px-8 py-4 bg-primary text-white font-semibold text-lg'
-    //         disabled={loading}
-    //         onClick={connectHandler}
-    //       >
-    //         {loading ? 'Connecting...' : <>Connect with {name}</>}
-    //       </button>
-    //     </div>
-    //   </div>
-    // </div>
+  </Card>    
   );
 };
 
