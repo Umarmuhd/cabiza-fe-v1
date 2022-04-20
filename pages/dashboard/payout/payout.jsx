@@ -167,7 +167,7 @@ const Payments = () => {
                 type='date'
                 name='date'
                 id='date'
-                className={`w-[95%] p-2 px-4 border border-secondary_sky_light rounded-xl appearance-none mr-8 outline-none ${styles.input}`}
+                className={`w-[100%] p-2 px-4 border border-secondary_sky_light rounded-xl appearance-none mr-3 outline-none ${styles.input}`}
                 defaultValue='2002-09-03'
                 datepicker
                 datepicker-autohide
