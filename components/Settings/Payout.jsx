@@ -4,6 +4,7 @@ import Card from '@/components/Cards/Card';
 import Toggle from '@/components/Toggle/Toggle';
 
 import AuthContext from '@/context/AuthContext';
+import CheckSwitch from './../checkSwitch/index';
 
 export default function Payout() {
   const {
@@ -26,7 +27,7 @@ export default function Payout() {
       <path d="M12 23C5.92487 23 1 18.0751 1 12H-1C-1 19.1797 4.8203 25 12 25V23ZM23 12C23 18.0751 18.0751 23 12 23V25C19.1797 25 25 19.1797 25 12H23ZM12 1C18.0751 1 23 5.92487 23 12H25C25 4.8203 19.1797 -1 12 -1V1ZM12 -1C4.8203 -1 -1 4.8203 -1 12H1C1 5.92487 5.92487 1 12 1V-1Z" fill="#CDCFD0"/>
     </svg>
   )
-
+  
   const AccountTypeActiveIcon = () => (
     <svg width="25" height="24" viewBox="0 0 25 24" fill="none" xmlns="http://www.w3.org/2000/svg">
       <path d="M0.5 12C0.5 5.37258 5.87258 0 12.5 0V0C19.1274 0 24.5 5.37258 24.5 12V12C24.5 18.6274 19.1274 24 12.5 24V24C5.87258 24 0.5 18.6274 0.5 12V12Z" fill="#5B44E9"/>
@@ -58,14 +59,18 @@ export default function Payout() {
             </h5>
 
             <div className='flex w-[100%]'>
-              <button className='border border-sky_light mt-3 h-10 rounded text-secondary_ink_lighter bg-white px-4 w-[50%] mr-2 text-left flex justify-between items-center'>
-                {' '}
-                Individual <AccountTypeActiveIcon />
-              </button>
-              <button className='border border-sky_light mt-3 h-10 rounded text-secondary_ink_lighter bg-sky_light px-4 w-[50%] text-left flex justify-between items-center'>
-                {' '}
-                Business <AccountTypeIcon />
-              </button>
+              <CheckSwitch
+                label='Individual'
+                name='Account_type'
+                styles='border border-sky_light mt-3 h-10 rounded text-secondary_ink_lighter bg-white px-4 w-[50%] mr-2 text-left flex justify-between items-center'
+                checked
+              />
+
+              <CheckSwitch
+                label='Business'
+                name='Account_type'
+                styles='border border-sky_light mt-3 h-10 rounded text-secondary_ink_lighter bg-sky_light px-4 w-[50%] text-left flex justify-between items-center'
+              />
             </div>
           </div>
 
@@ -76,18 +81,17 @@ export default function Payout() {
                 Why does Cabiza need this information?{' '}
               </span>
             </h5>
-
             <div className='flex w-[100%]'>
               <input
                 id='fname'
                 name='fname'
-                className='border border-sky_light mt-3 h-10 rounded text-secondary_ink_lighter bg-white px-4 w-[50%] mr-2 text-left flex justify-between items-center shadow'
+                className='border border-sky_light mt-3 h-10 text-secondary_ink_lighter bg-white px-4 w-[100%] text-left flex justify-between items-center shadow rounded-tl'
                 placeholder='First Name'
               />
               <input
                 id='lname'
                 name='lname'
-                className='border border-sky_light mt-3 h-10 rounded text-secondary_ink_lighter bg-white px-4 w-[50%] mr-2 text-left flex justify-between items-center shadow'
+                className='border border-sky_light mt-3 h-10 text-secondary_ink_lighter bg-white px-4 w-[100%] text-left flex justify-between items-center shadow rounded-tr border-l-0'
                 placeholder='Last Name'
               />
             </div>
@@ -96,7 +100,7 @@ export default function Payout() {
               <input
                 id='address'
                 name='address'
-                className='border border-sky_light h-10 rounded text-secondary_ink_lighter bg-white px-4 w-[100%] mr-2 text-left flex justify-between items-center'
+                className='border border-sky_light border-t-0 h-10 text-secondary_ink_lighter bg-white px-4 w-[100%] text-left flex justify-between items-center'
                 placeholder='Street Address'
               />
             </div>
@@ -105,13 +109,13 @@ export default function Payout() {
               <input
                 id='City'
                 name='City'
-                className='border border-sky_light h-10 rounded text-secondary_ink_lighter bg-white px-4 w-[50%] mr-2 text-left flex justify-between items-center'
+                className='border border-sky_light h-10 text-secondary_ink_lighter bg-white px-4 w-[100%] text-left flex justify-between items-center border-t-0'
                 placeholder='City'
               />
               <input
                 id='postal-code'
                 name='postal-code'
-                className='border border-sky_light h-10 rounded text-secondary_ink_lighter bg-white px-4 w-[50%] mr-2 text-left flex justify-between items-center'
+                className='border border-sky_light h-10 text-secondary_ink_lighter bg-white px-4 w-[100%] text-left flex justify-between items-center border-t-0 border-l-0'
                 placeholder='Postal Code'
               />
             </div>
@@ -120,7 +124,7 @@ export default function Payout() {
               <input
                 id='country'
                 name='country'
-                className='border border-sky_light h-10 rounded text-secondary_ink_lighter bg-white px-4 w-[100%] mr-2 text-left flex justify-between items-center shadow'
+                className='border border-sky_light h-10 text-secondary_ink_lighter bg-white px-4 w-[100%] text-left flex justify-between items-center shadow rounded-b border-t-0'
                 placeholder='Nigeria'
               />
             </div>
@@ -162,10 +166,10 @@ export default function Payout() {
                   placeholder='Year'
                 />
               </div>
-            </div>                        
+            </div>
           </div>
 
-          <div className='flex flex-col mt-8'>            
+          <div className='flex flex-col mt-8'>
             <div className='w-[100%]'>
               <h5 className='text-secondary_ink_darkest font-normal mb-1'>
                 Payout PayPal address
@@ -178,24 +182,28 @@ export default function Payout() {
                   type='text'
                   className='border border-sky_light mt-3 h-10 rounded  bg-white text-secondary_ink_darkest px-4 w-[100%] mr-2 text-left flex justify-between items-center'
                   placeholder='Paypal Email'
-                />                
+                />
               </div>
             </div>
           </div>
 
-          <div className='flex bg-secondary_sky_lighter py-3 px-4 mt-8 rounded-xl justify-between'>            
-            <p className="text-secondary_ink_lighter">We encrypt all sensitive info using public key encryption (2048-bit RSA)</p>
-            <WarningIcon/>
+          <div className='flex bg-secondary_sky_lighter py-3 px-4 mt-8 rounded-xl justify-between'>
+            <p className='text-secondary_ink_lighter'>
+              We encrypt all sensitive info using public key encryption
+              (2048-bit RSA)
+            </p>
+            <WarningIcon />
           </div>
         </div>
 
         <div className='mt-8'>
           <button className='bg-primary py-3 w-[100%] rounded-full text-white'>
             Finish
-          </button>          
-            <p className='mt-5 text-center text-grey_60'>
-             By completing this form you agree that information provided is accurate. You also agree to our Terms.
-            </p>
+          </button>
+          <p className='mt-5 text-center text-grey_60'>
+            By completing this form you agree that information provided is
+            accurate. You also agree to our Terms.
+          </p>
         </div>
       </Card>
     </form>
