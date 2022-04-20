@@ -91,7 +91,6 @@ export default function Setting() {
                           label='Purchases-email'
                           click={handleTogglePricingSettings}
                           classes='text-left mt-[-.5rem]'
-                          checked
                         />
                       </td>
                       <td className='text-left px-6'>
@@ -99,7 +98,6 @@ export default function Setting() {
                           label='Purchases-mobile'
                           click={handleTogglePricingSettings}
                           classes='text-left mt-[-.5rem]'
-                          checked
                         />
                       </td>
                     </tr>
@@ -110,7 +108,6 @@ export default function Setting() {
                           label='Recurring-payments-email'
                           click={handleTogglePricingSettings}
                           classes='text-left mt-[-.5rem]'
-                          checked
                         />
                       </td>
                       <td className='text-left px-6'>
@@ -135,7 +132,6 @@ export default function Setting() {
                           label='free-downloads-mobile'
                           click={handleTogglePricingSettings}
                           classes='text-left mt-[-.5rem]'
-                          checked
                         />
                       </td>
                     </tr>

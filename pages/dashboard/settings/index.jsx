@@ -16,7 +16,7 @@ export default function Settings() {
     <div>
       <TopNav title='Settings' />
       <Tab.Group>
-        <div className='md:px-0 pt-3'>
+        <div className='md:px-0 pt-3 py-2 shadow shadow-secondary_sky_base bg-secondary_sky_lightest z-30'>
           <div className='flex justify-start items-end mr-auto md:w-43/50 mx-auto'>
             <Tab.List as={'div'} className='flex items-center py-[.5rem]'>
               <Tab

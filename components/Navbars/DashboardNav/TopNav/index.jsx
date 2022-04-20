@@ -4,7 +4,7 @@ import React, { useState } from "react";
 
 export default function TopNav({title}) {
   return (
-    <header className='sticky top-0 bg-white border border-secondary_sky_base border-l-0 z-30'>
+    <header className='sticky top-0 shadow shadow-secondary_sky_base bg-secondary_sky_lightest z-30'>
       <div className=' px-4 sm:px-0 lg:px-0 '>
         {/* <div className=" px-4 sm:px-6 lg:px-8 "> */}
         <div className='md:w-43/50 flex items-center justify-between h-16 -mb-px mx-auto'>
@@ -47,7 +47,7 @@ export default function TopNav({title}) {
           {/* Header: Right side */}
           <div className='flex items-center h-[100%]'>
             {/* <SearchModal id="search-modal" searchId="search" modalOpen={searchModalOpen} setModalOpen={setSearchModalOpen} /> */}
-            
+
             <button className='w-10 h-10 flex items-center justify-center bg-slate-100 hover:bg-slate-200 transition duration-150 p-2 rounded-full'>
               <svg
                 width='25'
