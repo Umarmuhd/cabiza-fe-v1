@@ -134,7 +134,7 @@ const Payments = () => {
               Settings
             </button>
 
-            <button className='bg-primary text-white flex items-center p-2 px-3 rounded-[50%]'>
+            <button className='bg-primary text-white flex items-center px-[.6rem] rounded-[50%]'>
               <svg
                 width='18'
                 height='18'
