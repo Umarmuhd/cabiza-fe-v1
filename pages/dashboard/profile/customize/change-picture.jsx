@@ -33,12 +33,16 @@ const ChangePicture = ({user}) => {
     <div className='bg-white rounded-2xl p-10 px-3 md:w-43/50 mx-auto mt-10 shadow mb-12'>
       <div className='text-center relative'>
         <div
-          className="rounded-[50%] bg-secondary_sky_light shadow-lg w-[max-content] h-auto mx-auto flex p-2"
+          className="rounded-[50%] bg-secondary_sky_light shadow-lg w-[max-content] h-auto mx-auto flex p-2 object-cover"
         >
           <label htmlFor='image' className='mx-auto'>
             <img
               src={user?.profile_picture || '/images/profile-placeholder.png'}
-              className='w-[12rem] h-[auto] m-auto cursor-pointer rounded-[50%]'                
+              className={
+                user?.profile_picture
+                  ? 'w-[14rem] h-[14rem] m-auto cursor-pointer rounded-[50%] object-cover'
+                  : 'w-[12rem] h-[12rem] m-auto cursor-pointer rounded-[50%] object-cover'
+              }
             />
           </label>
           <input
