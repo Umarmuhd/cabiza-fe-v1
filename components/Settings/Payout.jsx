@@ -81,18 +81,17 @@ export default function Payout() {
                 Why does Cabiza need this information?{' '}
               </span>
             </h5>
-
             <div className='flex w-[100%]'>
               <input
                 id='fname'
                 name='fname'
-                className='border border-sky_light mt-3 h-10 rounded text-secondary_ink_lighter bg-white px-4 w-[50%] mr-2 text-left flex justify-between items-center shadow'
+                className='border border-sky_light mt-3 h-10 text-secondary_ink_lighter bg-white px-4 w-[100%] text-left flex justify-between items-center shadow rounded-tl'
                 placeholder='First Name'
               />
               <input
                 id='lname'
                 name='lname'
-                className='border border-sky_light mt-3 h-10 rounded text-secondary_ink_lighter bg-white px-4 w-[50%] mr-2 text-left flex justify-between items-center shadow'
+                className='border border-sky_light mt-3 h-10 text-secondary_ink_lighter bg-white px-4 w-[100%] text-left flex justify-between items-center shadow rounded-tr border-l-0'
                 placeholder='Last Name'
               />
             </div>
@@ -101,7 +100,7 @@ export default function Payout() {
               <input
                 id='address'
                 name='address'
-                className='border border-sky_light h-10 rounded text-secondary_ink_lighter bg-white px-4 w-[100%] mr-2 text-left flex justify-between items-center'
+                className='border border-sky_light border-t-0 h-10 text-secondary_ink_lighter bg-white px-4 w-[100%] text-left flex justify-between items-center'
                 placeholder='Street Address'
               />
             </div>
@@ -110,13 +109,13 @@ export default function Payout() {
               <input
                 id='City'
                 name='City'
-                className='border border-sky_light h-10 rounded text-secondary_ink_lighter bg-white px-4 w-[50%] mr-2 text-left flex justify-between items-center'
+                className='border border-sky_light h-10 text-secondary_ink_lighter bg-white px-4 w-[100%] text-left flex justify-between items-center border-t-0'
                 placeholder='City'
               />
               <input
                 id='postal-code'
                 name='postal-code'
-                className='border border-sky_light h-10 rounded text-secondary_ink_lighter bg-white px-4 w-[50%] mr-2 text-left flex justify-between items-center'
+                className='border border-sky_light h-10 text-secondary_ink_lighter bg-white px-4 w-[100%] text-left flex justify-between items-center border-t-0 border-l-0'
                 placeholder='Postal Code'
               />
             </div>
@@ -125,7 +124,7 @@ export default function Payout() {
               <input
                 id='country'
                 name='country'
-                className='border border-sky_light h-10 rounded text-secondary_ink_lighter bg-white px-4 w-[100%] mr-2 text-left flex justify-between items-center shadow'
+                className='border border-sky_light h-10 text-secondary_ink_lighter bg-white px-4 w-[100%] text-left flex justify-between items-center shadow rounded-b border-t-0'
                 placeholder='Nigeria'
               />
             </div>
