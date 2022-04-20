@@ -89,7 +89,7 @@ const Payments = () => {
     <>
       <header className='bg-secondary_sky_lightest py-4 h-20 shadow'>
         <div className='md:w-43/50 mx-auto'>
-          <div className='float-left flex mt-1 bg-secondary_sky_light rounded-xl border border-secondary_sky_light w-[max-content]'>
+          <div className='float-left flex mt-1 bg-secondary_sky_light rounded-xl border border-secondary_sky_light w-[max-content] p-[.1rem]'>
             <button
               className={`${
                 payout.previous
@@ -105,7 +105,7 @@ const Payments = () => {
                 payout.next
                   ? 'bg-white text-secondary_ink_light rounded-r-xl'
                   : 'bg-secondary_sky_light text-secondary_brand_light'
-              } h-[2.5rem] w-[12rem] ml-[1px] rounded-r-xl m-auto`}
+              } h-[2.4rem] w-[12rem] ml-[1px] rounded-r-xl m-auto`}
               onClick={() => setPayout({ previous: false, next: true })}
             >
               Next payout
@@ -167,13 +167,11 @@ const Payments = () => {
                 type='date'
                 name='date'
                 id='date'
-                className={`w-[95%] p-2 px-4 border border-secondary_sky_light rounded-xl appearance-none mr-8 appearance-none ${styles.input}`}
+                className={`w-[95%] p-2 px-4 border border-secondary_sky_light rounded-xl appearance-none mr-8 outline-none ${styles.input}`}
                 defaultValue='2002-09-03'
                 datepicker
                 datepicker-autohide
-              />
-
-              {/* <input datepicker datepicker-autohide type="text" class="bg-gray-50 border border-gray-300 text-gray-900 sm:text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full pl-10 p-2.5  dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" placeholder="Select date"></input> */}
+              />            
 
               <button className='bg-primary p-2 rounded-lg'>
                 <label htmlFor='date' className="cursor-pointer">
