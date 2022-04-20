@@ -167,13 +167,11 @@ const Payments = () => {
                 type='date'
                 name='date'
                 id='date'
-                className={`w-[95%] p-2 px-4 border border-secondary_sky_light rounded-xl appearance-none mr-8 appearance-none ${styles.input}`}
+                className={`w-[95%] p-2 px-4 border border-secondary_sky_light rounded-xl appearance-none mr-8 outline-none ${styles.input}`}
                 defaultValue='2002-09-03'
                 datepicker
                 datepicker-autohide
-              />
-
-              {/* <input datepicker datepicker-autohide type="text" class="bg-gray-50 border border-gray-300 text-gray-900 sm:text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full pl-10 p-2.5  dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" placeholder="Select date"></input> */}
+              />            
 
               <button className='bg-primary p-2 rounded-lg'>
                 <label htmlFor='date' className="cursor-pointer">
