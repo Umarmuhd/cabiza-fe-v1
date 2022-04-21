@@ -11,7 +11,7 @@ import Link from "next/link";
 import { API_URL } from "@/config/index";
 import AuthContext from "@/context/AuthContext";
 import axios from "axios";
-import DashboardNav from "@/components/Navbars/DashboardNav";
+import FullNav from '@/components/Navbars/DashboardNav/FullNav';
 
 const PlusIcon = () => (
   <svg
@@ -71,35 +71,31 @@ const Products = ({}) => {
 
   return (
     <div>
-      <Tab.Group>
-        <DashboardNav title="Products" />
-        <div
-          className="bg-secondary_sky_lightest py-6 md:px-0 px-4"
-          style={{ boxShadow: "0px 4px 20px rgba(0, 0, 0, 0.04)" }}
-        >
-          <div className="flex justify-between items-center md:w-43/50 mx-auto">
-            <Tab.List as={"div"} className="flex items-center">
+      <Tab.Group>        
+      <FullNav title='Products'>
+          <div className='flex justify-between items-center md:w-43/50 mx-auto'>
+            <Tab.List as={'div'} className='flex items-center'>
               <Tab
-                as={"button"}
+                as={'button'}
                 className={({ selected }) =>
                   classNames(
-                    "text-lg mr-10",
+                    'text-lg mr-10',
                     selected
-                      ? " font-bold text-primary"
-                      : " font-medium text-cabiza_grey"
+                      ? ' font-bold text-primary'
+                      : ' font-medium text-cabiza_grey'
                   )
                 }
               >
                 All Products
               </Tab>
               <Tab
-                as={"button"}
+                as={'button'}
                 className={({ selected }) =>
                   classNames(
-                    "text-lg mr-10",
+                    'text-lg mr-10',
                     selected
-                      ? " font-bold text-primary"
-                      : " font-medium text-cabiza_grey"
+                      ? ' font-bold text-primary'
+                      : ' font-medium text-cabiza_grey'
                   )
                 }
               >
@@ -107,29 +103,31 @@ const Products = ({}) => {
               </Tab>
             </Tab.List>
 
-            <div className="flex items-center justify-between">
-              <div className="flex rounded-[100px] shadow-sm mr-6">
+            <div className='flex items-center justify-between'>
+              <div className='flex rounded-[100px] shadow-sm mr-6'>
                 <input
-                  type="text"
-                  className="border border-r-0 border-grey_80 px-4 py-2 placeholder-grey_80 text-grey_40 bg-white shadow-sm focus:outline-none focus:ring w-full rounded-l-[100px]"
-                  style={{ transition: "all 0.15s ease 0s" }}
-                  id="search"
-                  placeholder="Search..."
+                  type='text'
+                  className='border border-r-0 border-grey_80 px-4 py-2 placeholder-grey_80 text-grey_40 bg-white shadow-sm focus:outline-none focus:ring w-full rounded-l-[100px]'
+                  style={{ transition: 'all 0.15s ease 0s' }}
+                  id='search'
+                  placeholder='Search...'
                 />
-                <div className="inline-flex items-center px-3 border border-l-0 border-gray-300 text-gray-500 text-sm rounded-r-[100px]">
-                  <span className="rounded-full p-2 bg-primary h-7 w-7">
-                    <img src="/images/icons/search.svg" alt="..." />
+                <div className='inline-flex items-center px-3 border border-l-0 border-gray-300 text-gray-500 text-sm rounded-r-[100px]'>
+                  <span className='rounded-full p-2 bg-primary h-7 w-7'>
+                    <img src='/images/icons/search.svg' alt='...' />
                   </span>
                 </div>
               </div>
-              <Link href="/dashboard/products/create">
-                <a className="py-2 px-4 bg-primary flex items-center font-medium text-white rounded-[48px]">
-                  <PlusIcon /> <span className="ml-2">New Product </span>
+              <Link href='/dashboard/products/create'>
+                <a className='py-2 px-4 bg-primary flex items-center font-medium text-white rounded-[48px]'>
+                  <PlusIcon /> <span className='ml-2'>New Product </span>
                 </a>
               </Link>
             </div>
           </div>
-        </div>
+        </FullNav>
+
+
         <Tab.Panels>
           <Tab.Panel>
             {products.length > 0 ? (

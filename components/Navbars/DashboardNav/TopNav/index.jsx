@@ -4,7 +4,7 @@ import React, { useState } from "react";
 
 export default function TopNav({title}) {
   return (
-    <header className='sticky top-0 shadow shadow-secondary_sky_base bg-secondary_sky_lightest z-30'>
+    <header className='sticky top-0 border-b border-b-secondary_sky_base bg-white z-30'>
       <div className=' px-4 sm:px-0 lg:px-0 '>
         {/* <div className=" px-4 sm:px-6 lg:px-8 "> */}
         <div className='md:w-43/50 flex items-center justify-between h-16 -mb-px mx-auto'>
