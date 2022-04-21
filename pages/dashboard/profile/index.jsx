@@ -32,9 +32,9 @@ export default function Profile() {
         <Tab.Panels>
           <div className='md:w-43/50 mx-auto pt-2 flex justify-between mt-4'>
             <div>
-              <h1 className='text-3xl'>
+              <h1 className='text-3xl font-semibold'>
                 Welcome,{' '}
-                <span className='text-secondary_ink_dark capitalize'>
+                <span className='text-secondary_ink_dark capitalize font-normal'>
                   {user?.username}
                 </span>
               </h1>

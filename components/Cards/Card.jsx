@@ -7,7 +7,7 @@ const Card = ({title, children, image}) => {
           {image ? (
             <img
               src={image}
-              className='mr-20 h-[100%] w-[25rem] rounded-xl shadow-lg'
+              className='mr-20 h-[100%] w-[25rem] rounded-xl shadow-lg shadow-[#C4C4C4]'
             />
           ) : null}
           <div className='w-[100%]'>

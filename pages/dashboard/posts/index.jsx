@@ -1,6 +1,8 @@
 import React from "react";
 import { Tab } from "@headlessui/react";
 import Link from "next/link";
+import AuthContext from "@/context/AuthContext";
+import axios from "axios";
 
 import { classNames } from "../../../libs/helper";
 
@@ -9,7 +11,7 @@ import Dashboard from "../../../layouts/Dashboard";
 import WorkFlow from "../../../components/Posts/WorkFlow";
 import PostsList from "../../../components/Posts/PostsList";
 import Scheduled from "../../../components/Posts/Scheduled";
-import DashboardNav from "@/components/Navbars/DashboardNav";
+import FullNav from "@/components/Navbars/DashboardNav/FullNav";
 
 const PlusIcon = () => (
   <svg
@@ -34,11 +36,7 @@ export default function Posts() {
   return (
     <div>
       <Tab.Group>
-        <DashboardNav title="Posts" />
-        <div
-          className="bg-secondary_sky_lightest py-6 md:px-0 px-4"
-          style={{ boxShadow: "0px 4px 20px rgba(0, 0, 0, 0.04)" }}
-        >
+        <FullNav title="Posts">
           <div className="flex justify-between items-center md:w-43/50 mx-auto">
             <Tab.List as={"div"} className="flex items-center">
               <Tab
@@ -91,7 +89,7 @@ export default function Posts() {
               </Link>
             </div>
           </div>
-        </div>
+        </FullNav>
 
         <Tab.Panels>
           <Tab.Panel>

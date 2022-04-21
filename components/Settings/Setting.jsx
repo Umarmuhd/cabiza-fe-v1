@@ -342,12 +342,12 @@ export default function Setting() {
         </div>
       </Card>
 
-      <div className='max-w-[1100px] mx-auto mb-5'>
+      <div className='md:w-43/50 mx-auto mb-5'>
         <button className='bg-primary py-3 w-[100%] rounded-full text-white'>
           Update settings
         </button>
-        <div className='rounded-2xl bg-secondary_sky_light mt-7 p-5 text-center'>
-          <a className='text-primary underline'>
+        <div className='rounded-3xl bg-secondary_sky_light mt-7 p-5 py-9 text-center'>
+          <a className='text-primary border-b border-b-primary py-[1px] text-lg'>
             Sign out from all active sessions
           </a>
           <p className='mt-2'>
