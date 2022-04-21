@@ -68,21 +68,32 @@ export default function AllProductsEmpty({ user }) {
         className='w-43/50 mx-auto md:my-10 bg-white rounded-3xl text-center p-10'
         style={{ boxShadow: '0px 20px 40px rgba(0, 0, 0, 0.06)' }}
       >
+        {/* <div className='grid-cols-3
+              space-y-2
+              lg:space-y-0 lg:grid lg:gap-6 lg:grid-rows-1 mb-8 min-h-[250px]'>
+          <div className='rounded-3xl w-[max-content] cursor-pointer bg-secondary_sky_dark'>
+            <img
+              src='/images/create-product.png'
+              alt='...'
+              className="w-[23rem] h-[auto]"
+            />
+          </div> */}
         <div
           className='grid-cols-3
               space-y-2
-              lg:space-y-0 lg:grid lg:gap-6 lg:grid-rows-1 mb-8 min-h-[250px]'
+              lg:space-y-0 lg:grid lg:gap-6 lg:grid-rows-1 mb-8'
         >
-          <div className='rounded-3xl cursor-pointer border border-primary w-full h-full relative'>
-            <Image
+          <div className='rounded-3xl cursor-pointer w-full h-full relative overflow-hidden'>
+            <img
               src='/images/create-product.png'
               alt='...'
-              layout='fill'
-              className='object-cover'
-              objectFit='contain'
+              // layout='fill'
+              className='w-[100%] object-cover'
+              // objectFit='contain'
             />
           </div>
-          <div className='flex items-center justify-center rounded-3xl cursor-pointer bg-secondary_sky_lighter border border-secondary_sky_dark border-dashed'>
+
+          <div className='flex items-center justify-center rounded-3xl cursor-pointer bg-secondary_sky_lighter border border-secondary_sky_dark border-dashed h-[80%] !mt-[1rem]'>
             <div
               className='bg-white p-5 rounded-2xl'
               style={{ boxShadow: '0px 20px 40px rgba(0, 0, 0, 0.06)' }}
@@ -90,7 +101,12 @@ export default function AllProductsEmpty({ user }) {
               <PlusIcon />
             </div>
           </div>
-          <div className='flex items-center justify-center rounded-3xl cursor-pointer bg-secondary_sky_lighter border border-secondary_sky_dark border-dashed'>
+          <div
+            className='flex items-center justify-center rounded-3xl cursor-pointer bg-secondary_sky_lighter border border-secondary_sky_dark border-dashed h-[80%] !mt-[1rem]'
+            style={{
+              border: '1.5px dashed #979C9E',
+            }}
+          >
             <div
               className='bg-white p-5 rounded-2xl'
               style={{ boxShadow: '0px 20px 40px rgba(0, 0, 0, 0.06)' }}
