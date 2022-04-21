@@ -1,4 +1,5 @@
 import React from "react";
+import Image from "next/image"
 
 export default function MainFooter() {
   return (
@@ -7,7 +8,13 @@ export default function MainFooter() {
         <div className="w-full flex flex-col lg:flex-row md:flex-column py-6">
           {/* md:w-2/5 */}
           <div className="flex-1 mb-6 mr-auto">
-            <img src="/images/cabiza-logo.png" alt="..."  className="mb-10"/>
+            <Image
+            src="/images/logo.png"
+            alt="..."
+            className="w-32 mb-10"
+            width={330}
+            height={90}
+          />
             <p className="md:w-2/4 font-medium text-xl mt-12">
               2120 Broadway, Suite 112 Los Angeles, CA 12345
             </p>
