@@ -3,38 +3,22 @@ import axios from "axios";
 import React, { useState } from "react";
 import { useForm } from "react-hook-form";
 
-export default function ProductContent({ product, handleNext }) {
+export default function ProductContent({
+  product,
+  handleNext,
+  productContent,
+  setProductContent,
+}) {
   const {
     register,
     watch,
     handleSubmit,
     formState: { errors },
   } = useForm({ defaultValues: {} });
-  const [loading, setLoading] = useState(false);
 
   const handleContinue = async (values) => {
-    const { file, url } = values;
-    try {
-      setLoading(true);
-
-      const form_data = new FormData();
-
-      form_data.append("url", url);
-      form_data.append("file", product?.file ?? file[0]);
-
-      const uri = `${API_URL}/products/product/${product.product_id}/content`;
-
-      const { data } = await axios.post(uri, form_data);
-
-      console.log(data);
-
-      setLoading(false);
-
-      handleNext();
-    } catch (error) {
-      console.error(error.message);
-      setLoading(false);
-    }
+    setProductContent(values);
+    handleNext();
   };
 
   return (
@@ -61,7 +45,7 @@ export default function ProductContent({ product, handleNext }) {
             name="add_files"
             id="add_files"
             className="hidden"
-            {...register("file", { required: true })}
+            {...register("file", {})}
           />
           <label htmlFor="add_files" className="w-[50%] mx-auto text-center">
             <h3 className="text-secondary text-base font-medium">
@@ -104,35 +88,35 @@ export default function ProductContent({ product, handleNext }) {
             Test
           </button>
         </div>
+        {errors.url?.type === "required" && (
+          <p className="text-left text-red-600 text-xs mt-1">
+            Product url is required
+          </p>
+        )}
       </div>
 
       <button
         type="submit"
         className="w-full mt-8 bg-primary text-white p-4 cursor-pointer rounded-4xl font-medium flex items-center justify-center"
-        disabled={loading}
       >
-        {loading ? (
-          <span>...</span>
-        ) : (
-          <React.Fragment>
-            <span className="mr-4">Next</span>
-            <svg
-              width="25"
-              height="24"
-              viewBox="0 0 25 24"
-              fill="none"
-              xmlns="http://www.w3.org/2000/svg"
-            >
-              <path
-                d="M5.5 12H19.5M19.5 12L12.5 4.99988M19.5 12L12.5 18.9999"
-                stroke="white"
-                strokeWidth="1.5"
-                strokeLinecap="round"
-                strokeLinejoin="round"
-              />
-            </svg>
-          </React.Fragment>
-        )}
+        <React.Fragment>
+          <span className="mr-4">Next</span>
+          <svg
+            width="25"
+            height="24"
+            viewBox="0 0 25 24"
+            fill="none"
+            xmlns="http://www.w3.org/2000/svg"
+          >
+            <path
+              d="M5.5 12H19.5M19.5 12L12.5 4.99988M19.5 12L12.5 18.9999"
+              stroke="white"
+              strokeWidth="1.5"
+              strokeLinecap="round"
+              strokeLinejoin="round"
+            />
+          </svg>
+        </React.Fragment>
       </button>
     </form>
   );

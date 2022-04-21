@@ -1,7 +1,12 @@
 import React, { useState, useRef } from "react";
 import Toggle from "@/components/Toggle/Toggle";
 
-const ProductSettings = ({ product, handleNext }) => {
+const ProductSettings = ({
+  product,
+  handleNext,
+  productSettings,
+  setProductSettings,
+}) => {
   const [loading, setLoading] = useState(false);
   const [version, setVersion] = useState(false);
   const [affliate, setAffliate] = useState(false);
@@ -43,8 +48,17 @@ const ProductSettings = ({ product, handleNext }) => {
     setAddVersion(true);
     setVersion(true);
   };
+
+  const handleContinue = (event) => {
+    event.preventDefault();
+
+    const payload = {
+      can_affiliate: affliate,
+    };
+  };
+
   return (
-    <form>
+    <form onSubmit={handleContinue}>
       <div className="flex justify-between items-center mb-8">
         <h1 className="text-4xl font-semibold text-secondary_ink_dark">
           Product Settings

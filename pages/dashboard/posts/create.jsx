@@ -80,8 +80,6 @@ export default function CreatePost() {
     }
   };
 
-  console.log(watch("audience"));
-
   return (
     <div>
       <DashboardNav title="Posts" />

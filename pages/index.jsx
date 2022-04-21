@@ -89,7 +89,7 @@ export default function Home() {
       <main>
         <Feature />
         <CategoriesSection />
-        <div className={`${styles.main}`}>
+        <div className={styles.main}>
           <section className="bg-secondary_sky_lighter px-4 py-7 md:px-24 lg:px-8 lg:py-7 mt-16">
             <div
               id="membership"
