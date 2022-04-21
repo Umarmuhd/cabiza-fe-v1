@@ -2,11 +2,15 @@ import React, { useRef, useState } from "react";
 import Toggle from "@/components/Toggle/Toggle";
 import axios from "axios";
 
-export default function ProductPricing({ product, handleNext }) {
+export default function ProductPricing({
+  product,
+  handleNext,
+  productPrice,
+  setProductPrice,
+}) {
   const [productPricingSettings, setProductPricingSettings] = useState(
     product?.user_priced ?? false
   );
-  const [loading, setLoading] = useState(false);
 
   const handleTogglePricingSettings = () => {
     setProductPricingSettings((prev) => !prev);
@@ -19,22 +23,13 @@ export default function ProductPricing({ product, handleNext }) {
   const handleSubmit = async (event) => {
     event.preventDefault();
 
-    try {
-      setLoading(true);
-      const url = `${API_URL}/products/product/${product.product_id}/pricing`;
-
-      const payload = {
-        price: priceRef.current.value,
-        user_priced: productPricingSettings,
-        min_percent: minPercentageRef.current.value,
-        max_percent: maxPercentageRef.current.value,
-      };
-      const { data } = await axios.post(url, payload);
-      setLoading(false);
-    } catch (error) {
-      console.error(error.message);
-      setLoading(false);
-    }
+    setProductPrice({
+      price: priceRef?.current?.value,
+      user_priced: productPricingSettings,
+      min_percent: minPercentageRef.current?.value,
+      max_percent: maxPercentageRef.current?.value,
+    });
+    handleNext();
   };
 
   return (
@@ -71,7 +66,7 @@ export default function ProductPricing({ product, handleNext }) {
             placeholder="0+"
             className=" outline-none w-[98%] p-3 rounded-xl z-10"
             ref={priceRef}
-            defaultValue={product?.price}
+            defaultValue={productPrice?.price}
           />
         </div>
 
@@ -140,30 +135,25 @@ export default function ProductPricing({ product, handleNext }) {
       <button
         type="submit"
         className="w-full mt-8 bg-primary text-white p-4 cursor-pointer rounded-4xl font-medium flex items-center justify-center"
-        disabled={loading}
       >
-        {loading ? (
-          <span>...</span>
-        ) : (
-          <React.Fragment>
-            <span className="mr-4">Next</span>
-            <svg
-              width="25"
-              height="24"
-              viewBox="0 0 25 24"
-              fill="none"
-              xmlns="http://www.w3.org/2000/svg"
-            >
-              <path
-                d="M5.5 12H19.5M19.5 12L12.5 4.99988M19.5 12L12.5 18.9999"
-                stroke="white"
-                strokeWidth="1.5"
-                strokeLinecap="round"
-                strokeLinejoin="round"
-              />
-            </svg>
-          </React.Fragment>
-        )}
+        <React.Fragment>
+          <span className="mr-4">Next</span>
+          <svg
+            width="25"
+            height="24"
+            viewBox="0 0 25 24"
+            fill="none"
+            xmlns="http://www.w3.org/2000/svg"
+          >
+            <path
+              d="M5.5 12H19.5M19.5 12L12.5 4.99988M19.5 12L12.5 18.9999"
+              stroke="white"
+              strokeWidth="1.5"
+              strokeLinecap="round"
+              strokeLinejoin="round"
+            />
+          </svg>
+        </React.Fragment>
       </button>
     </form>
   );

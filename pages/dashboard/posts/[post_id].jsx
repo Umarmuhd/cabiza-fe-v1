@@ -107,8 +107,6 @@ export default function EditPost() {
 
   useEffect(() => fetchPost(), [fetchPost]);
 
-  console.log(post);
-
   return (
     <div>
       <DashboardNav title="Posts" />

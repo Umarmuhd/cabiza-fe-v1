@@ -13,10 +13,13 @@ import {
 import { AiOutlineAlignCenter } from "react-icons/ai";
 import { VscBold } from "react-icons/vsc";
 import Image from "next/image";
-import { API_URL } from "@/config/index";
-import axios from "axios";
 
-export default function CreateProduct({ product, handleNext }) {
+export default function CreateProduct({
+  product,
+  handleNext,
+  createProduct,
+  setCreateProduct,
+}) {
   const {
     register,
     watch,
@@ -24,35 +27,9 @@ export default function CreateProduct({ product, handleNext }) {
     formState: { errors },
   } = useForm({ defaultValues: {} });
 
-  const [loading, setLoading] = useState(false);
-
-  console.log(errors);
-
   const handleSave = async (values) => {
-    const { name, description, thumbnail, cover_image } = values;
-    try {
-      setLoading(true);
-
-      const form_data = new FormData();
-
-      form_data.append("name", name);
-      form_data.append("thumbnail", product?.thumbnail ?? thumbnail[0]);
-      form_data.append("cover_image", product?.cover_image ?? cover_image[0]);
-      form_data.append("description", description);
-
-      const url = `${API_URL}/products/product/${product.product_id}/basics`;
-
-      const { data } = await axios.post(url, form_data);
-
-      console.log(data);
-
-      setLoading(false);
-
-      handleNext();
-    } catch (error) {
-      console.error(error.message);
-      setLoading(false);
-    }
+    setCreateProduct(values);
+    handleNext();
   };
 
   const getBase64StringFromDataURL = (dataURL) =>
@@ -87,7 +64,7 @@ export default function CreateProduct({ product, handleNext }) {
   }, [document]);
 
   return (
-    <form className="" onSubmit={handleSubmit(handleSave)}>
+    <form onSubmit={handleSubmit(handleSave)}>
       <div className="flex justify-between items-center">
         <h1 className="text-4xl font-semibold text-secondary_ink_dark">
           Create your product
@@ -115,9 +92,14 @@ export default function CreateProduct({ product, handleNext }) {
             placeholder="Enter your product name"
             className="border border-solid border-sky_light p-4 rounded-lg mt-2 outline-none"
             {...register("name", { required: true })}
-            defaultValue={product?.name}
+            defaultValue={createProduct?.name}
             autoComplete="off"
           />
+          {errors.name?.type === "required" && (
+            <p className="text-left text-red-600 text-xs mt-1">
+              Product name is required
+            </p>
+          )}
         </div>
 
         <div className="flex flex-col mt-6 relative">
@@ -200,8 +182,13 @@ export default function CreateProduct({ product, handleNext }) {
               placeholder="Product Description"
               className="px-4 py-3 pd-12 h-[5rem] w-[100%] outline-none"
               {...register("description", { required: true })}
-              defaultValue={product?.description}
+              defaultValue={createProduct?.description}
             />
+            {errors.description?.type === "required" && (
+              <p className="text-left text-red-600 text-xs mt-1">
+                Product description is required
+              </p>
+            )}
           </div>
         </div>
 
@@ -221,6 +208,11 @@ export default function CreateProduct({ product, handleNext }) {
             {...register("url", { required: true, disabled: true })}
             defaultValue={`${product?.user.username}.cabiza.com/products/${product?.product_id}`}
           />
+          {errors.url?.type === "required" && (
+            <p className="text-left text-red-600 text-xs mt-1">
+              Product url is required
+            </p>
+          )}
         </div>
 
         <div className="flex flex-col mt-6">
@@ -239,7 +231,7 @@ export default function CreateProduct({ product, handleNext }) {
             <Image
               className="mt-2"
               src={
-                product?.thumbnail ??
+                createProduct?.thumbnail ??
                 (watch("thumbnail") !== undefined
                   ? window?.URL?.createObjectURL(watch("thumbnail")[0])
                   : "/images/thumbnail.png")
@@ -259,7 +251,7 @@ export default function CreateProduct({ product, handleNext }) {
 
         <div className="flex flex-col mt-6">
           <img
-            src={product?.thumbnail}
+            src={createProduct?.cover_image}
             alt="..."
             className="hidden"
             id="thumbnail"
@@ -276,7 +268,7 @@ export default function CreateProduct({ product, handleNext }) {
             id="product_cover"
             className="mt-2 border border-solid border-sky_light p-4 rounded-lg"
             {...register("cover_image", {})}
-            placeholder={product?.cover_image ?? "Add a cover image"}
+            placeholder={createProduct?.cover_image ?? "Add a cover image"}
           />
           <p className="mt-3 text-secondary_sky_dark w-[70%]">
             Image or Video, Requirements: 1280x720px and 72 DPI(dots per inch)
@@ -286,10 +278,26 @@ export default function CreateProduct({ product, handleNext }) {
 
       <button
         type="submit"
-        className="w-full mt-4 bg-primary text-white p-4 cursor-pointer rounded-4xl font-medium"
-        disabled={loading}
+        className="w-full mt-8 bg-primary text-white p-4 cursor-pointer rounded-4xl font-medium flex items-center justify-center"
       >
-        {loading ? <span>...</span> : <span>Next</span>}
+        <React.Fragment>
+          <span className="mr-4">Next</span>
+          <svg
+            width="25"
+            height="24"
+            viewBox="0 0 25 24"
+            fill="none"
+            xmlns="http://www.w3.org/2000/svg"
+          >
+            <path
+              d="M5.5 12H19.5M19.5 12L12.5 4.99988M19.5 12L12.5 18.9999"
+              stroke="white"
+              strokeWidth="1.5"
+              strokeLinecap="round"
+              strokeLinejoin="round"
+            />
+          </svg>
+        </React.Fragment>
       </button>
     </form>
   );

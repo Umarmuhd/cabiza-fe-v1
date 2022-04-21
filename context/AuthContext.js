@@ -43,8 +43,6 @@ export const AuthProvider = ({ children }) => {
         method: "GET",
       });
 
-      console.log(res.data);
-
       setTimeout(() => {
         checkUserLoggedIn();
       }, res.data.expires_in * 1000 - 500);

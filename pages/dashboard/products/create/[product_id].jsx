@@ -1,9 +1,7 @@
 import React, { useState, useEffect } from "react";
-import { useForm } from "react-hook-form";
 import { useRouter } from "next/router";
 import axios from "axios";
 import Link from "next/link";
-import { toast } from "react-hot-toast";
 import { API_URL } from "@/config/index";
 
 import Dashboard from "@/layouts/Dashboard";
@@ -21,9 +19,13 @@ let progressInterval = null;
 
 export default function UpdateProduct() {
   const [loading, setLoading] = useState(false);
-  const [enabled, setEnabled] = React.useState(false);
-  const [category, setCategory] = useState(null);
   const [product, setProduct] = useState(null);
+
+  const [createProduct, setCreateProduct] = useState(null);
+  const [productContent, setProductContent] = useState(null);
+  const [productInfo, setProductInfo] = useState(null);
+  const [productPrice, setProductPrice] = useState(null);
+  const [productSettings, setProductSettings] = useState(null);
 
   const router = useRouter();
 
@@ -104,6 +106,24 @@ export default function UpdateProduct() {
         const uri = `${API_URL}/products/product/${productId}`;
         const { data } = await axios.get(uri);
         setProduct(data.data.product);
+
+        const {
+          name,
+          description,
+          url,
+          thumbnail,
+          cover_image,
+          call_to_action,
+          summary,
+          file,
+          price,
+        } = data.data.product;
+
+        setCreateProduct({ name, description, thumbnail, cover_image });
+        setProductInfo({ call_to_action, summary });
+        setProductContent({ file, url });
+        setProductPrice({ price });
+        setProductSettings({});
         setLoading(false);
       } catch (error) {
         console.error(error.message);
@@ -114,7 +134,46 @@ export default function UpdateProduct() {
     fetchProduct();
   }, [productId]);
 
-  const ActiveComponent = () => activeStep.component({ product, handleNext });
+  const ActiveComponent = () =>
+    activeStep.component({
+      product,
+      handleNext,
+      createProduct,
+      setCreateProduct,
+      productContent,
+      setProductContent,
+      productInfo,
+      setProductInfo,
+      productPrice,
+      setProductPrice,
+      productSettings,
+      setProductSettings,
+    });
+
+  const handleSubmitting = async () => {
+    try {
+      const { name, description, thumbnail, cover_image } = createProduct;
+      setLoading(true);
+
+      //   const form_data = new FormData();
+
+      //   form_data.append("name", name);
+      //   form_data.append("thumbnail", product?.thumbnail ?? thumbnail[0]);
+      //   form_data.append("cover_image", product?.cover_image ?? cover_image[0]);
+      //   form_data.append("description", description);
+
+      //   const url = `${API_URL}/products/product/${product.product_id}`;
+
+      //   const { data } = await axios.post(url, form_data);
+
+      setLoading(false);
+    } catch (error) {
+      console.error(error.message);
+      setLoading(false);
+    }
+  };
+
+  console.log(product);
 
   return (
     <div>

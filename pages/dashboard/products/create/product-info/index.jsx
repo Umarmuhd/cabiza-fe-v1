@@ -4,11 +4,15 @@ import axios from "axios";
 import React, { useEffect, useRef, useState } from "react";
 import toast from "react-hot-toast";
 
-export default function ProductInfo({ product, handleNext }) {
+export default function ProductInfo({
+  product,
+  handleNext,
+  productInfo,
+  setProductInfo,
+}) {
   const [addDetails, setAddDetails] = useState([]);
   const [custom, setCustom] = useState(false);
   const [CTA, setCTA] = useState(false);
-  const [loading, setLoading] = useState(false);
 
   const [selected, setSelected] = useState(
     product?.call_to_action ?? "I want this"
@@ -50,27 +54,11 @@ export default function ProductInfo({ product, handleNext }) {
 
     if (summary === "" || selected === "") {
       toast.error("please complete all required fields");
-      setLoading(false);
       return;
     }
 
-    try {
-      setLoading(true);
-      const payload = { summary, call_to_action: selected };
-
-      const url = `${API_URL}/products/product/${product.product_id}/info`;
-
-      const { data } = await axios.post(url, payload);
-
-      console.log(data);
-
-      setLoading(false);
-
-      handleNext();
-    } catch (error) {
-      console.error(error.message);
-      setLoading(false);
-    }
+    setProductInfo({ summary, call_to_action: selected });
+    handleNext();
   };
 
   return (
@@ -194,7 +182,7 @@ export default function ProductInfo({ product, handleNext }) {
           placeholder="You’ll get..."
           className="border border-solid border-sky_light p-4 rounded-lg mt-2 outline-none"
           ref={summaryRef}
-          defaultValue={product?.summary}
+          defaultValue={productInfo?.summary}
         />
       </div>
 
@@ -256,30 +244,25 @@ export default function ProductInfo({ product, handleNext }) {
       <button
         type="submit"
         className="w-full mt-8 bg-primary text-white p-4 cursor-pointer rounded-4xl font-medium flex items-center justify-center"
-        disabled={loading}
       >
-        {loading ? (
-          <span>...</span>
-        ) : (
-          <React.Fragment>
-            <span className="mr-4">Next</span>
-            <svg
-              width="25"
-              height="24"
-              viewBox="0 0 25 24"
-              fill="none"
-              xmlns="http://www.w3.org/2000/svg"
-            >
-              <path
-                d="M5.5 12H19.5M19.5 12L12.5 4.99988M19.5 12L12.5 18.9999"
-                stroke="white"
-                strokeWidth="1.5"
-                strokeLinecap="round"
-                strokeLinejoin="round"
-              />
-            </svg>
-          </React.Fragment>
-        )}
+        <React.Fragment>
+          <span className="mr-4">Next</span>
+          <svg
+            width="25"
+            height="24"
+            viewBox="0 0 25 24"
+            fill="none"
+            xmlns="http://www.w3.org/2000/svg"
+          >
+            <path
+              d="M5.5 12H19.5M19.5 12L12.5 4.99988M19.5 12L12.5 18.9999"
+              stroke="white"
+              strokeWidth="1.5"
+              strokeLinecap="round"
+              strokeLinejoin="round"
+            />
+          </svg>
+        </React.Fragment>
       </button>
     </form>
   );
