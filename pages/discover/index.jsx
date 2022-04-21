@@ -9,22 +9,10 @@ import styles from './index.module.css';
 // Reduce the padding right to .5rem of the become affliate button
 
 const SearchIcon = () => (
-  <svg
-    width='20'
-    height='20'
-    viewBox='0 0 28 28'
-    fill='none'
-    xmlns='http://www.w3.org/2000/svg'
-  >
-    <path
-      d='M13.4163 25.375C6.82467 25.375 1.45801 20.0083 1.45801 13.4167C1.45801 6.82501 6.82467 1.45834 13.4163 1.45834C20.008 1.45834 25.3747 6.82501 25.3747 13.4167C25.3747 20.0083 20.008 25.375 13.4163 25.375ZM13.4163 3.20834C7.78134 3.20834 3.20801 7.79334 3.20801 13.4167C3.20801 19.04 7.78134 23.625 13.4163 23.625C19.0513 23.625 23.6247 19.04 23.6247 13.4167C23.6247 7.79334 19.0513 3.20834 13.4163 3.20834Z'
-      fill='#CCCCCC'
-    />
-    <path
-      d='M25.6664 26.5417C25.4447 26.5417 25.223 26.46 25.048 26.285L22.7147 23.9517C22.3764 23.6133 22.3764 23.0533 22.7147 22.715C23.053 22.3767 23.613 22.3767 23.9514 22.715L26.2847 25.0483C26.623 25.3867 26.623 25.9467 26.2847 26.285C26.1097 26.46 25.888 26.5417 25.6664 26.5417Z'
-      fill='#CCCCCC'
-    />
-  </svg>
+  <svg width="20" height="20" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+<path d="M11.5 21.75C5.85 21.75 1.25 17.15 1.25 11.5C1.25 5.85 5.85 1.25 11.5 1.25C17.15 1.25 21.75 5.85 21.75 11.5C21.75 17.15 17.15 21.75 11.5 21.75ZM11.5 2.75C6.67 2.75 2.75 6.68 2.75 11.5C2.75 16.32 6.67 20.25 11.5 20.25C16.33 20.25 20.25 16.32 20.25 11.5C20.25 6.68 16.33 2.75 11.5 2.75Z" fill="#EFEDFD"/>
+<path d="M21.9999 22.75C21.8099 22.75 21.6199 22.68 21.4699 22.53L19.4699 20.53C19.1799 20.24 19.1799 19.76 19.4699 19.47C19.7599 19.18 20.2399 19.18 20.5299 19.47L22.5299 21.47C22.8199 21.76 22.8199 22.24 22.5299 22.53C22.3799 22.68 22.1899 22.75 21.9999 22.75Z" fill="#EFEDFD"/>
+</svg>
 );
 
 const RightIcon = () => (
@@ -143,29 +131,52 @@ export default function Discover() {
       <div className='bg-secondary_sky_lighter'>
         <header className='py-16 mx-auto max-w-[1100px]'>
           <div className='w-[90%] mx-auto'>
-            <form className='flex'>
-              <label
-                className='flex items-center bg-primary text-lg lg:w-[10rem] sm:w-2/6 rounded-l-3xl px-7 hidden sm:block shadow-sm'
+            <form className='flex'>   
+            <div className='flex items-center border border-sky_light rounded-l-full overflow-hidden relative text-white mr-[-.1rem] h-[max-content]'>
+              <select
+                name='t-zone'
+                id='t-zone'
+                className='h-[3.4rem] m-auto focus:outline-none text-white focus:ring-indigo-500 border-0 outline-none appearance-none bg-primary px-6 lg:w-[10rem] sm:w-2/6'
+              >
+                <option className='bg-primary' value="education">Education</option>
+                  <option className='bg-primary' value="fitness">Fitness</option>
+                  <option className='bg-primary' value="health">Health</option>
+              </select>
+              <div className='pointer-events-none absolute inset-y-0 right-0 flex items-center text-gray-700 h-[100%] px-3'>
+                 <svg width="14" height="9" viewBox="0 0 18 9" fill="none" xmlns="http://www.w3.org/2000/svg" className='fill-current'>
+<path d="M9.00002 8.80001C8.30002 8.80001 7.60002 8.53001 7.07002 8.00001L0.55002 1.48001C0.26002 1.19001 0.26002 0.710015 0.55002 0.420015C0.84002 0.130015 1.32002 0.130015 1.61002 0.420015L8.13002 6.94001C8.61002 7.42001 9.39002 7.42001 9.87002 6.94001L16.39 0.420015C16.68 0.130015 17.16 0.130015 17.45 0.420015C17.74 0.710015 17.74 1.19001 17.45 1.48001L10.93 8.00001C10.4 8.53001 9.70002 8.80001 9.00002 8.80001Z" fill="white"/>
+</svg>                
+              </div>
+            </div>
+                       
+              {/* <label
+                className='flex items-center bg-primary text-lg lg:w-[10rem] sm:w-2/6 rounded-l-full px-7 hidden sm:block shadow-sm relative flex items-center border border-sky_light rounded-xl mt-3 overflow-hidden relative'
                 style={{ display: 'flex' }}
               >
                 <select
                   name='category'
-                  className='bg-transparent m-auto focus:outline-none text-white focus:ring-indigo-500 border-0'
+                  className='bg-transparent m-auto focus:outline-none text-white focus:ring-indigo-500 border-0 outline-none appearance-none h-10 w-[100%] text-secondary_ink_lighter bg-white px-4 outline-none appearance-none'
                 >
                   <option className='bg-primary'>Education</option>
                   <option className='bg-primary'>Fitness</option>
                   <option className='bg-primary'>Health</option>
                 </select>
-              </label>
-              <div className='flex justify-center border py-2 px-6 w-full rounded-r-3xl bg-white'>
+                <div className='pointer-events-none absolute inset-y-0 right-0 flex items-center text-gray-700 h-[100%] px-3 bg-secondary_sky_light'>
+                <svg width="18" height="9" viewBox="0 0 18 9" fill="none" xmlns="http://www.w3.org/2000/svg" className='fill-current'>
+<path d="M9.00002 8.80001C8.30002 8.80001 7.60002 8.53001 7.07002 8.00001L0.55002 1.48001C0.26002 1.19001 0.26002 0.710015 0.55002 0.420015C0.84002 0.130015 1.32002 0.130015 1.61002 0.420015L8.13002 6.94001C8.61002 7.42001 9.39002 7.42001 9.87002 6.94001L16.39 0.420015C16.68 0.130015 17.16 0.130015 17.45 0.420015C17.74 0.710015 17.74 1.19001 17.45 1.48001L10.93 8.00001C10.4 8.53001 9.70002 8.80001 9.00002 8.80001Z" fill="white"/>
+</svg>
+
+              </div>
+              </label> */}
+              <div className='flex justify-center border py-[.5rem] pl-6 w-full rounded-r-full bg-white'>
                 <input
                   type='text'
                   placeholder='Search for products...'
-                  className='w-full outline-none text-grey_60 bg-transparent'
+                  className='w-full outline-none text-secondary_sky_dark bg-transparent'
                 />
                 <button
                   type='submit'
-                  className='bg-primary p-3 rounded-full text-md'
+                  className='bg-primary p-2 mr-2 rounded-full text-md'
                 >
                   <SearchIcon />
                 </button>
@@ -188,12 +199,12 @@ export default function Discover() {
           </p>
 
           <div className={`${styles.cards} mb-7`}>
-            <div className={`flex ${styles['product-cards']}`}>
+            <div className={`flex gap-2 ${styles['product-cards']} pb-4 px-2`}>
               <div
-                className='p-4 rounded-lg hover:bg-primary group cursor-pointer'
+                className='rounded-lg hover:bg-primary group cursor-pointer border border-primary_brand_lightest py-5 px-4'
                 style={{
                   '&:hover': {
-                    'box-shadow': '0px 20px 40px rgba(0, 0, 0, 0.12)',
+                    'box-shadow': '0px 4px 20px rgba(0, 0, 0, 0.04)',
                     'border-radius': '8px',
                   },
                 }}
@@ -202,6 +213,11 @@ export default function Discover() {
                   src='images/Education.png'
                   alt='...'
                   className='mb-4 mx-auto'
+                  style={{
+                    "border": "1px solid #E3E5E6",
+"box-shadow": "0px 4px 20px rgba(0, 0, 0, 0.04)",
+"border-radius": "12px"
+                  }}
                 />
                 <div className='text-left'>
                   <h3 className='font-bold text-2xl mb-2 text-secondary group-hover:text-white'>
@@ -217,10 +233,10 @@ export default function Discover() {
               </div>
 
               <div
-                className='p-4 rounded-lg hover:bg-primary group cursor-pointer'
+                className='rounded-lg hover:bg-primary group cursor-pointer border border-primary_brand_lightest py-5 px-4'
                 style={{
                   '&:hover': {
-                    'box-shadow': '0px 20px 40px rgba(0, 0, 0, 0.12)',
+                    'box-shadow': '0px 4px 20px rgba(0, 0, 0, 0.04)',
                     'border-radius': '8px',
                   },
                 }}
@@ -229,6 +245,11 @@ export default function Discover() {
                   src='images/crafts.png'
                   alt='...'
                   className='mb-4 mx-auto'
+                  style={{
+                    "border": "1px solid #E3E5E6",
+"box-shadow": "0px 4px 20px rgba(0, 0, 0, 0.04)",
+"border-radius": "12px"
+                  }}
                 />
                 <div className='text-left'>
                   <h3 className='font-bold text-2xl mb-2 text-secondary group-hover:text-white'>
@@ -244,10 +265,10 @@ export default function Discover() {
               </div>
 
               <div
-                className='p-4 rounded-lg hover:bg-primary group cursor-pointer'
+                className='rounded-lg hover:bg-primary group cursor-pointer border border-primary_brand_lightest py-5 px-4'
                 style={{
                   '&:hover': {
-                    'box-shadow': '0px 20px 40px rgba(0, 0, 0, 0.12)',
+                    'box-shadow': '0px 4px 20px rgba(0, 0, 0, 0.04)',
                     'border-radius': '8px',
                   },
                 }}
@@ -256,6 +277,11 @@ export default function Discover() {
                   src='images/design.png'
                   alt='...'
                   className='mb-4 mx-auto'
+                  style={{
+                    "border": "1px solid #E3E5E6",
+"box-shadow": "0px 4px 20px rgba(0, 0, 0, 0.04)",
+"border-radius": "12px"
+                  }}
                 />
                 <div className='text-left'>
                   <h3 className='font-bold text-2xl mb-2 text-secondary group-hover:text-white'>
@@ -271,15 +297,19 @@ export default function Discover() {
               </div>
 
               <div
-                className='p-4 rounded-lg hover:bg-primary group cursor-pointer'
+                className='rounded-lg hover:bg-primary group cursor-pointer border border-primary_brand_lightest py-5 px-4'
                 style={{
                   '&:hover': {
-                    'box-shadow': '0px 20px 40px rgba(0, 0, 0, 0.12)',
+                    'box-shadow': '0px 4px 20px rgba(0, 0, 0, 0.04)',
                     'border-radius': '8px',
                   },
                 }}
               >
-                <img src='images/film.png' alt='...' className='mb-4 mx-auto' />
+                <img src='images/film.png' alt='...' className='mb-4 mx-auto' style={{
+                    "border": "1px solid #E3E5E6",
+"box-shadow": "0px 4px 20px rgba(0, 0, 0, 0.04)",
+"border-radius": "12px"
+                  }}/>
                 <div className='text-left'>
                   <h3 className='font-bold text-2xl mb-2 text-secondary group-hover:text-white'>
                     Film and Videos
@@ -294,10 +324,10 @@ export default function Discover() {
               </div>
 
               <div
-                className='p-4 rounded-lg hover:bg-primary group cursor-pointer'
+                className='rounded-lg hover:bg-primary group cursor-pointer border border-primary_brand_lightest py-5 px-4'
                 style={{
                   '&:hover': {
-                    'box-shadow': '0px 20px 40px rgba(0, 0, 0, 0.12)',
+                    'box-shadow': '0px 4px 20px rgba(0, 0, 0, 0.04)',
                     'border-radius': '8px',
                   },
                 }}
@@ -305,7 +335,12 @@ export default function Discover() {
                 <img
                   src='images/Books.png'
                   alt='...'
-                  className='mb-4 mx-auto'
+                  className='mb-4 w-[100%] h-[9rem] mx-auto'
+                  style={{
+                    "border": "1px solid #E3E5E6",
+"box-shadow": "0px 4px 20px rgba(0, 0, 0, 0.04)",
+"border-radius": "12px"
+                  }}
                 />
                 <div className='text-left'>
                   <h3 className='font-bold text-2xl mb-2 text-secondary group-hover:text-white'>
@@ -321,10 +356,10 @@ export default function Discover() {
               </div>
 
               <div
-                className='p-4 rounded-lg hover:bg-primary group cursor-pointer'
+                className='rounded-lg hover:bg-primary group cursor-pointer border border-primary_brand_lightest py-5 px-4'
                 style={{
                   '&:hover': {
-                    'box-shadow': '0px 20px 40px rgba(0, 0, 0, 0.12)',
+                    'box-shadow': '0px 4px 20px rgba(0, 0, 0, 0.04)',
                     'border-radius': '8px',
                   },
                 }}
@@ -332,7 +367,12 @@ export default function Discover() {
                 <img
                   src='images/Games.png'
                   alt='...'
-                  className='mb-4 mx-auto'
+                  className='mb-4 mx-auto w-[100%] h-[9rem]'
+                  style={{
+                    "border": "1px solid #E3E5E6",
+"box-shadow": "0px 4px 20px rgba(0, 0, 0, 0.04)",
+"border-radius": "12px"
+                  }}
                 />
                 <div className='text-left'>
                   <h3 className='font-bold text-2xl mb-2 text-secondary group-hover:text-white'>
@@ -878,7 +918,7 @@ export default function Discover() {
             <div className={styles.cards}>
               <div className={`flex ${styles['product-cards']}`}>
                 <div className={styles.cards}>
-                  <div className={`flex ${styles['product-cards']}`}>
+                  <div className={`flex ${styles['product-cards']} pb-4 px-2`}>
                     <div
                       className={`shadow sm:w-sm:[max-content] mr-5 h-[max-content] rounded-xl ${styles.card}`}
                     >
