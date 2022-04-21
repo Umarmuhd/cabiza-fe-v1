@@ -115,7 +115,7 @@ const Products = ({}) => {
               </button>
               <input
                 type='search'
-                className='border border-grey_80 px-4 h-10 placeholder-grey_80 text-grey_40 bg-white shadow-sm focus:outline-none w-full rounded-[100px] scale-x-0 origin-top-right mr-2 peer-focus:scale-x-100'
+                className='border border-grey_80 px-4 h-10 placeholder-grey_80 text-grey_40 bg-white shadow-sm focus:outline-none w-full rounded-[100px] scale-x-0 origin-top-right mr-2 peer-focus:scale-x-100 focus:scale-x-100'
                 style={{ transition: 'all 0.15s ease 0s' }}
                 id='search'
                 placeholder='Search...'
