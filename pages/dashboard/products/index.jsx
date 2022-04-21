@@ -109,10 +109,17 @@ const Products = ({}) => {
               </Tab>
             </Tab.List>
 
-            <div className='flex items-center justify-between mt-[-.5rem]'>
-              <button className='flex items-center justify-center bg-primary_brand_lightest hover:bg-slate-200 transition duration-150 p-2 rounded-full'>
+            <div className='flex flex-row-reverse items-center justify-between mt-[-.5rem]'>
+              <button className='flex items-center justify-center bg-primary_brand_lightest hover:bg-slate-200 transition duration-150 p-3 rounded-full peer'>
                 <SearchIcon />
               </button>
+              <input
+                type='search'
+                className='border border-grey_80 px-4 h-10 placeholder-grey_80 text-grey_40 bg-white shadow-sm focus:outline-none w-full rounded-[100px] scale-x-0 origin-top-right mr-2 peer-focus:scale-x-100'
+                style={{ transition: 'all 0.15s ease 0s' }}
+                id='search'
+                placeholder='Search...'
+              />
               {/* <div className='flex rounded-[100px] shadow-sm mr-6'>
                 <input
                   type='text'

@@ -59,7 +59,7 @@ export default function AllProductsEmpty({ user }) {
         <p className='text-secondary_brand_light text-md mt-1'>{user?.bio}</p>
 
         <Link href='/dashboard/products/create'>
-          <a className='py-2 px-4 bg-primary flex items-center font-medium text-white rounded-[48px] ml-auto'>
+          <a className='py-2 pl-4 pr-12 bg-primary flex items-center font-medium text-white rounded-[48px] ml-auto'>
             <PlusSmIcon /> <span className='ml-2'>New Product </span>
           </a>
         </Link>
