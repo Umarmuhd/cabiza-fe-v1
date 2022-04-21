@@ -142,7 +142,7 @@ export default function Create() {
         >
           <div className='flex justify-between items-center'>
             <h1 className='text-4xl font-semibold text-secondary_ink_dark'></h1>
-            <span className='text-lg font-medium text-primary_brand_light'>
+            <span className='text-lg text-primary_brand_light'>
               Step: 1 of 5
             </span>
           </div>
@@ -342,7 +342,7 @@ export default function Create() {
                   Price
                 </label>
                 <div className='mt-3 flex rounded-lg'>
-                  <span className='inline-flex items-center rounded-l-lg border border-r-0 border-sky_light bg-secondary_sky_lighter text-secondary_ink_dark text-lg px-2 py-4'>
+                  <span className='inline-flex items-center rounded-l-lg border border-r-0 border-sky_light bg-secondary_sky_lighter text-secondary_ink_dark text-lg px-2 py-2'>
                     ${' '}
                     <svg
                       width='13'
