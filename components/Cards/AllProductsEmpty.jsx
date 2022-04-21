@@ -93,7 +93,13 @@ export default function AllProductsEmpty({ user }) {
             />
           </div>
 
-          <div className='flex items-center justify-center rounded-3xl cursor-pointer bg-secondary_sky_lighter border border-secondary_sky_dark border-dashed h-[80%] !mt-[1rem]'>
+          <div
+            className='flex items-center justify-center rounded-3xl cursor-pointer bg-secondary_sky_lighter border-secondary_sky_dark h-[80%] !mt-[1rem]'
+            style={{
+              'background-image': `url("data:image/svg+xml,%3csvg width='100%25' height='100%25' xmlns='http://www.w3.org/2000/svg'%3e%3crect width='100%25' height='100%25' fill='none' rx='24' ry='24' stroke='%23979C9EFF' stroke-width='4' stroke-dasharray='6%2c 14' stroke-dashoffset='48' stroke-linecap='square'/%3e%3c/svg%3e")`,
+              'border-radius': '24px',
+            }}
+          >
             <div
               className='bg-white p-5 rounded-2xl'
               style={{ boxShadow: '0px 20px 40px rgba(0, 0, 0, 0.06)' }}
@@ -102,9 +108,10 @@ export default function AllProductsEmpty({ user }) {
             </div>
           </div>
           <div
-            className='flex items-center justify-center rounded-3xl cursor-pointer bg-secondary_sky_lighter border border-secondary_sky_dark border-dashed h-[80%] !mt-[1rem]'
+            className='flex items-center justify-center rounded-3xl cursor-pointer bg-secondary_sky_lighter border-secondary_sky_dark h-[80%] !mt-[1rem]'
             style={{
-              border: '1.5px dashed #979C9E',
+              'background-image': `url("data:image/svg+xml,%3csvg width='100%25' height='100%25' xmlns='http://www.w3.org/2000/svg'%3e%3crect width='100%25' height='100%25' fill='none' rx='24' ry='24' stroke='%23979C9EFF' stroke-width='4' stroke-dasharray='6%2c 14' stroke-dashoffset='48' stroke-linecap='square'/%3e%3c/svg%3e")`,
+              'border-radius': '24px',
             }}
           >
             <div
