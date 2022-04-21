@@ -84,14 +84,14 @@ export default function Setting() {
                 <Toggle
                   label='Purchases-email'
                   click={handleTogglePricingSettings}
-                  classes='text-left mt-[-.5rem]'
+                  classes='text-left'
                 />
               </td>
               <td className='text-left px-6'>
                 <Toggle
                   label='Purchases-mobile'
                   click={handleTogglePricingSettings}
-                  classes='text-left mt-[-.5rem]'
+                  classes='text-left'
                 />
               </td>
             </tr>
@@ -101,14 +101,14 @@ export default function Setting() {
                 <Toggle
                   label='Recurring-payments-email'
                   click={handleTogglePricingSettings}
-                  classes='text-left mt-[-.5rem]'
+                  classes='text-left'
                 />
               </td>
               <td className='text-left px-6'>
                 <Toggle
                   label='Recurring-payments-mobile'
                   click={handleTogglePricingSettings}
-                  classes='text-left mt-[-.5rem]'
+                  classes='text-left'
                 />
               </td>
             </tr>
@@ -118,14 +118,14 @@ export default function Setting() {
                 <Toggle
                   label='free-downloads-email'
                   click={handleTogglePricingSettings}
-                  classes='text-left mt-[-.5rem]'
+                  classes='text-left'
                 />
               </td>
               <td className='text-left px-6'>
                 <Toggle
                   label='free-downloads-mobile'
                   click={handleTogglePricingSettings}
-                  classes='text-left mt-[-.5rem]'
+                  classes='text-left'
                 />
               </td>
             </tr>
@@ -137,14 +137,14 @@ export default function Setting() {
                 <Toggle
                   label='Personalized-product-email'
                   click={handleTogglePricingSettings}
-                  classes='text-left mt-[-.5rem]'
+                  classes='text-left'
                 />
               </td>
               <td className='text-left px-6'>
                 <Toggle
                   label='Personalized-product-mobile'
                   click={handleTogglePricingSettings}
-                  classes='text-left mt-[-.5rem]'
+                  classes='text-left'
                 />
               </td>
             </tr>
@@ -297,9 +297,7 @@ export default function Setting() {
         <div>
           <div className='bg-secondary_sky_lighter p-3 rounded flex items-center justify-between px-5 mb-2'>
             <p className='text-secondary'>Show my products in Discover</p>
-            <div className='mr-[-2.6rem] mt-[-.5rem]'>
               <Toggle label='discoverMyProducts' />
-            </div>
           </div>
 
           <div className='flex flex-col mt-8'>

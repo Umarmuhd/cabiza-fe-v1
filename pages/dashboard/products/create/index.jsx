@@ -143,7 +143,7 @@ export default function Create() {
           <div className='flex justify-between items-center'>
             <h1 className='text-4xl font-semibold text-secondary_ink_dark'></h1>
             <span className='text-lg text-primary_brand_light'>
-              Step: 1 of 5
+              Step: 1 of 6
             </span>
           </div>
           <div className='md:w-4/5 mx-auto'>

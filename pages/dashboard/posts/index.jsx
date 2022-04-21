@@ -32,34 +32,59 @@ const PlusIcon = () => (
   </svg>
 );
 
+const SearchIcon = () => (
+  <svg
+    width='16'
+    height='16'
+    viewBox='0 0 14 14'
+    fill='none'
+    xmlns='http://www.w3.org/2000/svg'
+  >
+    <path
+      d='M6.46666 11.267C9.11762 11.267 11.2667 9.11796 11.2667 6.46699C11.2667 3.81602 9.11762 1.66699 6.46666 1.66699C3.81569 1.66699 1.66666 3.81602 1.66666 6.46699C1.66666 9.11796 3.81569 11.267 6.46666 11.267Z'
+      stroke='white'
+      strokeWidth='1.5'
+      strokeLinecap='round'
+      strokeLinejoin='round'
+    />
+    <path
+      d='M10.6959 11.6347C10.9786 12.488 11.6239 12.5734 12.1199 11.8267C12.5733 11.144 12.2746 10.584 11.4533 10.584C10.8453 10.5787 10.5039 11.0534 10.6959 11.6347Z'
+      stroke='white'
+      strokeWidth='1.5'
+      strokeLinecap='round'
+      strokeLinejoin='round'
+    />
+  </svg>
+);
+
 export default function Posts() {
   return (
     <div>
       <Tab.Group>
-        <FullNav title="Posts">
-          <div className="flex justify-between items-center md:w-43/50 mx-auto">
-            <Tab.List as={"div"} className="flex items-center">
+        <FullNav title='Posts'>
+          <div className='flex justify-between items-center md:w-43/50 mx-auto'>
+            <Tab.List as={'div'} className='flex items-center'>
               <Tab
-                as={"button"}
+                as={'button'}
                 className={({ selected }) =>
                   classNames(
-                    "text-lg mr-10",
+                    'text-md mr-10 pb-2 font-medium',
                     selected
-                      ? " font-bold text-primary"
-                      : " font-medium text-cabiza_grey"
+                      ? ' font-bold text-primary border-b border-b-primary'
+                      : ' text-secondary'
                   )
                 }
               >
                 Published
               </Tab>
               <Tab
-                as={"button"}
+                as={'button'}
                 className={({ selected }) =>
                   classNames(
-                    "text-lg mr-10",
+                    'text-md mr-10 pb-2 font-medium',
                     selected
-                      ? " font-bold text-primary"
-                      : " font-medium text-cabiza_grey"
+                      ? ' font-bold text-primary border-b border-b-primary'
+                      : ' text-secondary'
                   )
                 }
               >
@@ -67,24 +92,23 @@ export default function Posts() {
               </Tab>
             </Tab.List>
 
-            <div className="flex items-center justify-between">
-              <div className="flex rounded-[100px] shadow-sm mr-6">
-                <input
-                  type="text"
-                  className="border border-r-0 border-grey_80 px-4 py-2 placeholder-grey_80 text-grey_40 bg-white shadow-sm focus:outline-none focus:ring w-full rounded-l-[100px]"
-                  style={{ transition: "all 0.15s ease 0s" }}
-                  id="search"
-                  placeholder="Search..."
-                />
-                <div className="inline-flex items-center px-3 border border-l-0 border-gray-300 text-gray-500 text-sm rounded-r-[100px]">
-                  <span className="rounded-full p-2 bg-primary h-7 w-7">
-                    <img src="/images/icons/search.svg" alt="..." />
-                  </span>
+            <div className='flex items-center justify-between'>
+              <div className='flex rounded-[100px] shadow-sm mr-6'>
+                <div className='flex items-center border border-sky_light rounded-full overflow-hidden relative'>
+                  <input
+                    type='search'
+                    id='search'
+                    className='h-10 w-[18rem] text-secondary_ink_lighter bg-white px-4 outline-none appearance-none text-sm'
+                    placeholder='Search...'
+                  />
+                  <div className='pointer-events-none absolute inset-y-0 right-0 flex items-center h-[2rem] my-auto mr-1 px-2 bg-primary rounded-[50%]'>
+                    <SearchIcon />
+                  </div>
                 </div>
               </div>
-              <Link href="/dashboard/posts/create">
-                <a className="py-2 px-4 bg-primary flex items-center font-medium text-white rounded-[48px]">
-                  <PlusIcon /> <span className="ml-2">New Post </span>
+              <Link href='/dashboard/posts/create'>
+                <a className='py-2 px-4 bg-primary flex items-center font-medium text-white rounded-[48px]'>
+                  <PlusIcon /> <span className='ml-2'>New Post </span>
                 </a>
               </Link>
             </div>
