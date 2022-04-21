@@ -142,8 +142,8 @@ export default function Create() {
         >
           <div className='flex justify-between items-center'>
             <h1 className='text-4xl font-semibold text-secondary_ink_dark'></h1>
-            <span className='text-lg font-medium text-primary_brand_light'>
-              Step: 1 of 5
+            <span className='text-lg text-primary_brand_light'>
+              Step: 1 of 6
             </span>
           </div>
           <div className='md:w-4/5 mx-auto'>
@@ -171,7 +171,8 @@ export default function Create() {
                           : 'border-white bg-secondary_sky_lightest'
                       }
                     relative rounded-lg shadow-md p-2 cursor-pointer flex focus:outline-none border mr-6`
-                    }
+                  }
+                  checked={true}
                   >
                     {({ active, checked }) => (
                       <div className='flex items-center'>
@@ -199,7 +200,7 @@ export default function Create() {
                           <span className='font-medium text-secondary mr-1'>
                             Instant
                           </span>
-                          {active && (
+                          {checked && (
                             <span className='text-sm text-secondary_sky_dark'>
                               : start selling now
                             </span>
@@ -255,7 +256,7 @@ export default function Create() {
                           <span className='font-medium text-secondary mr-1'>
                             Pre-order
                           </span>
-                          {active && (
+                          {checked && (
                             <span className='text-sm text-secondary_sky_dark'>
                               : sell before release date
                             </span>
@@ -302,7 +303,7 @@ export default function Create() {
                           <span className='font-medium text-secondary mr-1'>
                             Membership
                           </span>
-                          {active && (
+                          {checked && (
                             <span className='text-sm text-secondary_sky_dark'>
                               : charge on recurring basis
                             </span>
@@ -328,7 +329,7 @@ export default function Create() {
                   id='product_name'
                   name='product_name'
                   placeholder='Enter your product name'
-                  className='border border-solid border-sky_light p-4 rounded-lg mt-2 outline-none'
+                  className='border border-solid border-sky_light p-4 py-3 rounded-lg mt-2 outline-none'
                   ref={productNameRef}
                   autoComplete='off'
                 />
@@ -342,7 +343,7 @@ export default function Create() {
                   Price
                 </label>
                 <div className='mt-3 flex rounded-lg'>
-                  <span className='inline-flex items-center rounded-l-lg border border-r-0 border-sky_light bg-secondary_sky_lighter text-secondary_ink_dark text-lg px-2 py-4'>
+                  <span className='inline-flex items-center rounded-l-lg border border-r-0 border-sky_light bg-secondary_sky_lighter text-secondary_ink_dark text-lg px-2 py-3'>
                     ${' '}
                     <svg
                       width='13'

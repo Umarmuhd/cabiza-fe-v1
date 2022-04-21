@@ -83,12 +83,12 @@ export default function AllProductsEmpty({ user }) {
               space-y-2
               lg:space-y-0 lg:grid lg:gap-6 lg:grid-rows-1 mb-8'
         >
-          <div className='rounded-3xl cursor-pointer w-full h-full relative overflow-hidden'>
+          <div className='rounded-3xl cursor-pointer h-[80%] mt-[1rem] relative overflow-hidden border border-primary'>
             <img
               src='/images/create-product.png'
               alt='...'
               // layout='fill'
-              className='w-[100%] object-cover'
+              className='object-cover w-[100%]'
               // objectFit='contain'
             />
           </div>
@@ -96,7 +96,7 @@ export default function AllProductsEmpty({ user }) {
           <div
             className='flex items-center justify-center rounded-3xl cursor-pointer bg-secondary_sky_lighter border-secondary_sky_dark h-[80%] !mt-[1rem]'
             style={{
-              'background-image': `url("data:image/svg+xml,%3csvg width='100%25' height='100%25' xmlns='http://www.w3.org/2000/svg'%3e%3crect width='100%25' height='100%25' fill='none' rx='24' ry='24' stroke='%23979C9EFF' stroke-width='4' stroke-dasharray='6%2c 14' stroke-dashoffset='48' stroke-linecap='square'/%3e%3c/svg%3e")`,
+              'background-image': `url("data:image/svg+xml,%3csvg width='100%25' height='100%25' xmlns='http://www.w3.org/2000/svg'%3e%3crect width='100%25' height='100%25' fill='none' rx='24' ry='24' stroke='%23979C9EFF' stroke-width='4' stroke-dasharray='23' stroke-dashoffset='51' stroke-linecap='square'/%3e%3c/svg%3e")`,
               'border-radius': '24px',
             }}
           >
@@ -110,7 +110,7 @@ export default function AllProductsEmpty({ user }) {
           <div
             className='flex items-center justify-center rounded-3xl cursor-pointer bg-secondary_sky_lighter border-secondary_sky_dark h-[80%] !mt-[1rem]'
             style={{
-              'background-image': `url("data:image/svg+xml,%3csvg width='100%25' height='100%25' xmlns='http://www.w3.org/2000/svg'%3e%3crect width='100%25' height='100%25' fill='none' rx='24' ry='24' stroke='%23979C9EFF' stroke-width='4' stroke-dasharray='6%2c 14' stroke-dashoffset='48' stroke-linecap='square'/%3e%3c/svg%3e")`,
+              'background-image': `url("data:image/svg+xml,%3csvg width='100%25' height='100%25' xmlns='http://www.w3.org/2000/svg'%3e%3crect width='100%25' height='100%25' fill='none' rx='24' ry='24' stroke='%23979C9EFF' stroke-width='4' stroke-dasharray='23' stroke-dashoffset='51' stroke-linecap='square'/%3e%3c/svg%3e")`,
               'border-radius': '24px',
             }}
           >
