@@ -1,12 +1,12 @@
-import React, { useRef, useState } from "react";
+import React, { useRef, useState } from 'react';
 import FullNav from '@/components/Navbars/DashboardNav/FullNav';
-import Dashboard from "@/layouts/Dashboard";
-import { classNames } from "@/libs/helper";
-import { Tab, RadioGroup, Switch } from "@headlessui/react";
-import { useRouter } from "next/router";
-import axios from "axios";
-import { API_URL } from "@/config/index";
-import toast from "react-hot-toast";
+import Dashboard from '@/layouts/Dashboard';
+import { classNames } from '@/libs/helper';
+import { Tab, RadioGroup, Switch } from '@headlessui/react';
+import { useRouter } from 'next/router';
+import axios from 'axios';
+import { API_URL } from '@/config/index';
+import toast from 'react-hot-toast';
 
 export default function Create() {
   const productNameRef = useRef();
@@ -24,8 +24,8 @@ export default function Create() {
     const name = productNameRef.current.value;
     const price = productPriceRef.current.value;
 
-    if (selected === null || name === "" || price === "") {
-      toast.error("please complete all required fields");
+    if (selected === null || name === '' || price === '') {
+      toast.error('please complete all required fields');
       setLoading(false);
       return;
     }
@@ -42,7 +42,7 @@ export default function Create() {
 
       setLoading(false);
 
-      router.push("/dashboard/products/create/" + data.data.product._id);
+      router.push('/dashboard/products/create/' + data.data.product._id);
     } catch (error) {
       console.error(error.message);
       setLoading(false);
@@ -102,33 +102,26 @@ export default function Create() {
               </a>
 
               <button
-                className='leading-4 text-base font-medium text-white py-2 px-3 rounded-4xl border border-primary bg-primary flex items-center'
+                className='leading-4 text-base font-medium bg-transparent py-2 px-3 rounded-4xl border border-[#8E7FF0] text-[#8E7FF0] flex items-center'
                 type='submit'
                 form='post-form'
               >
-                <span className='mr-2'>Save</span>
+                <span className='mr-2'>Publish</span>
                 <svg
-                  width='16'
-                  height='16'
-                  viewBox='0 0 16 16'
+                  width='14'
+                  height='7'
+                  viewBox='0 0 14 7'
                   fill='none'
                   xmlns='http://www.w3.org/2000/svg'
+                  className='mt-[.3rem]'
                 >
-                  <mask id='path-1-inside-1_2204_2450' fill='white'>
-                    <path d='M12.3598 10.0691C12.2702 10.1587 12.1476 10.2153 12.0062 10.2153C11.7328 10.2153 11.5065 9.98898 11.5065 9.71557L11.5065 4.49241L6.28336 4.49241C6.00995 4.49241 5.78367 4.26613 5.78367 3.99272C5.78367 3.7193 6.00995 3.49303 6.28336 3.49303L12.0062 3.49303C12.2796 3.49303 12.5059 3.7193 12.5059 3.99272L12.5059 9.71557C12.5059 9.85699 12.4493 9.97955 12.3598 10.0691Z' />
-                  </mask>
                   <path
-                    d='M12.3598 10.0691C12.2702 10.1587 12.1476 10.2153 12.0062 10.2153C11.7328 10.2153 11.5065 9.98898 11.5065 9.71557L11.5065 4.49241L6.28336 4.49241C6.00995 4.49241 5.78367 4.26613 5.78367 3.99272C5.78367 3.7193 6.00995 3.49303 6.28336 3.49303L12.0062 3.49303C12.2796 3.49303 12.5059 3.7193 12.5059 3.99272L12.5059 9.71557C12.5059 9.85699 12.4493 9.97955 12.3598 10.0691Z'
-                    fill='white'
-                  />
-                  <path
-                    d='M11.5065 9.71557L10.5065 9.71557L11.5065 9.71557ZM11.5065 4.49241L12.5065 4.49241V3.4924L11.5065 3.49241V4.49241ZM6.28336 4.49241L6.28336 5.49241L6.28336 5.49241L6.28336 4.49241ZM6.28336 3.49303L6.28336 4.49303L6.28336 4.49303L6.28336 3.49303ZM12.0062 3.49303L12.0062 2.49303L12.0062 3.49303ZM12.5059 3.99272L13.5059 3.99272L12.5059 3.99272ZM12.5059 9.71557L11.5059 9.71557L11.5059 9.71557L12.5059 9.71557ZM11.6527 9.36201C11.7405 9.27417 11.8684 9.21526 12.0062 9.21526L12.0062 11.2153C12.4268 11.2153 12.7999 11.0432 13.0669 10.7762L11.6527 9.36201ZM12.0062 9.21526C12.2851 9.21526 12.5065 9.4367 12.5065 9.71557L10.5065 9.71557C10.5065 10.5413 11.1805 11.2153 12.0062 11.2153L12.0062 9.21526ZM12.5065 9.71557L12.5065 4.49241L10.5065 4.49241L10.5065 9.71557L12.5065 9.71557ZM11.5065 3.49241L6.28336 3.49241L6.28336 5.49241L11.5065 5.49241L11.5065 3.49241ZM6.28336 3.49241C6.56223 3.49241 6.78367 3.71385 6.78367 3.99272L4.78367 3.99272C4.78367 4.81842 5.45766 5.49241 6.28336 5.49241L6.28336 3.49241ZM6.78367 3.99272C6.78367 4.27159 6.56223 4.49303 6.28336 4.49303L6.28336 2.49303C5.45766 2.49303 4.78367 3.16702 4.78367 3.99272L6.78367 3.99272ZM6.28336 4.49303L12.0062 4.49303L12.0062 2.49303L6.28336 2.49303L6.28336 4.49303ZM12.0062 4.49303C11.7273 4.49303 11.5059 4.27159 11.5059 3.99272H13.5059C13.5059 3.16702 12.8319 2.49303 12.0062 2.49303L12.0062 4.49303ZM11.5059 3.99272L11.5059 9.71557L13.5059 9.71557L13.5059 3.99272H11.5059ZM11.5059 9.71557C11.5059 9.57779 11.5648 9.44986 11.6527 9.36201L13.0669 10.7762C13.3339 10.5092 13.5059 10.1362 13.5059 9.71557L11.5059 9.71557Z'
-                    fill='white'
-                    mask='url(#path-1-inside-1_2204_2450)'
-                  />
-                  <path
-                    d='M12.2796 4.42641L4.34582 12.3601C4.15254 12.5534 3.83199 12.5534 3.63871 12.3601C3.44543 12.1669 3.44543 11.8463 3.63871 11.653L11.5724 3.7193C11.7657 3.52602 12.0863 3.52602 12.2796 3.7193C12.4728 3.91258 12.4728 4.23313 12.2796 4.42641Z'
-                    fill='white'
+                    d='M12.2802 0.966667L7.93355 5.31333C7.42021 5.82667 6.58021 5.82667 6.06688 5.31333L1.72021 0.966667'
+                    stroke='#8E7FF0'
+                    strokeWidth='1.5'
+                    strokeMiterlimit='10'
+                    strokeLinecap='round'
+                    strokeLinejoin='round'
                   />
                 </svg>
               </button>
@@ -171,8 +164,8 @@ export default function Create() {
                           : 'border-white bg-secondary_sky_lightest'
                       }
                     relative rounded-lg shadow-md p-2 cursor-pointer flex focus:outline-none border mr-6`
-                  }
-                  checked={true}
+                    }
+                    checked={true}
                   >
                     {({ active, checked }) => (
                       <div className='flex items-center'>

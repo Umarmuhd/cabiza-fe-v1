@@ -43,7 +43,7 @@ const PostItems = () => {
               </span>
             </div>
           </div>
-          <div className="grid grid-cols-2 row-gap-8 md:grid-cols-4 border border-secondary_sky_dark bg-secondary_sky_lightest">
+          <div className="grid grid-cols-2 row-gap-8 md:grid-cols-4 border border-secondary_sky_dark bg-secondary_sky_lightest rounded-lg ml-3">
             <div className="text-center md:border-r border-secondary_sky_dark py-2.5 px-4">
               <p className="text-secondary mb-6">Emailed</p>
               <span className="block font-medium">0</span>
