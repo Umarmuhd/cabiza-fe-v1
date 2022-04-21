@@ -41,13 +41,13 @@ export default function Advance() {
           <a className='text-primary my-4 px-4 float-right'>Learn more</a>
         </div>
 
-        <div className='flex bg-secondary_sky_lighter py-3 pl-4 mt-20 rounded-xl justify-between'>
+        <div className='flex bg-secondary_sky_lighter py-3 px-4 mt-20 rounded-xl justify-between items-center'>
           <p className='text-secondary_ink_lighter'>
             Verify domain in third-party service
           </p>
           <Toggle
             label='verify-domain'
-            classes='text-left mr-[-1.2rem] mt-[-.4rem]'
+            classes='text-left'
           />
         </div>
 
