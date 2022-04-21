@@ -171,7 +171,8 @@ export default function Create() {
                           : 'border-white bg-secondary_sky_lightest'
                       }
                     relative rounded-lg shadow-md p-2 cursor-pointer flex focus:outline-none border mr-6`
-                    }
+                  }
+                  checked={true}
                   >
                     {({ active, checked }) => (
                       <div className='flex items-center'>
@@ -199,7 +200,7 @@ export default function Create() {
                           <span className='font-medium text-secondary mr-1'>
                             Instant
                           </span>
-                          {active && (
+                          {checked && (
                             <span className='text-sm text-secondary_sky_dark'>
                               : start selling now
                             </span>
@@ -255,7 +256,7 @@ export default function Create() {
                           <span className='font-medium text-secondary mr-1'>
                             Pre-order
                           </span>
-                          {active && (
+                          {checked && (
                             <span className='text-sm text-secondary_sky_dark'>
                               : sell before release date
                             </span>
@@ -302,7 +303,7 @@ export default function Create() {
                           <span className='font-medium text-secondary mr-1'>
                             Membership
                           </span>
-                          {active && (
+                          {checked && (
                             <span className='text-sm text-secondary_sky_dark'>
                               : charge on recurring basis
                             </span>
@@ -328,7 +329,7 @@ export default function Create() {
                   id='product_name'
                   name='product_name'
                   placeholder='Enter your product name'
-                  className='border border-solid border-sky_light p-4 rounded-lg mt-2 outline-none'
+                  className='border border-solid border-sky_light p-4 py-3 rounded-lg mt-2 outline-none'
                   ref={productNameRef}
                   autoComplete='off'
                 />
@@ -342,7 +343,7 @@ export default function Create() {
                   Price
                 </label>
                 <div className='mt-3 flex rounded-lg'>
-                  <span className='inline-flex items-center rounded-l-lg border border-r-0 border-sky_light bg-secondary_sky_lighter text-secondary_ink_dark text-lg px-2 py-2'>
+                  <span className='inline-flex items-center rounded-l-lg border border-r-0 border-sky_light bg-secondary_sky_lighter text-secondary_ink_dark text-lg px-2 py-3'>
                     ${' '}
                     <svg
                       width='13'
