@@ -153,6 +153,7 @@ export default function UpdateProduct() {
   const handleSubmitting = async () => {
     try {
       const { name, description, thumbnail, cover_image } = createProduct;
+
       setLoading(true);
 
       //   const form_data = new FormData();
