@@ -87,7 +87,12 @@ const Payments = () => {
 
   return (
     <>
-      <header className='bg-secondary_sky_lightest py-4 h-20 shadow'>
+      <header
+        className='bg-secondary_sky_lightest py-4 h-20'
+        style={{
+          boxShadow: '0px 4px 20px rgba(0, 0, 0, 0.04)'
+        }}
+      >
         <div className='md:w-43/50 mx-auto'>
           <div className='float-left flex mt-1 bg-secondary_sky_light rounded-xl border border-secondary_sky_light w-[max-content] p-[.1rem]'>
             <button
@@ -171,10 +176,10 @@ const Payments = () => {
                 defaultValue='2002-09-03'
                 datepicker
                 datepicker-autohide
-              />            
+              />
 
               <button className='bg-primary p-2 rounded-lg'>
-                <label htmlFor='date' className="cursor-pointer">
+                <label htmlFor='date' className='cursor-pointer'>
                   <CalendarIcon datepicker datepicker-autohide />
                 </label>
               </button>

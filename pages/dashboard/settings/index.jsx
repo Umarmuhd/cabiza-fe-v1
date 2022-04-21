@@ -1,22 +1,21 @@
-import React, { useState } from "react";
-import { Tab } from "@headlessui/react";
+import React, { useState } from 'react';
+import { Tab } from '@headlessui/react';
 
-import Dashboard from "@/layouts/Dashboard";
-import { classNames } from "../../../libs/helper";
+import Dashboard from '@/layouts/Dashboard';
+import { classNames } from '../../../libs/helper';
 
-import Payout from "@/components/Settings/Payout";
-import Password from "@/components/Settings/Password";
-import Setting from "@/components/Settings/Setting";
-import Payment from "@/components/Settings/Payment";
-import TopNav from '@/components/Navbars/DashboardNav/TopNav';
+import Payout from '@/components/Settings/Payout';
+import Password from '@/components/Settings/Password';
+import Setting from '@/components/Settings/Setting';
+import Payment from '@/components/Settings/Payment';
+import FullNav from '@/components/Navbars/DashboardNav/FullNav';
 import Advance from '@/components/Settings/Advance';
 
-export default function Settings() {  
+export default function Settings() {
   return (
     <div>
-      <TopNav title='Settings' />
       <Tab.Group>
-        <div className='md:px-0 pt-3 py-2 shadow shadow-secondary_sky_base bg-secondary_sky_lightest z-30'>
+        <FullNav title='Settings'>
           <div className='flex justify-start items-end mr-auto md:w-43/50 mx-auto'>
             <Tab.List as={'div'} className='flex items-center py-[.5rem]'>
               <Tab
@@ -86,7 +85,7 @@ export default function Settings() {
               </Tab>
             </Tab.List>
           </div>
-        </div>
+        </FullNav>
 
         <Tab.Panels>
           <Tab.Panel>
