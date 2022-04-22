@@ -3,7 +3,7 @@ import axios from "axios";
 import React, { useState } from "react";
 import { useForm } from "react-hook-form";
 
-export default function ProductContent({
+export default function ProductContentStep({
   product,
   handleNext,
   productContent,
