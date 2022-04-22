@@ -175,7 +175,7 @@ export default function UpdateProduct() {
               </a>
 
               <button
-                className="leading-4 text-base font-medium text-white py-2 px-3 rounded-4xl border border-primary bg-primary flex items-center"
+                className="leading-4 text-base font-medium bg-transparent py-2 px-3 rounded-4xl border text-primary bg-primary flex items-center"
                 type="submit"
                 form="post-form"
                 disabled={loading}
