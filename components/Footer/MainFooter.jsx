@@ -30,7 +30,7 @@ export default function MainFooter() {
                 <li className="mt-2 block mr-2 md:block md:mr-0">
                   <a
                     href="#"
-                    className="font-light underline text-grey_98 hover:text-orange-500 text-sm"
+                    className="font-light underline text-grey_98  text-sm"
                   >
                     About Us
                   </a>
@@ -38,7 +38,7 @@ export default function MainFooter() {
                 <li className="mt-2 block mr-2 md:block md:mr-0">
                   <a
                     href="#"
-                    className="font-light underline text-grey_98 hover:text-orange-500 text-sm"
+                    className="font-light underline text-grey_98  text-sm"
                   >
                     Career
                   </a>
@@ -46,7 +46,7 @@ export default function MainFooter() {
                 <li className="mt-2 block mr-2 md:block md:mr-0">
                   <a
                     href="#"
-                    className="font-light underline text-grey_98 hover:text-orange-500 text-sm"
+                    className="font-light underline text-grey_98  text-sm"
                   >
                     Team
                   </a>
@@ -55,7 +55,7 @@ export default function MainFooter() {
                 <li className="mt-2 block mr-2 md:block md:mr-0">
                   <a
                     href="#"
-                    className="font-light underline text-grey_98 hover:text-orange-500 text-sm"
+                    className="font-light underline text-grey_98  text-sm"
                   >
                     Terms of Services
                   </a>
@@ -64,7 +64,7 @@ export default function MainFooter() {
                 <li className="mt-2 block mr-2 md:block md:mr-0">
                   <a
                     href="#"
-                    className="font-light underline text-grey_98 hover:text-orange-500 text-sm"
+                    className="font-light underline text-grey_98  text-sm"
                   >
                     Privacy / Polices
                   </a>
@@ -79,7 +79,7 @@ export default function MainFooter() {
                 <li className="mt-2 inline-block mr-2 md:block md:mr-0">
                   <a
                     href="#"
-                    className="font-light underline text-grey_98 hover:text-orange-500"
+                    className="font-light underline text-grey_98 "
                   >
                     Terms
                   </a>
@@ -87,7 +87,7 @@ export default function MainFooter() {
                 <li className="mt-2 inline-block mr-2 md:block md:mr-0">
                   <a
                     href="#"
-                    className="font-light underline text-grey_98 hover:text-orange-500"
+                    className="font-light underline text-grey_98 "
                   >
                     Privacy
                   </a>
@@ -102,7 +102,7 @@ export default function MainFooter() {
                 <li className="mt-2 mr-2 md:block md:mr-0">
                   <a
                     href="#"
-                    className="font-light underline text-grey_98 hover:text-orange-500 text-sm"
+                    className="font-light underline text-grey_98  text-sm"
                   >
                     Instagram
                   </a>
@@ -110,7 +110,7 @@ export default function MainFooter() {
                 <li className="mt-2 mr-2 md:block md:mr-0">
                   <a
                     href="#"
-                    className="font-light underline text-grey_98 hover:text-orange-500 text-sm"
+                    className="font-light underline text-grey_98  text-sm"
                   >
                     Facebook
                   </a>
@@ -119,7 +119,7 @@ export default function MainFooter() {
                  <li className="mt-2 mr-2 md:block md:mr-0">
                   <a
                     href="#"
-                    className="font-light underline text-grey_98 hover:text-orange-500 text-sm"
+                    className="font-light underline text-grey_98  text-sm"
                   >
                     Twitter
                   </a>
@@ -128,7 +128,7 @@ export default function MainFooter() {
                 <li className="mt-2 mr-2 md:block md:mr-0">
                   <a
                     href="#"
-                    className="font-light underline text-grey_98 hover:text-orange-500 text-sm"
+                    className="font-light underline text-grey_98  text-sm"
                   >
                     Youtube
                   </a>
@@ -136,7 +136,7 @@ export default function MainFooter() {
                 <li className="mt-2 mr-2 md:block md:mr-0">
                   <a
                     href="#"
-                    className="font-light underline text-grey_98 hover:text-orange-500 text-sm"
+                    className="font-light underline text-grey_98  text-sm"
                   >
                     Pinterest
                   </a>
