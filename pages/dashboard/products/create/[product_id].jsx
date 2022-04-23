@@ -133,10 +133,10 @@ export default function UpdateProduct() {
                 as={'button'}
                 className={({ selected }) =>
                   classNames(
-                    'text-lg mr-10',
+                    "text-md mr-10 pb-2 font-medium",
                     selected
-                      ? ' font-bold text-primary'
-                      : ' font-medium text-cabiza_grey'
+                      ? " font-bold text-primary border-b border-b-primary"
+                      : " text-secondary"
                   )
                 }
               >
@@ -146,10 +146,10 @@ export default function UpdateProduct() {
                 as={'button'}
                 className={({ selected }) =>
                   classNames(
-                    'text-lg mr-10',
+                    "text-md mr-10 pb-2 font-medium",
                     selected
-                      ? ' font-bold text-primary'
-                      : ' font-medium text-cabiza_grey'
+                      ? " font-bold text-primary border-b border-b-primary"
+                      : " text-secondary"
                   )
                 }
               >
@@ -159,10 +159,10 @@ export default function UpdateProduct() {
                 as={'button'}
                 className={({ selected }) =>
                   classNames(
-                    'text-lg mr-10',
+                    "text-md mr-10 pb-2 font-medium",
                     selected
-                      ? ' font-bold text-primary'
-                      : ' font-medium text-cabiza_grey'
+                      ? " font-bold text-primary border-b border-b-primary"
+                      : " text-secondary"
                   )
                 }
               >
