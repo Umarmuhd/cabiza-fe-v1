@@ -229,7 +229,7 @@ export default function Discover() {
           <div className={`${styles.cards} mb-7`}>
             <div className={`flex gap-2 ${styles['product-cards']} pb-4 px-2`}>
               <div
-                className='rounded-lg hover:bg-primary group cursor-pointer border border-primary_brand_lightest py-5 px-4'
+                className='rounded-lg hover:bg-primary group cursor-pointer border border-primary_brand_lightest py-5 px-4 w-[15rem]'
                 style={{
                   '&:hover': {
                     'box-shadow': '0px 4px 20px rgba(0, 0, 0, 0.04)',
@@ -261,7 +261,7 @@ export default function Discover() {
               </div>
 
               <div
-                className='rounded-lg hover:bg-primary group cursor-pointer border border-primary_brand_lightest py-5 px-4'
+                className='rounded-lg hover:bg-primary group cursor-pointer border border-primary_brand_lightest py-5 px-4 w-[15rem]'
                 style={{
                   '&:hover': {
                     'box-shadow': '0px 4px 20px rgba(0, 0, 0, 0.04)',
@@ -293,7 +293,7 @@ export default function Discover() {
               </div>
 
               <div
-                className='rounded-lg hover:bg-primary group cursor-pointer border border-primary_brand_lightest py-5 px-4'
+                className='rounded-lg hover:bg-primary group cursor-pointer border border-primary_brand_lightest py-5 px-4 w-[15rem]'
                 style={{
                   '&:hover': {
                     'box-shadow': '0px 4px 20px rgba(0, 0, 0, 0.04)',
@@ -325,7 +325,7 @@ export default function Discover() {
               </div>
 
               <div
-                className='rounded-lg hover:bg-primary group cursor-pointer border border-primary_brand_lightest py-5 px-4'
+                className='rounded-lg hover:bg-primary group cursor-pointer border border-primary_brand_lightest py-5 px-4 w-[15rem]'
                 style={{
                   '&:hover': {
                     'box-shadow': '0px 4px 20px rgba(0, 0, 0, 0.04)',
@@ -357,7 +357,7 @@ export default function Discover() {
               </div>
 
               <div
-                className='rounded-lg hover:bg-primary group cursor-pointer border border-primary_brand_lightest py-5 px-4'
+                className='rounded-lg hover:bg-primary group cursor-pointer border border-primary_brand_lightest py-5 px-4 w-[15rem]'
                 style={{
                   '&:hover': {
                     'box-shadow': '0px 4px 20px rgba(0, 0, 0, 0.04)',
@@ -389,7 +389,7 @@ export default function Discover() {
               </div>
 
               <div
-                className='rounded-lg hover:bg-primary group cursor-pointer border border-primary_brand_lightest py-5 px-4'
+                className='rounded-lg hover:bg-primary group cursor-pointer border border-primary_brand_lightest py-5 px-4 w-[15rem]'
                 style={{
                   '&:hover': {
                     'box-shadow': '0px 4px 20px rgba(0, 0, 0, 0.04)',
