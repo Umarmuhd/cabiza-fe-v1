@@ -14,6 +14,7 @@ import { VscBold } from "react-icons/vsc";
 import Image from "next/image";
 import EditProductStepView from "@/components/Products/EditProductStepView";
 import { useProductBasics } from "../../../../../libs/Hooks/useProductBasics";
+import TextFormat from '@/components/TextFormat';
 
 const BasicProductStep = ({ ...props }) => {
   const {
@@ -119,78 +120,13 @@ const BasicProductStep = ({ ...props }) => {
             >
               Description
             </label>
-            <div className="border border-solid border-sky_light py-4 rounded-lg mt-2 outline-none">
-              <div className="flex text-lg items-end border-bottom border-b-2 border-grey_80 sm:px-4 lg:px-2 py-2 pb-5">
-                <div className="flex items-end">
-                  <button className="sm:mr-4 mr-2">
-                    <VscBold />
-                  </button>
-
-                  <button className="sm:mr-4 mr-2">
-                    <BsTypeItalic />
-                  </button>
-
-                  <button className="sm:mr-4 mr-2">
-                    <RiUnderline />
-                  </button>
-
-                  <button className="sm:mr-4 mr-2">
-                    <BiStrikethrough />
-                  </button>
-
-                  <button className="sm:mr-4 mr-2">
-                    <BsCode />
-                  </button>
-
-                  <button className="sm:mr-4 mr-2">
-                    <CgFormatUppercase />
-                  </button>
-
-                  <button className="sm:mr-4 mr-2">
-                    <GrList />
-                  </button>
-
-                  <button className="sm:mr-4 mr-2">
-                    <RiListOrdered />
-                  </button>
-
-                  <button className="sm:mr-4 mr-2">
-                    <AiOutlineAlignCenter />
-                  </button>
-
-                  <button className="sm:mr-4 mr-2">
-                    <RiDoubleQuotesL />
-                  </button>
-
-                  <button className="sm:mr-4 mr-2">
-                    <BiLinkAlt />
-                  </button>
-
-                  <button>
-                    <BiImage />
-                  </button>
-                </div>
-
-                <div className="lg:flex ml-12 hidden">
-                  <button className="mr-2">
-                    <RiArrowGoBackLine />
-                  </button>
-
-                  <button>
-                    <RiArrowGoBackLine
-                      style={{
-                        transform: "scaleX(-1)",
-                      }}
-                    />
-                  </button>
-                </div>
-              </div>
+              <TextFormat /> 
               <input
                 type="text"
                 name="product_desc"
                 id="product_desc"
                 placeholder="Product Description"
-                className="px-4 py-3 pd-12 h-[5rem] w-[100%] outline-none"
+                className="px-4 py-3 pd-12 h-[5rem] w-[100%] outline-none border border-solid border-sky_light rounded-b-lg"
                 {...register("description", { required: true })}
                 defaultValue={product?.description}
               />
@@ -200,7 +136,6 @@ const BasicProductStep = ({ ...props }) => {
                 </p>
               )}
             </div>
-          </div>
 
           <div className="flex flex-col mt-6">
             <label

@@ -6,7 +6,12 @@ import { API_URL } from "@/config/index";
 import Dashboard from "@/layouts/Dashboard";
 import { classNames } from "@/libs/helper";
 
-import DashboardNav from "@/components/Navbars/DashboardNav";
+import CreateProduct from "./create-product-basics/CreateProductBasics";
+import ProductInfo from "./product-info/ProductInfoStep";
+import ProductContent from "./product-content/ProductContent";
+import ProductPricing from "./product-pricing/ProductPricing";
+import ProductSettings from "./product-settings";
+import FullNav from "@/components/Navbars/DashboardNav/FullNav";
 import { Tab } from "@headlessui/react";
 import BasicProductStep from "./create-product-basics/CreateProductBasics";
 import ProductInfoStep from "./product-info/ProductInfoStep";
@@ -121,86 +126,84 @@ export default function UpdateProduct() {
   return (
     <div>
       <Tab.Group>
-        <DashboardNav title="Products" />
-        <div
-          className="bg-secondary_sky_lightest py-6 md:px-0 px-4"
-          style={{ boxShadow: "0px 4px 20px rgba(0, 0, 0, 0.04)" }}
-        >
-          <div className="flex justify-between items-center md:w-43/50 mx-auto">
-            <Tab.List as={"div"} className="flex items-center">
-              <Tab
-                as={"button"}
-                className={({ selected }) =>
-                  classNames(
-                    "text-lg mr-10",
-                    selected
-                      ? " font-bold text-primary"
-                      : " font-medium text-cabiza_grey"
-                  )
-                }
-              >
-                Product
-              </Tab>
-              <Tab
-                as={"button"}
-                className={({ selected }) =>
-                  classNames(
-                    "text-lg mr-10",
-                    selected
-                      ? " font-bold text-primary"
-                      : " font-medium text-cabiza_grey"
-                  )
-                }
-              >
-                Checkout
-              </Tab>
-              <Tab
-                as={"button"}
-                className={({ selected }) =>
-                  classNames(
-                    "text-lg mr-10",
-                    selected
-                      ? " font-bold text-primary"
-                      : " font-medium text-cabiza_grey"
-                  )
-                }
-              >
-                Share
-              </Tab>
-            </Tab.List>
-
-            <div className="flex items-center justify-between">
-              <a className="leading-4 text-base font-medium text-primary py-2 px-3 rounded-4xl border border-primary mr-6 flex items-center">
-                <span className="">Save changes</span>
-              </a>
-
-              <button
-                className="leading-4 text-base font-medium bg-transparent py-2 px-3 rounded-4xl border text-primary bg-primary flex items-center"
-                type="submit"
-                form="post-form"
-                disabled={loading}
-              >
-                <span className="mr-2">Publish</span>
-                <svg
-                  width="14"
-                  height="7"
-                  viewBox="0 0 14 7"
-                  fill="none"
-                  xmlns="http://www.w3.org/2000/svg"
+        <FullNav title="Products">
+          <div className="md:px-0">
+            <div className="flex justify-between items-center md:w-43/50 mx-auto mt-[.5rem]">
+              <Tab.List as={"div"} className="flex items-center">
+                <Tab
+                  as={"button"}
+                  className={({ selected }) =>
+                    classNames(
+                      "text-md mr-10 pb-2 font-medium",
+                      selected
+                        ? " font-bold text-primary border-b border-b-primary"
+                        : " text-secondary"
+                    )
+                  }
                 >
-                  <path
-                    d="M12.28 0.966553L7.9333 5.31322C7.41997 5.82655 6.57997 5.82655 6.06664 5.31322L1.71997 0.966553"
-                    stroke="#5B44E9"
-                    strokeWidth="1.5"
-                    strokeMiterlimit="10"
-                    strokeLinecap="round"
-                    strokeLinejoin="round"
-                  />
-                </svg>
-              </button>
+                  Product
+                </Tab>
+                <Tab
+                  as={"button"}
+                  className={({ selected }) =>
+                    classNames(
+                      "text-md mr-10 pb-2 font-medium",
+                      selected
+                        ? " font-bold text-primary border-b border-b-primary"
+                        : " text-secondary"
+                    )
+                  }
+                >
+                  Checkout
+                </Tab>
+                <Tab
+                  as={"button"}
+                  className={({ selected }) =>
+                    classNames(
+                      "text-md mr-10 pb-2 font-medium",
+                      selected
+                        ? " font-bold text-primary border-b border-b-primary"
+                        : " text-secondary"
+                    )
+                  }
+                >
+                  Share
+                </Tab>
+              </Tab.List>
+
+              <div className="flex items-center justify-between mt-[-.5rem]">
+                <a className="leading-4 text-base font-medium text-primary py-2 px-3 rounded-4xl border border-primary mr-6 flex items-center">
+                  <span className="">Save changes</span>
+                </a>
+
+                <button
+                  className="leading-4 text-base font-medium bg-transparent py-2 px-3 rounded-4xl border text-primary bg-primary flex items-center"
+                  type="submit"
+                  form="post-form"
+                  disabled={loading}
+                >
+                  <span className="mr-2">Publish</span>
+                  <svg
+                    width="14"
+                    height="7"
+                    viewBox="0 0 14 7"
+                    fill="none"
+                    xmlns="http://www.w3.org/2000/svg"
+                  >
+                    <path
+                      d="M12.28 0.966553L7.9333 5.31322C7.41997 5.82655 6.57997 5.82655 6.06664 5.31322L1.71997 0.966553"
+                      stroke="#5B44E9"
+                      strokeWidth="1.5"
+                      strokeMiterlimit="10"
+                      strokeLinecap="round"
+                      strokeLinejoin="round"
+                    />
+                  </svg>
+                </button>
+              </div>
             </div>
           </div>
-        </div>
+        </FullNav>
 
         <div className="md:w-43/50 mx-auto text-left sm:py-12 sm:px-7 p-4 my-8 bg-white shadow rounded-3xl">
           <div className="step-component">
