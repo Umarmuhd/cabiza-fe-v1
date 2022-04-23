@@ -181,7 +181,7 @@ export default function Membership() {
           <div className='flex flex-col'>
             <div className='-my-2 overflow-x-auto sm:-mx-6 lg:-mx-6'>
               <div className='align-middle inline-block min-w-full'>
-                <div className='shadow overflow-hidden border-b border-gray-200'>
+                <div className='shadow overflow-hidden border-b border-gray-200 rounded-lg'>
                   <table className={`min-w-full divide-y divide-gray-200 border-collapse ${styles.table}`}>
                     <thead className='bg-secondary_ink_dark'>
                       <tr>
