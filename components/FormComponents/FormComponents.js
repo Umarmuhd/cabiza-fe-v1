@@ -13,6 +13,7 @@ import { AiOutlineAlignCenter } from "react-icons/ai";
 import { VscBold } from "react-icons/vsc";
 // import { IoReturnDownBack } from 'react-icons/io';
 import Toggle from "../Toggle/Toggle";
+import { TextFormat } from '@/components/TextFormat';
 
 const FirstComponent = () => {
   return (
@@ -40,71 +41,7 @@ const FirstComponent = () => {
             Description{" "}
           </label>
           <div className="border border-solid border-grey_85 py-3 rounded-xl mt-2">
-            <div className="flex text-lg items-end border-bottom border-b-2 border-grey_80 lg:px-4 md:px-1 py-2 pb-5">
-              <div className="flex items-end">
-                <button className="lg:mr-4">
-                  <VscBold />
-                </button>
-
-                <button className="lg:mr-4">
-                  <BsTypeItalic />
-                </button>
-
-                <button className="lg:mr-4">
-                  <RiUnderline />
-                </button>
-
-                <button className="lg:mr-4">
-                  <BiStrikethrough />
-                </button>
-
-                <button className="lg:mr-4">
-                  <BsCode />
-                </button>
-
-                <button className="lg:mr-4">
-                  <CgFormatUppercase />
-                </button>
-
-                <button className="lg:mr-4">
-                  <GrList />
-                </button>
-
-                <button className="lg:mr-4">
-                  <RiListOrdered />
-                </button>
-
-                <button className="lg:mr-4">
-                  <AiOutlineAlignCenter />
-                </button>
-
-                <button className="mr-4">
-                  <RiDoubleQuotesL />
-                </button>
-
-                <button className="mr-4">
-                  <BiLinkAlt />
-                </button>
-
-                <button>
-                  <BiImage />
-                </button>
-              </div>
-
-              <div className="flex ml-12 md:hidden">
-                <button className="mr-2">
-                  <RiArrowGoBackLine />
-                </button>
-
-                <button>
-                  <RiArrowGoBackLine
-                    style={{
-                      transform: "scaleX(-1)",
-                    }}
-                  />
-                </button>
-              </div>
-            </div>
+            <TextFormat />                  
             <input
               type="text"
               name="product_name"
