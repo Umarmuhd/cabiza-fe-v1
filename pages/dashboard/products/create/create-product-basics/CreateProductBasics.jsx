@@ -13,7 +13,7 @@ import { AiOutlineAlignCenter } from "react-icons/ai";
 import { VscBold } from "react-icons/vsc";
 import Image from "next/image";
 import EditProductStepView from "@/components/Products/EditProductStepView";
-import { useProductBasics } from "./useProductBasics";
+import { useProductBasics } from "../../../../../libs/Hooks/useProductBasics";
 
 const BasicProductStep = ({ ...props }) => {
   const {

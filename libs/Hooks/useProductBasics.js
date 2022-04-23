@@ -2,11 +2,27 @@ import React from "react";
 import { useForm } from "react-hook-form";
 import { yupResolver } from "@hookform/resolvers/yup";
 import * as yup from "yup";
-import { useCreateProductRecoilStates } from "../../../../../recoil";
+import { useCreateProductRecoilStates } from "../../recoil";
 
 const schema = yup.object().shape({
-  url: yup.string().required("Product url is required"),
-  file: yup
+  name: yup.string().required("Product name is required"),
+  description: yup.string().required("Product description is required"),
+  thumbnail: yup
+    .mixed()
+    .test("required", "You need to provide a file", (value) => {
+      return value && value.length;
+    })
+    .test("fileSize", "The file is too large", (value, context) => {
+      return value && value[0] && value[0].size <= 2000000;
+    })
+    .test("type", "We only support jpeg/png", function (value) {
+      return (
+        value &&
+        value[0] &&
+        (value[0].type === "image/jpeg" || value[0].type === "image/png")
+      );
+    }),
+  cover_image: yup
     .mixed()
     .test("required", "You need to provide a file", (value) => {
       return value && value.length;
@@ -23,29 +39,28 @@ const schema = yup.object().shape({
     }),
 });
 
-export const useProductContent = ({
+export const useProductBasics = ({
   stepIndex,
   stepErrors,
   setStepErrors,
   product,
 }) => {
-  const { productContent, setProductContent } = useCreateProductRecoilStates();
+  const { basicInfo, setBasicInfo } = useCreateProductRecoilStates();
 
-  const { file, url } = product;
+  const { name, description, thumbnail, cover_image } = product;
 
   const methods = useForm({
     mode: "onBlur",
-    defaultValues:
-      !productContent.file && !productContent.url
-        ? { file, url }
-        : productContent,
+    defaultValues: basicInfo.name
+      ? basicInfo
+      : { name, description, thumbnail, cover_image },
     resolver: yupResolver(schema),
   });
 
   const setValues = () => {
     const values = methods.getValues();
 
-    setProductContent(values);
+    setBasicInfo(values);
   };
 
   React.useEffect(() => {

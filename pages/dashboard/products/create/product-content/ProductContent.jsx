@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import EditProductStepView from "@/components/Products/EditProductStepView";
-import { useProductContent } from "./useProductContent";
+import { useProductContent } from "../../../../../libs/Hooks/useProductContent";
 
 export default function ProductContentStep({ ...props }) {
   const {
