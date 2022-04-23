@@ -294,7 +294,7 @@ export default function CreatePost() {
                         {...register('send_email')}
                         name='channel'
                       />
-                      <CheckIcon classes='absolute right-[.4rem] hidden peer-checked:block' />
+                      <CheckIcon classes='absolute right-[.35rem] hidden peer-checked:block' />
                     </div>
                   </FormGroup>
                   <FormGroup className='my-2 mt-4'>
@@ -343,7 +343,7 @@ export default function CreatePost() {
                         {...register('post_to_profile')}
                         name='channel'
                       />
-                      <CheckIcon classes='absolute right-[.4rem] hidden peer-checked:block' />
+                      <CheckIcon classes='absolute right-[.35rem] hidden peer-checked:block' />
                     </div>
                   </FormGroup>
                 </div>
@@ -366,7 +366,7 @@ export default function CreatePost() {
                         className='appearance-none w-6 h-6 border border-gray-300 rounded-sm outline-none cursor-pointer checked:bg-primary peer'
                         {...register('allow_comments')}
                       />
-                      <CheckIcon classes='absolute right-[.4rem] hidden peer-checked:block' />
+                      <CheckIcon classes='absolute right-[.35rem] hidden peer-checked:block' />
                     </div>
                   </FormGroup>
                   <FormGroup className='my-2 mt-4'>
@@ -384,7 +384,7 @@ export default function CreatePost() {
                         className='appearance-none w-6 h-6 border border-gray-300 rounded-sm outline-none cursor-pointer checked:bg-primary peer'
                         {...register('allow_likes')}
                       />
-                      <CheckIcon classes='absolute right-[.4rem] hidden peer-checked:block' />
+                      <CheckIcon classes='absolute right-[.35rem] hidden peer-checked:block' />
                     </div>
                   </FormGroup>
                 </div>
