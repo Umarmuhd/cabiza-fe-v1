@@ -126,7 +126,7 @@ const BasicProductStep = ({ ...props }) => {
                 name="product_desc"
                 id="product_desc"
                 placeholder="Product Description"
-                className="px-4 py-3 pd-12 h-[5rem] w-[100%] outline-none border border-solid border-sky_light rounded-b-lg mt-2"
+                className="px-4 py-3 pd-12 h-[5rem] w-[100%] outline-none border border-solid border-sky_light rounded-b-lg"
                 {...register("description", { required: true })}
                 defaultValue={product?.description}
               />
