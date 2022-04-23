@@ -64,7 +64,7 @@ export default function ProductInfoStep({ ...props }) {
     setCustom(val);
   }, [selected]);
 
-  useEffect(() => {}, []);
+  useEffect(() => { }, []);
 
   const handleSubmit = async (event) => {
     event.preventDefault();
@@ -116,9 +116,8 @@ export default function ProductInfoStep({ ...props }) {
                 >
                   {({ active, checked }) => (
                     <span
-                      className={`text-primary ${
-                        checked ? "font-medium" : "font-normal"
-                      }`}
+                      className={`text-primary ${checked ? "font-medium" : "font-normal"
+                        }`}
                     >
                       I want this
                     </span>
@@ -133,9 +132,8 @@ export default function ProductInfoStep({ ...props }) {
                 >
                   {({ active, checked }) => (
                     <span
-                      className={`text-primary ${
-                        checked ? "font-medium" : "font-normal"
-                      }`}
+                      className={`text-primary ${checked ? "font-medium" : "font-normal"
+                        }`}
                     >
                       Buy this
                     </span>
@@ -150,9 +148,8 @@ export default function ProductInfoStep({ ...props }) {
                 >
                   {({ active, checked }) => (
                     <span
-                      className={`text-primary ${
-                        checked ? "font-medium" : "font-normal"
-                      }`}
+                      className={`text-primary ${checked ? "font-medium" : "font-normal"
+                        }`}
                     >
                       Pay
                     </span>

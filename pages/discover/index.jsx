@@ -64,7 +64,7 @@ const ProductItem = ({ product }) => (
     <img
       src={product.thumbnail ?? '/images/book-small.png'}
       alt='...'
-      className='w-[24rem] h-[auto]'
+      className='w-[24rem] h-[20rem] object-cover'
     />
     <div className='p-5 rounded-b'>
       <p className='text-lg text-secondary_sky_dark font-normal mb-1'>Books</p>
@@ -470,7 +470,7 @@ export default function Discover() {
                   <img
                     src='/images/book-small.png'
                     alt='...'
-                    className='w-[100%] h-[auto]'
+                    className='w-[24rem] h-[20rem] object-cover'
                   />
                   <div className='p-5 rounded-b'>
                     <p className='text-lg text-secondary_sky_dark font-normal mb-1'>
@@ -529,7 +529,7 @@ export default function Discover() {
                   <img
                     src='/images/book-small.png'
                     alt='...'
-                    className='w-[100%] h-[auto]'
+                    className='w-[24rem] h-[20rem] object-cover'
                   />
                   <div className='p-5 rounded-b'>
                     <p className='text-lg text-secondary_sky_dark font-normal mb-1'>
@@ -588,7 +588,7 @@ export default function Discover() {
                   <img
                     src='/images/book-small.png'
                     alt='...'
-                    className='w-[100%] h-[auto]'
+                    className='w-[24rem] h-[20rem] object-cover'
                   />
                   <div className='p-5 rounded-b'>
                     <p className='text-lg text-secondary_sky_dark font-normal mb-1'>
@@ -647,7 +647,7 @@ export default function Discover() {
                   <img
                     src='/images/book-small.png'
                     alt='...'
-                    className='w-[100%] h-[auto]'
+                    className='w-[24rem] h-[20rem] object-cover'
                   />
                   <div className='p-5 rounded-b'>
                     <p className='text-lg text-secondary_sky_dark font-normal mb-1'>
@@ -706,7 +706,7 @@ export default function Discover() {
                   <img
                     src='/images/book-small.png'
                     alt='...'
-                    className='w-[100%] h-[auto]'
+                    className='w-[24rem] h-[20rem] object-cover'
                   />
                   <div className='p-5 rounded-b'>
                     <p className='text-lg text-secondary_sky_dark font-normal mb-1'>
@@ -765,7 +765,7 @@ export default function Discover() {
                   <img
                     src='/images/book-small.png'
                     alt='...'
-                    className='w-[100%] h-[auto]'
+                    className='w-[24rem] h-[20rem] object-cover'
                   />
                   <div className='p-5 rounded-b'>
                     <p className='text-lg text-secondary_sky_dark font-normal mb-1'>
@@ -824,7 +824,7 @@ export default function Discover() {
                   <img
                     src='/images/book-small.png'
                     alt='...'
-                    className='w-[100%] h-[auto]'
+                    className='w-[24rem] h-[20rem] object-cover'
                   />
                   <div className='p-5 rounded-b'>
                     <p className='text-lg text-secondary_sky_dark font-normal mb-1'>
@@ -883,7 +883,7 @@ export default function Discover() {
                   <img
                     src='/images/book-small.png'
                     alt='...'
-                    className='w-[100%] h-[auto]'
+                    className='w-[24rem] h-[20rem] object-cover'
                   />
                   <div className='p-5 rounded-b'>
                     <p className='text-lg text-secondary_sky_dark font-normal mb-1'>
@@ -958,7 +958,7 @@ export default function Discover() {
                       <img
                         src='/images/book-small.png'
                         alt='...'
-                        className='w-[100%] h-[auto]'
+                        className='w-[24rem] h-[20rem] object-cover'
                       />
                       <div className='p-5 rounded-b'>
                         <p className='text-lg text-secondary_sky_dark font-normal mb-1'>
@@ -1019,7 +1019,7 @@ export default function Discover() {
                       <img
                         src='/images/book-small.png'
                         alt='...'
-                        className='w-[100%] h-[auto]'
+                        className='w-[24rem] h-[20rem] object-cover'
                       />
                       <div className='p-5 rounded-b'>
                         <p className='text-lg text-secondary_sky_dark font-normal mb-1'>
@@ -1078,7 +1078,7 @@ export default function Discover() {
                       <img
                         src='/images/book-small.png'
                         alt='...'
-                        className='w-[100%] h-[auto]'
+                        className='w-[24rem] h-[20rem] object-cover'
                       />
                       <div className='p-5 rounded-b'>
                         <p className='text-lg text-secondary_sky_dark font-normal mb-1'>
@@ -1137,7 +1137,7 @@ export default function Discover() {
                       <img
                         src='/images/book-small.png'
                         alt='...'
-                        className='w-[100%] h-[auto]'
+                        className='w-[24rem] h-[20rem] object-cover'
                       />
                       <div className='p-5 rounded-b'>
                         <p className='text-lg text-secondary_sky_dark font-normal mb-1'>
@@ -1196,7 +1196,7 @@ export default function Discover() {
                       <img
                         src='/images/book-small.png'
                         alt='...'
-                        className='w-[100%] h-[auto]'
+                        className='w-[24rem] h-[20rem] object-cover'
                       />
                       <div className='p-5 rounded-b'>
                         <p className='text-lg text-secondary_sky_dark font-normal mb-1'>
@@ -1255,7 +1255,7 @@ export default function Discover() {
                       <img
                         src='/images/book-small.png'
                         alt='...'
-                        className='w-[100%] h-[auto]'
+                        className='w-[24rem] h-[20rem] object-cover'
                       />
                       <div className='p-5 rounded-b'>
                         <p className='text-lg text-secondary_sky_dark font-normal mb-1'>
@@ -1314,7 +1314,7 @@ export default function Discover() {
                       <img
                         src='/images/book-small.png'
                         alt='...'
-                        className='w-[100%] h-[auto]'
+                        className='w-[24rem] h-[20rem] object-cover'
                       />
                       <div className='p-5 rounded-b'>
                         <p className='text-lg text-secondary_sky_dark font-normal mb-1'>
@@ -1373,7 +1373,7 @@ export default function Discover() {
                       <img
                         src='/images/book-small.png'
                         alt='...'
-                        className='w-[100%] h-[auto]'
+                        className='w-[24rem] h-[20rem] object-cover'
                       />
                       <div className='p-5 rounded-b'>
                         <p className='text-lg text-secondary_sky_dark font-normal mb-1'>
