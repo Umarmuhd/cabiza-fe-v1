@@ -4,7 +4,7 @@ import { RadioGroup } from "@headlessui/react";
 import axios from "axios";
 import React, { useEffect, useRef, useState } from "react";
 import toast from "react-hot-toast";
-import { useProductInfo } from "./useProductInfo";
+import { useProductInfo } from "../../../../../libs/Hooks/useProductInfo";
 
 export default function ProductInfoStep({ ...props }) {
   const {

@@ -94,10 +94,6 @@ const PaymentPage = () => {
 
   const router = useRouter();
 
-  const handleContinue = async (values) => {
-    console.log(values);
-  };
-
   useEffect(() => {
     const getBrainTreeToken = async () => {
       try {
@@ -130,16 +126,16 @@ const PaymentPage = () => {
       .catch((err) => console.log(err));
   };
 
-  const createOrder = (orderData) => {
+  const createOrder = (product_id, orderData) => {
     return axios
-      .post(`${API_URL}/orders/order/new`, orderData)
+      .post(`${API_URL}/orders/create/${product_id}`, orderData)
       .then((response) => {
         return response.data;
       })
-      .catch((err) => console.log(err));
+      .catch((err) => console.error(err.message));
   };
 
-  const buy = () => {
+  const handleCheckout = async (values) => {
     setLoading(true);
     let nonce;
     let getNonce = data.instance
@@ -156,17 +152,20 @@ const PaymentPage = () => {
         processPayment(product.data.product.product_id, paymentData)
           .then((response) => {
             console.log(response);
-            const { name, email, discount_code } = getValues();
+            const { name, email, discount_code } = values;
 
             const orderData = {
               product_id: product.data.product.product_id,
-              transaction_id: response.transaction.id,
+
               amount: response.transaction.amount,
-              payment_method: "braintree",
+              payment_info: {
+                payment_method: "braintree",
+                payment_id: response.transaction.id,
+              },
               user: { name, email, discount_code },
             };
 
-            createOrder(orderData)
+            createOrder(product.data.product.product_id, orderData)
               .then((response) => {
                 console.log(response);
                 setData({ loading: false, success: true });
@@ -202,7 +201,7 @@ const PaymentPage = () => {
           />
           <button
             className="mb-8 md:mb-0 bg-primary rounded-lg text-white w-full p-4 text-center mt-6"
-            onClick={buy}
+            type="submit"
           >
             Pay now
           </button>
@@ -234,7 +233,7 @@ const PaymentPage = () => {
 
           <form
             className={`md:mt-8 mt-6 ${styles["input-box"]}`}
-            onSubmit={handleSubmit(handleContinue)}
+            onSubmit={handleSubmit(handleCheckout)}
           >
             <div className="border border-grey_20 rounded-lg p-4 relative">
               <div className="relative">
