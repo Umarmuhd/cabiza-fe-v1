@@ -130,7 +130,7 @@ export default function CreatePost() {
     <div>
       <FullNav title='Posts'>
         <div
-          className='bg-secondary_sky_lightest py-6 md:px-0 px-4'
+          className='bg-secondary_sky_lightest py-2 md:px-0 px-4'
           style={{ boxShadow: '0px 4px 20px rgba(0, 0, 0, 0.04)' }}
         >
           <div className='flex justify-between items-center md:w-43/50 mx-auto'>
