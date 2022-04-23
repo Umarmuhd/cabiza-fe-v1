@@ -9,16 +9,18 @@ import { classNames } from "@/libs/helper";
 
 import CreateProduct from "./create-product-basics/CreateProductBasics";
 import ProductInfo from "./product-info/ProductInfoStep";
-import ProductContent from "./product-content";
-import ProductPricing from "./product-pricing";
+import ProductContent from "./product-content/ProductContent";
+import ProductPricing from "./product-pricing/ProductPricing";
 import ProductSettings from "./product-settings";
 import DashboardNav from "@/components/Navbars/DashboardNav";
 import { Tab } from "@headlessui/react";
 import BasicProductStep from "./create-product-basics/CreateProductBasics";
 import ProductInfoStep from "./product-info/ProductInfoStep";
-import ProductContentStep from "./product-content";
-import ProductPricingStep from "./product-pricing";
+import ProductContentStep from "./product-content/ProductContent";
+import ProductPricingStep from "./product-pricing/ProductPricing";
 import ProductSettingsStep from "./product-settings";
+
+import { useCreateProductRecoilStates } from "../../../../recoil";
 
 const stepConfigs = [
   {
@@ -54,10 +56,13 @@ const stepConfigs = [
 ];
 
 export default function UpdateProduct() {
+  const { basicInfo, productInfo } = useCreateProductRecoilStates();
   const [stepIndex, setStepIndex] = useState(0);
   const [stepErrors, setStepErrors] = useState(
     Array.from({ length: stepConfigs.length }, () => true)
   );
+
+  // console.log(basicInfo, productInfo);
 
   const router = useRouter();
 

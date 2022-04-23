@@ -26,8 +26,6 @@ const BasicProductStep = ({ ...props }) => {
     product,
   } = props;
 
-  let handleNext;
-
   const { methods, setValues } = useProductBasics({
     stepIndex,
     stepErrors,
@@ -39,11 +37,6 @@ const BasicProductStep = ({ ...props }) => {
     register,
     formState: { errors },
   } = methods;
-
-  const handleSave = async (values) => {
-    setCreateProduct(values);
-    handleNext();
-  };
 
   // const getBase64StringFromDataURL = (dataURL) =>
   //   dataURL.replace("data:", "").replace(/^.+,/, "");
@@ -222,14 +215,9 @@ const BasicProductStep = ({ ...props }) => {
               id="product_url"
               placeholder="ukpejacob.cabiza.com/p/aireu2"
               className="border border-solid border-sky_light p-4 rounded-lg mt-2 outline-none"
-              {...register("url", { required: true, disabled: true })}
+              disabled={true}
               defaultValue={`${product?.user.username}.cabiza.com/products/${product?.product_id}`}
             />
-            {errors.url?.type === "required" && (
-              <p className="text-left text-red-600 text-xs mt-1">
-                Product url is required
-              </p>
-            )}
           </div>
 
           <div className="flex flex-col mt-6">
