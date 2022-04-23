@@ -127,7 +127,7 @@ export default function UpdateProduct() {
     <div>
       <Tab.Group>
         <FullNav title='Products'>
-          <div className='md:px-0 pt-5'>
+          <div className='md:px-0 pt-3'>
             <div className='flex justify-between items-center md:w-43/50 mx-auto mt-[.5rem]'>
               <Tab.List as={'div'} className='flex items-center'>
                 <Tab
