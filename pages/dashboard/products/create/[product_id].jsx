@@ -12,7 +12,7 @@ import ProductInfo from "./product-info/ProductInfoStep";
 import ProductContent from "./product-content/ProductContent";
 import ProductPricing from "./product-pricing/ProductPricing";
 import ProductSettings from "./product-settings";
-import DashboardNav from "@/components/Navbars/DashboardNav";
+import FullNav from "@/components/Navbars/DashboardNav/FullNav";
 import { Tab } from "@headlessui/react";
 import BasicProductStep from "./create-product-basics/CreateProductBasics";
 import ProductInfoStep from "./product-info/ProductInfoStep";
@@ -126,7 +126,7 @@ export default function UpdateProduct() {
   return (
     <div>
       <Tab.Group>
-        <DashboardNav title='Products' />
+        <FullNav title='Products'>
         <div
           className='bg-secondary_sky_lightest py-6 md:px-0 px-4'
           style={{ boxShadow: '0px 4px 20px rgba(0, 0, 0, 0.04)' }}
@@ -206,6 +206,7 @@ export default function UpdateProduct() {
             </div>
           </div>
         </div>
+        </FullNav>
 
         <div className="md:w-43/50 mx-auto text-left sm:py-12 sm:px-7 p-4 my-8 bg-white shadow rounded-3xl">
           <div className="step-component">
