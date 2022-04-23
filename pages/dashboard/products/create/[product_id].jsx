@@ -6,18 +6,13 @@ import { API_URL } from "@/config/index";
 import Dashboard from "@/layouts/Dashboard";
 import { classNames } from "@/libs/helper";
 
-import CreateProduct from "./create-product-basics/CreateProductBasics";
-import ProductInfo from "./product-info/ProductInfoStep";
-import ProductContent from "./product-content/ProductContent";
-import ProductPricing from "./product-pricing/ProductPricing";
-import ProductSettings from "./product-settings";
 import FullNav from "@/components/Navbars/DashboardNav/FullNav";
 import { Tab } from "@headlessui/react";
 import BasicProductStep from "./create-product-basics/CreateProductBasics";
 import ProductInfoStep from "./product-info/ProductInfoStep";
 import ProductContentStep from "./product-content/ProductContent";
 import ProductPricingStep from "./product-pricing/ProductPricing";
-import ProductSettingsStep from "./product-settings";
+import ProductSettingsStep from "./product-settings/ProductSettings";
 
 import { useCreateProductRecoilStates } from "../../../../recoil";
 
@@ -75,7 +70,6 @@ export default function UpdateProduct() {
 
   const onClickConfirmButton = () => {
     console.log("here");
-    router.push(`/users/${id}/confirm`);
   };
 
   const [loading, setLoading] = useState(false);

@@ -15,8 +15,6 @@ export default function EditProductStepView({
   const isFirstStep = stepIndex === 0;
   const isLastStep = stepIndex === stepTitles.length - 1;
 
-  console.log(stepErrors);
-
   const ConfirmButton = () => (
     <button
       type="submit"
@@ -48,13 +46,40 @@ export default function EditProductStepView({
   return (
     <div>
       <div className="flex justify-between items-center">
-        <h1 className="text-4xl font-semibold text-secondary_ink_dark">
-          {stepTitles[stepIndex]}
-        </h1>
+        <div className="flex items-center bg-secondary_sky_lighter rounded-lg p-1">
+          <button
+            className={
+              "px-2 rounded " +
+              (isFirstStep
+                ? " bg-primary_brand_lighter text-primary"
+                : "bg-primary text-white")
+            }
+            disabled={isFirstStep}
+            onClick={onClickPrevious}
+          >
+            {"<"}
+          </button>
+          <span className="mx-2 text-primary_brand_lighter">|</span>
+          <button
+            className={
+              "px-2 rounded " +
+              (isLastStep
+                ? " bg-primary_brand_lighter text-primary"
+                : " bg-primary text-white")
+            }
+            disabled={isLastStep}
+            onClick={onClickNext}
+          >
+            {">"}
+          </button>
+        </div>
         <span className="text-lg font-medium text-primary_brand_light">
-          Step:{stepIndex + 2} of 6
+          Step: {stepIndex + 2} of 6
         </span>
       </div>
+      <h1 className="text-4xl font-semibold text-secondary_ink_dark mt-8">
+        {stepTitles[stepIndex]}
+      </h1>
       {children}
 
       <Pagination
@@ -63,6 +88,8 @@ export default function EditProductStepView({
         onClickPrevious={onClickPrevious}
         onClickNext={onClickNext}
         lastButton={<ConfirmButton />}
+        onClickConfirmButton={onClickConfirmButton}
+        stepErrors={stepErrors}
       />
     </div>
   );

@@ -1,9 +1,10 @@
 /* eslint-disable react/no-unknown-property */
-import React from "react";
+import React, { useContext } from "react";
 import Link from "next/link";
 import QRCode from "react-qr-code";
 import CopyToClipboard from "react-copy-to-clipboard";
 import toast from "react-hot-toast";
+import AuthContext from "@/context/AuthContext";
 
 const LeftIcon = () => (
   <svg
@@ -81,6 +82,8 @@ const InstagramIcon = () => (
 );
 
 const Share = () => {
+  const { user } = useContext(AuthContext);
+
   return (
     <div className="bg-white rounded-2xl p-12 px-3 md:w-43/50 mx-auto mt-10 shadow mb-12">
       <div className="text-center relative">
@@ -95,7 +98,7 @@ const Share = () => {
 
           <div className="mt-6 flex mx-auto w-[max-content]">
             <CopyToClipboard
-              text={"here"}
+              text={`https://${user.username}.cabiza.com`}
               onCopy={() =>
                 toast.custom(
                   <div className="rounded-lg py-4 px-8 bg-[#24C78C] flex items-center">
