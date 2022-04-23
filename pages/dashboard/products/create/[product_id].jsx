@@ -170,7 +170,7 @@ export default function UpdateProduct() {
               </Tab>
             </Tab.List>
 
-            <div className='flex items-center justify-between'>
+            <div className="flex items-center justify-between mt-[-.5rem]">
               <a className='leading-4 text-base font-medium text-primary py-2 px-3 rounded-4xl border border-primary mr-6 flex items-center'>
                 <span className=''>Save changes</span>
               </a>
