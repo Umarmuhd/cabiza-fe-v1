@@ -127,10 +127,6 @@ export default function UpdateProduct() {
     <div>
       <Tab.Group>
         <FullNav title='Products'>
-        <div
-          className='bg-secondary_sky_lightest py-6 md:px-0 px-4'
-          style={{ boxShadow: '0px 4px 20px rgba(0, 0, 0, 0.04)' }}
-        >
           <div className='flex justify-between items-center md:w-43/50 mx-auto'>
             <Tab.List as={'div'} className='flex items-center'>
               <Tab
@@ -205,7 +201,6 @@ export default function UpdateProduct() {
               </button>
             </div>
           </div>
-        </div>
         </FullNav>
 
         <div className="md:w-43/50 mx-auto text-left sm:py-12 sm:px-7 p-4 my-8 bg-white shadow rounded-3xl">
