@@ -78,7 +78,7 @@ const ProductItem = ({ product }) => (
         <img
           src={product.user.profile_picture}
           alt='...'
-          className='h-9 w-9 rounded-full'
+          className='h-9 w-9 rounded-full object-cover'
         />
 
         <Link href={`/${product.user.username}/products`}>
