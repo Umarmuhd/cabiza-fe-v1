@@ -202,11 +202,6 @@ export default function UpdateProduct() {
           </div>
         </div>
 
-<<<<<<< HEAD
-        <div className='md:w-43/50 mx-auto text-left sm:py-12 sm:px-7 p-4 my-8 bg-white shadow rounded-3xl'>
-          <div className='step-component'>
-            {!loading && product && <ActiveComponent />}
-=======
         <div className="md:w-43/50 mx-auto text-left sm:py-12 sm:px-7 p-4 my-8 bg-white shadow rounded-3xl">
           <div className="step-component">
             {!loading &&
@@ -222,7 +217,6 @@ export default function UpdateProduct() {
                 onClickConfirmButton,
                 product,
               })}
->>>>>>> 55f88d01ce40b80070336b190950c0f30a142cde
           </div>
         </div>
       </Tab.Group>
