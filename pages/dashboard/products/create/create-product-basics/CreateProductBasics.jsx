@@ -120,14 +120,13 @@ const BasicProductStep = ({ ...props }) => {
             >
               Description
             </label>
-            <div className="border border-solid border-sky_light py-4 rounded-lg mt-2 outline-none">
               <TextFormat /> 
               <input
                 type="text"
                 name="product_desc"
                 id="product_desc"
                 placeholder="Product Description"
-                className="px-4 py-3 pd-12 h-[5rem] w-[100%] outline-none"
+                className="px-4 py-3 pd-12 h-[5rem] w-[100%] outline-none border-b border-b-solid border-sky_light rounded-lg mt-2"
                 {...register("description", { required: true })}
                 defaultValue={product?.description}
               />
@@ -137,7 +136,6 @@ const BasicProductStep = ({ ...props }) => {
                 </p>
               )}
             </div>
-          </div>
 
           <div className="flex flex-col mt-6">
             <label
