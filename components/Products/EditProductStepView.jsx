@@ -2,14 +2,20 @@ import React from "react";
 import Pagination from "./Pagination";
 
 export default function EditProductStepView({
-  children,
-  onClickNext,
   stepIndex,
+  setStepIndex,
   stepTitles,
+  stepErrors,
   onClickPrevious,
+  onClickNext,
+  onClickMenuItem,
+  onClickConfirmButton,
+  children,
 }) {
   const isFirstStep = stepIndex === 0;
   const isLastStep = stepIndex === stepTitles.length - 1;
+
+  console.log(stepErrors);
 
   const ConfirmButton = () => (
     <button
