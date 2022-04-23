@@ -22,7 +22,10 @@ export const useProductInfo = ({
 
   const methods = useForm({
     mode: "onBlur",
-    defaultValues: productInfo ? productInfo : { call_to_action, summary },
+    defaultValues:
+      productInfo.call_to_action && productInfo.summary
+        ? productInfo
+        : { call_to_action, summary },
     resolver: yupResolver(schema),
   });
 
