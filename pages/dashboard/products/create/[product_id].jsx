@@ -7,97 +7,76 @@ import { API_URL } from "@/config/index";
 import Dashboard from "@/layouts/Dashboard";
 import { classNames } from "@/libs/helper";
 
-import CreateProduct from "./create-product";
-import ProductInfo from "./product-info";
+import CreateProduct from "./create-product-basics/CreateProductBasics";
+import ProductInfo from "./product-info/ProductInfoStep";
 import ProductContent from "./product-content";
 import ProductPricing from "./product-pricing";
 import ProductSettings from "./product-settings";
 import DashboardNav from "@/components/Navbars/DashboardNav";
 import { Tab } from "@headlessui/react";
+import BasicProductStep from "./create-product-basics/CreateProductBasics";
+import ProductInfoStep from "./product-info/ProductInfoStep";
+import ProductContentStep from "./product-content";
+import ProductPricingStep from "./product-pricing";
+import ProductSettingsStep from "./product-settings";
 
-let progressInterval = null;
+const stepConfigs = [
+  {
+    title: "Create your product",
+    render: (props) => {
+      return <BasicProductStep {...props} />;
+    },
+  },
+  {
+    title: "Product Information",
+    render: (props) => {
+      return <ProductInfoStep {...props} />;
+    },
+  },
+  {
+    title: "Product Content",
+    render: (props) => {
+      return <ProductContentStep {...props} />;
+    },
+  },
+  {
+    title: "Product Pricing",
+    render: (props) => {
+      return <ProductPricingStep {...props} />;
+    },
+  },
+  {
+    title: "Product Settings",
+    render: (props) => {
+      return <ProductSettingsStep {...props} />;
+    },
+  },
+];
 
 export default function UpdateProduct() {
-  const [loading, setLoading] = useState(false);
-  const [product, setProduct] = useState(null);
-
-  const [createProduct, setCreateProduct] = useState(null);
-  const [productContent, setProductContent] = useState(null);
-  const [productInfo, setProductInfo] = useState(null);
-  const [productPrice, setProductPrice] = useState(null);
-  const [productSettings, setProductSettings] = useState(null);
+  const [stepIndex, setStepIndex] = useState(0);
+  const [stepErrors, setStepErrors] = useState(
+    Array.from({ length: stepConfigs.length }, () => true)
+  );
 
   const router = useRouter();
 
-  const productId = router.query.product_id;
-
-  const [steps, setSteps] = useState([
-    {
-      key: "firstStep",
-      id: 1,
-      label: "My First Step",
-      isDone: true,
-      component: CreateProduct,
-    },
-    {
-      key: "secondStep",
-      id: 2,
-      label: "My Second Step",
-      isDone: false,
-      component: ProductInfo,
-    },
-    {
-      key: "thirdStep",
-      id: 3,
-      label: "My Third Step",
-      isDone: false,
-      component: ProductContent,
-    },
-    {
-      key: "fourthStep",
-      id: 4,
-      label: "My Fourth Step",
-      isDone: false,
-      component: ProductPricing,
-    },
-    {
-      key: "finalStep",
-      id: 5,
-      label: "My Final Step",
-      isDone: false,
-      component: ProductSettings,
-    },
-  ]);
-
-  const [progress, setProgress] = useState(0);
-
-  const [activeStep, setActiveStep] = useState(steps[0]);
-
-  const handleNext = () => {
-    if (steps[steps.length - 1].key === activeStep.key) {
-      alert("You have completed all steps.");
-      return;
-    }
-
-    const index = steps.findIndex((x) => x.key === activeStep.key);
-    setSteps((prevStep) =>
-      prevStep.map((x) => {
-        if (x.key === activeStep.key) x.isDone = true;
-        return x;
-      })
-    );
-    setActiveStep(steps[index + 1]);
+  const backward = () => {
+    setStepIndex(stepIndex - 1);
   };
 
-  useEffect(() => {
-    progressInterval = setProgress((activeStep.id / steps.length) * 100);
-  }, [activeStep, steps]);
+  const forward = () => {
+    setStepIndex(stepIndex + 1);
+  };
 
-  useEffect(() => {
-    if (progress >= 100) {
-      clearInterval(progressInterval);
-    }
-  }, [progress]);
+  const onClickConfirmButton = () => {
+    router.push(`/users/${id}/confirm`);
+  };
+
+  const [loading, setLoading] = useState(false);
+  const [product, setProduct] = useState(null);
+
+  const productId = router.query.product_id;
 
   useEffect(() => {
     const fetchProduct = async () => {
@@ -107,23 +86,6 @@ export default function UpdateProduct() {
         const { data } = await axios.get(uri);
         setProduct(data.data.product);
 
-        const {
-          name,
-          description,
-          url,
-          thumbnail,
-          cover_image,
-          call_to_action,
-          summary,
-          file,
-          price,
-        } = data.data.product;
-
-        setCreateProduct({ name, description, thumbnail, cover_image });
-        setProductInfo({ call_to_action, summary });
-        setProductContent({ file, url });
-        setProductPrice({ price });
-        setProductSettings({});
         setLoading(false);
       } catch (error) {
         console.error(error.message);
@@ -134,25 +96,8 @@ export default function UpdateProduct() {
     fetchProduct();
   }, [productId]);
 
-  const ActiveComponent = () =>
-    activeStep.component({
-      product,
-      handleNext,
-      createProduct,
-      setCreateProduct,
-      productContent,
-      setProductContent,
-      productInfo,
-      setProductInfo,
-      productPrice,
-      setProductPrice,
-      productSettings,
-      setProductSettings,
-    });
-
   const handleSubmitting = async () => {
     try {
-      const { name, description, thumbnail, cover_image } = createProduct;
       setLoading(true);
 
       //   const form_data = new FormData();
@@ -172,8 +117,6 @@ export default function UpdateProduct() {
       setLoading(false);
     }
   };
-
-  console.log(product);
 
   return (
     <div>
@@ -259,9 +202,27 @@ export default function UpdateProduct() {
           </div>
         </div>
 
+<<<<<<< HEAD
         <div className='md:w-43/50 mx-auto text-left sm:py-12 sm:px-7 p-4 my-8 bg-white shadow rounded-3xl'>
           <div className='step-component'>
             {!loading && product && <ActiveComponent />}
+=======
+        <div className="md:w-43/50 mx-auto text-left sm:py-12 sm:px-7 p-4 my-8 bg-white shadow rounded-3xl">
+          <div className="step-component">
+            {!loading &&
+              product &&
+              stepConfigs[stepIndex].render({
+                stepIndex,
+                setStepIndex,
+                stepTitles: stepConfigs.map((config) => config.title),
+                stepErrors,
+                setStepErrors,
+                onClickPrevious: backward,
+                onClickNext: forward,
+                onClickConfirmButton,
+                product,
+              })}
+>>>>>>> 55f88d01ce40b80070336b190950c0f30a142cde
           </div>
         </div>
       </Tab.Group>

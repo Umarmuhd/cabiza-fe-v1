@@ -1,7 +1,7 @@
 import React, { useState, useRef } from "react";
 import Toggle from "@/components/Toggle/Toggle";
 
-const ProductSettings = ({
+const ProductSettingsStep = ({
   product,
   handleNext,
   productSettings,
@@ -322,4 +322,4 @@ const ProductSettings = ({
   );
 };
 
-export default ProductSettings;
+export default ProductSettingsStep;

@@ -2,7 +2,7 @@ import React, { useRef, useState } from "react";
 import Toggle from "@/components/Toggle/Toggle";
 import axios from "axios";
 
-export default function ProductPricing({
+export default function ProductPricingStep({
   product,
   handleNext,
   productPrice,

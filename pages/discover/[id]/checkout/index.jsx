@@ -78,6 +78,7 @@ const PaymentPage = () => {
     register,
     handleSubmit,
     formState: { errors },
+    getValues,
   } = useForm();
 
   const [loading, setLoading] = useState(false);
@@ -120,6 +121,72 @@ const PaymentPage = () => {
     }
   }, [product]);
 
+  const processPayment = (productId, paymentData) => {
+    return axios
+      .post(`${API_URL}/products/braintree/payment/${productId}`, paymentData)
+      .then((response) => {
+        return response.data;
+      })
+      .catch((err) => console.log(err));
+  };
+
+  const createOrder = (orderData) => {
+    return axios
+      .post(`${API_URL}/orders/order/new`, orderData)
+      .then((response) => {
+        return response.data;
+      })
+      .catch((err) => console.log(err));
+  };
+
+  const buy = () => {
+    setLoading(true);
+    let nonce;
+    let getNonce = data.instance
+      .requestPaymentMethod()
+      .then((data) => {
+        console.log(data);
+        nonce = data.nonce;
+
+        const paymentData = {
+          paymentMethodNonce: nonce,
+          amount: product.data.product.price,
+        };
+
+        processPayment(product.data.product.product_id, paymentData)
+          .then((response) => {
+            console.log(response);
+            const { name, email, discount_code } = getValues();
+
+            const orderData = {
+              product_id: product.data.product.product_id,
+              transaction_id: response.transaction.id,
+              amount: response.transaction.amount,
+              payment_method: "braintree",
+              user: { name, email, discount_code },
+            };
+
+            createOrder(orderData)
+              .then((response) => {
+                console.log(response);
+                setData({ loading: false, success: true });
+              })
+              .catch((error) => {
+                console.error(error.message);
+                setData({ loading: false });
+              });
+          })
+          .catch((error) => {
+            console.log(error);
+            setData({ loading: false });
+          });
+      })
+      .catch((error) => {
+        console.error(error.message);
+        setData({ ...data, error: error.message });
+      });
+  };
+
   const showDropIn = () => (
     <div onBlur={() => setData({ ...data, error: "" })}>
       {data.clientToken !== null && product ? (
@@ -135,7 +202,7 @@ const PaymentPage = () => {
           />
           <button
             className="mb-8 md:mb-0 bg-primary rounded-lg text-white w-full p-4 text-center mt-6"
-            onClick={() => {}}
+            onClick={buy}
           >
             Pay now
           </button>
