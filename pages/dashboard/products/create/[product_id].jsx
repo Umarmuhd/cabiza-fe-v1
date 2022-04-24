@@ -1,24 +1,18 @@
 import React, { useState, useEffect } from "react";
 import { useRouter } from "next/router";
 import axios from "axios";
-import Link from "next/link";
 import { API_URL } from "@/config/index";
 
 import Dashboard from "@/layouts/Dashboard";
 import { classNames } from "@/libs/helper";
 
-import CreateProduct from "./create-product-basics/CreateProductBasics";
-import ProductInfo from "./product-info/ProductInfoStep";
-import ProductContent from "./product-content/ProductContent";
-import ProductPricing from "./product-pricing/ProductPricing";
-import ProductSettings from "./product-settings";
 import FullNav from "@/components/Navbars/DashboardNav/FullNav";
 import { Tab } from "@headlessui/react";
 import BasicProductStep from "./create-product-basics/CreateProductBasics";
 import ProductInfoStep from "./product-info/ProductInfoStep";
 import ProductContentStep from "./product-content/ProductContent";
 import ProductPricingStep from "./product-pricing/ProductPricing";
-import ProductSettingsStep from "./product-settings";
+import ProductSettingsStep from "./product-settings/ProductSettings";
 
 import { useCreateProductRecoilStates } from "../../../../recoil";
 
@@ -56,13 +50,13 @@ const stepConfigs = [
 ];
 
 export default function UpdateProduct() {
-  const { basicInfo, productInfo } = useCreateProductRecoilStates();
+  const { basicInfo, productInfo, productContent, productPricing } =
+    useCreateProductRecoilStates();
+
   const [stepIndex, setStepIndex] = useState(0);
   const [stepErrors, setStepErrors] = useState(
     Array.from({ length: stepConfigs.length }, () => true)
   );
-
-  // console.log(basicInfo, productInfo);
 
   const router = useRouter();
 
@@ -75,7 +69,7 @@ export default function UpdateProduct() {
   };
 
   const onClickConfirmButton = () => {
-    router.push(`/users/${id}/confirm`);
+    console.log("here");
   };
 
   const [loading, setLoading] = useState(false);
@@ -126,12 +120,12 @@ export default function UpdateProduct() {
   return (
     <div>
       <Tab.Group>
-        <FullNav title='Products'>
-          <div className='md:px-0'>
-            <div className='flex justify-between items-center md:w-43/50 mx-auto mt-[.5rem]'>
-              <Tab.List as={'div'} className='flex items-center'>
+        <FullNav title="Products">
+          <div className="md:px-0">
+            <div className="flex justify-between items-center md:w-43/50 mx-auto mt-[.5rem]">
+              <Tab.List as={"div"} className="flex items-center">
                 <Tab
-                  as={'button'}
+                  as={"button"}
                   className={({ selected }) =>
                     classNames(
                       "text-md mr-10 pb-2 font-medium",
@@ -144,7 +138,7 @@ export default function UpdateProduct() {
                   Product
                 </Tab>
                 <Tab
-                  as={'button'}
+                  as={"button"}
                   className={({ selected }) =>
                     classNames(
                       "text-md mr-10 pb-2 font-medium",
@@ -157,7 +151,7 @@ export default function UpdateProduct() {
                   Checkout
                 </Tab>
                 <Tab
-                  as={'button'}
+                  as={"button"}
                   className={({ selected }) =>
                     classNames(
                       "text-md mr-10 pb-2 font-medium",
@@ -172,31 +166,31 @@ export default function UpdateProduct() {
               </Tab.List>
 
               <div className="flex items-center justify-between mt-[-.5rem]">
-                <a className='leading-4 text-base font-medium text-primary py-2 px-3 rounded-4xl border border-primary mr-6 flex items-center'>
-                  <span className=''>Save changes</span>
+                <a className="leading-4 text-base font-medium text-primary py-2 px-3 rounded-4xl border border-primary mr-6 flex items-center">
+                  <span className="">Save changes</span>
                 </a>
 
                 <button
-                  className='leading-4 text-base font-medium bg-transparent py-2 px-3 rounded-4xl border text-primary bg-primary flex items-center'
-                  type='submit'
-                  form='post-form'
+                  className="leading-4 text-base font-medium bg-transparent py-2 px-3 rounded-4xl border text-primary bg-primary flex items-center"
+                  type="submit"
+                  form="post-form"
                   disabled={loading}
                 >
-                  <span className='mr-2'>Publish</span>
+                  <span className="mr-2">Publish</span>
                   <svg
-                    width='14'
-                    height='7'
-                    viewBox='0 0 14 7'
-                    fill='none'
-                    xmlns='http://www.w3.org/2000/svg'
+                    width="14"
+                    height="7"
+                    viewBox="0 0 14 7"
+                    fill="none"
+                    xmlns="http://www.w3.org/2000/svg"
                   >
                     <path
-                      d='M12.28 0.966553L7.9333 5.31322C7.41997 5.82655 6.57997 5.82655 6.06664 5.31322L1.71997 0.966553'
-                      stroke='#5B44E9'
-                      strokeWidth='1.5'
-                      strokeMiterlimit='10'
-                      strokeLinecap='round'
-                      strokeLinejoin='round'
+                      d="M12.28 0.966553L7.9333 5.31322C7.41997 5.82655 6.57997 5.82655 6.06664 5.31322L1.71997 0.966553"
+                      stroke="#5B44E9"
+                      strokeWidth="1.5"
+                      strokeMiterlimit="10"
+                      strokeLinecap="round"
+                      strokeLinejoin="round"
                     />
                   </svg>
                 </button>
@@ -207,8 +201,7 @@ export default function UpdateProduct() {
 
         <div className="md:w-43/50 mx-auto text-left sm:py-12 sm:px-7 p-4 my-8 bg-white shadow rounded-3xl">
           <div className="step-component">
-            {!loading &&
-              product &&
+            {product &&
               stepConfigs[stepIndex].render({
                 stepIndex,
                 setStepIndex,
