@@ -24,9 +24,9 @@ const schema = yup.object().shape({
     }),
   cover_image: yup
     .mixed()
-    .test("required", "You need to provide a file", (value) => {
-      return value && value.length;
-    })
+    // .test("required", "You need to provide a file", (value) => {
+    //   return value && value.length;
+    // })
     .test("fileSize", "The file is too large", (value, context) => {
       return value && value[0] && value[0].size <= 2000000;
     })
@@ -59,7 +59,6 @@ export const useProductBasics = ({
 
   const setValues = () => {
     const values = methods.getValues();
-
     setBasicInfo(values);
   };
 

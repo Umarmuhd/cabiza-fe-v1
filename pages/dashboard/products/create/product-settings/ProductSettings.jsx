@@ -1,7 +1,7 @@
 import React, { useState, useRef } from "react";
 import EditProductStepView from "@/components/Products/EditProductStepView";
 import Toggle from "@/components/Toggle/Toggle";
-import { useProductPricing } from "@/libs/Hooks/useProductPricing";
+import { useProductSettings } from "@/libs/Hooks/useProductSettings";
 
 const ProductSettingsStep = ({ ...props }) => {
   const {
@@ -14,7 +14,7 @@ const ProductSettingsStep = ({ ...props }) => {
     product,
   } = props;
 
-  const { methods, setValues } = useProductPricing({
+  const { methods, setValues } = useProductSettings({
     stepIndex,
     stepErrors,
     setStepErrors,
