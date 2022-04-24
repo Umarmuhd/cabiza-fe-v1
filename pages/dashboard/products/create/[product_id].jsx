@@ -15,6 +15,7 @@ import ProductPricingStep from "./product-pricing/ProductPricing";
 import ProductSettingsStep from "./product-settings/ProductSettings";
 
 import { useCreateProductRecoilStates } from "../../../../recoil";
+import toast from "react-hot-toast";
 
 const stepConfigs = [
   {
@@ -75,6 +76,8 @@ export default function UpdateProduct() {
   const [loading, setLoading] = useState(false);
   const [product, setProduct] = useState(null);
 
+  const [published, setPublished] = useState(false);
+
   const productId = router.query.product_id;
 
   useEffect(() => {
@@ -84,6 +87,7 @@ export default function UpdateProduct() {
         const uri = `${API_URL}/products/product/${productId}`;
         const { data } = await axios.get(uri);
         setProduct(data.data.product);
+        setPublished(data.data.product.published);
 
         setLoading(false);
       } catch (error) {
@@ -113,6 +117,21 @@ export default function UpdateProduct() {
       setLoading(false);
     } catch (error) {
       console.error(error.message);
+      setLoading(false);
+    }
+  };
+
+  const handlePublish = async () => {
+    try {
+      setLoading(true);
+      const url = `${API_URL}/products/publishing/${product._id}`;
+      const response = await axios.put(url);
+      setLoading(false);
+      toast.success(response.data.message);
+      setPublished(response.data.data.product.published);
+    } catch (error) {
+      console.log(error);
+      toast.error(error.response.data.message);
       setLoading(false);
     }
   };
@@ -175,8 +194,11 @@ export default function UpdateProduct() {
                   type="submit"
                   form="post-form"
                   disabled={loading}
+                  onClick={handlePublish}
                 >
-                  <span className="mr-2">Publish</span>
+                  <span className="mr-2">
+                    {published ? "UnPublish" : "Publish"}
+                  </span>
                   <svg
                     width="14"
                     height="7"

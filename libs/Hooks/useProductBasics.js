@@ -47,13 +47,15 @@ export const useProductBasics = ({
 }) => {
   const { basicInfo, setBasicInfo } = useCreateProductRecoilStates();
 
+  console.log(product);
+
   const { name, description, thumbnail, cover_image } = product;
 
   const methods = useForm({
     mode: "onBlur",
     defaultValues: basicInfo.name
       ? basicInfo
-      : { name, description, thumbnail, cover_image },
+      : { name, description, thumbnail: thumbnail ?? null, cover_image },
     resolver: yupResolver(schema),
   });
 

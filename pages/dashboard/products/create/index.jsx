@@ -42,7 +42,7 @@ export default function Create() {
 
       setLoading(false);
 
-      router.push("/dashboard/products/create/" + data.data.product._id);
+      router.push("/dashboard/products/create/" + data.data.product.product_id);
     } catch (error) {
       console.error(error.message);
       setLoading(false);

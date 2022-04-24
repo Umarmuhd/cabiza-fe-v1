@@ -28,6 +28,8 @@ const BasicProductStep = ({ ...props }) => {
     formState: { errors },
   } = methods;
 
+  console.log(methods.getValues());
+
   return (
     <React.Fragment>
       <EditProductStepView
@@ -128,9 +130,10 @@ const BasicProductStep = ({ ...props }) => {
                 className="mt-2"
                 src={
                   methods.getValues().thumbnail ??
-                  (watch("thumbnail") !== undefined
-                    ? window?.URL?.createObjectURL(watch("thumbnail")[0])
-                    : "/images/thumbnail.png")
+                  // (watch("thumbnail") !== undefined
+                  //   ? window?.URL?.createObjectURL(watch("thumbnail")[0])
+                  //   : "/images/thumbnail.png")
+                  "/images/thumbnail.png"
                 }
                 alt="..."
                 width={160}
