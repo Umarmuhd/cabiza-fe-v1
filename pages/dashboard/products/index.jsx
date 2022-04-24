@@ -13,7 +13,7 @@ import AuthContext from '@/context/AuthContext';
 import axios from 'axios';
 import FullNav from '@/components/Navbars/DashboardNav/FullNav';
 
-const Products = ({}) => {
+const Products = ({ }) => {
   const [products, setProducts] = useState([]);
   const [loading, setLoading] = useState(false);
 
@@ -73,6 +73,25 @@ const Products = ({}) => {
     </svg>
   );
 
+  const PlusSmIcon = () => (
+    <svg
+      width="24"
+      height="24"
+      viewBox="0 0 24 24"
+      fill="none"
+      xmlns="http://www.w3.org/2000/svg"
+    >
+      <path
+        d="M18 12.75H6C5.59 12.75 5.25 12.41 5.25 12C5.25 11.59 5.59 11.25 6 11.25H18C18.41 11.25 18.75 11.59 18.75 12C18.75 12.41 18.41 12.75 18 12.75Z"
+        fill="white"
+      />
+      <path
+        d="M12 18.75C11.59 18.75 11.25 18.41 11.25 18V6C11.25 5.59 11.59 5.25 12 5.25C12.41 5.25 12.75 5.59 12.75 6V18C12.75 18.41 12.41 18.75 12 18.75Z"
+        fill="white"
+      />
+    </svg>
+  );
+
   useEffect(() => fetchBalance(), []);
 
   return (
@@ -109,18 +128,19 @@ const Products = ({}) => {
               </Tab>
             </Tab.List>
 
-            <div className='flex flex-row-reverse items-center justify-between mt-[-.5rem]'>
-              <button className='flex items-center justify-center bg-primary_brand_lightest hover:bg-slate-200 transition duration-150 p-3 rounded-full peer'>
-                <SearchIcon />
-              </button>
-              <input
-                type='search'
-                className='border border-grey_80 px-4 h-10 placeholder-grey_80 text-grey_40 bg-white shadow-sm focus:outline-none w-full rounded-[100px] scale-x-0 origin-top-right mr-2 peer-focus:scale-x-100 focus:scale-x-100'
-                style={{ transition: 'all 0.15s ease 0s' }}
-                id='search'
-                placeholder='Search...'
-              />
-              {/* <div className='flex rounded-[100px] shadow-sm mr-6'>
+            <div className="flex ml-auto items-center">
+              <div className='flex flex-row-reverse items-center justify-between mr-4'>
+                <button className='flex items-center justify-center bg-primary_brand_lightest hover:bg-slate-200 transition duration-150 p-3 rounded-full peer'>
+                  <SearchIcon />
+                </button>
+                <input
+                  type='search'
+                  className='border border-grey_80 px-4 h-10 placeholder-grey_80 text-grey_40 bg-white shadow-sm focus:outline-none w-full rounded-[100px] scale-x-0 origin-top-right mr-2 peer-focus:scale-x-100 focus:scale-x-100'
+                  style={{ transition: 'all 0.15s ease 0s' }}
+                  id='search'
+                  placeholder='Search...'
+                />
+                {/* <div className='flex rounded-[100px] shadow-sm mr-6'>
                 <input
                   type='text'
                   className='border border-r-0 border-grey_80 px-4 py-2 placeholder-grey_80 text-grey_40 bg-white shadow-sm focus:outline-none w-full rounded-l-[100px]'
@@ -139,6 +159,12 @@ const Products = ({}) => {
                   <PlusIcon /> <span className='ml-2'>New Product </span>
                 </a>
               </Link> */}
+              </div>
+              <Link href='/dashboard/products/create'>
+                <a className='py-2 pl-4 pr-12 bg-primary flex items-center font-medium text-white rounded-[48px] just'>
+                  <PlusSmIcon /> <span className='ml-2'>New Product </span>
+                </a>
+              </Link>
             </div>
           </div>
         </FullNav>
