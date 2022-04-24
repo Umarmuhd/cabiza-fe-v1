@@ -78,10 +78,10 @@ const PaymentPage = () => {
     register,
     handleSubmit,
     formState: { errors },
-    getValues,
   } = useForm();
 
   const [loading, setLoading] = useState(false);
+  const [paymentProcessed, setPaymentProcessed] = useState(false);
   const [data, setData] = useState({
     success: false,
     clientToken: null,
@@ -136,7 +136,6 @@ const PaymentPage = () => {
   };
 
   const handleCheckout = async (values) => {
-    setLoading(true);
     let nonce;
     let getNonce = data.instance
       .requestPaymentMethod()
@@ -151,7 +150,6 @@ const PaymentPage = () => {
 
         processPayment(product.data.product.product_id, paymentData)
           .then((response) => {
-            console.log(response);
             const { name, email, discount_code } = values;
 
             const orderData = {
@@ -169,6 +167,7 @@ const PaymentPage = () => {
               .then((response) => {
                 console.log(response);
                 setData({ loading: false, success: true });
+                router.replace("/checkout/complete");
               })
               .catch((error) => {
                 console.error(error.message);
@@ -199,12 +198,14 @@ const PaymentPage = () => {
             }}
             onInstance={(instance) => (data.instance = instance)}
           />
-          <button
-            className="mb-8 md:mb-0 bg-primary rounded-lg text-white w-full p-4 text-center mt-6"
-            type="submit"
-          >
-            Pay now
-          </button>
+          {!paymentProcessed && (
+            <button
+              className="mb-8 md:mb-0 bg-primary rounded-lg text-white w-full p-4 text-center mt-6"
+              type="submit"
+            >
+              Pay now
+            </button>
+          )}
         </div>
       ) : null}
     </div>

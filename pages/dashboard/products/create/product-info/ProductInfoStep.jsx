@@ -1,10 +1,7 @@
 import EditProductStepView from "@/components/Products/EditProductStepView";
-import { API_URL } from "@/config/index";
 import { RadioGroup } from "@headlessui/react";
-import axios from "axios";
 import React, { useEffect, useRef, useState } from "react";
-import toast from "react-hot-toast";
-import { useProductInfo } from "../../../../../libs/Hooks/useProductInfo";
+import { useProductInfo } from "@/libs/Hooks/useProductInfo";
 
 export default function ProductInfoStep({ ...props }) {
   const {
@@ -34,7 +31,7 @@ export default function ProductInfoStep({ ...props }) {
   const [CTA, setCTA] = useState(false);
 
   const [selected, setSelected] = useState(
-    product?.call_to_action ?? "I want this"
+    methods.getValues().call_to_action ?? "I want this"
   );
 
   const handleAddDetails = () => {
@@ -52,7 +49,7 @@ export default function ProductInfoStep({ ...props }) {
 
   const handleCustomizeCTA = () => {
     setCTA(true);
-    setSelected("Custom");
+    setSelected(methods.getValues.call_to_action ?? "");
   };
 
   useEffect(() => {
@@ -62,13 +59,8 @@ export default function ProductInfoStep({ ...props }) {
       selected !== "I want this";
 
     setCustom(val);
+    setValue("call_to_action", selected);
   }, [selected]);
-
-  useEffect(() => { }, []);
-
-  const handleSubmit = async (event) => {
-    event.preventDefault();
-  };
 
   return (
     <React.Fragment>
@@ -88,7 +80,7 @@ export default function ProductInfoStep({ ...props }) {
           setValues();
         }}
       >
-        <form className="mt-8" id="form">
+        <form className="mt-8" id="form" onSubmit={(e) => e.preventDefault()}>
           <div className="flex flex-col">
             <label
               htmlFor="product_cta"
@@ -116,8 +108,9 @@ export default function ProductInfoStep({ ...props }) {
                 >
                   {({ active, checked }) => (
                     <span
-                      className={`text-primary ${checked ? "font-medium" : "font-normal"
-                        }`}
+                      className={`text-primary ${
+                        checked ? "font-medium" : "font-normal"
+                      }`}
                     >
                       I want this
                     </span>
@@ -132,8 +125,9 @@ export default function ProductInfoStep({ ...props }) {
                 >
                   {({ active, checked }) => (
                     <span
-                      className={`text-primary ${checked ? "font-medium" : "font-normal"
-                        }`}
+                      className={`text-primary ${
+                        checked ? "font-medium" : "font-normal"
+                      }`}
                     >
                       Buy this
                     </span>
@@ -148,8 +142,9 @@ export default function ProductInfoStep({ ...props }) {
                 >
                   {({ active, checked }) => (
                     <span
-                      className={`text-primary ${checked ? "font-medium" : "font-normal"
-                        }`}
+                      className={`text-primary ${
+                        checked ? "font-medium" : "font-normal"
+                      }`}
                     >
                       Pay
                     </span>
@@ -176,7 +171,6 @@ export default function ProductInfoStep({ ...props }) {
                 className="border border-solid border-sky_light p-4 rounded-lg mt-4 outline-none"
                 value={selected}
                 onChange={(e) => setSelected(e.target.value)}
-                {...register("call_to_action", {})}
               />
             ) : null}
           </div>
@@ -196,6 +190,11 @@ export default function ProductInfoStep({ ...props }) {
               className="border border-solid border-sky_light p-4 rounded-lg mt-2 outline-none"
               {...register("summary", { required: true })}
             />
+            {errors.summary?.type === "required" && (
+              <p className="text-left text-red-600 text-xs mt-1">
+                Product summary is required
+              </p>
+            )}
           </div>
 
           <div className="flex flex-col mt-6">

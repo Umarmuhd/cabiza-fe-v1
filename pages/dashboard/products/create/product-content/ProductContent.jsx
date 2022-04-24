@@ -1,6 +1,6 @@
-import React, { useState } from "react";
+import React from "react";
 import EditProductStepView from "@/components/Products/EditProductStepView";
-import { useProductContent } from "../../../../../libs/Hooks/useProductContent";
+import { useProductContent } from "@/libs/Hooks/useProductContent";
 
 export default function ProductContentStep({ ...props }) {
   const {
@@ -43,7 +43,7 @@ export default function ProductContentStep({ ...props }) {
           setValues();
         }}
       >
-        <form className="mt-8" id="form">
+        <form className="mt-8" id="form" onSubmit={(e) => e.preventDefault()}>
           <div className="flex flex-col">
             <p className="leading-4 font-medium text-secondary_ink_darkest mb-3">
               Files
@@ -54,12 +54,9 @@ export default function ProductContentStep({ ...props }) {
                 name="add_files"
                 id="add_files"
                 className="hidden"
-                {...register("file", {})}
+                {...register("file", { required: true })}
               />
-              <label
-                htmlFor="add_files"
-                className="w-[50%] mx-auto text-center"
-              >
+              <label htmlFor="add_files" className="w-1/2 mx-auto text-center">
                 <h3 className="text-secondary text-base font-medium">
                   {product?.file ??
                     (watch("file") !== undefined
@@ -76,6 +73,11 @@ export default function ProductContentStep({ ...props }) {
                 </button>
               </label>
             </div>
+            {errors.file?.type === "required" && (
+              <p className="text-left text-red-600 text-xs mt-1">
+                Product file is required
+              </p>
+            )}
           </div>
 
           <div className="flex flex-col mt-5">
@@ -92,19 +94,13 @@ export default function ProductContentStep({ ...props }) {
                 id="product_url"
                 placeholder="Redirect URL after purchase"
                 className=" outline-none w-[90%]"
-                {...register("url", { required: true })}
-                defaultValue={product?.url}
+                {...register("url", { required: false })}
                 autoComplete="off"
               />
               <button className="border border-solid border-grey_20 px-4 rounded text-grey_20 py-2">
                 Test
               </button>
             </div>
-            {errors.url?.type === "required" && (
-              <p className="text-left text-red-600 text-xs mt-1">
-                Product url is required
-              </p>
-            )}
           </div>
         </form>
       </EditProductStepView>

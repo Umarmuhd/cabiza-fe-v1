@@ -42,7 +42,7 @@ export default function Create() {
 
       setLoading(false);
 
-      router.push("/dashboard/products/create/" + data.data.product._id);
+      router.push("/dashboard/products/create/" + data.data.product.product_id);
     } catch (error) {
       console.error(error.message);
       setLoading(false);
@@ -358,11 +358,13 @@ export default function Create() {
                   </span>
                   <input
                     type="number"
-                    name="company-website"
-                    id="company-website"
+                    name="price"
+                    id="price"
                     className="flex-1 block w-full rounded-none rounded-r-lg border-sky_light border outline-none pl-4"
                     placeholder=""
                     ref={productPriceRef}
+                    min={0}
+                    autoComplete="off"
                   />
                 </div>
               </div>

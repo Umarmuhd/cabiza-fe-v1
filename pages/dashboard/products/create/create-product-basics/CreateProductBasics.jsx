@@ -1,20 +1,8 @@
-import React, { useEffect, useState } from "react";
-import { GrList } from "react-icons/gr";
-import { BiStrikethrough, BiLinkAlt, BiImage } from "react-icons/bi";
-import { BsCode, BsTypeItalic } from "react-icons/bs";
-import { CgFormatUppercase } from "react-icons/cg";
-import {
-  RiListOrdered,
-  RiDoubleQuotesL,
-  RiArrowGoBackLine,
-  RiUnderline,
-} from "react-icons/ri";
-import { AiOutlineAlignCenter } from "react-icons/ai";
-import { VscBold } from "react-icons/vsc";
+import React from "react";
 import Image from "next/image";
 import EditProductStepView from "@/components/Products/EditProductStepView";
-import { useProductBasics } from "../../../../../libs/Hooks/useProductBasics";
-import TextFormat from '@/components/TextFormat';
+import { useProductBasics } from "@/libs/Hooks/useProductBasics";
+import TextFormat from "@/components/TextFormat";
 
 const BasicProductStep = ({ ...props }) => {
   const {
@@ -35,40 +23,10 @@ const BasicProductStep = ({ ...props }) => {
   });
 
   const {
+    watch,
     register,
     formState: { errors },
   } = methods;
-
-  // const getBase64StringFromDataURL = (dataURL) =>
-  //   dataURL.replace("data:", "").replace(/^.+,/, "");
-
-  // useEffect(async () => {
-  //   if (typeof document !== "undefined") {
-  //     const image = document.getElementById("thumbnail");
-
-  //     // Get the remote image as a Blob with the fetch API
-  //     fetch(image.src, {
-  //       mode: "no-cors", // no-cors, *cors, same-origin
-  //     })
-  //       .then((res) => res.blob())
-  //       .then((blob) => {
-  //         // Read the Blob as DataURL using the FileReader API
-  //         const reader = new FileReader();
-  //         reader.onloadend = () => {
-  //           console.log(reader.result);
-  //           // Logs data:image/jpeg;base64,wL2dvYWwgbW9yZ...
-
-  //           // Convert to Base64 string
-  //           const base64 = getBase64StringFromDataURL(reader.result);
-  //           console.log(base64);
-  //           // Logs wL2dvYWwgbW9yZ...
-  //         };
-  //         reader.readAsDataURL(blob);
-
-  //         console.log(reader);
-  //       });
-  //   }
-  // }, [document]);
 
   return (
     <React.Fragment>
@@ -103,7 +61,6 @@ const BasicProductStep = ({ ...props }) => {
               placeholder="Enter your product name"
               className="border border-solid border-sky_light p-4 rounded-lg mt-2 outline-none"
               {...register("name", { required: true })}
-              defaultValue={product?.name}
               autoComplete="off"
             />
             {errors.name?.type === "required" && (
@@ -120,22 +77,21 @@ const BasicProductStep = ({ ...props }) => {
             >
               Description
             </label>
-              <TextFormat /> 
-              <input
-                type="text"
-                name="product_desc"
-                id="product_desc"
-                placeholder="Product Description"
-                className="px-4 py-3 pd-12 h-[5rem] w-[100%] outline-none border border-solid border-sky_light rounded-b-lg"
-                {...register("description", { required: true })}
-                defaultValue={product?.description}
-              />
-              {errors.description?.type === "required" && (
-                <p className="text-left text-red-600 text-xs mt-1">
-                  Product description is required
-                </p>
-              )}
-            </div>
+            <TextFormat />
+            <input
+              type="text"
+              name="product_desc"
+              id="product_desc"
+              placeholder="Product Description"
+              className="px-4 py-3 pd-12 h-[5rem] w-[100%] outline-none border border-solid border-sky_light rounded-b-lg"
+              {...register("description", { required: true })}
+            />
+            {errors.description?.type === "required" && (
+              <p className="text-left text-red-600 text-xs mt-1">
+                Product description is required
+              </p>
+            )}
+          </div>
 
           <div className="flex flex-col mt-6">
             <label
@@ -165,21 +121,22 @@ const BasicProductStep = ({ ...props }) => {
               name="product_file"
               id="product_file"
               className="hidden"
-              {...register("thumbnail", {})}
+              {...register("thumbnail", { required: true })}
             />
             <label htmlFor="product_file" className="">
-              {/* <Image
-              className="mt-2"
-              src={
-                createProduct?.thumbnail ??
-                (watch("thumbnail") !== undefined
-                  ? window?.URL?.createObjectURL(watch("thumbnail")[0])
-                  : "/images/thumbnail.png")
-              }
-              alt="..."
-              width={160}
-              height={160}
-            /> */}
+              <Image
+                className="mt-2"
+                src={
+                  methods.getValues().thumbnail ??
+                  // (watch("thumbnail") !== undefined
+                  //   ? window?.URL?.createObjectURL(watch("thumbnail")[0])
+                  //   : "/images/thumbnail.png")
+                  "/images/thumbnail.png"
+                }
+                alt="..."
+                width={160}
+                height={160}
+              />
             </label>
 
             <p className="mt-3 text-secondary_brand_light w-[70%]">
@@ -187,15 +144,15 @@ const BasicProductStep = ({ ...props }) => {
               pages. Requirement: square, atleast 600px by 600px, JPG, SVG, PNG,
               GIF format.
             </p>
+
+            {errors.description?.type === "required" && (
+              <p className="text-left text-red-600 text-xs mt-1">
+                Product thumbnail is required
+              </p>
+            )}
           </div>
 
           <div className="flex flex-col mt-6">
-            <img
-              src={product?.cover_image}
-              alt="..."
-              className="hidden"
-              id="thumbnail"
-            />
             <label
               htmlFor="product_cover"
               className="leading-4 font-medium text-secondary_ink_darkest mb-3"
