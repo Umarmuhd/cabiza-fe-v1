@@ -28,8 +28,6 @@ const BasicProductStep = ({ ...props }) => {
     formState: { errors },
   } = methods;
 
-  console.log(methods.getValues());
-
   return (
     <React.Fragment>
       <EditProductStepView
