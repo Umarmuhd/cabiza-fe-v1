@@ -21,6 +21,7 @@ export default function ProductContentStep({ ...props }) {
   });
 
   const {
+    watch,
     register,
     formState: { errors },
   } = methods;
@@ -58,10 +59,10 @@ export default function ProductContentStep({ ...props }) {
               />
               <label htmlFor="add_files" className="w-1/2 mx-auto text-center">
                 <h3 className="text-secondary text-base font-medium">
-                  {product?.file ??
-                    (watch("file") !== undefined
-                      ? watch("file")[0].name
-                      : "Add Files")}
+                  {methods.getValues().file ??
+                  (watch("file") !== undefined && watch("file")?.length > 0)
+                    ? watch("file")[0].name
+                    : "Add Files"}
                 </h3>
                 <p className="mt-4 secondary_brand_light">
                   Upload your product files here

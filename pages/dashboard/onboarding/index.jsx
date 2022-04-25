@@ -138,7 +138,13 @@ export default function Onboarding() {
         </div>
       </div>
       <div className="flex flex-col w-full md:w-1/2 p-10">
-        <img src="/images/cabiza-logo.png" alt="..." className="w-40" />
+        <Image
+          src="/images/logo.png"
+          alt="..."
+          width={130}
+          height={40}
+          className="w-auto"
+        />
 
         <form className="mt-10 md:mt-24" onSubmit={handleSubmit(updateProfile)}>
           <div className="relative mb-6">

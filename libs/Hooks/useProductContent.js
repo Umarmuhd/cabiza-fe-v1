@@ -37,7 +37,7 @@ export const useProductContent = ({
     mode: "onBlur",
     defaultValues:
       !productContent.file && !productContent.url
-        ? { file, url }
+        ? { file: file ?? null, url }
         : productContent,
     resolver: yupResolver(schema),
   });

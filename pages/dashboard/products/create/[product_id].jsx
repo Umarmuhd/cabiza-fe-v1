@@ -16,6 +16,14 @@ import ProductSettingsStep from "./product-settings/ProductSettings";
 
 import { useCreateProductRecoilStates } from "../../../../recoil";
 import toast from "react-hot-toast";
+import { useLeavePageConfirm } from "@/libs/Hooks/useLeavePageConfirm";
+import {
+  defaultBasicInfoState,
+  defaultProductContentState,
+  defaultProductInfoState,
+  defaultProductPricingState,
+  defaultProductSettingsState,
+} from "recoil/CreateProduct/atoms";
 
 const stepConfigs = [
   {
@@ -51,15 +59,35 @@ const stepConfigs = [
 ];
 
 export default function UpdateProduct() {
-  const { basicInfo, productInfo, productContent, productPricing } =
-    useCreateProductRecoilStates();
+  const {
+    basicInfo,
+    setBasicInfo,
+    productInfo,
+    setProductInfo,
+    productContent,
+    setProductContent,
+    productPricing,
+    setProductPricing,
+    productSettings,
+    setProductSettings,
+  } = useCreateProductRecoilStates();
 
   const [stepIndex, setStepIndex] = useState(0);
   const [stepErrors, setStepErrors] = useState(
-    Array.from({ length: stepConfigs.length }, () => true)
+    Array.from({ length: stepConfigs.length - 1 }, () => true)
   );
 
   const router = useRouter();
+
+  const clearRecoilCreateProduct = () => {
+    setBasicInfo(defaultBasicInfoState);
+    setProductInfo(defaultProductInfoState);
+    setProductContent(defaultProductContentState);
+    setProductPricing(defaultProductPricingState);
+    setProductSettings(defaultProductSettingsState);
+  };
+
+  useLeavePageConfirm({ isConfirm: true, closeFn: clearRecoilCreateProduct });
 
   const backward = () => {
     setStepIndex(stepIndex - 1);
@@ -67,10 +95,6 @@ export default function UpdateProduct() {
 
   const forward = () => {
     setStepIndex(stepIndex + 1);
-  };
-
-  const onClickConfirmButton = () => {
-    console.log("here");
   };
 
   const [loading, setLoading] = useState(false);
@@ -100,25 +124,46 @@ export default function UpdateProduct() {
   }, [productId]);
 
   const handleSubmitting = async () => {
+    const { name, description, thumbnail, cover_image } = basicInfo;
+    const { call_to_action, summary } = productInfo;
+    const { file, url } = productContent;
+    const { price } = productPricing;
     try {
       setLoading(true);
 
-      //   const form_data = new FormData();
+      const form_data = new FormData();
 
-      //   form_data.append("name", name);
-      //   form_data.append("thumbnail", product?.thumbnail ?? thumbnail[0]);
-      //   form_data.append("cover_image", product?.cover_image ?? cover_image[0]);
-      //   form_data.append("description", description);
+      form_data.append("name", name);
 
-      //   const url = `${API_URL}/products/product/${product.product_id}`;
+      form_data.append("summary", summary);
 
-      //   const { data } = await axios.post(url, form_data);
+      typeof thumbnail === "object" &&
+        form_data.append("thumbnail", thumbnail[0]);
+
+      typeof cover_image === "object" &&
+        form_data.append("cover_image", cover_image[0]);
+
+      form_data.append("description", description);
+
+      form_data.append("call_to_action", call_to_action);
+      typeof file === "object" && form_data.append("file", file[0]);
+      url.length > 0 && form_data.append("url", url);
+
+      form_data.append("price", price);
+
+      const uri = `${API_URL}/products/product/${product.product_id}`;
+
+      const { data } = await axios.post(uri, form_data);
 
       setLoading(false);
     } catch (error) {
       console.error(error.message);
       setLoading(false);
     }
+  };
+
+  const onClickConfirmButton = () => {
+    handleSubmitting();
   };
 
   const handlePublish = async () => {
@@ -185,9 +230,12 @@ export default function UpdateProduct() {
               </Tab.List>
 
               <div className="flex items-center justify-between mt-[-.5rem]">
-                <a className="leading-4 text-base font-medium text-primary py-2 px-3 rounded-4xl border border-primary mr-6 flex items-center">
+                <button
+                  className="leading-4 text-base font-medium text-primary py-2 px-3 rounded-4xl border border-primary mr-6 flex items-center"
+                  onClick={handleSubmitting}
+                >
                   <span className="">Save changes</span>
-                </a>
+                </button>
 
                 <button
                   className="leading-4 text-base font-medium bg-transparent py-2 px-3 rounded-4xl border text-primary bg-primary flex items-center"

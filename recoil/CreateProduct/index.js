@@ -4,7 +4,7 @@ import {
   productContentState,
   productPricingState,
 } from "./atoms";
-import { productInfoState } from "./atoms";
+import { productInfoState, productSettingsState } from "./atoms";
 
 export const useCreateProductRecoilStates = () => {
   const [basicInfo, setBasicInfo] = useRecoilState(basicInfoState);
@@ -13,16 +13,20 @@ export const useCreateProductRecoilStates = () => {
     useRecoilState(productContentState);
   const [productPricing, setProductPricing] =
     useRecoilState(productPricingState);
+  const [productSettings, setProductSettings] =
+    useRecoilState(productSettingsState);
 
   return {
     basicInfo,
     productInfo,
     productContent,
     productPricing,
+    productSettings,
 
     setBasicInfo,
     setProductInfo,
     setProductContent,
     setProductPricing,
+    setProductSettings,
   };
 };

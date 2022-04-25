@@ -28,6 +28,10 @@ const BasicProductStep = ({ ...props }) => {
     formState: { errors },
   } = methods;
 
+  console.log(methods.getValues());
+
+  console.log(errors);
+
   return (
     <React.Fragment>
       <EditProductStepView
@@ -85,6 +89,7 @@ const BasicProductStep = ({ ...props }) => {
               placeholder="Product Description"
               className="px-4 py-3 pd-12 h-[5rem] w-[100%] outline-none border border-solid border-sky_light rounded-b-lg"
               {...register("description", { required: true })}
+              autoComplete="off"
             />
             {errors.description?.type === "required" && (
               <p className="text-left text-red-600 text-xs mt-1">
@@ -128,10 +133,12 @@ const BasicProductStep = ({ ...props }) => {
                 className="mt-2"
                 src={
                   methods.getValues().thumbnail ??
-                  // (watch("thumbnail") !== undefined
-                  //   ? window?.URL?.createObjectURL(watch("thumbnail")[0])
-                  //   : "/images/thumbnail.png")
-                  "/images/thumbnail.png"
+                  (watch("thumbnail") !== undefined &&
+                    watch("thumbnail")?.length > 0)
+                    ? typeof watch("thumbnail") === "string"
+                      ? watch("thumbnail")
+                      : window?.URL?.createObjectURL(watch("thumbnail")[0])
+                    : "/images/thumbnail.png"
                 }
                 alt="..."
                 width={160}

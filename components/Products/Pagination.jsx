@@ -41,7 +41,7 @@ const Pagination = ({
           type="submit"
           className="w-full mt-8 bg-primary text-white p-4 cursor-pointer rounded-4xl font-medium flex items-center justify-center"
           onClick={onClickConfirmButton}
-          disabled={stepErrors.find((error) => error)}
+          // disabled={stepErrors.find((error) => error)}
         >
           <React.Fragment>
             <span className="mr-4">Submit</span>

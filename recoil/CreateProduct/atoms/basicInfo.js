@@ -11,4 +11,5 @@ export const defaultBasicInfoState = {
 export const basicInfoState = atom({
   key: AtomKeys.CreateProduct_BasicInfo,
   default: defaultBasicInfoState,
+  dangerouslyAllowMutability: true,
 });

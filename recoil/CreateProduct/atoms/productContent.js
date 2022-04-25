@@ -9,4 +9,5 @@ export const defaultProductContentState = {
 export const productContentState = atom({
   key: AtomKeys.CreateProduct_ProductContent,
   default: defaultProductContentState,
+  dangerouslyAllowMutability: true,
 });
