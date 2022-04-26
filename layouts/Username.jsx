@@ -7,6 +7,15 @@ import { API_URL } from "../config/index";
 
 import { user_profile } from "@/atoms/user_profile";
 import Image from "next/image";
+import TopNav from '@/components/Navbars/DashboardNav/TopNav';
+
+const AddIcon = () => (
+  <svg width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
+    <path d="M4 8H12" stroke="white" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" />
+    <path d="M8 12V4" stroke="white" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" />
+  </svg>
+
+)
 
 export default function Username({ children }) {
   const router = useRouter();
@@ -34,61 +43,16 @@ export default function Username({ children }) {
   }, [username, router, setSelectedUser]);
 
   return (
-    <div className="min-h-screen w-full">
-      <div className="bg-white py-6 border border-b border-secondary_sky_base">
-        <div className="md:max-w-[88%] max-w-[90%] mx-auto flex justify-between">
-          {!loading && user ? (
-            <div className="flex items-center">
-              <Image
-                src={user.profile_picture}
-                alt="..."
-                className="h-8 w-8 rounded-full"
-                width={32}
-                height={32}
-              />
-              <span className="hidden md:block text-lg font-medium text-secondary_ink_dark ml-2">
-                {user.full_name}
-              </span>
-            </div>
-          ) : (
-            <div>...</div>
-          )}
-
-          <div className="flex items-center">
-            <Link href={`/${username}/products`}>
-              <a
-                className={
-                  "text-lg font-medium mr-4" +
-                  (router.pathname.indexOf("/[username]/products") !== -1
-                    ? " text-primary"
-                    : " text-secondary")
-                }
-              >
-                Products
-              </a>
-            </Link>
-            <Link href={`/${username}/posts`}>
-              <a
-                className={
-                  "text-lg font-medium mr-4" +
-                  (router.pathname.indexOf("/[username]/posts") !== -1
-                    ? " text-primary"
-                    : " text-secondary")
-                }
-              >
-                Posts
-              </a>
-            </Link>
-          </div>
-
-          {user && (
-            <button className="rounded-4xl py-2 px-4 font-medium text-lg text-white bg-primary">
-              + Follow
-            </button>
-          )}
-        </div>
+    <div className="min-h-screen w-full bg-primary_brand_lightest">
+      <div className="bg-white border border-b border-secondary_sky_base">        
+          <TopNav showLanguage={false}>
+              <button className="bg-primary flex h-[max-content] m-auto items-center rounded-full text-white px-4 py-2">
+              <AddIcon /><span className="ml-2">Follow</span></button>
+          </TopNav>        
+      </div>      
+      <div className="bg-white">
+        {children}
       </div>
-      {children}
       <div className="w-full flex justify-center md:py-9 py-6">
         <div className="flex items-end">
           <p className="text-base font-semibold uppercase text-secondary mr-2">

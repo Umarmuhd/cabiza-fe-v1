@@ -2,7 +2,7 @@ import UserMenu from "@/components/Dropdowns/UserMenu";
 import Notifications from "@/components/Notifications";
 import React, { useState } from "react";
 
-export default function TopNav({title}) {
+export default function TopNav({title, children, showLanguage}) {
   return (
     <header className='sticky top-0 border-b border-b-secondary_sky_base bg-white z-30'>
       <div className=' px-4 sm:px-0 lg:px-0 '>
@@ -26,11 +26,12 @@ export default function TopNav({title}) {
                 <rect x='4' y='17' width='16' height='2' />
               </svg>
             </button>
-            <span className='hidden md:flex font-medium text-2xl text-secondary_ink_dark border-r border-r-secondary_sky_base h-[100%] items-center pr-5'>
+            {title ? <span className='hidden md:flex font-medium text-2xl text-secondary_ink_dark border-r border-r-secondary_sky_base h-[100%] items-center pr-5'>
               {title}
-            </span>
+            </span>: null}
+            {children}
 
-            <label className='flex items-center ml-3 w-[5.7rem] h-10 my-auto bg-primary_brand_lightest pl-4 pr-3 rounded-full text-secondary_ink_dark fill-secondary_ink_dark'>
+            {showLanguage ? <label className='flex items-center ml-3 w-[5.7rem] h-10 my-auto bg-primary_brand_lightest pl-4 pr-3 rounded-full text-secondary_ink_dark fill-secondary_ink_dark'>
               <select
                 name=''
                 id=''
@@ -41,7 +42,7 @@ export default function TopNav({title}) {
                 </option>
                 <option value='Spa'>Spa</option>
               </select>
-            </label>
+            </label> : null}
           </div>
 
           {/* Header: Right side */}

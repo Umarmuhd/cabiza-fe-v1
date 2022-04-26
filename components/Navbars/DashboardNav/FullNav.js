@@ -4,7 +4,7 @@ import TopNav from '@/components/Navbars/DashboardNav/TopNav';
 const FullNav = ({ title, children }) => {
   return (
     <>
-      <TopNav title={title} />
+    <TopNav title={title} showLanguage={true}/>
       <div
         className='bg-secondary_sky_lightest py-4 h-20'
         style={{

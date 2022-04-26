@@ -161,7 +161,7 @@ const Products = ({ }) => {
               </Link> */}
               </div>
               <Link href='/dashboard/products/create'>
-                <a className='py-2 pl-4 pr-12 bg-primary flex items-center font-medium text-white rounded-[48px] just'>
+                <a className='py-2 pl-4 pr-6 bg-primary flex items-center font-medium text-white rounded-[48px] just'>
                   <PlusSmIcon /> <span className='ml-2'>New Product </span>
                 </a>
               </Link>
