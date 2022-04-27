@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { useRecoilValue } from "recoil";
 import Link from "next/link";
+import { useRouter } from "next/router";
 import axios from "axios";
 import { API_URL } from "@/config/index";
 
@@ -28,9 +29,11 @@ const LeftIcon = () => (
 );
 
 const ProductItem = ({ product }) => {
-  console.log(product);
+  const { asPath } = useRouter()
+  console.log()
   return (
-    <div className="border border-secondary_sky_base rounded-xl px-6 py-7">
+    <Link href={`${asPath}/post`} passHref>
+    <div className="border border-secondary_sky_base rounded-xl px-6 py-7 cursor-pointer">
       <div className="flex justify-between">
         <h2 className="text-2xl font-semibold">User Post Preview</h2>
         <p className="flex items-center"><ShareIcon /><span className="ml-2 text-primary">Share</span></p>
@@ -41,6 +44,7 @@ const ProductItem = ({ product }) => {
         Post CTA
       </button>
     </div>
+    </Link>
   );
 };
 
@@ -85,7 +89,8 @@ export default function Products() {
   }, [user]);
 
   return (
-    <main className="mx-auto md:w-43/50 py-10 md:my-20">
+    <main className="bg-white">
+      <div className="mx-auto md:w-43/50 py-10 md:my-20">
       <div className="mb-8">
         <h1 className="text-3xl font-semibold text-secondary_ink_darkest">
           Resources to help creators and digital entrepreneurs learn and earn more. Follow us to receive helpful content every week, delivered directly to your inbox. Cabiza’s official account.
@@ -124,6 +129,7 @@ export default function Products() {
         <LeftIcon />
         <p className='mx-3 text-secondary text-md '>Page 1 of 8</p>
         <RightIcon />
+      </div>
       </div>
     </main>
   );
