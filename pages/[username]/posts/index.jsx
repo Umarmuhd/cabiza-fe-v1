@@ -110,12 +110,10 @@ export default function UserPosts({ username = "umar" }) {
         setLoading(true);
         const url = `${API_URL}/posts/user?username=${username}`;
         const { data } = await axios.get(url);
-
-        console.log(data);
         setPosts(data.data.posts);
         setLoading(false);
       } catch (error) {
-        console.log(error);
+        console.log(error.message);
         setLoading(false);
       }
     };
