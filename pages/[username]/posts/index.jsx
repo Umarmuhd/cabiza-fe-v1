@@ -28,18 +28,18 @@ const LeftIcon = () => (
   </svg>
 );
 
-const ProductItem = ({ post }) => {
+const ProductItem = ({ post }) => {  
   const { asPath } = useRouter()
   console.log()
   return (
     <Link href={`${asPath}/post`} passHref>
       <div className="border border-secondary_sky_base rounded-xl px-6 py-7 cursor-pointer">
         <div className="flex justify-between">
-          <h2 className="text-2xl font-semibold">User Post Preview</h2>
+          <h2 className="text-2xl font-semibold">{post.title}</h2>
           <p className="flex items-center"><ShareIcon /><span className="ml-2 text-primary">Share</span></p>
         </div>
-        <span className="text-secondary_sky_base text-sm">March 26, 2022</span>
-        <p className="text-secondary_brand_light mt-2">I'm currently testing my account here...</p>
+        <span className="text-secondary_sky_base text-sm">{post.dateOfCreation}</span>
+        <p className="text-secondary_brand_light mt-2">{post.description}</p>
         <button className="bg-primary flex h-[max-content] items-center rounded-full text-white px-6 py-2 mt-4">
           Post CTA
         </button>
@@ -88,7 +88,9 @@ export default function Products() {
     ])
   }, [user]);
 
-  return (
+  const { asPath } = useRouter();
+  const newPath = asPath.replace('/posts', '');
+  return (    
     <main className="bg-white">
       <div className="mx-auto md:w-43/50 py-10 md:my-20">
         <div className="mb-8">
@@ -98,9 +100,11 @@ export default function Products() {
         </div>
 
         <div className="flex items-center flex-start">
-          <button className="bg-primary_brand_lightest text-primary flex h-[max-content] items-center rounded-full px-6 py-2">
-            Products
-          </button>
+          <Link href={`${newPath}/products`}>
+            <button className="bg-primary_brand_lightest text-primary flex h-[max-content] items-center rounded-full px-6 py-2">
+                Products
+            </button>
+          </Link>
           <button className="bg-primary flex h-[max-content] ml-6 items-center rounded-full text-white px-6 py-2">
             Posts
           </button>
