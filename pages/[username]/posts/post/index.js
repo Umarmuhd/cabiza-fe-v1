@@ -47,7 +47,7 @@ const CommentsItem = ({ comment }) => {
                 <div className="bg-secondary_sky_light rounded-full px-8 py-2 relative">
                     <h5 className="font-semibold text-secondary_ink_darkest">{comment.name}</h5>
                     <p className="text-secondary_ink_darkest mt-1">{comment.comment}</p>
-                    <div className="absolute bg-[#FF5247] right-0 flex gap-2 items-center text-white px-3 rounded-full py-1 bottom-[-2.3rem] text-smz">
+                    <div className="absolute bg-[#FF5247] right-0 flex gap-2 items-center text-white px-3 rounded-full py-1 bottom-[-2.3rem] text-sm">
                         {comment.likes} <LikeIcon/>
                     </div>
                 </div>  
