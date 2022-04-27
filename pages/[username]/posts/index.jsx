@@ -61,7 +61,7 @@ const PostItem = ({ post, username }) => {
   return (
     <div className="border border-secondary_sky_base rounded-xl px-6 py-7 cursor-pointer">
       <div className="flex justify-between">
-        <Link href={`/${username}/posts/${post.post_id}`} passHref>
+        <Link href={`/${username}/posts/${post._id}`} passHref>
           <h2 className="text-2xl font-semibold">{post.title}</h2>
         </Link>
         <RWebShare
@@ -118,23 +118,6 @@ export default function UserPosts({ username = "umar" }) {
       }
     };
     fetchProducts();
-    setPosts([
-      {
-        title: "User Post Preview",
-        dateOfCreation: "March 26, 2022",
-        description: "I'm currently testing my account here...",
-      },
-      {
-        title: "User Post Preview",
-        dateOfCreation: "March 26, 2022",
-        description: "I'm currently testing my account here...",
-      },
-      {
-        title: "User Post Preview",
-        dateOfCreation: "March 26, 2022",
-        description: "I'm currently testing my account here...",
-      },
-    ]);
   }, [user]);
 
   const { asPath } = useRouter();
@@ -171,7 +154,7 @@ export default function UserPosts({ username = "umar" }) {
               ))}
             </React.Fragment>
           ) : (
-            <p className="text-grey_60">No post found</p>
+            !loading && <p className="text-grey_60">No post found</p>
           )}
         </div>
 

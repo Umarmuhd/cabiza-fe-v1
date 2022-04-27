@@ -6,6 +6,7 @@ import { API_URL } from "@/config/index";
 import Image from "next/image";
 import AuthContext from "@/context/AuthContext";
 import Username from "@/layouts/Username";
+import { RWebShare } from "react-web-share";
 
 const ShareIcon = () => (
   <svg
@@ -41,67 +42,65 @@ const DownloadIcon = () => (
 
 const CommentsItem = ({ comment }) => {
   return (
-    <>
-      <div className="flex items-start mt-5">
-        <div className="border-2 border-primary rounded-full flex items-center p-[.2rem] w-[max-content]">
-          <Image
-            src={"/images/avatar.png"}
-            width={32}
-            height={32}
-            className="rounded-full"
-            alt="User"
-          />
+    <div className="flex items-start mt-5">
+      <div className="border-2 border-primary rounded-full flex items-center p-[.2rem] w-[max-content]">
+        <Image
+          src={"/images/avatar.png"}
+          width={32}
+          height={32}
+          className="rounded-full"
+          alt="User"
+        />
+      </div>
+      <div className="ml-5 mt-[-.4rem]">
+        <div className="bg-secondary_sky_light rounded-full px-8 py-2">
+          <h5 className="font-semibold text-secondary_ink_darkest">
+            {comment.name}
+          </h5>
+          <p className="text-secondary_ink_darkest mt-1">{comment.comment}</p>
         </div>
-        <div className="ml-5 mt-[-.4rem]">
-          <div className="bg-secondary_sky_light rounded-full px-8 py-2">
-            <h5 className="font-semibold text-secondary_ink_darkest">
-              {comment.name}
-            </h5>
-            <p className="text-secondary_ink_darkest mt-1">{comment.comment}</p>
+        <div className="ml-7 mt-2">
+          <div className="text-primary flex gap-5">
+            <p className="text-secondary_ink_lighter">
+              {comment.timeOfCreationNow}
+            </p>
+            <button>Like</button>
+            <button>Reply</button>
           </div>
-          <div className="ml-7 mt-2">
-            <div className="text-primary flex gap-5">
-              <p className="text-secondary_ink_lighter">
-                {comment.timeOfCreationNow}
-              </p>
-              <button>Like</button>
-              <button>Reply</button>
-            </div>
-            {comment.subComment.length > 0
-              ? comment.subComment.map((subComment) => {
-                  return (
-                    <div key={subComment.id} className="flex items-center mt-4">
-                      <div className="border-2 border-primary rounded-full flex items-center p-[.2rem] w-[max-content]">
-                        <Image
-                          src={"/images/avatar.png"}
-                          width={32}
-                          height={32}
-                          className="rounded-full"
-                          alt="User"
-                        />
-                      </div>
-                      <div className="ml-5 mt-[-.4rem]">
-                        <div className="bg-secondary_sky_light w-[max-content] rounded-full px-8 py-2 flex items-center gap-2">
-                          <p className="font-semibold text-secondary_ink_darkest">
-                            {subComment.name}
-                          </p>
-                          <p className="text-[14px] text-secondary_ink_dark">
-                            {subComment.replyTo}
-                          </p>
+          {comment.subComment.length > 0
+            ? comment.subComment.map((subComment) => {
+                return (
+                  <div key={subComment.id} className="flex items-center mt-4">
+                    <div className="border-2 border-primary rounded-full flex items-center p-[.2rem] w-[max-content]">
+                      <Image
+                        src={"/images/avatar.png"}
+                        width={32}
+                        height={32}
+                        className="rounded-full"
+                        alt="User"
+                      />
+                    </div>
+                    <div className="ml-5 mt-[-.4rem]">
+                      <div className="bg-secondary_sky_light w-[max-content] rounded-full px-8 py-2 flex items-center gap-2">
+                        <p className="font-semibold text-secondary_ink_darkest">
+                          {subComment.name}
+                        </p>
+                        <p className="text-[14px] text-secondary_ink_dark">
+                          {subComment.replyTo}
+                        </p>
 
-                          <p className="text-secondary_ink_lighter ml-2">
-                            {subComment.comment}
-                          </p>
-                        </div>
+                        <p className="text-secondary_ink_lighter ml-2">
+                          {subComment.comment}
+                        </p>
                       </div>
                     </div>
-                  );
-                })
-              : null}
-          </div>
+                  </div>
+                );
+              })
+            : null}
         </div>
       </div>
-    </>
+    </div>
   );
 };
 
@@ -159,90 +158,111 @@ export default function SinglePost() {
 
   return (
     <React.Fragment>
-      <header className="mx-auto md:w-43/50 py-10 md:mt-20 bg-white rounded-xl px-10 shadow-lg">
-        <div className="border-b border-secondary_sky_base p-3 pb-7">
-          <h1 className="text-secondary_ink_darkest text-3xl">
-            User Post Preview
-          </h1>
-          <span className="text-secondary_sky_base text-sm">
-            March 26, 2022
-          </span>
-          <p className="text-secondary_brand_light mt-3">
-            I'm currently testing my account here...
-          </p>
-          <button className="bg-primary flex h-[max-content] items-center rounded-full text-white px-6 py-2 mt-6">
-            Post CTA
-          </button>
-        </div>
-
-        <div className="mt-7 flex items-center justify-between">
-          <button className="flex bg-primary_brand_lightest p-3 rounded-full text-primary px-6">
-            <DownloadIcon />
-            <span className="ml-3">Download Attachments</span>
-          </button>
-          <p className="flex items-center">
-            <ShareIcon />
-            <span className="ml-2 text-primary">Share</span>
-          </p>
-        </div>
-      </header>
-
-      <main className="mx-auto md:w-43/50 py-10 md:mt-7 bg-white rounded-xl px-10 shadow-lg">
-        <p className="text-xl">{comments.length} Comments</p>
-
-        <div className="mt-7 flex justify-between items-center">
-          <div className="border-2 border-primary rounded-full flex items-center p-[.2rem] w-[max-content]">
-            <Image
-              src={user?.profile_picture ?? "/images/avatar.png"}
-              width={32}
-              height={32}
-              className="rounded-full"
-              alt="User"
-            />
-          </div>
-          <div className="flex flex-col">
-            <div className="flex items-center border border-sky_light rounded-full overflow-hidden relative">
-              <input
-                name="comment"
-                id="comment"
-                className="h-12 w-[65rem] text-secondary_ink_lighter bg-white px-4 outline-none appearance-none pl-7"
-                placeholder="Write a comment"
-              />
-              <div className="absolute inset-y-0 right-0 flex items-center text-gray-700 h-[100%] px-3 bg-secondary_sky_light pr-4 cursor-pointer">
-                <svg
-                  width="12"
-                  height="24"
-                  viewBox="0 0 12 24"
-                  fill="none"
-                  xmlns="http://www.w3.org/2000/svg"
-                >
-                  <path d="M6 0L11.1962 9H0.803848L6 0Z" fill="#CDCFD0" />
-                  <path d="M6 24L11.1962 15H0.803848L6 24Z" fill="#CDCFD0" />
-                </svg>
-              </div>
+      {post && (
+        <React.Fragment>
+          <header className="mx-auto md:w-43/50 py-10 md:mt-20 bg-white rounded-xl px-10 shadow-lg">
+            <div className="border-b border-secondary_sky_base p-3 pb-7">
+              <h1 className="text-secondary_ink_darkest text-3xl">
+                {post.title}
+              </h1>
+              <span className="text-secondary_sky_base text-sm">
+                {new Date(post.createdAt).toLocaleDateString("en-US", {
+                  weekday: "long",
+                  year: "numeric",
+                  month: "long",
+                  day: "numeric",
+                })}
+              </span>
+              <p className="text-secondary_brand_light mt-3">
+                {post.description}
+              </p>
+              <button className="bg-primary flex h-[max-content] items-center rounded-full text-white px-6 py-2 mt-6">
+                {post.call_to_action}
+              </button>
             </div>
-          </div>
-          <button className="bg-primary flex h-[max-content] items-center rounded-full text-white px-6 py-2">
-            Post
-          </button>
-        </div>
 
-        <div className="mt-2 flex flex-col w-[90%] mx-auto">
-          {comments.length > 0 && !loading ? (
-            <>
-              {comments.map((comment, index) => (
-                <React.Fragment key={index}>
-                  <CommentsItem comment={comment} />
-                </React.Fragment>
-              ))}
-            </>
-          ) : (
-            <p className="text-grey_60">No comment found</p>
-          )}
-        </div>
+            <div className="mt-7 flex items-center justify-between">
+              <button className="flex bg-primary_brand_lightest p-3 rounded-full text-primary px-6">
+                <DownloadIcon />
+                <span className="ml-3">Download Attachments</span>
+              </button>
+              <RWebShare
+                data={{
+                  text: `Web Share - ${post.title}`,
+                  url: `https://username.cabiza.net/posts/${post.post_id}`,
+                  title: post.title,
+                }}
+                onClick={() => console.log("sharing...")}
+              >
+                <button className="flex items-center">
+                  <ShareIcon />
+                  <span className="ml-2 text-primary">Share</span>
+                </button>
+              </RWebShare>
+            </div>
+          </header>
 
-        <div className="flex items-center justify-between"></div>
-      </main>
+          <main className="mx-auto md:w-43/50 py-10 md:mt-7 bg-white rounded-xl px-10 shadow-lg">
+            <p className="text-xl">{comments.length} Comments</p>
+
+            <div className="mt-7 flex justify-between items-center">
+              <div className="border-2 border-primary rounded-full flex items-center p-[.2rem] w-[max-content]">
+                <Image
+                  src={user?.profile_picture ?? "/images/avatar.png"}
+                  width={32}
+                  height={32}
+                  className="rounded-full"
+                  alt="User"
+                />
+              </div>
+              <div className="flex flex-col">
+                <div className="flex items-center border border-sky_light rounded-full overflow-hidden relative">
+                  <input
+                    name="comment"
+                    id="comment"
+                    className="h-12 w-[65rem] text-secondary_ink_lighter bg-white px-4 outline-none appearance-none pl-7"
+                    placeholder="Write a comment"
+                  />
+                  <div className="absolute inset-y-0 right-0 flex items-center text-gray-700 h-[100%] px-3 bg-secondary_sky_light pr-4 cursor-pointer">
+                    <svg
+                      width="12"
+                      height="24"
+                      viewBox="0 0 12 24"
+                      fill="none"
+                      xmlns="http://www.w3.org/2000/svg"
+                    >
+                      <path d="M6 0L11.1962 9H0.803848L6 0Z" fill="#CDCFD0" />
+                      <path
+                        d="M6 24L11.1962 15H0.803848L6 24Z"
+                        fill="#CDCFD0"
+                      />
+                    </svg>
+                  </div>
+                </div>
+              </div>
+              <button className="bg-primary flex h-[max-content] items-center rounded-full text-white px-6 py-2">
+                Post
+              </button>
+            </div>
+
+            <div className="mt-2 flex flex-col w-[90%] mx-auto">
+              {comments.length > 0 && !loading ? (
+                <>
+                  {comments.map((comment, index) => (
+                    <React.Fragment key={index}>
+                      <CommentsItem comment={comment} />
+                    </React.Fragment>
+                  ))}
+                </>
+              ) : (
+                <p className="text-grey_60">No comment found</p>
+              )}
+            </div>
+
+            <div className="flex items-center justify-between"></div>
+          </main>
+        </React.Fragment>
+      )}
     </React.Fragment>
   );
 }
