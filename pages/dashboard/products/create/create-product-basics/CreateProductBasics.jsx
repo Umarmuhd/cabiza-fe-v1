@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect } from "react";
 import Image from "next/image";
 import EditProductStepView from "@/components/Products/EditProductStepView";
 import { useProductBasics } from "@/libs/Hooks/useProductBasics";
@@ -28,9 +28,9 @@ const BasicProductStep = ({ ...props }) => {
     formState: { errors },
   } = methods;
 
-  console.log(methods.getValues());
-
-  console.log(errors);
+  useEffect(() => {
+    setValues();
+  }, []);
 
   return (
     <React.Fragment>

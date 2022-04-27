@@ -26,6 +26,8 @@ export default function ProductContentStep({ ...props }) {
     formState: { errors },
   } = methods;
 
+  console.log(typeof watch("file"));
+
   return (
     <React.Fragment>
       <EditProductStepView
@@ -61,7 +63,9 @@ export default function ProductContentStep({ ...props }) {
                 <h3 className="text-secondary text-base font-medium">
                   {methods.getValues().file ??
                   (watch("file") !== undefined && watch("file")?.length > 0)
-                    ? watch("file")[0].name
+                    ? typeof watch("file") === "string"
+                      ? watch("file")
+                      : watch("file")[0].name
                     : "Add Files"}
                 </h3>
                 <p className="mt-4 secondary_brand_light">

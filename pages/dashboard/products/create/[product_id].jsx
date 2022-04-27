@@ -127,36 +127,49 @@ export default function UpdateProduct() {
     const { name, description, thumbnail, cover_image } = basicInfo;
     const { call_to_action, summary } = productInfo;
     const { file, url } = productContent;
-    const { price } = productPricing;
+    const { price, user_priced, min_price, max_price } = productPricing;
     try {
       setLoading(true);
 
+      console.log(basicInfo);
+      console.log(productInfo);
+      console.log(productContent);
+      console.log(productPricing);
+
       const form_data = new FormData();
 
-      form_data.append("name", name);
+      name && form_data.append("name", name);
 
-      form_data.append("summary", summary);
+      summary && form_data.append("summary", summary);
 
-      typeof thumbnail === "object" &&
-        form_data.append("thumbnail", thumbnail[0]);
+      thumbnail?.length === 1 && form_data.append("thumbnail", thumbnail[0]);
 
-      typeof cover_image === "object" &&
+      cover_image?.length === 1 &&
         form_data.append("cover_image", cover_image[0]);
 
-      form_data.append("description", description);
+      description && form_data.append("description", description);
 
-      form_data.append("call_to_action", call_to_action);
-      typeof file === "object" && form_data.append("file", file[0]);
-      url.length > 0 && form_data.append("url", url);
+      call_to_action && form_data.append("call_to_action", call_to_action);
 
-      form_data.append("price", price);
+      //Content
+      file?.length === 1 && form_data.append("file", file[0]);
+      url?.length > 0 && form_data.append("url", url);
+
+      //Pricing
+      price && form_data.append("price", price);
+      user_priced && form_data.append("user_priced", user_priced);
+      min_price && form_data.append("min_price", min_price);
+      max_price && form_data.append("max_price", max_price);
 
       const uri = `${API_URL}/products/product/${product.product_id}`;
 
-      const { data } = await axios.post(uri, form_data);
+      // const { data } = await axios.post(uri, form_data);
+
+      // console.log(data);
 
       setLoading(false);
     } catch (error) {
+      console.log(error);
       console.error(error.message);
       setLoading(false);
     }

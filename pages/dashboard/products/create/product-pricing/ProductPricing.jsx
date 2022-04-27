@@ -35,6 +35,8 @@ export default function ProductPricingStep({ ...props }) {
     setValue("user_priced", productPricingSettings);
   }, [productPricingSettings]);
 
+  console.log(methods.getValues());
+
   return (
     <React.Fragment>
       <EditProductStepView
@@ -111,13 +113,22 @@ export default function ProductPricingStep({ ...props }) {
                           readOnly
                         />
                         <input
-                          type="text"
+                          type="number"
                           name="Amount"
                           id="Amount"
                           placeholder="0+"
                           className=" outline-none w-[98%] p-3 rounded-xl z-10"
+                          {...register("min_price", {
+                            required: productPricingSettings,
+                          })}
+                          min={0}
                         />
                       </div>
+                      {errors.min_price?.type === "required" && (
+                        <p className="text-left text-red-600 text-xs mt-1">
+                          Product minimum price is required
+                        </p>
+                      )}
                     </div>
                   </div>
 
@@ -133,13 +144,22 @@ export default function ProductPricingStep({ ...props }) {
                           readOnly
                         />
                         <input
-                          type="text"
+                          type="number"
                           name="Amount"
                           id="Amount"
                           placeholder="0+"
                           className=" outline-none w-[98%] p-3 rounded-xl z-10"
+                          {...register("max_price", {
+                            required: productPricingSettings,
+                          })}
+                          min={0}
                         />
                       </div>
+                      {errors.max_price?.type === "required" && (
+                        <p className="text-left text-red-600 text-xs mt-1">
+                          Product maximum price is required
+                        </p>
+                      )}
                     </div>
                   </div>
                 </div>
