@@ -42,8 +42,6 @@ const LeftIcon = () => (
 );
 
 const ProductItem = ({ product }) => {
-  const { asPath } = useRouter();
-  console.log();
   return (
     <div className={styles.cards}>
       <div
@@ -64,7 +62,7 @@ const ProductItem = ({ product }) => {
               {product.category}
             </p>
             <h4 className="text-2xl text-secondary font-medium mb-3">
-              {product.title}
+              {product.name}
             </h4>
             <div className="flex items-center">
               <span className="text-lg text-grey_60 font-medium mr-2"></span>
@@ -197,16 +195,16 @@ export default function Products() {
         </div>
 
         <div className="mt-20 flex gap-5">
-          {products.length > 0 && !loading ? (
-            <>
+          {products.length > 0 ? (
+            <React.Fragment>
               {products.map((product, index) => (
                 <React.Fragment key={index}>
                   <ProductItem product={product} />
                 </React.Fragment>
               ))}
-            </>
+            </React.Fragment>
           ) : (
-            <p className="text-grey_60">No product found</p>
+            !loading && <p className="text-grey_60">No product found</p>
           )}
         </div>
 
