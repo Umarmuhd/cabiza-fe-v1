@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { useRecoilValue } from "recoil";
 import Link from "next/link";
+import { useRouter } from "next/router";
 import axios from "axios";
 import { API_URL } from "@/config/index";
 import { RWebShare } from "react-web-share";
@@ -8,6 +9,7 @@ import { RWebShare } from "react-web-share";
 import { user_profile } from "@/atoms/user_profile";
 
 import Username from "@/layouts/Username";
+import Image from "next/image";
 
 const ShareIcon = () => (
   <svg
@@ -55,111 +57,120 @@ const LeftIcon = () => (
   </svg>
 );
 
-const PostItem = ({ post }) => {
-  console.log(post);
+const ProductItem = ({ post }) => {
+  const { asPath } = useRouter();
+  console.log();
   return (
-    <div className="border border-secondary_sky_base rounded-xl px-6 py-7">
-      <div className="flex justify-between">
-        <h2 className="text-2xl font-semibold">{post.title}</h2>
-        <RWebShare
-          data={{
-            text: "Web Share - GfG",
-            url: "http://localhost:3000",
-            title: "GfG",
-          }}
-          onClick={() => console.log("shared successfully!")}
-        >
-          <button className="flex items-center">
+    <Link href={`${asPath}/post`} passHref>
+      <div className="border border-secondary_sky_base rounded-xl px-6 py-7 cursor-pointer">
+        <div className="flex justify-between">
+          <h2 className="text-2xl font-semibold">{post.title}</h2>
+          <p className="flex items-center">
             <ShareIcon />
             <span className="ml-2 text-primary">Share</span>
-          </button>
-        </RWebShare>
+          </p>
+        </div>
+        <span className="text-secondary_sky_base text-sm">
+          {post.dateOfCreation}
+        </span>
+        <p className="text-secondary_brand_light mt-2">{post.description}</p>
+        <button className="bg-primary flex h-[max-content] items-center rounded-full text-white px-6 py-2 mt-4">
+          Post CTA
+        </button>
       </div>
-      <span className="text-secondary_sky_base text-sm">
-        {new Date(post.createdAt).toLocaleDateString("en-US", {
-          weekday: "long",
-          year: "numeric",
-          month: "long",
-          day: "numeric",
-        })}
-      </span>
-      <p className="text-secondary_brand_light mt-2">
-        {post.description.slice(0, 100)}...
-      </p>
-      <button className="bg-primary flex h-[max-content] items-center rounded-full text-white px-6 py-2 mt-4">
-        {post.call_to_action}
-      </button>
-    </div>
+    </Link>
   );
 };
 
-export default function UserPosts({ username = "umar" }) {
+export default function Products() {
   const { user } = useRecoilValue(user_profile);
 
   const [posts, setPosts] = useState([]);
   const [loading, setLoading] = useState(false);
 
   useEffect(() => {
-    const fetchPosts = async () => {
+    const fetchProducts = async () => {
       try {
         setLoading(true);
-        const url = `${API_URL}/posts/user?username=${username}`;
-        const { data } = await axios.get(url);
-
-        console.log(data);
-        setPosts(data.data.posts);
+        const response = await axios.get(
+          `${API_URL}/products/user/${user._id}`
+        );
+        setProducts(response.data.data.products);
         setLoading(false);
       } catch (error) {
         console.log(error);
         setLoading(false);
       }
     };
-    fetchPosts();
+    fetchProducts();
+    setPosts([
+      {
+        title: "User Post Preview",
+        dateOfCreation: "March 26, 2022",
+        description: "I'm currently testing my account here...",
+      },
+      {
+        title: "User Post Preview",
+        dateOfCreation: "March 26, 2022",
+        description: "I'm currently testing my account here...",
+      },
+      {
+        title: "User Post Preview",
+        dateOfCreation: "March 26, 2022",
+        description: "I'm currently testing my account here...",
+      },
+    ]);
   }, [user]);
 
+  const { asPath } = useRouter();
+  const newPath = asPath.replace("/posts", "");
   return (
-    <main className="mx-auto md:w-43/50 py-10 md:my-20">
-      <div className="mb-8">
-        <h1 className="text-3xl font-semibold text-secondary_ink_darkest">
-          Resources to help creators and digital entrepreneurs learn and earn
-          more. Follow us to receive helpful content every week, delivered
-          directly to your inbox. Cabiza’s official account.
-        </h1>
-      </div>
+    <main className="bg-white">
+      <div className="mx-auto md:w-43/50 py-10 md:my-20">
+        <div className="mb-8">
+          <h1 className="text-3xl font-semibold text-secondary_ink_darkest">
+            Resources to help creators and digital entrepreneurs learn and earn
+            more. Follow us to receive helpful content every week, delivered
+            directly to your inbox. Cabiza’s official account.
+          </h1>
+        </div>
 
-      <div className="flex items-center flex-start">
-        <button className="bg-primary_brand_lightest text-primary flex h-[max-content] items-center rounded-full px-6 py-2">
-          Products
-        </button>
-        <button className="bg-primary flex h-[max-content] ml-6 items-center rounded-full text-white px-6 py-2">
-          Posts
-        </button>
-      </div>
+        <div className="flex items-center flex-start">
+          <Link href={`${newPath}/products`}>
+            <button className="bg-primary_brand_lightest text-primary flex h-[max-content] items-center rounded-full px-6 py-2">
+              Products
+            </button>
+          </Link>
+          <button className="bg-primary flex h-[max-content] ml-6 items-center rounded-full text-white px-6 py-2">
+            Posts
+          </button>
+        </div>
 
-      <div className="mt-20 flex flex-col gap-5">
-        {posts.length > 0 && !loading ? (
-          <>
-            {posts.map((post, index) => (
-              <React.Fragment key={index}>
-                <PostItem post={post} />
-              </React.Fragment>
-            ))}
-          </>
-        ) : (
-          <p className="text-grey_60">No post found</p>
-        )}
-      </div>
+        <div className="mt-20 flex flex-col gap-5">
+          {posts.length > 0 && !loading ? (
+            <>
+              {posts.map((post, index) => (
+                <React.Fragment key={index}>
+                  <ProductItem post={post} />
+                </React.Fragment>
+              ))}
+            </>
+          ) : (
+            <p className="text-grey_60">No post found</p>
+          )}
+        </div>
 
-      <div
-        className="flex w-[max-content] border border-grey_80 p-2 rounded mt-7"
-        style={{ "border-radius": "20px" }}
-      >
-        <LeftIcon />
-        <p className="mx-3 text-secondary text-md ">Page 1 of 8</p>
-        <RightIcon />
+        <div
+          className="flex w-[max-content] border border-grey_80 p-2 rounded mt-7"
+          style={{ "border-radius": "20px" }}
+        >
+          <LeftIcon />
+          <p className="mx-3 text-secondary text-md ">Page 1 of 8</p>
+          <RightIcon />
+        </div>
       </div>
     </main>
   );
 }
 
-UserPosts.layout = Username;
+Products.layout = Username;
