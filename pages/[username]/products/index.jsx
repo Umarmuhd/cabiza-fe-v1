@@ -98,10 +98,10 @@ export default function Products() {
       </div>
 
       <div className="flex items-center flex-start">
-        <button className="bg-primary_brand_lightest text-primary flex h-[max-content] items-center rounded-full px-6 py-2">
+        <button className="text-white bg-primary flex h-[max-content] items-center rounded-full px-6 py-2">
           Products
         </button>
-        <button className="bg-primary flex h-[max-content] ml-6 items-center rounded-full text-white px-6 py-2">
+        <button className="bg-primary_brand_lightest text-primary flex h-[max-content] ml-6 items-center rounded-full px-6 py-2">
           Posts
         </button>
       </div>
