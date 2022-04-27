@@ -57,32 +57,48 @@ const LeftIcon = () => (
   </svg>
 );
 
-const ProductItem = ({ post }) => {
-  const { asPath } = useRouter();
-  console.log();
+const PostItem = ({ post, username }) => {
   return (
-    <Link href={`${asPath}/post`} passHref>
-      <div className="border border-secondary_sky_base rounded-xl px-6 py-7 cursor-pointer">
-        <div className="flex justify-between">
+    <div className="border border-secondary_sky_base rounded-xl px-6 py-7 cursor-pointer">
+      <div className="flex justify-between">
+        <Link href={`/${username}/posts/${post.post_id}`} passHref>
           <h2 className="text-2xl font-semibold">{post.title}</h2>
-          <p className="flex items-center">
+        </Link>
+        <RWebShare
+          data={{
+            text: `Web Share - ${post.title}`,
+            url: `https://${username}.cabiza.net/posts/${post.post_id}`,
+            title: post.title,
+          }}
+          onClick={() => console.log("sharing...")}
+        >
+          <button className="flex items-center">
             <ShareIcon />
             <span className="ml-2 text-primary">Share</span>
-          </p>
-        </div>
-        <span className="text-secondary_sky_base text-sm">
-          {post.dateOfCreation}
-        </span>
-        <p className="text-secondary_brand_light mt-2">{post.description}</p>
-        <button className="bg-primary flex h-[max-content] items-center rounded-full text-white px-6 py-2 mt-4">
-          Post CTA
-        </button>
+          </button>
+        </RWebShare>
       </div>
-    </Link>
+      <span className="text-secondary_sky_base text-sm">
+        {new Date(post.createdAt).toLocaleDateString("en-US", {
+          weekday: "long",
+          year: "numeric",
+          month: "long",
+          day: "numeric",
+        })}
+      </span>
+      <p className="text-secondary_brand_light mt-2">
+        {post.description.slice(0, 150)}...
+      </p>
+      <Link href={`/${username}/posts/${post.post_id}`} passHref>
+        <button className="bg-primary flex h-[max-content] items-center rounded-full text-white px-6 py-2 mt-4">
+          {post.call_to_action}
+        </button>
+      </Link>
+    </div>
   );
 };
 
-export default function Products() {
+export default function UserPosts({ username = "umar" }) {
   const { user } = useRecoilValue(user_profile);
 
   const [posts, setPosts] = useState([]);
@@ -92,10 +108,11 @@ export default function Products() {
     const fetchProducts = async () => {
       try {
         setLoading(true);
-        const response = await axios.get(
-          `${API_URL}/products/user/${user._id}`
-        );
-        setProducts(response.data.data.products);
+        const url = `${API_URL}/posts/user?username=${username}`;
+        const { data } = await axios.get(url);
+
+        console.log(data);
+        setPosts(data.data.posts);
         setLoading(false);
       } catch (error) {
         console.log(error);
@@ -147,14 +164,14 @@ export default function Products() {
         </div>
 
         <div className="mt-20 flex flex-col gap-5">
-          {posts.length > 0 && !loading ? (
-            <>
+          {posts.length > 0 ? (
+            <React.Fragment>
               {posts.map((post, index) => (
                 <React.Fragment key={index}>
-                  <ProductItem post={post} />
+                  <PostItem post={post} username={username} />
                 </React.Fragment>
               ))}
-            </>
+            </React.Fragment>
           ) : (
             <p className="text-grey_60">No post found</p>
           )}
@@ -173,4 +190,4 @@ export default function Products() {
   );
 }
 
-Products.layout = Username;
+UserPosts.layout = Username;
