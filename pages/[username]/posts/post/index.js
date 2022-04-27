@@ -10,6 +10,13 @@ import Username from "@/layouts/Username";
 import Image from "next/image";
 import AuthContext from "@/context/AuthContext";
 
+const LikeIcon = () => (
+    <svg width="14" height="12" viewBox="0 0 14 12" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <path d="M6.59981 1.85309L7.00016 2.38822L7.40052 1.85309C7.98392 1.07329 8.9184 0.566895 9.96016 0.566895C11.7284 0.566895 13.1668 2.00736 13.1668 3.79356C13.1668 4.53252 13.049 5.21398 12.8444 5.84631L12.8434 5.84957C12.3525 7.40294 11.3445 8.6607 10.2484 9.6027C9.15016 10.5466 7.99223 11.1485 7.25244 11.4002L7.25243 11.4002L7.24709 11.4021C7.20391 11.4173 7.11442 11.4336 7.00016 11.4336C6.88591 11.4336 6.79642 11.4173 6.75324 11.4021L6.75325 11.402L6.74789 11.4002C6.00809 11.1485 4.85016 10.5466 3.75189 9.6027C2.65582 8.6607 1.64779 7.40294 1.15693 5.84957L1.15694 5.84957L1.15589 5.84632C0.951304 5.21398 0.833496 4.53252 0.833496 3.79356C0.833496 2.00736 2.27197 0.566895 4.04016 0.566895C5.08192 0.566895 6.01641 1.07329 6.59981 1.85309Z" fill="white" stroke="white"/>
+    </svg>
+
+)
+
 const ShareIcon = () => (
     <svg width="15" height="12" viewBox="0 0 15 12" fill="none" xmlns="http://www.w3.org/2000/svg">
         <path d="M10.3161 6.96609L10.3161 6.9661C10.3035 6.97799 10.2949 6.98023 10.2892 6.98111C10.2809 6.98237 10.2687 6.98157 10.2554 6.97588C10.2422 6.97023 10.2339 6.96235 10.2297 6.9564C10.2271 6.95266 10.2224 6.94499 10.2224 6.92573V5.25992V4.75655L9.71903 4.75993C8.86751 4.76564 8.11303 4.81995 7.47662 4.95685C6.84212 5.09333 6.2863 5.31992 5.86962 5.69919C5.06553 6.43109 4.95945 7.53907 5.3147 8.95494C4.64952 8.30559 4.11127 7.29402 4.11127 6.30892C4.11127 5.54459 4.26697 4.9694 4.52199 4.53011C4.77595 4.09264 5.14687 3.75804 5.6298 3.50256C6.61902 2.97924 8.04016 2.80641 9.72516 2.79706L10.2224 2.79431V2.29707V0.630057C10.2224 0.610677 10.2271 0.603029 10.2297 0.599366C10.2338 0.593479 10.2421 0.585625 10.2553 0.579972C10.2687 0.574288 10.2809 0.573471 10.2893 0.574749C10.2951 0.575641 10.3036 0.577911 10.3161 0.589671L10.3161 0.589694L13.6495 3.73755C13.6495 3.73756 13.6495 3.73756 13.6495 3.73756C13.6726 3.7594 13.6726 3.79646 13.6495 3.81829C13.6495 3.8183 13.6495 3.8183 13.6495 3.81831L10.3161 6.96609ZM10.2224 10.9446V10.4446V9.09206C10.384 9.09628 10.5455 9.08237 10.7039 9.05062V10.815C10.7039 11.1525 10.4303 11.4261 10.0928 11.4261H1.94461C1.60709 11.4261 1.3335 11.1525 1.3335 10.815V2.66682C1.3335 2.3293 1.60709 2.05571 1.94461 2.05571H3.96429C3.7666 2.19977 3.5777 2.35966 3.4 2.53719H2.31498H1.81498V3.03719V10.4446V10.9446H2.31498H9.72239H10.2224Z" fill="#5B44E9" stroke="#5B44E9" />
@@ -36,19 +43,22 @@ const CommentsItem = ({ comment }) => {
                     alt="User"
                     />
                 </div>
-                <div className="ml-5 mt-[-.4rem]">
-                <div className="bg-secondary_sky_light rounded-full px-8 py-2">
+                <div className="ml-5 mt-[-.4rem] relative">
+                <div className="bg-secondary_sky_light rounded-full px-8 py-2 relative">
                     <h5 className="font-semibold text-secondary_ink_darkest">{comment.name}</h5>
                     <p className="text-secondary_ink_darkest mt-1">{comment.comment}</p>
+                    <div className="absolute bg-[#FF5247] right-0 flex gap-2 items-center text-white px-3 rounded-full py-1 bottom-[-2.3rem]">
+                        {comment.likes} <LikeIcon/>
+                    </div>
                 </div>  
-                <div className="ml-7 mt-2">
+                <div className="ml-7 my-2 mt-3 flex flex-col">
                     <div className="text-primary flex gap-5">
                         <p className="text-secondary_ink_lighter">{comment.timeOfCreationNow}</p>
                         <button>Like</button>
                         <button>Reply</button>
                     </div>
                     {comment.subComment.length > 0 ? comment.subComment.map(subComment => {
-                        return <div key={subComment.id} className="flex items-center mt-4">
+                        return <div key={subComment.id} className="flex items-center mt-4 relative">
                         <div className="border-2 border-primary rounded-full flex items-center p-[.2rem] w-[max-content]">
                             <Image
                                 src={"/images/avatar.png"}
@@ -59,13 +69,13 @@ const CommentsItem = ({ comment }) => {
                                 />
                             </div>
                             <div className="ml-5 mt-[-.4rem]">
-                                <div className="bg-secondary_sky_light w-[max-content] rounded-full px-8 py-2 flex items-center gap-2">
+                                <div className="bg-secondary_sky_light w-[max-content] rounded-full px-8 pl-5 py-2 flex items-center gap-2">
                                     <p className="font-semibold text-secondary_ink_darkest">{subComment.name}</p>
                                     <p className="text-[14px] text-secondary_ink_dark">{subComment.replyTo}</p>
                                     
                                     <p className="text-secondary_ink_lighter ml-2">{subComment.comment}</p>
                                 </div>  
-                            </div>
+                            </div>                            
                         </div>
                     }): null}
                 </div>
