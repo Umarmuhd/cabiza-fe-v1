@@ -49,10 +49,8 @@ export default function Username({ children }) {
               <button className="bg-primary flex h-[max-content] m-auto items-center rounded-full text-white px-4 py-2">
               <AddIcon /><span className="ml-2">Follow</span></button>
           </TopNav>        
-      </div>      
-      <div className="bg-white">
+      </div>            
         {children}
-      </div>
       <div className="w-full flex justify-center md:py-9 py-6">
         <div className="flex items-end">
           <p className="text-base font-semibold uppercase text-secondary mr-2">
