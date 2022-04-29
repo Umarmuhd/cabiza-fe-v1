@@ -37,7 +37,7 @@ function UserMenu() {
   });
 
   return (
-    <div className="relative inline-flex px-3 ml-1 border-l border-l-secondary_sky_base h-[100%]">
+    <div className="relative md:inline-flex px-3 ml-1 border-l border-l-secondary_sky_base h-[100%] hidden">
       <button
         ref={trigger}
         className="inline-flex justify-center items-center group"
