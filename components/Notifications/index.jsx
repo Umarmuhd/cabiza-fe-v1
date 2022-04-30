@@ -33,7 +33,7 @@ function Notifications() {
   });
 
   return (
-    <div className="relative inline-flex pl-4 ml-5 border-l border-l-secondary_sky_base h-[100%] items-center mr-3">
+    <div className="relative md:inline-flex pl-4 ml-5 border-l border-l-secondary_sky_base h-[100%] items-center mr-3 hidden">
       <button
         ref={trigger}
         className={`w-10 h-10 flex items-center justify-center bg-primary_brand_lightest hover:bg-slate-200 transition duration-150 p-2 rounded-full ${
