@@ -98,7 +98,9 @@ export default function DiscoverSingle() {
       reset({ price: "" });
       return;
     }
-    setCheckout({ data: { product, price } });
+    setCheckout({
+      data: { product, price, affiliate: router.query.affiliate },
+    });
     router.push(`/discover/${product.product_id}/checkout`);
   };
 

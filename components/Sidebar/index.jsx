@@ -466,7 +466,7 @@ const Sidebar = ({ user }) => {
               </div>
             </div>
             {/* Navigation */}
-            <ul className="md:flex-col md:min-w-full flex flex-col list-none">
+            <ul className="md:flex-col md:min-w-full flex flex-col list-none mb-6">
               <li className="items-center">
                 <Link href="/dashboard/profile">
                   <a className="text-secondary_ink_dark text-lg font-medium py-3 flex items-center">
@@ -491,18 +491,18 @@ const Sidebar = ({ user }) => {
                   </a>
                 </Link>
               </li>
-              <li className="items-center border-b border-b-secondary_sky_base pb-2 mb-6">
+              {/* <li className="items-center border-b border-b-secondary_sky_base pb-2 mb-6">
                 <Link href="/dashboard">
                   <a className="text-secondary_ink_dark text-lg font-medium py-3 flex items-center">
                     <AudienceIcon />
                     <span className="ml-2">Audience</span>
                   </a>
                 </Link>
-              </li>
+              </li> */}
             </ul>
 
             {/* Navigation */}
-            <ul className="md:flex-col md:min-w-full flex flex-col list-none md:mb-4">
+            <ul className="md:flex-col md:min-w-full flex flex-col list-none md:mb-4 mb-6">
               <li className="items-center">
                 <Link href="/dashboard/payout">
                   <a className="text-secondary_ink_dark text-lg font-medium py-3 flex items-center">
@@ -519,26 +519,26 @@ const Sidebar = ({ user }) => {
                   </a>
                 </Link>
               </li>
-              <li className="items-center border-b border-b-secondary_sky_base pb-2 mb-6">
+              {/* <li className="items-center border-b border-b-secondary_sky_base pb-2">
                 <Link href="/dashboard">
                   <a className="text-secondary_ink_dark text-lg font-medium py-3 flex items-center">
                     <LibraryIcon />
                     <span className="ml-2">Library</span>
                   </a>
                 </Link>
-              </li>
+              </li> */}
             </ul>
 
             {/* Navigation */}
             <ul className="md:flex-col md:min-w-full flex flex-col list-none md:mb-4">
-              <li className="items-center">
+              {/* <li className="items-center">
                 <Link href="/dashboard">
                   <a className="text-secondary_ink_dark text-lg font-medium py-3 flex items-center">
                     <ShopIcon />
                     <span className="ml-2">Start Selling</span>
                   </a>
                 </Link>
-              </li>
+              </li> */}
               <li className="items-center">
                 <Link href="/dashboard">
                   <a className="text-secondary_ink_dark text-lg font-medium py-3 flex items-center">

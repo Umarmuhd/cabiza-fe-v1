@@ -57,64 +57,80 @@ const LeftIcon = () => (
   </svg>
 );
 
-const ProductItem = ({ product }) => (
-  <div
-    className={`shadow sm:w-sm:[max-content] mr-5 h-[max-content] rounded-xl ${styles.card}`}
-  >
-    <img
-      src={product.thumbnail ?? "/images/book-small.png"}
-      alt="..."
-      className="w-[24rem] h-[20rem] object-cover"
-    />
-    <div className="p-5 rounded-b">
-      <p className="text-lg text-secondary_sky_dark font-normal mb-1">Books</p>
-      <Link href={`/discover/${product.product_id}`}>
-        <h4 className="text-2xl text-secondary font-medium mb-3">
-          {product.name}
-        </h4>
-      </Link>
-      <div className="flex items-center">
-        {/* <span className="text-lg text-grey_60 font-medium mr-2"></span> */}
-        <img
-          src={product.user.profile_picture}
-          alt="..."
-          className="h-9 w-9 rounded-full object-cover"
-        />
+const ProductItem = ({ product }) => {
+  console.log(product);
+  const handleBecomeAffiliate = async () => {
+    try {
+      const response = await axios.put(
+        `${API_URL}/products/affiliate/${product.product_id}`
+      );
 
-        <Link href={`/${product.user.username}/products`}>
-          <a className="font-medium ml-2 text-secondary_ink_lighter block border-b border-b-secondary_ink_lighter">
-            {product.user.full_name}
-          </a>
+      console.log(response.data);
+    } catch (error) {
+      console.error(error.message);
+    }
+  };
+  return (
+    <div
+      className={`shadow sm:w-sm:[max-content] mr-5 h-[max-content] rounded-xl ${styles.card}`}
+    >
+      <img
+        src={product.thumbnail ?? "/images/book-small.png"}
+        alt="..."
+        className="w-[24rem] h-[20rem] object-cover"
+      />
+      <div className="p-5 rounded-b">
+        <p className="text-lg text-secondary_sky_dark font-normal mb-1">
+          Books
+        </p>
+        <Link href={`/discover/${product.product_id}`}>
+          <h4 className="text-2xl text-secondary font-medium mb-3">
+            {product.name}
+          </h4>
         </Link>
-      </div>
-
-      <div className="mt-3 flex items-center justify-between mt-4">
         <div className="flex items-center">
-          <img src="/images/icons/star.svg" alt="..." className="w-6 h-6" />
-          <span className="ml-2 font-semibold text-secondary_ink_lighter text-md">
-            5.0
-            <span className="font-normal ml-1">(25)</span>
+          {/* <span className="text-lg text-grey_60 font-medium mr-2"></span> */}
+          <img
+            src={product.user.profile_picture}
+            alt="..."
+            className="h-9 w-9 rounded-full object-cover"
+          />
+
+          <Link href={`/${product.user.username}/products`}>
+            <a className="font-medium ml-2 text-secondary_ink_lighter block border-b border-b-secondary_ink_lighter">
+              {product.user.full_name}
+            </a>
+          </Link>
+        </div>
+
+        <div className="mt-3 flex items-center justify-between mt-4">
+          <div className="flex items-center">
+            <img src="/images/icons/star.svg" alt="..." className="w-6 h-6" />
+            <span className="ml-2 font-semibold text-secondary_ink_lighter text-md">
+              5.0
+              <span className="font-normal ml-1">(25)</span>
+            </span>
+          </div>
+          <span
+            className={`text-sm font-normal py-2 px-5 pl-3 bg-primary rounded ${styles.price} text-white`}
+          >
+            ${product.price}+
           </span>
         </div>
-        <span
-          className={`text-sm font-normal py-2 px-5 pl-3 bg-primary rounded ${styles.price} text-white`}
-        >
-          ${product.price}+
-        </span>
-      </div>
 
-      <div className="rounded-xl border border-sky_light flex justify-between items-center mt-5 px-1 sm:px-3 py-1 pr-2 bg-secondary_sky_lightest">
-        <p className="text-xs text-secondary">40% Affiliate Commission</p>
-        <a
-          href=""
-          className="bg-primary text-white font-medium text-sm rounded px-3 py-2 sm:ml-10"
-        >
-          Become Affiliate
-        </a>
+        <div className="rounded-xl border border-sky_light flex justify-between items-center mt-5 px-1 sm:px-3 py-1 pr-2 bg-secondary_sky_lightest">
+          <p className="text-xs text-secondary">40% Affiliate Commission</p>
+          <button
+            className="bg-primary text-white font-medium text-sm rounded px-3 py-2 sm:ml-10"
+            onClick={handleBecomeAffiliate}
+          >
+            Become Affiliate
+          </button>
+        </div>
       </div>
     </div>
-  </div>
-);
+  );
+};
 
 export default function Discover() {
   const [products, setProducts] = useState([]);
