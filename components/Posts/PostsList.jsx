@@ -7,6 +7,7 @@ import Link from "next/link";
 import Image from "next/image";
 import moment from "moment";
 import { Switch } from "@headlessui/react";
+import PaginationComponent from "../PaginationComponent";
 
 const SpinIcon = () => (
   <svg
@@ -75,7 +76,7 @@ const PostItem = ({ post, deletePost, user }) => {
       <div
         className={
           "p-6 rounded-2xl border border-secondary_sky_dark " +
-          (expanded ? "rounded-b-none border-b-0" : "")
+          (expanded && "rounded-b-none border-b-0")
         }
         onClick={() => setExpanded(!expanded)}
       >
@@ -251,15 +252,17 @@ export default function PostsList() {
           style={{ boxShadow: "0px 20px 40px rgba(0, 0, 0, 0.06)" }}
         >
           {loading ? (
-            <div className="flex justify-center items-center text-center">
-              <SpinIcon />
-            </div>
+            <React.Fragment>
+              <div className="flex justify-center items-center text-center">
+                <SpinIcon />
+              </div>
+            </React.Fragment>
           ) : (
             <React.Fragment>
               {posts.length > 0 ? (
                 <div>
-                  {posts?.map((post, index) => (
-                    <React.Fragment key={index}>
+                  {posts.map((post) => (
+                    <React.Fragment key={post._id}>
                       <PostItem
                         post={post}
                         deletePost={deletePost}
@@ -303,6 +306,8 @@ export default function PostsList() {
               )}
             </React.Fragment>
           )}
+
+          <PaginationComponent classNames="mt-5" />
         </div>
       </div>
     </main>

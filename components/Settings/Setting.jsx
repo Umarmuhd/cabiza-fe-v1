@@ -155,7 +155,7 @@ export default function Setting() {
         </div>
       </Card>
 
-      <Card title="Local">
+      {/* <Card title="Local">
         <div>
           <div className="flex flex-col">
             <label htmlFor="language" className="text-secondary_ink_darkest">
@@ -289,7 +289,7 @@ export default function Setting() {
             </p>
           </div>
         </div>
-      </Card>
+      </Card> */}
 
       <Card title="Discover">
         <p className="mb-5 text-secondary_ink_lighter">

@@ -154,7 +154,7 @@ const PaymentPage = () => {
 
             const orderData = {
               product_id: product.data.product.product_id,
-
+              affiliate: product.data.affiliate,
               amount: response.transaction.amount,
               payment_info: {
                 payment_method: "braintree",
