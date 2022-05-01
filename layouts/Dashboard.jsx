@@ -1,13 +1,14 @@
-import React, { useContext } from "react";
+import React, { useContext, useState } from "react";
 import { useRouter } from "next/router";
 
-import Sidebar from "../components/Sidebar";
+import Sidebar from "../components/Sidebar/index";
 
 import { Toaster } from "react-hot-toast";
 import AuthContext from "@/context/AuthContext";
 
 export default function Dashboard({ children }) {
   const { user } = useContext(AuthContext);
+  const [sidebarOpen, setSidebarOpen] = useState(false);
 
   const router = useRouter();
 
@@ -16,20 +17,12 @@ export default function Dashboard({ children }) {
   }
 
   return (
-    <div className="md:static">
+    <div className="flex h-screen overflow-hidden">
+      {/* Sidebar */}
       <Sidebar user={user} />
-      <div className="main_content relative min-h-screen bg-secondary_sky_lighter">
-        <div className="px-0 md:px-0 mx-auto w-full -m-24 content-wrap">
-          {children}
-        </div>
-
-        <style jsx>{`
-          @media screen and (min-width: 768px) {
-            .main_content {
-              margin-left: 256px;
-            }
-          }
-        `}</style>
+      {/* Content area */}
+      <div className="relative flex flex-col flex-1 overflow-y-auto overflow-x-hidden">
+        {children}
       </div>
     </div>
   );
