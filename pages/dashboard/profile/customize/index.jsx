@@ -33,7 +33,7 @@ export default function Customize() {
               >
                 Change Picture
               </Tab>
-              <Tab
+              {/* <Tab
                 as={"button"}
                 className={({ selected }) =>
                   classNames(
@@ -45,7 +45,7 @@ export default function Customize() {
                 }
               >
                 Connections
-              </Tab>
+              </Tab> */}
               <Tab
                 as={"button"}
                 className={({ selected }) =>
@@ -71,9 +71,9 @@ export default function Customize() {
           <Tab.Panel>
             <ChangePicture user={user} />
           </Tab.Panel>
-          <Tab.Panel>
+          {/* <Tab.Panel>
             <Connections />
-          </Tab.Panel>
+          </Tab.Panel> */}
           <Tab.Panel>
             <Share />
           </Tab.Panel>

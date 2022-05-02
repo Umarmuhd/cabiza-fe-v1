@@ -44,19 +44,21 @@ export default function Settings() {
               >
                 Payout
               </Tab>
-              <Tab
-                as={"button"}
-                className={({ selected }) =>
-                  classNames(
-                    "text-md mr-10 pb-2 font-medium",
-                    selected
-                      ? " font-bold text-primary border-b border-b-primary"
-                      : " text-secondary"
-                  )
-                }
-              >
-                Payment
-              </Tab>
+              {false && (
+                <Tab
+                  as={"button"}
+                  className={({ selected }) =>
+                    classNames(
+                      "text-md mr-10 pb-2 font-medium",
+                      selected
+                        ? " font-bold text-primary border-b border-b-primary"
+                        : " text-secondary"
+                    )
+                  }
+                >
+                  Payment
+                </Tab>
+              )}
               <Tab
                 as={"button"}
                 className={({ selected }) =>
@@ -70,19 +72,21 @@ export default function Settings() {
               >
                 Password
               </Tab>
-              <Tab
-                as={"button"}
-                className={({ selected }) =>
-                  classNames(
-                    "text-md mr-10 pb-2 font-medium",
-                    selected
-                      ? " font-bold text-primary border-b border-b-primary"
-                      : " text-secondary"
-                  )
-                }
-              >
-                Advance
-              </Tab>
+              {false && (
+                <Tab
+                  as={"button"}
+                  className={({ selected }) =>
+                    classNames(
+                      "text-md mr-10 pb-2 font-medium",
+                      selected
+                        ? " font-bold text-primary border-b border-b-primary"
+                        : " text-secondary"
+                    )
+                  }
+                >
+                  Advance
+                </Tab>
+              )}
             </Tab.List>
           </div>
         </FullNav>
@@ -94,15 +98,19 @@ export default function Settings() {
           <Tab.Panel>
             <Payout />
           </Tab.Panel>
-          <Tab.Panel>
-            <Payment />
-          </Tab.Panel>
+          {false && (
+            <Tab.Panel>
+              <Payment />
+            </Tab.Panel>
+          )}
           <Tab.Panel>
             <Password />
           </Tab.Panel>
-          <Tab.Panel>
-            <Advance />
-          </Tab.Panel>
+          {false && (
+            <Tab.Panel>
+              <Advance />
+            </Tab.Panel>
+          )}
         </Tab.Panels>
       </Tab.Group>
     </div>

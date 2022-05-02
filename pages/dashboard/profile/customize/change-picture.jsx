@@ -1,5 +1,8 @@
-import React from "react";
+import React, { useRef, useState } from "react";
 import Link from "next/link";
+import toast from "react-hot-toast";
+import axios from "axios";
+import { API_URL } from "@/config/index";
 
 const LeftIcon = () => (
   <svg
@@ -29,15 +32,53 @@ const LeftIcon = () => (
 );
 
 const ChangePicture = ({ user }) => {
+  const [avatar, setAvatar] = useState(user?.profile_picture ?? null);
+  const [preview, setPreview] = useState(null);
+  const [loading, setLoading] = useState(false);
+
+  const profileRef = useRef();
+
+  const handleClick = () => {
+    profileRef.current.click();
+  };
+
+  const handleImage = async (e) => {
+    let file = e.target.files[0];
+    setPreview(window.URL.createObjectURL(file));
+    setLoading(true);
+
+    let form_data = new FormData();
+    form_data.append("image", file);
+
+    try {
+      const config = { "Content-Type": "multipart/form-data" };
+      const { data } = await axios.put(
+        `${API_URL}/user/avatar`,
+        form_data,
+        config
+      );
+      toast.success("Uploaded Successfully");
+      setAvatar(data.data.picture);
+      setLoading(false);
+    } catch (error) {
+      console.log(error);
+      setLoading(false);
+      toast.error("Image upload failed. Try later.");
+      setPreview(null);
+    }
+  };
+
   return (
     <div className="bg-white rounded-2xl p-10 px-3 md:w-43/50 mx-auto mt-10 shadow mb-12">
       <div className="text-center relative">
         <div className="rounded-[50%] bg-secondary_sky_light w-[max-content] h-auto mx-auto flex p-3 object-cover">
           <label htmlFor="image" className="mx-auto">
             <img
-              src={user?.profile_picture || "/images/profile-placeholder.png"}
+              src={
+                preview ?? avatar ? avatar : "/images/profile-placeholder.png"
+              }
               className={
-                "m-auto cursor-pointer rounded-[50%] object-cover" +
+                "m-auto cursor-pointer rounded-full object-cover" +
                 user?.profile_picture
                   ? " w-[14rem] h-[14rem]"
                   : " w-[12rem] h-[12rem]"
@@ -50,6 +91,8 @@ const ChangePicture = ({ user }) => {
             accept="image/png, image/gif, image/jpeg"
             id="image"
             className="hidden"
+            onChange={handleImage}
+            ref={profileRef}
           />
         </div>
 
