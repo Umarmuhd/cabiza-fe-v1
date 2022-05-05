@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useContext } from "react";
+import React, { useState, useEffect, useContext, useRef } from "react";
 import Link from "next/link";
 import axios from "axios";
 import { useRouter } from "next/router";
@@ -7,6 +7,7 @@ import Image from "next/image";
 import AuthContext from "@/context/AuthContext";
 import Username from "@/layouts/Username";
 import { RWebShare } from "react-web-share";
+import toast from "react-hot-toast";
 
 const ShareIcon = () => (
   <svg
@@ -45,7 +46,7 @@ const CommentsItem = ({ comment }) => {
     <div className="flex items-start mt-5">
       <div className="border-2 border-primary rounded-full flex items-center p-[.2rem] w-[max-content]">
         <Image
-          src={"/images/avatar.png"}
+          src={comment.user?.profile_picture ?? "/images/avatar.png"}
           width={32}
           height={32}
           className="rounded-full"
@@ -55,19 +56,24 @@ const CommentsItem = ({ comment }) => {
       <div className="ml-5 mt-[-.4rem]">
         <div className="bg-secondary_sky_light rounded-full px-8 py-2">
           <h5 className="font-semibold text-secondary_ink_darkest">
-            {comment.name}
+            {comment?.user?.full_name}
           </h5>
-          <p className="text-secondary_ink_darkest mt-1">{comment.comment}</p>
+          <p className="text-secondary_ink_darkest mt-1">{comment.body}</p>
         </div>
         <div className="ml-7 mt-2">
           <div className="text-primary flex gap-5">
             <p className="text-secondary_ink_lighter">
-              {comment.timeOfCreationNow}
+              {new Date(comment.createdAt).toLocaleDateString("en-US", {
+                weekday: "long",
+                year: "numeric",
+                month: "long",
+                day: "numeric",
+              })}
             </p>
             <button>Like</button>
             <button>Reply</button>
           </div>
-          {comment.subComment.length > 0
+          {comment?.subComment?.length > 0
             ? comment.subComment.map((subComment) => {
                 return (
                   <div key={subComment.id} className="flex items-center mt-4">
@@ -109,35 +115,22 @@ export default function SinglePost() {
 
   const [loading, setLoading] = useState(false);
   const [post, setPost] = useState(null);
+  const [comments, setComments] = useState([]);
 
   const router = useRouter();
   const { post_id } = router.query;
 
-  const comments = [
-    {
-      name: "Umar Zakari",
-      timeOfCreationNow: "4h",
-      comment:
-        "Awesome post, I love the content, it has really helped through my career path. Thanks.",
-      subComment: [
-        {
-          name: "Emmanuel Jacob",
-          replyTo: "Umar Zakari",
-          comment: "Thanks.",
-          id: 1,
-        },
-      ],
-      likes: 2,
-    },
-    {
-      name: "Ojo Triumph",
-      timeOfCreationNow: "4h",
-      comment:
-        "Awesome post, I love the content, it has really helped through my career path. Thanks for all that  your do.",
-      subComment: "",
-      likes: 1,
-    },
-  ];
+  const commentRef = useRef();
+
+  const fetchComments = async () => {
+    try {
+      const url = `${API_URL}/posts/comments/${post_id}`;
+      const { data } = await axios.get(url);
+      setComments(data.data.comments);
+    } catch (error) {
+      console.log(error.message);
+    }
+  };
 
   const fetchPost = async () => {
     try {
@@ -146,6 +139,8 @@ export default function SinglePost() {
 
       setPost(response.data.data.post);
       setLoading(false);
+
+      fetchComments();
     } catch (error) {
       console.log(error);
       setLoading(false);
@@ -155,6 +150,38 @@ export default function SinglePost() {
   useEffect(() => {
     fetchPost();
   }, [post_id]);
+
+  const handleAddComment = async (e) => {
+    e.preventDefault();
+    const comment = commentRef.current.value;
+    try {
+      const url = `${API_URL}/posts/create/comment/${post_id}`;
+      const { data } = await axios.post(url, { body: comment });
+      toast.custom(
+        <div className="rounded-lg py-4 px-8 bg-[#24C78C] flex items-center">
+          <svg
+            width="24"
+            height="24"
+            viewBox="0 0 24 24"
+            fill="none"
+            xmlns="http://www.w3.org/2000/svg"
+          >
+            <path
+              d="M16.19 2H7.81C4.17 2 2 4.17 2 7.81V16.18C2 19.83 4.17 22 7.81 22H16.18C19.82 22 21.99 19.83 21.99 16.19V7.81C22 4.17 19.83 2 16.19 2ZM15.36 14.3C15.65 14.59 15.65 15.07 15.36 15.36C15.21 15.51 15.02 15.58 14.83 15.58C14.64 15.58 14.45 15.51 14.3 15.36L12 13.06L9.7 15.36C9.55 15.51 9.36 15.58 9.17 15.58C8.98 15.58 8.79 15.51 8.64 15.36C8.35 15.07 8.35 14.59 8.64 14.3L10.94 12L8.64 9.7C8.35 9.41 8.35 8.93 8.64 8.64C8.93 8.35 9.41 8.35 9.7 8.64L12 10.94L14.3 8.64C14.59 8.35 15.07 8.35 15.36 8.64C15.65 8.93 15.65 9.41 15.36 9.7L13.06 12L15.36 14.3Z"
+              fill="white"
+            />
+          </svg>
+          <span className="ml-2.5 font-medium text-lg text-white">
+            Comment added success !
+          </span>
+        </div>
+      );
+      commentRef.current.value = "";
+      fetchComments();
+    } catch (error) {
+      console.error(error.message);
+    }
+  };
 
   return (
     <React.Fragment>
@@ -202,65 +229,75 @@ export default function SinglePost() {
             </div>
           </header>
 
-          <main className="mx-auto md:w-43/50 py-10 md:mt-7 bg-white rounded-xl px-10 shadow-lg">
-            <p className="text-xl">{comments.length} Comments</p>
+          {post?.engagements.includes("0") ? (
+            <main className="mx-auto md:w-43/50 py-10 md:mt-7 bg-white rounded-xl px-10 shadow-lg">
+              <p className="text-xl">{comments.length} Comments</p>
 
-            <div className="mt-7 flex justify-between items-center">
-              <div className="border-2 border-primary rounded-full flex items-center p-[.2rem] w-[max-content]">
-                <Image
-                  src={user?.profile_picture ?? "/images/avatar.png"}
-                  width={32}
-                  height={32}
-                  className="rounded-full"
-                  alt="User"
-                />
-              </div>
-              <div className="flex flex-col">
-                <div className="flex items-center border border-sky_light rounded-full overflow-hidden relative">
-                  <input
-                    name="comment"
-                    id="comment"
-                    className="h-12 w-[65rem] text-secondary_ink_lighter bg-white px-4 outline-none appearance-none pl-7"
-                    placeholder="Write a comment"
+              <form
+                className="mt-7 flex justify-between items-center"
+                onSubmit={handleAddComment}
+              >
+                <div className="border-2 border-primary rounded-full flex items-center p-[.2rem] w-[max-content]">
+                  <Image
+                    src={user?.profile_picture ?? "/images/avatar.png"}
+                    width={32}
+                    height={32}
+                    className="rounded-full"
+                    alt="User"
                   />
-                  <div className="absolute inset-y-0 right-0 flex items-center text-gray-700 h-[100%] px-3 bg-secondary_sky_light pr-4 cursor-pointer">
-                    <svg
-                      width="12"
-                      height="24"
-                      viewBox="0 0 12 24"
-                      fill="none"
-                      xmlns="http://www.w3.org/2000/svg"
-                    >
-                      <path d="M6 0L11.1962 9H0.803848L6 0Z" fill="#CDCFD0" />
-                      <path
-                        d="M6 24L11.1962 15H0.803848L6 24Z"
-                        fill="#CDCFD0"
-                      />
-                    </svg>
+                </div>
+                <div className="flex flex-col">
+                  <div className="flex items-center border border-sky_light rounded-full overflow-hidden relative">
+                    <input
+                      name="comment"
+                      id="comment"
+                      className="h-12 w-[65rem] text-secondary_ink_lighter bg-white px-4 outline-none appearance-none pl-7"
+                      placeholder="Write a comment"
+                      ref={commentRef}
+                      autoComplete="off"
+                    />
+                    <div className="absolute inset-y-0 right-0 flex items-center text-gray-700 h-[100%] px-3 bg-secondary_sky_light pr-4 cursor-pointer">
+                      <svg
+                        width="12"
+                        height="24"
+                        viewBox="0 0 12 24"
+                        fill="none"
+                        xmlns="http://www.w3.org/2000/svg"
+                      >
+                        <path d="M6 0L11.1962 9H0.803848L6 0Z" fill="#CDCFD0" />
+                        <path
+                          d="M6 24L11.1962 15H0.803848L6 24Z"
+                          fill="#CDCFD0"
+                        />
+                      </svg>
+                    </div>
                   </div>
                 </div>
+                <button
+                  className="bg-primary flex h-[max-content] items-center rounded-full text-white px-6 py-2"
+                  type="submit"
+                >
+                  Post
+                </button>
+              </form>
+
+              <div className="mt-2 flex flex-col w-[90%] mx-auto">
+                {comments.length > 0 && !loading ? (
+                  <>
+                    {comments.map((comment, index) => (
+                      <React.Fragment key={index}>
+                        <CommentsItem comment={comment} />
+                      </React.Fragment>
+                    ))}
+                  </>
+                ) : (
+                  <p className="text-grey_60">No comment found</p>
+                )}
               </div>
-              <button className="bg-primary flex h-[max-content] items-center rounded-full text-white px-6 py-2">
-                Post
-              </button>
-            </div>
 
-            <div className="mt-2 flex flex-col w-[90%] mx-auto">
-              {comments.length > 0 && !loading ? (
-                <>
-                  {comments.map((comment, index) => (
-                    <React.Fragment key={index}>
-                      <CommentsItem comment={comment} />
-                    </React.Fragment>
-                  ))}
-                </>
-              ) : (
-                <p className="text-grey_60">No comment found</p>
-              )}
-            </div>
-
-            <div className="flex items-center justify-between"></div>
-          </main>
+              <div className="flex items-center justify-between"></div>
+            </main>
+          ) : null}
         </React.Fragment>
       )}
     </React.Fragment>
