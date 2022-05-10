@@ -1,5 +1,6 @@
 import Image from "next/image";
 import React from "react";
+import AffiliateMore from "../Dropdowns/AffiliateMore";
 import PaginationComponent from "../PaginationComponent";
 
 export default function AllAffiliates({ products }) {
@@ -97,7 +98,7 @@ export default function AllAffiliates({ products }) {
                         </span>
                       </td>
                       <td className="px-5 py-5 border-b border-gray-200 bg-white text-sm">
-                        <button>
+                        {/* <button>
                           <svg
                             className="w-6 h-6"
                             fill="currentColor"
@@ -106,7 +107,11 @@ export default function AllAffiliates({ products }) {
                           >
                             <path d="M6 10a2 2 0 11-4 0 2 2 0 014 0zM12 10a2 2 0 11-4 0 2 2 0 014 0zM16 12a2 2 0 100-4 2 2 0 000 4z"></path>
                           </svg>
-                        </button>
+                        </button> */}
+
+                        <div className="relative">
+                          <AffiliateMore />
+                        </div>
                       </td>
                     </tr>
                   ))}

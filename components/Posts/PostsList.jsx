@@ -246,7 +246,7 @@ export default function PostsList() {
 
   return (
     <main className="h-full w-full relative">
-      <div className="w-43/50 mx-auto md:my-10">
+      <div className="md:w-43/50 mx-auto md:my-10">
         <div
           className="p-8 bg-white rounded-2xl"
           style={{ boxShadow: "0px 20px 40px rgba(0, 0, 0, 0.06)" }}
