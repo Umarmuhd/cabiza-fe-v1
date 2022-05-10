@@ -1,7 +1,7 @@
 /* This example requires Tailwind CSS v2.0+ */
-import { Fragment } from "react";
-import { Menu, Transition } from "@headlessui/react";
-import { classNames } from "@/libs/helper";
+import { Fragment } from 'react';
+import { Menu, Transition } from '@headlessui/react';
+import { classNames } from '@/libs/helper';
 
 export default function AffiliateMore() {
   return (
@@ -17,9 +17,9 @@ export default function AffiliateMore() {
             aria-hidden="true"
           >
             <path
-              fill-rule="evenodd"
+              fillRule="evenodd"
               d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z"
-              clip-rule="evenodd"
+              clipRule="evenodd"
             />
           </svg>
         </Menu.Button>
@@ -41,8 +41,8 @@ export default function AffiliateMore() {
                 <a
                   href="#"
                   className={classNames(
-                    active ? "bg-gray-100 text-gray-900" : "text-gray-700",
-                    "block px-4 py-2 text-sm"
+                    active ? 'bg-gray-100 text-gray-900' : 'text-gray-700',
+                    'block px-4 py-2 text-sm'
                   )}
                 >
                   Account settings
@@ -54,8 +54,8 @@ export default function AffiliateMore() {
                 <a
                   href="#"
                   className={classNames(
-                    active ? "bg-gray-100 text-gray-900" : "text-gray-700",
-                    "block px-4 py-2 text-sm"
+                    active ? 'bg-gray-100 text-gray-900' : 'text-gray-700',
+                    'block px-4 py-2 text-sm'
                   )}
                 >
                   Support
@@ -67,8 +67,8 @@ export default function AffiliateMore() {
                 <a
                   href="#"
                   className={classNames(
-                    active ? "bg-gray-100 text-gray-900" : "text-gray-700",
-                    "block px-4 py-2 text-sm"
+                    active ? 'bg-gray-100 text-gray-900' : 'text-gray-700',
+                    'block px-4 py-2 text-sm'
                   )}
                 >
                   License
@@ -81,8 +81,8 @@ export default function AffiliateMore() {
                   <button
                     type="submit"
                     className={classNames(
-                      active ? "bg-gray-100 text-gray-900" : "text-gray-700",
-                      "block w-full text-left px-4 py-2 text-sm"
+                      active ? 'bg-gray-100 text-gray-900' : 'text-gray-700',
+                      'block w-full text-left px-4 py-2 text-sm'
                     )}
                   >
                     Sign out
