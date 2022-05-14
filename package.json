@@ -36,6 +36,7 @@
         "recoil": "^0.6.1",
         "save-svg-as-png": "^1.4.17",
         "styled-components": "^5.3.3",
+        "tawkto-react": "^3.0.1",
         "yup": "^0.32.11"
     },
     "devDependencies": {
