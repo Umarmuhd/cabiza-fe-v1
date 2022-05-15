@@ -91,7 +91,7 @@ export default function TopNav({ title, children, showLanguage }) {
           </div>
 
           {title ? (
-            <span className="md:hidden flex font-medium text-xl leading-6 text-secondary_ink_dark border-r border-r-secondary_sky_base h-[100%] items-center">
+            <span className="md:hidden flex font-medium text-xl leading-6 text-secondary_ink_dark md:border-r border-r-secondary_sky_base h-[100%] items-center">
               {title}
             </span>
           ) : null}
