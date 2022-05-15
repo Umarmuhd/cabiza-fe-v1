@@ -1,12 +1,12 @@
-import { useState } from "react";
-import Link from "next/link";
-import styles from "../styles/Home.module.css";
+import { useState } from 'react';
+import Link from 'next/link';
+import styles from '../styles/Home.module.css';
 
-import MainNavigation from "../components/Navbars/MainNav";
-import MainFooter from "../components/Footer/MainFooter";
-import { HeroSection } from "@/components/HeroSection";
-import { Feature } from "@/components/FeatureSection";
-import { CategoriesSection } from "@/components/CategoriesSection";
+import MainNavigation from '../components/Navbars/MainNav';
+import MainFooter from '../components/Footer/MainFooter';
+import { HeroSection } from '@/components/HeroSection';
+import { Feature } from '@/components/FeatureSection';
+import { CategoriesSection } from '@/components/CategoriesSection';
 
 const SendIcon = () => (
   <svg
@@ -22,7 +22,6 @@ const SendIcon = () => (
     />
   </svg>
 );
-
 const ArrowRight = () => (
   <svg
     width="12"
@@ -110,7 +109,7 @@ export default function Home() {
                       Limited access (intro module or 7 day trial) to the
                       specific/main course on this subscription.
                     </p>
-                    <a href="" className={styles["btn-secondary"]}>
+                    <a href="" className={styles['btn-secondary']}>
                       Learn More
                     </a>
                   </div>
@@ -125,7 +124,7 @@ export default function Home() {
                       Everyone is entitled to have access to only 1 free course
                       on this subscription per annum.
                     </p>
-                    <a href="" className={styles["btn-secondary"]}>
+                    <a href="" className={styles['btn-secondary']}>
                       Learn More
                     </a>
                   </div>
@@ -139,7 +138,7 @@ export default function Home() {
                       Everyone is entitled to have access to 5 free
                       courses/items on this subscription per annum.
                     </p>
-                    <a href="" className={styles["btn-secondary"]}>
+                    <a href="" className={styles['btn-secondary']}>
                       Learn More
                     </a>
                   </div>
@@ -153,7 +152,7 @@ export default function Home() {
                       This member has access to 20 free courses/items on this
                       subscription per annum.
                     </p>
-                    <a href="" className={styles["btn-secondary"]}>
+                    <a href="" className={styles['btn-secondary']}>
                       Learn More
                     </a>
                   </div>
@@ -178,19 +177,19 @@ export default function Home() {
                   <div>
                     <div className={styles.reviews}>
                       <div
-                        className={styles["reviews-container"]}
+                        className={styles['reviews-container']}
                         style={{
                           transform: `translateX(-${position}rem)`,
 
-                          "@media (max-width: 768px)": {
-                            display: "none",
+                          '@media (max-width: 768px)': {
+                            display: 'none',
                           },
                         }}
                       >
                         <div className={styles.review}>
-                          <div className={styles["review-header"]}>
+                          <div className={styles['review-header']}>
                             <img src="/images/review-profile-pic.png" alt="" />
-                            <div className={styles["header-content"]}>
+                            <div className={styles['header-content']}>
                               <h5>Emmanuel Jacob</h5>
                               <p>Ui/Ux Design Expert</p>
                               <p>Jacnet Tech.</p>
@@ -210,9 +209,9 @@ export default function Home() {
                         </div>
 
                         <div className={styles.review}>
-                          <div className={styles["review-header"]}>
+                          <div className={styles['review-header']}>
                             <img src="/images/review-profile-pic.png" alt="" />
-                            <div className={styles["header-content"]}>
+                            <div className={styles['header-content']}>
                               <h5>Emmanuel Jacob</h5>
                               <p>Ui/Ux Design Expert</p>
                               <p>Jacnet Tech.</p>
@@ -227,15 +226,15 @@ export default function Home() {
                           </div>
 
                           <a href="">
-                            Read More{" "}
+                            Read More{' '}
                             <img src="/images/icons/arrow-right.svg" alt="" />
                           </a>
                         </div>
 
                         <div className={styles.review}>
-                          <div className={styles["review-header"]}>
+                          <div className={styles['review-header']}>
                             <img src="/images/review-profile-pic.png" alt="" />
-                            <div className={styles["header-content"]}>
+                            <div className={styles['header-content']}>
                               <h5>Emmanuel Jacob</h5>
                               <p>Ui/Ux Design Expert</p>
                               <p>Jacnet Tech.</p>
@@ -250,15 +249,15 @@ export default function Home() {
                           </div>
 
                           <a href="">
-                            Read More{" "}
+                            Read More{' '}
                             <img src="/images/icons/arrow-right.svg" alt="" />
                           </a>
                         </div>
 
                         <div className={styles.review}>
-                          <div className={styles["review-header"]}>
+                          <div className={styles['review-header']}>
                             <img src="/images/review-profile-pic.png" alt="" />
-                            <div className={styles["header-content"]}>
+                            <div className={styles['header-content']}>
                               <h5>Emmanuel Jacob</h5>
                               <p>Ui/Ux Design Expert</p>
                               <p>Jacnet Tech.</p>
@@ -273,15 +272,15 @@ export default function Home() {
                           </div>
 
                           <a href="">
-                            Read More{" "}
+                            Read More{' '}
                             <img src="/images/icons/arrow-right.svg" alt="" />
                           </a>
                         </div>
 
                         <div className={styles.review}>
-                          <div className={styles["review-header"]}>
+                          <div className={styles['review-header']}>
                             <img src="/images/review-profile-pic.png" alt="" />
-                            <div className={styles["header-content"]}>
+                            <div className={styles['header-content']}>
                               <h5>Emmanuel Jacob</h5>
                               <p>Ui/Ux Design Expert</p>
                               <p>Jacnet Tech.</p>
@@ -296,7 +295,7 @@ export default function Home() {
                           </div>
 
                           <a href="">
-                            Read More{" "}
+                            Read More{' '}
                             <img src="/images/icons/arrow-right.svg" alt="" />
                           </a>
                         </div>
@@ -358,28 +357,28 @@ export default function Home() {
 
                       <div className={styles.flex}>
                         <div
-                          className={`${styles["review-location-step"]} ${
-                            position === 0 ? styles.active : "null"
+                          className={`${styles['review-location-step']} ${
+                            position === 0 ? styles.active : 'null'
                           }`}
                         ></div>
                         <div
-                          className={`${styles["review-location-step"]} ${
-                            position === 33 ? styles.active : "null"
+                          className={`${styles['review-location-step']} ${
+                            position === 33 ? styles.active : 'null'
                           } `}
                         ></div>
                         <div
-                          className={`${styles["review-location-step"]} ${
-                            position === 66 ? styles.active : "null"
+                          className={`${styles['review-location-step']} ${
+                            position === 66 ? styles.active : 'null'
                           }`}
                         ></div>
                         <div
-                          className={`${styles["review-location-step"]} ${
-                            position === 99 ? styles.active : "null"
+                          className={`${styles['review-location-step']} ${
+                            position === 99 ? styles.active : 'null'
                           }`}
                         ></div>
                         <div
-                          className={`${styles["review-location-step"]} ${
-                            position === 132 ? styles.active : "null"
+                          className={`${styles['review-location-step']} ${
+                            position === 132 ? styles.active : 'null'
                           }`}
                         ></div>
                       </div>
@@ -397,7 +396,7 @@ export default function Home() {
               entrepreneur.
             </p>
 
-            <div className={styles["input-container"]}>
+            <div className={styles['input-container']}>
               <input
                 type="email"
                 name="email"
