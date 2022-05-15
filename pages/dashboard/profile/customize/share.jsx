@@ -1,12 +1,12 @@
 /* eslint-disable react/no-unknown-property */
-import React, { useContext } from "react";
-import Link from "next/link";
-import QRCode from "react-qr-code";
-import CopyToClipboard from "react-copy-to-clipboard";
-import toast from "react-hot-toast";
-import AuthContext from "@/context/AuthContext";
+import React, { useContext } from 'react';
+import Link from 'next/link';
+import QRCode from 'react-qr-code';
+import CopyToClipboard from 'react-copy-to-clipboard';
+import toast from 'react-hot-toast';
+import AuthContext from '@/context/AuthContext';
 
-const saveSvgAsPng = require("save-svg-as-png");
+const saveSvgAsPng = require('save-svg-as-png');
 
 const LeftIcon = () => (
   <svg
@@ -38,16 +38,18 @@ const LeftIcon = () => (
 const Share = () => {
   const { user } = useContext(AuthContext);
 
+  console.log(user);
+
   const imageOptions = {
     scale: 5,
     encoderOptions: 1,
-    backgroundColor: "white",
+    backgroundColor: 'white',
   };
 
   const handleSave = () => {
     saveSvgAsPng.saveSvgAsPng(
-      document.getElementById("svg-chart"),
-      "cabiza.png",
+      document.getElementById('svg-chart'),
+      'cabiza.png',
       imageOptions
     );
   };
@@ -57,7 +59,7 @@ const Share = () => {
       <div className="text-center relative">
         <h1 className="text-3xl font-semibold mb-4">Share to friends</h1>
         <div className="rounded-2xl bg-secondary_sky_lighter w-[max-content] p-4 mx-auto flex">
-          <QRCode value="hey" id={"svg-chart"} />
+          <QRCode value="hey" id={'svg-chart'} />
         </div>
         <div className="w-[90%] mx-auto px-10 mt-6 border-b pb-12 border-secondary_sky_base">
           <p className="w-[80%] mx-auto text-secondary_ink_lighter text-lg">
