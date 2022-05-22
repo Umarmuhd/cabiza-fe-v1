@@ -1,17 +1,17 @@
-import React, { useState, useContext, useEffect } from "react";
-import { Tab } from "@headlessui/react";
+import React, { useState, useContext, useEffect } from 'react';
+import { Tab } from '@headlessui/react';
 
-import AllProductsEmpty from "@/components/Cards/AllProductsEmpty";
+import AllProductsEmpty from '@/components/Cards/AllProductsEmpty';
 
-import Dashboard from "@/layouts/Dashboard";
-import AllProducts from "@/components/Cards/AllProducts";
-import Affiliated from "@/components/Cards/Affiliated";
-import { classNames } from "../../../libs/helper";
-import Link from "next/link";
-import { API_URL } from "@/config/index";
-import AuthContext from "@/context/AuthContext";
-import axios from "axios";
-import FullNav from "@/components/Navbars/DashboardNav/FullNav";
+import Dashboard from '@/layouts/Dashboard';
+import AllProducts from '@/components/Cards/AllProducts';
+import Affiliated from '@/components/Cards/Affiliated';
+import { classNames } from '../../../libs/helper';
+import Link from 'next/link';
+import { API_URL } from '@/config/index';
+import AuthContext from '@/context/AuthContext';
+import axios from 'axios';
+import FullNav from '@/components/Navbars/DashboardNav/FullNav';
 
 const Products = ({}) => {
   const [products, setProducts] = useState([]);
@@ -96,31 +96,31 @@ const Products = ({}) => {
 
   return (
     <div>
-      <Tab.Group>
+      <Tab.Group as={'div'} className="bg-secondary_sky_lighter">
         <FullNav title="Products">
           <div className="flex justify-between items-center md:w-43/50 mx-auto pr-4">
-            <Tab.List as={"div"} className="flex items-center py-[.5rem]">
+            <Tab.List as={'div'} className="flex items-center py-[.5rem]">
               <Tab
-                as={"button"}
+                as={'button'}
                 className={({ selected }) =>
                   classNames(
-                    "text-md mr-10 pb-2 font-medium",
+                    'text-md mr-10 pb-2 font-medium',
                     selected
-                      ? " font-bold text-primary border-b border-b-primary"
-                      : " text-secondary"
+                      ? ' font-bold text-primary border-b border-b-primary'
+                      : ' text-secondary'
                   )
                 }
               >
                 All Products
               </Tab>
               <Tab
-                as={"button"}
+                as={'button'}
                 className={({ selected }) =>
                   classNames(
-                    "text-md mr-10 pb-2 font-medium",
+                    'text-md mr-10 pb-2 font-medium',
                     selected
-                      ? " font-bold text-primary border-b border-b-primary"
-                      : " text-secondary"
+                      ? ' font-bold text-primary border-b border-b-primary'
+                      : ' text-secondary'
                   )
                 }
               >
@@ -136,13 +136,13 @@ const Products = ({}) => {
                 <input
                   type="search"
                   className="border border-grey_80 px-4 h-10 placeholder-grey_80 text-grey_40 bg-white shadow-sm focus:outline-none w-full rounded-[100px] scale-x-0 origin-top-right mr-2 peer-focus:scale-x-100 focus:scale-x-100"
-                  style={{ transition: "all 0.15s ease 0s" }}
+                  style={{ transition: 'all 0.15s ease 0s' }}
                   id="search"
                   placeholder="Search..."
                 />
               </div>
               <Link href="/dashboard/products/create">
-                <a className="py-2 pl-4 pr-6 bg-primary flex items-center font-medium text-white rounded-[48px] just">
+                <a className="py-2 pl-4 pr-6 bg-primary hidden items-center font-medium text-white rounded-[48px] md:flex">
                   <PlusSmIcon /> <span className="ml-2">New Product </span>
                 </a>
               </Link>
@@ -150,7 +150,7 @@ const Products = ({}) => {
           </div>
         </FullNav>
 
-        <Tab.Panels>
+        <Tab.Panels as={'div'}>
           <Tab.Panel>
             {products.length > 0 ? (
               <AllProducts products={products} balance={balance} />
