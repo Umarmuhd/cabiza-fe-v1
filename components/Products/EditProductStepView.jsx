@@ -1,5 +1,5 @@
-import React from "react";
-import Pagination from "./Pagination";
+import React from 'react';
+import Pagination from './Pagination';
 
 export default function EditProductStepView({
   stepIndex,
@@ -49,28 +49,28 @@ export default function EditProductStepView({
         <div className="flex items-center bg-secondary_sky_lighter rounded-lg p-1">
           <button
             className={
-              "px-2 rounded " +
+              'px-2 rounded ' +
               (isFirstStep
-                ? " bg-primary_brand_lighter text-primary"
-                : "bg-primary text-white")
+                ? ' bg-primary_brand_lighter text-primary'
+                : 'bg-primary text-white')
             }
             disabled={isFirstStep}
             onClick={onClickPrevious}
           >
-            {"<"}
+            {'<'}
           </button>
           <span className="mx-2 text-primary_brand_lighter">|</span>
           <button
             className={
-              "px-2 rounded " +
+              'px-2 rounded ' +
               (isLastStep
-                ? " bg-primary_brand_lighter text-primary"
-                : " bg-primary text-white")
+                ? ' bg-primary_brand_lighter text-primary'
+                : ' bg-primary text-white')
             }
             disabled={isLastStep}
             onClick={onClickNext}
           >
-            {">"}
+            {'>'}
           </button>
         </div>
         <span className="text-lg font-medium text-primary_brand_light">

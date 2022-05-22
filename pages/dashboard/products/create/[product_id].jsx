@@ -1,57 +1,57 @@
-import React, { useState, useEffect } from "react";
-import { useRouter } from "next/router";
-import axios from "axios";
-import { API_URL } from "@/config/index";
+import React, { useState, useEffect } from 'react';
+import { useRouter } from 'next/router';
+import axios from 'axios';
+import { API_URL } from '@/config/index';
 
-import Dashboard from "@/layouts/Dashboard";
-import { classNames } from "@/libs/helper";
+import Dashboard from '@/layouts/Dashboard';
+import { classNames } from '@/libs/helper';
 
-import FullNav from "@/components/Navbars/DashboardNav/FullNav";
-import { Tab } from "@headlessui/react";
-import BasicProductStep from "./create-product-basics/CreateProductBasics";
-import ProductInfoStep from "./product-info/ProductInfoStep";
-import ProductContentStep from "./product-content/ProductContent";
-import ProductPricingStep from "./product-pricing/ProductPricing";
-import ProductSettingsStep from "./product-settings/ProductSettings";
+import FullNav from '@/components/Navbars/DashboardNav/FullNav';
+import { Tab } from '@headlessui/react';
+import BasicProductStep from './create-product-basics/CreateProductBasics';
+import ProductInfoStep from './product-info/ProductInfoStep';
+import ProductContentStep from './product-content/ProductContent';
+import ProductPricingStep from './product-pricing/ProductPricing';
+import ProductSettingsStep from './product-settings/ProductSettings';
 
-import { useCreateProductRecoilStates } from "../../../../recoil";
-import toast from "react-hot-toast";
-import { useLeavePageConfirm } from "@/libs/Hooks/useLeavePageConfirm";
+import { useCreateProductRecoilStates } from '../../../../recoil';
+import toast from 'react-hot-toast';
+import { useLeavePageConfirm } from '@/libs/Hooks/useLeavePageConfirm';
 import {
   defaultBasicInfoState,
   defaultProductContentState,
   defaultProductInfoState,
   defaultProductPricingState,
   defaultProductSettingsState,
-} from "recoil/CreateProduct/atoms";
+} from 'recoil/CreateProduct/atoms';
 
 const stepConfigs = [
   {
-    title: "Create your product",
+    title: 'Create your product',
     render: (props) => {
       return <BasicProductStep {...props} />;
     },
   },
   {
-    title: "Product Information",
+    title: 'Product Information',
     render: (props) => {
       return <ProductInfoStep {...props} />;
     },
   },
   {
-    title: "Product Content",
+    title: 'Product Content',
     render: (props) => {
       return <ProductContentStep {...props} />;
     },
   },
   {
-    title: "Product Pricing",
+    title: 'Product Pricing',
     render: (props) => {
       return <ProductPricingStep {...props} />;
     },
   },
   {
-    title: "Product Settings",
+    title: 'Product Settings',
     render: (props) => {
       return <ProductSettingsStep {...props} />;
     },
@@ -138,28 +138,28 @@ export default function UpdateProduct() {
 
       const form_data = new FormData();
 
-      name && form_data.append("name", name);
+      name && form_data.append('name', name);
 
-      summary && form_data.append("summary", summary);
+      summary && form_data.append('summary', summary);
 
-      thumbnail?.length === 1 && form_data.append("thumbnail", thumbnail[0]);
+      thumbnail?.length === 1 && form_data.append('thumbnail', thumbnail[0]);
 
       cover_image?.length === 1 &&
-        form_data.append("cover_image", cover_image[0]);
+        form_data.append('cover_image', cover_image[0]);
 
-      description && form_data.append("description", description);
+      description && form_data.append('description', description);
 
-      call_to_action && form_data.append("call_to_action", call_to_action);
+      call_to_action && form_data.append('call_to_action', call_to_action);
 
       //Content
-      file?.length === 1 && form_data.append("file", file[0]);
-      url?.length > 0 && form_data.append("url", url);
+      file?.length === 1 && form_data.append('file', file[0]);
+      url?.length > 0 && form_data.append('url', url);
 
       //Pricing
-      price && form_data.append("price", price);
-      user_priced && form_data.append("user_priced", user_priced);
-      min_price && form_data.append("min_price", min_price);
-      max_price && form_data.append("max_price", max_price);
+      price && form_data.append('price', price);
+      user_priced && form_data.append('user_priced', user_priced);
+      min_price && form_data.append('min_price', min_price);
+      max_price && form_data.append('max_price', max_price);
 
       const uri = `${API_URL}/products/product/${product.product_id}`;
 
@@ -215,46 +215,49 @@ export default function UpdateProduct() {
   };
 
   return (
-    <div>
+    <div className="bg-secondary_sky_lighter">
       <Tab.Group>
         <FullNav title="Products">
           <div className="md:px-0">
-            <div className="flex justify-between items-center md:w-43/50 mx-auto mt-[.5rem]">
-              <Tab.List as={"div"} className="flex items-center">
+            <div className="flex md:flex-row flex-col justify-between items-center md:w-43/50 mx-auto mt-[.5rem]">
+              <Tab.List
+                as={'div'}
+                className="flex items-center md:w-auto w-full md:justify-start justify-between"
+              >
                 <Tab
-                  as={"button"}
+                  as={'button'}
                   className={({ selected }) =>
                     classNames(
-                      "text-md mr-10 pb-2 font-medium",
+                      'text-md mr-10 pb-2 font-medium',
                       selected
-                        ? " font-bold text-primary border-b border-b-primary"
-                        : " text-secondary"
+                        ? ' font-bold text-primary border-b border-b-primary'
+                        : ' text-secondary'
                     )
                   }
                 >
                   Product
                 </Tab>
                 <Tab
-                  as={"button"}
+                  as={'button'}
                   className={({ selected }) =>
                     classNames(
-                      "text-md mr-10 pb-2 font-medium",
+                      'text-md mr-10 pb-2 font-medium',
                       selected
-                        ? " font-bold text-primary border-b border-b-primary"
-                        : " text-secondary"
+                        ? ' font-bold text-primary border-b border-b-primary'
+                        : ' text-secondary'
                     )
                   }
                 >
                   Checkout
                 </Tab>
                 <Tab
-                  as={"button"}
+                  as={'button'}
                   className={({ selected }) =>
                     classNames(
-                      "text-md mr-10 pb-2 font-medium",
+                      'text-md md:mr-10 pb-2 font-medium',
                       selected
-                        ? " font-bold text-primary border-b border-b-primary"
-                        : " text-secondary"
+                        ? ' font-bold text-primary border-b border-b-primary'
+                        : ' text-secondary'
                     )
                   }
                 >
@@ -262,7 +265,7 @@ export default function UpdateProduct() {
                 </Tab>
               </Tab.List>
 
-              <div className="flex items-center justify-between mt-[-.5rem]">
+              <div className="flex items-center justify-between mt-4 md:mt-[-.5rem] md:w-auto w-full">
                 <button
                   className="leading-4 text-base font-medium text-primary py-2 px-3 rounded-4xl border border-primary mr-6 flex items-center"
                   onClick={handleSubmitting}
@@ -278,7 +281,7 @@ export default function UpdateProduct() {
                   onClick={handlePublish}
                 >
                   <span className="mr-2">
-                    {published ? "UnPublish" : "Publish"}
+                    {published ? 'UnPublish' : 'Publish'}
                   </span>
                   <svg
                     width="14"
@@ -302,20 +305,22 @@ export default function UpdateProduct() {
           </div>
         </FullNav>
 
-        <div className="md:w-43/50 mx-auto text-left sm:py-12 sm:px-7 p-4 my-8 bg-white shadow rounded-3xl">
-          <div className="step-component">
-            {product &&
-              stepConfigs[stepIndex].render({
-                stepIndex,
-                setStepIndex,
-                stepTitles: stepConfigs.map((config) => config.title),
-                stepErrors,
-                setStepErrors,
-                onClickPrevious: backward,
-                onClickNext: forward,
-                onClickConfirmButton,
-                product,
-              })}
+        <div className="px-4 md:px-0">
+          <div className="md:w-43/50 mx-auto text-left sm:py-12 sm:px-7 p-4 my-8 bg-white shadow rounded-3xl">
+            <div className="step-component">
+              {product &&
+                stepConfigs[stepIndex].render({
+                  stepIndex,
+                  setStepIndex,
+                  stepTitles: stepConfigs.map((config) => config.title),
+                  stepErrors,
+                  setStepErrors,
+                  onClickPrevious: backward,
+                  onClickNext: forward,
+                  onClickConfirmButton,
+                  product,
+                })}
+            </div>
           </div>
         </div>
       </Tab.Group>
