@@ -21,7 +21,7 @@ export default function MainFooter() {
           </div>
 
           {/* md:w-3/5 */}
-          <div className="flex md:flex-col sm:mt-10 flex-row w-[20rem]">
+          <div className="flex sm:mt-10 flex-row w-[20rem]">
             <div className="flex-1 mr-5">
               <p className="font-extrabold text-primary md:mb-4">
                 Others
