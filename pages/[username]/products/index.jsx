@@ -194,7 +194,7 @@ export default function Products() {
           </Link>
         </div>
 
-        <div className="mt-20 flex gap-5">
+        <div className="mt-20 grid grid-cols-3 gap-5">
           {products.length > 0 ? (
             <React.Fragment>
               {products.map((product, index) => (
@@ -208,14 +208,17 @@ export default function Products() {
           )}
         </div>
 
-        <div
-          className="flex w-[max-content] border border-grey_80 p-2 rounded mt-7"
-          style={{ "border-radius": "20px" }}
-        >
+
+        {products.length > 20 ? (
+          <div
+            className="flex w-[max-content] border border-grey_80 p-2 rounded mt-7"
+            style={{ "border-radius": "20px" }}
+          >
           <LeftIcon />
           <p className="mx-3 text-secondary text-md ">Page 1 of 8</p>
           <RightIcon />
-        </div>
+          </div>
+        ) : null}        
       </div>
     </main>
   );

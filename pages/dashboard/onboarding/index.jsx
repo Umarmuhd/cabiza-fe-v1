@@ -138,13 +138,16 @@ export default function Onboarding() {
         </div>
       </div>
       <div className="flex flex-col w-full md:w-1/2 p-10">
-        <Image
-          src="/images/logo.png"
-          alt="..."
-          width={130}
-          height={40}
-          className="w-auto"
-        />
+        <div className="w-[40%] mr-auto h-[auto]">
+          <img src="/images/logo.png" className="w-[100%] h-[100%] object-cover"/>
+          {/* <Image
+            src="/images/logo.png"
+            alt="..."
+            width={100%}
+            height={40}
+            className="w-[100%]"
+          /> */}
+        </div>
 
         <form className="mt-10 md:mt-24" onSubmit={handleSubmit(updateProfile)}>
           <div className="relative mb-6">
