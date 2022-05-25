@@ -89,7 +89,7 @@ const ProductItem = ({ product }) => {
   };
   return (
     <div
-      className={`shadow sm:w-sm:[max-content] mr-5 h-[max-content] rounded-xl ${styles.card}`}
+      className={`shadow sm:w-sm:[max-content] overflow-hidden mr-5 h-[max-content] rounded-xl ${styles.card}`}
     >
       <img
         src={product.thumbnail ?? "/images/book-small.png"}
@@ -470,7 +470,7 @@ export default function Discover() {
             <div className={styles.cards}>
               <div className={`flex ${styles["product-cards"]} pb-4 px-2`}>
                 <div
-                  className={`shadow sm:w-sm:[max-content] mr-5 h-[max-content] rounded-xl ${styles.card}`}
+                  className={`shadow sm:w-sm:[max-content] overflow-hidden mr-5 h-[max-content] rounded-xl ${styles.card}`}
                 >
                   <img
                     src="/images/book-small.png"
@@ -529,7 +529,7 @@ export default function Discover() {
                 </div>
 
                 <div
-                  className={`shadow sm:w-sm:[max-content] mr-5 h-[max-content] rounded-xl ${styles.card}`}
+                  className={`shadow sm:w-sm:[max-content] overflow-hidden mr-5 h-[max-content] rounded-xl ${styles.card}`}
                 >
                   <img
                     src="/images/book-small.png"
@@ -588,7 +588,7 @@ export default function Discover() {
                 </div>
 
                 <div
-                  className={`shadow sm:w-sm:[max-content] mr-5 h-[max-content] rounded-xl ${styles.card}`}
+                  className={`shadow sm:w-sm:[max-content] overflow-hidden mr-5 h-[max-content] rounded-xl ${styles.card}`}
                 >
                   <img
                     src="/images/book-small.png"
@@ -647,7 +647,7 @@ export default function Discover() {
                 </div>
 
                 <div
-                  className={`shadow sm:w-sm:[max-content] mr-5 h-[max-content] rounded-xl ${styles.card}`}
+                  className={`shadow sm:w-sm:[max-content] overflow-hidden mr-5 h-[max-content] rounded-xl ${styles.card}`}
                 >
                   <img
                     src="/images/book-small.png"
@@ -706,7 +706,7 @@ export default function Discover() {
                 </div>
 
                 <div
-                  className={`shadow sm:w-sm:[max-content] mr-5 h-[max-content] rounded-xl ${styles.card}`}
+                  className={`shadow sm:w-sm:[max-content] overflow-hidden mr-5 h-[max-content] rounded-xl ${styles.card}`}
                 >
                   <img
                     src="/images/book-small.png"
@@ -765,7 +765,7 @@ export default function Discover() {
                 </div>
 
                 <div
-                  className={`shadow sm:w-sm:[max-content] mr-5 h-[max-content] rounded-xl ${styles.card}`}
+                  className={`shadow sm:w-sm:[max-content] overflow-hidden mr-5 h-[max-content] rounded-xl ${styles.card}`}
                 >
                   <img
                     src="/images/book-small.png"
@@ -824,7 +824,7 @@ export default function Discover() {
                 </div>
 
                 <div
-                  className={`shadow sm:w-sm:[max-content] mr-5 h-[max-content] rounded-xl ${styles.card}`}
+                  className={`shadow sm:w-sm:[max-content] overflow-hidden mr-5 h-[max-content] rounded-xl ${styles.card}`}
                 >
                   <img
                     src="/images/book-small.png"
@@ -883,7 +883,7 @@ export default function Discover() {
                 </div>
 
                 <div
-                  className={`shadow sm:w-sm:[max-content] mr-5 h-[max-content] rounded-xl ${styles.card}`}
+                  className={`shadow sm:w-sm:[max-content] overflow-hidden mr-5 h-[max-content] rounded-xl ${styles.card}`}
                 >
                   <img
                     src="/images/book-small.png"
@@ -958,7 +958,7 @@ export default function Discover() {
                 <div className={styles.cards}>
                   <div className={`flex ${styles["product-cards"]} pb-4 px-2`}>
                     <div
-                      className={`shadow sm:w-sm:[max-content] mr-5 h-[max-content] rounded-xl ${styles.card}`}
+                      className={`shadow sm:w-sm:[max-content] overflow-hidden mr-5 h-[max-content] rounded-xl ${styles.card}`}
                     >
                       <img
                         src="/images/book-small.png"
@@ -1019,7 +1019,7 @@ export default function Discover() {
                     </div>
 
                     <div
-                      className={`shadow sm:w-sm:[max-content] mr-5 h-[max-content] rounded-xl ${styles.card}`}
+                      className={`shadow sm:w-sm:[max-content] overflow-hidden mr-5 h-[max-content] rounded-xl ${styles.card}`}
                     >
                       <img
                         src="/images/book-small.png"
@@ -1078,7 +1078,7 @@ export default function Discover() {
                     </div>
 
                     <div
-                      className={`shadow sm:w-sm:[max-content] mr-5 h-[max-content] rounded-xl ${styles.card}`}
+                      className={`shadow sm:w-sm:[max-content] overflow-hidden mr-5 h-[max-content] rounded-xl ${styles.card}`}
                     >
                       <img
                         src="/images/book-small.png"
@@ -1137,7 +1137,7 @@ export default function Discover() {
                     </div>
 
                     <div
-                      className={`shadow sm:w-sm:[max-content] mr-5 h-[max-content] rounded-xl ${styles.card}`}
+                      className={`shadow sm:w-sm:[max-content] overflow-hidden mr-5 h-[max-content] rounded-xl ${styles.card}`}
                     >
                       <img
                         src="/images/book-small.png"
@@ -1196,7 +1196,7 @@ export default function Discover() {
                     </div>
 
                     <div
-                      className={`shadow sm:w-sm:[max-content] mr-5 h-[max-content] rounded-xl ${styles.card}`}
+                      className={`shadow sm:w-sm:[max-content] overflow-hidden mr-5 h-[max-content] rounded-xl ${styles.card}`}
                     >
                       <img
                         src="/images/book-small.png"
@@ -1255,7 +1255,7 @@ export default function Discover() {
                     </div>
 
                     <div
-                      className={`shadow sm:w-sm:[max-content] mr-5 h-[max-content] rounded-xl ${styles.card}`}
+                      className={`shadow sm:w-sm:[max-content] overflow-hidden mr-5 h-[max-content] rounded-xl ${styles.card}`}
                     >
                       <img
                         src="/images/book-small.png"
@@ -1314,7 +1314,7 @@ export default function Discover() {
                     </div>
 
                     <div
-                      className={`shadow sm:w-sm:[max-content] mr-5 h-[max-content] rounded-xl ${styles.card}`}
+                      className={`shadow sm:w-sm:[max-content] overflow-hidden mr-5 h-[max-content] rounded-xl ${styles.card}`}
                     >
                       <img
                         src="/images/book-small.png"
@@ -1373,7 +1373,7 @@ export default function Discover() {
                     </div>
 
                     <div
-                      className={`shadow sm:w-sm:[max-content] mr-5 h-[max-content] rounded-xl ${styles.card}`}
+                      className={`shadow sm:w-sm:[max-content] overflow-hidden mr-5 h-[max-content] rounded-xl ${styles.card}`}
                     >
                       <img
                         src="/images/book-small.png"
@@ -1436,11 +1436,11 @@ export default function Discover() {
             </div>
           </div>
 
-          <div className="flex w-[max-content] border border-grey_80 p-2 bg-primary_brand_lightest rounded-full items-center mt-7">
+          {/* <div className="flex w-[max-content] border border-grey_80 p-2 bg-primary_brand_lightest rounded-full items-center mt-7">
             <LeftIcon />
             <p className="mx-8 text-secondary">Page 1 of 8</p>
             <RightIcon />
-          </div>
+          </div> */}
         </div>
       </div>
 
