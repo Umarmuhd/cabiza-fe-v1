@@ -7,12 +7,12 @@ export default function MainFooter() {
       <div className="container mx-auto mt-8 px-8 flex">
         <div className="w-full flex flex-col lg:flex-row md:flex-column py-6">
           {/* md:w-2/5 */}
-          <div className="flex-1 mb-6 mr-auto">
+          <div className="mb-6 mr-auto">
             <Image
-            src="/images/logo.png"
+            src="/images/footer-logo.svg"
             alt="..."
             className="w-32 mb-10"
-            width={330}
+            width={300}
             height={90}
           />
             <p className="md:w-2/4 font-medium text-xl mt-12">
