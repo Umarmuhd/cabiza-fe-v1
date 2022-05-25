@@ -302,12 +302,12 @@ export default function Sidebar({ sidebarOpen, setSidebarOpen }) {
                         <path
                           d="M8 16.25H5.43C4.17419 16.25 3.27277 15.9059 2.68449 15.3186C2.09636 14.7315 1.75 13.8304 1.75 12.57V5.43C1.75 4.17419 2.09412 3.27277 2.68137 2.68449C3.26846 2.09636 4.16963 1.75 5.43 1.75H10C11.2558 1.75 12.1572 2.09412 12.7455 2.68137C13.3336 3.26846 13.68 4.16963 13.68 5.43C13.68 5.56386 13.5639 5.68 13.43 5.68C13.2961 5.68 13.18 5.56386 13.18 5.43C13.18 4.4331 12.9699 3.6028 12.3986 3.03145C11.8272 2.46009 10.9969 2.25 10 2.25H5.43C4.4331 2.25 3.6028 2.46009 3.03145 3.03145C2.46009 3.6028 2.25 4.4331 2.25 5.43V12.57C2.25 13.5669 2.46009 14.3972 3.03145 14.9686C3.6028 15.5399 4.4331 15.75 5.43 15.75H8C8.13386 15.75 8.25 15.8661 8.25 16C8.25 16.1339 8.13386 16.25 8 16.25Z"
                           fill={
-                            pathname === '/dashboard/products'
+                            pathname.includes("/dashboard/products")
                               ? '#fff'
                               : '#5B44E9'
                           }
                           stroke={
-                            pathname === '/dashboard/products'
+                            pathname.includes("/dashboard/products")
                               ? '#fff'
                               : '#5B44E9'
                           }
@@ -315,12 +315,12 @@ export default function Sidebar({ sidebarOpen, setSidebarOpen }) {
                         <path
                           d="M18.5699 22.25H13.9999C12.7441 22.25 11.8427 21.9059 11.2544 21.3186C10.6663 20.7315 10.3199 19.8304 10.3199 18.57V11.43C10.3199 10.1742 10.6641 9.27277 11.2513 8.68449C11.8384 8.09636 12.7396 7.75 13.9999 7.75H18.5699C19.8258 7.75 20.7272 8.09412 21.3155 8.68137C21.9036 9.26846 22.2499 10.1696 22.2499 11.43V18.57C22.2499 19.8313 21.9056 20.7322 21.3189 21.3189C20.7322 21.9057 19.8312 22.25 18.5699 22.25ZM13.9999 8.25C13.003 8.25 12.1727 8.4601 11.6014 9.03145C11.03 9.6028 10.8199 10.4331 10.8199 11.43V18.57C10.8199 19.5669 11.03 20.3972 11.6014 20.9686C12.1727 21.5399 13.003 21.75 13.9999 21.75H18.5699C19.5668 21.75 20.3971 21.5399 20.9685 20.9686C21.5399 20.3972 21.7499 19.5669 21.7499 18.57V11.43C21.7499 10.4331 21.5399 9.6028 20.9685 9.03145C20.3971 8.4601 19.5668 8.25 18.5699 8.25H13.9999Z"
                           fill={
-                            pathname === '/dashboard/products'
+                            pathname.includes("/dashboard/products")
                               ? '#fff'
                               : '#5B44E9'
                           }
                           stroke={
-                            pathname === '/dashboard/products'
+                            pathname.includes("/dashboard/products")
                               ? '#fff'
                               : '#5B44E9'
                           }
@@ -328,12 +328,12 @@ export default function Sidebar({ sidebarOpen, setSidebarOpen }) {
                         <path
                           d="M18.13 15.25H14.88C14.7461 15.25 14.63 15.1339 14.63 15C14.63 14.8661 14.7461 14.75 14.88 14.75H18.13C18.2639 14.75 18.38 14.8661 18.38 15C18.38 15.1339 18.2639 15.25 18.13 15.25Z"
                           fill={
-                            pathname === '/dashboard/products'
+                            pathname.includes("/dashboard/products")
                               ? '#fff'
                               : '#5B44E9'
                           }
                           stroke={
-                            pathname === '/dashboard/products'
+                            pathname.includes("/dashboard/products")
                               ? '#fff'
                               : '#5B44E9'
                           }
@@ -341,7 +341,7 @@ export default function Sidebar({ sidebarOpen, setSidebarOpen }) {
                         <path
                           d="M16.5 17.3799C16.09 17.3799 15.75 17.0399 15.75 16.6299V13.3799C15.75 12.9699 16.09 12.6299 16.5 12.6299C16.91 12.6299 17.25 12.9699 17.25 13.3799V16.6299C17.25 17.0399 16.91 17.3799 16.5 17.3799Z"
                           fill={
-                            pathname === '/dashboard/products'
+                            pathname.includes("/dashboard/products")
                               ? '#fff'
                               : '#5B44E9'
                           }
@@ -350,7 +350,7 @@ export default function Sidebar({ sidebarOpen, setSidebarOpen }) {
                       <span
                         className={
                           ' ml-3 lg:opacity-0 lg:sidebar-expanded:opacity-100 2xl:opacity-100 duration-200 text-lg font-medium ' +
-                          (pathname === '/dashboard/products'
+                          (pathname.includes("/dashboard/products")
                             ? 'text-white'
                             : 'text-secondary_ink_dark')
                         }

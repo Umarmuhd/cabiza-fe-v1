@@ -71,18 +71,14 @@ const ChangePicture = ({ user }) => {
   return (
     <div className="bg-white rounded-2xl p-10 px-3 md:w-43/50 mx-auto mt-10 shadow mb-12">
       <div className="text-center relative">
-        <div className="rounded-[50%] bg-secondary_sky_light w-[max-content] h-auto mx-auto flex p-3 object-cover">
-          <label htmlFor="image" className="mx-auto">
+        <div className="rounded-[50%] bg-secondary_sky_light w-[max-content] h-auto mx-auto flex p-3 object-cover overflow-hidden">
+          <label htmlFor="image" className={`mx-auto ${user?.profile_picture ? " w-[14rem] h-[14rem]"
+            : " w-[12rem] h-[12rem]"}`}>
             <img
               src={
                 preview ?? avatar ? avatar : "/images/profile-placeholder.png"
               }
-              className={
-                "m-auto cursor-pointer rounded-full object-cover" +
-                user?.profile_picture
-                  ? " w-[14rem] h-[14rem]"
-                  : " w-[12rem] h-[12rem]"
-              }
+              className="m-auto cursor-pointer rounded-full object-cover w-[100%] h-[100%]"              
             />
           </label>
           <input
