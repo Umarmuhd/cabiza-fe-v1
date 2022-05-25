@@ -27,19 +27,13 @@ export default function Login() {
   const handleLogin = async (values) => {
     try {
       setLoading(true);
-
       const response = await axios.post(`${NEXT_URL}/api/login`, values);
-
       const { user, token } = response.data;
-
       toast.custom(<Alert color="#24C78C" text="Login successful !" />);
-
       loginUser(user, token);
       setLoading(false);
-
       const status = user.username ? 'profile' : 'onboarding';
-
-      return router.push('/dashboard/' + status);
+      router.push('/dashboard/' + status);
     } catch (error) {
       setError(error.response.data.message);
       setLoading(false);
