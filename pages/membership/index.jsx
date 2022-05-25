@@ -46,8 +46,8 @@ const CancelIcon = () => (
   </svg>
 );
 
-export default function Membership() {
-  const [payout, setPayout] = useState({ previous: true, next: false });
+export default function Membership({ subscriptionPlans }) {
+  const [payout, setPayout] = useState({ monthly: false, yearly: true });
   return (
     <div className='w-full h-full'>
       <MainNavigation />
@@ -74,21 +74,21 @@ export default function Membership() {
                 <div className='float-left flex mt-1 bg-secondary_sky_light rounded-xl border border-secondary_sky_light w-[max-content] p-[.1rem]'>
                   <button
                     className={`${
-                      payout.previous
+                      payout.monthly
                         ? 'bg-white text-secondary_ink_light rounded-l-xl'
                         : 'bg-secondary_sky_light text-secondary_brand_light'
                     } h-[2.4rem] w-[11rem] ml-[1px] rounded-l-xl m-auto`}
-                    onClick={() => setPayout({ previous: true, next: false })}
+                    onClick={() => setPayout({ monthly: true, yearly: false })}
                   >
                     Monthly
                   </button>
                   <button
                     className={`${
-                      payout.next
+                      payout.yearly
                         ? 'bg-white text-secondary_ink_light rounded-r-xl'
                         : 'bg-secondary_sky_light text-secondary_brand_light'
                     } h-[2.4rem] w-[12rem] ml-[1px] rounded-r-xl m-auto hover:bg-indigo-50`}
-                    onClick={() => setPayout({ previous: false, next: true })}
+                    onClick={() => setPayout({ monthly: false, yearly: true })}
                   >
                     Annually
                   </button>
@@ -103,62 +103,33 @@ export default function Membership() {
           <section id='membership' className={`${styles.membership} md:pt-2`}>
             <div className='flex'>
               <div className={`${styles.plans} ${styles.flex}`}>
-                <div className={styles.col}>
-                  <h4>FREE</h4>
-                  <h3>Starter</h3>
-                  <p className={styles.price}>£0</p>
-                  <a href=''>Sign Up</a>
-                  <p>
-                    Limited access (intro module or 7 day trial) to the
-                    specific/main course on this subscription.
-                  </p>
-                  <a href='' className={styles['btn-secondary']}>
-                    Learn More
-                  </a>
-                </div>
-
-                <div className={`${styles.col} ${styles.popular}`}>
-                  <aside>Most popular</aside>
-                  <h4>BUYERS ZONE</h4>
-                  <h3>Owner</h3>
-                  <p className={styles.price}>£50/Annum</p>
-                  <a href=''>Sign Up</a>
-                  <p className={styles.description}>
-                    Everyone is entitled to have access to only 1 free course on
-                    this subscription per annum.
-                  </p>
-                  <a href='' className={styles['btn-secondary']}>
-                    Learn More
-                  </a>
-                </div>
-
-                <div className={styles.col}>
-                  <h4>MAKERS ZONE</h4>
-                  <h3>Shaper</h3>
-                  <p className={styles.price}>£500/Annum</p>
-                  <a href=''>Sign Up</a>
-                  <p>
-                    Everyone is entitled to have access to 5 free courses/items
-                    on this subscription per annum.
-                  </p>
-                  <a href='' className={styles['btn-secondary']}>
-                    Learn More
-                  </a>
-                </div>
-
-                <div className={styles.col}>
-                  <h4>CORPORATE ZONE</h4>
-                  <h3>Innovator</h3>
-                  <p className={styles.price}>£5000/Annum</p>
-                  <a href=''>Sign Up</a>
-                  <p>
-                    This member has access to 20 free courses/items on this
-                    subscription per annum.
-                  </p>
-                  <a href='' className={styles['btn-secondary']}>
-                    Learn More
-                  </a>
-                </div>
+                {
+                  subscriptionPlans?.map(each => {
+                    let monthlyPrice = (each.price / 12) - 12/100;
+                    monthlyPrice = Math.abs((monthlyPrice === -0 ? 0 : monthlyPrice).toFixed())
+                    
+                    return (
+                    <div className={`${styles.col} ${each.mostPopular ? styles.popular : ""}`} key={each.id}>
+                      {each.mostPopular ? <aside>Most popular</aside> : null}
+                      <h4>{each.zone}</h4>
+                      <h3>{each.planName}</h3>
+                      <p className={styles.price}>
+                        £
+                        {
+                          payout.yearly ? `${each.price}${each.price !== 0 ? "/Annum" : ""}` : `${monthlyPrice }${monthlyPrice !== 0 ? "/Monthly" : ""}`                          
+                        }
+                      </p>
+                      <a href=''>Sign Up</a>
+                      <p className={`${each.mostPopular ? styles.description : ""}`}>
+                        {each.description}
+                      </p>
+                      <a href='' className={styles['btn-secondary']}>
+                        Learn More
+                      </a>
+                    </div>
+                )
+                  })
+                }                               
               </div>
             </div>
           </section>
@@ -735,4 +706,43 @@ export default function Membership() {
       <MainFooter />
     </div>
   );
+}
+
+
+export async function getServerSideProps() {
+  return {
+    props: {
+      subscriptionPlans: [
+        {
+          id: 1,
+          price: 0,
+          planName: "Starter",
+          zone: "FREE",
+          description: "Limited access (intro module or 7 day trial) to the specific/main course on this subscription.",
+        }, 
+        {
+          id: 2,
+          price: 50,
+          planName: "Owner",
+          zone: "BUYERS ZONE",
+          description: "Everyone is entitled to have access to only 1 free course on this subscription per annum.",
+          mostPopular: true
+        },
+        {
+          id: 3,
+          price: 500,
+          planName: "Shaper",
+          zone: "MAKERS ZONE",
+          description: "Everyone is entitled to have access to 5 free courses/items on this subscription per annum.",
+        },
+         {
+          id: 4,
+          price: 5000,
+          planName: "Innovator",
+          zone: "CORPORATE ZONE",
+          description: "This member has access to 20 free courses/items on this subscription per annum.",
+        }
+      ]
+    }, // will be passed to the page component as props
+  }
 }
