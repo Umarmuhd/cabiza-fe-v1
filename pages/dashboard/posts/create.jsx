@@ -1,4 +1,4 @@
-import React, { useState, useContext } from 'react';
+import React, { useState, useContext, useEffect } from 'react';
 import { useForm } from 'react-hook-form';
 import { useRouter } from 'next/router';
 import axios from 'axios';
@@ -15,6 +15,8 @@ import FormGroup from '@/components/Forms/FormGroup';
 import DashboardNav from '@/components/Navbars/DashboardNav';
 import CheckSwitch from '@/components/checkSwitch';
 import TextFormat from '@/components/TextFormat';
+import Calendar from 'react-calendar';
+import 'react-calendar/dist/Calendar.css';
 
 const CheckIcon = ({ classes }) => (
   <svg
@@ -127,12 +129,48 @@ export default function CreatePost() {
     }
   };
 
+  const [showDropdown, setShowDropdown] = useState(false);
+  const [showTimeDropdown, setShowTimeDropdown] = useState(false);
+
+  //calendar
+  const [showCalendar, setShowCalendar] = useState(false);
+  const [time, setTime] = useState("PM");
+  const [exactTime, setExactTime] = useState(12);
+
+  const handleChangeTimePeriod = () => {
+    if(time !== "PM") {
+      setTime("PM")
+    }else{
+      setTime("AM")
+    }
+  }
+
+  const times = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12]
+  // const handleExactTimeChange = () => {
+
+  //   setExactTime()
+  // }
+  
+  const [value, onChange] = useState(new Date());
+  
+  const handleConvertDate = (month, day, year) => {
+    const months = ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"]
+    
+    return `${months[month]} ${day}, ${year}`
+  }
+
+  const [newConvertedDate, setNewConvertedDate] = useState(handleConvertDate(value.getMonth(), value.getDate(), value.getFullYear()))
+
+  useEffect(() => {
+    setNewConvertedDate(handleConvertDate(value.getMonth(), value.getDate(), value.getFullYear()))
+  }, [value])  
+  
+
   return (
     <div>
       <FullNav title='Posts'>
         <div
-          className='bg-secondary_sky_lightest py-2 md:px-0 px-4'
-          style={{ boxShadow: '0px 4px 20px rgba(0, 0, 0, 0.04)' }}
+          className='bg-secondary_sky_lightest py-2 md:px-0 px-4'        
         >
           <div className='flex justify-between items-center md:w-43/50 mx-auto'>
             <div className='flex'>
@@ -159,7 +197,7 @@ export default function CreatePost() {
               </a>
             </div>
 
-            <div className='flex items-center justify-between'>
+            <div className='flex items-center justify-between relative'>
               <Link href='/dashboard/posts'>
                 <a className='leading-4 text-base font-medium text-primary py-2 px-3 rounded-4xl border border-primary flex items-center mr-6'>
                   <svg
@@ -179,7 +217,7 @@ export default function CreatePost() {
                 </a>
               </Link>
 
-              <a className='leading-4 text-base font-medium text-primary py-2 px-3 rounded-4xl border border-primary mr-6 flex items-center'>
+              <a className='leading-4 text-base font-medium text-primary py-2 px-3 rounded-4xl border border-primary mr-6 flex items-center cursor-pointer' onClick={() => setShowDropdown(!showDropdown)}>
                 <span className='mr-2'>Publish</span>
                 <svg
                   width='14'
@@ -198,6 +236,54 @@ export default function CreatePost() {
                   />
                 </svg>
               </a>
+
+              {showDropdown ? <div className="absolute left-[.3rem] top-[4rem] rounded-xl bg-white px-3 py-5 z-[5] w-[25rem] flex flex-col" style={{
+                border: "1px solid #E3E5E6",
+                "box-shadow": "0px 8px 15px rgba(0, 0, 0, 0.15)"
+              }}>
+                <div className="border-b border-b-[#979C9E] flex flex-col items-center pb-7">
+                  <button
+                  className='leading-4 text-base font-medium text-white py-2 px-12 rounded-4xl border border-primary bg-primary'
+                  type='submit'
+                  form='post-form'
+                  disabled={loading}
+                >
+                  Publish now
+                </button>
+              </div>
+                <p className="mt-[-.9rem] w-[max-content] px-4 mx-auto z-[3] bg-white"> or </p>
+
+                <div className="mt-3 w-[max-content] mx-auto border border-sky_light pl-4 h-[3rem] rounded-xl flex items-center overflow-hidden relative">
+                  <span className="text-secondary_ink_dark pr-8 cursor-pointer" onClick={() => setShowCalendar(!showCalendar)}> {newConvertedDate} </span>
+                  <span className="bg-secondary_sky_lighter h-[100%] flex items-center px-3 border-x border-x-sky_light text-secondary_ink_dark"> @ </span>
+                  <span className="px-3 cursor-pointer" onClick={() => setShowTimeDropdown(!showTimeDropdown)}> {exactTime} </span>
+                  <span className="bg-secondary_sky_lighter h-[100%] flex items-center px-3 border-x border-x-sky_light text-secondary_ink_dark cursor-pointer" onClick={() => handleChangeTimePeriod()}> {time} </span>
+                </div>
+
+                  {showTimeDropdown && times ? (
+                    <div className="absolute right-[6.5rem] bg-white top-[9.5rem] shadow cursor-pointer" onClick={() => setShowTimeDropdown(false)}>
+                      {times.map(each => {
+                        return <p className="border-b px-3 py-1" onClick={() => setExactTime(each)}>{each}</p>
+                      })}
+                    </div>
+                  ) : null} 
+
+                <div className={`absolute right-0 top-[14rem] left-[1.5rem] z-[4] ${!showCalendar ? "hidden" : ""}`} onClick={() => setShowCalendar(false)}>
+                <Calendar
+                  onChange={onChange}
+                  value={value}
+                />
+              </div>
+
+                <button
+                  className='leading-4 text-base font-medium text-white py-2 px-12 rounded-4xl border border-primary bg-primary mt-4 w-[max-content] mx-auto'
+                  type='submit'
+                  form='post-form'
+                  disabled={loading}
+                >
+                  Schedule
+                </button>
+              </div> : null }
 
               <button
                 className='leading-4 text-base font-medium text-white py-2 px-3 rounded-4xl border border-primary bg-primary'
@@ -448,7 +534,6 @@ export default function CreatePost() {
                     placeholder='Add call-to-action-button'
                     autoComplete='off'
                     {...register('call_to_action', { required: true })}
-                    style={{ 'box-shadow': '0px 4px 20px rgba(0, 0, 0, 0.04)' }}
                   />
                   {errors.call_to_action?.type === 'required' && (
                     <p className='text-left text-red-600 text-xs mt-1'>

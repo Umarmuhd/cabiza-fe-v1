@@ -1,5 +1,6 @@
 /* eslint-disable react/no-unknown-property */
 import React, { useState } from 'react';
+import Link from 'next/link';
 import styles from './styles/index.module.css';
 // import Calendar from './../../../components/Calendar/index';
 import Calendar from 'react-calendar';
@@ -123,8 +124,9 @@ const Payments = () => {
             </button>
           </div>
 
-          <div className="w-full md:w-auto flex justify-between md:justify-start mt-3 md:mt-0 md:float-right">
-            <button className="bg-primary text-white flex items-center py-2 px-4 rounded-full mr-4 h-8">
+          <div className="w-full md:w-auto flex justify-between md:justify-start mt-3 md:mt-0 md:float-right items-center">
+            <Link href="/dashboard/settings">
+            <a className="bg-primary text-white flex items-center py-2 px-4 rounded-full mr-4 h-8">
               <svg
                 width="16"
                 height="16"
@@ -143,7 +145,8 @@ const Payments = () => {
                 />
               </svg>
               Settings
-            </button>
+            </a>
+            </Link>
 
             <button className="bg-primary text-white flex items-center py-2 px-[.6rem] rounded-[50%] w-8 h-8">
               <svg
@@ -180,7 +183,7 @@ const Payments = () => {
                 name="date"
                 id="date"
                 className={`w-[100%] p-2 px-4 border border-secondary_sky_light rounded-xl appearance-none mr-3 outline-none ${styles.input}`}
-                value={`${value.getFullYear()}-${value.getMonth() < 9 ? `0${value.getMonth()}` : value.getMonth()}-${value.getDate() < 9 ? `0${value.getDate()}` : value.getDate() }`}
+                value={`${value.10()}-${value.getMonth() < 9 ? `0${value.getMonth()}` : value.getMonth()}-${value.getDate() < 9 ? `0${value.getDate()}` : value.getDate() }`}
                 datepicker
                 datepicker-autohide
               />
