@@ -10,6 +10,7 @@ import { countries } from 'libs/CountriesList';
 
 import AuthContext from '@/context/AuthContext';
 import toast from 'react-hot-toast';
+import Alert from '@/components/Alert';
 
 export default function Onboarding() {
   const CategorySelect = React.forwardRef(
@@ -110,8 +111,7 @@ export default function Onboarding() {
       const url = `${API_URL}/user/onboarding`;
 
       const response = await axios.post(url, form_data);
-
-      toast.success(response.data.message);
+      toast.custom(<Alert color="#24C78C" text={response.data.message} />);
       setLoading(false);
       router.replace('/dashboard/profile');
     } catch (error) {
@@ -139,14 +139,10 @@ export default function Onboarding() {
       </div>
       <div className="flex flex-col w-full md:w-1/2 p-10">
         <div className="w-[40%] mr-auto h-[auto]">
-          <img src="/images/logo.png" className="w-[100%] h-[100%] object-cover"/>
-          {/* <Image
+          <img
             src="/images/logo.png"
-            alt="..."
-            width={100%}
-            height={40}
-            className="w-[100%]"
-          /> */}
+            className="w-[100%] h-[100%] object-cover"
+          />
         </div>
 
         <form className="mt-10 md:mt-24" onSubmit={handleSubmit(updateProfile)}>
@@ -172,6 +168,11 @@ export default function Onboarding() {
                 </span>
               </div>
             </div>
+            {errors.username?.type === 'required' && (
+              <p className="text-left text-red-600 text-xs mt-1">
+                Username is required
+              </p>
+            )}
           </div>
           <div className="relative mb-6 photo_input">
             <label
@@ -200,6 +201,11 @@ export default function Onboarding() {
                 outline: none;
                 border: none;
             `}</style>
+            {errors.photo?.type === 'required' && (
+              <p className="text-left text-red-600 text-xs mt-1">
+                User photo is required
+              </p>
+            )}
           </div>
 
           <div className="relative mb-6">
@@ -218,6 +224,11 @@ export default function Onboarding() {
               {...register('name', { required: true })}
               defaultValue={user?.full_name}
             />
+            {errors.full_name?.type === 'required' && (
+              <p className="text-left text-red-600 text-xs mt-1">
+                Full name is required
+              </p>
+            )}
           </div>
 
           <div className="relative mb-6">
@@ -235,14 +246,35 @@ export default function Onboarding() {
               placeholder="Tell us about yourself and what you do"
               {...register('bio', { required: true })}
             />
+            {errors.bio?.type === 'required' && (
+              <p className="text-left text-red-600 text-xs mt-1">
+                User bio is required
+              </p>
+            )}
           </div>
 
           <div className="relative mb-6">
-            <CategorySelect label="Category" {...register('category')} />
+            <CategorySelect
+              label="Category"
+              {...register('category', { required: true })}
+            />
+            {errors.category?.type === 'required' && (
+              <p className="text-left text-red-600 text-xs mt-1">
+                User category is required
+              </p>
+            )}
           </div>
 
           <div className="relative mb-6">
-            <CountrySelect label="Country" {...register('country')} />
+            <CountrySelect
+              label="Country"
+              {...register('country', { required: true })}
+            />
+            {errors.country?.type === 'required' && (
+              <p className="text-left text-red-600 text-xs mt-1">
+                User country is required
+              </p>
+            )}
             <small className="text-grey_40 text-sm">
               You will receive payouts in USD directly into your PayPal account.
             </small>
