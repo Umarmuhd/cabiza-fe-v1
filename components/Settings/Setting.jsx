@@ -1,7 +1,7 @@
 import React, { useContext, useState } from "react";
 import { useForm } from "react-hook-form";
 import Card from "@/components/Cards/Card";
-import Toggle from "@/components/Toggle/Toggle";
+import ToggleSwitch from "@/components/Toggle/Toggle";
 
 import AuthContext from "@/context/AuthContext";
 
@@ -16,7 +16,7 @@ export default function Setting() {
 
   const [productPricingSettings, setProductPricingSettings] = useState(false);
 
-  const handleTogglePricingSettings = () => {
+  const handleToggleSwitchPricingSettings = () => {
     setProductPricingSettings((prev) => !prev);
   };
 
@@ -84,51 +84,39 @@ export default function Setting() {
             <tr className="h-12 bg-secondary_sky_lighter text-secondary">
               <td className="text-left px-6">Purchases</td>
               <td className="text-left px-6">
-                <Toggle
-                  label="Purchases-email"
-                  click={handleTogglePricingSettings}
-                  classes="text-left"
+                <ToggleSwitch
+                  label="Purchases-email"                  
                 />
               </td>
               <td className="text-left px-6">
-                <Toggle
-                  label="Purchases-mobile"
-                  click={handleTogglePricingSettings}
-                  classes="text-left"
+                <ToggleSwitch
+                  label="Purchases-mobile" 
                 />
               </td>
             </tr>
             <tr className="h-12 bg-secondary_sky_lighter text-secondary">
               <td className="text-left px-6">Recurring payments</td>
               <td className="text-left px-6">
-                <Toggle
+                <ToggleSwitch
                   label="Recurring-payments-email"
-                  click={handleTogglePricingSettings}
-                  classes="text-left"
                 />
               </td>
               <td className="text-left px-6">
-                <Toggle
+                <ToggleSwitch
                   label="Recurring-payments-mobile"
-                  click={handleTogglePricingSettings}
-                  classes="text-left"
                 />
               </td>
             </tr>
             <tr className="h-12 bg-secondary_sky_lighter text-secondary">
               <td className="text-left px-6">Free downloads</td>
               <td className="text-left px-6">
-                <Toggle
+                <ToggleSwitch
                   label="free-downloads-email"
-                  click={handleTogglePricingSettings}
-                  classes="text-left"
                 />
               </td>
               <td className="text-left px-6">
-                <Toggle
+                <ToggleSwitch
                   label="free-downloads-mobile"
-                  click={handleTogglePricingSettings}
-                  classes="text-left"
                 />
               </td>
             </tr>
@@ -137,17 +125,13 @@ export default function Setting() {
                 Personalized product announcements
               </td>
               <td className="text-left px-6">
-                <Toggle
+                <ToggleSwitch
                   label="Personalized-product-email"
-                  click={handleTogglePricingSettings}
-                  classes="text-left"
                 />
               </td>
               <td className="text-left px-6">
-                <Toggle
+                <ToggleSwitch
                   label="Personalized-product-mobile"
-                  click={handleTogglePricingSettings}
-                  classes="text-left"
                 />
               </td>
             </tr>
@@ -300,10 +284,10 @@ export default function Setting() {
         <div>
           <div className="bg-secondary_sky_lighter p-3 rounded flex items-center justify-between px-5 mb-2">
             <p className="text-secondary">Show my products in Discover</p>
-            <Toggle label="discoverMyProducts" />
+            <ToggleSwitch label="discoverMyProducts"/>
           </div>
 
-          <div className="flex flex-col mt-8">
+          <div className="flex flex-col mt-8 overflow-hidden">
             <label htmlFor="sell-in" className="text-secondary_ink_darkest">
               Sell in ...
             </label>
@@ -311,7 +295,7 @@ export default function Setting() {
               <select
                 name="products"
                 id="products"
-                className="h-10 w-[100%] text-secondary_ink_lighter bg-white px-4 outline-none appearance-none"
+                className="h-10 w-[100%] text-secondary_ink_lighter bg-white px-4 outline-none appearance-none border-none"
               >
                 <option value="products" defaultValue>
                   Design & Tech Products
