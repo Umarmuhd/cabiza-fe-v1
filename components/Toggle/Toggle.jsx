@@ -1,8 +1,9 @@
 import React, { useState } from "react";
 import { Switch } from "@headlessui/react";
 
-const ToggleSwitch = ({ label, enabled = false, setEnabled = () => {} }) => {
-  return (
+const ToggleSwitch = ({ label }) => {
+  const [enabled, setEnabled] = useState(false)
+  return (    
     <Switch
       checked={enabled}
       onChange={setEnabled}
