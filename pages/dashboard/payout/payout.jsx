@@ -1,6 +1,9 @@
 /* eslint-disable react/no-unknown-property */
 import React, { useState } from 'react';
 import styles from './styles/index.module.css';
+// import Calendar from './../../../components/Calendar/index';
+import Calendar from 'react-calendar';
+import 'react-calendar/dist/Calendar.css';
 
 const CalendarIcon = () => (
   <svg
@@ -84,6 +87,9 @@ const CalendarIcon = () => (
 
 const Payments = () => {
   const [payout, setPayout] = useState({ previous: true, next: false });
+  
+  const [showCalendar, setShowCalendar] = useState(false);
+  const [value, onChange] = useState(new Date());
 
   return (
     <div className="px-4 sm:px-6 md:px-0 w-full max-w-9xl mx-auto">
@@ -167,18 +173,26 @@ const Payments = () => {
         {payout.previous ? (
           <div className="mb-10">
             <h3 className="font-medium text-grey_20 text-lg">Select Date</h3>
-            <div className="input flex items-center mt-3">
+            {/* <Calendar/> */}
+            <div className="input flex items-center mt-3 relative">
               <input
                 type="date"
                 name="date"
                 id="date"
                 className={`w-[100%] p-2 px-4 border border-secondary_sky_light rounded-xl appearance-none mr-3 outline-none ${styles.input}`}
-                defaultValue="2002-09-03"
+                value={`${value.getFullYear()}-${value.getMonth() < 9 ? `0${value.getMonth()}` : value.getMonth()}-${value.getDate() < 9 ? `0${value.getDate()}` : value.getDate() }`}
                 datepicker
                 datepicker-autohide
               />
 
-              <button className="bg-primary p-2 rounded-lg">
+              <div className={`absolute right-0 top-[3rem] z-[4] ${!showCalendar ? "hidden" : ""}`} onClick={() => setShowCalendar(false)}>
+                <Calendar
+                  onChange={onChange}
+                  value={value}
+                />
+              </div>
+
+              <button className="bg-primary p-2 rounded-lg" onClick={() => setShowCalendar(true)}>
                 <label htmlFor="date" className="cursor-pointer">
                   <CalendarIcon datepicker datepicker-autohide />
                 </label>
