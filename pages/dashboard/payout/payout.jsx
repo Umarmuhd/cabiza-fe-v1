@@ -183,19 +183,19 @@ const Payments = () => {
                 name="date"
                 id="date"
                 className={`w-[100%] p-2 px-4 border border-secondary_sky_light rounded-xl appearance-none mr-3 outline-none ${styles.input}`}
-                value={`${value.10()}-${value.getMonth() < 9 ? `0${value.getMonth()}` : value.getMonth()}-${value.getDate() < 9 ? `0${value.getDate()}` : value.getDate() }`}
+                value={`${value.getFullYear()}-${value.getMonth() < 9 ? `0${value.getMonth()}` : value.getMonth()}-${value.getDate() < 9 ? `0${value.getDate()}` : value.getDate()}`}
                 datepicker
                 datepicker-autohide
               />
 
-              <div className={`absolute right-0 top-[3rem] z-[4] ${!showCalendar ? "hidden" : ""}`} onClick={() => setShowCalendar(false)}>
+              <div className={`absolute right-0 top-[3rem] z-[4] ${!showCalendar ? "hidden" : ""}`}>
                 <Calendar
                   onChange={onChange}
                   value={value}
                 />
               </div>
 
-              <button className="bg-primary p-2 rounded-lg" onClick={() => setShowCalendar(true)}>
+              <button className="bg-primary p-2 rounded-lg" onClick={() => setShowCalendar(!showCalendar)}>
                 <label htmlFor="date" className="cursor-pointer">
                   <CalendarIcon datepicker datepicker-autohide />
                 </label>
