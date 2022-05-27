@@ -215,7 +215,7 @@ export default function UpdateProduct() {
   };
 
   return (
-    <div className="bg-secondary_sky_lighter">
+    <div className="bg-secondary_sky_lighter md:w-[85%] w-[100%] ml-auto">
       <Tab.Group>
         <FullNav title="Products">
           <div className="md:px-0">
