@@ -48,9 +48,8 @@ export default function Payout() {
   console.log(balance);
 
   return (
-    <div>
+    <div className="md:w-[85%] w-[100%] ml-auto">
       <TopNav title="Payout" />
-      {/* <Payoutreview /> */}
       <Payments />
     </div>
   );

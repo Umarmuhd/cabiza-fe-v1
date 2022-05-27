@@ -22,7 +22,7 @@ export default function Dashboard({ children }) {
       {/* Sidebar */}
       <Sidebar user={user} sidebarOpen={showNav} setSidebarOpen={setShowNav} />
       {/* Content area */}
-      <div className="relative flex flex-col flex-1 overflow-x-hidden bg-secondary_sky_lighter">
+      <div className="relative flex flex-col flex-1 overflow-x-hidden bg-secondary_sky_lighter w-[50%] ml-auto">
         {children}
       </div>
     </div>

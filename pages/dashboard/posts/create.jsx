@@ -167,7 +167,7 @@ export default function CreatePost() {
   
 
   return (
-    <div>
+    <div className="md:w-[85%] w-[100%] ml-auto">
       <FullNav title='Posts'>
         <div
           className='bg-secondary_sky_lightest py-2 md:px-0 px-4'        
@@ -263,7 +263,7 @@ export default function CreatePost() {
                   {showTimeDropdown && times ? (
                     <div className="absolute right-[6.5rem] bg-white top-[9.5rem] shadow cursor-pointer" onClick={() => setShowTimeDropdown(false)}>
                       {times.map(each => {
-                        return <p className="border-b px-3 py-1" onClick={() => setExactTime(each)}>{each}</p>
+                        return <p className="border-b px-3 py-1" key={each} onClick={() => setExactTime(each)}>{each}</p>
                       })}
                     </div>
                   ) : null} 
@@ -298,7 +298,7 @@ export default function CreatePost() {
         </div>
       </FullNav>
 
-      <main className='w-full h-full relative'>
+      <main className='w-full h-full relative bg-secondary_sky_lighter'>
         <form id='post-form' onSubmit={handleSubmit(handlePublish)}>
           <div className='w-43/50 mx-auto md:py-10 flex justify-between'>
             <div className='w-[34%]'>

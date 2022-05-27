@@ -59,7 +59,7 @@ const SearchIcon = () => (
 
 export default function Posts() {
   return (
-    <div>
+    <div className="md:w-[85%] w-[100%] ml-auto">
       <Tab.Group>
         <FullNav title="Posts">
           <div className="flex justify-between items-center md:w-43/50 mx-auto">

@@ -307,7 +307,7 @@ const FourthComponent = () => {
             </label>
             <div className="flex items-center mt-2 justify-between rounded-xl border border-solid border-grey_85">
               <input
-                className="px-4 rounded-xl text-grey_20 p-3 w-[4rem] border-r-0 rounded z-0 bg-grey_95 text-center outline-none"
+                className="px-4 rounded-l-xl text-grey_20 p-3 w-[4rem] border-r-0 z-0 bg-grey_95 text-center outline-none"
                 value="$"
                 readOnly
               />
@@ -316,7 +316,7 @@ const FourthComponent = () => {
                 name="Amount"
                 id="Amount"
                 placeholder="0+"
-                className=" outline-none w-[98%] p-3 rounded-xl z-10"
+                className=" outline-none w-[98%] p-3 rounded-r-xl z-10"
               />
             </div>
 
@@ -345,7 +345,7 @@ const FourthComponent = () => {
                         </label>
                         <div className="flex items-center mt-2 justify-between rounded-xl border border-solid border-grey_85">
                           <input
-                            className="px-4 rounded-xl text-grey_20 p-3 w-[4rem] border-r-0 rounded z-0 bg-grey_95 text-center outline-none"
+                            className="px-4 rounded-l-xl text-grey_20 p-3 w-[4rem] border-r-0 z-0 bg-grey_95 text-center outline-none"
                             value="$"
                             readOnly
                           />
@@ -354,7 +354,7 @@ const FourthComponent = () => {
                             name="Amount"
                             id="Amount"
                             placeholder="0+"
-                            className=" outline-none w-[98%] p-3 rounded-xl z-10"
+                            className=" outline-none w-[98%] p-3 rounded-r-xl z-10"
                           />
                         </div>
                       </div>
@@ -367,7 +367,7 @@ const FourthComponent = () => {
                         </label>
                         <div className="flex items-center mt-2 justify-between rounded-xl border border-solid border-grey_85">
                           <input
-                            className="px-4 rounded-xl text-grey_20 p-3 w-[4rem] border-r-0 rounded z-0 bg-grey_95 text-center outline-none"
+                            className="px-4 rounded-l-xl text-grey_20 p-3 w-[4rem] border-r-0 z-0 bg-grey_95 text-center outline-none"
                             value="$"
                             readOnly
                           />
@@ -376,7 +376,7 @@ const FourthComponent = () => {
                             name="Amount"
                             id="Amount"
                             placeholder="0+"
-                            className=" outline-none w-[98%] p-3 rounded-xl z-10"
+                            className=" outline-none w-[98%] p-3 rounded-r-xl z-10"
                           />
                         </div>
                       </div>

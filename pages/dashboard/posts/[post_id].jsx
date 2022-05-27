@@ -108,7 +108,7 @@ export default function EditPost() {
   useEffect(() => fetchPost(), [fetchPost]);
 
   return (
-    <div>
+    <div className="md:w-[85%] w-[100%] ml-auto">
       <DashboardNav title="Posts" />
       <div
         className="bg-secondary_sky_lightest py-6 md:px-0 px-4"
@@ -193,7 +193,7 @@ export default function EditPost() {
         </div>
       </div>
 
-      <main className="w-full h-full relative">
+      <main className="w-full h-full relative bg-secondary_sky_lighter">
         <form id="post-form" onSubmit={handleSubmit(handleUpdate)}>
           <div className="w-43/50 mx-auto md:py-10 flex justify-between">
             <div className="w-[34%]">

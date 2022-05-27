@@ -26,7 +26,7 @@ export default function Profile() {
   const { user } = useContext(AuthContext);
 
   return (
-    <div>
+    <div className="md:w-[85%] w-[100%] ml-auto">
       <TopNav title="Profile" />
       <Tab.Group>
         <Tab.Panels>
