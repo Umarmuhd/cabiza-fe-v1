@@ -68,7 +68,7 @@ export default function Create() {
   };
 
   return (
-    <div className="bg-secondary_sky_lighter">
+    <div className="bg-secondary_sky_lighter md:w-[85%] w-[100%] ml-auto">
       <Tab.Group>
         <FullNav title="Products">
           <div className="flex justify-between items-center md:w-43/50 mx-auto">

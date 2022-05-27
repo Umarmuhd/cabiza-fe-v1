@@ -255,7 +255,7 @@ export default function Payout() {
                   className="border border-sky_light mt-3 h-10 rounded  bg-white text-secondary_ink_darkest px-4 w-[50%] mr-2 text-left flex justify-between items-center"
                   placeholder="Day"
                   {...register("day", {})}
-                  defaultValue={user?.birthday.split("/")[0]}
+                  defaultValue={user?.birthday?.split("/")[0]}
                 />
                 <input
                   id="Month"
@@ -264,7 +264,7 @@ export default function Payout() {
                   className="border border-sky_light mt-3 h-10 rounded text-secondary_ink_darkest bg-white px-4 w-[50%] mr-2 text-left flex justify-between items-center"
                   placeholder="Month"
                   {...register("month", {})}
-                  defaultValue={user?.birthday.split("/")[1]}
+                  defaultValue={user?.birthday?.split("/")[1]}
                 />
                 <input
                   id="lname"
@@ -273,7 +273,7 @@ export default function Payout() {
                   className="border border-sky_light mt-3 h-10 rounded text-secondary_ink_darkest bg-white px-4 w-[50%] mr-2 text-left flex justify-between items-center"
                   placeholder="Year"
                   {...register("year", {})}
-                  defaultValue={user?.birthday.split("/")[2]}
+                  defaultValue={user?.birthday?.split("/")[2]}
                 />
               </div>
             </div>
@@ -293,7 +293,7 @@ export default function Payout() {
                   className="border border-sky_light mt-3 h-10 rounded  bg-white text-secondary_ink_darkest px-4 w-[100%] mr-2 text-left flex justify-between items-center"
                   placeholder="Paypal Email"
                   {...register("paypal_email", { required: true })}
-                  defaultValue={user?.paypal.email}
+                  defaultValue={user?.paypal?.email}
                 />
               </div>
             </div>

@@ -14,7 +14,7 @@ export default function Customize() {
   const { user } = useContext(AuthContext);
 
   return (
-    <div>
+    <div className="md:w-[85%] w-[100%] ml-auto">
       <TopNav title="Settings" />
       <Tab.Group>
         <div className="md:px-0 pt-5">
