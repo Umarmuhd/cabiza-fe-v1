@@ -121,7 +121,7 @@ const ProductSettingsStep = ({ ...props }) => {
                 Generate a unique license key per sale{" "}
                 <a
                   href=""
-                  className="text-cabiza_blue ml-2 border-bottom border-b border-cabiza_blue"
+                  className="text-primary_brand_base ml-2 border-bottom border-b border-primary_brand_base"
                 >
                   Learn more
                 </a>
@@ -135,7 +135,7 @@ const ProductSettingsStep = ({ ...props }) => {
                   Add custom affiliate percentage{" "}
                   <a
                     href=""
-                    className="text-cabiza_blue ml-2 border-bottom border-b border-cabiza_blue"
+                    className="text-primary_brand_base ml-2 border-bottom border-b border-primary_brand_base"
                   >
                     Learn more
                   </a>
@@ -181,7 +181,7 @@ const ProductSettingsStep = ({ ...props }) => {
                 Mark product as e-publication for VAT purposes{" "}
                 <a
                   href=""
-                  className="text-cabiza_blue ml-2 border-bottom border-b border-cabiza_blue"
+                  className="text-primary_brand_base ml-2 border-bottom border-b border-primary_brand_base"
                 >
                   Learn more
                 </a>

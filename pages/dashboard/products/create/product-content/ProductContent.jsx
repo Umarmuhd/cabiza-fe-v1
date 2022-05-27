@@ -1,4 +1,5 @@
-import React from "react";
+import React, { useState } from "react";
+import Link from "next/link";
 import EditProductStepView from "@/components/Products/EditProductStepView";
 import { useProductContent } from "@/libs/Hooks/useProductContent";
 
@@ -71,7 +72,9 @@ export default function ProductContentStep({ ...props }) {
                 <p className="mt-4 secondary_brand_light">
                   Upload your product files here
                 </p>
+              </label>
 
+              <label htmlFor="add_files">
                 <button className="flex w-[max-content] mx-auto py-2 px-4 mt-6 rounded-4xl bg-primary_brand_lightest text-primary">
                   <p className="mr-2 text-primary font-medium">+</p>
                   Upload Files
@@ -102,9 +105,11 @@ export default function ProductContentStep({ ...props }) {
                 {...register("url", { required: false })}
                 autoComplete="off"
               />
-              <button className="border border-solid border-grey_20 px-4 rounded text-grey_20 py-2">
-                Test
-              </button>
+              <Link href="/dashboard/products">
+                <button className="border border-solid border-grey_20 px-4 rounded text-grey_20 py-2">
+                  Test
+                </button>
+              </Link>
             </div>
           </div>
         </form>

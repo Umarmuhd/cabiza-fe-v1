@@ -261,7 +261,7 @@ export default function CreatePost() {
                 </div>
 
                   {showTimeDropdown && times ? (
-                    <div className="absolute right-[6.5rem] bg-white top-[9.5rem] shadow cursor-pointer" onClick={() => setShowTimeDropdown(false)}>
+                    <div className="absolute right-[6.5rem] bg-white top-[9.5rem] shadow cursor-pointer z-[101]" onClick={() => setShowTimeDropdown(false)}>
                       {times.map(each => {
                         return <p className="border-b px-3 py-1" key={each} onClick={() => setExactTime(each)}>{each}</p>
                       })}
@@ -270,7 +270,7 @@ export default function CreatePost() {
 
                 {showCalendar || showTimeDropdown ? <div className="fixed top-0 left-0 w-[100vw] h-[100vh] z-[99]" onClick={() => { setShowCalendar(false); setShowTimeDropdown(false)}}></div> : null}
 
-                <div className={`absolute right-0 top-0 left-[1.5rem] z-[101] ${!showCalendar ? "hidden" : ""}`}>
+                <div className={`absolute right-0 top-[100%] left-[1.5rem] z-[101] ${!showCalendar ? "hidden" : ""}`}>
                 <Calendar
                   onChange={onChange}
                   value={value}
