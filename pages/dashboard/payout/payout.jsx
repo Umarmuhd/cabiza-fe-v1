@@ -174,6 +174,8 @@ const Payments = () => {
 
       <main className="md:w-43/50 mx-auto mt-10 bg-white rounded-xl px-6 md:px-12 py-8 md:py-10">
         {payout.previous ? (
+          <>
+            {showCalendar ? <div className="fixed top-0 left-0 w-[100vw] h-[100vh] z-[99]" onClick={() => setShowCalendar(!showCalendar)}></div> : null}
           <div className="mb-10">
             <h3 className="font-medium text-grey_20 text-lg">Select Date</h3>
             {/* <Calendar/> */}
@@ -188,10 +190,11 @@ const Payments = () => {
                 datepicker-autohide
               />
 
-              <div className={`absolute right-0 top-[3rem] z-[4] ${!showCalendar ? "hidden" : ""}`}>
+              <div className={`absolute right-0 top-[3rem] z-[100] ${!showCalendar ? "hidden" : ""}`}>
                 <Calendar
                   onChange={onChange}
                   value={value}
+                  onClickDay={() => setShowCalendar(false)}
                 />
               </div>
 
@@ -202,6 +205,7 @@ const Payments = () => {
               </button>
             </div>
           </div>
+          </>
         ) : null}
 
         <div>
@@ -344,7 +348,7 @@ const Payments = () => {
             <div className="flex items-center justify-between pt-3 text-secondary px-10 mb-1">
               <p className="font-normal">To be sent to Paypal account:</p>
               <p className=" font-bold">$8,567.66</p>
-            </div>
+            </div>      
           </div>
         </div>
       </main>

@@ -268,10 +268,13 @@ export default function CreatePost() {
                     </div>
                   ) : null} 
 
-                <div className={`absolute right-0 top-[14rem] left-[1.5rem] z-[4] ${!showCalendar ? "hidden" : ""}`}>
+                {showCalendar || showTimeDropdown ? <div className="fixed top-0 left-0 w-[100vw] h-[100vh] z-[99]" onClick={() => { setShowCalendar(false); setShowTimeDropdown(false)}}></div> : null}
+
+                <div className={`absolute right-0 top-0 left-[1.5rem] z-[101] ${!showCalendar ? "hidden" : ""}`}>
                 <Calendar
                   onChange={onChange}
                   value={value}
+                  onClickDay={() => setShowCalendar(false)}
                 />
               </div>
 

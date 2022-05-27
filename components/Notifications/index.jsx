@@ -32,6 +32,8 @@ function Notifications() {
     return () => document.removeEventListener("keydown", keyHandler);
   });
 
+  const notifications = ""
+
   return (
     <div className="relative md:inline-flex pl-4 ml-5 border-l border-l-secondary_sky_base h-[100%] items-center mr-3 hidden">
       <button
@@ -74,7 +76,7 @@ function Notifications() {
           />
         </svg>
 
-        <div className="absolute top-[23%] right-[8%] text-[7.7px] text-white bg-rose-500 border-2 border-white rounded-[50%] p-[.16rem] px-[.25rem]">7</div>
+        {notifications ? <div className="absolute top-[23%] right-[8%] text-[7.7px] text-white bg-rose-500 border-2 border-white rounded-[50%] p-[.16rem] px-[.25rem]">7</div> : null}
       </button>
 
       <Transition

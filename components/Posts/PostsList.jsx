@@ -307,7 +307,7 @@ export default function PostsList() {
             </React.Fragment>
           )}
 
-          <PaginationComponent classNames="mt-5" />
+          {posts.length > 8 ? <PaginationComponent classNames="mt-5"/> : null}
         </div>
       </div>
     </main>
