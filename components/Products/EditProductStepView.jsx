@@ -49,7 +49,7 @@ export default function EditProductStepView({
         <div className="flex items-center bg-secondary_sky_lighter rounded-lg p-1">
           <button
             className={
-              'px-2 rounded ' +
+              'p-2 rounded ' +
               (isFirstStep
                 ? ' bg-primary_brand_lighter text-primary'
                 : 'bg-primary text-white')
@@ -65,7 +65,7 @@ export default function EditProductStepView({
           <span className="mx-2 text-primary_brand_lighter">|</span>
           <button
             className={
-              'px-2 rounded ' +
+              'p-2 rounded ' +
               (isLastStep
                 ? ' bg-primary_brand_lighter text-primary'
                 : ' bg-primary text-white')
