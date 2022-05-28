@@ -1,8 +1,8 @@
-import React, { useRef, useState } from "react";
-import Link from "next/link";
-import toast from "react-hot-toast";
-import axios from "axios";
-import { API_URL } from "@/config/index";
+import React, { useRef, useState } from 'react';
+import Link from 'next/link';
+import toast from 'react-hot-toast';
+import axios from 'axios';
+import { API_URL } from '@/config/index';
 
 const LeftIcon = () => (
   <svg
@@ -48,22 +48,22 @@ const ChangePicture = ({ user }) => {
     setLoading(true);
 
     let form_data = new FormData();
-    form_data.append("image", file);
+    form_data.append('image', file);
 
     try {
-      const config = { "Content-Type": "multipart/form-data" };
+      const config = { 'Content-Type': 'multipart/form-data' };
       const { data } = await axios.put(
         `${API_URL}/user/avatar`,
         form_data,
         config
       );
-      toast.success("Uploaded Successfully");
+      toast.success('Uploaded Successfully');
       setAvatar(data.data.picture);
       setLoading(false);
     } catch (error) {
       console.log(error);
       setLoading(false);
-      toast.error("Image upload failed. Try later.");
+      toast.error('Image upload failed. Try later.');
       setPreview(null);
     }
   };
@@ -72,13 +72,19 @@ const ChangePicture = ({ user }) => {
     <div className="bg-white rounded-2xl p-10 px-3 md:w-43/50 mx-auto mt-10 shadow mb-12">
       <div className="text-center relative">
         <div className="rounded-[50%] bg-secondary_sky_light w-[max-content] h-auto mx-auto flex p-3 object-cover overflow-hidden">
-          <label htmlFor="image" className={`mx-auto ${user?.profile_picture ? " w-[14rem] h-[14rem]"
-            : " w-[12rem] h-[12rem]"}`}>
+          <label
+            htmlFor="image"
+            className={`mx-auto ${
+              user?.profile_picture
+                ? ' w-[14rem] h-[14rem]'
+                : ' w-[12rem] h-[12rem]'
+            }`}
+          >
             <img
               src={
-                preview ?? avatar ? avatar : "/images/profile-placeholder.png"
+                preview ?? avatar ? avatar : '/images/profile-placeholder.png'
               }
-              className="m-auto cursor-pointer rounded-full object-cover w-[100%] h-[100%]"              
+              className="m-auto cursor-pointer rounded-full object-cover w-[100%] h-[100%]"
             />
           </label>
           <input
@@ -109,7 +115,7 @@ const ChangePicture = ({ user }) => {
           </label>
         </div>
         <div className="mt-7 text-center w-[max-content] mx-auto text-primary">
-          <Link href="/dashboard/profile/customize">
+          <Link href="/dashboard/profile">
             <a className="flex items-center">
               <LeftIcon />
               <span className="ml-2">Back</span>

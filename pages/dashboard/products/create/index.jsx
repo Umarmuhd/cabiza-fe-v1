@@ -183,7 +183,7 @@ export default function Create() {
                             </span>
                             {checked && (
                               <span className="text-sm text-secondary_sky_dark">
-                                : start selling now
+                                : Start selling now
                               </span>
                             )}
                           </p>
@@ -239,7 +239,7 @@ export default function Create() {
                             </span>
                             {checked && (
                               <span className="text-sm text-secondary_sky_dark">
-                                : sell before release date
+                                : Sell before release date
                               </span>
                             )}
                           </p>
@@ -286,7 +286,7 @@ export default function Create() {
                             </span>
                             {checked && (
                               <span className="text-sm text-secondary_sky_dark">
-                                : charge on recurring basis
+                                : Charge on recurring basis
                               </span>
                             )}
                           </p>
