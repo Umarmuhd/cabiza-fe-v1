@@ -65,7 +65,7 @@ export default function ProductPricingStep({ ...props }) {
             </label>
             <div className="flex items-center mt-2 justify-between rounded-xl border border-solid border-grey_85">
               <input
-                className="px-4 rounded-xl text-grey_20 p-3 w-[4rem] border-r-0 rounded z-0 bg-grey_95 text-center outline-none"
+                className="px-4 rounded-xl text-grey_20 p-3 w-[4rem] border-r-0 rounded z-0 bg-grey_95 text-center outline-none overflow-hidden"
                 value="$"
                 readOnly
               />
@@ -74,7 +74,7 @@ export default function ProductPricingStep({ ...props }) {
                 name="Amount"
                 id="Amount"
                 placeholder="0+"
-                className="outline-none w-[98%] p-3 rounded-xl z-10"
+                className="outline-none w-[98%] p-3 rounded-r-xl z-10"
                 {...register("price", { required: true })}
               />
               {errors.price?.type === "required" && (
