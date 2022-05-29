@@ -72,13 +72,10 @@ export default function ProductContentStep({ ...props }) {
                 <p className="mt-4 secondary_brand_light">
                   Upload your product files here
                 </p>
-              </label>
-
-              <label htmlFor="add_files">
-                <button className="flex w-[max-content] mx-auto py-2 px-4 mt-6 rounded-4xl bg-primary_brand_lightest text-primary">
+                <span className="flex w-[max-content] mx-auto py-2 px-4 mt-6 rounded-4xl bg-primary_brand_lightest text-primary">
                   <p className="mr-2 text-primary font-medium">+</p>
                   Upload Files
-                </button>
+                </span>
               </label>
             </div>
             {errors.file?.type === "required" && (
