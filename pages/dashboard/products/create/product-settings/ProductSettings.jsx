@@ -272,7 +272,7 @@ const ProductSettingsStep = ({ ...props }) => {
                   name="Tags"
                   id="Tags"
                   placeholder="Begin typing to add tag..."
-                  className="w-[95%] outline-none"
+                  className="w-[95%] outline-none border-0"
                 />
                 <svg
                   width="24"
