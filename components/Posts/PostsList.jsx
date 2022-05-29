@@ -1,13 +1,13 @@
-import React, { useState, useContext, useEffect } from "react";
-import axios from "axios";
-import { toast } from "react-hot-toast";
-import { API_URL } from "@/config/index";
-import AuthContext from "@/context/AuthContext";
-import Link from "next/link";
-import Image from "next/image";
-import moment from "moment";
-import { Switch } from "@headlessui/react";
-import PaginationComponent from "../PaginationComponent";
+import React, { useState, useContext, useEffect } from 'react';
+import axios from 'axios';
+import { toast } from 'react-hot-toast';
+import { API_URL } from '@/config/index';
+import AuthContext from '@/context/AuthContext';
+import Link from 'next/link';
+import Image from 'next/image';
+import moment from 'moment';
+import { Switch } from '@headlessui/react';
+import PaginationComponent from '../PaginationComponent';
 
 const SpinIcon = () => (
   <svg
@@ -75,20 +75,19 @@ const PostItem = ({ post, deletePost, user }) => {
     <div className="mb-4">
       <div
         className={
-          "p-6 rounded-2xl border border-secondary_sky_dark " +
-          (expanded && "rounded-b-none border-b-0")
+          'p-6 rounded-2xl border border-secondary_sky_dark ' +
+          (expanded && 'rounded-b-none border-b-0')
         }
         onClick={() => setExpanded(!expanded)}
       >
-        <div className="flex justify-between">
-          <div className="flex">
-            <Image
+        <div className="flex flex-col md:flex-row justify-between">
+          <div className="flex flex-col md:flex-row">
+            <img
               src="/images/placeholder-image.svg"
               alt="placeholder"
-              width={80}
-              height={80}
+              className="h-20 md:w-20 object-cover w-full"
             />
-            <div className="ml-6">
+            <div className="md:ml-6 md:mt-0 mt-4">
               <h2 className="text-lg font-medium text-secondary_ink_darkest mb-2">
                 {post.title}
               </h2>
@@ -100,7 +99,7 @@ const PostItem = ({ post, deletePost, user }) => {
               </span>
             </div>
           </div>
-          <div className="grid grid-cols-2 row-gap-8 md:grid-cols-4 border border-secondary_sky_dark bg-secondary_sky_lightest">
+          <div className="md:mt-0 mt-3 grid grid-cols-2 row-gap-8 md:grid-cols-4 border border-secondary_sky_dark bg-secondary_sky_lightest">
             <div className="text-center md:border-r border-secondary_sky_dark py-2.5 px-4">
               <p className="text-secondary mb-6">Emailed</p>
               <span className="block font-medium">0</span>
@@ -121,9 +120,9 @@ const PostItem = ({ post, deletePost, user }) => {
         </div>
       </div>
       {expanded && (
-        <div className="py-4 px-6 rounded-2xl rounded-t-none border border-t border-secondary_sky_dark bg-secondary_sky_lightest flex justify-between items-center">
-          <div className="flex items-center">
-            <button className="mr-6 py-2 px-4 rounded-4xl flex items-center bg-primary_brand_lightest">
+        <div className="py-4 px-6 rounded-2xl rounded-t-none border border-t border-secondary_sky_dark bg-secondary_sky_lightest flex flex-col-reverse md:flex-row justify-between items-center">
+          <div className="flex flex-col-reverse md:flex-row md:items-center w-full">
+            <button className="md:mr-6 py-2 px-4 rounded-4xl flex items-center md:justify-start justify-center bg-primary_brand_lightest mt-4 md:mt-0">
               <svg
                 width="16"
                 height="16"
@@ -147,47 +146,53 @@ const PostItem = ({ post, deletePost, user }) => {
                 Download Attachments
               </span>
             </button>
-            <div className="flex items-center">
-              <Switch
-                checked={enabled}
-                onChange={handlePublish}
-                disabled={loading}
-                className={`${enabled ? "bg-primary" : "bg-grey_80"}
+            <div className="flex md:justify-start justify-between">
+              <div className="flex items-center">
+                <Switch
+                  checked={enabled}
+                  onChange={handlePublish}
+                  disabled={loading}
+                  className={`${enabled ? 'bg-primary' : 'bg-grey_80'}
   relative inline-flex flex-shrink-0 h-[18px] w-[32px] border-2 border-transparent rounded-full cursor-pointer transition-colors ease-in-out duration-200 focus:outline-none focus-visible:ring-2  focus-visible:ring-white focus-visible:ring-opacity-75`}
-              >
-                <span className="sr-only">Use setting</span>
-                <span
-                  aria-hidden="true"
-                  className={`${enabled ? "translate-x-4" : "translate-x-0"}
+                >
+                  <span className="sr-only">Use setting</span>
+                  <span
+                    aria-hidden="true"
+                    className={`${enabled ? 'translate-x-4' : 'translate-x-0'}
   pointer-events-none inline-block h-[14px] w-[13px] rounded-full bg-white shadow-lg transform ring-0 transition ease-in-out duration-200`}
-                />
-              </Switch>
-              <span className="ml-2 block text-grey_40 text-lg font-medium">
-                {enabled ? "Published" : "Unpublished"}
-              </span>
+                  />
+                </Switch>
+                <span className="ml-2 block text-grey_40 text-lg font-medium">
+                  {enabled ? 'Published' : 'Unpublished'}
+                </span>
+              </div>
+
+              <button className="leading-4 text-base font-medium text-primary py-2 px-3 rounded-4xl border border-primary md:hidden">
+                Duplicate
+              </button>
             </div>
           </div>
-          <ul className="flex items-center">
-            <li className="pl-3">
-              <Link href={"/dashboard/posts/" + post._id}>
+          <ul className="flex items-center mb-4 md:mb-0 w-full md:w-auto md:justify-start justify-between">
+            <li className="md:pl-3">
+              <Link href={'/dashboard/posts/' + post._id}>
                 <a className="leading-4 text-base font-medium text-primary py-2 px-3 rounded-4xl border border-primary">
                   Edit
                 </a>
               </Link>
             </li>
-            <li className="pl-3">
+            <li className="md:pl-3">
               <Link href={`/${user?.username}/posts/${post._id}`}>
                 <a className="leading-4 text-base font-medium text-primary py-2 px-3 rounded-4xl border border-primary">
                   View
                 </a>
               </Link>
             </li>
-            <li className="pl-3">
+            <li className="hidden md:flex md:pl-3">
               <button className="leading-4 text-base font-medium text-primary py-2 px-3 rounded-4xl border border-primary">
                 Duplicate
               </button>
             </li>
-            <li className="pl-3">
+            <li className="md:pl-3">
               <button
                 className="leading-4 text-base font-medium bg-tertiary_red_base py-2 px-3 rounded-4xl border border-tertiary_red_base text-white"
                 onClick={() => deletePost(post._id)}
@@ -227,7 +232,7 @@ export default function PostsList() {
     try {
       setLoading(true);
 
-      if (confirm("Are you sure you want to delete this post!?") == false) {
+      if (confirm('Are you sure you want to delete this post!?') == false) {
         setLoading(false);
         return;
       }
@@ -249,7 +254,7 @@ export default function PostsList() {
       <div className="md:w-43/50 mx-auto md:my-10">
         <div
           className="p-8 bg-white rounded-2xl"
-          style={{ boxShadow: "0px 20px 40px rgba(0, 0, 0, 0.06)" }}
+          style={{ boxShadow: '0px 20px 40px rgba(0, 0, 0, 0.06)' }}
         >
           {loading ? (
             <React.Fragment>
@@ -285,7 +290,7 @@ export default function PostsList() {
                         Click on
                         <Link href="/dashboard/posts/create">
                           <a className="text-primary"> New post</a>
-                        </Link>{" "}
+                        </Link>{' '}
                         to create your first post!
                       </p>
                     </div>
@@ -300,14 +305,14 @@ export default function PostsList() {
                       <a className="text-primary block bg-primary_brand_lightest w-[max-content] mx-auto mt-7 px-8 py-2 rounded-full text-lg">
                         Create post
                       </a>
-                    </Link>{" "}
+                    </Link>{' '}
                   </div>
                 </div>
               )}
             </React.Fragment>
           )}
 
-          {posts.length > 8 ? <PaginationComponent classNames="mt-5"/> : null}
+          {posts.length > 8 ? <PaginationComponent classNames="mt-5" /> : null}
         </div>
       </div>
     </main>
