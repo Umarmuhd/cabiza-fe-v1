@@ -129,7 +129,7 @@ export default function UserPosts({ username = "umar" }) {
           )}
         </div>
 
-        <PaginationComponent />
+        {posts.length > 20 ? (<PaginationComponent />): null}
       </div>
     </main>
   );
