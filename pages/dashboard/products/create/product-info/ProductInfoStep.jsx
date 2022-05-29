@@ -108,7 +108,7 @@ export default function ProductInfoStep({ ...props }) {
                 >
                   {({ active, checked }) => (
                     <span
-                      className={`text-primary ${
+                      className={`text-primary cursor-pointer ${
                         checked ? "font-medium" : "font-normal"
                       }`}
                     >
@@ -125,7 +125,7 @@ export default function ProductInfoStep({ ...props }) {
                 >
                   {({ active, checked }) => (
                     <span
-                      className={`text-primary ${
+                      className={`text-primary cursor-pointer ${
                         checked ? "font-medium" : "font-normal"
                       }`}
                     >
@@ -142,7 +142,7 @@ export default function ProductInfoStep({ ...props }) {
                 >
                   {({ active, checked }) => (
                     <span
-                      className={`text-primary ${
+                      className={`text-primary cursor-pointer ${
                         checked ? "font-medium" : "font-normal"
                       }`}
                     >
