@@ -219,23 +219,6 @@ export default function UpdateProduct() {
 
   console.log(published)
 
-  const handleSchedulePublish = async () => {
-    try {
-      setLoading(true);
-      const url = `${API_URL}/products/schedule-new/product/${product._id}`;
-      const response = await axios.put(url);
-      setLoading(false);
-      toast.success(response.data.message);
-
-      console.log(response.data)
-      setPublished(response.data.data.product.published);
-    } catch (error) {
-      console.log(error);
-      toast.error(error.response?.data.message);
-      setLoading(false);
-    }
-  };
-
   const [showDropdown, setShowDropdown] = useState(false);
   const [showTimeDropdown, setShowTimeDropdown] = useState(false);
 
@@ -271,6 +254,29 @@ export default function UpdateProduct() {
   useEffect(() => {
     setNewConvertedDate(handleConvertDate(value.getMonth(), value.getDate(), value.getFullYear()))
   }, [value])  
+
+  const scheduledTime = time === "PM" ?  exactTime + 12 : exactTime  
+
+  const date = new Date(value.getFullYear(), value.getMonth(), value.getDate(), Number(scheduledTime), value.getMinutes(), value.getSeconds(), value.getMilliseconds())
+
+  console.log(date)
+
+  const handleSchedulePublish = async () => {
+    try {
+      setLoading(true);
+      const url = `${API_URL}/products/schedule-new/product/${product._id}`;
+      const response = await axios.put(url);
+      setLoading(false);
+      toast.success(response.data.message);
+
+      console.log(response.data)
+      setPublished(response.data.data.product.published);
+    } catch (error) {
+      console.log(error);
+      toast.error(error.response?.data.message);
+      setLoading(false);
+    }
+  };
 
   return (
     <div className="bg-secondary_sky_lighter md:w-[85%] w-[100%] ml-auto">
