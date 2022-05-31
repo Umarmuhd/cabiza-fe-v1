@@ -183,9 +183,7 @@ export default function UpdateProduct() {
 
       name && form_data.append('name', name);
 
-      date && form_data.append('scheduledPublishingDate', date);
-
-      console.log(form_data())
+      date && form_data.append('scheduledPublishingDate', date);      
 
       summary && form_data.append('summary', summary);
 
@@ -214,6 +212,8 @@ export default function UpdateProduct() {
       const { data } = await axios.post(uri, form_data);
 
       console.log(data);
+
+      console.log(form_data)
 
       toast.custom(
         <div className="rounded-lg py-4 px-8 bg-[#24C78C] flex items-center">
