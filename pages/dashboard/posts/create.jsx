@@ -239,7 +239,7 @@ export default function CreatePost() {
 
               {showDropdown ? <div className="absolute left-[.3rem] top-[4rem] rounded-xl bg-white px-3 py-5 z-[5] w-[25rem] flex flex-col" style={{
                 border: "1px solid #E3E5E6",
-                "box-shadow": "0px 8px 15px rgba(0, 0, 0, 0.15)"
+                boxShadow: "0px 8px 15px rgba(0, 0, 0, 0.15)"
               }}>
                 <div className="border-b border-b-[#979C9E] flex flex-col items-center pb-7">
                   <button

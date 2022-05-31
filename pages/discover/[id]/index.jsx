@@ -106,7 +106,7 @@ export default function DiscoverSingle() {
 
   return (
     <div className="h-full w-full">
-      <MainNavigation />
+      {/* <MainNavigation /> */}
       {loading ? (
         <div className="min-h-screen grid place-content-center">
           <div className="max-w-2xl mx-auto">
