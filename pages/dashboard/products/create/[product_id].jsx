@@ -213,7 +213,7 @@ export default function UpdateProduct() {
 
       console.log(data);
 
-      console.log(form_data)
+      console.log(form_data.getAll())
 
       toast.custom(
         <div className="rounded-lg py-4 px-8 bg-[#24C78C] flex items-center">
