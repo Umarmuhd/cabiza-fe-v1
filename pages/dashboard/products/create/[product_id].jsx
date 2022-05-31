@@ -262,6 +262,7 @@ export default function UpdateProduct() {
   const handleSchedulePublish = async () => {
     try {
       setLoading(true);
+      console.log(product)
       const url = `${API_URL}/products/schedule-new/product/${product._id}`;
       const response = await axios.put(url, date);
 
