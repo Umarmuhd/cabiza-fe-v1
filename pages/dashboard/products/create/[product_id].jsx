@@ -185,7 +185,7 @@ export default function UpdateProduct() {
 
       date && form_data.append('scheduledPublishingDate', date);
 
-      console.log(date, form_data)
+      console.log(form_data)
 
       summary && form_data.append('summary', summary);
 
