@@ -57,6 +57,7 @@ export default function Create() {
         contains_physical: enabled,
       };
       const { data } = await axios.post(`${API_URL}/products/new`, payload);
+      console.log(data)
 
       setLoading(false);
 
