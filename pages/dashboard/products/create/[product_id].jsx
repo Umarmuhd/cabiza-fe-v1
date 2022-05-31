@@ -208,6 +208,7 @@ export default function UpdateProduct() {
       const response = await axios.put(url);
       setLoading(false);
       toast.success(response.data.message);
+      console.log(response.data)
       setPublished(response.data.data.product.published);
     } catch (error) {
       console.log(error);
