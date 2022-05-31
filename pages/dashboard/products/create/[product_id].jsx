@@ -259,13 +259,13 @@ export default function UpdateProduct() {
 
   const date = new Date(value.getFullYear(), value.getMonth(), value.getDate(), Number(scheduledTime), value.getMinutes(), value.getSeconds(), value.getMilliseconds())
 
-  console.log(date)
-
   const handleSchedulePublish = async () => {
     try {
       setLoading(true);
       const url = `${API_URL}/products/schedule-new/product/${product._id}`;
-      const response = await axios.put(url);
+      const response = await axios.put(url, date);
+      response.data.headers['Content-Type']
+      
       setLoading(false);
       toast.success(response.data.message);
 
