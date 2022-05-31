@@ -33,13 +33,12 @@ export default function Setting() {
               name="uname"
               id="uname"
               className="border border-sky_light mt-3 h-10 rounded-xl text-secondary_ink_lighter bg-white px-4"
-              placeholder="jakecabiza"
               value={user.username}
               readOnly
             />
             <p className="mt-2 text-secondary_ink_lighter text-sm">
               View your profile at:{" "}
-              <a className="text-primary">{user.username + ".cabiza.com"}</a>
+              <a className="text-primary">{user.username + ".cabiza.net"}</a>
             </p>
           </div>
 
@@ -84,40 +83,28 @@ export default function Setting() {
             <tr className="h-12 bg-secondary_sky_lighter text-secondary">
               <td className="text-left px-6">Purchases</td>
               <td className="text-left px-6">
-                <ToggleSwitch
-                  label="Purchases-email"                  
-                />
+                <ToggleSwitch label="Purchases-email" />
               </td>
               <td className="text-left px-6">
-                <ToggleSwitch
-                  label="Purchases-mobile" 
-                />
+                <ToggleSwitch label="Purchases-mobile" />
               </td>
             </tr>
             <tr className="h-12 bg-secondary_sky_lighter text-secondary">
               <td className="text-left px-6">Recurring payments</td>
               <td className="text-left px-6">
-                <ToggleSwitch
-                  label="Recurring-payments-email"
-                />
+                <ToggleSwitch label="Recurring-payments-email" />
               </td>
               <td className="text-left px-6">
-                <ToggleSwitch
-                  label="Recurring-payments-mobile"
-                />
+                <ToggleSwitch label="Recurring-payments-mobile" />
               </td>
             </tr>
             <tr className="h-12 bg-secondary_sky_lighter text-secondary">
               <td className="text-left px-6">Free downloads</td>
               <td className="text-left px-6">
-                <ToggleSwitch
-                  label="free-downloads-email"
-                />
+                <ToggleSwitch label="free-downloads-email" />
               </td>
               <td className="text-left px-6">
-                <ToggleSwitch
-                  label="free-downloads-mobile"
-                />
+                <ToggleSwitch label="free-downloads-mobile" />
               </td>
             </tr>
             <tr className="h-12 bg-secondary_sky_lighter text-secondary">
@@ -125,14 +112,10 @@ export default function Setting() {
                 Personalized product announcements
               </td>
               <td className="text-left px-6">
-                <ToggleSwitch
-                  label="Personalized-product-email"
-                />
+                <ToggleSwitch label="Personalized-product-email" />
               </td>
               <td className="text-left px-6">
-                <ToggleSwitch
-                  label="Personalized-product-mobile"
-                />
+                <ToggleSwitch label="Personalized-product-mobile" />
               </td>
             </tr>
           </table>
@@ -284,7 +267,7 @@ export default function Setting() {
         <div>
           <div className="bg-secondary_sky_lighter p-3 rounded flex items-center justify-between px-5 mb-2">
             <p className="text-secondary">Show my products in Discover</p>
-            <ToggleSwitch label="discoverMyProducts"/>
+            <ToggleSwitch label="discoverMyProducts" />
           </div>
 
           <div className="flex flex-col mt-8 overflow-hidden">

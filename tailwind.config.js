@@ -12,6 +12,10 @@ module.exports = {
         cabiza_blue_secondary: "#4CCBE1",
         secondary: "#404446",
 
+        secondary: {
+          "sky-lighter": "#F2F4F5",
+        },
+
         yellow: "#FCCA03",
         cabiza_secondary: "#02BDDC",
         cabiza_secondary_tertiary: "#E5F7FB",

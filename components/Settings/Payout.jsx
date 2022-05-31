@@ -66,7 +66,6 @@ const WarningIcon = () => (
 
 export default function Payout() {
   const {
-    reset,
     register,
     handleSubmit,
     formState: { errors },
@@ -105,25 +104,7 @@ export default function Payout() {
       };
       const url = `${API_URL}/user/profile`;
       await axios.post(url, payload);
-      toast.custom(
-        <div className="rounded-lg py-4 px-8 bg-[#24C78C] flex items-center">
-          <svg
-            width="24"
-            height="24"
-            viewBox="0 0 24 24"
-            fill="none"
-            xmlns="http://www.w3.org/2000/svg"
-          >
-            <path
-              d="M16.19 2H7.81C4.17 2 2 4.17 2 7.81V16.18C2 19.83 4.17 22 7.81 22H16.18C19.82 22 21.99 19.83 21.99 16.19V7.81C22 4.17 19.83 2 16.19 2ZM15.36 14.3C15.65 14.59 15.65 15.07 15.36 15.36C15.21 15.51 15.02 15.58 14.83 15.58C14.64 15.58 14.45 15.51 14.3 15.36L12 13.06L9.7 15.36C9.55 15.51 9.36 15.58 9.17 15.58C8.98 15.58 8.79 15.51 8.64 15.36C8.35 15.07 8.35 14.59 8.64 14.3L10.94 12L8.64 9.7C8.35 9.41 8.35 8.93 8.64 8.64C8.93 8.35 9.41 8.35 9.7 8.64L12 10.94L14.3 8.64C14.59 8.35 15.07 8.35 15.36 8.64C15.65 8.93 15.65 9.41 15.36 9.7L13.06 12L15.36 14.3Z"
-              fill="white"
-            />
-          </svg>
-          <span className="ml-2.5 font-medium text-lg text-white">
-            Payout update success !
-          </span>
-        </div>
-      );
+      toast.custom(<Alert color="#24C78C" text="Payout update success !" />);
       setLoading(false);
     } catch (error) {
       console.error(error.message);
@@ -192,37 +173,59 @@ export default function Payout() {
               />
             </div>
 
-            <div className="flex w-[100%]">
-              <input
-                id="address"
-                name="address"
-                className="border border-sky_light border-t-0 h-10 text-secondary_ink_lighter bg-white px-4 w-[100%] text-left flex justify-between items-center"
-                placeholder="Street Address"
-                {...register("street_name", { required: true })}
-                defaultValue={user?.address?.street_name}
-              />
+            <div>
+              <div className="flex w-full">
+                <input
+                  id="address"
+                  name="address"
+                  className="border border-sky_light border-t-0 h-10 text-secondary_ink_lighter bg-white px-4 w-[100%] text-left flex justify-between items-center"
+                  placeholder="Street Address"
+                  {...register("street_name", { required: true })}
+                  defaultValue={user?.address?.street_name}
+                />
+              </div>
+              {errors.street_name?.type === "required" && (
+                <p className="text-left text-red-600 text-xs px-4 mt-1">
+                  Street name is required
+                </p>
+              )}
             </div>
 
             <div className="flex w-[100%]">
-              <input
-                id="City"
-                name="City"
-                className="border border-sky_light h-10 text-secondary_ink_lighter bg-white px-4 w-[100%] text-left flex justify-between items-center border-t-0"
-                placeholder="City"
-                {...register("city", { required: true })}
-                defaultValue={user?.address?.city}
-              />
-              <input
-                id="postal-code"
-                name="postal-code"
-                className="border border-sky_light h-10 text-secondary_ink_lighter bg-white px-4 w-[100%] text-left flex justify-between items-center border-t-0 border-l-0"
-                placeholder="Postal Code"
-                {...register("postal_code", { required: true })}
-                defaultValue={user?.address?.postal_code}
-              />
+              <div className="w-full">
+                <input
+                  id="City"
+                  name="City"
+                  className="border border-sky_light h-10 text-secondary_ink_lighter bg-white px-4 w-[100%] text-left flex justify-between items-center border-t-0"
+                  placeholder="City"
+                  {...register("city", { required: true })}
+                  defaultValue={user?.address?.city}
+                />
+                {errors.city?.type === "required" && (
+                  <p className="text-left text-red-600 text-xs px-4 my-1">
+                    City is required
+                  </p>
+                )}
+              </div>
+
+              <div className="w-full">
+                <input
+                  id="postal-code"
+                  name="postal-code"
+                  className="border border-sky_light h-10 text-secondary_ink_lighter bg-white px-4 w-[100%] text-left flex justify-between items-center border-t-0 border-l-0"
+                  placeholder="Postal Code"
+                  {...register("postal_code", { required: true })}
+                  defaultValue={user?.address?.postal_code}
+                />
+                {errors.postal_code?.type === "required" && (
+                  <p className="text-left text-red-600 text-xs px-4 my-1">
+                    Postal code is required
+                  </p>
+                )}
+              </div>
             </div>
 
-            <div className="flex w-[100%]">
+            <div className="w-full">
               <input
                 id="country"
                 name="country"
@@ -231,6 +234,11 @@ export default function Payout() {
                 defaultValue={user?.address?.country}
                 {...register("country", { required: true })}
               />
+              {errors.country?.type === "required" && (
+                <p className="text-left text-red-600 text-xs px-4 mt-1">
+                  Country is required
+                </p>
+              )}
             </div>
           </div>
 
