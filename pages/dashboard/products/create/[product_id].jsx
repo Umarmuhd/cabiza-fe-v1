@@ -222,7 +222,7 @@ export default function UpdateProduct() {
   const handleSchedulePublish = async () => {
     try {
       setLoading(true);
-      const url = `${API_URL}/products/schedule-new/publishing/${product._id}`;
+      const url = `${API_URL}/products/schedule-new/product/${product._id}`;
       const response = await axios.put(url);
       setLoading(false);
       toast.success(response.data.message);
