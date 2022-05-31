@@ -125,6 +125,43 @@ export default function UpdateProduct() {
     fetchProduct();
   }, [productId]);
 
+  const [showDropdown, setShowDropdown] = useState(false);
+  const [showTimeDropdown, setShowTimeDropdown] = useState(false);
+
+  //calendar
+  const [showCalendar, setShowCalendar] = useState(false);
+  const [time, setTime] = useState("PM");
+  const [exactTime, setExactTime] = useState(12);
+
+  const handleChangeTimePeriod = () => {
+    if (time !== "PM") {
+      setTime("PM")
+    } else {
+      setTime("AM")
+    }
+  }
+
+  const times = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12]
+
+  // const handleExactTimeChange = () => {
+  //   setExactTime(times)
+  // }
+
+  const [value, onChange] = useState(new Date());
+
+  const handleConvertDate = (month, day, year) => {
+    const months = ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"]
+
+    return `${months[month]} ${day}, ${year}`
+  }
+
+  const [newConvertedDate, setNewConvertedDate] = useState(handleConvertDate(value.getMonth(), value.getDate(), value.getFullYear()))
+
+  useEffect(() => {
+    setNewConvertedDate(handleConvertDate(value.getMonth(), value.getDate(), value.getFullYear()))
+  }, [value])  
+
+
   const scheduledTime = time === "PM" ? exactTime + 12 : exactTime
 
   const date = new Date(value.getFullYear(), value.getMonth(), value.getDate(), Number(scheduledTime), value.getMinutes(), value.getSeconds(), value.getMilliseconds())
@@ -154,6 +191,7 @@ export default function UpdateProduct() {
 
       cover_image?.length === 1 &&
         form_data.append('cover_image', cover_image[0]);
+
 
       description && form_data.append('description', description);
 
@@ -224,42 +262,6 @@ export default function UpdateProduct() {
   };
 
   console.log(published)
-
-  const [showDropdown, setShowDropdown] = useState(false);
-  const [showTimeDropdown, setShowTimeDropdown] = useState(false);
-
-  //calendar
-  const [showCalendar, setShowCalendar] = useState(false);
-  const [time, setTime] = useState("PM");
-  const [exactTime, setExactTime] = useState(12);
-
-  const handleChangeTimePeriod = () => {
-    if (time !== "PM") {
-      setTime("PM")
-    } else {
-      setTime("AM")
-    }
-  }
-
-  const times = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12]
-  
-  // const handleExactTimeChange = () => {
-  //   setExactTime(times)
-  // }
-
-  const [value, onChange] = useState(new Date());
-
-  const handleConvertDate = (month, day, year) => {
-    const months = ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"]
-
-    return `${months[month]} ${day}, ${year}`
-  }
-
-  const [newConvertedDate, setNewConvertedDate] = useState(handleConvertDate(value.getMonth(), value.getDate(), value.getFullYear()))
-
-  useEffect(() => {
-    setNewConvertedDate(handleConvertDate(value.getMonth(), value.getDate(), value.getFullYear()))
-  }, [value])  
 
   const handleSchedulePublish = async () => {
     // try {
@@ -380,7 +382,7 @@ export default function UpdateProduct() {
                   </svg>
                 </button>
 
-                {showDropdown ? <div className="absolute left-[-5rem] top-[4rem] rounded-xl bg-white px-1 py-5 z-[5] w-[25rem] flex flex-col" style={{
+                {showDropdown && !published ? <div className="absolute left-[-5rem] top-[4rem] rounded-xl bg-white px-1 py-5 z-[5] w-[25rem] flex flex-col" style={{
                   border: "1px solid #E3E5E6",
                   boxShadow: "0px 8px 15px rgba(0, 0, 0, 0.15)"
                 }}>
