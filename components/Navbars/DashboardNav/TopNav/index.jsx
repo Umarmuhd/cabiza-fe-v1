@@ -1,7 +1,7 @@
-import UserMenu from '@/components/Dropdowns/UserMenu';
-import Notifications from '@/components/Notifications';
-import { NavContext } from '@/context/NavContext';
-import React, { useContext, useState } from 'react';
+import UserMenu from "@/components/Dropdowns/UserMenu";
+import Notifications from "@/components/Notifications";
+import { NavContext } from "@/context/NavContext";
+import React, { useContext, useState } from "react";
 
 export default function TopNav({ title, children, showLanguage }) {
   const { showNav, setShowNav } = useContext(NavContext);
@@ -200,7 +200,7 @@ export default function TopNav({ title, children, showLanguage }) {
           <div className="hidden md:flex items-center h-[100%]">
             {/* <SearchModal id="search-modal" searchId="search" modalOpen={searchModalOpen} setModalOpen={setSearchModalOpen} /> */}
 
-            <button className="w-10 h-10 flex items-center justify-center bg-primary_brand_lightest hover:bg-slate-200 transition duration-150 p-2 rounded-full">
+            {/* <button className="w-10 h-10 flex items-center justify-center bg-primary_brand_lightest hover:bg-slate-200 transition duration-150 p-2 rounded-full">
               <svg
                 width="25"
                 height="25"
@@ -234,7 +234,7 @@ export default function TopNav({ title, children, showLanguage }) {
                   fill="white"
                 />
               </svg>
-            </button>
+            </button> */}
             <Notifications />
             {/* <Help /> */}
             {/*  Divider */}
