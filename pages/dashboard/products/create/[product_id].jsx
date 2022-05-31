@@ -361,7 +361,10 @@ export default function UpdateProduct() {
                   className="leading-4 text-base font-medium bg-transparent py-2 px-3 rounded-4xl border text-primary bg-primary flex items-center"
                   // type="submit"
                   form="post-form"
-                  onClick={() => setShowDropdown(!showDropdown)}                  
+                  onClick={() => {
+                    setShowDropdown(!showDropdown)
+                    published ? handlePublish() : null
+                  }}                  
                 >
                   <span className="mr-2">
                     {published ? 'UnPublish' : 'Publish'}
