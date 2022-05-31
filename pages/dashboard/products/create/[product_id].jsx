@@ -211,7 +211,24 @@ export default function UpdateProduct() {
       setPublished(response.data.data.product.published);
     } catch (error) {
       console.log(error);
-      toast.error(error.response.data.message);
+      toast.error(error.response?.data.message);
+      setLoading(false);
+    }
+  };
+
+  console.log(published)
+
+  const handleSchedulePublish = async () => {
+    try {
+      setLoading(true);
+      const url = `${API_URL}/products/schedule-new`;
+      const response = await axios.post(url);
+      setLoading(false);
+      toast.success(response.data.message);
+      setPublished(response.data.data.product.published);
+    } catch (error) {
+      console.log(error);
+      toast.error(error.response?.data.message);
       setLoading(false);
     }
   };
@@ -340,7 +357,7 @@ export default function UpdateProduct() {
 
                 {showDropdown ? <div className="absolute left-[-5rem] top-[4rem] rounded-xl bg-white px-1 py-5 z-[5] w-[25rem] flex flex-col" style={{
                   border: "1px solid #E3E5E6",
-                  "box-shadow": "0px 8px 15px rgba(0, 0, 0, 0.15)"
+                  boxShadow: "0px 8px 15px rgba(0, 0, 0, 0.15)"
                 }}>
                   <div className="border-b border-b-[#979C9E] flex flex-col items-center pb-7">
                     <button
@@ -363,7 +380,7 @@ export default function UpdateProduct() {
                   </div>
 
                   {showTimeDropdown && times ? (
-                    <div className="absolute right-[6.5rem] bg-white top-[9.5rem] shadow cursor-pointer" onClick={() => setShowTimeDropdown(false)}>
+                    <div className="absolute right-[6.5rem] bg-white top-[9.5rem] shadow cursor-pointer z-[101]" onClick={() => setShowTimeDropdown(false)}>
                       {times.map(each => {
                         return <p className="border-b px-3 py-1 z-[101]" key={each} onClick={() => setExactTime(each)}>{each}</p>
                       })}
@@ -384,6 +401,7 @@ export default function UpdateProduct() {
                     className='leading-4 text-base font-medium text-white py-2 px-12 rounded-4xl border border-primary bg-primary mt-4 w-[max-content] mx-auto'
                     type='submit'
                     form='post-form'
+                    onClick={handleSchedulePublish}
                     disabled={loading}
                   >
                     Schedule

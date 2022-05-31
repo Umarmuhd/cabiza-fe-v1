@@ -243,7 +243,7 @@ export default function Discover() {
                 className="rounded-lg hover:bg-primary group cursor-pointer border border-primary_brand_lightest py-5 px-4 w-[15rem]"
                 style={{
                   "&:hover": {
-                    "box-shadow": "0px 4px 20px rgba(0, 0, 0, 0.04)",
+                    boxShadow: "0px 4px 20px rgba(0, 0, 0, 0.04)",
                     "border-radius": "8px",
                   },
                 }}
@@ -254,7 +254,7 @@ export default function Discover() {
                   className="mb-4 mx-auto"
                   style={{
                     border: "1px solid #E3E5E6",
-                    "box-shadow": "0px 4px 20px rgba(0, 0, 0, 0.04)"
+                    boxShadow: "0px 4px 20px rgba(0, 0, 0, 0.04)"
                   }}
                 />
                 <div className="text-center">
@@ -274,7 +274,7 @@ export default function Discover() {
                 className="rounded-lg hover:bg-primary group cursor-pointer border border-primary_brand_lightest py-5 px-4 w-[15rem]"
                 style={{
                   "&:hover": {
-                    "box-shadow": "0px 4px 20px rgba(0, 0, 0, 0.04)",
+                    boxShadow: "0px 4px 20px rgba(0, 0, 0, 0.04)",
                     "border-radius": "8px",
                   },
                 }}
@@ -285,7 +285,7 @@ export default function Discover() {
                   className="mb-4 mx-auto"
                   style={{
                     border: "1px solid #E3E5E6",
-                    "box-shadow": "0px 4px 20px rgba(0, 0, 0, 0.04)"
+                    boxShadow: "0px 4px 20px rgba(0, 0, 0, 0.04)"
                   }}
                 />
                 <div className="text-center">
@@ -305,7 +305,7 @@ export default function Discover() {
                 className="rounded-lg hover:bg-primary group cursor-pointer border border-primary_brand_lightest py-5 px-4 w-[15rem]"
                 style={{
                   "&:hover": {
-                    "box-shadow": "0px 4px 20px rgba(0, 0, 0, 0.04)",
+                    boxShadow: "0px 4px 20px rgba(0, 0, 0, 0.04)",
                     "border-radius": "8px",
                   },
                 }}
@@ -316,7 +316,7 @@ export default function Discover() {
                   className="mb-4 mx-auto"
                   style={{
                     border: "1px solid #E3E5E6",
-                    "box-shadow": "0px 4px 20px rgba(0, 0, 0, 0.04)"
+                    boxShadow: "0px 4px 20px rgba(0, 0, 0, 0.04)"
                   }}
                 />
                 <div className="text-center">
@@ -336,7 +336,7 @@ export default function Discover() {
                 className="rounded-lg hover:bg-primary group cursor-pointer border border-primary_brand_lightest py-5 px-4 w-[15rem]"
                 style={{
                   "&:hover": {
-                    "box-shadow": "0px 4px 20px rgba(0, 0, 0, 0.04)",
+                    boxShadow: "0px 4px 20px rgba(0, 0, 0, 0.04)",
                     "border-radius": "8px",
                   },
                 }}
@@ -347,7 +347,7 @@ export default function Discover() {
                   className="mb-4 mx-auto"
                   style={{
                     border: "1px solid #E3E5E6",
-                    "box-shadow": "0px 4px 20px rgba(0, 0, 0, 0.04)"
+                    boxShadow: "0px 4px 20px rgba(0, 0, 0, 0.04)"
                   }}
                 />
                 <div className="text-center">
@@ -367,7 +367,7 @@ export default function Discover() {
                 className="rounded-lg hover:bg-primary group cursor-pointer border border-primary_brand_lightest py-5 px-4 w-[15rem]"
                 style={{
                   "&:hover": {
-                    "box-shadow": "0px 4px 20px rgba(0, 0, 0, 0.04)",
+                    boxShadow: "0px 4px 20px rgba(0, 0, 0, 0.04)",
                     "border-radius": "8px",
                   },
                 }}
@@ -378,7 +378,7 @@ export default function Discover() {
                   className="mb-4 w-[100%] h-[9rem] mx-auto"
                   style={{
                     border: "1px solid #E3E5E6",
-                    "box-shadow": "0px 4px 20px rgba(0, 0, 0, 0.04)"
+                    boxShadow: "0px 4px 20px rgba(0, 0, 0, 0.04)"
                   }}
                 />
                 <div className="text-center">
@@ -398,7 +398,7 @@ export default function Discover() {
                 className="rounded-lg hover:bg-primary group cursor-pointer border border-primary_brand_lightest py-5 px-4 w-[15rem]"
                 style={{
                   "&:hover": {
-                    "box-shadow": "0px 4px 20px rgba(0, 0, 0, 0.04)",
+                    boxShadow: "0px 4px 20px rgba(0, 0, 0, 0.04)",
                     "border-radius": "8px",
                   },
                 }}
@@ -409,7 +409,7 @@ export default function Discover() {
                   className="mb-4 mx-auto w-[100%] h-[9rem]"
                   style={{
                     border: "1px solid #E3E5E6",
-                    "box-shadow": "0px 4px 20px rgba(0, 0, 0, 0.04)"
+                    boxShadow: "0px 4px 20px rgba(0, 0, 0, 0.04)"
                   }}
                 />
                 <div className="text-center">
