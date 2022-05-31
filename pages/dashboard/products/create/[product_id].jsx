@@ -183,7 +183,7 @@ export default function UpdateProduct() {
 
       name && form_data.append('name', name);
 
-      scheduled && form_data.append('scheduledPublishingDate', date);
+      date && form_data.append('scheduledPublishingDate', date);
 
       summary && form_data.append('summary', summary);
 
