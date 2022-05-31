@@ -264,8 +264,7 @@ export default function UpdateProduct() {
       setLoading(true);
       const url = `${API_URL}/products/schedule-new/product/${product._id}`;
       const response = await axios.put(url, date);
-      response.data.headers['Content-Type']
-      
+
       setLoading(false);
       toast.success(response.data.message);
 
