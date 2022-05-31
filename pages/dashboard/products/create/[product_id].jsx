@@ -125,6 +125,10 @@ export default function UpdateProduct() {
     fetchProduct();
   }, [productId]);
 
+  const scheduledTime = time === "PM" ? exactTime + 12 : exactTime
+
+  const date = new Date(value.getFullYear(), value.getMonth(), value.getDate(), Number(scheduledTime), value.getMinutes(), value.getSeconds(), value.getMilliseconds())
+
   const handleSubmitting = async () => {
     const { name, description, thumbnail, cover_image } = basicInfo;
     const { call_to_action, summary } = productInfo;
@@ -141,6 +145,8 @@ export default function UpdateProduct() {
       const form_data = new FormData();
 
       name && form_data.append('name', name);
+
+      scheduled && form_data.append('scheduledPublishingDate', date);
 
       summary && form_data.append('summary', summary);
 
@@ -254,10 +260,6 @@ export default function UpdateProduct() {
   useEffect(() => {
     setNewConvertedDate(handleConvertDate(value.getMonth(), value.getDate(), value.getFullYear()))
   }, [value])  
-
-  const scheduledTime = time === "PM" ?  exactTime + 12 : exactTime  
-
-  const date = new Date(value.getFullYear(), value.getMonth(), value.getDate(), Number(scheduledTime), value.getMinutes(), value.getSeconds(), value.getMilliseconds())
 
   const handleSchedulePublish = async () => {
     // try {
@@ -398,7 +400,7 @@ export default function UpdateProduct() {
                   <div className="mt-3 w-[max-content] mx-auto border border-sky_light pl-4 h-[3rem] rounded-xl flex items-center overflow-hidden relative">
                     <span className="text-secondary_ink_dark pr-8 cursor-pointer" onClick={() => setShowCalendar(!showCalendar)}> {newConvertedDate} </span>
                     <span className="bg-secondary_sky_lighter h-[100%] flex items-center px-3 border-x border-x-sky_light text-secondary_ink_dark"> @ </span>
-                    <span className="px-3 cursor-pointer h-[100%]" onClick={() => setShowTimeDropdown(!showTimeDropdown)}> {exactTime} </span>
+                    <span className="px-3 cursor-pointer h-[100%] flex items-center" onClick={() => setShowTimeDropdown(!showTimeDropdown)}> {exactTime} </span>
                     <span className="bg-secondary_sky_lighter h-[100%] flex items-center px-3 border-x border-x-sky_light text-secondary_ink_dark cursor-pointer" onClick={() => handleChangeTimePeriod()}> {time} </span>
                   </div>
 
