@@ -185,6 +185,8 @@ export default function UpdateProduct() {
 
       date && form_data.append('scheduledPublishingDate', date);
 
+      console.log(date)
+
       summary && form_data.append('summary', summary);
 
       thumbnail?.length === 1 && form_data.append('thumbnail', thumbnail[0]);
