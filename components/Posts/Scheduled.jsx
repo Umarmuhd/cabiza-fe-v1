@@ -1,33 +1,71 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import moment from "moment";
 
 import { Switch } from "@headlessui/react";
 import Image from "next/image";
 import Link from "next/link";
 
+import styles from "./index.module.css"
+
 const PostItems = () => {
   const [expanded, setExpanded] = useState(false);
   const [enabled, setEnabled] = useState(false);
   const [loading, setLoading] = useState(false);
 
+  const size = useWindowSize();
+  function useWindowSize() {
+    // Initialize state with undefined width/height so server and client renders match
+    // Learn more here: https://joshwcomeau.com/react/the-perils-of-rehydration/
+    const [windowSize, setWindowSize] = useState({
+      width: undefined,
+      height: undefined,
+    });
+
+    useEffect(() => {
+      // only execute all the code below in client side
+      if (typeof window !== 'undefined') {
+        // Handler to call on window resize
+        function handleResize() {
+          // Set window width/height to state
+          setWindowSize({
+            width: window.innerWidth,
+            height: window.innerHeight,
+          });
+        }
+
+        // Add event listener
+        window.addEventListener("resize", handleResize);
+
+        // Call handler right away so state gets updated with initial window size
+        handleResize();
+
+        // Remove event listener on cleanup
+        return () => window.removeEventListener("resize", handleResize);
+      }
+    }, []); // Empty array ensures that effect is only run on mount
+    return windowSize;
+  }
+
   return (
-    <div className="mb-4">
+    <div className="mb-4 w-[16.5rem]">
       <div
         className={
-          "p-6 rounded-2xl border border-secondary_sky_dark " +
-          (expanded ? "rounded-b-none border-b-0" : "")
+          "sm:p-6 py-6 px-3 rounded-2xl border border-secondary_sky_dark w-[100%]" +
+          (expanded && size.width > 480 ? "rounded-b-none border-b-0" : "")
         }
         onClick={() => setExpanded(!expanded)}
       >
-        <div className="flex justify-between">
-          <div className="flex">
-            <Image
+        <div className="flex justify-between flex-col sm:flex-row">
+          <div className="sm:flex flex-col">
+            {/* <Image
               src="/images/placeholder-image.svg"
               alt="placeholder"
               width={80}
               height={80}
-            />
-            <div className="ml-6">
+            /> */}
+
+            <img src="/images/placeholder-image.svg" className="w-[100%] h-[10rem] object-cover rounded-lg mb-4"/>
+            <div className="sm:ml-6">
               <h2 className="text-lg font-medium text-secondary_ink_darkest mb-2">
                 Lorem ipsum dolor sit amet consectetur.
               </h2>
@@ -43,28 +81,33 @@ const PostItems = () => {
               </span>
             </div>
           </div>
-          <div className="grid grid-cols-2 row-gap-8 md:grid-cols-4 border border-secondary_sky_dark bg-secondary_sky_lightest rounded-lg ml-3">
-            <div className="text-center md:border-r border-secondary_sky_dark py-2.5 px-4">
-              <p className="text-secondary mb-6">Emailed</p>
+          <div className="sm:grid sm:grid-cols-2 sm:row-gap-8 md:grid-cols-4 border border-secondary_sky_dark bg-secondary_sky_lightest rounded-lg sm:ml-3 flex flex-col sm:mt-0 mt-5">
+            <div className="sm:text-center text-left sm:border-b-[0] border-b md:border-r border-secondary_sky_dark border-b-secondary_sky_dark py-2.5 px-4">
+              <p className="text-secondary sm:mb-6 mb-2">Emailed</p>
               <span className="block font-medium">0</span>
             </div>
-            <div className="text-center md:border-r border-secondary_sky_dark py-2.5 px-4">
-              <p className="text-secondary mb-6">Opened</p>
+            <div className="sm:text-center text-left sm:border-b-[0] border-b md:border-r border-secondary_sky_dark border-b-secondary_sky_dark py-2.5 px-4">
+              <p className="text-secondary sm:mb-6 mb-2">Opened</p>
               <span className="block font-medium">0</span>
             </div>
-            <div className="text-center md:border-r border-secondary_sky_dark py-2.5 px-4">
-              <p className="text-secondary mb-6">Clicks</p>
+            <div className="sm:text-center text-left sm:border-b-[0] border-b md:border-r border-secondary_sky_dark border-b-secondary_sky_dark py-2.5 px-4">
+              <p className="text-secondary sm:mb-6 mb-2">Clicks</p>
               <span className="block font-medium">0</span>
             </div>
-            <div className="text-center py-2.5 px-4">
-              <p className="text-secondary mb-6">Views</p>
+            <div className="sm:text-center text-left py-2.5 px-4">
+              <p className="text-secondary sm:mb-6 mb-2">Views</p>
               <span className="block font-medium">0</span>
             </div>
           </div>
+            <li className="">
+              <button className="leading-4 text-base font-medium text-secondary_sky_dark sm:py-2 py-3 px-3 sm:rounded-4xl border border-secondary_sky_light bg-secondary_sky_light mt-5 rounded-lg w-[100%]">
+                Queued
+              </button>
+            </li>
         </div>
       </div>
-      {expanded && (
-        <div className="py-4 px-6 rounded-2xl rounded-t-none border border-t border-secondary_sky_dark bg-secondary_sky_lightest flex justify-between items-center">
+      {expanded && size.width > 480 && (
+        <div className="py-4 px-6 rounded-2xl rounded-t-none border border-t border-secondary_sky_dark bg-secondary_sky_lightest sm:flex justify-between items-center">
           <div className="flex items-center">
             <button className="mr-6 py-2 px-4 rounded-4xl flex items-center bg-primary_brand_lightest">
               <svg
@@ -154,17 +197,19 @@ export default function Scheduled() {
       {(
         <div className="w-43/50 mx-auto md:my-10">
           <div
-            className="p-8 bg-white rounded-2xl"
+            className="sm:p-8 py-8 px-6 bg-white rounded-2xl"
             style={{ boxShadow: "0px 20px 40px rgba(0, 0, 0, 0.06)" }}
           >
-            <h1 className="text-secondary_ink_dark font-medium text-xl mb-6">
+            <h1 className="text-secondary_ink_dark font-medium text-2xl mb-6">
               All scheduled posts
             </h1>
-            <ul>
-              <PostItems />
-              <PostItems />
-              <PostItems />
-            </ul>
+            <div className={`${styles.cards}`}>
+              <ul className={`flex sm:flex-col gap-x-[5rem] overflow-hidden ${styles["product-cards"]}`}>
+                <PostItems />
+                <PostItems />
+                <PostItems />
+              </ul>
+            </div>
           </div>
         </div>
       ) || (

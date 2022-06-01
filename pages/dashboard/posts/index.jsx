@@ -1,4 +1,4 @@
-import React from 'react';
+import React, {useEffect, useState} from 'react';
 import { Tab } from '@headlessui/react';
 import Link from 'next/link';
 import AuthContext from '@/context/AuthContext';
@@ -13,24 +13,62 @@ import PostsList from '../../../components/Posts/PostsList';
 import Scheduled from '../../../components/Posts/Scheduled';
 import FullNav from '@/components/Navbars/DashboardNav/FullNav';
 
-const PlusIcon = () => (
-  <svg
-    width="24"
-    height="24"
-    viewBox="0 0 24 24"
-    fill="none"
-    xmlns="http://www.w3.org/2000/svg"
-  >
-    <path
-      d="M18 12.75H6C5.59 12.75 5.25 12.41 5.25 12C5.25 11.59 5.59 11.25 6 11.25H18C18.41 11.25 18.75 11.59 18.75 12C18.75 12.41 18.41 12.75 18 12.75Z"
-      fill="white"
-    />
-    <path
-      d="M12 18.75C11.59 18.75 11.25 18.41 11.25 18V6C11.25 5.59 11.59 5.25 12 5.25C12.41 5.25 12.75 5.59 12.75 6V18C12.75 18.41 12.41 18.75 12 18.75Z"
-      fill="white"
-    />
-  </svg>
-);
+const PlusIcon = ({ className }) => {
+  const size = useWindowSize();
+  function useWindowSize() {
+    // Initialize state with undefined width/height so server and client renders match
+    // Learn more here: https://joshwcomeau.com/react/the-perils-of-rehydration/
+    const [windowSize, setWindowSize] = useState({
+      width: undefined,
+      height: undefined,
+    });
+
+    useEffect(() => {
+      // only execute all the code below in client side
+      if (typeof window !== 'undefined') {
+        // Handler to call on window resize
+        function handleResize() {
+          // Set window width/height to state
+          setWindowSize({
+            width: window.innerWidth,
+            height: window.innerHeight,
+          });
+        }
+
+        // Add event listener
+        window.addEventListener("resize", handleResize);
+
+        // Call handler right away so state gets updated with initial window size
+        handleResize();
+
+        // Remove event listener on cleanup
+        return () => window.removeEventListener("resize", handleResize);
+      }
+    }, []); // Empty array ensures that effect is only run on mount
+    return windowSize;
+  }
+
+  return size.width < 480 ? <svg width="12" height="12" viewBox="0 0 12 12" fill="none" xmlns="http://www.w3.org/2000/svg">
+    <path d="M3 6H9" stroke="white" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" />
+    <path d="M6 9V3" stroke="white" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" />
+  </svg> : <svg
+      width="24"
+      height="24"
+      viewBox="0 0 24 24"
+      fill="none"
+      xmlns="http://www.w3.org/2000/svg"
+      className={`${className ? className : ""}`}
+    >
+      <path
+        d="M18 12.75H6C5.59 12.75 5.25 12.41 5.25 12C5.25 11.59 5.59 11.25 6 11.25H18C18.41 11.25 18.75 11.59 18.75 12C18.75 12.41 18.41 12.75 18 12.75Z"
+        fill="white"
+      />
+      <path
+        d="M12 18.75C11.59 18.75 11.25 18.41 11.25 18V6C11.25 5.59 11.59 5.25 12 5.25C12.41 5.25 12.75 5.59 12.75 6V18C12.75 18.41 12.41 18.75 12 18.75Z"
+        fill="white"
+      />
+    </svg>
+};
 
 const SearchIcon = () => (
   <svg
@@ -68,9 +106,9 @@ export default function Posts() {
                 as={'button'}
                 className={({ selected }) =>
                   classNames(
-                    'text-md mr-10 pb-2 font-medium',
+                    'text-md sm:mr-10 mr-7 pb-2 font-medium border-b border-b-[transparent]',
                     selected
-                      ? ' font-bold text-primary border-b border-b-primary'
+                      ? ' sm:font-bold text-primary border-b !border-b-primary'
                       : ' text-secondary'
                   )
                 }
@@ -81,9 +119,9 @@ export default function Posts() {
                 as={'button'}
                 className={({ selected }) =>
                   classNames(
-                    'text-md mr-10 pb-2 font-medium',
+                    'text-md mr-10 pb-2 font-medium border-b border-b-[transparent]',
                     selected
-                      ? ' font-bold text-primary border-b border-b-primary'
+                      ? ' sm:font-bold text-primary border-b !border-b-primary'
                       : ' text-secondary'
                   )
                 }
@@ -106,10 +144,20 @@ export default function Posts() {
                   </div>
                 </div>
               </div>
+
+              <button className="bg-primary_brand_lightest p-[.5rem] mr-4 rounded-full">
+                <svg width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg" className="w-[1.2rem] h-[1.2rem]">
+                  <path d="M7.3335 13.3335C10.6472 13.3335 13.3335 10.6472 13.3335 7.3335C13.3335 4.01979 10.6472 1.3335 7.3335 1.3335C4.01979 1.3335 1.3335 4.01979 1.3335 7.3335C1.3335 10.6472 4.01979 13.3335 7.3335 13.3335Z" stroke="#303437" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" />
+                  <path d="M12.6201 13.7934C12.9734 14.86 13.7801 14.9667 14.4001 14.0334C14.9668 13.18 14.5934 12.48 13.5668 12.48C12.8068 12.4734 12.3801 13.0667 12.6201 13.7934Z" stroke="#303437" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" />
+                </svg>
+
+              </button>
               <Link href="/dashboard/posts/create">
-                <a className="py-2 px-4 bg-primary flex items-center font-medium text-white rounded-[48px]">
-                  <PlusIcon /> <span className="ml-2">New Post </span>
-                </a>
+                <span className="border-2 border-primary w-[100%] h-[100%] p-1 rounded-full border-dashed sm:border-none">
+                  <a className="sm:py-2 sm:px-4 bg-primary flex items-center font-medium text-white rounded-[48px] p-[.3rem]">
+                    <PlusIcon/> <span className="ml-2 sm:block hidden">New Post </span>
+                  </a>
+                </span>
               </Link>
             </div>
           </div>

@@ -210,6 +210,7 @@ export default function Sidebar({ sidebarOpen, setSidebarOpen }) {
                 className={`px-3 py-2 rounded-4xl mb-4 last:mb-0 ${
                   pathname.includes('/dashboard/profile') && ' bg-primary'
                 }`}
+                onClick={() => setSidebarOpen(!sidebarOpen)}
               >
                 <Link href="/dashboard/profile">
                   <a
@@ -269,6 +270,7 @@ export default function Sidebar({ sidebarOpen, setSidebarOpen }) {
                 className={`px-3 py-2 rounded-4xl mb-4 last:mb-0 ${
                   pathname.includes('/dashboard/products') && 'bg-primary'
                 }`}
+                onClick={() => setSidebarOpen(!sidebarOpen)}
               >
                 <Link href="/dashboard/products">
                   <a
@@ -353,6 +355,7 @@ export default function Sidebar({ sidebarOpen, setSidebarOpen }) {
                 className={`px-3 py-2 rounded-4xl mb-4 last:mb-0 ${
                   pathname.includes('/dashboard/posts') && 'bg-primary'
                 }`}
+                onClick={() => setSidebarOpen(!sidebarOpen)}
               >
                 <Link href="/dashboard/posts">
                   <a
@@ -435,6 +438,7 @@ export default function Sidebar({ sidebarOpen, setSidebarOpen }) {
                 className={`px-3 py-2 rounded-4xl mb-4 last:mb-0 ${
                   pathname.includes('/dashboard/payout') && 'bg-primary'
                 }`}
+                onClick={() => setSidebarOpen(!sidebarOpen)}
               >
                 <Link href="/dashboard/payout">
                   <a
@@ -506,6 +510,7 @@ export default function Sidebar({ sidebarOpen, setSidebarOpen }) {
                 className={`px-3 py-2 rounded-4xl mb-4 last:mb-0 ${
                   pathname.includes('/dashboard/community') && 'bg-primary'
                 }`}
+                onClick={() => setSidebarOpen(!sidebarOpen)}
               >
                 <Link href="/dashboard/community">
                   <a
@@ -566,6 +571,7 @@ export default function Sidebar({ sidebarOpen, setSidebarOpen }) {
                 className={`px-3 py-2 rounded-4xl mb-4 last:mb-0 ${
                   pathname.includes('/dashboard/help') && 'bg-primary'
                 }`}
+                onClick={() => setSidebarOpen(!sidebarOpen)}
               >
                 <Link href="/dashboard/help">
                   <a
@@ -633,6 +639,7 @@ export default function Sidebar({ sidebarOpen, setSidebarOpen }) {
                 className={`px-3 py-2 rounded-4xl last:mb-0 ${
                   pathname.includes('/dashboard/settings') && 'bg-primary'
                 }`}
+                onClick={() => setSidebarOpen(!sidebarOpen)}
               >
                 <Link href="/dashboard/settings">
                   <a
