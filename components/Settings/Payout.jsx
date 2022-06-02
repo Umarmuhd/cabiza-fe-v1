@@ -116,7 +116,7 @@ export default function Payout() {
   console.log(user);
 
   return (
-    <form onSubmit={handleSubmit(handleUpdatePayout)}>
+    <form onSubmit={handleSubmit(handleUpdatePayout)} className="px-4 md:px-0">
       <Card title="Get Paid">
         <p className="mt-2 mb-6 w-[70%] text-secondary_ink_lighter">
           Just like a real paycheck, your account balance is deposited to your
