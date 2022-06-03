@@ -51,7 +51,7 @@ export default function Password() {
   };
 
   return (
-    <form onSubmit={handleSubmit(handleUpdatePass)}>
+    <form onSubmit={handleSubmit(handleUpdatePass)} className="px-4 md:px-0">
       <Card title="Change password">
         <div className="flex flex-col mb-8">
           <div className="w-[100%]">

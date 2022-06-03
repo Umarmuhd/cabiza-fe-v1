@@ -21,7 +21,7 @@ export default function Setting() {
   };
 
   return (
-    <form onSubmit={(e) => e.preventDefault()}>
+    <form onSubmit={(e) => e.preventDefault()} className="px-4 md:px-0">
       <Card title="User details">
         <div>
           <div className="flex flex-col">
@@ -67,7 +67,7 @@ export default function Setting() {
           over on the App Store or Google Play.
         </p>
 
-        <div className="border border-sky_light p-6 rounded-xl">
+        <div className="border border-sky_light p-2 md:p-6 rounded-xl">
           <table
             className="w-[100%]"
             style={{
@@ -76,45 +76,45 @@ export default function Setting() {
             }}
           >
             <tr className="h-12 text-lg">
-              <th className="text-left px-6">Notifications</th>
-              <th className="text-left px-6">Email</th>
-              <th className="text-left px-6">Mobile</th>
+              <th className="text-left px-4 md:px-6">Notifications</th>
+              <th className="text-left px-4 md:px-6">Email</th>
+              <th className="text-left px-4 md:px-6">Mobile</th>
             </tr>
             <tr className="h-12 bg-secondary_sky_lighter text-secondary">
-              <td className="text-left px-6">Purchases</td>
-              <td className="text-left px-6">
+              <td className="text-left px-4 md:px-6">Purchases</td>
+              <td className="text-left px-3 md:px-6">
                 <ToggleSwitch label="Purchases-email" />
               </td>
-              <td className="text-left px-6">
+              <td className="text-left px-3 md:px-6">
                 <ToggleSwitch label="Purchases-mobile" />
               </td>
             </tr>
             <tr className="h-12 bg-secondary_sky_lighter text-secondary">
-              <td className="text-left px-6">Recurring payments</td>
-              <td className="text-left px-6">
+              <td className="text-left px-4 md:px-6">Recurring payments</td>
+              <td className="text-left px-3 md:px-6">
                 <ToggleSwitch label="Recurring-payments-email" />
               </td>
-              <td className="text-left px-6">
+              <td className="text-left px-3 md:px-6">
                 <ToggleSwitch label="Recurring-payments-mobile" />
               </td>
             </tr>
             <tr className="h-12 bg-secondary_sky_lighter text-secondary">
-              <td className="text-left px-6">Free downloads</td>
-              <td className="text-left px-6">
+              <td className="text-left px-4  md:px-6">Free downloads</td>
+              <td className="text-left px-3  md:px-6">
                 <ToggleSwitch label="free-downloads-email" />
               </td>
-              <td className="text-left px-6">
+              <td className="text-left px-3  md:px-6">
                 <ToggleSwitch label="free-downloads-mobile" />
               </td>
             </tr>
             <tr className="h-12 bg-secondary_sky_lighter text-secondary">
-              <td className="text-left px-6">
+              <td className="text-left px-4 md:px-6">
                 Personalized product announcements
               </td>
-              <td className="text-left px-6">
+              <td className="text-left px-3 md:px-6">
                 <ToggleSwitch label="Personalized-product-email" />
               </td>
-              <td className="text-left px-6">
+              <td className="text-left px-3 md:px-6">
                 <ToggleSwitch label="Personalized-product-mobile" />
               </td>
             </tr>
