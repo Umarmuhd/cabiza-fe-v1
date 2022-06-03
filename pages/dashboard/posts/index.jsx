@@ -101,21 +101,17 @@ export default function Posts() {
   const [openSearchContainer, setOpenSearchContainer] =  useState(false);
   const searchInput = useRef();
 
-  // useEffect(() =>{ console.log(searchInput.current.value) }, [searchInput])
-
   const router = useRouter;
 
-  
-  
-  const changeRequestQuery = () => {
-    router.push(`/dashboard/posts?s=${searchInput.current.value}`)
+  const changePostsRequestQuery = () => {
+    router.push(`${router.pathname}?s=${searchInput.current.value}`)
     searchInput.current.value = "";
   }
 
 
   const handleKeyDown = (e) => {
     if (e.key === 'Enter') {
-      changeRequestQuery()
+      changePostsRequestQuery()
     }
   } 
 
@@ -164,7 +160,7 @@ export default function Posts() {
                     ref={searchInput}
                     onKeyDown={handleKeyDown}
                   />
-                  <button className="absolute inset-y-0 right-0 flex items-center h-[2rem] my-auto mr-1 px-2 bg-primary rounded-[50%] z-[100] cursor-pointer" type="submit" onClick={changeRequestQuery}>
+                  <button className="absolute inset-y-0 right-0 flex items-center h-[2rem] my-auto mr-1 px-2 bg-primary rounded-[50%] z-[100] cursor-pointer" type="submit" onClick={changePostsRequestQuery}>
                     <SearchIcon />
                   </button>
                 </div>

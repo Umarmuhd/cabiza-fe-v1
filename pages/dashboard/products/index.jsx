@@ -1,5 +1,6 @@
-import React, { useState, useContext, useEffect } from 'react';
+import React, { useState, useContext, useEffect, useRef } from 'react';
 import { Tab } from '@headlessui/react';
+import Router from 'next/router';
 
 import AllProductsEmpty from '@/components/Cards/AllProductsEmpty';
 
@@ -94,6 +95,27 @@ const Products = ({}) => {
 
   useEffect(() => fetchBalance(), []);
 
+  const router = Router;
+
+  const searchRef = useRef()
+
+  const changeProductRequestQuery = () => {
+    if (searchRef.current.value !== ""){
+      router.push(`${router.pathname}?s=${searchRef.current.value}`)
+      searchRef.current.value = ""
+    }
+  }
+
+  const handleKeyDown = (e) => {
+    if (e.key === 'Enter') {
+      changeProductRequestQuery()
+    }
+  } 
+
+  useEffect(() => {
+    setProducts(products.filter(product => product.name === router.query.s))
+  }, [router.query.s])
+
   return (
     <div className="md:w-[85%] w-[100%] ml-auto">
       <Tab.Group as={'div'} className="bg-secondary_sky_lighter">
@@ -130,7 +152,7 @@ const Products = ({}) => {
 
             <div className="flex ml-auto items-center">
               <div className="flex flex-row-reverse items-center justify-between mr-4">
-                <button className="flex items-center justify-center bg-primary_brand_lightest hover:bg-slate-200 transition duration-150 p-3 rounded-full peer">
+                <button className="flex items-center justify-center bg-primary_brand_lightest hover:bg-slate-200 transition duration-150 p-3 rounded-full peer" type="submit" onClick={changeProductRequestQuery}>
                   <SearchIcon />
                 </button>
                 <input
@@ -139,6 +161,8 @@ const Products = ({}) => {
                   style={{ transition: 'all 0.15s ease 0s' }}
                   id="search"
                   placeholder="Search..."
+                  ref={searchRef}
+                  onKeyDown={handleKeyDown}
                 />
               </div>
               <Link href="/dashboard/products/create">
