@@ -61,7 +61,7 @@ const ProductSearch = () => {
 
             <div className="flex justify-center border pl-6 w-full rounded-r-full bg-white">
               <input
-                type="text"
+                type="search"
                 placeholder="Search for products..."
                 className="w-full outline-none text-secondary_sky_dark bg-transparent border-[transparent]"
               />
