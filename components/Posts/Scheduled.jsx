@@ -47,7 +47,7 @@ const PostItems = () => {
   }
 
   return (
-    <div className="mb-4 w-[16.5rem]">
+    <div className="mb-4 w-[17.4rem]">
       <div
         className={
           "sm:p-6 py-6 px-3 rounded-2xl border border-secondary_sky_dark w-[100%]" +
@@ -193,9 +193,9 @@ pointer-events-none inline-block h-[14px] w-[13px] rounded-full bg-white shadow-
 
 export default function Scheduled() {
   return (
-    <main className="h-full w-full relative">
+    <main className="h-full sm:w-full relative w-[90%] mx-auto relative">
       {(
-        <div className="w-43/50 mx-auto md:my-10">
+        <div className="md:w-43/50 mx-auto md:my-10">
           <div
             className="sm:p-8 py-8 px-6 bg-white rounded-2xl"
             style={{ boxShadow: "0px 20px 40px rgba(0, 0, 0, 0.06)" }}

@@ -4,6 +4,7 @@ import { toast } from 'react-hot-toast';
 import { API_URL } from '@/config/index';
 import AuthContext from '@/context/AuthContext';
 import Link from 'next/link';
+import Router from 'next/router';
 import Image from 'next/image';
 import moment from 'moment';
 import { Switch } from '@headlessui/react';
@@ -209,6 +210,10 @@ const PostItem = ({ post, deletePost, user }) => {
 
 export default function PostsList() {
   const [posts, setPosts] = useState([]);
+  const { query } = Router;
+  
+  useEffect(() => { setPosts(posts.filter(post => post.title === query.s))}, [query.s])
+
   const [loading, setLoading] = useState(false);
 
   const { user } = useContext(AuthContext);
@@ -248,6 +253,9 @@ export default function PostsList() {
       setLoading(false);
     }
   };
+
+
+  // posts.filter(post =>)
 
   return (
     <main className="h-full sm:w-full relative w-[90%] mx-auto">
