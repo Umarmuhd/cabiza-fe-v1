@@ -164,8 +164,7 @@ export default function UpdateProduct() {
 
   const scheduledTime = time === "PM" ? exactTime + 12 : exactTime
 
-  const form_data = new FormData();
-
+  
   const handleSubmitting = async () => {
     const { name, description, thumbnail, cover_image } = basicInfo;
     const { call_to_action, summary } = productInfo;
@@ -173,12 +172,13 @@ export default function UpdateProduct() {
     const { price, user_priced, min_price, max_price } = productPricing;
     try {
       setLoading(true);
-
+      
       console.log(basicInfo);
       console.log(productInfo);
       console.log(productContent);
       console.log(productPricing);
-
+      
+      const form_data = new FormData();
 
       name && form_data.append('name', name);      
 
@@ -259,20 +259,94 @@ export default function UpdateProduct() {
   };
 
   const handleSchedule = async () => {
-    try {
-      setLoading(true);
+    // try {
+    //   setLoading(true);
+    //   const date = new Date(value.getFullYear(), value.getMonth(), value.getDate(), Number(scheduledTime), value.getMinutes(), value.getSeconds(), value.getMilliseconds())
+    //   console.log(form_data.get('scheduledTime'))
+    //   const url = `${API_URL}/products/schedule-new/product/${product._id}`;
+    //   const response = await axios.patch(url, form_data);
+    //   setLoading(false);
+    //   toast.success(response.data.message);
+    //   console.log(response.data)
+    //   setPublished(response.data.data.product.published);
+    // } catch (error) {
+      //   console.log(error);
+      //   toast.error(error.response?.data.message);
+      //   setLoading(false);
+      // }
+      
+      const { name, description, thumbnail, cover_image } = basicInfo;
+      const { call_to_action, summary } = productInfo;
+      const { file, url } = productContent;
+      const { price, user_priced, min_price, max_price } = productPricing;
+      try {
+        setLoading(true);
+        
+        console.log(basicInfo);
+        console.log(productInfo);
+        console.log(productContent);
+        console.log(productPricing);
+
       const date = new Date(value.getFullYear(), value.getMonth(), value.getDate(), Number(scheduledTime), value.getMinutes(), value.getSeconds(), value.getMilliseconds())
+        
+      const form_data = new FormData();
+
+      name && form_data.append('name', name);
+      
       date && form_data.append('scheduledTime', date);      
-      console.log(form_data.get('scheduledTime'))
-      const url = `${API_URL}/products/schedule-new/product/${product._id}`;
-      const response = await axios.patch(url, form_data);
+      
+      summary && form_data.append('summary', summary);
+
+      thumbnail?.length === 1 && form_data.append('thumbnail', thumbnail[0]);
+
+      cover_image?.length === 1 &&
+        form_data.append('cover_image', cover_image[0]);
+
+
+      description && form_data.append('description', description);
+
+      call_to_action && form_data.append('call_to_action', call_to_action);
+
+      //Content
+      file?.length === 1 && form_data.append('file', file[0]);
+      url?.length > 0 && form_data.append('url', url);
+
+      //Pricing
+      price && form_data.append('price', price);
+      user_priced && form_data.append('user_priced', user_priced);
+      min_price && form_data.append('min_price', min_price);
+      max_price && form_data.append('max_price', max_price);
+
+      const uri = `${API_URL}/products/schedule-new/product/${product.product_id}`
+
+      const { data } = await axios.patch(uri, form_data);
+
+      console.log(data);
+
+      toast.custom(
+        <div className="rounded-lg py-4 px-8 bg-[#24C78C] flex items-center">
+          <svg
+            width="24"
+            height="24"
+            viewBox="0 0 24 24"
+            fill="none"
+            xmlns="http://www.w3.org/2000/svg"
+          >
+            <path
+              d="M16.19 2H7.81C4.17 2 2 4.17 2 7.81V16.18C2 19.83 4.17 22 7.81 22H16.18C19.82 22 21.99 19.83 21.99 16.19V7.81C22 4.17 19.83 2 16.19 2ZM15.36 14.3C15.65 14.59 15.65 15.07 15.36 15.36C15.21 15.51 15.02 15.58 14.83 15.58C14.64 15.58 14.45 15.51 14.3 15.36L12 13.06L9.7 15.36C9.55 15.51 9.36 15.58 9.17 15.58C8.98 15.58 8.79 15.51 8.64 15.36C8.35 15.07 8.35 14.59 8.64 14.3L10.94 12L8.64 9.7C8.35 9.41 8.35 8.93 8.64 8.64C8.93 8.35 9.41 8.35 9.7 8.64L12 10.94L14.3 8.64C14.59 8.35 15.07 8.35 15.36 8.64C15.65 8.93 15.65 9.41 15.36 9.7L13.06 12L15.36 14.3Z"
+              fill="white"
+            />
+          </svg>
+          <span className="ml-2.5 font-medium text-lg text-white">
+            Product saved success !
+          </span>
+        </div>
+      );
+
       setLoading(false);
-      toast.success(response.data.message);
-      console.log(response.data)
-      setPublished(response.data.data.product.published);
     } catch (error) {
       console.log(error);
-      toast.error(error.response?.data.message);
+      console.error(error.message);
       setLoading(false);
     }
   };
