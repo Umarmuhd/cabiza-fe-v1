@@ -4,7 +4,7 @@ import Card from "@/components/Cards/Card";
 import Toggle from "@/components/Toggle/Toggle";
 
 import AuthContext from "@/context/AuthContext";
-import CheckSwitch from "./../checkSwitch/index";
+import CheckSwitch from "../checkSwitch/index";
 import toast from "react-hot-toast";
 import axios from "axios";
 import { API_URL } from "@/config/index";
