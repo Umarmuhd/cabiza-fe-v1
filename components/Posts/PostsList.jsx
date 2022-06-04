@@ -212,8 +212,6 @@ export default function PostsList() {
   const [posts, setPosts] = useState([]);
   const [searchedPosts, setSearchedPosts] = useState([]);
   const { query } = Router;
-
-  console.log(posts.filter(post => post.title.includes(query.s)));
   
   useEffect(() => { posts.length > 0 ? setSearchedPosts(posts.filter(post => post.title.includes(query.s))) : null }, [query.s, posts])
 
