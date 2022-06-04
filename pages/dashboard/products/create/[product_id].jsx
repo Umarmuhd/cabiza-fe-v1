@@ -263,6 +263,7 @@ export default function UpdateProduct() {
       setLoading(true);
       const date = new Date(value.getFullYear(), value.getMonth(), value.getDate(), Number(scheduledTime), value.getMinutes(), value.getSeconds(), value.getMilliseconds())
       date && form_data.append('scheduledTime', date);      
+      console.log(form_data.get('scheduledTime'))
       const url = `${API_URL}/products/schedule-new/product/${product._id}`;
       const response = await axios.patch(url, form_data);
       setLoading(false);
