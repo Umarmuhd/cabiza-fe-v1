@@ -212,7 +212,7 @@ export default function PostsList() {
   const [posts, setPosts] = useState([]);
   const { query } = Router;
   
-  useEffect(() => { setPosts(posts.filter(post => post.title.includes(query.s)))}, [query.s])
+  useEffect(() => { posts.includes === "" ? setPosts(posts.filter(post => post.title.includes(query.s))) : null}, [query.s])
 
   const [loading, setLoading] = useState(false);
 
