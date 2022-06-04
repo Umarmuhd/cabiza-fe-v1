@@ -210,11 +210,12 @@ const PostItem = ({ post, deletePost, user }) => {
 
 export default function PostsList() {
   const [posts, setPosts] = useState([]);
+  const [searchedPosts, setSearchedPosts] = useState();
   const { query } = Router;
 
   console.log(posts.filter(post => post.title.includes(query.s)));
   
-  // useEffect(() => { posts === "" ? setPosts(posts.filter(post => post.title.includes(query.s))) : null}, [query.s])
+  useEffect(() => { posts.length > 0 ? setSearchedPosts(posts.filter(post => post.title.includes(query.s))) : null }, [query.s, posts])
 
   const [loading, setLoading] = useState(false);
 
@@ -274,9 +275,9 @@ export default function PostsList() {
             </React.Fragment>
           ) : (
             <React.Fragment>
-              {posts.length > 0 ? (
+              {searchedPosts.length > 0 ? (
                 <div>
-                  {posts.map((post) => (
+                    {searchedPosts.map((post) => (
                     <React.Fragment key={post._id}>
                       <PostItem
                         post={post}
