@@ -115,7 +115,7 @@ const Products = ({}) => {
   console.log(products.filter(product => product.name.includes(router.query.s)),"changed")
 
   useEffect(() => {
-    products.length !== 0 ? setProducts(products.filter(product => product.name.includes(router.query.s))) : setProducts(products)
+    setProducts(products.length > 0 ? products.filter(product => product.name.includes(router.query.s)) : products)
   }, [router.query.s])
 
   return (
