@@ -210,7 +210,7 @@ const PostItem = ({ post, deletePost, user }) => {
 
 export default function PostsList() {
   const [posts, setPosts] = useState([]);
-  const [searchedPosts, setSearchedPosts] = useState();
+  const [searchedPosts, setSearchedPosts] = useState([]);
   const { query } = Router;
 
   console.log(posts.filter(post => post.title.includes(query.s)));
@@ -275,7 +275,7 @@ export default function PostsList() {
             </React.Fragment>
           ) : (
             <React.Fragment>
-              {searchedPosts.length > 0 ? (
+                {searchedPosts.length > 0 ? (
                 <div>
                     {searchedPosts.map((post) => (
                     <React.Fragment key={post._id}>
