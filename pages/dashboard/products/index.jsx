@@ -180,7 +180,7 @@ const Products = ({}) => {
         <Tab.Panels as={'div'}>
           <Tab.Panel>
             {products.length > 0 ? (
-              <AllProducts products={searchedProducts.length > 0 ? searchedProducts : products } balance={balance} />
+              <AllProducts products={searchedProducts} />
             ) : (
               <AllProductsEmpty user={user} />
             )}
