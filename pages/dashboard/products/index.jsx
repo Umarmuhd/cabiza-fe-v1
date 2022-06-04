@@ -16,6 +16,7 @@ import FullNav from '@/components/Navbars/DashboardNav/FullNav';
 
 const Products = ({}) => {
   const [products, setProducts] = useState([]);
+  const [searchedProducts, setSearchedProducts] = useState([]);
   const [loading, setLoading] = useState(false);
 
   const { user } = useContext(AuthContext);
@@ -115,7 +116,7 @@ const Products = ({}) => {
   console.log(products.filter(product => product.name.includes(router.query.s)),"changed")
 
   useEffect(() => {
-    setProducts(products.length > 0 ? products.filter(product => product.name.includes(router.query.s)) : products)
+    setSearchedProducts(products.length > 0 ? products.filter(product => product.name.includes(router.query.s)) : products)
   }, [router.query.s])
 
   return (
@@ -179,7 +180,7 @@ const Products = ({}) => {
         <Tab.Panels as={'div'}>
           <Tab.Panel>
             {products.length > 0 ? (
-              <AllProducts products={products} balance={balance} />
+              <AllProducts products={searchedProducts.length > 0 ? searchedProducts : products } balance={balance} />
             ) : (
               <AllProductsEmpty user={user} />
             )}
