@@ -280,7 +280,7 @@ export default function CreatePost() {
 
                 <button
                   className='leading-4 text-base font-medium text-white py-2 px-12 rounded-4xl border border-primary bg-primary mt-4 w-[max-content] mx-auto'
-                  type='submit'
+                  type='button'
                   form='post-form'
                   disabled={loading}
                 >

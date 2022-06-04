@@ -76,7 +76,7 @@ export default function EditPost() {
       console.error(error.message);
       setLoading(false);
     }
-  };
+  };  
 
   const fetchPost = useCallback(async () => {
     try {

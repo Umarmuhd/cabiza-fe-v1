@@ -193,7 +193,7 @@ pointer-events-none inline-block h-[14px] w-[13px] rounded-full bg-white shadow-
 
 export default function Scheduled() {
   return (
-    <main className="h-full sm:w-full relative w-[90%] mx-auto relative">
+    <main className="h-full sm:w-full w-[90%] mx-auto relative">
       {(
         <div className="md:w-43/50 mx-auto md:my-10">
           <div

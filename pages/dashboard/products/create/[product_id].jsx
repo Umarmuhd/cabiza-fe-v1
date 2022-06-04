@@ -164,7 +164,7 @@ export default function UpdateProduct() {
 
   const scheduledTime = time === "PM" ? exactTime + 12 : exactTime
 
-  const date = new Date(value.getFullYear(), value.getMonth(), value.getDate(), Number(scheduledTime), value.getMinutes(), value.getSeconds(), value.getMilliseconds())
+  const form_data = new FormData();
 
   const handleSubmitting = async () => {
     const { name, description, thumbnail, cover_image } = basicInfo;
@@ -179,11 +179,8 @@ export default function UpdateProduct() {
       console.log(productContent);
       console.log(productPricing);
 
-      const form_data = new FormData();
 
-      name && form_data.append('name', name);
-
-      date && form_data.append('scheduledPublishingDate', date);      
+      name && form_data.append('name', name);      
 
       summary && form_data.append('summary', summary);
 
@@ -212,8 +209,6 @@ export default function UpdateProduct() {
       const { data } = await axios.post(uri, form_data);
 
       console.log(data);
-
-      console.log(form_data.get('scheduledPublishingDate'))
 
       toast.custom(
         <div className="rounded-lg py-4 px-8 bg-[#24C78C] flex items-center">
@@ -263,30 +258,13 @@ export default function UpdateProduct() {
     }
   };
 
-  console.log(published)
-
-  const handleSchedulePublish = async () => {
-    // try {
-    //   setLoading(true);
-    //   console.log(product)
-    //   const url = `${API_URL}/products/schedule-new/product/${product._id}`;
-    //   const response = await axios.put(url);
-
-    //   setLoading(false);
-    //   toast.success(response.data.message);
-
-    //   console.log(response.data)
-    //   setPublished(response.data.data.product.published);
-    // } catch (error) {
-    //   console.log(error);
-    //   toast.error(error.response?.data.message);
-    //   setLoading(false);
-    // }
-
+  const handleSchedule = async () => {
     try {
       setLoading(true);
-      const url = `${API_URL}/products/publishing/${product._id}`;
-      const response = await axios.put(url);
+      const date = new Date(value.getFullYear(), value.getMonth(), value.getDate(), Number(scheduledTime), value.getMinutes(), value.getSeconds(), value.getMilliseconds())
+      date && form_data.append('scheduledTime', date);      
+      const url = `${API_URL}//schedule-new/product/${product._id}`;
+      const response = await axios.patch(url, form_data);
       setLoading(false);
       toast.success(response.data.message);
       console.log(response.data)
@@ -297,6 +275,7 @@ export default function UpdateProduct() {
       setLoading(false);
     }
   };
+
 
   return (
     <div className="bg-secondary_sky_lighter md:w-[85%] w-[100%] ml-auto">
@@ -363,7 +342,7 @@ export default function UpdateProduct() {
                   form="post-form"
                   onClick={() => {
                     setShowDropdown(!showDropdown)
-                    published ? handlePublish() : null
+                    // published ? handlePublish() : null
                   }}                  
                 >
                   <span className="mr-2">
@@ -431,9 +410,9 @@ export default function UpdateProduct() {
 
                   <button
                     className='leading-4 text-base font-medium text-white py-2 px-12 rounded-4xl border border-primary bg-primary mt-4 w-[max-content] mx-auto'
-                    type='submit'
+                    type='button'
                     form='post-form'
-                    onClick={handleSchedulePublish}
+                    onClick={handleSchedule}
                     disabled={loading}
                   >
                     Schedule
