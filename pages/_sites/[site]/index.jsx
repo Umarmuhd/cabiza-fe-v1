@@ -54,7 +54,8 @@ const Site = ({ workspace }) => {
 };
 
 export const getStaticPaths = async () => {
-  const paths = await getWorkspacePaths();
+  // const paths = await getWorkspacePaths();
+  const paths = {};
   return {
     paths,
     fallback: true,
@@ -63,17 +64,18 @@ export const getStaticPaths = async () => {
 
 export const getStaticProps = async ({ params }) => {
   const { site } = params;
-  const siteWorkspace = await getSiteWorkspace(site, site.includes("."));
+  console.log(site);
+  // const siteWorkspace = await getSiteWorkspace(site, site.includes("."));
   let workspace = null;
 
-  if (siteWorkspace) {
-    const { host } = new URL(process.env.APP_URL);
-    workspace = {
-      domains: siteWorkspace.domains,
-      name: siteWorkspace.name,
-      hostname: `${siteWorkspace.slug}.${host}`,
-    };
-  }
+  // if (siteWorkspace) {
+  //   const { host } = new URL(process.env.APP_URL);
+  //   workspace = {
+  //     domains: siteWorkspace.domains,
+  //     name: siteWorkspace.name,
+  //     hostname: `${siteWorkspace.slug}.${host}`,
+  //   };
+  // }
 
   return {
     props: { workspace },
