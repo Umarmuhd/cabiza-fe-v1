@@ -8,7 +8,7 @@ import CheckSwitch from "./../checkSwitch/index";
 import toast from "react-hot-toast";
 import axios from "axios";
 import { API_URL } from "@/config/index";
-import Alert from '../Alert';
+import Alert from "../Alert";
 
 const AccountTypeIcon = () => (
   <svg

@@ -9,7 +9,7 @@ import toast from "react-hot-toast";
 import Image from "next/image";
 import { useAllProducts } from "@/hooks/useProducts";
 import { dehydrate, QueryClient } from "react-query";
-import { getAllProducts } from "../../api/index";
+import { getAllProducts } from "../../api_calls/index";
 import ProductSearch from "@/components/Discover/ProductSearch";
 import Landing from "@/layouts/Landing";
 
