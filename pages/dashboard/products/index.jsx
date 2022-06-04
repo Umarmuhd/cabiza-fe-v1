@@ -113,7 +113,7 @@ const Products = ({}) => {
   } 
 
   useEffect(() => {
-    products.includes === "" ? setProducts(products.filter(product => product.name.includes(router.query.s))) : setProducts(products)
+    products === "" ? setProducts(products.filter(product => product.name.includes(router.query.s))) : setProducts(products)
   }, [router.query.s])
 
   return (
