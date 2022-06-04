@@ -117,7 +117,7 @@ const Products = ({}) => {
 
   useEffect(() => {
     setSearchedProducts(products.length > 0 ? products.filter(product => product.name.includes(router.query.s)) : products)
-  }, [router.query.s])
+  }, [router.query.s, products])
 
   return (
     <div className="md:w-[85%] w-[100%] ml-auto">
