@@ -113,8 +113,6 @@ const Products = ({}) => {
     }
   } 
 
-  console.log(products.filter(product => product.name.includes(router.query.s)),"changed")
-
   useEffect(() => {
     setSearchedProducts(products.length > 0 ? products.filter(product => product.name.includes(router.query.s)) : products)
   }, [router.query.s, products])
