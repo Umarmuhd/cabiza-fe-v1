@@ -112,9 +112,11 @@ const Products = ({}) => {
     }
   } 
 
-  useEffect(() => {
-    products === "" ? setProducts(products.filter(product => product.name.includes(router.query.s))) : setProducts(products)
-  }, [router.query.s])
+  console.log(products.filter(product => product.name.includes(router.query.s)))
+
+  // useEffect(() => {
+  //   products === "" ? setProducts(products.filter(product => product.name.includes(router.query.s))) : setProducts(products)
+  // }, [router.query.s])
 
   return (
     <div className="md:w-[85%] w-[100%] ml-auto">
