@@ -178,7 +178,7 @@ const Products = ({}) => {
         <Tab.Panels as={'div'}>
           <Tab.Panel>
             {products.length > 0 ? (
-              <AllProducts products={searchedProducts} />
+              <AllProducts products={router.query.s ? searchedProducts : products} />
             ) : (
               <AllProductsEmpty user={user} />
             )}
