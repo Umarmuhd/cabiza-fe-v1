@@ -109,12 +109,10 @@ export default function Payout() {
       setLoading(false);
     } catch (error) {
       console.error(error.message);
-      toast.error(error.response.data.message);
+      toast.error(error?.response.data.message);
       setLoading(false);
     }
   };
-
-  console.log(user);
 
   return (
     <form onSubmit={handleSubmit(handleUpdatePayout)} className="px-4 md:px-0">
@@ -263,7 +261,12 @@ export default function Payout() {
                   type="number"
                   className="border border-sky_light mt-3 h-10 rounded  bg-white text-secondary_ink_darkest px-4 w-[50%] mr-2 text-left flex justify-between items-center"
                   placeholder="Day"
-                  {...register("day", {})}
+                  {...register("day", {
+                    required: true,
+                    maxLength: 2,
+                    min: 0,
+                    max: 31,
+                  })}
                   defaultValue={user?.birthday?.split("/")[0]}
                 />
                 <input
@@ -272,16 +275,24 @@ export default function Payout() {
                   type="number"
                   className="border border-sky_light mt-3 h-10 rounded text-secondary_ink_darkest bg-white px-4 w-[50%] mr-2 text-left flex justify-between items-center"
                   placeholder="Month"
-                  {...register("month", {})}
+                  {...register("month", {
+                    required: true,
+                    min: 0,
+                    max: 12,
+                    maxLength: 2,
+                  })}
                   defaultValue={user?.birthday?.split("/")[1]}
                 />
                 <input
-                  id="lname"
-                  name="lname"
+                  id="Year"
+                  name="year"
                   type="number"
                   className="border border-sky_light mt-3 h-10 rounded text-secondary_ink_darkest bg-white px-4 w-[50%] mr-2 text-left flex justify-between items-center"
                   placeholder="Year"
-                  {...register("year", {})}
+                  {...register("year", {
+                    max: 3000,
+                    minLength: 4,
+                  })}
                   defaultValue={user?.birthday?.split("/")[2]}
                 />
               </div>

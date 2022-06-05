@@ -17,12 +17,15 @@ export default function Settings() {
       <Tab.Group>
         <FullNav title="Settings">
           <div className="flex justify-start items-end mr-auto md:w-43/50 mx-auto">
-            <Tab.List as={"div"} className="flex items-center py-[.5rem]">
+            <Tab.List
+              as={"div"}
+              className="flex items-center py-[.5rem] space-x-10"
+            >
               <Tab
                 as={"button"}
                 className={({ selected }) =>
                   classNames(
-                    "text-md mr-10 pb-2 font-medium",
+                    "text-md pb-2 font-medium ",
                     selected
                       ? " font-bold text-primary border-b border-b-primary"
                       : " text-secondary"
