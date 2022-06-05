@@ -12,7 +12,7 @@ import Dashboard from "@/layouts/Dashboard";
 import { API_URL } from "@/config/index";
 import AuthContext from "@/context/AuthContext";
 import FormGroup from "@/components/Forms/FormGroup";
-import DashboardNav from "@/components/Navbars/DashboardNav";
+import Alert from "@/components/Alert";
 import CheckSwitch from "@/components/checkSwitch";
 import TextFormat from "@/components/TextFormat";
 import Calendar from "react-calendar";
