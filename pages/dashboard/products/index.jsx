@@ -1,18 +1,18 @@
-import React, { useState, useContext, useEffect, useRef } from 'react';
-import { Tab } from '@headlessui/react';
-import Router from 'next/router';
+import React, { useState, useContext, useEffect, useRef } from "react";
+import { Tab } from "@headlessui/react";
+import Router from "next/router";
 
-import AllProductsEmpty from '@/components/Cards/AllProductsEmpty';
+import AllProductsEmpty from "@/components/Cards/AllProductsEmpty";
 
-import Dashboard from '@/layouts/Dashboard';
-import AllProducts from '@/components/Cards/AllProducts';
-import Affiliated from '@/components/Cards/Affiliated';
-import { classNames } from '../../../libs/helper';
-import Link from 'next/link';
-import { API_URL } from '@/config/index';
-import AuthContext from '@/context/AuthContext';
-import axios from 'axios';
-import FullNav from '@/components/Navbars/DashboardNav/FullNav';
+import Dashboard from "@/layouts/Dashboard";
+import AllProducts from "@/components/Cards/AllProducts";
+import Affiliated from "@/components/Cards/Affiliated";
+import { classNames } from "../../../libs/helper";
+import Link from "next/link";
+import { API_URL } from "@/config/index";
+import AuthContext from "@/context/AuthContext";
+import axios from "axios";
+import FullNav from "@/components/Navbars/DashboardNav/FullNav";
 
 const Products = ({}) => {
   const [products, setProducts] = useState([]);
@@ -98,52 +98,56 @@ const Products = ({}) => {
 
   const router = Router;
 
-  const searchRef = useRef()
+  const searchRef = useRef();
 
   const changeProductRequestQuery = () => {
-    if (searchRef.current.value !== ""){
-      router.push(`${router.pathname}?s=${searchRef.current.value}`)
-      searchRef.current.value = ""
+    if (searchRef.current.value !== "") {
+      router.push(`${router.pathname}?s=${searchRef.current.value}`);
+      searchRef.current.value = "";
     }
-  }
+  };
 
   const handleKeyDown = (e) => {
-    if (e.key === 'Enter') {
-      changeProductRequestQuery()
+    if (e.key === "Enter") {
+      changeProductRequestQuery();
     }
-  } 
+  };
 
   useEffect(() => {
-    setSearchedProducts(products.length > 0 ? products.filter(product => product.name.includes(router.query.s)) : products)
-  }, [router.query.s, products])
+    setSearchedProducts(
+      products.length > 0
+        ? products.filter((product) => product.name.includes(router.query.s))
+        : products
+    );
+  }, [router.query.s, products]);
 
   return (
     <div className="md:w-[85%] w-[100%] ml-auto">
-      <Tab.Group as={'div'} className="bg-secondary_sky_lighter">
+      <Tab.Group as={"div"} className="bg-secondary_sky_lighter">
         <FullNav title="Products">
           <div className="flex justify-between items-center md:w-43/50 mx-auto pr-4">
-            <Tab.List as={'div'} className="flex items-center py-[.5rem]">
+            <Tab.List as={"div"} className="flex items-center py-[.5rem]">
               <Tab
-                as={'button'}
+                as={"button"}
                 className={({ selected }) =>
                   classNames(
-                    'text-md mr-10 pb-2 font-medium',
+                    "text-md mr-10 pb-2 font-medium",
                     selected
-                      ? ' font-bold text-primary border-b border-b-primary'
-                      : ' text-secondary'
+                      ? " font-bold text-primary border-b border-b-primary"
+                      : " text-secondary"
                   )
                 }
               >
                 All Products
               </Tab>
               <Tab
-                as={'button'}
+                as={"button"}
                 className={({ selected }) =>
                   classNames(
-                    'text-md mr-10 pb-2 font-medium',
+                    "text-md mr-10 pb-2 font-medium",
                     selected
-                      ? ' font-bold text-primary border-b border-b-primary'
-                      : ' text-secondary'
+                      ? " font-bold text-primary border-b border-b-primary"
+                      : " text-secondary"
                   )
                 }
               >
@@ -153,13 +157,17 @@ const Products = ({}) => {
 
             <div className="flex ml-auto items-center">
               <div className="flex flex-row-reverse items-center justify-between mr-4">
-                <button className="flex items-center justify-center bg-primary_brand_lightest hover:bg-slate-200 transition duration-150 p-3 rounded-full peer" type="submit" onClick={changeProductRequestQuery}>
+                <button
+                  className="flex items-center justify-center bg-primary_brand_lightest hover:bg-slate-200 transition duration-150 p-3 rounded-full peer"
+                  type="submit"
+                  onClick={changeProductRequestQuery}
+                >
                   <SearchIcon />
                 </button>
                 <input
                   type="search"
                   className="border border-grey_80 px-4 h-10 placeholder-grey_80 text-grey_40 bg-white shadow-sm focus:outline-none w-full rounded-[100px] scale-x-0 origin-top-right mr-2 peer-focus:scale-x-100 focus:scale-x-100"
-                  style={{ transition: 'all 0.15s ease 0s' }}
+                  style={{ transition: "all 0.15s ease 0s" }}
                   id="search"
                   placeholder="Search..."
                   ref={searchRef}
@@ -175,10 +183,12 @@ const Products = ({}) => {
           </div>
         </FullNav>
 
-        <Tab.Panels as={'div'}>
+        <Tab.Panels as={"div"} className="px-6 md:px-0">
           <Tab.Panel>
             {products.length > 0 ? (
-              <AllProducts products={router.query.s ? searchedProducts : products} />
+              <AllProducts
+                products={router.query.s ? searchedProducts : products}
+              />
             ) : (
               <AllProductsEmpty user={user} />
             )}

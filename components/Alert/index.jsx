@@ -1,9 +1,9 @@
-import React from 'react';
+import React from "react";
 
 export default function Alert({ color, text }) {
   return (
     <div
-      className={'rounded-lg py-4 px-8 flex items-center ' + `bg-[${color}]`}
+      className={"rounded-lg py-4 px-8 flex items-center " + `bg-[${color}]`}
     >
       <svg
         width="24"
