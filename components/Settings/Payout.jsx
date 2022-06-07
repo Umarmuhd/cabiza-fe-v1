@@ -1,4 +1,4 @@
-import React, { useContext, useState } from "react";
+import React, { useContext, useState, useEffect } from "react";
 import { useForm } from "react-hook-form";
 import Card from "@/components/Cards/Card";
 import Toggle from "@/components/Toggle/Toggle";
@@ -9,6 +9,8 @@ import toast from "react-hot-toast";
 import axios from "axios";
 import { API_URL } from "@/config/index";
 import Alert from "../Alert";
+import Calendar from "react-calendar";
+import "react-calendar/dist/Calendar.css";
 
 const AccountTypeIcon = () => (
   <svg
@@ -66,6 +68,31 @@ const WarningIcon = () => (
 );
 
 export default function Payout() {
+
+  //calendar
+  const [showCalendar, setShowCalendar] = useState(false);
+
+  const [value, onChange] = useState();
+
+  const handleConvertDate = (month, day, year) => {
+    const months = [
+      "January",
+      "February",
+      "March",
+      "April",
+      "May",
+      "June",
+      "July",
+      "August",
+      "September",
+      "October",
+      "November",
+      "December",
+    ];
+
+    return `${months[month]} ${day}, ${year}`;
+  };  
+  
   const {
     register,
     handleSubmit,
@@ -256,7 +283,7 @@ export default function Payout() {
                 Date of Birth
               </h5>
 
-              <div className="flex">
+              <div className="flex relative">
                 <input
                   id="Day"
                   name="Day"
@@ -264,7 +291,10 @@ export default function Payout() {
                   className="border border-sky_light mt-3 h-10 rounded  bg-white text-secondary_ink_darkest px-4 w-[50%] mr-2 text-left flex justify-between items-center"
                   placeholder="Day"
                   {...register("day", {})}
-                  defaultValue={user?.birthday?.split("/")[0]}
+                  defaultValue={user?.birthday?.split("/")[0]}                  
+                  value={value?.getDate()}
+                  onClick={() => setShowCalendar(true)}
+                  readOnly
                 />
                 <input
                   id="Month"
@@ -274,6 +304,9 @@ export default function Payout() {
                   placeholder="Month"
                   {...register("month", {})}
                   defaultValue={user?.birthday?.split("/")[1]}
+                  value={value?.getMonth()}
+                  onClick={() => setShowCalendar(true)}
+                  readOnly
                 />
                 <input
                   id="lname"
@@ -283,7 +316,30 @@ export default function Payout() {
                   placeholder="Year"
                   {...register("year", {})}
                   defaultValue={user?.birthday?.split("/")[2]}
+                  value={value?.getFullYear()}
+                  onClick={() => setShowCalendar(true)}
+                  readOnly
                 />
+
+                {showCalendar ? (
+                  <div
+                    className="fixed top-0 left-0 w-[100vw] h-[100vh] z-[99]"
+                    onClick={() => {
+                      setShowCalendar(false);
+                    }}
+                  ></div>
+                ) : null}
+
+                <div
+                  className={`absolute top-[100%] left-[1.5rem] z-[101] ${!showCalendar ? "hidden" : ""
+                    }`}
+                >
+                  <Calendar
+                    onChange={onChange}
+                    value={value}
+                    onClickDay={() => setShowCalendar(false)}
+                  />
+                </div>
               </div>
             </div>
           </div>
