@@ -18,11 +18,11 @@ export default function Dashboard({ children }) {
   }
 
   return (
-    <div className="flex h-screen">
+    <div className="flex h-[max-content]">
       {/* Sidebar */}
       <Sidebar user={user} sidebarOpen={showNav} setSidebarOpen={setShowNav} />
       {/* Content area */}
-      <div className="relative flex flex-col flex-1 overflow-x-hidden bg-secondary_sky_lighter w-[50%] ml-auto h-[max-content]">
+      <div className="relative flex flex-col flex-1 overflow-x-hidden bg-secondary_sky_lighter w-[50%] ml-auto h-[inherit]">
         {children}
       </div>
     </div>

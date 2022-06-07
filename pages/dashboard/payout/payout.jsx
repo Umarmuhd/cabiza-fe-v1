@@ -93,7 +93,7 @@ const Payments = () => {
   const [value, onChange] = useState(new Date());
 
   return (
-    <div className="px-4 sm:px-6 md:px-0 w-full max-w-9xl mx-auto">
+    <div className="px-4 sm:px-6 md:px-0 w-full max-w-9xl mx-auto h-[92vh]">
       <header
         className="bg-secondary_sky_lightest py-4 h-20"
         style={{

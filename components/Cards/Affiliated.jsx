@@ -5,7 +5,7 @@ import React, { useEffect, useState } from "react";
 import AllAffiliates from "./AllAffiliates";
 
 const EmptyAffiliates = () => (
-  <div className="md:w-43/50 mx-auto bg-white rounded-3xl text-center p-10 mt-8 shadow">
+  <div className="md:w-43/50 mx-auto bg-white rounded-3xl text-center p-10 mt-8 shadow h-[100vh] mb-10">
     <div className="mb-10">
       <h3 className="text-2xl font-bold text-dark_ mb-2">No Affiliate Yet</h3>
       <p>You don’t have any affiliate yet!</p>
@@ -53,7 +53,9 @@ export default function Affiliated() {
   return (
     <React.Fragment>
       {affiliates.length > 0 ? (
-        <AllAffiliates products={affiliates} />
+        <div className="h-[76vh]">
+             <AllAffiliates products={affiliates} />
+        </div>
       ) : (
         <EmptyAffiliates />
       )}

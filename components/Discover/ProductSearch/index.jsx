@@ -22,7 +22,7 @@ const SearchIcon = ({ className }) => (
 
 const ProductSearch = () => {
   return (
-    <div className="bg-secondary_sky_lighter">
+    <div className="bg-secondary_sky_lighter h-[100%]">
       <header className="py-16 mx-auto max-w-[1100px]">
         <div className="w-[90%] mx-auto">
           <form className="flex">
