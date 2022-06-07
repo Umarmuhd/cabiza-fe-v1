@@ -172,7 +172,7 @@ const Payments = () => {
         </div>
       </header>
 
-      <main className="md:w-43/50 mx-auto mt-10 bg-white rounded-xl px-6 md:px-12 py-8 md:py-10">
+      <main className="md:w-43/50 mx-auto mt-10 bg-white rounded-xl px-6 md:px-12 py-8 md:py-10 mb-10">
         {payout.previous ? (
           <>
             {showCalendar ? <div className="fixed top-0 left-0 w-[100vw] h-[100vh] z-[99]" onClick={() => setShowCalendar(!showCalendar)}></div> : null}
