@@ -1,15 +1,15 @@
-import React, { useState, useContext } from 'react';
-import Link from 'next/link';
-import { useForm } from 'react-hook-form';
-import axios from 'axios';
-import { useRouter } from 'next/router';
+import React, { useState, useContext } from "react";
+import Link from "next/link";
+import { useForm } from "react-hook-form";
+import axios from "axios";
+import { useRouter } from "next/router";
 
-import AuthContext from '@/context/AuthContext';
+import AuthContext from "@/context/AuthContext";
 
-import Auth from 'layouts/Auth';
-import { NEXT_URL } from 'config/index';
-import toast from 'react-hot-toast';
-import Alert from '@/components/Alert';
+import Auth from "layouts/Auth";
+import { NEXT_URL } from "config/index";
+import toast from "react-hot-toast";
+import Alert from "@/components/Alert";
 
 export default function Login() {
   const {
@@ -20,7 +20,7 @@ export default function Login() {
 
   const { loginUser } = useContext(AuthContext);
   const [loading, setLoading] = useState(false);
-  const [error, setError] = useState('');
+  const [error, setError] = useState("");
 
   const router = useRouter();
 
@@ -32,10 +32,9 @@ export default function Login() {
       toast.custom(<Alert color="#24C78C" text="Login successful !" />);
       loginUser(user, token);
       setLoading(false);
-      const status = user.username ? 'profile' : 'onboarding';
-      router.push('/dashboard/' + status);
+      router.push("/" + user.username ? "profile" : "onboarding");
     } catch (error) {
-      setError(error.response.data.message);
+      setError(error?.response?.data?.message);
       setLoading(false);
     }
   };
@@ -57,12 +56,12 @@ export default function Login() {
               <input
                 type="email"
                 className="border border-grey_80 px-4 py-3 placeholder-grey_80 text-grey_40 bg-white shadow-sm focus:outline-none focus:ring w-full rounded-lg"
-                style={{ transition: 'all 0.15s ease 0s' }}
+                style={{ transition: "all 0.15s ease 0s" }}
                 id="email"
                 placeholder="e.g cabizahere@gmail.com"
-                {...register('email', { required: true })}
+                {...register("email", { required: true })}
               />
-              {errors.email?.type === 'required' && (
+              {errors.email?.type === "required" && (
                 <p className="text-left text-red-600 text-xs mt-1">
                   Email address is required
                 </p>
@@ -78,10 +77,10 @@ export default function Login() {
               <input
                 type="password"
                 className="border border-grey_80 px-4 py-3 placeholder-grey_80 text-grey_40 bg-white shadow-sm focus:outline-none focus:ring w-full rounded-lg"
-                style={{ transition: 'all 0.15s ease 0s' }}
+                style={{ transition: "all 0.15s ease 0s" }}
                 id="password"
                 placeholder="........"
-                {...register('password', { required: true, minLength: 6 })}
+                {...register("password", { required: true, minLength: 6 })}
               />
               {errors?.password ? (
                 <p className="text-left text-red-600 text-xs mt-1">
@@ -91,7 +90,7 @@ export default function Login() {
             </div>
             <div className="relative flex justify-end">
               <p className="text-lg text-right text-grey_40">
-                Forgot password?{' '}
+                Forgot password?{" "}
                 <Link href="/auth/forget-password">
                   <a className="ml-1 underline cursor-pointer">Reset it</a>
                 </Link>
@@ -102,12 +101,12 @@ export default function Login() {
                 className="bg-primary text-white active:bg-primary text-lg font-semibold px-6 py-3 rounded-lg outline-none focus:outline-none w-full"
                 type="submit"
                 style={{
-                  transition: 'all 0.15s ease 0s',
-                  boxShadow: '0px 8px 30px rgba(0, 0, 0, 0.08)',
+                  transition: "all 0.15s ease 0s",
+                  boxShadow: "0px 8px 30px rgba(0, 0, 0, 0.08)",
                 }}
                 disabled={loading}
               >
-                {loading ? '...' : 'Login'}
+                {loading ? "..." : "Login"}
               </button>
             </div>
             <p className="text-center text-grey_40 text-lg">
