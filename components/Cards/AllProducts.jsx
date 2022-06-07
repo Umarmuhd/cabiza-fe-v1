@@ -71,8 +71,8 @@ export default function AllProducts({ products, balance }) {
       <div className="container mx-auto">
         <div className="py-8">
           <div className="-mx-4 sm:-mx-8 px-4 sm:px-8 py-4 overflow-x-auto">
-            <div className="inline-block min-w-full shadow rounded-lg rounded-t-none overflow-hidden">
-              <table className="min-w-full leading-normal">
+            <div className="inline-block min-w-full rounded-lg rounded-t-none overflow-hidden">
+              <table className="min-w-full leading-normal border-collapse">
                 <thead>
                   <tr>
                     <th
@@ -107,7 +107,7 @@ export default function AllProducts({ products, balance }) {
                 </thead>
                 <tbody>
                   {products.map((product) => (
-                    <tr key={product._id}>
+                    <tr key={product._id} className="border border-secondary_sky_lighter">
                       <td className="px-5 py-5 border-b border-gray-200 bg-white text-sm">
                         <div className="flex items-center">
                           <div className="flex-shrink-0">

@@ -290,7 +290,12 @@ export default function Payout() {
                   type="number"
                   className="border border-sky_light mt-3 h-10 rounded  bg-white text-secondary_ink_darkest px-4 w-[50%] mr-2 text-left flex justify-between items-center"
                   placeholder="Day"
-                  {...register("day", {})}
+                  {...register("day", {
+                    required: true,
+                    maxLength: 2,
+                    min: 0,
+                    max: 31,
+                  })}
                   defaultValue={user?.birthday?.split("/")[0]}                  
                   value={value?.getDate()}
                   onClick={() => setShowCalendar(true)}
