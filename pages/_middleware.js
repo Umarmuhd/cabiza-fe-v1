@@ -23,9 +23,7 @@ export default function middleware(req) {
 
   const currentHost =
     process.env.NODE_ENV === "production" && process.env.VERCEL === "1"
-      ? hostname
-          .replace(`.vercel.pub`, "")
-          .replace(`.platformize.vercel.app`, "")
+      ? hostname.replace(`.vercel.pub`, "").replace(`.cabiza.net`, "")
       : hostname.replace(`.localhost:3000`, "");
 
   if (pathname.startsWith(`/_sites`))
@@ -48,10 +46,7 @@ export default function middleware(req) {
       return NextResponse.rewrite(url);
     }
 
-    if (
-      hostname === "localhost:3000" ||
-      hostname === "platformize.vercel.app"
-    ) {
+    if (hostname === "localhost:3000" || hostname === "www.cabiza.net") {
       url.pathname = `${pathname}`;
       return NextResponse.rewrite(url);
     }
