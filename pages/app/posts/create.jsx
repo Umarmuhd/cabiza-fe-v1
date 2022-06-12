@@ -106,7 +106,7 @@ export default function CreatePost() {
         <Alert color="#24C78C" text={`${response.data.message} !`} />
       );
 
-      router.push("/dashboard/posts");
+      router.push("/posts");
     } catch (error) {
       console.log(error);
       setLoading(false);
@@ -196,7 +196,7 @@ export default function CreatePost() {
             </div>
 
             <div className="flex items-center justify-between relative">
-              <Link href="/dashboard/posts">
+              <Link href="/posts">
                 <a className="leading-4 text-base font-medium text-primary py-2 px-3 rounded-4xl border border-primary flex items-center mr-6">
                   <svg
                     width="16"

@@ -1,10 +1,10 @@
-import React, { useContext, useState } from 'react';
-import { Tab } from '@headlessui/react';
+import React, { useContext, useState } from "react";
+import { Tab } from "@headlessui/react";
 
-import Dashboard from '@/layouts/Dashboard';
-import Link from 'next/link';
-import TopNav from '@/components/Navbars/DashboardNav/TopNav';
-import AuthContext from '@/context/AuthContext';
+import Dashboard from "@/layouts/Dashboard";
+import Link from "next/link";
+import TopNav from "@/components/Navbars/DashboardNav/TopNav";
+import AuthContext from "@/context/AuthContext";
 
 const EmailIcon = () => (
   <svg
@@ -33,7 +33,7 @@ export default function Profile() {
           <div className="px-4 sm:px-6 md:px-0 w-full max-w-9xl md:w-43/50 mx-auto pt-2 flex flex-col md:flex-row justify-between mt-4">
             <div>
               <h1 className="text-3xl font-semibold">
-                Welcome,{' '}
+                Welcome,{" "}
                 <span className="text-secondary_ink_dark capitalize font-normal">
                   {user?.username}
                 </span>
@@ -62,7 +62,7 @@ export default function Profile() {
                     always perfect.
                   </p>
 
-                  <Link href="/dashboard/products/create">
+                  <Link href="/products/create">
                     <button className="mt-10 bg-primary_brand_lightest text-primary py-3 px-7 rounded-3xl">
                       Create product
                     </button>
@@ -73,9 +73,7 @@ export default function Profile() {
                   </p>
                 </div>
                 <div className="mt-12 text-center w-[70%] mx-auto text-primary underline">
-                  <Link href="/dashboard/profile/customize">
-                    Customize profile
-                  </Link>
+                  <Link href="/profile/customize">Customize profile</Link>
                 </div>
               </div>
             </div>
