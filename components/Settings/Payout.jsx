@@ -1,53 +1,13 @@
 import React, { useContext, useState } from "react";
 import { useForm } from "react-hook-form";
 import Card from "@/components/Cards/Card";
-import Toggle from "@/components/Toggle/Toggle";
-
 import AuthContext from "@/context/AuthContext";
 import CheckSwitch from "../checkSwitch/index";
 import toast from "react-hot-toast";
 import axios from "axios";
 import { API_URL } from "@/config/index";
 import Alert from "../Alert";
-
-const AccountTypeIcon = () => (
-  <svg
-    width="24"
-    height="24"
-    viewBox="0 0 24 24"
-    fill="none"
-    xmlns="http://www.w3.org/2000/svg"
-  >
-    <path
-      d="M0 12C0 5.37258 5.37258 0 12 0C18.6274 0 24 5.37258 24 12C24 18.6274 18.6274 24 12 24C5.37258 24 0 18.6274 0 12Z"
-      fill="white"
-    />
-    <path
-      d="M12 23C5.92487 23 1 18.0751 1 12H-1C-1 19.1797 4.8203 25 12 25V23ZM23 12C23 18.0751 18.0751 23 12 23V25C19.1797 25 25 19.1797 25 12H23ZM12 1C18.0751 1 23 5.92487 23 12H25C25 4.8203 19.1797 -1 12 -1V1ZM12 -1C4.8203 -1 -1 4.8203 -1 12H1C1 5.92487 5.92487 1 12 1V-1Z"
-      fill="#CDCFD0"
-    />
-  </svg>
-);
-
-const AccountTypeActiveIcon = () => (
-  <svg
-    width="25"
-    height="24"
-    viewBox="0 0 25 24"
-    fill="none"
-    xmlns="http://www.w3.org/2000/svg"
-  >
-    <path
-      d="M0.5 12C0.5 5.37258 5.87258 0 12.5 0V0C19.1274 0 24.5 5.37258 24.5 12V12C24.5 18.6274 19.1274 24 12.5 24V24C5.87258 24 0.5 18.6274 0.5 12V12Z"
-      fill="#5B44E9"
-    />
-    <circle cx="12.5" cy="12" r="4" fill="white" />
-    <path
-      d="M12.5 23C6.42487 23 1.5 18.0751 1.5 12H-0.5C-0.5 19.1797 5.3203 25 12.5 25V23ZM23.5 12C23.5 18.0751 18.5751 23 12.5 23V25C19.6797 25 25.5 19.1797 25.5 12H23.5ZM12.5 1C18.5751 1 23.5 5.92487 23.5 12H25.5C25.5 4.8203 19.6797 -1 12.5 -1V1ZM12.5 -1C5.3203 -1 -0.5 4.8203 -0.5 12H1.5C1.5 5.92487 6.42487 1 12.5 1V-1Z"
-      fill="#5B44E9"
-    />
-  </svg>
-);
+import { useAllBanks } from "@/hooks/useAllBanks";
 
 const WarningIcon = () => (
   <svg
@@ -72,6 +32,46 @@ export default function Payout() {
     formState: { errors },
   } = useForm();
 
+  const { data: banks, isLoading: banksLoading } = useAllBanks();
+
+  const BankSelect = React.forwardRef(
+    ({ onChange, onBlur, name, label, defaultValue }, ref) => (
+      <>
+        <label className="block text-secondary font-medium mb-4 leading-4">
+          {label}
+        </label>
+        <select
+          className="border border-secondary_sky_base px-4 py-3 placeholder-grey_80 text-grey_40 bg-white focus:outline-none focus:ring w-full rounded-lg"
+          name={name}
+          ref={ref}
+          onChange={onChange}
+          onBlur={onBlur}
+          defaultValue={defaultValue}
+        >
+          <option />
+          {!banksLoading &&
+            banks?.map((bank) => (
+              <option key={bank.slug} value={JSON.stringify(bank)}>
+                {bank.name}
+              </option>
+            ))}
+
+          <style jsx>{`
+            select {
+              padding: 1rem;
+              -webkit-appearance: none;
+              -moz-appearance: none;
+              appearance: none;
+              background: url("data:image/svg+xml,%3Csvg width='14' height='8' viewBox='0 0 14 8' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M1 1L7 7L13 1' stroke='%23090A0A' stroke-width='1.5' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E ")
+                97% / 3% no-repeat;
+            }
+          `}</style>
+        </select>
+      </>
+    )
+  );
+  BankSelect.displayName = "BankSelect";
+
   const { user } = useContext(AuthContext);
 
   const [loading, setLoading] = useState(false);
@@ -88,6 +88,8 @@ export default function Payout() {
       day,
       month,
       year,
+      bank,
+      account_number,
     } = values;
     try {
       setLoading(true);
@@ -102,6 +104,12 @@ export default function Payout() {
         },
         birthday: `${day}/${month}/${year}`,
         paypal: { email: paypal_email },
+        bank_account: {
+          bank_code: JSON.parse(bank).code,
+          account_name: "John Snow",
+          account_number,
+          bank_name: JSON.parse(bank).name,
+        },
       };
       const url = `${API_URL}/user/profile`;
       await axios.post(url, payload);
@@ -315,6 +323,52 @@ export default function Payout() {
                   {...register("paypal_email", { required: true })}
                   defaultValue={user?.paypal?.email}
                 />
+              </div>
+            </div>
+          </div>
+
+          <div className="mt-8">
+            <h5 className="text-secondary_ink_darkest font-normal flex justify-between mb-3">
+              <span className="text-lg">Bank Details</span>
+            </h5>
+
+            <div className="flex space-x-6">
+              <div className="relative md:w-1/2">
+                <BankSelect
+                  label="Bank name"
+                  defaultValue={{
+                    name: user?.bank_account?.bank_name,
+                    code: user?.bank_account?.bank_code,
+                  }}
+                  {...register("bank", { required: true })}
+                />
+                {errors.bank?.type === "required" && (
+                  <p className="text-left text-red-600 text-xs mt-1">
+                    Bank name is required
+                  </p>
+                )}
+              </div>
+              <div className="relative md:w-1/2">
+                <label
+                  className="block text-secondary font-medium leading-4 mb-4"
+                  htmlFor="account_number"
+                >
+                  Account number
+                </label>
+                <input
+                  type="number"
+                  className="border border-secondary_sky_base px-4 py-4 placeholder-grey_80 text-grey_40 bg-white focus:outline-none focus:ring w-full rounded-lg"
+                  style={{ transition: "all 0.15s ease 0s" }}
+                  id="account_number"
+                  placeholder="Enter your account number"
+                  defaultValue={user?.bank_account?.account_number}
+                  {...register("account_number", { required: true })}
+                />
+                {errors.account_number?.type === "required" && (
+                  <p className="text-left text-red-600 text-xs mt-1">
+                    Account number is required
+                  </p>
+                )}
               </div>
             </div>
           </div>

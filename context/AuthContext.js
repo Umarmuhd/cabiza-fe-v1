@@ -30,7 +30,7 @@ export const AuthProvider = ({ children }) => {
       axios.defaults.headers.common = { Authorization: null };
       setUser(null);
       setLoading(false);
-      router.replace("/");
+      router.replace("/auth/login");
     }
   };
 

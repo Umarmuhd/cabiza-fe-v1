@@ -26,8 +26,9 @@ const RightIcon = () => (
 export default function MainNavigation() {
   const [isMenuOpen, setIsMenuOpen] = React.useState(false);
 
-  // for checking routes pathname
-  const { asPath, pathname } = useRouter();
+  const router = useRouter();
+
+  const { pathname } = router;
 
   return (
     <div className="px-4 py-5 mx-auto sm:max-w-xl md:max-w-full lg:max-w-screen-xl md:px-24 lg:px-8">
@@ -90,7 +91,7 @@ export default function MainNavigation() {
           <li className="flex items-center">
             <a
               target="_blank"
-              href="http://app.localhost:3000/auth/login"
+              href={`http://app.${window.location.host}/auth/login`}
               rel="noopener noreferrer"
               className="font-medium md:px-4 py-2 hover:font-semibold focus:outline-none lg:mr-1 lg:mb-0 ml-3 mb-3"
               style={{ transition: "all .15s ease" }}
@@ -101,7 +102,7 @@ export default function MainNavigation() {
           <li>
             <a
               target="_blank"
-              href="http://app.localhost:3000/auth/signup"
+              href={`http://app.${window.location.host}/auth/signup`}
               rel="noopener noreferrer"
               className="text-primary px-6 py-2 rounded-full shadow hover:shadow-md outline-none focus:outline-none lg:mr-1 lg:mb-0 md:ml-3 mb-3 flex items-center bg-primary_brand_lightest"
               style={{ transition: "all .15s ease" }}
@@ -216,7 +217,7 @@ export default function MainNavigation() {
                     <li>
                       <a
                         target="_blank"
-                        href="http://app.localhost:3000/auth/login"
+                        href={`http://app.${window.location.host}/auth/login`}
                         rel="noopener noreferrer"
                         aria-label="About us"
                         title="About us"
@@ -225,11 +226,10 @@ export default function MainNavigation() {
                         Login
                       </a>
                     </li>
-
                     <li>
                       <a
                         target="_blank"
-                        href="http://app.localhost:3000/auth/signup"
+                        href={`http://app.${window.location.host}/auth/signup`}
                         rel="noopener noreferrer"
                         className="inline-flex items-center justify-center w-full h-12 px-6 font-medium tracking-wide text-white transition duration-200 rounded shadow-md bg-deep-purple-accent-400 hover:bg-deep-purple-accent-700 focus:shadow-outline focus:outline-none"
                         aria-label="Sign up"

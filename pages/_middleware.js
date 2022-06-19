@@ -8,8 +8,6 @@ export default function middleware(req) {
   // Get hostname of request (e.g. demo.vercel.pub, demo.localhost:3000)
   const hostname = req.headers.get("host");
 
-  console.log(hostname);
-
   if (!hostname)
     return new Response(null, {
       status: 400,
