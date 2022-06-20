@@ -37,16 +37,16 @@ export default function middleware(req) {
     !pathname.startsWith("/api") // exclude all API routes
   ) {
     if (currentHost == "app") {
-      if (pathname === "/login" && req.cookies["accessToken"]) {
+      if (pathname === "/login" && req.cookies["__refresh_token"]) {
         url.pathname = "/profile";
         return NextResponse.redirect(url);
       }
 
-      url.pathname = `/app${pathname}`;
+      url.pathname = pathname !== "/" ? `/app${pathname}` : `/app/profile`;
       return NextResponse.rewrite(url);
     }
 
-    if (hostname === "localhost:3000" || hostname === "www.cabiza.net") {
+    if (hostname === "localhost:3000" || hostname === "cabiza.net") {
       url.pathname = `${pathname}`;
       return NextResponse.rewrite(url);
     }
