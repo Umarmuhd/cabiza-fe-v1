@@ -17,7 +17,7 @@ export default function Help() {
   }, []);
 
   return (
-    <div className="md:w-[85%] w-[100%] ml-auto">
+    <div className="md:w-[85%] w-[100%] ml-auto h-[100vh]">
       <TopNav title="Help" />
 
       <div className="px-4 sm:px-6 md:px-0 w-full max-w-9xl mx-auto">

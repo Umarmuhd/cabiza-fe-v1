@@ -1,4 +1,4 @@
-import React, { useContext, useState } from "react";
+import React, { useContext, useState, useEffect } from "react";
 import { useForm } from "react-hook-form";
 import Card from "@/components/Cards/Card";
 import AuthContext from "@/context/AuthContext";
@@ -7,7 +7,48 @@ import toast from "react-hot-toast";
 import axios from "axios";
 import { API_URL } from "@/config/index";
 import Alert from "../Alert";
+import Calendar from "react-calendar";
+import "react-calendar/dist/Calendar.css";
 import { useAllBanks } from "@/hooks/useAllBanks";
+
+const AccountTypeIcon = () => (
+  <svg
+    width="24"
+    height="24"
+    viewBox="0 0 24 24"
+    fill="none"
+    xmlns="http://www.w3.org/2000/svg"
+  >
+    <path
+      d="M0 12C0 5.37258 5.37258 0 12 0C18.6274 0 24 5.37258 24 12C24 18.6274 18.6274 24 12 24C5.37258 24 0 18.6274 0 12Z"
+      fill="white"
+    />
+    <path
+      d="M12 23C5.92487 23 1 18.0751 1 12H-1C-1 19.1797 4.8203 25 12 25V23ZM23 12C23 18.0751 18.0751 23 12 23V25C19.1797 25 25 19.1797 25 12H23ZM12 1C18.0751 1 23 5.92487 23 12H25C25 4.8203 19.1797 -1 12 -1V1ZM12 -1C4.8203 -1 -1 4.8203 -1 12H1C1 5.92487 5.92487 1 12 1V-1Z"
+      fill="#CDCFD0"
+    />
+  </svg>
+);
+
+const AccountTypeActiveIcon = () => (
+  <svg
+    width="25"
+    height="24"
+    viewBox="0 0 25 24"
+    fill="none"
+    xmlns="http://www.w3.org/2000/svg"
+  >
+    <path
+      d="M0.5 12C0.5 5.37258 5.87258 0 12.5 0V0C19.1274 0 24.5 5.37258 24.5 12V12C24.5 18.6274 19.1274 24 12.5 24V24C5.87258 24 0.5 18.6274 0.5 12V12Z"
+      fill="#5B44E9"
+    />
+    <circle cx="12.5" cy="12" r="4" fill="white" />
+    <path
+      d="M12.5 23C6.42487 23 1.5 18.0751 1.5 12H-0.5C-0.5 19.1797 5.3203 25 12.5 25V23ZM23.5 12C23.5 18.0751 18.5751 23 12.5 23V25C19.6797 25 25.5 19.1797 25.5 12H23.5ZM12.5 1C18.5751 1 23.5 5.92487 23.5 12H25.5C25.5 4.8203 19.6797 -1 12.5 -1V1ZM12.5 -1C5.3203 -1 -0.5 4.8203 -0.5 12H1.5C1.5 5.92487 6.42487 1 12.5 1V-1Z"
+      fill="#5B44E9"
+    />
+  </svg>
+);
 
 const WarningIcon = () => (
   <svg
@@ -26,6 +67,30 @@ const WarningIcon = () => (
 );
 
 export default function Payout() {
+  //calendar
+  const [showCalendar, setShowCalendar] = useState(false);
+
+  const [value, onChange] = useState();
+
+  const handleConvertDate = (month, day, year) => {
+    const months = [
+      "January",
+      "February",
+      "March",
+      "April",
+      "May",
+      "June",
+      "July",
+      "August",
+      "September",
+      "October",
+      "November",
+      "December",
+    ];
+
+    return `${months[month]} ${day}, ${year}`;
+  };
+
   const {
     register,
     handleSubmit,
@@ -262,7 +327,7 @@ export default function Payout() {
                 Date of Birth
               </h5>
 
-              <div className="flex">
+              <div className="flex relative">
                 <input
                   id="Day"
                   name="Day"
@@ -276,6 +341,9 @@ export default function Payout() {
                     max: 31,
                   })}
                   defaultValue={user?.birthday?.split("/")[0]}
+                  value={value?.getDate()}
+                  onClick={() => setShowCalendar(true)}
+                  readOnly
                 />
                 <input
                   id="Month"
@@ -290,6 +358,9 @@ export default function Payout() {
                     maxLength: 2,
                   })}
                   defaultValue={user?.birthday?.split("/")[1]}
+                  value={value?.getMonth()}
+                  onClick={() => setShowCalendar(true)}
+                  readOnly
                 />
                 <input
                   id="Year"
@@ -302,7 +373,31 @@ export default function Payout() {
                     minLength: 4,
                   })}
                   defaultValue={user?.birthday?.split("/")[2]}
+                  value={value?.getFullYear()}
+                  onClick={() => setShowCalendar(true)}
+                  readOnly
                 />
+
+                {showCalendar ? (
+                  <div
+                    className="fixed top-0 left-0 w-[100vw] h-[100vh] z-[99]"
+                    onClick={() => {
+                      setShowCalendar(false);
+                    }}
+                  ></div>
+                ) : null}
+
+                <div
+                  className={`absolute top-[100%] left-[1.5rem] z-[101] ${
+                    !showCalendar ? "hidden" : ""
+                  }`}
+                >
+                  <Calendar
+                    onChange={onChange}
+                    value={value}
+                    onClickDay={() => setShowCalendar(false)}
+                  />
+                </div>
               </div>
             </div>
           </div>

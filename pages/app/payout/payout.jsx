@@ -93,7 +93,7 @@ const Payments = () => {
   const [value, onChange] = useState(new Date());
 
   return (
-    <div className="px-4 sm:px-6 md:px-0 w-full max-w-9xl mx-auto">
+    <div className="px-4 sm:px-6 md:px-0 w-full max-w-9xl mx-auto h-[92vh]">
       <header
         className="bg-secondary_sky_lightest py-4 h-20"
         style={{
@@ -172,7 +172,7 @@ const Payments = () => {
         </div>
       </header>
 
-      <main className="md:w-43/50 mx-auto mt-10 bg-white rounded-xl px-6 md:px-12 py-8 md:py-10">
+      <main className="md:w-43/50 mx-auto mt-10 bg-white rounded-xl px-6 md:px-12 py-8 md:py-10 mb-10">
         {payout.previous ? (
           <>
             {showCalendar ? <div className="fixed top-0 left-0 w-[100vw] h-[100vh] z-[99]" onClick={() => setShowCalendar(!showCalendar)}></div> : null}

@@ -33,7 +33,7 @@ export default function Setting() {
               name="uname"
               id="uname"
               className="border border-sky_light mt-3 h-10 rounded-xl text-secondary_ink_lighter bg-white px-4"
-              value={user.username}
+              value={user?.username}
               readOnly
             />
             <p className="mt-2 text-secondary_ink_lighter text-sm">

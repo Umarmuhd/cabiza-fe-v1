@@ -110,7 +110,7 @@ export default function Login() {
               </button>
             </div>
             <p className="text-center text-grey_40 text-lg">
-              Don't already have an account
+              Don't already have an account?
               <Link href="/auth/signup">
                 <a className="text-primary ml-1">Signup</a>
               </Link>

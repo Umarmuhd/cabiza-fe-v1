@@ -5,11 +5,11 @@ import PaginationComponent from "../PaginationComponent";
 
 export default function AllAffiliates({ products }) {
   return (
-    <div className="md:w-43/50 mx-auto text-left p-10 bg-white mt-8 rounded-3xl shadow">
+    <div className="md:w-43/50 mx-auto text-left p-10 bg-white mt-8 rounded-3xl shadow mb-10 border">
       <div className="container mx-auto">
         <div className="py-8">
           <div className="-mx-4 sm:-mx-8 px-4 sm:px-8 py-4 overflow-x-auto">
-            <div className="inline-block min-w-full shadow rounded-lg rounded-t-none overflow-hidden">
+            <div className="inline-block min-w-full rounded-lg rounded-t-none overflow-hidden">
               <table className="min-w-full leading-normal">
                 <thead>
                   <tr>
@@ -119,7 +119,7 @@ export default function AllAffiliates({ products }) {
               </table>
             </div>
 
-            <PaginationComponent classNames="mt-8" />
+            {products.length > 5 ? <PaginationComponent classNames="mt-8" /> : null}
           </div>
         </div>
       </div>
