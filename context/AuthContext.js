@@ -30,7 +30,7 @@ export const AuthProvider = ({ children }) => {
       axios.defaults.headers.common = { Authorization: null };
       setUser(null);
       setLoading(false);
-      router.replace("/");
+      router.replace("/auth/login");
     }
   };
 
@@ -65,7 +65,7 @@ export const AuthProvider = ({ children }) => {
   };
 
   return (
-    <AuthContext.Provider value={{ user, loginUser, logout }}>
+    <AuthContext.Provider value={{ user, loginUser, logout, loading }}>
       {loading ? null : children}
     </AuthContext.Provider>
   );

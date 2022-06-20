@@ -1,0 +1,17 @@
+{
+  "name": "chixwvd-dsx8i5d",
+  "hash": "DV0hBUSkPLJFNoPro20WeMzcAuo1lCZk8m7oTo4nko4=",
+  "description": "Image Lambda@Edge for Next CloudFront distribution",
+  "memory": 512,
+  "timeout": 10,
+  "code": "C:\\Users\\umarf\\Desktop\\Cabiza\\cabiza-fe-v1\\.serverless_nextjs\\image-lambda",
+  "shims": [],
+  "handler": "index.handler",
+  "runtime": "nodejs14.x",
+  "env": {},
+  "role": {
+    "arn": "arn:aws:iam::857499884123:role/chixwvd-gko90t3"
+  },
+  "arn": "arn:aws:lambda:us-east-1:857499884123:function:chixwvd-dsx8i5d",
+  "region": "us-east-1"
+}
