@@ -7,7 +7,10 @@ function getAllBanks() {
 }
 
 export const useAllBanks = () => {
-  const { data, isLoading, refetch } = useQuery("all-banks", getAllBanks);
+  const { data, isLoading, refetch } = useQuery("all-banks", getAllBanks, {
+    refetchOnMount: false,
+    refetchOnWindowFocus: false,
+  });
 
-  return { data, isLoading, refetch };
+  return { data, isLoading };
 };
