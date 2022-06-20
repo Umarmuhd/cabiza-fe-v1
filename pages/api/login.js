@@ -2,6 +2,17 @@ import { API_URL } from "@/config/index";
 import axios from "axios";
 import dayjs from "dayjs";
 import cookie from "cookie";
+import Cors from "cors";
+import initMiddleware from "../../lib/init-middleware";
+
+// Initialize the cors middleware
+const cors = initMiddleware(
+  // You can read more about the available options here: https://github.com/expressjs/cors#configuration-options
+  Cors({
+    // Only allow requests with GET, POST and OPTIONS
+    methods: ["GET", "POST", "OPTIONS"],
+  })
+);
 
 export default async (req, res) => {
   if (req.method === "POST") {
