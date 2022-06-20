@@ -72,7 +72,72 @@ export default function AllProducts({ products, balance }) {
         <div className="py-8">
           <div className="-mx-4 sm:-mx-8 px-4 sm:px-8 py-4 overflow-x-auto">
             <div className="inline-block min-w-full rounded-lg rounded-t-none overflow-hidden">
-              <table className="min-w-full leading-normal border-collapse">
+
+              <div className="flex flex-col">
+                <div className="flex px-3">
+                  <span className="w-[39%] py-3 bg-white text-secondary_ink_dark text-left text-2xl leading-5 font-semibold">Products</span>
+                  <span className="w-[13%] py-3 bg-white text-secondary_ink_dark text-left text-2xl leading-5 font-semibold">Sales</span>
+                  <span className="w-[16%] py-3 bg-white text-secondary_ink_dark text-left text-2xl leading-5 font-semibold">Revenue</span>
+                  <span className="w-[16%] ml-[1rem] py-3 bg-white text-secondary_ink_dark text-left text-2xl leading-5 font-semibold">Price</span>
+                </div>
+
+                <div className="mt-2 rounded-xl overflow-hidden border border-[#72777A] border-b-0">
+                  {products.map((product) => (
+                    <div key={product._id} className="border-b border-b-[#979C9E] bg-secondary_sky_lighter px-2 flex items-center">
+                      <span className="px-5 border-b border-b-[#979C9E]bg-white text-sm w-[40%]">
+                        <div className="flex items-center">
+                          <div className="flex-shrink-0 border-r pr-4 py-5 border-r-[#979C9E]">
+                            <a href="#" className="block relative">
+                              <Image
+                                className="h-10 w-10 rounded-full"
+                                src="/images/icons/gallery.svg"
+                                alt="..."
+                                width={40}
+                                height={40}
+                              />
+                            </a>
+                          </div>
+                          <div className="ml-4">
+                            <div className="mb-1 text-secondary_ink_darkest text-lg font-medium">
+                              {product.name}
+                            </div>
+                            <div className="text-sm text-secondary_ink_dark">
+                              <span className="underline">
+                                app.cabiza.com/l/{product.product_id}
+                              </span>
+                            </div>
+                          </div>
+                        </div>
+                      </span>
+                      <span className="px-5 py-5 text-sm w-[16%]">
+                        <p className="text-secondary_ink_dark whitespace-no-wrap">
+                          0
+                        </p>
+                      </span>
+                      <span className="px-5 py-5 text-sm w-[16%]">
+                        <p className="text-secondary_ink_dark whitespace-no-wrap">
+                          $0
+                        </p>
+                      </span>
+                      <span className="px-5 py-5 text-sm w-[16%]">
+                        <span className="relative inline-block text-secondary_ink_dark leading-tight">
+                          ${product.price}
+                        </span>
+                      </span>
+                      <span className="px-5 py-5 text-sm w-[16%]">
+                        <Link
+                          href={`/dashboard/products/create/${product.product_id}`}
+                        >
+                          <a className="text-indigo-600 hover:text-indigo-900">
+                            Edit
+                          </a>
+                        </Link>
+                      </span>
+                    </div>
+                  ))}
+                </div>                
+              </div>
+              {/* <table className="min-w-full leading-normal border-collapse">
                 <thead className="">
                   <tr>
                     <th
@@ -160,7 +225,7 @@ export default function AllProducts({ products, balance }) {
                     </tr>
                   ))}
                 </tbody>
-              </table>
+              </table> */}
             </div>
 
             {/* <PaginationComponent classNames="mt-8" /> */}
