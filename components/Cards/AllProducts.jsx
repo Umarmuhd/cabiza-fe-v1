@@ -73,29 +73,29 @@ export default function AllProducts({ products, balance }) {
           <div className="-mx-4 sm:-mx-8 px-4 sm:px-8 py-4 overflow-x-auto">
             <div className="inline-block min-w-full rounded-lg rounded-t-none overflow-hidden">
               <table className="min-w-full leading-normal border-collapse">
-                <thead>
+                <thead className="">
                   <tr>
                     <th
                       scope="col"
-                      className="px-5 py-3 bg-white text-secondary_ink_dark text-left text-2xl leading-5 font-semibold"
+                      className="px-5 py-3 bg-white text-secondary_ink_dark text-left text-2xl leading-5 font-semibold w-[40%]"
                     >
                       Products
                     </th>
                     <th
                       scope="col"
-                      className="px-5 py-3 bg-white text-secondary_ink_dark text-left text-2xl leading-5 font-semibold"
+                      className="px-5 py-3 bg-white text-secondary_ink_dark text-left text-2xl leading-5 font-semibold w-[20%] mx-auto"
                     >
                       Sales
                     </th>
                     <th
                       scope="col"
-                      className="px-5 py-3 bg-white text-secondary_ink_dark text-left text-2xl leading-5 font-semibold"
+                      className="px-5 py-3 bg-white text-secondary_ink_dark text-left text-2xl leading-5 font-semibold w-[20%]"
                     >
                       Revenue
                     </th>
                     <th
                       scope="col"
-                      className="px-5 py-3 bg-white text-secondary_ink_dark text-left text-2xl leading-5 font-semibold"
+                      className="px-5 py-3 bg-white text-secondary_ink_dark text-left text-2xl leading-5 font-semibold w-[20%]"
                     >
                       Price
                     </th>
@@ -105,10 +105,10 @@ export default function AllProducts({ products, balance }) {
                     ></th>
                   </tr>
                 </thead>
-                <tbody>
+                <tbody className="border bg-secondary_sky_lighter border-[#72777A] rounded-xl overflow-hidden mt-2 w-[100%]">
                   {products.map((product) => (
-                    <tr key={product._id} className="border border-secondary_sky_lighter">
-                      <td className="px-5 py-5 border-b border-gray-200 bg-white text-sm">
+                    <tr key={product._id} className="border bg-secondary_sky_lighter px-4 rounded-xl">
+                      <td className="px-5 py-5 border-b border-b-[#979C9E]bg-white text-sm">
                         <div className="flex items-center">
                           <div className="flex-shrink-0">
                             <a href="#" className="block relative">
@@ -133,22 +133,22 @@ export default function AllProducts({ products, balance }) {
                           </div>
                         </div>
                       </td>
-                      <td className="px-5 py-5 border-b border-gray-200 bg-white text-sm">
+                      <td className="px-5 py-5 border-b border-gray-200 text-sm">
                         <p className="text-secondary_ink_dark whitespace-no-wrap">
                           0
                         </p>
                       </td>
-                      <td className="px-5 py-5 border-b border-gray-200 bg-white text-sm">
+                      <td className="px-5 py-5 border-b border-gray-200 text-sm">
                         <p className="text-secondary_ink_dark whitespace-no-wrap">
                           $0
                         </p>
                       </td>
-                      <td className="px-5 py-5 border-b border-gray-200 bg-white text-sm">
+                      <td className="px-5 py-5 border-b border-gray-200 text-sm">
                         <span className="relative inline-block text-secondary_ink_dark leading-tight">
                           ${product.price}
                         </span>
                       </td>
-                      <td className="px-5 py-5 border-b border-gray-200 bg-white text-sm">
+                      <td className="px-5 py-5 border-b border-gray-200 text-sm">
                         <Link
                           href={`/dashboard/products/create/${product.product_id}`}
                         >
