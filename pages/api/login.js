@@ -3,7 +3,7 @@ import axios from "axios";
 import dayjs from "dayjs";
 import cookie from "cookie";
 import Cors from "cors";
-import initMiddleware from "../../lib/init-middleware";
+import initMiddleware from "../../libs/init-middleware";
 
 // Initialize the cors middleware
 const cors = initMiddleware(
