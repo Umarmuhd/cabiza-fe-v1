@@ -135,7 +135,7 @@ export default function AllProductsEmpty({ user }) {
           okay if you make mistakes, first try is not always perfect.
         </p>
 
-        <div className="flex justify-center mt-6">
+        <div className="flex justify-center mt-6 mb-10">
           <Link href="/dashboard/products/create">
             <a className="py-4 px-8 bg-primary_brand_lightest leading-4 font-medium text-primary rounded-4xl">
               <span>Create Product</span>

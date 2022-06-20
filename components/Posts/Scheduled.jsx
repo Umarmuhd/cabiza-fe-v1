@@ -47,16 +47,16 @@ const PostItems = () => {
   }
 
   return (
-    <div className="mb-4 w-[17.4rem]">
+    <div className="mb-4 w-[17.4rem] sm:w-[100%]">
       <div
         className={
-          "sm:p-6 py-6 px-3 rounded-2xl border border-secondary_sky_dark w-[100%]" +
+          "sm:p-6 py-6 px-3 rounded-2xl border border-secondary_sky_dark w-[100%] " +
           (expanded && size.width > 480 ? "rounded-b-none border-b-0" : "")
         }
         onClick={() => setExpanded(!expanded)}
       >
         <div className="flex justify-between flex-col sm:flex-row">
-          <div className="sm:flex flex-col">
+          <div className="flex flex-col sm:flex-row">
             {/* <Image
               src="/images/placeholder-image.svg"
               alt="placeholder"
@@ -64,7 +64,7 @@ const PostItems = () => {
               height={80}
             /> */}
 
-            <img src="/images/placeholder-image.svg" className="w-[100%] h-[10rem] object-cover rounded-lg mb-4"/>
+            <img src="/images/placeholder-image.svg" className="w-[100%] w-[12rem] h-[10rem] object-cover rounded-lg mb-4"/>
             <div className="sm:ml-6">
               <h2 className="text-lg font-medium text-secondary_ink_darkest mb-2">
                 Lorem ipsum dolor sit amet consectetur.
@@ -100,7 +100,7 @@ const PostItems = () => {
             </div>
           </div>
             <li className="">
-              <button className="leading-4 text-base font-medium text-secondary_sky_dark sm:py-2 py-3 px-3 sm:rounded-4xl border border-secondary_sky_light bg-secondary_sky_light mt-5 rounded-lg w-[100%]">
+              <button className="leading-4 text-base font-medium text-secondary_sky_dark sm:py-2 py-3 px-3 sm:rounded-4xl border border-secondary_sky_light bg-secondary_sky_light mt-5 rounded-lg w-[100%] sm:hidden block">
                 Queued
               </button>
             </li>
@@ -204,7 +204,7 @@ export default function Scheduled() {
               All scheduled posts
             </h1>
             <div className={`${styles.cards}`}>
-              <ul className={`flex sm:flex-col gap-x-[5rem] overflow-hidden ${styles["product-cards"]}`}>
+              <ul className={`flex flex-col gap-x-[5rem] overflow-hidden ${styles["product-cards"]}`}>
                 <PostItems />
                 <PostItems />
                 <PostItems />
