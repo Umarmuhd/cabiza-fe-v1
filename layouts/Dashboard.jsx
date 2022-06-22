@@ -13,9 +13,9 @@ export default function Dashboard({ children }) {
 
   const router = useRouter();
 
-  // if (typeof window !== "undefined") {
-  //   if (!user) router.push("/auth/login");
-  // }
+  if (typeof window !== "undefined") {
+    if (!user) router.push("/auth/login");
+  }
 
   return (
     <div className="flex min-h-screen h-full">
