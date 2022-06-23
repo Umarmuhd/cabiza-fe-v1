@@ -56,9 +56,9 @@ const ProductItem = ({ product }) => {
             height={36}
           /> */}
 
-          <Link href={`/${product.user.username}/products`}>
+          <Link href={`/${product?.user?.username}/products`}>
             <a className="font-medium ml-2 text-secondary_ink_lighter block border-b border-b-secondary_ink_lighter">
-              {product.user.full_name}
+              {product?.user?.full_name}
             </a>
           </Link>
         </div>
