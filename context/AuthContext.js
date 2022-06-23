@@ -11,7 +11,7 @@ export const AuthProvider = ({ children }) => {
 
   const router = useRouter();
 
-  useEffect(() => checkUserLoggedIn(), []);
+  // useEffect(() => checkUserLoggedIn(), []);
 
   const loginUser = (user, token) => {
     setUser(user);
