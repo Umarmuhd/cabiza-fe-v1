@@ -227,7 +227,6 @@ export default function MainNavigation() {
                       </a>
                     </li>
                     <li>
-<<<<<<< HEAD
                       <Link href='/auth/signup'>
                         <a
                           className='inline-flex items-center justify-center sm::w-full h-12 px-6 font-medium tracking-wide transition duration-200 sm:rounded rounded-lg shadow-md bg-deep-purple-accent-400 hover:bg-deep-purple-accent-700 focus:shadow-outline focus:outline-none w-[max-content]'
@@ -237,18 +236,6 @@ export default function MainNavigation() {
                           Sign up
                         </a>
                       </Link>
-=======
-                      <a
-                        target="_blank"
-                        href={`http://app.${window.location.host}/auth/signup`}
-                        rel="noopener noreferrer"
-                        className="inline-flex items-center justify-center w-full h-12 px-6 font-medium tracking-wide text-white transition duration-200 rounded shadow-md bg-deep-purple-accent-400 hover:bg-deep-purple-accent-700 focus:shadow-outline focus:outline-none"
-                        aria-label="Sign up"
-                        title="Sign up"
-                      >
-                        Sign up
-                      </a>
->>>>>>> c431d50e83268f9055aff286b60b2ef3d2a1bf5c
                     </li>
                   </ul>
                 </nav>

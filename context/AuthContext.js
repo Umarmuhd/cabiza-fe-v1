@@ -33,7 +33,7 @@ export const AuthProvider = ({ children }) => {
       router.replace("/auth/login");
     }
   };
-
+  
   const checkUserLoggedIn = async () => {
     try {
       setLoading(true);
