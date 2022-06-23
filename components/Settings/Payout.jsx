@@ -1,8 +1,6 @@
 import React, { useContext, useState, useEffect } from "react";
 import { useForm } from "react-hook-form";
 import Card from "@/components/Cards/Card";
-import Toggle from "@/components/Toggle/Toggle";
-
 import AuthContext from "@/context/AuthContext";
 import CheckSwitch from "../checkSwitch/index";
 import toast from "react-hot-toast";
@@ -11,6 +9,7 @@ import { API_URL } from "@/config/index";
 import Alert from "../Alert";
 import Calendar from "react-calendar";
 import "react-calendar/dist/Calendar.css";
+import { useAllBanks } from "@/hooks/useAllBanks";
 
 const AccountTypeIcon = () => (
   <svg
@@ -68,7 +67,6 @@ const WarningIcon = () => (
 );
 
 export default function Payout() {
-
   //calendar
   const [showCalendar, setShowCalendar] = useState(false);
 
@@ -91,13 +89,53 @@ export default function Payout() {
     ];
 
     return `${months[month]} ${day}, ${year}`;
-  };  
-  
+  };
+
   const {
     register,
     handleSubmit,
     formState: { errors },
   } = useForm();
+
+  const { data: banks, isLoading: banksLoading } = useAllBanks();
+
+  const BankSelect = React.forwardRef(
+    ({ onChange, onBlur, name, label, defaultValue }, ref) => (
+      <>
+        <label className="block text-secondary font-medium mb-4 leading-4">
+          {label}
+        </label>
+        <select
+          className="border border-secondary_sky_base px-4 py-3 placeholder-grey_80 text-grey_40 bg-white focus:outline-none focus:ring w-full rounded-lg"
+          name={name}
+          ref={ref}
+          onChange={onChange}
+          onBlur={onBlur}
+          defaultValue={defaultValue}
+        >
+          <option />
+          {!banksLoading &&
+            banks?.map((bank) => (
+              <option key={bank.slug} value={JSON.stringify(bank)}>
+                {bank.name}
+              </option>
+            ))}
+
+          <style jsx>{`
+            select {
+              padding: 1rem;
+              -webkit-appearance: none;
+              -moz-appearance: none;
+              appearance: none;
+              background: url("data:image/svg+xml,%3Csvg width='14' height='8' viewBox='0 0 14 8' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M1 1L7 7L13 1' stroke='%23090A0A' stroke-width='1.5' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E ")
+                97% / 3% no-repeat;
+            }
+          `}</style>
+        </select>
+      </>
+    )
+  );
+  BankSelect.displayName = "BankSelect";
 
   const { user } = useContext(AuthContext);
 
@@ -115,6 +153,8 @@ export default function Payout() {
       day,
       month,
       year,
+      bank,
+      account_number,
     } = values;
     try {
       setLoading(true);
@@ -129,6 +169,12 @@ export default function Payout() {
         },
         birthday: `${day}/${month}/${year}`,
         paypal: { email: paypal_email },
+        bank_account: {
+          bank_code: JSON.parse(bank).code,
+          account_name: "John Snow",
+          account_number,
+          bank_name: JSON.parse(bank).name,
+        },
       };
       const url = `${API_URL}/user/profile`;
       await axios.post(url, payload);
@@ -136,12 +182,10 @@ export default function Payout() {
       setLoading(false);
     } catch (error) {
       console.error(error.message);
-      toast.error(error.response.data.message);
+      toast.error(error?.response.data.message);
       setLoading(false);
     }
   };
-
-  console.log(user);
 
   return (
     <form onSubmit={handleSubmit(handleUpdatePayout)} className="px-4 md:px-0">
@@ -296,7 +340,7 @@ export default function Payout() {
                     min: 0,
                     max: 31,
                   })}
-                  defaultValue={user?.birthday?.split("/")[0]}                  
+                  defaultValue={user?.birthday?.split("/")[0]}
                   value={value?.getDate()}
                   onClick={() => setShowCalendar(true)}
                   readOnly
@@ -307,19 +351,27 @@ export default function Payout() {
                   type="number"
                   className="border border-sky_light mt-3 h-10 rounded text-secondary_ink_darkest bg-white px-4 w-[50%] mr-2 text-left flex justify-between items-center focus:!border focus:border-sky_light"
                   placeholder="Month"
-                  {...register("month", {})}
+                  {...register("month", {
+                    required: true,
+                    min: 0,
+                    max: 12,
+                    maxLength: 2,
+                  })}
                   defaultValue={user?.birthday?.split("/")[1]}
                   value={value?.getMonth()}
                   onClick={() => setShowCalendar(true)}
                   readOnly
                 />
                 <input
-                  id="lname"
-                  name="lname"
+                  id="Year"
+                  name="year"
                   type="number"
                   className="border border-sky_light mt-3 h-10 rounded text-secondary_ink_darkest bg-white px-4 w-[50%] mr-2 text-left flex justify-between items-center focus:!border focus:border-sky_light"
                   placeholder="Year"
-                  {...register("year", {})}
+                  {...register("year", {
+                    max: 3000,
+                    minLength: 4,
+                  })}
                   defaultValue={user?.birthday?.split("/")[2]}
                   value={value?.getFullYear()}
                   onClick={() => setShowCalendar(true)}
@@ -336,8 +388,9 @@ export default function Payout() {
                 ) : null}
 
                 <div
-                  className={`absolute top-[100%] left-[1.5rem] z-[101] ${!showCalendar ? "hidden" : ""
-                    }`}
+                  className={`absolute top-[100%] left-[1.5rem] z-[101] ${
+                    !showCalendar ? "hidden" : ""
+                  }`}
                 >
                   <Calendar
                     onChange={onChange}
@@ -365,6 +418,52 @@ export default function Payout() {
                   {...register("paypal_email", { required: true })}
                   defaultValue={user?.paypal?.email}
                 />
+              </div>
+            </div>
+          </div>
+
+          <div className="mt-8">
+            <h5 className="text-secondary_ink_darkest font-normal flex justify-between mb-3">
+              <span className="text-lg">Bank Details</span>
+            </h5>
+
+            <div className="flex space-x-6">
+              <div className="relative md:w-1/2">
+                <BankSelect
+                  label="Bank name"
+                  defaultValue={{
+                    name: user?.bank_account?.bank_name,
+                    code: user?.bank_account?.bank_code,
+                  }}
+                  {...register("bank", { required: true })}
+                />
+                {errors.bank?.type === "required" && (
+                  <p className="text-left text-red-600 text-xs mt-1">
+                    Bank name is required
+                  </p>
+                )}
+              </div>
+              <div className="relative md:w-1/2">
+                <label
+                  className="block text-secondary font-medium leading-4 mb-4"
+                  htmlFor="account_number"
+                >
+                  Account number
+                </label>
+                <input
+                  type="number"
+                  className="border border-secondary_sky_base px-4 py-4 placeholder-grey_80 text-grey_40 bg-white focus:outline-none focus:ring w-full rounded-lg"
+                  style={{ transition: "all 0.15s ease 0s" }}
+                  id="account_number"
+                  placeholder="Enter your account number"
+                  defaultValue={user?.bank_account?.account_number}
+                  {...register("account_number", { required: true })}
+                />
+                {errors.account_number?.type === "required" && (
+                  <p className="text-left text-red-600 text-xs mt-1">
+                    Account number is required
+                  </p>
+                )}
               </div>
             </div>
           </div>

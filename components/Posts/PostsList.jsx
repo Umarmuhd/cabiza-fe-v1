@@ -1,14 +1,14 @@
-import React, { useState, useContext, useEffect } from 'react';
-import axios from 'axios';
-import { toast } from 'react-hot-toast';
-import { API_URL } from '@/config/index';
-import AuthContext from '@/context/AuthContext';
-import Link from 'next/link';
-import Router from 'next/router';
-import Image from 'next/image';
-import moment from 'moment';
-import { Switch } from '@headlessui/react';
-import PaginationComponent from '../PaginationComponent';
+import React, { useState, useContext, useEffect } from "react";
+import axios from "axios";
+import { toast } from "react-hot-toast";
+import { API_URL } from "@/config/index";
+import AuthContext from "@/context/AuthContext";
+import Link from "next/link";
+import Router from "next/router";
+import Image from "next/image";
+import moment from "moment";
+import { Switch } from "@headlessui/react";
+import PaginationComponent from "../PaginationComponent";
 
 const SpinIcon = () => (
   <svg
@@ -76,8 +76,8 @@ const PostItem = ({ post, deletePost, user }) => {
     <div className="mb-4">
       <div
         className={
-          'p-6 rounded-2xl border border-secondary_sky_dark ' +
-          (expanded && 'rounded-b-none border-b-0')
+          "p-6 rounded-2xl border border-secondary_sky_dark " +
+          (expanded && "rounded-b-none border-b-0")
         }
         onClick={() => setExpanded(!expanded)}
       >
@@ -153,18 +153,18 @@ const PostItem = ({ post, deletePost, user }) => {
                   checked={enabled}
                   onChange={handlePublish}
                   disabled={loading}
-                  className={`${enabled ? 'bg-primary' : 'bg-grey_80'}
+                  className={`${enabled ? "bg-primary" : "bg-grey_80"}
   relative inline-flex flex-shrink-0 h-[18px] w-[32px] border-2 border-transparent rounded-full cursor-pointer transition-colors ease-in-out duration-200 focus:outline-none focus-visible:ring-2  focus-visible:ring-white focus-visible:ring-opacity-75`}
                 >
                   <span className="sr-only">Use setting</span>
                   <span
                     aria-hidden="true"
-                    className={`${enabled ? 'translate-x-4' : 'translate-x-0'}
+                    className={`${enabled ? "translate-x-4" : "translate-x-0"}
   pointer-events-none inline-block h-[14px] w-[13px] rounded-full bg-white shadow-lg transform ring-0 transition ease-in-out duration-200`}
                   />
                 </Switch>
                 <span className="ml-2 block text-grey_40 text-lg font-medium">
-                  {enabled ? 'Published' : 'Unpublished'}
+                  {enabled ? "Published" : "Unpublished"}
                 </span>
               </div>
 
@@ -175,7 +175,7 @@ const PostItem = ({ post, deletePost, user }) => {
           </div>
           <ul className="flex items-center mb-4 md:mb-0 w-full md:w-auto md:justify-start justify-between">
             <li className="md:pl-3">
-              <Link href={'/dashboard/posts/' + post._id}>
+              <Link href={"/dashboard/posts/" + post._id}>
                 <a className="leading-4 text-base font-medium text-primary py-2 px-3 rounded-4xl border border-primary">
                   Edit
                 </a>
@@ -212,8 +212,12 @@ export default function PostsList() {
   const [posts, setPosts] = useState([]);
   const [searchedPosts, setSearchedPosts] = useState([]);
   const { query } = Router;
-  
-  useEffect(() => { posts.length > 0 ? setSearchedPosts(posts.filter(post => post.title.includes(query.s))) : null }, [query.s, posts])
+
+  useEffect(() => {
+    posts.length > 0
+      ? setSearchedPosts(posts.filter((post) => post.title.includes(query.s)))
+      : null;
+  }, [query.s, posts]);
 
   const [loading, setLoading] = useState(false);
 
@@ -238,7 +242,7 @@ export default function PostsList() {
     try {
       setLoading(true);
 
-      if (confirm('Are you sure you want to delete this post!?') == false) {
+      if (confirm("Are you sure you want to delete this post!?") == false) {
         setLoading(false);
         return;
       }
@@ -255,7 +259,6 @@ export default function PostsList() {
     }
   };
 
-
   // posts.filter(post =>)
 
   return (
@@ -263,7 +266,7 @@ export default function PostsList() {
       <div className="md:w-43/50 mx-auto md:my-10">
         <div
           className="sm:p-8 py-8 bg-white rounded-2xl"
-          style={{ boxShadow: '0px 20px 40px rgba(0, 0, 0, 0.06)' }}
+          style={{ boxShadow: "0px 20px 40px rgba(0, 0, 0, 0.06)" }}
         >
           {loading ? (
             <React.Fragment>
@@ -273,9 +276,9 @@ export default function PostsList() {
             </React.Fragment>
           ) : (
             <React.Fragment>
-                {searchedPosts.length > 0 ? (
+              {posts.length > 0 ? (
                 <div>
-                    {searchedPosts.map((post) => (
+                  {posts.map((post) => (
                     <React.Fragment key={post._id}>
                       <PostItem
                         post={post}
@@ -299,7 +302,7 @@ export default function PostsList() {
                         Click on
                         <Link href="/dashboard/posts/create">
                           <a className="text-primary"> New post</a>
-                        </Link>{' '}
+                        </Link>{" "}
                         to create your first post!
                       </p>
                     </div>
@@ -314,7 +317,7 @@ export default function PostsList() {
                       <a className="text-primary block bg-primary_brand_lightest w-[max-content] mx-auto mt-7 px-8 py-2 rounded-full text-lg">
                         Create post
                       </a>
-                    </Link>{' '}
+                    </Link>{" "}
                   </div>
                 </div>
               )}

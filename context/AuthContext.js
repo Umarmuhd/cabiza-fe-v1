@@ -30,18 +30,18 @@ export const AuthProvider = ({ children }) => {
       axios.defaults.headers.common = { Authorization: null };
       setUser(null);
       setLoading(false);
-      router.replace("/");
+      router.replace("/auth/login");
     }
   };
 
   const checkUserLoggedIn = async () => {
     try {
       setLoading(true);
-      const res = await axios.get(`${NEXT_URL}/api/user`, {
-        withCredentials: true,
-        credentials: "include",
-        method: "GET",
-      });
+      // const res = await axios.get(`${NEXT_URL}/api/user`, {
+      //   withCredentials: true,
+      //   credentials: "include",
+      //   method: "GET",
+      // });
 
       setTimeout(() => {
         checkUserLoggedIn();
@@ -65,7 +65,7 @@ export const AuthProvider = ({ children }) => {
   };
 
   return (
-    <AuthContext.Provider value={{ user, loginUser, logout }}>
+    <AuthContext.Provider value={{ user, loginUser, logout, loading }}>
       {loading ? null : children}
     </AuthContext.Provider>
   );

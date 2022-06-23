@@ -228,7 +228,7 @@ export default function AllProducts({ products, balance }) {
               </table> */}
             </div>
 
-            {/* <PaginationComponent classNames="mt-8" /> */}
+            <PaginationComponent classNames="mt-8" />
           </div>
         </div>
       </div>
