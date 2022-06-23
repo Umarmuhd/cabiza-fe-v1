@@ -7,11 +7,11 @@ const AuthContext = createContext({});
 
 export const AuthProvider = ({ children }) => {
   const [user, setUser] = useState(null);
-  const [loading, setLoading] = useState(false);
+  const [loading, setLoading] = useState(true);
 
   const router = useRouter();
 
-  // useEffect(() => checkUserLoggedIn(), []);
+  useEffect(() => checkUserLoggedIn(), []);
 
   const loginUser = (user, token) => {
     setUser(user);
@@ -37,11 +37,11 @@ export const AuthProvider = ({ children }) => {
   const checkUserLoggedIn = async () => {
     try {
       setLoading(true);
-      const res = await axios.get(`${NEXT_URL}/api/user`, {
-        withCredentials: true,
-        credentials: "include",
-        method: "GET",
-      });
+      // const res = await axios.get(`${NEXT_URL}/api/user`, {
+      //   withCredentials: true,
+      //   credentials: "include",
+      //   method: "GET",
+      // });
 
       setTimeout(() => {
         checkUserLoggedIn();
