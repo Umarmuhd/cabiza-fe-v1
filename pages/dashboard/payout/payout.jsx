@@ -93,15 +93,15 @@ const Payments = () => {
   const [value, onChange] = useState(new Date());
 
   return (
-    <div className="px-4 sm:px-6 md:px-0 w-full max-w-9xl mx-auto h-[92vh]">
+    <div className="px-4 sm:px-6 md:px-0 w-full max-w-9xl mx-auto bg-secondary_sky_lightest overflow-y-hidden">
       <header
-        className="bg-secondary_sky_lightest py-4 h-20"
+        className="bg-inherit py-4 h-20"
         style={{
           boxShadow: '0px 4px 20px rgba(0, 0, 0, 0.04)',
         }}
       >
         <div className="md:w-43/50 mx-auto flex flex-col md:flex-row justify-between">
-          <div className="flex md:mt-0 mt-1 bg-secondary_sky_light rounded-xl border border-secondary_sky_light md:w-[max-content] p-[.1rem] w-full justify-between md:justify-start md:float-left">
+          <div className="flex md:mt-0 mt-1 bg-secondary_sky_light rounded-xl border border-secondary_sky_light md:w-[max-content] p-[.1rem] w-full justify-between md:justify-start md:float-left w-[max-content]">
             <button
               className={`${
                 payout.previous
@@ -124,7 +124,7 @@ const Payments = () => {
             </button>
           </div>
 
-          <div className="w-full md:w-auto flex justify-between md:justify-start mt-3 md:mt-0 md:float-right items-center">
+          <div className="w-full md:w-auto flex justify-between md:justify-start md:mt-3 md:float-right items-center hidden md:block">
             <Link href="/dashboard/settings">
             <a className="bg-primary text-white flex items-center py-2 px-4 rounded-full mr-4 h-8">
               <svg
@@ -172,7 +172,7 @@ const Payments = () => {
         </div>
       </header>
 
-      <main className="md:w-43/50 mx-auto mt-10 bg-white rounded-xl px-6 md:px-12 py-8 md:py-10 mb-10">
+      <main className="md:w-43/50 mx-auto mt-10 bg-white rounded-xl px-6 md:px-12 md:py-8 pt-4 md:py-10 mb-10">
         {payout.previous ? (
           <>
             {showCalendar ? <div className="fixed top-0 left-0 w-[100vw] h-[100vh] z-[99]" onClick={() => setShowCalendar(!showCalendar)}></div> : null}
@@ -210,7 +210,7 @@ const Payments = () => {
 
         <div>
           <div className="bg-primary_brand_darkest text-white rounded-t-xl flex justify-between relative px-10 py-5 items-center">
-            <div className="flex items-center">
+            <div className="flex items-center md:block hidden">
               <svg
                 width="24"
                 height="20"

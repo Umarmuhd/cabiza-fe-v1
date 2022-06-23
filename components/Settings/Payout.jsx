@@ -146,47 +146,47 @@ export default function Payout() {
   return (
     <form onSubmit={handleSubmit(handleUpdatePayout)} className="px-4 md:px-0">
       <Card title="Get Paid">
-        <p className="mt-2 mb-6 w-[70%] text-secondary_ink_lighter">
+        <p className="mt-2 mb-6 md:w-[70%] text-secondary_ink_lighter">
           Just like a real paycheck, your account balance is deposited to your
           bank account. Turn things on by filling out the fields below.
         </p>
         <div>
           <div className="flex flex-col mb-8">
-            <h5 className="text-secondary_ink_darkest">
+            <h5 className="text-secondary_ink_darkest flex md:flex-row flex-col gap-y-2">
               <span className="float-left">Account Type</span>
               <span className="float-right text-primary_brand_light">
                 What type of account should I choose?{" "}
               </span>
             </h5>
 
-            <div className="flex w-[100%]">
+            <div className="flex md:flex-row flex-col w-[100%] md:mt-0 mt-2">
               <CheckSwitch
                 label="Individual"
                 name="Account_type"
-                styles="border border-sky_light mt-3 h-10 rounded text-secondary_ink_lighter bg-white px-4 w-[50%] mr-2 text-left flex justify-between items-center cursor-pointer"
+                styles="border border-sky_light mt-3 h-10 rounded text-secondary_ink_lighter bg-white px-4 md:w-[50%] w-[100%] mr-2 text-left flex justify-between items-center cursor-pointer"
                 checked
               />
 
               <CheckSwitch
                 label="Business"
                 name="Account_type"
-                styles="border border-sky_light mt-3 h-10 rounded text-secondary_ink_lighter bg-sky_light px-4 w-[50%] text-left flex justify-between items-center cursor-pointer"
+                styles="border border-sky_light md:mt-3 h-10 rounded text-secondary_ink_lighter bg-sky_light px-4 md:w-[50%] w-[100%] text-left flex justify-between items-center cursor-pointer"
               />
             </div>
           </div>
 
           <div className="flex flex-col">
-            <h5 className="text-secondary_ink_darkest font-normal flex justify-between">
+            <h5 className="text-secondary_ink_darkest font-normal flex justify-between md:flex-row flex-col gap-y-2">
               <span className="text-lg">Your Personal Information</span>
-              <span className="text-primary_brand_light text-sm self-end">
+              <span className="text-primary_brand_light text-sm md:self-end">
                 Why does Cabiza need this information?{" "}
               </span>
             </h5>
-            <div className="flex w-[100%]">
+            <div className="flex md:flex-row flex-col w-[100%] md:mt-0 mt-4">
               <input
                 id="fname"
                 name="fname"
-                className="border border-sky_light mt-3 h-10 text-secondary_ink_lighter bg-white px-4 w-[100%] text-left flex justify-between items-center shadow rounded-tl"
+                className="border border-sky_light mt-3 h-10 text-secondary_ink_lighter bg-white px-4 w-[100%] text-left flex justify-between items-center md:shadow rounded-tl"
                 placeholder="First Name"
                 defaultValue={user?.first_name}
                 {...register("first_name", { required: true })}
@@ -194,7 +194,7 @@ export default function Payout() {
               <input
                 id="lname"
                 name="lname"
-                className="border border-sky_light mt-3 h-10 text-secondary_ink_lighter bg-white px-4 w-[100%] text-left flex justify-between items-center shadow rounded-tr border-l-0"
+                className="border border-sky_light md:mt-3 h-10 text-secondary_ink_lighter bg-white px-4 w-[100%] text-left flex justify-between items-center md:shadow rounded-tr md:border-l-0 md:border-t border-t-0"
                 placeholder="Last Name"
                 defaultValue={user?.last_name}
                 {...register("last_name", { required: true })}
@@ -219,7 +219,7 @@ export default function Payout() {
               )}
             </div>
 
-            <div className="flex w-[100%]">
+            <div className="flex w-[100%] md:flex-row flex-col">
               <div className="w-full">
                 <input
                   id="City"
@@ -240,7 +240,7 @@ export default function Payout() {
                 <input
                   id="postal-code"
                   name="postal-code"
-                  className="border border-sky_light h-10 text-secondary_ink_lighter bg-white px-4 w-[100%] text-left flex justify-between items-center border-t-0 border-l-0"
+                  className="border border-sky_light h-10 text-secondary_ink_lighter bg-white px-4 w-[100%] text-left flex justify-between items-center border-t-0 md:border-l-0"
                   placeholder="Postal Code"
                   {...register("postal_code", { required: true })}
                   defaultValue={user?.address?.postal_code}
@@ -257,7 +257,7 @@ export default function Payout() {
               <input
                 id="country"
                 name="country"
-                className="border border-sky_light h-10 text-secondary_ink_lighter bg-white px-4 w-[100%] text-left flex justify-between items-center shadow rounded-b border-t-0"
+                className="border border-sky_light h-10 text-secondary_ink_lighter bg-white px-4 w-[100%] text-left flex justify-between items-center md:shadow rounded-b border-t-0"
                 placeholder="Nigeria"
                 defaultValue={user?.address?.country}
                 {...register("country", { required: true })}
@@ -271,7 +271,7 @@ export default function Payout() {
           </div>
 
           <div className="flex flex-col mt-8">
-            <h5 className="text-secondary_ink_darkest font-normal flex justify-between mb-3">
+            <h5 className="text-secondary_ink_darkest font-normal flex justify-between mb-3 md:flex-row flex-col gap-y-2">
               <span className="text-lg">Identity Verification</span>
               <span className="text-primary_brand_light text-sm self-end">
                 Why does Cabiza need this information?{" "}
@@ -288,7 +288,7 @@ export default function Payout() {
                   id="Day"
                   name="Day"
                   type="number"
-                  className="border border-sky_light mt-3 h-10 rounded  bg-white text-secondary_ink_darkest px-4 w-[50%] mr-2 text-left flex justify-between items-center"
+                  className="border border-sky_light mt-3 h-10 rounded  bg-white text-secondary_ink_darkest px-4 w-[50%] mr-2 text-left flex justify-between items-center focus:!border focus:border-sky_light"
                   placeholder="Day"
                   {...register("day", {
                     required: true,
@@ -305,7 +305,7 @@ export default function Payout() {
                   id="Month"
                   name="Month"
                   type="number"
-                  className="border border-sky_light mt-3 h-10 rounded text-secondary_ink_darkest bg-white px-4 w-[50%] mr-2 text-left flex justify-between items-center"
+                  className="border border-sky_light mt-3 h-10 rounded text-secondary_ink_darkest bg-white px-4 w-[50%] mr-2 text-left flex justify-between items-center focus:!border focus:border-sky_light"
                   placeholder="Month"
                   {...register("month", {})}
                   defaultValue={user?.birthday?.split("/")[1]}
@@ -317,7 +317,7 @@ export default function Payout() {
                   id="lname"
                   name="lname"
                   type="number"
-                  className="border border-sky_light mt-3 h-10 rounded text-secondary_ink_darkest bg-white px-4 w-[50%] mr-2 text-left flex justify-between items-center"
+                  className="border border-sky_light mt-3 h-10 rounded text-secondary_ink_darkest bg-white px-4 w-[50%] mr-2 text-left flex justify-between items-center focus:!border focus:border-sky_light"
                   placeholder="Year"
                   {...register("year", {})}
                   defaultValue={user?.birthday?.split("/")[2]}

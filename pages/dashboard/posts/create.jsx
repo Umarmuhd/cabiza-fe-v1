@@ -167,7 +167,7 @@ export default function CreatePost() {
   }, [value]);
 
   return (
-    <div className="md:w-[85%] w-[100%] ml-auto">
+    <div className="lg:w-[85%] w-[100%] ml-auto">
       <FullNav title="Posts">
         <div className="bg-secondary_sky_lightest py-2 md:px-0 px-4">
           <div className="flex justify-between items-center md:w-43/50 mx-auto">

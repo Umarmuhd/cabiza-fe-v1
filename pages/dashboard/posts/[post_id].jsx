@@ -108,7 +108,7 @@ export default function EditPost() {
   useEffect(() => fetchPost(), [fetchPost]);
 
   return (
-    <div className="md:w-[85%] w-[100%] ml-auto">
+    <div className="lg:w-[85%] w-[100%] ml-auto">
       <DashboardNav title="Posts" />
       <div
         className="bg-secondary_sky_lightest py-6 md:px-0 px-4"

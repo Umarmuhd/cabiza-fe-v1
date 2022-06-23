@@ -118,7 +118,7 @@ const Products = ({}) => {
   }, [router.query.s, products])
 
   return (
-    <div className="md:w-[85%] w-[100%] ml-auto">
+    <div className="lg:w-[85%] w-[100%] ml-auto">
       <Tab.Group as={'div'} className="bg-secondary_sky_lighter">
         <FullNav title="Products">
           <div className="flex justify-between items-center md:w-43/50 mx-auto pr-4">
