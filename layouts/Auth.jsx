@@ -12,7 +12,7 @@ export default function Auth({ children }) {
 
   const router = useRouter();
   if (typeof window !== "undefined" && user) {
-    router.replace("/profile");
+    router.replace(user?.username ? "/profile" : "/onboarding");
   }
 
   return (

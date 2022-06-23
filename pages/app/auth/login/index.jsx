@@ -10,6 +10,7 @@ import Auth from "layouts/Auth";
 import { NEXT_URL } from "config/index";
 import toast from "react-hot-toast";
 import Alert from "@/components/Alert";
+import { API_URL } from "@/config/index";
 
 export default function Login() {
   const {
@@ -27,12 +28,11 @@ export default function Login() {
   const handleLogin = async (values) => {
     try {
       setLoading(true);
-      const response = await axios.post(`${NEXT_URL}/api/login`, values);
-      const { user, token } = response.data;
+      const { data } = await axios.post(`${API_URL}/auth/login`, values);
+      loginUser(data.user, data.accessToken);
       toast.custom(<Alert color="#24C78C" text="Login successful !" />);
-      loginUser(user, token);
       setLoading(false);
-      router.push("/" + user.username ? "profile" : "onboarding");
+      router.replace(data.user.username ? "/profile" : "/onboarding");
     } catch (error) {
       setError(error?.response?.data?.message);
       setLoading(false);

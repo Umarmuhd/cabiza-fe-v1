@@ -37,11 +37,11 @@ export const AuthProvider = ({ children }) => {
   const checkUserLoggedIn = async () => {
     try {
       setLoading(true);
-      const res = await axios.get(`${NEXT_URL}/api/user`, {
-        withCredentials: true,
-        credentials: "include",
-        method: "GET",
-      });
+      // const res = await axios.get(`${NEXT_URL}/api/user`, {
+      //   withCredentials: true,
+      //   credentials: "include",
+      //   method: "GET",
+      // });
 
       setTimeout(() => {
         checkUserLoggedIn();

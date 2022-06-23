@@ -1,6 +1,4 @@
 import { useCallback, useEffect, useRef } from "react";
-import { useQuery } from "react-query";
-import axios from "../axios";
 
 function useTimeout(callback, delay) {
   const callbackRef = useRef(callback);
@@ -37,8 +35,3 @@ export function useDebounce(callback, delay, dependencies) {
   useEffect(reset, [...dependencies, reset]);
   useEffect(clear, [clear]);
 }
-
-const fetchAgentTransactions = () => axios.get(`/transactions/me`);
-//Fetch Agents Transactions Hook
-export const useAgentTransactions = () =>
-  useQuery("all-transactions", () => fetchAgentTransactions());
