@@ -118,7 +118,7 @@ const Connections = () => {
           </div>
         </div>
         <div className='mt-7 text-center w-[max-content] mx-auto text-primary'>
-          <Link href='/dashboard/profile/customize'>
+          <Link href='/profile/customize'>
             <a className='flex items-center'>
               <LeftIcon />
               <span className='ml-2'>Back</span>

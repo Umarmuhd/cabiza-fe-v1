@@ -71,7 +71,7 @@ export default function EditPost() {
         </div>
       );
 
-      router.push("/dashboard/posts");
+      router.push("/posts");
     } catch (error) {
       console.error(error.message);
       setLoading(false);
@@ -108,7 +108,7 @@ export default function EditPost() {
   useEffect(() => fetchPost(), [fetchPost]);
 
   return (
-    <div className="md:w-[85%] w-[100%] ml-auto">
+    <div className="lg:w-[85%] w-[100%] ml-auto">
       <DashboardNav title="Posts" />
       <div
         className="bg-secondary_sky_lightest py-6 md:px-0 px-4"
@@ -140,7 +140,7 @@ export default function EditPost() {
           </div>
 
           <div className="flex items-center justify-between">
-            <Link href="/dashboard/posts">
+            <Link href="/posts">
               <a className="leading-4 text-base font-medium text-primary py-2 px-3 rounded-4xl border border-primary flex items-center mr-6">
                 <svg
                   width="16"

@@ -175,7 +175,7 @@ const PostItem = ({ post, deletePost, user }) => {
           </div>
           <ul className="flex items-center mb-4 md:mb-0 w-full md:w-auto md:justify-start justify-between">
             <li className="md:pl-3">
-              <Link href={"/dashboard/posts/" + post._id}>
+              <Link href={"/posts/" + post._id}>
                 <a className="leading-4 text-base font-medium text-primary py-2 px-3 rounded-4xl border border-primary">
                   Edit
                 </a>
@@ -300,7 +300,7 @@ export default function PostsList() {
                       </p>
                       <p className="text-secondary_ink_lighter">
                         Click on
-                        <Link href="/dashboard/posts/create">
+                        <Link href="/posts/create">
                           <a className="text-primary"> New post</a>
                         </Link>{" "}
                         to create your first post!
@@ -313,7 +313,7 @@ export default function PostsList() {
                       width={245}
                       height={240}
                     />
-                    <Link href="/dashboard/posts/create">
+                    <Link href="/posts/create">
                       <a className="text-primary block bg-primary_brand_lightest w-[max-content] mx-auto mt-7 px-8 py-2 rounded-full text-lg">
                         Create post
                       </a>

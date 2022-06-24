@@ -26,7 +26,7 @@ export default function Profile() {
   const { user } = useContext(AuthContext);
 
   return (
-    <div className="md:w-[85%] w-[100%] ml-auto">
+    <div className="lg:w-[85%] w-[100%] ml-auto">
       <TopNav title="Profile" />
       <Tab.Group>
         <Tab.Panels>
@@ -42,17 +42,19 @@ export default function Profile() {
                 {user?.bio}
               </p>
             </div>
-            <div className="mt-4 md:mt-0 flex bg-sky_light h-[max-content] p-3 px-4 rounded-lg">
+            <div className="mt-4 md:mt-0 flex bg-sky_light h-[max-content] p-3 px-4 rounded-lg w-[max-content]">
               <EmailIcon />
               <p className="ml-3 text-sm">{user?.email}</p>
             </div>
           </div>
 
           <div className="px-4 sm:px-6 md:px-0 w-full max-w-9xl mx-auto">
-            <div className="bg-white rounded-2xl p-10 px-4 md:w-43/50 mx-auto mt-10 shadow-lg mb-12">
+            <div className="bg-white rounded-2xl md:py-10 py-3 pb-8 px-4 md:w-43/50 mx-auto mt-10 shadow-lg mb-12">
               <div className="text-center relative">
-                <img src="/images/product.png" className="w-[100%] h-[auto]" />
-                <div className="w-[90%] mx-auto px-10  pb-10 relative border-b border-secondary_sky_base">
+                <div className="w-[100%] md:h-[auto] h-[14rem] rounded-xl overflow-hidden">
+                  <img src="/images/product.png" className="w-[100%] md:h-[auto] h-[100%] object-cover rounded-xl" />
+                </div>
+                <div className="sm:w-[90%] mx-auto sm:px-10 px-3 md:mt-0 mt-4 pb-10 relative border-b border-secondary_sky_base">
                   <h3 className="text-3xl text-secondary_ink_dark font-semibold mb-3 mt-[-1.5rem]">
                     Create your first product
                   </h3>

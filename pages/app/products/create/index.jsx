@@ -61,7 +61,7 @@ export default function Create() {
 
       setLoading(false);
 
-      router.push('/dashboard/products/create/' + data.data.product.product_id);
+      router.push('/products/create/' + data.data.product.product_id);
     } catch (error) {
       console.error(error.message);
       setLoading(false);
@@ -69,7 +69,7 @@ export default function Create() {
   };
 
   return (
-    <div className="bg-secondary_sky_lighter md:w-[85%] w-[100%] ml-auto">
+    <div className="bg-secondary_sky_lighter lg:w-[85%] w-[100%] ml-auto">
       <Tab.Group>
         <FullNav title="Products">
           <div className="flex justify-between items-center md:w-43/50 mx-auto">

@@ -210,7 +210,7 @@ export default function UpdateProduct() {
 
       console.log(data);
 
-      router.push(`/dashboard/products`)
+      router.push(`/products`)
 
       toast.custom(
         <div className="rounded-lg py-4 px-8 bg-[#24C78C] flex items-center">
@@ -355,7 +355,7 @@ export default function UpdateProduct() {
 
 
   return (
-    <div className="bg-secondary_sky_lighter md:w-[85%] w-[100%] ml-auto">
+    <div className="bg-secondary_sky_lighter lg:w-[85%] w-[100%] ml-auto">
       <Tab.Group>
         <FullNav title="Products">
           <div className="md:px-0">

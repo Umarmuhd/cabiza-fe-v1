@@ -102,7 +102,7 @@ export default function ProductContentStep({ ...props }) {
                 {...register("url", { required: false })}
                 autoComplete="off"
               />
-              <Link href="/dashboard/products">
+              <Link href="/products">
                 <button className="border border-solid border-grey_20 px-4 rounded text-grey_20 py-2">
                   Test
                 </button>

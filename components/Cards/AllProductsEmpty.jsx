@@ -61,7 +61,7 @@ export default function AllProductsEmpty({ user }) {
           </p>
         </div>
 
-        <Link href="/dashboard/products/create">
+        <Link href="/products/create">
           <a className="py-2 pl-4 pr-12 bg-primary flex items-center font-medium text-white rounded-[48px] mr-auto md:mr-[unset] md:ml-auto">
             <PlusSmIcon /> <span className="ml-2">New Product </span>
           </a>
@@ -136,7 +136,7 @@ export default function AllProductsEmpty({ user }) {
         </p>
 
         <div className="flex justify-center mt-6 mb-10">
-          <Link href="/dashboard/products/create">
+          <Link href="/products/create">
             <a className="py-4 px-8 bg-primary_brand_lightest leading-4 font-medium text-primary rounded-4xl">
               <span>Create Product</span>
             </a>
