@@ -131,7 +131,7 @@ const Products = ({}) => {
                 as={"button"}
                 className={({ selected }) =>
                   classNames(
-                    "text-md mr-10 pb-2 font-medium",
+                    "text-md mr-10 w-[max-content] pb-2 font-medium",
                     selected
                       ? " font-bold text-primary border-b border-b-primary"
                       : " text-secondary"
@@ -158,7 +158,7 @@ const Products = ({}) => {
             <div className="flex ml-auto items-center">
               <div className="flex flex-row-reverse items-center justify-between mr-4">
                 <button
-                  className="flex items-center justify-center bg-primary_brand_lightest hover:bg-slate-200 transition duration-150 p-3 rounded-full peer"
+                  className="flex items-center justify-center bg-primary_brand_lightest hover:bg-slate-200 transition duration-150 p-3 rounded-full peer w-[max-content]"
                   type="submit"
                   onClick={changeProductRequestQuery}
                 >
@@ -174,9 +174,9 @@ const Products = ({}) => {
                   onKeyDown={handleKeyDown}
                 />
               </div>
-              <Link href="/dashboard/products/create">
-                <a className="py-2 pl-4 pr-6 bg-primary hidden items-center font-medium text-white rounded-[48px] md:flex">
-                  <PlusSmIcon /> <span className="ml-2">New Product </span>
+              <Link href="/products/create">
+                <a className="py-2 pl-4 pr-6 bg-primary hidden items-center font-medium text-white rounded-[48px] md:flex w-[max-content]">
+                  <PlusSmIcon /> <span className="ml-2 w-[max-content]">New Product </span>
                 </a>
               </Link>
             </div>

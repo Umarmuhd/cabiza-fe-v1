@@ -7,7 +7,7 @@ const FullNav = ({ title, children }) => {
     <React.Fragment>
       <TopNav title={title} showLanguage={false} />
       <div
-        className="bg-secondary_sky_lightest py-4 md:h-20 h-auto px-4 sm:px-6 md:px-0 w-full max-w-9xl mx-auto shadow-lg border-b sm:mb-0 mb-8"
+        className="bg-secondary_sky_lightest py-4 md:h-20 h-auto px-4 sm:px-6 md:px-0 w-full max-w-9xl mx-auto shadow-lg border-b sm:mb-0 mb-8 flex"
         style={{ boxShadow: '0px 4px 20px rgba(0, 0, 0, 0.04)' }}
       >
         {children}

@@ -54,7 +54,7 @@ export default function Profile() {
                 <div className="w-[100%] md:h-[auto] h-[14rem] rounded-xl overflow-hidden">
                   <img src="/images/product.png" className="w-[100%] md:h-[auto] h-[100%] object-cover rounded-xl" />
                 </div>
-                <div className="w-[90%] mx-auto px-10 md:mt-0 mt-4 pb-10 relative border-b border-secondary_sky_base">
+                <div className="sm:w-[90%] mx-auto sm:px-10 px-3 md:mt-0 mt-4 pb-10 relative border-b border-secondary_sky_base">
                   <h3 className="text-3xl text-secondary_ink_dark font-semibold mb-3 mt-[-1.5rem]">
                     Create your first product
                   </h3>

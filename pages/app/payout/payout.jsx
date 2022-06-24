@@ -125,7 +125,7 @@ const Payments = () => {
           </div>
 
           <div className="w-full md:w-auto md:flex md:justify-between justify-start md:mt-10 md:float-right items-center hidden">
-            <Link href="/dashboard/settings">
+            <Link href="/settings">
             <a className="bg-primary text-white flex items-center py-2 px-4 rounded-full mr-4 h-8">
               <svg
                 width="16"
@@ -209,8 +209,8 @@ const Payments = () => {
         ) : null}
 
         <div>
-          <div className="bg-primary_brand_darkest text-white rounded-t-xl flex justify-between relative px-10 py-5 items-center">
-            <div className="flex items-center md:block hidden">
+          <div className="bg-primary_brand_darkest text-white rounded-t-xl md:flex justify-between relative px-10 py-5 items-center">
+            <div className="xl:flex items-center hidden">
               <svg
                 width="24"
                 height="20"

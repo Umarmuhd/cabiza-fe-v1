@@ -139,7 +139,7 @@ export default function Posts() {
     <div className="md:w-[85%] w-[100%] ml-auto">
       <Tab.Group>
         <FullNav title="Posts">
-          <div className="flex justify-between items-center md:w-43/50 mx-auto">
+          <div className="flex justify-between items-center md:w-43/50 mx-auto w-[100%]">
             <Tab.List as={"div"} className="flex items-center">
               <Tab
                 as={"button"}
@@ -322,8 +322,8 @@ export default function Posts() {
               ) : null}
 
               <Link href="/posts/create">
-                <a>
-                  <span className="border-2 border-primary w-[100%] h-[100%] p-1 rounded-full border-dashed sm:border-none">
+                <a className="h-[100%] flex">
+                  <span className="md:border-2 md:border-primary w-[100%] h-[100%] md:p-1 rounded-full border-dashed sm:border-none">
                     <a className="sm:py-2 sm:px-4 bg-primary flex items-center font-medium text-white rounded-[48px] p-[.3rem]">
                       <PlusIcon />{" "}
                       <span className="ml-2 sm:block hidden">New Post </span>
