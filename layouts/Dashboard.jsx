@@ -11,11 +11,9 @@ export default function Dashboard({ children }) {
   const { showNav, setShowNav } = useContext(NavContext);
   const { user } = useContext(AuthContext);
 
-  console.log(user);
-
   const router = useRouter();
 
-  if (!user) router.push("/auth/login");
+  if (typeof window !== "undefined" && !user) router.push("/auth/login");
 
   return (
     <div className="flex min-h-screen h-full">
