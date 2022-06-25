@@ -7,14 +7,15 @@ export default function TopNav({ title, children, showLanguage }) {
   const { showNav, setShowNav } = useContext(NavContext);
 
   return (
-    <header className="sticky top-0 border-b border-b-secondary_sky_base bg-white z-30">
+    <header className="sticky top-0 border-b border-b-secondary_sky_base bg-white z-30 md:px-0">
+      <div className="md:w-[100%] sm:w-[95%] mx-auto">
       <div className="px-4 sm:px-0 lg:px-0">
         <div className="md:w-43/50 flex flex-row-reverse md:flex-row items-center justify-between h-16 -mb-px mx-auto">
           {/* Header: Left side */}
           <div className="flex h-[100%]">
             {/* Hamburger button */}
             <button
-              className="text-slate-500 hover:text-slate-600 lg:hidden"
+              className="text-slate-500 hover:text-slate-600 lg:hidden mr-4"
               aria-controls="sidebar"
               onClick={() => setShowNav(!showNav)}
             >
@@ -40,6 +41,7 @@ export default function TopNav({ title, children, showLanguage }) {
                     viewBox="0 0 48 48"
                     fill="none"
                     xmlns="http://www.w3.org/2000/svg"
+                    className="w-[2.4rem] h-[2.4rem]"
                   >
                     <path
                       d="M0 24C0 10.7452 10.7452 0 24 0C37.2548 0 48 10.7452 48 24C48 37.2548 37.2548 48 24 48C10.7452 48 0 37.2548 0 24Z"
@@ -241,6 +243,7 @@ export default function TopNav({ title, children, showLanguage }) {
             <UserMenu />
           </div>
         </div>
+      </div>
       </div>
     </header>
   );

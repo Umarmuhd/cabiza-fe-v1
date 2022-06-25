@@ -74,19 +74,20 @@ export default function AllProducts({ products, balance }) {
             <div className="inline-block min-w-full rounded-lg rounded-t-none overflow-hidden">
 
               <div className="flex flex-col">
-                <div className="flex px-3">
+                <span className="w-[100%] py-3 bg-white text-secondary_ink_dark text-left text-2xl leading-5 font-semibold sm:hidden mb-5">Products</span>
+                <div className="sm:flex px-3 hidden">
                   <span className="w-[39%] py-3 bg-white text-secondary_ink_dark text-left text-2xl leading-5 font-semibold">Products</span>
                   <span className="w-[13%] py-3 bg-white text-secondary_ink_dark text-left text-2xl leading-5 font-semibold">Sales</span>
                   <span className="w-[16%] py-3 bg-white text-secondary_ink_dark text-left text-2xl leading-5 font-semibold">Revenue</span>
                   <span className="w-[16%] ml-[1rem] py-3 bg-white text-secondary_ink_dark text-left text-2xl leading-5 font-semibold">Price</span>
                 </div>
 
-                <div className="mt-2 rounded-xl overflow-hidden border border-[#72777A] border-b-0">
+                <div className="mt-2 rounded-xl overflow-hidden sm:border sm:border-[#72777A] border-b-0">
                   {products.map((product) => (
-                    <div key={product._id} className="border-b border-b-[#979C9E] bg-secondary_sky_lighter px-2 flex items-center">
-                      <span className="px-5 border-b border-b-[#979C9E]bg-white text-sm w-[40%]">
-                        <div className="flex items-center">
-                          <div className="flex-shrink-0 border-r pr-4 py-5 border-r-[#979C9E]">
+                    <div key={product._id} className="sm:border-b sm:border-b-[#979C9E] bg-secondary_sky_lighter px-2 flex sm:flex-row  flex-col items-center mb-4 sm:mb-0">
+                      <span className="px-5 sm:border-b sm:border-b-[#979C9E]bg-white text-sm sm:w-[40%] w-[100%]">
+                        <div className="flex items-center flex-col sm:flex-row">
+                          <div className="flex-shrink-0 sm:border-r pr-4 py-5 border-r-[#979C9E]">
                             <a href="#" className="block relative">
                               <Image
                                 className="h-10 w-10 rounded-full"
@@ -126,7 +127,7 @@ export default function AllProducts({ products, balance }) {
                       </span>
                       <span className="px-5 py-5 text-sm w-[16%]">
                         <Link
-                          href={`/dashboard/products/create/${product.product_id}`}
+                          href={`/products/create/${product.product_id}`}
                         >
                           <a className="text-indigo-600 hover:text-indigo-900">
                             Edit
@@ -228,7 +229,7 @@ export default function AllProducts({ products, balance }) {
               </table> */}
             </div>
 
-            <PaginationComponent classNames="mt-8" />
+            {/* <PaginationComponent classNames="mt-8" /> */}
           </div>
         </div>
       </div>

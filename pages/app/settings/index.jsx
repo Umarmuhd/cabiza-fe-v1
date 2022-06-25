@@ -13,7 +13,7 @@ import Advance from "@/components/Settings/Advance";
 
 export default function Settings() {
   return (
-    <div className="md:w-[85%] w-[100%] ml-auto">
+    <div className="lg:w-[85%] w-[100%] ml-auto">
       <Tab.Group>
         <FullNav title="Settings">
           <div className="flex justify-start items-end mr-auto md:w-43/50 mx-auto">
