@@ -21,7 +21,7 @@ const loginHandler = async (req, res) => {
           cookie.serialize("access", data.accessToken, {
             httpOnly: true,
             secure: process.env.NODE_ENV !== "development",
-            maxAge: 60 * 1,
+            maxAge: 60 * 30,
             sameSite: "strict",
             path: "/api/",
           }),
