@@ -11,7 +11,7 @@ import { classNames } from "../../../libs/helper";
 import Link from "next/link";
 import { API_URL } from "@/config/index";
 import AuthContext from "@/context/AuthContext";
-import axios from "axios";
+import axios from "@/libs/axiosInstance";
 import FullNav from "@/components/Navbars/DashboardNav/FullNav";
 
 const Products = ({}) => {
@@ -35,20 +35,6 @@ const Products = ({}) => {
   };
 
   useEffect(() => fetchProducts(), []);
-
-  const [balance, setBalance] = useState(null);
-
-  const fetchBalance = async () => {
-    try {
-      setLoading(true);
-      const response = await axios.get(`${API_URL}/user/balance/me`);
-      setBalance(response.data.data.wallet);
-      setLoading(false);
-    } catch (error) {
-      console.log(error);
-      setLoading(false);
-    }
-  };
 
   const SearchIcon = () => (
     <svg
@@ -94,8 +80,6 @@ const Products = ({}) => {
     </svg>
   );
 
-  useEffect(() => fetchBalance(), []);
-
   const router = Router;
 
   const searchRef = useRef();
@@ -123,7 +107,7 @@ const Products = ({}) => {
 
   return (
     <div className="lg:w-[85%] w-[100%] ml-auto">
-      <Tab.Group as={'div'} className="bg-secondary_sky_lighter">
+      <Tab.Group as={"div"} className="bg-secondary_sky_lighter">
         <FullNav title="Products">
           <div className="flex justify-between items-center md:w-43/50 mx-auto pr-4">
             <Tab.List as={"div"} className="flex items-center py-[.5rem]">
@@ -176,7 +160,8 @@ const Products = ({}) => {
               </div>
               <Link href="/products/create">
                 <a className="py-2 pl-4 pr-6 bg-primary hidden items-center font-medium text-white rounded-[48px] md:flex w-[max-content]">
-                  <PlusSmIcon /> <span className="ml-2 w-[max-content]">New Product </span>
+                  <PlusSmIcon />{" "}
+                  <span className="ml-2 w-[max-content]">New Product </span>
                 </a>
               </Link>
             </div>

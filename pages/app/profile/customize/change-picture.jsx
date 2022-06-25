@@ -1,7 +1,7 @@
 import React, { useRef, useState } from "react";
 import Link from "next/link";
 import toast from "react-hot-toast";
-import axios from "axios";
+import axios from "@/libs/axiosInstance";
 import { API_URL } from "@/config/index";
 
 const LeftIcon = () => (

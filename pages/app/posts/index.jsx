@@ -3,7 +3,7 @@ import { Tab } from "@headlessui/react";
 import Link from "next/link";
 import useRouter from "next/router";
 import AuthContext from "@/context/AuthContext";
-import axios from "axios";
+import axios from "@/libs/axiosInstance";
 
 import { classNames } from "../../../libs/helper";
 

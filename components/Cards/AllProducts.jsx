@@ -1,7 +1,9 @@
 import Image from "next/image";
 import Link from "next/link";
-import React from "react";
+import React, { useEffect, useState } from "react";
+import { API_URL } from "@/config/index";
 import PaginationComponent from "../PaginationComponent";
+import axios from "@/libs/axiosInstance";
 
 const WarningIcon = () => (
   <svg
@@ -20,7 +22,26 @@ const WarningIcon = () => (
   </svg>
 );
 
-export default function AllProducts({ products, balance }) {
+export default function AllProducts({ products }) {
+  const [balance, setBalance] = useState(null);
+  const [loading, setLoading] = useState(false);
+
+  const fetchBalance = async () => {
+    try {
+      setLoading(true);
+      const response = await axios.get(`${API_URL}/user/balance/me`);
+      setBalance(response.data.data.wallet);
+      setLoading(false);
+    } catch (error) {
+      console.log(error);
+      setLoading(false);
+    }
+  };
+
+  useEffect(() => fetchBalance(), []);
+
+  console.log(balance);
+
   return (
     <div className="md:w-43/50 mx-auto text-left p-10 bg-white mt-8 rounded-3xl shadow">
       <div className="mb-16">
@@ -72,19 +93,31 @@ export default function AllProducts({ products, balance }) {
         <div className="py-8">
           <div className="-mx-4 sm:-mx-8 px-4 sm:px-8 py-4 overflow-x-auto">
             <div className="inline-block min-w-full rounded-lg rounded-t-none overflow-hidden">
-
               <div className="flex flex-col">
-                <span className="w-[100%] py-3 bg-white text-secondary_ink_dark text-left text-2xl leading-5 font-semibold sm:hidden mb-5">Products</span>
+                <span className="w-[100%] py-3 bg-white text-secondary_ink_dark text-left text-2xl leading-5 font-semibold sm:hidden mb-5">
+                  Products
+                </span>
                 <div className="sm:flex px-3 hidden">
-                  <span className="w-[39%] py-3 bg-white text-secondary_ink_dark text-left text-2xl leading-5 font-semibold">Products</span>
-                  <span className="w-[13%] py-3 bg-white text-secondary_ink_dark text-left text-2xl leading-5 font-semibold">Sales</span>
-                  <span className="w-[16%] py-3 bg-white text-secondary_ink_dark text-left text-2xl leading-5 font-semibold">Revenue</span>
-                  <span className="w-[16%] ml-[1rem] py-3 bg-white text-secondary_ink_dark text-left text-2xl leading-5 font-semibold">Price</span>
+                  <span className="w-[39%] py-3 bg-white text-secondary_ink_dark text-left text-2xl leading-5 font-semibold">
+                    Products
+                  </span>
+                  <span className="w-[13%] py-3 bg-white text-secondary_ink_dark text-left text-2xl leading-5 font-semibold">
+                    Sales
+                  </span>
+                  <span className="w-[16%] py-3 bg-white text-secondary_ink_dark text-left text-2xl leading-5 font-semibold">
+                    Revenue
+                  </span>
+                  <span className="w-[16%] ml-[1rem] py-3 bg-white text-secondary_ink_dark text-left text-2xl leading-5 font-semibold">
+                    Price
+                  </span>
                 </div>
 
                 <div className="mt-2 rounded-xl overflow-hidden sm:border sm:border-[#72777A] border-b-0">
                   {products.map((product) => (
-                    <div key={product._id} className="sm:border-b sm:border-b-[#979C9E] bg-secondary_sky_lighter px-2 flex sm:flex-row  flex-col items-center mb-4 sm:mb-0">
+                    <div
+                      key={product._id}
+                      className="sm:border-b sm:border-b-[#979C9E] bg-secondary_sky_lighter px-2 flex sm:flex-row  flex-col items-center mb-4 sm:mb-0"
+                    >
                       <span className="px-5 sm:border-b sm:border-b-[#979C9E]bg-white text-sm sm:w-[40%] w-[100%]">
                         <div className="flex items-center flex-col sm:flex-row">
                           <div className="flex-shrink-0 sm:border-r pr-4 py-5 border-r-[#979C9E]">
@@ -126,9 +159,7 @@ export default function AllProducts({ products, balance }) {
                         </span>
                       </span>
                       <span className="px-5 py-5 text-sm w-[16%]">
-                        <Link
-                          href={`/products/create/${product.product_id}`}
-                        >
+                        <Link href={`/products/create/${product.product_id}`}>
                           <a className="text-indigo-600 hover:text-indigo-900">
                             Edit
                           </a>
@@ -136,7 +167,7 @@ export default function AllProducts({ products, balance }) {
                       </span>
                     </div>
                   ))}
-                </div>                
+                </div>
               </div>
               {/* <table className="min-w-full leading-normal border-collapse">
                 <thead className="">

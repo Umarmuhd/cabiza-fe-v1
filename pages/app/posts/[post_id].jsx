@@ -7,7 +7,7 @@ import * as Yup from "yup";
 import { yupResolver } from "@hookform/resolvers/yup";
 import { useForm } from "react-hook-form";
 import Dashboard from "@/layouts/Dashboard";
-import axios from "axios";
+import axios from "@/libs/axiosInstance";
 import { API_URL } from "@/config/index";
 import toast from "react-hot-toast";
 
@@ -76,7 +76,7 @@ export default function EditPost() {
       console.error(error.message);
       setLoading(false);
     }
-  };  
+  };
 
   const fetchPost = useCallback(async () => {
     try {

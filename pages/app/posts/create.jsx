@@ -1,7 +1,7 @@
 import React, { useState, useContext, useEffect } from "react";
 import { useForm } from "react-hook-form";
 import { useRouter } from "next/router";
-import axios from "axios";
+import axios from "@/libs/axiosInstance";
 import { toast } from "react-hot-toast";
 import Link from "next/link";
 import * as Yup from "yup";

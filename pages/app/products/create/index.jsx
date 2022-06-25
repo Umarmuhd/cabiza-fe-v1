@@ -1,12 +1,12 @@
-import React, { useRef, useState } from 'react';
-import FullNav from '@/components/Navbars/DashboardNav/FullNav';
-import Dashboard from '@/layouts/Dashboard';
-import { classNames } from '@/libs/helper';
-import { Tab, RadioGroup, Switch } from '@headlessui/react';
-import { useRouter } from 'next/router';
-import axios from 'axios';
-import { API_URL } from '@/config/index';
-import toast from 'react-hot-toast';
+import React, { useRef, useState } from "react";
+import FullNav from "@/components/Navbars/DashboardNav/FullNav";
+import Dashboard from "@/layouts/Dashboard";
+import { classNames } from "@/libs/helper";
+import { Tab, RadioGroup, Switch } from "@headlessui/react";
+import { useRouter } from "next/router";
+import axios from "@/libs/axiosInstance";
+import { API_URL } from "@/config/index";
+import toast from "react-hot-toast";
 
 export default function Create() {
   const productNameRef = useRef();
@@ -24,7 +24,7 @@ export default function Create() {
     const name = productNameRef.current.value;
     const price = productPriceRef.current.value;
 
-    if (selected === null || name === '' || price === '') {
+    if (selected === null || name === "" || price === "") {
       toast.custom(
         <div className="rounded-lg py-4 px-8 bg-[#F50000] flex items-center">
           <svg
@@ -57,11 +57,11 @@ export default function Create() {
         contains_physical: enabled,
       };
       const { data } = await axios.post(`${API_URL}/products/new`, payload);
-      console.log(data)
+      console.log(data);
 
       setLoading(false);
 
-      router.push('/products/create/' + data.data.product.product_id);
+      router.push("/products/create/" + data.data.product.product_id);
     } catch (error) {
       console.error(error.message);
       setLoading(false);
@@ -73,41 +73,41 @@ export default function Create() {
       <Tab.Group>
         <FullNav title="Products">
           <div className="flex justify-between items-center md:w-43/50 mx-auto">
-            <Tab.List as={'div'} className="flex items-center py-[.5rem]">
+            <Tab.List as={"div"} className="flex items-center py-[.5rem]">
               <Tab
-                as={'button'}
+                as={"button"}
                 className={({ selected }) =>
                   classNames(
-                    'text-md mr-10 pb-2 font-medium',
+                    "text-md mr-10 pb-2 font-medium",
                     selected
-                      ? ' font-bold text-primary border-b border-b-primary'
-                      : ' text-secondary'
+                      ? " font-bold text-primary border-b border-b-primary"
+                      : " text-secondary"
                   )
                 }
               >
                 Product
               </Tab>
               <Tab
-                as={'button'}
+                as={"button"}
                 className={({ selected }) =>
                   classNames(
-                    'text-md mr-10 pb-2 font-medium',
+                    "text-md mr-10 pb-2 font-medium",
                     selected
-                      ? ' font-bold text-primary border-b border-b-primary'
-                      : ' text-secondary'
+                      ? " font-bold text-primary border-b border-b-primary"
+                      : " text-secondary"
                   )
                 }
               >
                 Checkout
               </Tab>
               <Tab
-                as={'button'}
+                as={"button"}
                 className={({ selected }) =>
                   classNames(
-                    'text-md mr-10 pb-2 font-medium',
+                    "text-md mr-10 pb-2 font-medium",
                     selected
-                      ? ' font-bold text-primary border-b border-b-primary'
-                      : ' text-secondary'
+                      ? " font-bold text-primary border-b border-b-primary"
+                      : " text-secondary"
                   )
                 }
               >
@@ -141,7 +141,7 @@ export default function Create() {
                   <RadioGroup
                     value={selected}
                     onChange={setSelected}
-                    as={'div'}
+                    as={"div"}
                     className="flex items-center flex-col md:flex-row"
                   >
                     <RadioGroup.Option
@@ -149,8 +149,8 @@ export default function Create() {
                       className={({ active, checked }) =>
                         `${
                           checked
-                            ? 'border-primary bg-white'
-                            : 'border-white bg-secondary_sky_lightest'
+                            ? "border-primary bg-white"
+                            : "border-white bg-secondary_sky_lightest"
                         }
                     relative rounded-lg shadow-md p-2 cursor-pointer flex focus:outline-none border md:mr-6 w-full md:w-auto mb-2 md:mb-0`
                       }
@@ -196,8 +196,8 @@ export default function Create() {
                       className={({ active, checked }) =>
                         `${
                           checked
-                            ? 'border-[#23C16B] bg-white'
-                            : 'border-white bg-secondary_sky_lightest'
+                            ? "border-[#23C16B] bg-white"
+                            : "border-white bg-secondary_sky_lightest"
                         }
                     relative rounded-lg shadow-md p-2 cursor-pointer flex focus:outline-none border md:mr-6 w-full md:w-auto mb-2 md:mb-0`
                       }
@@ -252,8 +252,8 @@ export default function Create() {
                       className={({ active, checked }) =>
                         `${
                           checked
-                            ? 'border-[#FFB323] bg-white'
-                            : 'border-white bg-secondary_sky_lightest'
+                            ? "border-[#FFB323] bg-white"
+                            : "border-white bg-secondary_sky_lightest"
                         }
                     relative rounded-lg shadow-md p-2 cursor-pointer flex focus:outline-none border w-full md:w-auto`
                       }
@@ -326,7 +326,7 @@ export default function Create() {
                   </label>
                   <div className="mt-3 flex rounded-lg">
                     <span className="inline-flex items-center rounded-l-lg border border-r-0 border-sky_light bg-secondary_sky_lighter text-secondary_ink_dark text-lg px-2 py-3">
-                      ${' '}
+                      ${" "}
                       <svg
                         width="13"
                         height="24"
@@ -364,20 +364,20 @@ export default function Create() {
                     onChange={setEnabled}
                     className={
                       (enabled
-                        ? 'bg-primary_brand_base'
-                        : 'bg-secondary_sky_light') +
-                      ' relative inline-flex flex-shrink-0 h-[18px] w-[32px] border-2 border-transparent rounded-full cursor-pointer transition-colors ease-in-out duration-200 focus:outline-none focus-visible:ring-2  focus-visible:ring-white focus-visible:ring-opacity-75'
+                        ? "bg-primary_brand_base"
+                        : "bg-secondary_sky_light") +
+                      " relative inline-flex flex-shrink-0 h-[18px] w-[32px] border-2 border-transparent rounded-full cursor-pointer transition-colors ease-in-out duration-200 focus:outline-none focus-visible:ring-2  focus-visible:ring-white focus-visible:ring-opacity-75"
                     }
                   >
                     <span className="sr-only">Use setting</span>
                     <span
                       aria-hidden="true"
-                      className={`${enabled ? 'translate-x-4' : 'translate-x-0'}
+                      className={`${enabled ? "translate-x-4" : "translate-x-0"}
 pointer-events-none inline-block h-[14px] w-[13px] rounded-full bg-white shadow-lg transform ring-0 transition ease-in-out duration-200`}
                     />
                   </Switch>
                   <span className="ml-2 block text-base text-grey_20">
-                    {'This product contains physical goods?'}
+                    {"This product contains physical goods?"}
                   </span>
                 </div>
 

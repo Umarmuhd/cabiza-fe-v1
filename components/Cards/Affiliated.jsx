@@ -1,5 +1,5 @@
 import { API_URL } from "@/config/index";
-import axios from "axios";
+import axios from "@/libs/axiosInstance";
 import { useRouter } from "next/router";
 import React, { useEffect, useState } from "react";
 import AllAffiliates from "./AllAffiliates";
@@ -54,7 +54,7 @@ export default function Affiliated() {
     <React.Fragment>
       {affiliates.length > 0 ? (
         <div className="h-[76vh]">
-             <AllAffiliates products={affiliates} />
+          <AllAffiliates products={affiliates} />
         </div>
       ) : (
         <EmptyAffiliates />

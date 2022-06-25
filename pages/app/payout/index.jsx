@@ -1,12 +1,12 @@
 /* eslint-disable react/no-unknown-property */
-import React, { useState, useEffect } from 'react';
-import axios from 'axios';
+import React, { useState, useEffect } from "react";
+import axios from "@/libs/axiosInstance";
 
-import Dashboard from '@/layouts/Dashboard';
-import { API_URL } from '@/config/index';
-import TopNav from '@/components/Navbars/DashboardNav/TopNav';
-import Payoutreview from './payoutReview';
-import Payments from './payout';
+import Dashboard from "@/layouts/Dashboard";
+import { API_URL } from "@/config/index";
+import TopNav from "@/components/Navbars/DashboardNav/TopNav";
+import Payoutreview from "./payoutReview";
+import Payments from "./payout";
 
 const CogIcon = () => (
   <svg

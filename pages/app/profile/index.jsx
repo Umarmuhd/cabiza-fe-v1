@@ -5,8 +5,6 @@ import Dashboard from "@/layouts/Dashboard";
 import Link from "next/link";
 import TopNav from "@/components/Navbars/DashboardNav/TopNav";
 import AuthContext from "@/context/AuthContext";
-import { getMe } from "api_calls";
-import axiosInstance from "@/libs/axiosInstance";
 
 const EmailIcon = () => (
   <svg
@@ -26,12 +24,6 @@ const EmailIcon = () => (
 
 export default function Profile() {
   const { user } = useContext(AuthContext);
-
-  const loadUser = async () => {
-    console.log(axiosInstance.defaults);
-    const user = await getMe();
-    console.log(user);
-  };
 
   return (
     <div className="lg:w-[85%] w-[100%] ml-auto">
@@ -75,13 +67,13 @@ export default function Profile() {
                     always perfect.
                   </p>
 
-                  {/* <button onClick={loadUser}>Load User</button> */}
-
-                  <Link href="/products/create">
-                    <a className="mt-10 bg-primary_brand_lightest text-primary py-3 px-7 rounded-3xl">
-                      Create product
-                    </a>
-                  </Link>
+                  <div className="mt-10">
+                    <Link href="/products/create">
+                      <a className="bg-primary_brand_lightest text-primary py-3 px-7 rounded-3xl">
+                        Create product
+                      </a>
+                    </Link>
+                  </div>
 
                   <p className="absolute bottom-[-.7rem] left-[50%] translate-x-[-50%] bg-white z-10 px-20 font-semibold">
                     OR
