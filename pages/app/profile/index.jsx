@@ -5,6 +5,8 @@ import Dashboard from "@/layouts/Dashboard";
 import Link from "next/link";
 import TopNav from "@/components/Navbars/DashboardNav/TopNav";
 import AuthContext from "@/context/AuthContext";
+import { getMe } from "api_calls";
+import axiosInstance from "@/libs/axiosInstance";
 
 const EmailIcon = () => (
   <svg
@@ -24,6 +26,12 @@ const EmailIcon = () => (
 
 export default function Profile() {
   const { user } = useContext(AuthContext);
+
+  const loadUser = async () => {
+    console.log(axiosInstance.defaults);
+    const user = await getMe();
+    console.log(user);
+  };
 
   return (
     <div className="md:w-[85%] w-[100%] ml-auto">
@@ -61,6 +69,8 @@ export default function Profile() {
                     people. It’s okay if you make mistakes, first try is not
                     always perfect.
                   </p>
+
+                  <button onClick={loadUser}>Load User</button>
 
                   <Link href="/products/create">
                     <button className="mt-10 bg-primary_brand_lightest text-primary py-3 px-7 rounded-3xl">

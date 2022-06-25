@@ -11,9 +11,9 @@ export default function Auth({ children }) {
   const { user } = useContext(AuthContext);
 
   const router = useRouter();
-  if (typeof window !== "undefined" && user) {
-    router.replace(user?.username ? "/profile" : "/onboarding");
-  }
+  // if (typeof window !== "undefined" && user) {
+  //   router.replace(user?.username ? "/profile" : "/onboarding");
+  // }
 
   return (
     <div className="bg-secondary_sky_lighter min-h-screen h-full">

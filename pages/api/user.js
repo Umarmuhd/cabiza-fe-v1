@@ -1,29 +1,46 @@
 import cookie from "cookie";
 import { API_URL } from "@/config/index";
-import axios from "axios";
 
-export default async (req, res) => {
+const handler = async (req, res) => {
   if (req.method === "GET") {
-    if (!req.headers.cookie) {
-      res.status(403).json({ message: "Not Authorized" });
+    const cookies = cookie.parse(req.headers.cookie ?? "");
+    const access = cookies.access ?? false;
+
+    if (access === false) {
+      res.status(401).json({ success: false, message: "Unauthorized request" });
       return;
     }
 
-    const { __refresh_token } = cookie.parse(req.headers.cookie);
+    try {
+      const apiRes = await fetch(`${API_URL}/user/me`, {
+        method: "GET",
+        headers: {
+          Accept: "application/json",
+          Authorization: `Bearer ${access}`,
+        },
+      });
+      const data = await apiRes.json();
 
-    const response = await axios.post(`${API_URL}/auth/refresh/token`, {
-      token: __refresh_token,
-    });
-
-    if (response.status === 200) {
-      const { token, user, expires_in } = response.data;
-
-      res.status(200).json({ token, user, expires_in });
-    } else {
-      res.status(403).json({ message: "user forbidden" });
+      if (apiRes.status === 200) {
+        return res
+          .status(200)
+          .json({ success: true, user: data.user, message: "user data" });
+      } else {
+        return res.status(apiRes.status).json({
+          success: false,
+          message: data.error,
+        });
+      }
+    } catch (err) {
+      console.log(err);
+      return res
+        .status(500)
+        .json({ success: false, message: "Something went wrong" });
     }
   } else {
     res.setHeader("Allow", ["GET"]);
     res.status(405).json({ message: `Method ${req.method} not allowed` });
   }
 };
+
+export default handler;

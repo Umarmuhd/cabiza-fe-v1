@@ -4,18 +4,18 @@ import { useRouter } from "next/router";
 import Sidebar from "../components/Sidebar/index";
 
 import { Toaster } from "react-hot-toast";
-import AuthContext from "@/context/AuthContext";
 import { NavContext, NavProvider } from "@/context/NavContext";
+import AuthContext from "@/context/AuthContext";
 
 export default function Dashboard({ children }) {
-  const { user } = useContext(AuthContext);
   const { showNav, setShowNav } = useContext(NavContext);
+  const { user } = useContext(AuthContext);
+
+  console.log(user);
 
   const router = useRouter();
 
-  if (typeof window !== "undefined") {
-    if (!user) router.push("/auth/login");
-  }
+  if (!user) router.push("/auth/login");
 
   return (
     <div className="flex min-h-screen h-full">

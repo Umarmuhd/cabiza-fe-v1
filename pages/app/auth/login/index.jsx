@@ -1,43 +1,43 @@
 import React, { useState, useContext } from "react";
 import Link from "next/link";
 import { useForm } from "react-hook-form";
-import axios from "axios";
 import { useRouter } from "next/router";
-
+import { useMutation } from "react-query";
 import AuthContext from "@/context/AuthContext";
 
 import Auth from "layouts/Auth";
-import { NEXT_URL } from "config/index";
 import toast from "react-hot-toast";
 import Alert from "@/components/Alert";
-import { API_URL } from "@/config/index";
+import { login } from "../../../../api_calls/index";
 
 export default function Login() {
+  const { loginUser } = useContext(AuthContext);
+
   const {
     register,
     handleSubmit,
     formState: { errors },
   } = useForm();
 
-  const { loginUser } = useContext(AuthContext);
-  const [loading, setLoading] = useState(false);
-  const [error, setError] = useState("");
-
   const router = useRouter();
 
-  const handleLogin = async (values) => {
-    try {
-      setLoading(true);
-      const { data } = await axios.post(`${API_URL}/auth/login`, values);
-      loginUser(data.user, data.accessToken);
+  const mutation = useMutation(login, {
+    onSuccess: (res) => {
+      loginUser(res.user, res.token);
       toast.custom(<Alert color="#24C78C" text="Login successful !" />);
-      setLoading(false);
-      router.replace(data.user.username ? "/profile" : "/onboarding");
-    } catch (error) {
-      setError(error?.response?.data?.message);
-      setLoading(false);
-    }
-  };
+      router.push("/");
+    },
+    onError: (error) => {
+      console.log(error);
+      setError(error.response.data.message);
+    },
+  });
+
+  const [error, setError] = useState("");
+
+  const { mutate, isLoading } = mutation;
+
+  const handleLogin = (values) => mutate(values);
 
   return (
     <div className="pt-5 md:pt-24 h-full flex justify-center items-center place-content-center">
@@ -104,9 +104,9 @@ export default function Login() {
                   transition: "all 0.15s ease 0s",
                   boxShadow: "0px 8px 30px rgba(0, 0, 0, 0.08)",
                 }}
-                disabled={loading}
+                disabled={isLoading}
               >
-                {loading ? "..." : "Login"}
+                {isLoading ? "..." : "Login"}
               </button>
             </div>
             <p className="text-center text-grey_40 text-lg">
