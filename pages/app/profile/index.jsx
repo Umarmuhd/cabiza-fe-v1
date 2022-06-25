@@ -78,9 +78,9 @@ export default function Profile() {
                   {/* <button onClick={loadUser}>Load User</button> */}
 
                   <Link href="/products/create">
-                    <button className="mt-10 bg-primary_brand_lightest text-primary py-3 px-7 rounded-3xl">
+                    <a className="mt-10 bg-primary_brand_lightest text-primary py-3 px-7 rounded-3xl">
                       Create product
-                    </button>
+                    </a>
                   </Link>
 
                   <p className="absolute bottom-[-.7rem] left-[50%] translate-x-[-50%] bg-white z-10 px-20 font-semibold">
@@ -88,7 +88,9 @@ export default function Profile() {
                   </p>
                 </div>
                 <div className="mt-12 text-center w-[70%] mx-auto text-primary underline">
-                  <Link href="/profile/customize">Customize profile</Link>
+                  <Link href="/profile/customize">
+                    <a>Customize profile</a>
+                  </Link>
                 </div>
               </div>
             </div>
