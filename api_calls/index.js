@@ -7,9 +7,7 @@ export function getAllProducts() {
 
 export function getMe() {
   return axios
-    .get(`${API_URL}/user/me`, {
-      withCredentials: true,
-    })
+    .get(`${API_URL}/user/me`)
     .then((res) => res.data)
     .catch(() => {
       return null;

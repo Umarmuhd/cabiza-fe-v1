@@ -60,7 +60,10 @@ export default function Profile() {
             <div className="bg-white rounded-2xl md:py-10 py-3 pb-8 px-4 md:w-43/50 mx-auto mt-10 shadow-lg mb-12">
               <div className="text-center relative">
                 <div className="w-[100%] md:h-[auto] h-[14rem] rounded-xl overflow-hidden">
-                  <img src="/images/product.png" className="w-[100%] md:h-[auto] h-[100%] object-cover rounded-xl" />
+                  <img
+                    src="/images/product.png"
+                    className="w-[100%] md:h-[auto] h-[100%] object-cover rounded-xl"
+                  />
                 </div>
                 <div className="sm:w-[90%] mx-auto sm:px-10 px-3 md:mt-0 mt-4 pb-10 relative border-b border-secondary_sky_base">
                   <h3 className="text-3xl text-secondary_ink_dark font-semibold mb-3 mt-[-1.5rem]">
@@ -72,7 +75,7 @@ export default function Profile() {
                     always perfect.
                   </p>
 
-                  <button onClick={loadUser}>Load User</button>
+                  {/* <button onClick={loadUser}>Load User</button> */}
 
                   <Link href="/products/create">
                     <button className="mt-10 bg-primary_brand_lightest text-primary py-3 px-7 rounded-3xl">
