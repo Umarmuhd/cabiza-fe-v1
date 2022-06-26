@@ -1,6 +1,6 @@
 import React from "react";
 
-export default function Alert({ color, text }) {
+export default function Alert({ color, text, children }) {
   return (
     <div
       className={"rounded-lg py-4 px-8 flex items-center " + `bg-[${color}]`}
@@ -17,7 +17,9 @@ export default function Alert({ color, text }) {
           fill="white"
         />
       </svg>
-      <span className="ml-2.5 font-medium text-lg text-white">{text}</span>
+      <span className="ml-2.5 font-medium text-lg text-white">
+        {children || text}
+      </span>
     </div>
   );
 }

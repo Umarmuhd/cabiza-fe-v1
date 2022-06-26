@@ -38,7 +38,12 @@ export default function Setting() {
             />
             <p className="mt-2 text-secondary_ink_lighter text-sm">
               View your profile at:{" "}
-              <a className="text-primary cursor-pointer" href={"https://cabiza.net/" + user.username }>{"cabiza.net/" + user.username}</a>
+              <a
+                className="text-primary cursor-pointer"
+                href={"https://cabiza.net/" + user?.username}
+              >
+                {"cabiza.net/" + user?.username}
+              </a>
             </p>
           </div>
 
@@ -315,10 +320,13 @@ export default function Setting() {
           Update settings
         </button>
         <div className="rounded-3xl bg-secondary_sky_light mt-7 p-5 py-9 text-center">
-          <a className="text-primary border-b border-b-primary py-[1px] text-lg cursor-pointer" onClick={(e) => {
+          <a
+            className="text-primary border-b border-b-primary py-[1px] text-lg cursor-pointer"
+            onClick={(e) => {
               e.preventDefault();
-              logout()
-            } }>
+              logout();
+            }}
+          >
             Sign out from all active sessions
           </a>
           <p className="mt-2">
