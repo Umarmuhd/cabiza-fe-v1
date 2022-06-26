@@ -82,7 +82,6 @@ export default function CreatePost() {
   const router = useRouter();
 
   const handlePublish = async (values) => {
-    console.log("works")
     setLoading(true);
 
     const { title, description, call_to_action, attachment, audience } = values;

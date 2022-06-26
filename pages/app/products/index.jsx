@@ -86,7 +86,7 @@ const Products = ({}) => {
 
   const changeProductRequestQuery = () => {
     if (searchRef.current.value !== "") {
-      router.push(`${router.pathname}?s=${searchRef.current.value}`);
+      router.replace(router.pathname,`/products/?s=${searchRef.current.value}`);
       searchRef.current.value = "";
     }
   };

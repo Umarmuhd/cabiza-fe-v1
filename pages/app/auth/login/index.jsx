@@ -41,7 +41,9 @@ export default function Login() {
   const handleLogin = (values) => mutate(values);
 
   return (
-    <div className="pt-5 md:pt-24 h-full flex justify-center items-center place-content-center">
+    <div className="pt-5 md:pt-24 h-full flex justify-center items-center place-content-center absolute left-[50%] top-[50%] w-[60%]" style={{
+      "transform": "translate(-50%, -50%)"
+    }}>
       <div className="md:w-3/5 max-w-lg">
         <div className="bg-white py-10 px-10 w-full border border-grey_80 rounded-xl">
           <form onSubmit={handleSubmit(handleLogin)}>

@@ -108,10 +108,10 @@ export default function EditPost() {
   useEffect(() => fetchPost(), [fetchPost]);
 
   return (
-    <div className="lg:w-[85%] w-[100%] ml-auto">
+    <div className="lg:w-[85%] w-[100%] ml-auto overflow-y-hidden">
       <DashboardNav title="Posts" />
       <div
-        className="bg-secondary_sky_lightest py-6 md:px-0 px-4"
+        className="bg-secondary_sky_lightest py-6 md:px-0 px-4 w-[100%]"
         style={{ boxShadow: "0px 4px 20px rgba(0, 0, 0, 0.04)" }}
       >
         <div className="flex justify-between items-center md:w-43/50 mx-auto">

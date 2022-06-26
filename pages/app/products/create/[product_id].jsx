@@ -222,9 +222,7 @@ export default function UpdateProduct() {
 
       const { data } = await axios.post(uri, form_data);
 
-      console.log(data);
-
-      router.push(`/products`);
+      console.log(data);      
 
       toast.custom(
         <div className="rounded-lg py-4 px-8 bg-[#24C78C] flex items-center">
@@ -245,7 +243,9 @@ export default function UpdateProduct() {
           </span>
         </div>
       );
-
+      
+      setTimeout(() => router.push(`/products`), 300);
+      
       setLoading(false);
     } catch (error) {
       console.log(error);
@@ -378,7 +378,7 @@ export default function UpdateProduct() {
     <div className="bg-secondary_sky_lighter lg:w-[85%] w-[100%] ml-auto">
       <Tab.Group>
         <FullNav title="Products">
-          <div className="md:px-0">
+          <div className="md:px-0 w-[100%]">
             <div className="flex md:flex-row flex-col justify-between items-center md:w-43/50 mx-auto mt-[.5rem]">
               <Tab.List
                 as={"div"}
