@@ -125,7 +125,7 @@ export default function Posts() {
   const router = useRouter;
 
   const changePostsRequestQuery = () => {
-    router.push(`${router.pathname}?s=${searchInput.current.value}`);
+    router.replace(router.pathname, `/posts?s=${searchInput.current.value}`)
     searchInput.current.value = "";
   };
 

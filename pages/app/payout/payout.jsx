@@ -148,7 +148,7 @@ const Payments = () => {
             </a>
             </Link>
 
-            <button className="bg-primary text-white flex items-center py-2 px-[.6rem] rounded-[50%] w-8 h-8">
+            {/* <button className="bg-primary text-white flex items-center py-2 px-[.6rem] rounded-[50%] w-8 h-8">
               <svg
                 width="18"
                 height="18"
@@ -167,7 +167,7 @@ const Payments = () => {
                   stroke="white"
                 />
               </svg>
-            </button>
+            </button> */}
           </div>
         </div>
       </header>
