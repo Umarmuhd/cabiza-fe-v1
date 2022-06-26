@@ -244,8 +244,8 @@ export default function UpdateProduct() {
         </div>
       );
       
-      setTimeout(() => router.push(`/products`), 300);
-      
+      // setTimeout(() => router.push(`/products`), 300);
+
       setLoading(false);
     } catch (error) {
       console.log(error);
