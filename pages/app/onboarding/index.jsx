@@ -111,7 +111,9 @@ export default function Onboarding() {
       const url = `${API_URL}/user/onboarding`;
 
       const response = await axios.post(url, form_data);
-      toast.custom(<Alert color="#24C78C" text={response.data.message} />);
+
+      toast.custom(<Alert color="#24C78C">{response.data.message}</Alert>);
+
       setLoading(false);
       router.replace("/profile");
     } catch (error) {
