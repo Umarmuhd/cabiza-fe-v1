@@ -124,7 +124,10 @@ export default function AllProducts({ products }) {
                             <a href="#" className="block relative">
                               <Image
                                 className="h-10 w-10 rounded-full"
-                                src="/images/icons/gallery.svg"
+                                src={
+                                  product?.thumbnail ??
+                                  "/images/icons/gallery.svg"
+                                }
                                 alt="..."
                                 width={40}
                                 height={40}
@@ -145,12 +148,12 @@ export default function AllProducts({ products }) {
                       </span>
                       <span className="px-5 py-5 text-sm w-[16%]">
                         <p className="text-secondary_ink_dark whitespace-no-wrap">
-                          0
+                          {product?.sales ?? 0}
                         </p>
                       </span>
                       <span className="px-5 py-5 text-sm w-[16%]">
                         <p className="text-secondary_ink_dark whitespace-no-wrap">
-                          $0
+                          ${product?.total ?? 0}
                         </p>
                       </span>
                       <span className="px-5 py-5 text-sm w-[16%]">
