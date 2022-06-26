@@ -252,7 +252,10 @@ export default function CreatePost() {
                       type="submit"
                       form="post-form"
                       disabled={loading}
-                      onClick={() => handleSubmit(handlePublish)}
+                      onClick={() => {
+                        handleSubmit(handlePublish)
+                        setShowDropdown(!showDropdown)
+                      }}
                     >
                       Publish now
                     </button>
