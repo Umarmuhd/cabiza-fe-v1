@@ -185,7 +185,7 @@ const Payments = () => {
                 name="date"
                 id="date"
                 className={`w-[100%] p-2 px-4 border border-secondary_sky_light rounded-xl appearance-none mr-3 outline-none ${styles.input}`}
-                value={`${value.getFullYear()}-${value.getMonth() < 9 ? `0${value.getMonth()}` : value.getMonth()}-${value.getDate() < 9 ? `0${value.getDate()}` : value.getDate()}`}
+                value={`${value.getFullYear()}-${value.getMonth() < 9 ? `0${value.getMonth() + 1}` : value.getMonth()}-${value.getDate() < 9 ? `0${value.getDate()}` : value.getDate()}`}
                 datepicker
                 datepicker-autohide
               />

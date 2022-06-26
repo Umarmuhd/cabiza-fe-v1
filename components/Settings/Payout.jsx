@@ -196,9 +196,9 @@ export default function Payout() {
         </p>
         <div>
           <div className="flex flex-col mb-8">
-            <h5 className="text-secondary_ink_darkest flex md:flex-row flex-col gap-y-2">
+            <h5 className="text-secondary_ink_darkest flex md:flex-row flex-col gap-y-2 md:items-end">
               <span className="float-left">Account Type</span>
-              <span className="float-right text-primary_brand_light">
+              <span className="ml-2 text-sm text-primary_brand_light">
                 What type of account should I choose?{" "}
               </span>
             </h5>
@@ -358,7 +358,7 @@ export default function Payout() {
                     maxLength: 2,
                   })}
                   defaultValue={user?.birthday?.split("/")[1]}
-                  value={value?.getMonth()}
+                  value={value?.getMonth() + 1}
                   onClick={() => setShowCalendar(true)}
                   readOnly
                 />

@@ -65,7 +65,7 @@ export default function Sidebar({ sidebarOpen, setSidebarOpen }) {
   }, [sidebarExpanded]);
 
   return (
-    <div>
+    <div className="w-[max-content]">
       {/* Sidebar backdrop (mobile only) */}
       <div
         className={`fixed inset-0 bg-white z-40 lg:hidden lg:z-auto transition-opacity duration-200 ${
@@ -78,7 +78,7 @@ export default function Sidebar({ sidebarOpen, setSidebarOpen }) {
       <div
         id="sidebar"
         ref={sidebar}
-        className={`!fixed border-r border-sec flex flex-col absolute z-[102] left-0 top-0 lg:static lg:left-auto lg:top-auto lg:translate-x-0 transform h-screen w-64 lg:w-20 lg:sidebar-expanded:!w-64 2xl:!w-64 shrink-0 bg-[#F2F4F5] md:bg-white p-4 transition-all duration-200 ease-in-out h-[100vh] ${
+        className={`!fixed border-r border-sec flex flex-col z-[102] left-0 top-0 lg:static lg:left-auto lg:top-auto lg:translate-x-0 transform h-screen w-64 lg:w-20 lg:sidebar-expanded:!w-64 2xl:!w-64 shrink-0 bg-[#F2F4F5] md:bg-white p-4 transition-all duration-200 ease-in-out h-[100vh] ${
           sidebarOpen ? 'translate-x-0 !w-full' : '-translate-x-64'
         }`}
       >
