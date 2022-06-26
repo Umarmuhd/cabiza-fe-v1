@@ -1,6 +1,6 @@
-import Image from 'next/image';
-import React from 'react';
-import Link from 'next/link';
+import Image from "next/image";
+import React from "react";
+import Link from "next/link";
 
 const PlusIcon = () => (
   <svg
@@ -48,10 +48,10 @@ const PlusSmIcon = () => (
 export default function AllProductsEmpty({ user }) {
   return (
     <div className="px-4 sm:px-6 md:px-0 w-full max-w-9xl mx-auto">
-      <div className="md:w-43/50 mx-auto my-10 flex items-center flex-col md:flex-row">
+      <div className="md:w-43/50 mx-auto my-10 items-center flex-col md:flex-row hidden">
         <div className="flex flex-col md:mb-0 mb-4">
           <h1 className="text-3xl font-semibold">
-            Welcome,{' '}
+            Welcome,{" "}
             <span className="text-secondary_ink_dark capitalize font-normal">
               {user?.username}
             </span>
@@ -69,7 +69,7 @@ export default function AllProductsEmpty({ user }) {
       </div>
       <div
         className="md:w-43/50 mx-auto md:my-10 bg-white rounded-3xl text-center p-10"
-        style={{ boxShadow: '0px 20px 40px rgba(0, 0, 0, 0.06)' }}
+        style={{ boxShadow: "0px 20px 40px rgba(0, 0, 0, 0.06)" }}
       >
         {/* <div className='grid-cols-3
               space-y-2
@@ -99,13 +99,13 @@ export default function AllProductsEmpty({ user }) {
           <div
             className="flex items-center justify-center rounded-3xl cursor-pointer bg-secondary_sky_lighter border-secondary_sky_dark h-[80%] !mt-[1rem]"
             style={{
-              'background-image': `url("data:image/svg+xml,%3csvg width='100%25' height='100%25' xmlns='http://www.w3.org/2000/svg'%3e%3crect width='100%25' height='100%25' fill='none' rx='24' ry='24' stroke='%23979C9EFF' stroke-width='4' stroke-dasharray='23' stroke-dashoffset='51' stroke-linecap='square'/%3e%3c/svg%3e")`,
-              'border-radius': '24px',
+              "background-image": `url("data:image/svg+xml,%3csvg width='100%25' height='100%25' xmlns='http://www.w3.org/2000/svg'%3e%3crect width='100%25' height='100%25' fill='none' rx='24' ry='24' stroke='%23979C9EFF' stroke-width='4' stroke-dasharray='23' stroke-dashoffset='51' stroke-linecap='square'/%3e%3c/svg%3e")`,
+              "border-radius": "24px",
             }}
           >
             <div
               className="bg-white p-5 rounded-2xl"
-              style={{ boxShadow: '0px 20px 40px rgba(0, 0, 0, 0.06)' }}
+              style={{ boxShadow: "0px 20px 40px rgba(0, 0, 0, 0.06)" }}
             >
               <PlusIcon />
             </div>
@@ -113,13 +113,13 @@ export default function AllProductsEmpty({ user }) {
           <div
             className="flex items-center justify-center rounded-3xl cursor-pointer bg-secondary_sky_lighter border-secondary_sky_dark h-[80%] !mt-[1rem]"
             style={{
-              'background-image': `url("data:image/svg+xml,%3csvg width='100%25' height='100%25' xmlns='http://www.w3.org/2000/svg'%3e%3crect width='100%25' height='100%25' fill='none' rx='24' ry='24' stroke='%23979C9EFF' stroke-width='4' stroke-dasharray='23' stroke-dashoffset='51' stroke-linecap='square'/%3e%3c/svg%3e")`,
-              'border-radius': '24px',
+              "background-image": `url("data:image/svg+xml,%3csvg width='100%25' height='100%25' xmlns='http://www.w3.org/2000/svg'%3e%3crect width='100%25' height='100%25' fill='none' rx='24' ry='24' stroke='%23979C9EFF' stroke-width='4' stroke-dasharray='23' stroke-dashoffset='51' stroke-linecap='square'/%3e%3c/svg%3e")`,
+              "border-radius": "24px",
             }}
           >
             <div
               className="bg-white p-5 rounded-2xl"
-              style={{ boxShadow: '0px 20px 40px rgba(0, 0, 0, 0.06)' }}
+              style={{ boxShadow: "0px 20px 40px rgba(0, 0, 0, 0.06)" }}
             >
               <PlusIcon />
             </div>

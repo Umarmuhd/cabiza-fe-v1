@@ -11,11 +11,8 @@ axiosInstance.interceptors.request.use(async (req) => {
     ""
   );
 
-  console.log(access);
-
   if (!access) {
     req.headers.common.Authorization = `Bearer ${access}`;
-    console.log(req.headers);
     return req;
   }
 

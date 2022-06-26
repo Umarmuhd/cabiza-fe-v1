@@ -2,8 +2,6 @@ import { createContext, useState, useEffect } from "react";
 import { useRouter } from "next/router";
 import { NEXT_URL } from "../config/index";
 import axios from "@/libs/axiosInstance";
-import { useQuery } from "react-query";
-import { getMe } from "../api_calls/index";
 
 const AuthContext = createContext({});
 
@@ -34,31 +32,31 @@ export const AuthProvider = ({ children }) => {
       router.replace("/auth/login");
     }
   };
-  
+
   const checkUserLoggedIn = async () => {
     try {
       setLoading(true);
-      // const res = await axios.get(`${NEXT_URL}/api/user`, {
-      //   withCredentials: true,
-      //   credentials: "include",
-      //   method: "GET",
-      // });
+      const res = await axios.get(`${NEXT_URL}/api/refresh`, {
+        withCredentials: true,
+        credentials: "include",
+        method: "GET",
+      });
 
       setTimeout(() => {
         checkUserLoggedIn();
-      }, 5000 * 1000 - 500);
+      }, res.data.expires_in * 1000 - 500);
 
-      // if (res.status === 200) {
-      //   axios.defaults.headers.common = {
-      //     Authorization: `Bearer ${res.data.token}`,
-      //   };
-      //   setUser(res.data.user);
-      //   setLoading(false);
-      // } else {
-      //   setUser(null);
-      //   setLoading(false);
-      //   router.push("/auth/login");
-      // }
+      if (res.status === 200) {
+        axios.defaults.headers.common = {
+          Authorization: `Bearer ${res.data.accessToken}`,
+        };
+        setUser(res.data.user);
+        setLoading(false);
+      } else {
+        setUser(null);
+        setLoading(false);
+        router.push("/auth/login");
+      }
       setLoading(false);
     } catch (error) {
       console.log(error);

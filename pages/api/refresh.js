@@ -49,6 +49,8 @@ const refresh = async (req, res) => {
           success: true,
           message: "Refresh request successful",
           accessToken: data.accessToken,
+          user: data.user,
+          expires_in: data.expiresIn,
         });
       } else {
         return res

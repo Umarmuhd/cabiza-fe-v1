@@ -170,13 +170,17 @@ const Products = ({}) => {
 
         <Tab.Panels as={"div"} className="px-6 md:px-0">
           <Tab.Panel>
-            {products.length > 0 ? (
-              <AllProducts
-                products={router.query.s ? searchedProducts : products}
-              />
-            ) : (
-              <AllProductsEmpty user={user} />
-            )}
+            {!loading ? (
+              <>
+                {products.length > 0 ? (
+                  <AllProducts
+                    products={router.query.s ? searchedProducts : products}
+                  />
+                ) : (
+                  <AllProductsEmpty user={user} />
+                )}
+              </>
+            ) : null}
           </Tab.Panel>
           <Tab.Panel>
             <Affiliated />
