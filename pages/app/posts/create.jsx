@@ -169,10 +169,10 @@ export default function CreatePost() {
   return (
     <div className="lg:w-[85%] w-[100%] ml-auto">
       <FullNav title="Posts">
-        <div className="bg-secondary_sky_lightest py-2 md:px-0 px-4">
+        <div className="bg-secondary_sky_lightest py-2 md:px-0 px-4 w-[max-content]">
           <div className="flex justify-between items-center md:w-43/50 mx-auto">
             <div className="flex">
-              <a className="leading-4 text-base font-medium text-primary py-2 px-3 rounded-4xl border border-primary flex items-center">
+              <a className="leading-4 text-base font-medium text-primary py-2 px-3 rounded-4xl border bordegit r-primary flex items-center">
                 <svg
                   width="16"
                   height="16"
