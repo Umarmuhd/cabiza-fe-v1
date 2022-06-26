@@ -58,7 +58,10 @@ const Share = () => {
       <div className="text-center relative">
         <h1 className="text-3xl font-semibold mb-4">Share to friends</h1>
         <div className="rounded-2xl bg-secondary_sky_lighter w-[max-content] p-4 mx-auto flex">
-          <QRCode value="hey" id={"svg-chart"} />
+          <QRCode
+            value={`https://cabiza.net/${user.username}`}
+            id={"svg-chart"}
+          />
         </div>
         <div className="w-[90%] mx-auto px-10 mt-6 border-b pb-12 border-secondary_sky_base">
           <p className="w-[80%] mx-auto text-secondary_ink_lighter text-lg">
@@ -67,7 +70,7 @@ const Share = () => {
 
           <div className="mt-6 flex mx-auto w-[max-content]">
             <CopyToClipboard
-              text={`https://${user.username}.cabiza.net`}
+              text={`https://cabiza.net/${user.username}`}
               onCopy={() =>
                 toast.custom(<Alert color="#24C78C" text="Copied success !" />)
               }
