@@ -167,9 +167,9 @@ export default function CreatePost() {
   }, [value]);
 
   return (
-    <div className="lg:w-[85%] w-[100%] ml-auto">
+    <div className="lg:w-[85%] w-[100%] ml-auto overflow-y-hidden">
       <FullNav title="Posts">
-        <div className="bg-secondary_sky_lightest py-2 md:px-0 px-4 w-[max-content]">
+        <div className="bg-secondary_sky_lightest py-2 md:px-0 px-4 w-[100%]">
           <div className="flex justify-between items-center md:w-43/50 mx-auto">
             <div className="flex">
               <a className="leading-4 text-base font-medium text-primary py-2 px-3 rounded-4xl border bordegit r-primary flex items-center">
@@ -252,6 +252,10 @@ export default function CreatePost() {
                       type="submit"
                       form="post-form"
                       disabled={loading}
+                      onClick={() => {
+                        handleSubmit(handlePublish)
+                        setShowDropdown(!showDropdown)
+                      }}
                     >
                       Publish now
                     </button>
@@ -355,7 +359,10 @@ export default function CreatePost() {
       </FullNav>
 
       <main className="w-full h-full relative bg-secondary_sky_lighter">
-        <form id="post-form" onSubmit={handleSubmit(handlePublish)}>
+        <form id="post-form" onSubmit={e => {
+            e.preventDefault()
+            handleSubmit(handlePublish)
+          }}>
           <div className="w-43/50 mx-auto md:py-10 flex justify-between">
             <div className="w-[34%]">
               <h1 className="font-semibold mb-6 text-secondary_ink_dark text-4xl">
