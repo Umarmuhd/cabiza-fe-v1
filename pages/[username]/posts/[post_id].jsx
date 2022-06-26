@@ -281,7 +281,7 @@ export default function SinglePost() {
                 </button>
               </form>
 
-              <div className="mt-2 flex flex-col w-[90%] mx-auto">
+              <div className="mt-2 flex flex-col w-[90%] ml-auto">
                 {comments.length > 0 && !loading ? (
                   <>
                     {comments.map((comment, index) => (

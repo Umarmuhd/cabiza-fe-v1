@@ -171,13 +171,21 @@ export default function CreatePost() {
       setTimeout(() => setShowDropdown(!showDropdown), 100)        
   }
 
+  const handlePreview = (values) => {
+    // const { title, description, call_to_action, attachment, audience } = values;    
+    localStorage.setItem("preview_form_data", JSON.stringify(values))
+    window.open(`https://cabiza.net/preview`);
+  }
+
+  // console.log("https://cabiza.net/" + user?.username + "/posts");
+
   return (
     <div className="lg:w-[85%] w-[100%] ml-auto overflow-y-hidden">
       <FullNav title="Posts">
         <div className="bg-secondary_sky_lightest py-2 md:px-0 px-4 w-[100%]">
           <div className="flex justify-between items-center md:w-43/50 mx-auto">
             <div className="flex">
-              <a className="leading-4 text-base font-medium text-primary py-2 px-3 rounded-4xl border bordegit r-primary flex items-center">
+              <a className="leading-4 text-base font-medium text-primary py-2 px-3 rounded-4xl border border-primary flex items-center cursor-pointer" target="_blank" onClick={handleSubmit(handlePreview)}>
                 <svg
                   width="16"
                   height="16"
