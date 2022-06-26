@@ -82,6 +82,7 @@ export default function CreatePost() {
   const router = useRouter();
 
   const handlePublish = async (values) => {
+    console.log("works")
     setLoading(true);
 
     const { title, description, call_to_action, attachment, audience } = values;
@@ -165,6 +166,11 @@ export default function CreatePost() {
       handleConvertDate(value.getMonth(), value.getDate(), value.getFullYear())
     );
   }, [value]);
+
+  const handlePublishNow = () => {
+      handleSubmit(handlePublish)      
+      setTimeout(() => setShowDropdown(!showDropdown), 100)        
+  }
 
   return (
     <div className="lg:w-[85%] w-[100%] ml-auto overflow-y-hidden">
@@ -252,10 +258,7 @@ export default function CreatePost() {
                       type="submit"
                       form="post-form"
                       disabled={loading}
-                      onClick={() => {
-                        handleSubmit(handlePublish)
-                        setShowDropdown(!showDropdown)
-                      }}
+                      onClick={handlePublishNow}
                     >
                       Publish now
                     </button>
@@ -359,10 +362,7 @@ export default function CreatePost() {
       </FullNav>
 
       <main className="w-full h-full relative bg-secondary_sky_lighter">
-        <form id="post-form" onSubmit={e => {
-            e.preventDefault()
-            handleSubmit(handlePublish)
-          }}>
+        <form id="post-form" onSubmit={handleSubmit(handlePublish)}>
           <div className="w-43/50 mx-auto md:py-10 flex justify-between">
             <div className="w-[34%]">
               <h1 className="font-semibold mb-6 text-secondary_ink_dark text-4xl">
