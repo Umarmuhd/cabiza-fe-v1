@@ -26,7 +26,7 @@ export default function Login() {
       console.log(res);
       loginUser(res.user, res.token);
       toast.custom(<Alert color="#24C78C">Login successful !</Alert>);
-      router.push(res.user?.username ? "/" : "onboarding");
+      router.push(res.user?.username ? "/" : "/onboarding");
     },
     onError: (error) => {
       console.log(error);
