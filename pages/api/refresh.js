@@ -27,7 +27,6 @@ function runMiddleware(req, res, fn) {
 
 const refresh = async (req, res) => {
   // Run the middleware
-  console.log(req.cookies);
   await runMiddleware(req, res, cors);
   if (req.method === "GET" || req.method === "OPTIONS") {
     const cookies = cookie.parse(req.headers.cookie ?? "");
