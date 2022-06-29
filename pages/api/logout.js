@@ -1,7 +1,7 @@
 import cookie from "cookie";
 
 const logout = async (req, res) => {
-  if (req.method === "POST") {
+  if (req.method === "GET") {
     res.setHeader("Set-Cookie", [
       cookie.serialize("access", "", {
         httpOnly: true,

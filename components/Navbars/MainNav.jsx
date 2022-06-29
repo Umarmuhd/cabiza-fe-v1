@@ -33,19 +33,21 @@ export default function MainNavigation() {
   return (
     <div className="px-4 py-5 mx-auto sm:max-w-xl md:max-w-full lg:max-w-screen-xl md:px-24 lg:px-8">
       <div className="relative flex items-center justify-between">
-        <a
-          aria-label="Cabiza"
-          title="Cabiza"
-          className="inline-flex items-center"
-        >
-          <Image
-            src="/images/logo.png"
-            alt="..."
-            className="w-32"
-            width={130}
-            height={40}
-          />
-        </a>
+        <Link href="/">
+          <a
+            aria-label="Cabiza"
+            title="Cabiza"
+            className="inline-flex items-center"
+          >
+            <Image
+              src="/images/logo.png"
+              alt="..."
+              className="w-32"
+              width={130}
+              height={40}
+            />
+          </a>
+        </Link>
         <ul className="flex items-center hidden space-x-8 lg:flex">
           <li>
             <Link href="/">
@@ -227,11 +229,11 @@ export default function MainNavigation() {
                       </a>
                     </li>
                     <li>
-                      <Link href='/auth/signup'>
+                      <Link href="/auth/signup">
                         <a
-                          className='inline-flex items-center justify-center sm::w-full h-12 px-6 font-medium tracking-wide transition duration-200 sm:rounded rounded-lg shadow-md bg-deep-purple-accent-400 hover:bg-deep-purple-accent-700 focus:shadow-outline focus:outline-none w-[max-content]'
-                          aria-label='Sign up'
-                          title='Sign up'
+                          className="inline-flex items-center justify-center sm::w-full h-12 px-6 font-medium tracking-wide transition duration-200 sm:rounded rounded-lg shadow-md bg-deep-purple-accent-400 hover:bg-deep-purple-accent-700 focus:shadow-outline focus:outline-none w-[max-content]"
+                          aria-label="Sign up"
+                          title="Sign up"
                         >
                           Sign up
                         </a>

@@ -1,6 +1,6 @@
 import React from "react";
 import Link from "next/link";
-import axios from "axios";
+import axios from "@/libs/axiosInstance";
 import MainFooter from "@/components/Footer/MainFooter";
 import MainNavigation from "@/components/Navbars/MainNav";
 import { API_URL } from "@/config/index";
@@ -16,21 +16,6 @@ import Alert from "@/components/Alert";
 import PublicLayout from "@/layouts/PublicLayout";
 
 const ProductItem = ({ product }) => {
-  const handleBecomeAffiliate = async () => {
-    try {
-      const url = `${API_URL}/products/affiliate/${product.product_id}`;
-      const { data } = await axios.put(url);
-      toast.custom(<Alert color="#24C78C" text={`${data.data.message} !`} />);
-      return;
-    } catch (error) {
-      console.error(error.message);
-      toast.custom(
-        <Alert color="#F50000" text={error.response.data.message} />
-      );
-      return;
-    }
-  };
-
   return (
     <div
       className={`shadow sm:w-sm:[max-content] overflow-hidden mr-5 h-[max-content] rounded-xl ${styles.card}`}
@@ -80,12 +65,13 @@ const ProductItem = ({ product }) => {
 
         <div className="rounded-xl border border-sky_light flex justify-between items-center mt-5 px-1 sm:px-3 py-1 pr-2 bg-secondary_sky_lightest">
           <p className="text-xs text-secondary">40% Affiliate Commission</p>
-          <button
-            className="bg-primary text-white font-medium text-sm rounded px-3 py-2 sm:ml-10"
-            onClick={handleBecomeAffiliate}
+          <Link
+            href={`http://app.${window.location.host}/affiliate/${product.product_id}`}
           >
-            Become Affiliate
-          </button>
+            <a className="bg-primary text-white font-medium text-sm rounded px-3 py-2 sm:ml-10">
+              Become Affiliate
+            </a>
+          </Link>
         </div>
       </div>
     </div>

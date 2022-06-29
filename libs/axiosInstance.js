@@ -1,7 +1,7 @@
 import axios from "axios";
 import jwt_decode from "jwt-decode";
 import dayjs from "dayjs";
-import { NEXT_URL } from "@/config/index";
+import fetcher from "./fetcher";
 
 const axiosInstance = axios.create();
 
@@ -21,11 +21,10 @@ axiosInstance.interceptors.request.use(async (req) => {
 
   if (!isExpired) return req;
 
-  const response = await axios.get(`${NEXT_URL}/api/refresh`);
+  const response = await fetcher("/refresh");
+  const data = await response.json();
 
-  console.log(response.data);
-
-  req.headers.common.Authorization = `Bearer ${response.data.accessToken}`;
+  req.headers.common.Authorization = `Bearer ${data.accessToken}`;
   return req;
 });
 

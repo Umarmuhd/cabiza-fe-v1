@@ -1,3 +1,5 @@
+import fetcher from "@/libs/fetcher";
+
 const { default: axios } = require("../libs/axiosInstance");
 const { NEXT_URL, API_URL } = require("../config/index");
 
@@ -15,5 +17,5 @@ export function getMe() {
 }
 
 export function login(payload) {
-  return axios.post(`${NEXT_URL}/api/login`, payload).then((res) => res.data);
+  return fetcher(`/login`, payload).then((res) => res.json());
 }

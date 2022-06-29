@@ -2,6 +2,7 @@ import { createContext, useState, useEffect } from "react";
 import { useRouter } from "next/router";
 import { NEXT_URL } from "../config/index";
 import axios from "@/libs/axiosInstance";
+import fetcher from "@/libs/fetcher";
 
 const AuthContext = createContext({});
 
@@ -20,12 +21,9 @@ export const AuthProvider = ({ children }) => {
 
   const logout = async () => {
     setLoading(true);
-    const res = await axios.post(`${NEXT_URL}/api/logout`, {
-      withCredentials: true,
-      credentials: "include",
-    });
+    const response = await fetcher("/logout");
 
-    if (res.status === 200) {
+    if (response.status === 200) {
       axios.defaults.headers.common = { Authorization: null };
       setUser(null);
       setLoading(false);
@@ -36,30 +34,36 @@ export const AuthProvider = ({ children }) => {
   const checkUserLoggedIn = async () => {
     try {
       setLoading(true);
-      const res = await axios.get(`${NEXT_URL}/api/refresh`, {
-        withCredentials: true,
-        credentials: "include",
-        method: "GET",
-      });
+      const response = await fetcher("/refresh");
+
+      const data = await response.json();
+
+      if (!response.ok) {
+        setUser(null);
+        setLoading(false);
+
+        // if (window.location.origin === "http://localhost:3000") {
+        //   const error = new Error("Unauthorized");
+        //   return error;
+        // } else {
+        //   router.push("/auth/login");
+        // }
+        const message = `An error has occured: ${data?.message}`;
+        throw new Error(message);
+      }
 
       setTimeout(() => {
         checkUserLoggedIn();
-      }, res.data.expires_in * 1000 - 500);
+      }, data.expires_in * 1000 - 500);
 
-      if (res.status === 200) {
-        axios.defaults.headers.common = {
-          Authorization: `Bearer ${res.data.accessToken}`,
-        };
-        setUser(res.data.user);
-        setLoading(false);
-      } else {
-        setUser(null);
-        setLoading(false);
-        router.push("/auth/login");
-      }
+      axios.defaults.headers.common = {
+        Authorization: `Bearer ${data.accessToken}`,
+      };
+      setUser(data.user);
       setLoading(false);
     } catch (error) {
       console.log(error);
+      setUser(null);
       setLoading(false);
     }
   };

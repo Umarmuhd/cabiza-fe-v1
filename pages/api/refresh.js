@@ -1,8 +1,35 @@
 import cookie from "cookie";
 import { API_URL } from "@/config/index";
+import Cors from "cors";
+import initMiddleware from "../../libs/init-middleware";
+
+// Initializing the cors middleware
+const cors = Cors({
+  methods: ["GET", "HEAD", "OPTIONS"],
+  credentials: true,
+  withCredentials: true,
+  origin: ["http://localhost:3000", "http://app.localhost:3000"],
+});
+
+// Helper method to wait for a middleware to execute before continuing
+// And to throw an error when an error happens in a middleware
+function runMiddleware(req, res, fn) {
+  return new Promise((resolve, reject) => {
+    fn(req, res, (result) => {
+      if (result instanceof Error) {
+        return reject(result);
+      }
+
+      return resolve(result);
+    });
+  });
+}
 
 const refresh = async (req, res) => {
-  if (req.method === "GET") {
+  // Run the middleware
+  console.log(req.cookies);
+  await runMiddleware(req, res, cors);
+  if (req.method === "GET" || req.method === "OPTIONS") {
     const cookies = cookie.parse(req.headers.cookie ?? "");
     const refresh = cookies.refresh ?? false;
 
@@ -33,14 +60,14 @@ const refresh = async (req, res) => {
             httpOnly: true,
             secure: process.env.NODE_ENV !== "development",
             maxAge: 60 * 30,
-            sameSite: "strict",
+            sameSite: "lax",
             path: "/api/",
           }),
           cookie.serialize("refresh", data.refreshToken, {
             httpOnly: true,
             secure: process.env.NODE_ENV !== "development",
             maxAge: 60 * 60 * 24,
-            sameSite: "strict",
+            sameSite: "lax",
             path: "/api/",
           }),
         ]);
