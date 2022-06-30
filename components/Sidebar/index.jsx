@@ -14,7 +14,7 @@ const menus = [
   { path: "/products", title: "Products", icon: ProductsIcon },
   { path: "/posts", title: "Posts", icon: PostsIcon },
   { path: "/payout", title: "Payout", icon: PayoutIcon },
-  { path: "/community", title: "Community", icon: CommunityIcon },
+  // { path: "/community", title: "Community", icon: CommunityIcon },
   { path: "/help", title: "Help", icon: HelpIcon },
   { path: "/settings", title: "Settings", icon: SettingsIcon },
 ];
@@ -79,7 +79,7 @@ export default function Sidebar({ sidebarOpen, setSidebarOpen }) {
         id="sidebar"
         ref={sidebar}
         className={`!fixed border-r border-sec flex flex-col z-[102] left-0 top-0 lg:static lg:left-auto lg:top-auto lg:translate-x-0 transform h-screen w-64 lg:w-20 lg:sidebar-expanded:!w-64 2xl:!w-64 shrink-0 bg-[#F2F4F5] md:bg-white p-4 transition-all duration-200 ease-in-out h-[100vh] ${
-          sidebarOpen ? 'translate-x-0 !w-full' : '-translate-x-64'
+          sidebarOpen ? "translate-x-0 !w-full" : "-translate-x-64"
         }`}
       >
         {/* Sidebar header */}
@@ -259,7 +259,7 @@ export default function Sidebar({ sidebarOpen, setSidebarOpen }) {
         </div>
 
         {/* Expand / collapse button */}
-        <div className="pt-3 hidden lg:inline-flex 2xl:hidden justify-end mt-auto">
+        <div className="pt-3 hidden lg:hidden 2xl:hidden justify-end mt-auto">
           <div className="px-3 py-2">
             <button onClick={() => setSidebarExpanded(!sidebarExpanded)}>
               <span className="sr-only">Expand / collapse sidebar</span>

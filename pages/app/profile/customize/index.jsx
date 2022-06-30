@@ -9,6 +9,8 @@ import ChangePicture from "./change-picture";
 import Connections from "./connections";
 import Share from "./share";
 import { classNames } from "../../../../libs/helper";
+import Referral from "./referral";
+import ReferralStats from "./referral-stats";
 
 export default function Customize() {
   const { user } = useContext(AuthContext);
@@ -59,10 +61,32 @@ export default function Customize() {
               >
                 Share
               </Tab>
-
-              {/* <button className='ml-auto bg-primary px-4 py-2 rounded-3xl text-white self-center mt-[-.5rem] text-sm mr-8 pb-2 font-medium'>
-                Save
-              </button> */}
+              <Tab
+                as={"button"}
+                className={({ selected }) =>
+                  classNames(
+                    "text-md mr-8 pb-2 font-medium",
+                    selected
+                      ? " font-bold text-primary border-b border-b-primary"
+                      : " text-secondary"
+                  )
+                }
+              >
+                Referral
+              </Tab>
+              <Tab
+                as={"button"}
+                className={({ selected }) =>
+                  classNames(
+                    "text-md mr-8 pb-2 font-medium",
+                    selected
+                      ? " font-bold text-primary border-b border-b-primary"
+                      : " text-secondary"
+                  )
+                }
+              >
+                Referral Stats
+              </Tab>
             </Tab.List>
           </div>
         </div>
@@ -76,6 +100,12 @@ export default function Customize() {
           </Tab.Panel> */}
           <Tab.Panel>
             <Share />
+          </Tab.Panel>
+          <Tab.Panel>
+            <Referral />
+          </Tab.Panel>
+          <Tab.Panel>
+            <ReferralStats />
           </Tab.Panel>
         </Tab.Panels>
       </Tab.Group>

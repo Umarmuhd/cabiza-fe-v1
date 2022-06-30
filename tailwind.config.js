@@ -65,6 +65,8 @@ module.exports = {
         tertiary_red_base: "#FF5247",
         primary_brand_dark: "#331ADB",
         tertiary_red_darkest: "#D3180C",
+
+        tertiary_green_base: "#23C16B",
       },
       backgroundImage: {
         "onboarding-pattern": "url('/images/onboarding-bg.svg')",

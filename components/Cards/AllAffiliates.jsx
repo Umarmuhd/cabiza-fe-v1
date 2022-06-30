@@ -4,55 +4,31 @@ import AffiliateMore from "../Dropdowns/AffiliateMore";
 import PaginationComponent from "../PaginationComponent";
 
 export default function AllAffiliates({ products }) {
+  const thClass =
+    "px-4 py-4 text-left text-secondary_ink_dark text-2xl font-semibold";
+  const tdClass = "px-4 py-4 border-t border-b border-gray-300 text-sm";
+  const trClass = "border-gray-300";
   return (
     <div className="md:w-43/50 mx-auto text-left p-10 bg-white mt-8 rounded-3xl shadow mb-10 border">
       <div className="container mx-auto">
         <div className="py-8">
           <div className="-mx-4 sm:-mx-8 px-4 sm:px-8 py-4 overflow-x-auto">
-            <div className="inline-block min-w-full rounded-lg rounded-t-none overflow-hidden">
-              <table className="min-w-full leading-normal">
+            <div className="inline-block min-w-full rounded-lg rounded-t-none overflow-clip ">
+              <table className="w-full table-auto rounded-sm">
                 <thead>
                   <tr>
-                    <th
-                      scope="col"
-                      className="px-5 py-3 bg-white text-secondary_ink_dark text-left text-2xl leading-5 font-semibold"
-                    >
-                      Products
-                    </th>
-                    <th
-                      scope="col"
-                      className="px-5 py-3 bg-white text-secondary_ink_dark text-left text-2xl leading-5 font-semibold"
-                    >
-                      Sales
-                    </th>
-                    <th
-                      scope="col"
-                      className="px-5 py-3 bg-white text-secondary_ink_dark text-left text-2xl leading-5 font-semibold"
-                    >
-                      Revenue
-                    </th>
-                    <th
-                      scope="col"
-                      className="px-5 py-3 bg-white text-secondary_ink_dark text-left text-2xl leading-5 font-semibold"
-                    >
-                      Price
-                    </th>
-                    <th
-                      scope="col"
-                      className="px-5 py-3 bg-white text-secondary_ink_dark text-left text-2xl leading-5 font-semibold"
-                    >
-                      Status
-                    </th>
-                    <th
-                      scope="col"
-                      className="px-5 py-3 bg-white text-secondary_ink_dark text-left text-2xl leading-5 font-semibold"
-                    ></th>
+                    <th className={thClass}>Product</th>
+                    <th className={thClass}>Price</th>
+                    <th className={thClass}>Sales</th>
+                    <th className={thClass}>Revenue</th>
+                    <th className={thClass}>Percent</th>
+                    <th className={thClass}>More</th>
                   </tr>
                 </thead>
                 <tbody>
                   {products.map((product) => (
-                    <tr key={product._id}>
-                      <td className="px-5 py-5 border-b border-gray-200 bg-white text-sm">
+                    <tr className={trClass} key={product._id}>
+                      <td className={tdClass}>
                         <div className="flex items-center">
                           <div className="flex-shrink-0">
                             <a href="#" className="block relative">
@@ -77,40 +53,33 @@ export default function AllAffiliates({ products }) {
                           </div>
                         </div>
                       </td>
-                      <td className="px-5 py-5 border-b border-gray-200 bg-white text-sm">
+                      <td className={tdClass}>
                         <p className="text-secondary_ink_dark whitespace-no-wrap">
                           0
                         </p>
                       </td>
-                      <td className="px-5 py-5 border-b border-gray-200 bg-white text-sm">
+                      <td className={tdClass}>
                         <p className="text-secondary_ink_dark whitespace-no-wrap">
                           $0
                         </p>
                       </td>
-                      <td className="px-5 py-5 border-b border-gray-200 bg-white text-sm">
+                      <td className={tdClass}>
                         <span className="relative inline-block text-secondary_ink_dark leading-tight">
                           ${product.price}
                         </span>
                       </td>
-                      <td className="px-5 py-5 border-b border-gray-200 bg-white text-sm">
+                      <td className={tdClass}>
                         <span className="relative inline-block text-secondary_ink_dark leading-tight">
                           Active
                         </span>
                       </td>
-                      <td className="px-5 py-5 border-b border-gray-200 bg-white text-sm">
-                        {/* <button>
-                          <svg
-                            className="w-6 h-6"
-                            fill="currentColor"
-                            viewBox="0 0 20 20"
-                            xmlns="http://www.w3.org/2000/svg"
-                          >
-                            <path d="M6 10a2 2 0 11-4 0 2 2 0 014 0zM12 10a2 2 0 11-4 0 2 2 0 014 0zM16 12a2 2 0 100-4 2 2 0 000 4z"></path>
-                          </svg>
-                        </button> */}
-
-                        <div className="relative">
-                          <AffiliateMore />
+                      <td className={tdClass}>
+                        <div className="max-w-fit">
+                          <div className="absolute -mt-5">
+                            <div className="inset-0">
+                              <AffiliateMore />
+                            </div>
+                          </div>
                         </div>
                       </td>
                     </tr>
@@ -119,7 +88,9 @@ export default function AllAffiliates({ products }) {
               </table>
             </div>
 
-            {products.length > 5 ? <PaginationComponent classNames="mt-8" /> : null}
+            {products.length > 5 ? (
+              <PaginationComponent classNames="mt-8" />
+            ) : null}
           </div>
         </div>
       </div>
