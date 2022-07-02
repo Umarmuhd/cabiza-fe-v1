@@ -24,13 +24,14 @@ export const HeroSection = () => {
             </p>
           </div>
           <div className="flex md:justify-start justify-center">
-            <Link href="/auth/signup">
-              <a
-                className={`p-3 px-12 bg-primary text-lg font-semibold text-white rounded-[48px]`}
-              >
-                Get started
-              </a>
-            </Link>
+            <a
+              target="_blank"
+              href={`http://app.${window.location.host}/auth/signup`}
+              rel="noopener noreferrer"
+              className={`p-3 px-12 bg-primary text-lg font-semibold text-white rounded-[48px]`}
+            >
+              Get started
+            </a>
           </div>
         </div>
         <div className="relative">

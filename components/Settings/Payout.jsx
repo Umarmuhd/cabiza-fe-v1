@@ -29,7 +29,6 @@ const AccountTypeIcon = () => (
     />
   </svg>
 );
-
 const AccountTypeActiveIcon = () => (
   <svg
     width="25"
@@ -49,7 +48,6 @@ const AccountTypeActiveIcon = () => (
     />
   </svg>
 );
-
 const WarningIcon = () => (
   <svg
     width="24"
