@@ -1,6 +1,5 @@
 import React, { useState } from 'react';
-import MainFooter from '../../components/Footer/MainFooter';
-import MainNavigation from '../../components/Navbars/MainNav';
+import PublicLayout from "@/layouts/PublicLayout";
 
 import styles from '../../styles/Home.module.css';
 
@@ -49,8 +48,7 @@ const CancelIcon = () => (
 export default function Membership({ subscriptionPlans }) {
   const [payout, setPayout] = useState({ monthly: false, yearly: true });
   return (
-    <div className='w-full h-full'>
-      <MainNavigation />
+    <PublicLayout>
       <header className='py-16 bg-secondary_sky_lighter'>
         <div className='mx-auto max-w-[1500px]'>
           <div className='w-[100%] mx-aut'>
@@ -703,8 +701,7 @@ export default function Membership({ subscriptionPlans }) {
           </div>
         </div>
       </section>
-      <MainFooter />
-    </div>
+    </PublicLayout>
   );
 }
 
