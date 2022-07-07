@@ -13,7 +13,7 @@ import { API_URL } from "@/config/index";
 import AuthContext from "@/context/AuthContext";
 import FormGroup from "@/components/Forms/FormGroup";
 import Alert from "@/components/Alert";
-import CheckSwitch from "@/components/checkSwitch";
+import CheckSwitch from "@/components/CheckSwitch";
 import TextFormat from "@/components/TextFormat";
 import Calendar from "react-calendar";
 import "react-calendar/dist/Calendar.css";
@@ -167,15 +167,15 @@ export default function CreatePost() {
   }, [value]);
 
   const handlePublishNow = () => {
-      handleSubmit(handlePublish)      
-      setTimeout(() => setShowDropdown(!showDropdown), 100)        
-  }
+    handleSubmit(handlePublish);
+    setTimeout(() => setShowDropdown(!showDropdown), 100);
+  };
 
   const handlePreview = (values) => {
-    // const { title, description, call_to_action, attachment, audience } = values;    
-    localStorage.setItem("preview_form_data", JSON.stringify(values))
+    // const { title, description, call_to_action, attachment, audience } = values;
+    localStorage.setItem("preview_form_data", JSON.stringify(values));
     window.open(`https://cabiza.net/preview`);
-  }
+  };
 
   // console.log("https://cabiza.net/" + user?.username + "/posts");
 
@@ -185,7 +185,11 @@ export default function CreatePost() {
         <div className="bg-secondary_sky_lightest py-2 md:px-0 px-4 w-[100%]">
           <div className="flex justify-between items-center md:w-43/50 mx-auto">
             <div className="flex">
-              <a className="leading-4 text-base font-medium text-primary py-2 px-3 rounded-4xl border border-primary flex items-center cursor-pointer" target="_blank" onClick={handleSubmit(handlePreview)}>
+              <a
+                className="leading-4 text-base font-medium text-primary py-2 px-3 rounded-4xl border border-primary flex items-center cursor-pointer"
+                target="_blank"
+                onClick={handleSubmit(handlePreview)}
+              >
                 <svg
                   width="16"
                   height="16"
