@@ -1,5 +1,8 @@
-import { useState } from "react";
+import { useContext, useEffect, useState } from "react";
 import { Tab } from "@headlessui/react";
+import AuthContext from "@/context/AuthContext";
+import axios from "@/libs/axiosInstance";
+import { API_URL } from "@/config/index";
 
 function classNames(...classes) {
   return classes.filter(Boolean).join(" ");
@@ -38,6 +41,10 @@ const WarningIcon = () => (
 );
 
 const ReferralTable = () => {
+  const { user } = useContext(AuthContext);
+
+  console.log(user);
+
   let [categories] = useState({
     Completed: [
       {
@@ -62,6 +69,16 @@ const ReferralTable = () => {
       },
     ],
   });
+
+  const fetchReferrals = async () => {
+    const response = await axios.get(`${API_URL}/user/referrals`);
+    console.log(response.data);
+  };
+
+  useEffect(() => {
+    fetchReferrals();
+  }, []);
+
   return (
     <div className="w-full px-2 sm:px-0">
       <Tab.Group>

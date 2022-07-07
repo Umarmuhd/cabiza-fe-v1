@@ -2,7 +2,7 @@ import FormGroup from "@/components/Forms/FormGroup";
 import DashboardNav from "@/components/Navbars/DashboardNav";
 import Link from "next/link";
 import { useRouter } from "next/router";
-import React, { useCallback, useEffect, useState } from "react";
+import React, { useCallback, useContext, useEffect, useState } from "react";
 import * as Yup from "yup";
 import { yupResolver } from "@hookform/resolvers/yup";
 import { useForm } from "react-hook-form";
@@ -10,10 +10,15 @@ import Dashboard from "@/layouts/Dashboard";
 import axios from "@/libs/axiosInstance";
 import { API_URL } from "@/config/index";
 import toast from "react-hot-toast";
+import AuthContext from "@/context/AuthContext";
 
 export default function EditPost() {
   const [post, setPost] = useState(null);
   const [loading, setLoading] = useState(false);
+
+  const { user } = useContext(AuthContext);
+
+  console.log(user);
 
   const router = useRouter();
 
@@ -116,7 +121,10 @@ export default function EditPost() {
       >
         <div className="flex justify-between items-center md:w-43/50 mx-auto">
           <div className="flex">
-            <a className="leading-4 text-base font-medium text-primary py-2 px-3 rounded-4xl border border-primary flex items-center" target="_blank">
+            <a
+              className="leading-4 text-base font-medium text-primary py-2 px-3 rounded-4xl border border-primary flex items-center"
+              target="_blank"
+            >
               <svg
                 width="16"
                 height="16"
