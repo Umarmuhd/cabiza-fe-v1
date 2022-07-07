@@ -1,0 +1,30 @@
+[{
+        "id": 1,
+        "price": 0,
+        "planName": "Starter",
+        "zone": "FREE",
+        "description": "Limited access (intro module or 7 day trial) to the specific/main course on this subscription."
+    },
+    {
+        "id": 2,
+        "price": 50,
+        "planName": "Owner",
+        "zone": "BUYERS ZONE",
+        "description": "Everyone is entitled to have access to only 1 free course on this subscription per annum.",
+        "mostPopular": true
+    },
+    {
+        "id": 3,
+        "price": 500,
+        "planName": "Shaper",
+        "zone": "MAKERS ZONE",
+        "description": "Everyone is entitled to have access to 5 free courses/items on this subscription per annum."
+    },
+    {
+        "id": 4,
+        "price": 5000,
+        "planName": "Innovator",
+        "zone": "CORPORATE ZONE",
+        "description": "This member has access to 20 free courses/items on this subscription per annum."
+    }
+]

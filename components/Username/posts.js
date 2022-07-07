@@ -1,16 +1,5 @@
-import React, { useEffect, useState } from "react";
-import { useRecoilValue } from "recoil";
-import Link from "next/link";
-import { useRouter } from "next/router";
-import axios from "axios";
-import { API_URL } from "@/config/index";
 import { RWebShare } from "react-web-share";
-
-import { user_profile } from "@/atoms/user_profile";
-
-import Username from "@/layouts/Username";
-import Image from "next/image";
-import PaginationComponent from "@/components/PaginationComponent";
+import Link from "next/link";
 
 const ShareIcon = () => (
   <svg
@@ -69,70 +58,4 @@ const PostItem = ({ post, username }) => {
   );
 };
 
-export default function UserPosts({ username = "umar" }) {
-  const { user } = useRecoilValue(user_profile);
-
-  const [posts, setPosts] = useState([]);
-  const [loading, setLoading] = useState(false);
-
-  useEffect(() => {
-    const fetchProducts = async () => {
-      try {
-        setLoading(true);
-        const url = `${API_URL}/posts/user?username=${username}`;
-        const { data } = await axios.get(url);
-        setPosts(data.data.posts);
-        setLoading(false);
-      } catch (error) {
-        console.log(error.message);
-        setLoading(false);
-      }
-    };
-    fetchProducts();
-  }, [user]);
-
-  const { asPath } = useRouter();
-  const newPath = asPath.replace("/posts", "");
-  return (
-    <main className="bg-white">
-      <div className="mx-auto md:w-43/50 py-10 md:my-20">
-        <div className="mb-8">
-          <h1 className="text-3xl font-semibold text-secondary_ink_darkest">
-            Resources to help creators and digital entrepreneurs learn and earn
-            more. Follow us to receive helpful content every week, delivered
-            directly to your inbox. Cabiza’s official account.
-          </h1>
-        </div>
-
-        <div className="flex items-center flex-start">
-          <Link href={`${newPath}/products`}>
-            <button className="bg-primary_brand_lightest text-primary flex h-[max-content] items-center rounded-full px-6 py-2">
-              Products
-            </button>
-          </Link>
-          <button className="bg-primary flex h-[max-content] ml-6 items-center rounded-full text-white px-6 py-2">
-            Posts
-          </button>
-        </div>
-
-        <div className="mt-20 flex flex-col gap-5 mb-7">
-          {posts.length > 0 ? (
-            <React.Fragment>
-              {posts.map((post, index) => (
-                <React.Fragment key={index}>
-                  <PostItem post={post} username={username} />
-                </React.Fragment>
-              ))}
-            </React.Fragment>
-          ) : (
-            !loading && <p className="text-grey_60">No post found</p>
-          )}
-        </div>
-
-        {posts.length > 20 ? (<PaginationComponent />): null}
-      </div>
-    </main>
-  );
-}
-
-UserPosts.layout = Username;
+export default PostItem
