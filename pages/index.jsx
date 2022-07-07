@@ -1,5 +1,6 @@
 import Image from 'next/image'
 import { useState } from 'react';
+
 import { HeroSection } from '@/components/HeroSection';
 import Feature from '@/components/FeatureSection';
 import { CategoriesSection } from '@/components/CategoriesSection';
@@ -36,7 +37,9 @@ const ArrowRight = () => (
 );
 
 export default function Home({ reviews, plans }) {
+  // handlers for controlling reviews slider
   const [position, setPosition] = useState(0);
+  // for moving forward
   function moveReviewForward() {
     if (position === 0) {
       let newPosition = 0;
@@ -48,6 +51,8 @@ export default function Home({ reviews, plans }) {
       setPosition((prev) => prev + 33);
     }
   }
+
+  // for moving backward
   function moveReviewBackward() {
     if (position > 0) {
       setPosition((prev) => prev - 33);
@@ -82,7 +87,6 @@ export default function Home({ reviews, plans }) {
             >
               <div className='flex flex-col lg:flex-row mt-10 md:gap-16'>
                 <div className="w-[100%]">
-                  {/* <img src='/images/testimony.png' alt='' /> */}
                   <Image src='/images/testimony.png' alt='' width={1200} height={1200}/>
                 </div>
 
