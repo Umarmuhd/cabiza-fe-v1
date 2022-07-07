@@ -125,7 +125,7 @@ export default function Posts() {
   const router = useRouter;
 
   const changePostsRequestQuery = () => {
-    router.replace(router.pathname, `/posts?s=${searchInput.current.value}`)
+    router.replace(router.pathname, `/posts?s=${searchInput.current.value}`);
     searchInput.current.value = "";
   };
 
@@ -134,6 +134,8 @@ export default function Posts() {
       changePostsRequestQuery();
     }
   };
+
+  console.log(window);
 
   return (
     <div className="md:w-[85%] w-[100%] ml-auto">

@@ -1,6 +1,11 @@
+import Alert from "@/components/Alert";
 import ShareReferralLink from "@/components/ShareReferralLink";
+import AuthContext from "@/context/AuthContext";
 import Image from "next/image";
-import React from "react";
+import React, { useContext } from "react";
+import CopyToClipboard from "react-copy-to-clipboard";
+import toast from "react-hot-toast";
+import { useForm } from "react-hook-form";
 
 const SendIcon = ({ className }) => (
   <svg
@@ -23,6 +28,16 @@ const SendIcon = ({ className }) => (
 );
 
 const Referral = () => {
+  const { user } = useContext(AuthContext);
+
+  const {
+    register,
+    handleSubmit,
+    watch,
+    formState: { errors },
+  } = useForm();
+  const onSubmit = (data) => console.log(data);
+
   return (
     <div className="bg-white rounded-2xl p-12 px-3 md:w-43/50 mx-auto mt-10 shadow mb-12 md:px-10">
       <div className="text-center relative mb-8">
@@ -132,7 +147,7 @@ const Referral = () => {
         </div>
       </div>
 
-      <div className="mb-8">
+      <form className="mb-8" onSubmit={handleSubmit(onSubmit)}>
         <h3 className="text-2xl font-semibold text-secondary_ink_darkest mb-2">
           Invite your friend
         </h3>
@@ -148,12 +163,18 @@ const Referral = () => {
             id="email"
             placeholder="Email Address..."
             className="ml-3 h-[100%] border-[transparent] bg-[transparent] w-11/12 border-none outline-0 p-0 px-8"
+            {...register("email", { required: true })}
           />
           <button className="mr-3 bg-primary rounded-full p-3">
             <SendIcon className="w-[1.5rem] h-[1.5rem]" />
           </button>
         </div>
-      </div>
+        {errors.email?.type === "required" && (
+          <p className="text-left text-red-600 text-xs mt-1 px-4">
+            Email address is required
+          </p>
+        )}
+      </form>
 
       <div className="">
         <h3 className="text-2xl font-semibold text-secondary_ink_darkest mb-2">
@@ -167,11 +188,31 @@ const Referral = () => {
         <div className="flex justify-between items-center space-x-6 mt-6 place-items-center md:flex-row flex-col">
           <div className="flex items-center justify-between h-12 mx-auto sm:h-12 bg-secondary_sky_lighter px-6 py-4 rounded-full w-full">
             <span className="leading-4 text-secondary">
-              Cabiza.net/referral-Jake1244
+              {`app.cabiza.net/auth/signup?ref=${user?.referral_code}`}
             </span>
-            <button className="text-primary font-medium leading-6">
-              Copy link
-            </button>
+            <CopyToClipboard
+              text={`https://app.cabiza.net/auth/signup?ref=${user?.referral_code}`}
+              onCopy={() =>
+                toast.custom(<Alert color="#24C78C" text="Copied success !" />)
+              }
+            >
+              <button className="text-primary font-medium leading-6">
+                <svg
+                  className="w-6 h-6"
+                  fill="none"
+                  stroke="currentColor"
+                  viewBox="0 0 24 24"
+                  xmlns="http://www.w3.org/2000/svg"
+                >
+                  <path
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                    strokeWidth="2"
+                    d="M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2"
+                  ></path>
+                </svg>
+              </button>
+            </CopyToClipboard>
           </div>
           <div className="flex items-center justify-end md:mt-0 mt-4">
             <ShareReferralLink />
