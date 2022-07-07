@@ -657,11 +657,6 @@ section.testimony h3 {
     .reviews-container {
         width: 800vw;
     }
-    .membership .plans.flex {
-        display: grid;
-        grid-template-columns: repeat(2, 47%);
-        grid-gap: 2rem;
-    }
     .plans.flex .col:not(:last-of-type) {
         margin-right: 0;
     }
@@ -805,6 +800,7 @@ section.testimony h3 {
     .membership .plans.flex {
         display: flex;
         flex-direction: column;
+        margin: auto;
     }
     .plans.flex .col:not(:last-of-type) {
         margin-right: 0;
@@ -878,6 +874,7 @@ section.testimony h3 {
     .plans.flex {
         grid-column-gap: 1rem;
         width: 100%;
+        margin: auto;
     }
 }
 

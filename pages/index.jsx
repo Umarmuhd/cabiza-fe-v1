@@ -3,7 +3,7 @@ import { useState } from 'react';
 import { HeroSection } from '@/components/HeroSection';
 import Feature from '@/components/FeatureSection';
 import { CategoriesSection } from '@/components/CategoriesSection';
-import Testimonies from '@/components/Testimonies';
+import PlanComponent from '@/components/Plan';
 import PublicLayout from '@/layouts/PublicLayout';
 
 import styles from '../styles/Home.module.css';
@@ -71,15 +71,8 @@ export default function Home({ reviews, plans }) {
               <h2 className='font-semibold text-secondary text-4xl mb-10 lg:text-left text-center mt-16'>
                 Membership plans
               </h2>
-
-              <div className='mb-10'>
-                <div className={`${styles.plans} mt-10 ${styles.flex}`}> {
-                    plans.map(each => {                      
-                      return <Testimonies key={each.id} review={each}/>
-                    })
-                  }
-                </div>
-              </div>
+                          
+              <PlanComponent plans={plans}/>
             </div>
           </section>
 
@@ -88,8 +81,9 @@ export default function Home({ reviews, plans }) {
               className={`${styles.testimony} px-4 py-16 mx-auto sm:max-w-xl md:max-w-full lg:max-w-screen-xl md:px-24 lg:px-8 lg:py-20`}
             >
               <div className='flex flex-col lg:flex-row mt-10 md:gap-16'>
-                <div>
-                  <img src='/images/testimony.png' alt='' />
+                <div className="w-[100%]">
+                  {/* <img src='/images/testimony.png' alt='' /> */}
+                  <Image src='/images/testimony.png' alt='' width={1200} height={1200}/>
                 </div>
 
                 <div className='lg:w-[50%]'>
@@ -112,7 +106,6 @@ export default function Home({ reviews, plans }) {
                           return <div className={styles.review} key={review.id}>
                             <div className={styles['review-header']}>
                               <Image src={review?.image} alt='' width={100} height={100}/>
-                              {/* <img src={review?.image} alt='' /> */}
                               <div className={`${styles['header-content']} ml-10`}>
                                 <h5>{review.name}</h5>
                                 <p>{review?.title}</p>
