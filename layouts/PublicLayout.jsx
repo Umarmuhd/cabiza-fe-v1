@@ -1,7 +1,7 @@
 import React from "react";
 import { Toaster } from "react-hot-toast";
-import { MainNavigation } from '@/components/Navbars/MainNav';
-import { MainFooter } from '@/components/Footer/MainFooter';
+import MainNavigation from "@/components/Navbars/MainNav";
+import MainFooter from "@/components/Footer/MainFooter";
 
 const PublicLayout = ({ children }) => {
   return (
@@ -9,9 +9,9 @@ const PublicLayout = ({ children }) => {
       <Toaster />
       <main className="relative">
         <div className="w-full h-full">
-          {/* <MainNavigation /> */}
+          <MainNavigation />
           {children}
-          {/* <MainFooter /> */}
+          <MainFooter />
         </div>
       </main>
     </React.Fragment>
