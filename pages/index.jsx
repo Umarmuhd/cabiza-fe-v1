@@ -7,9 +7,9 @@ import { CategoriesSection } from '@/components/CategoriesSection';
 import PlanComponent from '@/components/Plan';
 import PublicLayout from '@/layouts/PublicLayout';
 
-import styles from '../styles/Home.module.css';
 import plans from '../plans.json'
 import reviews from '../reviews.json'
+import styles from '../styles/Home.module.css';
 
 const SendIcon = ({ className }) => (
   <svg width='32' height='33' viewBox='0 0 32 33' fill='none' xmlns='http://www.w3.org/2000/svg' className={`${className ? className : ''}`}>

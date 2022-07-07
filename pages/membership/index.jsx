@@ -1,6 +1,9 @@
 import React, { useState } from 'react';
+
+import PlanComponent from '@/components/Plan';
 import PublicLayout from "@/layouts/PublicLayout";
 
+import plans from '../../plans.json'
 import styles from '../../styles/Home.module.css';
 
 const TickIcon = () => (
@@ -45,7 +48,7 @@ const CancelIcon = () => (
   </svg>
 );
 
-export default function Membership({ subscriptionPlans }) {
+export default function Membership({ plans }) {
   const [payout, setPayout] = useState({ monthly: false, yearly: true });
   return (
     <PublicLayout>
@@ -71,21 +74,19 @@ export default function Membership({ subscriptionPlans }) {
               <div className='mt-8 flex lg:mt-0 lg:flex-shrink-0'>
                 <div className='float-left flex mt-1 bg-secondary_sky_light rounded-xl border border-secondary_sky_light w-[max-content] p-[.1rem]'>
                   <button
-                    className={`${
-                      payout.monthly
+                    className={`${payout.monthly
                         ? 'bg-white text-secondary_ink_light rounded-l-xl'
                         : 'bg-secondary_sky_light text-secondary_brand_light'
-                    } h-[2.4rem] w-[11rem] ml-[1px] rounded-l-xl m-auto`}
+                      } h-[2.4rem] w-[11rem] ml-[1px] rounded-l-xl m-auto`}
                     onClick={() => setPayout({ monthly: true, yearly: false })}
                   >
                     Monthly
                   </button>
                   <button
-                    className={`${
-                      payout.yearly
+                    className={`${payout.yearly
                         ? 'bg-white text-secondary_ink_light rounded-r-xl'
                         : 'bg-secondary_sky_light text-secondary_brand_light'
-                    } h-[2.4rem] w-[12rem] ml-[1px] rounded-r-xl m-auto hover:bg-indigo-50`}
+                      } h-[2.4rem] w-[12rem] ml-[1px] rounded-r-xl m-auto hover:bg-indigo-50`}
                     onClick={() => setPayout({ monthly: false, yearly: true })}
                   >
                     Annually
@@ -100,35 +101,14 @@ export default function Membership({ subscriptionPlans }) {
 
           <section id='membership' className={`${styles.membership} md:pt-2`}>
             <div className='flex'>
-              <div className={`${styles.plans} ${styles.flex}`}>
-                {
-                  subscriptionPlans?.map(each => {
-                    let monthlyPrice = (each.price / 12) - 12/100;
-                    monthlyPrice = Math.abs((monthlyPrice === -0 ? 0 : monthlyPrice).toFixed())
-                    
-                    return (
-                    <div className={`${styles.col} ${each.mostPopular ? styles.popular : ""}`} key={each.id}>
-                      {each.mostPopular ? <aside>Most popular</aside> : null}
-                      <h4>{each.zone}</h4>
-                      <h3>{each.planName}</h3>
-                      <p className={styles.price}>
-                        £
-                        {
-                          payout.yearly ? `${each.price}${each.price !== 0 ? "/Annum" : ""}` : `${monthlyPrice }${monthlyPrice !== 0 ? "/Monthly" : ""}`                          
-                        }
-                      </p>
-                      <a href=''>Sign Up</a>
-                      <p className={`${each.mostPopular ? styles.description : ""}`}>
-                        {each.description}
-                      </p>
-                      <a href='' className={styles['btn-secondary']}>
-                        Learn More
-                      </a>
-                    </div>
-                )
-                  })
-                }                               
-              </div>
+              <section className='px-4 py-7 md:px-24 lg:px-8 lg:py-7 mt-16'>
+                <div
+                  id='membership'
+                  className={`${styles.membership} mx-auto sm:max-w-xl md:max-w-full lg:max-w-screen-xl`}
+                >
+                <PlanComponent plans={plans} payout={payout}/>                
+                </div>
+              </section>
             </div>
           </section>
         </div>
@@ -187,7 +167,7 @@ export default function Membership({ subscriptionPlans }) {
                       </tr>
                     </thead>
                     <tbody
-                      className={`bg-white divide-y divide-gray-200 ${styles['table-body']}`}                     
+                      className={`bg-white divide-y divide-gray-200 ${styles['table-body']}`}
                     >
                       <tr>
                         <td className='px-6 py-[14px]  text-secondary'>
@@ -709,37 +689,7 @@ export default function Membership({ subscriptionPlans }) {
 export async function getServerSideProps() {
   return {
     props: {
-      subscriptionPlans: [
-        {
-          id: 1,
-          price: 0,
-          planName: "Starter",
-          zone: "FREE",
-          description: "Limited access (intro module or 7 day trial) to the specific/main course on this subscription.",
-        }, 
-        {
-          id: 2,
-          price: 50,
-          planName: "Owner",
-          zone: "BUYERS ZONE",
-          description: "Everyone is entitled to have access to only 1 free course on this subscription per annum.",
-          mostPopular: true
-        },
-        {
-          id: 3,
-          price: 500,
-          planName: "Shaper",
-          zone: "MAKERS ZONE",
-          description: "Everyone is entitled to have access to 5 free courses/items on this subscription per annum.",
-        },
-         {
-          id: 4,
-          price: 5000,
-          planName: "Innovator",
-          zone: "CORPORATE ZONE",
-          description: "This member has access to 20 free courses/items on this subscription per annum.",
-        }
-      ]
+      plans
     }, // will be passed to the page component as props
   }
 }
