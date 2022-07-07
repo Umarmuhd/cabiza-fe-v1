@@ -1,8 +1,6 @@
 import React from "react";
 import Link from "next/link";
 import axios from "@/libs/axiosInstance";
-import MainFooter from "@/components/Footer/MainFooter";
-import MainNavigation from "@/components/Navbars/MainNav";
 import { API_URL } from "@/config/index";
 import styles from "./index.module.css";
 import toast from "react-hot-toast";
@@ -11,7 +9,6 @@ import { useAllProducts } from "@/hooks/useProducts";
 import { dehydrate, QueryClient } from "react-query";
 import { getAllProducts } from "../../api_calls/index";
 import ProductSearch from "@/components/Discover/ProductSearch";
-import Landing from "@/layouts/Landing";
 import Alert from "@/components/Alert";
 import PublicLayout from "@/layouts/PublicLayout";
 
@@ -83,7 +80,6 @@ export default function Discover(props) {
 
   return (
     <PublicLayout>
-      <MainNavigation />
       <ProductSearch />
       <div
         id="explore_cat"
@@ -1298,7 +1294,6 @@ export default function Discover(props) {
           </div> */}
         </div>
       </div>
-      <MainFooter />
     </PublicLayout>
   );
 }

@@ -27,6 +27,7 @@ export const AuthProvider = ({ children }) => {
       axios.defaults.headers.common = { Authorization: null };
       setUser(null);
       setLoading(false);
+      console.log(router.pathname)
       router.replace("/auth/login");
     }
   };

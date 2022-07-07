@@ -1,12 +1,10 @@
 import { useState } from 'react';
 import Link from 'next/link';
 import styles from '../styles/Home.module.css';
-
-import MainNavigation from '../components/Navbars/MainNav';
-import MainFooter from '../components/Footer/MainFooter';
 import { HeroSection } from '@/components/HeroSection';
 import { Feature } from '@/components/FeatureSection';
 import { CategoriesSection } from '@/components/CategoriesSection';
+import PublicLayout from "@/layouts/PublicLayout";
 
 const SendIcon = ({ className }) => (
   <svg width="32" height="33" viewBox="0 0 32 33" fill="none" xmlns="http://www.w3.org/2000/svg" className={`${className ? className : ""}`}>
@@ -75,8 +73,7 @@ export default function Home() {
   }
 
   return (
-    <div className="w-full h-full">
-      <MainNavigation />
+    <PublicLayout>
       <HeroSection />
       <main>
         <Feature />
@@ -404,7 +401,6 @@ export default function Home() {
           </section>
         </div>
       </main>
-      <MainFooter />
-    </div>
+      </PublicLayout>        
   );
 }
