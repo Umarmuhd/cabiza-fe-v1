@@ -28,6 +28,7 @@ export default function MyApp({ Component, pageProps }) {
                     name="viewport"
                     content="width=device-width, initial-scale=1,0, shrink-to-fit=no"
                   />
+                  <link rel="shortcut icon" href="/images/favicon.png" type="image/png" sizes="14x14" />
                   <title>Cabiza</title>
                 </Head>
                 <Layout>
