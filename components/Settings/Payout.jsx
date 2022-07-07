@@ -70,6 +70,8 @@ export default function Payout() {
 
   const [value, onChange] = useState();
 
+  const { user } = useContext(AuthContext);
+
   const handleConvertDate = (month, day, year) => {
     const months = [
       "January",
@@ -89,12 +91,14 @@ export default function Payout() {
     return `${months[month]} ${day}, ${year}`;
   };
 
-  const [showBusiness, setShowBusiness] = useState(true);
+  const [showBusiness, setShowBusiness] = useState(user?.is_business ?? false);
 
   const {
     register,
     handleSubmit,
+    watch,
     formState: { errors },
+    setValue,
   } = useForm();
 
   const { data: banks, isLoading: banksLoading } = useAllBanks();
@@ -137,11 +141,10 @@ export default function Payout() {
   );
   BankSelect.displayName = "BankSelect";
 
-  const { user } = useContext(AuthContext);
-
   const [loading, setLoading] = useState(false);
 
   const handleUpdatePayout = async (values) => {
+    console.log(values);
     const {
       first_name,
       last_name,
@@ -155,6 +158,14 @@ export default function Payout() {
       year,
       bank,
       account_number,
+    } = values;
+    const {
+      business_name,
+      business_type,
+      business_address,
+      business_city,
+      business_postal_code,
+      business_phone,
     } = values;
     try {
       setLoading(true);
@@ -175,9 +186,19 @@ export default function Payout() {
           account_number,
           bank_name: JSON.parse(bank).name,
         },
+        is_business: showBusiness,
+        business_details: {
+          business_name: business_name,
+          business_phone: business_phone,
+          business_type: business_type,
+          business_address: {
+            address: business_address,
+            city: business_city,
+            postal_code: business_postal_code,
+          },
+        },
       };
-      const url = `${API_URL}/user/profile`;
-      await axios.post(url, payload);
+      await axios.post(`${API_URL}/user/profile`, payload);
       toast.custom(<Alert color="#24C78C" text="Payout update success !" />);
       setLoading(false);
     } catch (error) {
@@ -187,7 +208,13 @@ export default function Payout() {
     }
   };
 
-  const handleSameAsBusiness = () => {};
+  const handleSameAsBusiness = () => {
+    setValue("street_name", watch("business_address"));
+    setValue("city", watch("business_city"));
+    setValue("postal_code", watch("business_postal_code"));
+  };
+
+  console.log(errors);
 
   return (
     <form onSubmit={handleSubmit(handleUpdatePayout)} className="px-4 md:px-0">
@@ -465,8 +492,8 @@ export default function Payout() {
 
                 <div className="flex md:flex-row flex-col w-[100%] md:mt-0 mt-4">
                   <input
-                    id="fname"
-                    name="fname"
+                    id="name"
+                    name="name"
                     className="border border-sky_light mt-3 h-10 text-secondary_ink_lighter bg-white px-4 w-[100%] text-left flex justify-between items-center md:shadow rounded-tl"
                     placeholder="First Name"
                     defaultValue={user?.first_name}

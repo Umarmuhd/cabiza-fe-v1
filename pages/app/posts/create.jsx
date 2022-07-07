@@ -17,6 +17,8 @@ import CheckSwitch from "@/components/CheckSwitch";
 import TextFormat from "@/components/TextFormat";
 import Calendar from "react-calendar";
 import "react-calendar/dist/Calendar.css";
+import EyeIcon from "@/components/Svgs/EyeIcon";
+import CloseIcon from "@/components/Svgs/CloseIcon";
 
 const CheckIcon = ({ classes }) => (
   <svg
@@ -182,52 +184,23 @@ export default function CreatePost() {
   return (
     <div className="lg:w-[85%] w-[100%] ml-auto overflow-y-hidden">
       <FullNav title="Posts">
-        <div className="bg-secondary_sky_lightest py-2 md:px-0 px-4 w-[100%]">
-          <div className="flex justify-between items-center md:w-43/50 mx-auto">
-            <div className="flex">
+        <div className="bg-secondary_sky_lightest py-2 md:px-0 w-[100%]">
+          <div className="flex flex-col md:flex-row items-start md:justify-between md:items-center md:w-43/50 mx-auto">
+            <div className="hidden md:flex">
               <a
                 className="leading-4 text-base font-medium text-primary py-2 px-3 rounded-4xl border border-primary flex items-center cursor-pointer"
                 target="_blank"
                 onClick={handleSubmit(handlePreview)}
               >
-                <svg
-                  width="16"
-                  height="16"
-                  viewBox="0 0 16 16"
-                  fill="none"
-                  xmlns="http://www.w3.org/2000/svg"
-                >
-                  <path
-                    d="M13.7449 6.36857L13.7448 6.36839C12.2745 4.05784 10.1649 2.78662 8 2.78662C6.91371 2.78662 5.8504 3.10332 4.86923 3.70546C3.88753 4.31459 2.99282 5.21107 2.25505 6.36857H13.7449ZM13.7449 6.36857C14.0161 6.79423 14.1667 7.3838 14.1667 7.99912C14.1667 8.61458 14.016 9.2018 13.7457 9.62345L13.745 9.62455C13.0072 10.7821 12.1125 11.6786 11.1308 12.2878C10.1496 12.8899 9.08628 13.2066 8 13.2066C5.83453 13.2066 3.72534 11.9415 2.25549 9.62537L2.25505 9.62468M13.7449 6.36857L2.25505 9.62468M2.25505 9.62468C1.98379 9.1988 1.83333 8.61081 1.83333 7.99662M2.25505 9.62468L1.83333 7.99662M1.83333 7.99662C1.83333 7.3825 1.98376 6.79455 2.25497 6.36869L1.83333 7.99662ZM4.80666 7.99995C4.80666 9.76196 6.22971 11.1933 8 11.1933C9.77028 11.1933 11.1933 9.76196 11.1933 7.99995C11.1933 6.23795 9.77028 4.80662 8 4.80662C6.22971 4.80662 4.80666 6.23795 4.80666 7.99995Z"
-                    fill="#5B44E9"
-                    stroke="#5B44E9"
-                  />
-                  <path
-                    d="M8.00001 6.09326C6.95334 6.09326 6.10001 6.94659 6.10001 7.99993C6.10001 9.04659 6.95334 9.89993 8.00001 9.89993C9.04667 9.89993 9.90667 9.04659 9.90667 7.99993C9.90667 6.95326 9.04667 6.09326 8.00001 6.09326Z"
-                    fill="#5B44E9"
-                  />
-                </svg>
-
+                <EyeIcon />
                 <span className="ml-2">Preview</span>
               </a>
             </div>
 
-            <div className="flex items-center justify-between relative">
+            <div className="flex items-center justify-between w-full md:w-auto relative">
               <Link href="/posts">
                 <a className="leading-4 text-base font-medium text-primary py-2 px-3 rounded-4xl border border-primary flex items-center mr-6">
-                  <svg
-                    width="16"
-                    height="16"
-                    viewBox="0 0 16 16"
-                    fill="none"
-                    xmlns="http://www.w3.org/2000/svg"
-                  >
-                    <path
-                      d="M1.83331 7.99992C1.83331 4.60273 4.60279 1.83325 7.99998 1.83325C11.3972 1.83325 14.1666 4.60273 14.1666 7.99992C14.1666 11.3971 11.3972 14.1666 7.99998 14.1666C4.60279 14.1666 1.83331 11.3971 1.83331 7.99992ZM10.5935 10.5935C10.9821 10.2049 10.9821 9.56829 10.5935 9.1797L9.41375 7.99992L10.5935 6.82014C10.9821 6.43154 10.9821 5.79496 10.5935 5.40637C10.2049 5.01777 9.56835 5.01777 9.17976 5.40637L7.99998 6.58615L6.8202 5.40637C6.4316 5.01777 5.79502 5.01777 5.40643 5.40637C5.01783 5.79496 5.01783 6.43154 5.40643 6.82014L6.58621 7.99992L5.40643 9.1797C5.01783 9.56829 5.01783 10.2049 5.40643 10.5935C5.60514 10.7922 5.8612 10.8866 6.11331 10.8866C6.36543 10.8866 6.62149 10.7922 6.8202 10.5935L7.99998 9.41369L9.17976 10.5935C9.37847 10.7922 9.63453 10.8866 9.88665 10.8866C10.1388 10.8866 10.3948 10.7922 10.5935 10.5935Z"
-                      fill="#5B44E9"
-                      stroke="#5B44E9"
-                    />
-                  </svg>
+                  <CloseIcon />
                   <span className="ml-2">Cancel</span>
                 </a>
               </Link>
@@ -374,8 +347,8 @@ export default function CreatePost() {
 
       <main className="w-full h-full relative bg-secondary_sky_lighter">
         <form id="post-form" onSubmit={handleSubmit(handlePublish)}>
-          <div className="w-43/50 mx-auto md:py-10 flex justify-between">
-            <div className="w-[34%]">
+          <div className="w-full md:w-43/50 px-4 md:px-0 mx-auto md:py-10 flex justify-between md:flex-row flex-col">
+            <div className="w-full md:w-[34%] mb-6">
               <h1 className="font-semibold mb-6 text-secondary_ink_dark text-4xl">
                 New post
               </h1>
@@ -552,7 +525,7 @@ export default function CreatePost() {
               </div>
             </div>
 
-            <div className="w-[62%]">
+            <div className="w-full md:w-[62%]">
               <div
                 className="rounded-3xl p-8 bg-white"
                 style={{ boxShadow: "0px 20px 40px rgba(0, 0, 0, 0.06)" }}
