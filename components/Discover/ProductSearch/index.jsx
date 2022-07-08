@@ -80,3 +80,62 @@ const ProductSearch = () => {
 };
 
 export default ProductSearch;
+
+export const ProductItem = ({ product }) => {
+  return (
+    <div
+      className={`shadow sm:w-sm:[max-content] overflow-hidden mr-5 h-[max-content] rounded-xl ${styles.card}`}
+    >
+      <Image src={product.thumbnail ?? "/images/book-small.png"} alt="." width={400} height={300} objectFit="cover" loading="lazy"/>
+      <div className="p-5 rounded-b">
+        <p className="text-lg text-secondary_sky_dark font-normal mb-1">
+          Books
+        </p>
+        <Link href={`/discover/${product.product_id}`}>
+          <a className="text-2xl text-secondary font-medium">{product.name}</a>
+        </Link>
+        <div className="flex items-center mt-3">
+          {/* <Image
+            src={product.user.profile_picture}
+            alt="..."
+            className="h-9 w-9 rounded-full object-cover"
+            width={36}
+            height={36}
+          /> */}
+
+          <Link href={`/${product?.user?.username}/products`}>
+            <a className="font-medium ml-2 text-secondary_ink_lighter block border-b border-b-secondary_ink_lighter">
+              {product?.user?.full_name}
+            </a>
+          </Link>
+        </div>
+
+        <div className="flex items-center justify-between mt-4">
+          <div className="flex items-center">
+            <Image src="/images/icons/star.svg" alt="." width={26} height={26} objectFit="cover" loading="lazy"/> 
+            <span className="ml-2 font-semibold text-secondary_ink_lighter text-md">
+              5.0
+              <span className="font-normal ml-1">(25)</span>
+            </span>
+          </div>
+          <span
+            className={`text-sm font-normal py-2 px-5 pl-3 bg-primary rounded ${styles.price} text-white`}
+          >
+            ${product.price}+
+          </span>
+        </div>
+
+        <div className="rounded-xl border border-sky_light flex justify-between items-center mt-5 px-1 sm:px-3 py-1 pr-2 bg-secondary_sky_lightest">
+          <p className="text-xs text-secondary">40% Affiliate Commission</p>
+          <Link
+            href={`http://app.${window.location.host}/affiliate/${product.product_id}`}
+          >
+            <a className="bg-primary text-white font-medium text-sm rounded px-3 py-2 sm:ml-10">
+              Become Affiliate
+            </a>
+          </Link>
+        </div>
+      </div>
+    </div>
+  );
+};
