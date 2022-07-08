@@ -68,7 +68,7 @@ export default function Membership({ plans, features }) {
         <div className='px-4 py-16 mx-auto sm:max-w-xl md:max-w-full lg:max-w-screen-xl lg:px-8'>
           <div className='mx-auto lg:flex lg:items-center lg:justify-between md:mb-12 mb-5'>
             <div className=''>
-              <h2 className='text-2xl font-bold text-secondary sm:text-4xl lg:w-3/5'>
+              <h2 className='text-2xl font-bold text-secondary sm:text-4xl md:w-[50%] lg:w-3/5'>
                 Get the right plan for future products/services
               </h2>
             </div>

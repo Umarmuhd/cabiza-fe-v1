@@ -1,6 +1,7 @@
 import React from "react";
 import Image from "next/image";
 import Link from "next/link";
+import styles from "../../../pages/discover/index.module.css";
 
 const SearchIcon = ({ className }) => (
   <svg
