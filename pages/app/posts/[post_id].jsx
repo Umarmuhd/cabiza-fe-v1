@@ -66,12 +66,13 @@ export default function EditPost() {
   };
 
   const handlePublish = async () => {
+    const text = `Post ${post?.published ? "Unpublished" : "Published"} !`;
     try {
       setLoading(true);
       await axios.put(`${API_URL}/posts/publishing/${post._id}`);
       setLoading(false);
-      toast.custom(<Alert color="#24C78C" text="Post publish success !" />);
-      router.push("/posts");
+      toast.custom(<Alert color="#24C78C" text={text} />);
+      setPost({ ...post, published: !post.published });
     } catch (error) {
       console.error(error);
       toast.error("Post publish failed !");
@@ -134,27 +135,12 @@ export default function EditPost() {
               </a>
             </Link>
 
-            <a className="leading-4 text-base font-medium text-primary py-2 px-3 rounded-4xl border border-primary mr-6 flex items-center">
-              <span className="mr-2">
-                {post?.published ? "Unpublish" : "Publish"}
-              </span>
-              <svg
-                width="14"
-                height="7"
-                viewBox="0 0 14 7"
-                fill="none"
-                xmlns="http://www.w3.org/2000/svg"
-              >
-                <path
-                  d="M12.28 0.966553L7.9333 5.31322C7.41997 5.82655 6.57997 5.82655 6.06664 5.31322L1.71997 0.966553"
-                  stroke="#5B44E9"
-                  strokeWidth="1.5"
-                  strokeMiterlimit="10"
-                  strokeLinecap="round"
-                  strokeLinejoin="round"
-                />
-              </svg>
-            </a>
+            <button
+              className="leading-4 text-base font-medium text-primary py-2 px-3 rounded-4xl border border-primary mr-6 flex items-center capitalize"
+              onClick={handlePublish}
+            >
+              {post?.published ? "Unpublish" : "Publish"}
+            </button>
 
             <button
               className="leading-4 text-base font-medium text-white py-2 px-3 rounded-4xl border border-primary bg-primary"
