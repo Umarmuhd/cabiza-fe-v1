@@ -90,7 +90,7 @@ export default function Index({ usernameDetails }) {
   return (
     <Username>
       <main className="bg-white">
-        <div className="mx-auto md:w-43/50 py-10 md:my-20">
+        <div className="mx-auto md:w-43/50 py-10 md:my-20 px-4 md:px-0">
           <div className="mb-8">
             <h1 className="text-3xl font-semibold text-secondary_ink_darkest">
               Resources to help creators and digital entrepreneurs learn and
