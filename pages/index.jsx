@@ -7,8 +7,8 @@ import { CategoriesSection } from '@/components/CategoriesSection';
 import PlanComponent from '@/components/Plan';
 import PublicLayout from '@/layouts/PublicLayout';
 
-import plans from '../plans.json'
-import reviews from '../reviews.json'
+import plans from '@/json/plans.json'
+import reviews from '@/json/reviews.json'
 import styles from '../styles/Home.module.css';
 
 const SendIcon = ({ className }) => (

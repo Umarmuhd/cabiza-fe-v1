@@ -10,7 +10,8 @@
       "@/helpers/*": ["helpers/*"],
       "@/layouts/*": ["layouts/*"],
       "@/libs/*": ["libs/*"],
-      "@/atoms/*": ["atoms/*"]
+      "@/atoms/*": ["atoms/*"],
+      "@/json/*": ["json/*"]
     }
   }
 }
