@@ -2,14 +2,15 @@ import React, { useContext, useState, useEffect } from "react";
 import { useForm } from "react-hook-form";
 import Card from "@/components/Cards/Card";
 import AuthContext from "@/context/AuthContext";
-import CheckSwitch from "../checkSwitch/index";
+import CheckSwitch from "../CheckSwitch/index";
 import toast from "react-hot-toast";
-import axios from "axios";
+import axios from "@/libs/axiosInstance";
 import { API_URL } from "@/config/index";
 import Alert from "../Alert";
 import Calendar from "react-calendar";
 import "react-calendar/dist/Calendar.css";
 import { useAllBanks } from "@/hooks/useAllBanks";
+import { toMonthName } from "@/libs/helper";
 
 const AccountTypeIcon = () => (
   <svg
@@ -65,10 +66,11 @@ const WarningIcon = () => (
 );
 
 export default function Payout() {
-  //calendar
   const [showCalendar, setShowCalendar] = useState(false);
 
   const [value, onChange] = useState();
+
+  const { user } = useContext(AuthContext);
 
   const handleConvertDate = (month, day, year) => {
     const months = [
@@ -89,10 +91,14 @@ export default function Payout() {
     return `${months[month]} ${day}, ${year}`;
   };
 
+  const [showBusiness, setShowBusiness] = useState(user?.is_business ?? false);
+
   const {
     register,
     handleSubmit,
+    watch,
     formState: { errors },
+    setValue,
   } = useForm();
 
   const { data: banks, isLoading: banksLoading } = useAllBanks();
@@ -135,11 +141,10 @@ export default function Payout() {
   );
   BankSelect.displayName = "BankSelect";
 
-  const { user } = useContext(AuthContext);
-
   const [loading, setLoading] = useState(false);
 
   const handleUpdatePayout = async (values) => {
+    console.log(values);
     const {
       first_name,
       last_name,
@@ -153,6 +158,14 @@ export default function Payout() {
       year,
       bank,
       account_number,
+    } = values;
+    const {
+      business_name,
+      business_type,
+      business_address,
+      business_city,
+      business_postal_code,
+      business_phone,
     } = values;
     try {
       setLoading(true);
@@ -173,16 +186,32 @@ export default function Payout() {
           account_number,
           bank_name: JSON.parse(bank).name,
         },
+        is_business: showBusiness,
+        business_details: {
+          business_name: business_name,
+          business_phone: business_phone,
+          business_type: business_type,
+          business_address: {
+            address: business_address,
+            city: business_city,
+            postal_code: business_postal_code,
+          },
+        },
       };
-      const url = `${API_URL}/user/profile`;
-      await axios.post(url, payload);
+      await axios.post(`${API_URL}/user/profile`, payload);
       toast.custom(<Alert color="#24C78C" text="Payout update success !" />);
       setLoading(false);
     } catch (error) {
-      console.error(error.message);
+      console.error(error);
       toast.error(error?.response.data.message);
       setLoading(false);
     }
+  };
+
+  const handleSameAsBusiness = () => {
+    setValue("street_name", watch("business_address"));
+    setValue("city", watch("business_city"));
+    setValue("postal_code", watch("business_postal_code"));
   };
 
   return (
@@ -194,123 +223,360 @@ export default function Payout() {
         </p>
         <div>
           <div className="flex flex-col mb-8">
-            <h5 className="text-secondary_ink_darkest flex md:flex-row flex-col gap-y-2 md:items-end">
+            <h5 className="text-secondary_ink_darkest flex md:flex-row flex-col gap-y-2 md:items-end md:justify-between">
               <span className="float-left">Account Type</span>
               <span className="ml-2 text-sm text-primary_brand_light">
                 What type of account should I choose?{" "}
               </span>
             </h5>
 
-            <div className="flex md:flex-row flex-col w-[100%] md:mt-0 mt-2">
-              <CheckSwitch
-                label="Individual"
-                name="Account_type"
-                styles="border border-sky_light mt-3 h-10 rounded text-secondary_ink_lighter bg-white px-4 md:w-[50%] w-[100%] mr-2 text-left flex justify-between items-center cursor-pointer"
-                checked
-              />
+            <div className="flex md:flex-row flex-col w-[100%] md:mt-0 mt-2 md:space-x-4">
+              <button
+                className="md:w-[50%] w-[100%]"
+                onClick={(e) => {
+                  e.preventDefault();
+                  setShowBusiness(false);
+                }}
+              >
+                <CheckSwitch
+                  label="Individual"
+                  name="Account_type"
+                  styles={
+                    "border border-sky_light mt-3 h-10 rounded text-secondary_ink_lighter px-4 text-left flex justify-between items-center cursor-pointer " +
+                    (!showBusiness ? "bg-white" : "bg-sky_light")
+                  }
+                  checked={!showBusiness}
+                />
+              </button>
 
-              <CheckSwitch
-                label="Business"
-                name="Account_type"
-                styles="border border-sky_light md:mt-3 h-10 rounded text-secondary_ink_lighter bg-sky_light px-4 md:w-[50%] w-[100%] text-left flex justify-between items-center cursor-pointer"
-              />
+              <button
+                className="md:w-[50%] w-[100%]"
+                onClick={(e) => {
+                  e.preventDefault();
+                  setShowBusiness(true);
+                }}
+              >
+                <CheckSwitch
+                  label="Business"
+                  name="Account_type"
+                  styles={
+                    "border border-sky_light md:mt-3 h-10 rounded text-secondary_ink_lighter px-4 text-left flex justify-between items-center cursor-pointer " +
+                    (showBusiness ? "bg-white" : "bg-sky_light")
+                  }
+                  checked={showBusiness}
+                />
+              </button>
             </div>
           </div>
 
-          <div className="flex flex-col">
-            <h5 className="text-secondary_ink_darkest font-normal flex justify-between md:flex-row flex-col gap-y-2">
-              <span className="text-lg">Your Personal Information</span>
-              <span className="text-primary_brand_light text-sm md:self-end">
-                Why does Cabiza need this information?{" "}
-              </span>
-            </h5>
-            <div className="flex md:flex-row flex-col w-[100%] md:mt-0 mt-4">
-              <input
-                id="fname"
-                name="fname"
-                className="border border-sky_light mt-3 h-10 text-secondary_ink_lighter bg-white px-4 w-[100%] text-left flex justify-between items-center md:shadow rounded-tl"
-                placeholder="First Name"
-                defaultValue={user?.first_name}
-                {...register("first_name", { required: true })}
-              />
-              <input
-                id="lname"
-                name="lname"
-                className="border border-sky_light md:mt-3 h-10 text-secondary_ink_lighter bg-white px-4 w-[100%] text-left flex justify-between items-center md:shadow rounded-tr md:border-l-0 md:border-t border-t-0"
-                placeholder="Last Name"
-                defaultValue={user?.last_name}
-                {...register("last_name", { required: true })}
-              />
-            </div>
-
-            <div>
-              <div className="flex w-full">
+          {!showBusiness ? (
+            <div className="flex flex-col">
+              <h5 className="text-secondary_ink_darkest font-normal flex justify-between md:flex-row flex-col gap-y-2">
+                <span className="text-lg">Your Personal Information</span>
+                <span className="text-primary_brand_light text-sm md:self-end">
+                  Why does Cabiza need this information?{" "}
+                </span>
+              </h5>
+              <div className="flex md:flex-row flex-col w-[100%] md:mt-0 mt-4">
                 <input
-                  id="address"
-                  name="address"
-                  className="border border-sky_light border-t-0 h-10 text-secondary_ink_lighter bg-white px-4 w-[100%] text-left flex justify-between items-center"
-                  placeholder="Street Address"
-                  {...register("street_name", { required: true })}
-                  defaultValue={user?.address?.street_name}
+                  id="fname"
+                  name="fname"
+                  className="border border-sky_light mt-3 h-10 text-secondary_ink_lighter bg-white px-4 w-[100%] text-left flex justify-between items-center md:shadow rounded-tl"
+                  placeholder="First Name"
+                  defaultValue={user?.first_name}
+                  {...register("first_name", { required: true })}
+                />
+                <input
+                  id="lname"
+                  name="lname"
+                  className="border border-sky_light md:mt-3 h-10 text-secondary_ink_lighter bg-white px-4 w-[100%] text-left flex justify-between items-center md:shadow rounded-tr md:border-l-0 md:border-t border-t-0"
+                  placeholder="Last Name"
+                  defaultValue={user?.last_name}
+                  {...register("last_name", { required: true })}
                 />
               </div>
-              {errors.street_name?.type === "required" && (
-                <p className="text-left text-red-600 text-xs px-4 mt-1">
-                  Street name is required
-                </p>
-              )}
-            </div>
 
-            <div className="flex w-[100%] md:flex-row flex-col">
-              <div className="w-full">
-                <input
-                  id="City"
-                  name="City"
-                  className="border border-sky_light h-10 text-secondary_ink_lighter bg-white px-4 w-[100%] text-left flex justify-between items-center border-t-0"
-                  placeholder="City"
-                  {...register("city", { required: true })}
-                  defaultValue={user?.address?.city}
-                />
-                {errors.city?.type === "required" && (
-                  <p className="text-left text-red-600 text-xs px-4 my-1">
-                    City is required
+              <div>
+                <div className="flex w-full">
+                  <input
+                    id="address"
+                    name="address"
+                    className="border border-sky_light border-t-0 h-10 text-secondary_ink_lighter bg-white px-4 w-[100%] text-left flex justify-between items-center"
+                    placeholder="Street Address"
+                    {...register("street_name", { required: true })}
+                    defaultValue={user?.address?.street_name}
+                  />
+                </div>
+                {errors.street_name?.type === "required" && (
+                  <p className="text-left text-red-600 text-xs px-4 mt-1">
+                    Street name is required
                   </p>
                 )}
               </div>
 
+              <div className="flex w-[100%] md:flex-row flex-col">
+                <div className="w-full">
+                  <input
+                    id="City"
+                    name="City"
+                    className="border border-sky_light h-10 text-secondary_ink_lighter bg-white px-4 w-[100%] text-left flex justify-between items-center border-t-0"
+                    placeholder="City"
+                    {...register("city", { required: true })}
+                    defaultValue={user?.address?.city}
+                  />
+                  {errors.city?.type === "required" && (
+                    <p className="text-left text-red-600 text-xs px-4 my-1">
+                      City is required
+                    </p>
+                  )}
+                </div>
+
+                <div className="w-full">
+                  <input
+                    id="postal-code"
+                    name="postal-code"
+                    className="border border-sky_light h-10 text-secondary_ink_lighter bg-white px-4 w-[100%] text-left flex justify-between items-center border-t-0 md:border-l-0"
+                    placeholder="Postal Code"
+                    {...register("postal_code", { required: true })}
+                    defaultValue={user?.address?.postal_code}
+                  />
+                  {errors.postal_code?.type === "required" && (
+                    <p className="text-left text-red-600 text-xs px-4 my-1">
+                      Postal code is required
+                    </p>
+                  )}
+                </div>
+              </div>
+
               <div className="w-full">
                 <input
-                  id="postal-code"
-                  name="postal-code"
-                  className="border border-sky_light h-10 text-secondary_ink_lighter bg-white px-4 w-[100%] text-left flex justify-between items-center border-t-0 md:border-l-0"
-                  placeholder="Postal Code"
-                  {...register("postal_code", { required: true })}
-                  defaultValue={user?.address?.postal_code}
+                  id="country"
+                  name="country"
+                  className="border border-sky_light h-10 text-secondary_ink_lighter bg-white px-4 w-[100%] text-left flex justify-between items-center md:shadow rounded-b border-t-0"
+                  placeholder="Nigeria"
+                  defaultValue={user?.address?.country}
+                  {...register("country", { required: true })}
                 />
-                {errors.postal_code?.type === "required" && (
-                  <p className="text-left text-red-600 text-xs px-4 my-1">
-                    Postal code is required
+                {errors.country?.type === "required" && (
+                  <p className="text-left text-red-600 text-xs px-4 mt-1">
+                    Country is required
                   </p>
                 )}
               </div>
             </div>
+          ) : (
+            <React.Fragment>
+              <div className="flex flex-col">
+                <h5 className="text-secondary_ink_darkest font-normal flex justify-between md:flex-row flex-col gap-y-2">
+                  <span className="text-lg">Business Information</span>
+                  <span className="text-primary_brand_light text-sm md:self-end">
+                    Why does Cabiza need this information?{" "}
+                  </span>
+                </h5>
+                <div className="flex md:flex-row flex-col w-[100%] md:mt-0 mt-4">
+                  <input
+                    id="bname"
+                    name="bname"
+                    className="border border-sky_light mt-3 h-10 text-secondary_ink_lighter bg-white px-4 w-[100%] text-left flex justify-between items-center md:shadow rounded-tl"
+                    placeholder="Legal Business Name"
+                    defaultValue={user?.business_details?.business_name}
+                    {...register("business_name", { required: true })}
+                  />
+                  <input
+                    id="btype"
+                    name="btype"
+                    className="border border-sky_light md:mt-3 h-10 text-secondary_ink_lighter bg-white px-4 w-[100%] text-left flex justify-between items-center md:shadow rounded-tr md:border-l-0 md:border-t border-t-0"
+                    placeholder="Type"
+                    defaultValue={user?.business_details?.business_type}
+                    {...register("business_type", { required: true })}
+                  />
+                </div>
 
-            <div className="w-full">
-              <input
-                id="country"
-                name="country"
-                className="border border-sky_light h-10 text-secondary_ink_lighter bg-white px-4 w-[100%] text-left flex justify-between items-center md:shadow rounded-b border-t-0"
-                placeholder="Nigeria"
-                defaultValue={user?.address?.country}
-                {...register("country", { required: true })}
-              />
-              {errors.country?.type === "required" && (
-                <p className="text-left text-red-600 text-xs px-4 mt-1">
-                  Country is required
-                </p>
-              )}
-            </div>
-          </div>
+                <div>
+                  <div className="flex w-full">
+                    <input
+                      id="baddress"
+                      name="baddress"
+                      className="border border-sky_light border-t-0 h-10 text-secondary_ink_lighter bg-white px-4 w-[100%] text-left flex justify-between items-center"
+                      placeholder="Address"
+                      {...register("business_address", { required: true })}
+                      defaultValue={
+                        user?.business_details?.business_address?.address
+                      }
+                    />
+                  </div>
+                  {errors.business_address?.type === "required" && (
+                    <p className="text-left text-red-600 text-xs px-4 mt-1">
+                      Business Street is required
+                    </p>
+                  )}
+                </div>
+
+                <div className="flex w-[100%] md:flex-row flex-col">
+                  <div className="w-full">
+                    <input
+                      id="bcity"
+                      name="bcity"
+                      className="border border-sky_light h-10 text-secondary_ink_lighter bg-white px-4 w-[100%] text-left flex justify-between items-center border-t-0"
+                      placeholder="City"
+                      {...register("business_city", { required: true })}
+                      defaultValue={
+                        user?.business_details?.business_address?.city
+                      }
+                    />
+                    {errors.business_city?.type === "required" && (
+                      <p className="text-left text-red-600 text-xs px-4 my-1">
+                        City is required
+                      </p>
+                    )}
+                  </div>
+
+                  <div className="w-full">
+                    <input
+                      id="bpostal_code"
+                      name="bpostal_code"
+                      className="border border-sky_light h-10 text-secondary_ink_lighter bg-white px-4 w-[100%] text-left flex justify-between items-center border-t-0 md:border-l-0"
+                      placeholder="Postal Code"
+                      {...register("business_postal_code", { required: true })}
+                      defaultValue={
+                        user?.business_details?.business_address?.postal_code
+                      }
+                    />
+                    {errors.business_postal_code?.type === "required" && (
+                      <p className="text-left text-red-600 text-xs px-4 my-1">
+                        Business Postal code is required
+                      </p>
+                    )}
+                  </div>
+                </div>
+
+                <div className="w-full">
+                  <input
+                    id="bphone"
+                    name="bphone"
+                    className="border border-sky_light h-10 text-secondary_ink_lighter bg-white px-4 w-[100%] text-left flex justify-between items-center md:shadow rounded-b border-t-0"
+                    placeholder="Business Phone Number"
+                    defaultValue={user?.business_details?.business_phone}
+                    {...register("business_phone", { required: true })}
+                  />
+                  {errors.business_phone?.type === "required" && (
+                    <p className="text-left text-red-600 text-xs px-4 mt-1">
+                      Business phone number is required
+                    </p>
+                  )}
+                </div>
+              </div>
+
+              <div className="flex flex-col mt-8">
+                <h5 className="text-secondary_ink_darkest font-normal flex justify-between md:flex-row flex-col gap-y-2 mb-4">
+                  <span className="text-lg">Business Representative</span>
+                </h5>
+
+                <div className="flex items-center">
+                  <label
+                    htmlFor="same-as-business"
+                    className="mr-2 block text-sm text-gray-900"
+                  >
+                    Same as business
+                  </label>
+                  <input
+                    id="same-as-business"
+                    name="same-as-business"
+                    type="checkbox"
+                    className="h-4 w-4 text-indigo-600 focus:ring-indigo-500 border-gray-300 rounded"
+                    onChange={handleSameAsBusiness}
+                  />
+                </div>
+
+                <div className="flex md:flex-row flex-col w-[100%] md:mt-0 mt-4">
+                  <input
+                    id="name"
+                    name="name"
+                    className="border border-sky_light mt-3 h-10 text-secondary_ink_lighter bg-white px-4 w-[100%] text-left flex justify-between items-center md:shadow rounded-tl"
+                    placeholder="First Name"
+                    defaultValue={user?.first_name}
+                    {...register("first_name", { required: true })}
+                  />
+                  <input
+                    id="lname"
+                    name="lname"
+                    className="border border-sky_light md:mt-3 h-10 text-secondary_ink_lighter bg-white px-4 w-[100%] text-left flex justify-between items-center md:shadow rounded-tr md:border-l-0 md:border-t border-t-0"
+                    placeholder="Last Name"
+                    defaultValue={user?.last_name}
+                    {...register("last_name", { required: true })}
+                  />
+                </div>
+
+                <div>
+                  <div className="flex w-full">
+                    <input
+                      id="address"
+                      name="address"
+                      className="border border-sky_light border-t-0 h-10 text-secondary_ink_lighter bg-white px-4 w-[100%] text-left flex justify-between items-center"
+                      placeholder="Street Address"
+                      {...register("street_name", { required: true })}
+                      defaultValue={user?.address?.street_name}
+                    />
+                  </div>
+                  {errors.street_name?.type === "required" && (
+                    <p className="text-left text-red-600 text-xs px-4 mt-1">
+                      Street name is required
+                    </p>
+                  )}
+                </div>
+
+                <div className="flex w-[100%] md:flex-row flex-col">
+                  <div className="w-full">
+                    <input
+                      id="City"
+                      name="City"
+                      className="border border-sky_light h-10 text-secondary_ink_lighter bg-white px-4 w-[100%] text-left flex justify-between items-center border-t-0"
+                      placeholder="City"
+                      {...register("city", { required: true })}
+                      defaultValue={user?.address?.city}
+                    />
+                    {errors.city?.type === "required" && (
+                      <p className="text-left text-red-600 text-xs px-4 my-1">
+                        City is required
+                      </p>
+                    )}
+                  </div>
+
+                  <div className="w-full">
+                    <input
+                      id="postal-code"
+                      name="postal-code"
+                      className="border border-sky_light h-10 text-secondary_ink_lighter bg-white px-4 w-[100%] text-left flex justify-between items-center border-t-0 md:border-l-0"
+                      placeholder="Postal Code"
+                      {...register("postal_code", { required: true })}
+                      defaultValue={user?.address?.postal_code}
+                    />
+                    {errors.postal_code?.type === "required" && (
+                      <p className="text-left text-red-600 text-xs px-4 my-1">
+                        Postal code is required
+                      </p>
+                    )}
+                  </div>
+                </div>
+
+                <div className="w-full">
+                  <input
+                    id="country"
+                    name="country"
+                    className="border border-sky_light h-10 text-secondary_ink_lighter bg-white px-4 w-[100%] text-left flex justify-between items-center md:shadow rounded-b border-t-0"
+                    placeholder="Nigeria"
+                    defaultValue={user?.address?.country}
+                    {...register("country", { required: true })}
+                  />
+                  {errors.country?.type === "required" && (
+                    <p className="text-left text-red-600 text-xs px-4 mt-1">
+                      Country is required
+                    </p>
+                  )}
+                </div>
+              </div>
+            </React.Fragment>
+          )}
 
           <div className="flex flex-col mt-8">
             <h5 className="text-secondary_ink_darkest font-normal flex justify-between mb-3 md:flex-row flex-col gap-y-2">
@@ -394,6 +660,13 @@ export default function Payout() {
                     onChange={onChange}
                     value={value}
                     onClickDay={() => setShowCalendar(false)}
+                    defaultValue={[
+                      new Date(
+                        user?.birthday?.split("/")[2],
+                        parseInt(user?.birthday?.split("/")[1]) - 1,
+                        user?.birthday?.split("/")[0]
+                      ),
+                    ]}
                   />
                 </div>
               </div>
@@ -425,8 +698,8 @@ export default function Payout() {
               <span className="text-lg">Bank Details</span>
             </h5>
 
-            <div className="flex space-x-6">
-              <div className="relative md:w-1/2">
+            <div className="flex flex-col md:flex-row md:space-x-6">
+              <div className="relative w-full mb-6 md:mb-0 md:w-1/2">
                 <BankSelect
                   label="Bank name"
                   defaultValue={{
@@ -441,7 +714,7 @@ export default function Payout() {
                   </p>
                 )}
               </div>
-              <div className="relative md:w-1/2">
+              <div className="relative w-full md:w-1/2">
                 <label
                   className="block text-secondary font-medium leading-4 mb-4"
                   htmlFor="account_number"

@@ -16,7 +16,7 @@ export default function Settings() {
     <div className="lg:w-[85%] w-[100%] ml-auto">
       <Tab.Group>
         <FullNav title="Settings">
-          <div className="flex justify-start items-end mr-auto md:w-43/50 mx-auto">
+          <div className="flex md:justify-start items-end md:mr-auto w-full md:w-43/50 mx-auto justify-between">
             <Tab.List
               as={"div"}
               className="flex items-center py-[.5rem] space-x-10"

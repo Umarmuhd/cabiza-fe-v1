@@ -5,7 +5,8 @@ import { Switch } from "@headlessui/react";
 import Image from "next/image";
 import Link from "next/link";
 
-import styles from "./index.module.css"
+import styles from "./index.module.css";
+import { useWindowSize } from "@/hooks/useWindowSize";
 
 const PostItems = () => {
   const [expanded, setExpanded] = useState(false);
@@ -13,41 +14,9 @@ const PostItems = () => {
   const [loading, setLoading] = useState(false);
 
   const size = useWindowSize();
-  function useWindowSize() {
-    // Initialize state with undefined width/height so server and client renders match
-    // Learn more here: https://joshwcomeau.com/react/the-perils-of-rehydration/
-    const [windowSize, setWindowSize] = useState({
-      width: undefined,
-      height: undefined,
-    });
-
-    useEffect(() => {
-      // only execute all the code below in client side
-      if (typeof window !== 'undefined') {
-        // Handler to call on window resize
-        function handleResize() {
-          // Set window width/height to state
-          setWindowSize({
-            width: window.innerWidth,
-            height: window.innerHeight,
-          });
-        }
-
-        // Add event listener
-        window.addEventListener("resize", handleResize);
-
-        // Call handler right away so state gets updated with initial window size
-        handleResize();
-
-        // Remove event listener on cleanup
-        return () => window.removeEventListener("resize", handleResize);
-      }
-    }, []); // Empty array ensures that effect is only run on mount
-    return windowSize;
-  }
 
   return (
-    <div className="mb-4 w-[17.4rem] sm:w-[100%]">
+    <div className="mb-4 !w-full md:w-[17.4rem] sm:w-[100%]">
       <div
         className={
           "sm:p-6 py-6 px-3 rounded-2xl border border-secondary_sky_dark w-[100%] " +
@@ -64,7 +33,10 @@ const PostItems = () => {
               height={80}
             /> */}
 
-            <img src="/images/placeholder-image.svg" className="w-[100%] w-[12rem] h-[10rem] object-cover rounded-lg mb-4"/>
+            <img
+              src="/images/placeholder-image.svg"
+              className="w-[100%] w-[12rem] h-[10rem] object-cover rounded-lg mb-4"
+            />
             <div className="sm:ml-6">
               <h2 className="text-lg font-medium text-secondary_ink_darkest mb-2">
                 Lorem ipsum dolor sit amet consectetur.
@@ -99,11 +71,11 @@ const PostItems = () => {
               <span className="block font-medium">0</span>
             </div>
           </div>
-            <li className="">
-              <button className="leading-4 text-base font-medium text-secondary_sky_dark sm:py-2 py-3 px-3 sm:rounded-4xl border border-secondary_sky_light bg-secondary_sky_light mt-5 rounded-lg w-[100%] sm:hidden block">
-                Queued
-              </button>
-            </li>
+          <li className="">
+            <button className="leading-4 text-base font-medium text-secondary_sky_dark sm:py-2 py-3 px-3 sm:rounded-4xl border border-secondary_sky_light bg-secondary_sky_light mt-5 rounded-lg w-[100%] sm:hidden block">
+              Queued
+            </button>
+          </li>
         </div>
       </div>
       {expanded && size.width > 480 && (
@@ -204,7 +176,9 @@ export default function Scheduled() {
               All scheduled posts
             </h1>
             <div className={`${styles.cards}`}>
-              <ul className={`flex flex-col gap-x-[5rem] overflow-hidden ${styles["product-cards"]}`}>
+              <ul
+                className={`flex flex-col gap-x-[5rem] overflow-hidden ${styles["product-cards"]} w-full`}
+              >
                 <PostItems />
                 <PostItems />
                 <PostItems />

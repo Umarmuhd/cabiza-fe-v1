@@ -26,7 +26,6 @@
 .cards::-webkit-scrollbar-corner,
 .cards::-webkit-scrollbar-track {
     background: #E3E5E6;
-    /* background: #5B44E9; */
 }
 
 .cards::-webkit-scrollbar-thumb {
