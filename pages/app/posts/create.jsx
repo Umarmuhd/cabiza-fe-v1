@@ -13,7 +13,7 @@ import { API_URL } from "@/config/index";
 import AuthContext from "@/context/AuthContext";
 import FormGroup from "@/components/Forms/FormGroup";
 import Alert from "@/components/Alert";
-import CheckSwitch from "@/components/CheckSwitch/index";
+import CheckSwitch from "@/components/CheckSwitch";
 import TextFormat from "@/components/TextFormat";
 import Calendar from "react-calendar";
 import "react-calendar/dist/Calendar.css";
