@@ -1,0 +1,190 @@
+[{
+        "title": "Author-maker Sign up",
+        "starter": "Free",
+        "owner": "Free",
+        "shaper": "Free",
+        "innovator": "Free"
+    },
+    {
+        "title": "Member Sign up",
+        "starter": "Free",
+        "owner": "£50/Annum",
+        "shaper": "£500/Annum",
+        "innovator": "£5,000 (£1,250/Annum subsequently)"
+    },
+    {
+        "title": "Dashboard",
+        "starter": true,
+        "owner": true,
+        "shaper": true,
+        "innovator": true
+    },
+    {
+        "title": "Assigned unique Referral/Marketing link",
+        "starter": true,
+        "owner": true,
+        "shaper": true,
+        "innovator": true
+    },
+    {
+        "title": "Access to courses",
+        "starter": false,
+        "owner": [true, "1 Course/year"],
+        "shaper": [true, "1 Course + 4 free courses or products/year"],
+        "innovator": [true, "1 Course + 20 free courses or products/year"]
+    },
+    {
+        "title": "Access to other courses if free author-maker",
+        "starter": false,
+        "owner": false,
+        "shaper": false,
+        "innovator": false
+    },
+    {
+        "title": "Join business cohorts",
+        "starter": [true, "Unlimited after 1st course or product post"],
+        "owner": [true, "Unlimited after 1st course or product post"],
+        "shaper": [true, "Unlimited after 1st course or product post"],
+        "innovator": [true, "Unlimited after 1st course or product post"]
+    },
+    {
+        "title": "Following and being followed",
+        "starter": [true, "Unlimited"],
+        "owner": [true, "Unlimited"],
+        "shaper": [true, "Unlimited"],
+        "innovator": [true, "Unlimited"]
+    },
+    {
+        "title": "Invite/pre sign up affiliates",
+        "starter": true,
+        "owner": true,
+        "shaper": true,
+        "innovator": true
+    },
+    {
+        "title": "Welcome Kit and Business Intro",
+        "starter": true,
+        "owner": true,
+        "shaper": true,
+        "innovator": true
+    },
+    {
+        "title": "Added to Business Social Media Groups",
+        "starter": true,
+        "owner": true,
+        "shaper": true,
+        "innovator": true
+    },
+    {
+        "title": "Advanced Marketing and Business Techniques",
+        "starter": false,
+        "owner": false,
+        "shaper": true,
+        "innovator": true
+    },
+    {
+        "title": "Entitled to payouts",
+        "starter": true,
+        "owner": true,
+        "shaper": true,
+        "innovator": true
+    },
+    {
+        "title": "Full Business Owner Status Receive Payouts",
+        "starter": false,
+        "owner": true,
+        "shaper": true,
+        "innovator": true
+    },
+    {
+        "title": "Receive Payouts if Free Author-Maker",
+        "starter": true,
+        "owner": true,
+        "shaper": true,
+        "innovator": true
+    },
+    {
+        "title": "Assign % commissions to affiliates",
+        "starter": false,
+        "owner": true,
+        "shaper": true,
+        "innovator": true
+    },
+    {
+        "title": "Assign % commissions to affiliates if Free Author-Maker",
+        "starter": true,
+        "owner": true,
+        "shaper": true,
+        "innovator": true
+    },
+    {
+        "title": "Website Interface",
+        "starter": false,
+        "owner": false,
+        "shaper": true,
+        "innovator": true
+    },
+    {
+        "title": "General Classes and Workshops",
+        "starter": true,
+        "owner": true,
+        "shaper": true,
+        "innovator": true
+    },
+    {
+        "title": "Course-specific Question and Answer Sessions by the author-makers",
+        "starter": false,
+        "owner": [false, "(unless by an author-maker’s invitation)"],
+        "shaper": true,
+        "innovator": true
+    },
+    {
+        "title": "Owners Mastermind",
+        "starter": false,
+        "owner": true,
+        "shaper": true,
+        "innovator": true
+    },
+    {
+        "title": "Shapers Mastermind",
+        "starter": false,
+        "owner": false,
+        "shaper": true,
+        "innovator": true
+    },
+    {
+        "title": "Advanced Technical and Marketing Support",
+        "starter": false,
+        "owner": false,
+        "shaper": true,
+        "innovator": true
+    },
+    {
+        "title": "Shapers Milestone Incentives",
+        "starter": false,
+        "owner": false,
+        "shaper": [true, "..."],
+        "innovator": [true, "..."]
+    },
+    {
+        "title": "Innovators Milestone Incentives",
+        "starter": false,
+        "owner": false,
+        "shaper": false,
+        "innovator": [true, "..."]
+    },
+    {
+        "title": "Innovators Mastermind",
+        "starter": false,
+        "owner": false,
+        "shaper": false,
+        "innovator": true
+    },
+    {
+        "title": "Founders Forum and Events",
+        "starter": false,
+        "owner": false,
+        "shaper": false,
+        "innovator": true
+    }
+]

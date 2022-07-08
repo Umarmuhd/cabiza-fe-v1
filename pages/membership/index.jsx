@@ -1,6 +1,10 @@
 import React, { useState } from 'react';
-import PublicLayout from "@/layouts/PublicLayout";
 
+import PlanComponent from '@/components/Plan';
+import PublicLayout from '@/layouts/PublicLayout';
+
+import plans from '@/json/plans.json'
+import features from '@/json/features.json'
 import styles from '../../styles/Home.module.css';
 
 const TickIcon = () => (
@@ -45,8 +49,10 @@ const CancelIcon = () => (
   </svg>
 );
 
-export default function Membership({ subscriptionPlans }) {
+export default function Membership({ plans, features }) {
+
   const [payout, setPayout] = useState({ monthly: false, yearly: true });
+
   return (
     <PublicLayout>
       <header className='py-16 bg-secondary_sky_lighter'>
@@ -62,7 +68,7 @@ export default function Membership({ subscriptionPlans }) {
         <div className='px-4 py-16 mx-auto sm:max-w-xl md:max-w-full lg:max-w-screen-xl lg:px-8'>
           <div className='mx-auto lg:flex lg:items-center lg:justify-between md:mb-12 mb-5'>
             <div className=''>
-              <h2 className='sm:text-3xl text-2xl font-bold text-secondary sm:text-4xl lg:w-3/5'>
+              <h2 className='text-2xl font-bold text-secondary sm:text-4xl lg:w-3/5'>
                 Get the right plan for future products/services
               </h2>
             </div>
@@ -71,21 +77,19 @@ export default function Membership({ subscriptionPlans }) {
               <div className='mt-8 flex lg:mt-0 lg:flex-shrink-0'>
                 <div className='float-left flex mt-1 bg-secondary_sky_light rounded-xl border border-secondary_sky_light w-[max-content] p-[.1rem]'>
                   <button
-                    className={`${
-                      payout.monthly
-                        ? 'bg-white text-secondary_ink_light rounded-l-xl'
-                        : 'bg-secondary_sky_light text-secondary_brand_light'
-                    } h-[2.4rem] w-[11rem] ml-[1px] rounded-l-xl m-auto`}
+                    className={`${payout.monthly
+                      ? 'bg-white text-secondary_ink_light rounded-l-xl'
+                      : 'bg-secondary_sky_light text-secondary_brand_light'
+                      } h-[2.4rem] w-[11rem] ml-[1px] rounded-l-xl m-auto`}
                     onClick={() => setPayout({ monthly: true, yearly: false })}
                   >
                     Monthly
                   </button>
                   <button
-                    className={`${
-                      payout.yearly
-                        ? 'bg-white text-secondary_ink_light rounded-r-xl'
-                        : 'bg-secondary_sky_light text-secondary_brand_light'
-                    } h-[2.4rem] w-[12rem] ml-[1px] rounded-r-xl m-auto hover:bg-indigo-50`}
+                    className={`${payout.yearly
+                      ? 'bg-white text-secondary_ink_light rounded-r-xl'
+                      : 'bg-secondary_sky_light text-secondary_brand_light'
+                      } h-[2.4rem] w-[12rem] ml-[1px] rounded-r-xl m-auto hover:bg-indigo-50`}
                     onClick={() => setPayout({ monthly: false, yearly: true })}
                   >
                     Annually
@@ -100,35 +104,14 @@ export default function Membership({ subscriptionPlans }) {
 
           <section id='membership' className={`${styles.membership} md:pt-2`}>
             <div className='flex'>
-              <div className={`${styles.plans} ${styles.flex}`}>
-                {
-                  subscriptionPlans?.map(each => {
-                    let monthlyPrice = (each.price / 12) - 12/100;
-                    monthlyPrice = Math.abs((monthlyPrice === -0 ? 0 : monthlyPrice).toFixed())
-                    
-                    return (
-                    <div className={`${styles.col} ${each.mostPopular ? styles.popular : ""}`} key={each.id}>
-                      {each.mostPopular ? <aside>Most popular</aside> : null}
-                      <h4>{each.zone}</h4>
-                      <h3>{each.planName}</h3>
-                      <p className={styles.price}>
-                        £
-                        {
-                          payout.yearly ? `${each.price}${each.price !== 0 ? "/Annum" : ""}` : `${monthlyPrice }${monthlyPrice !== 0 ? "/Monthly" : ""}`                          
-                        }
-                      </p>
-                      <a href=''>Sign Up</a>
-                      <p className={`${each.mostPopular ? styles.description : ""}`}>
-                        {each.description}
-                      </p>
-                      <a href='' className={styles['btn-secondary']}>
-                        Learn More
-                      </a>
-                    </div>
-                )
-                  })
-                }                               
-              </div>
+              <section className='px-4 py-7 md:px-24 lg:px-8 lg:py-7 mt-16'>
+                <div
+                  id='membership'
+                  className={`${styles.membership} mx-auto sm:max-w-xl md:max-w-full lg:max-w-screen-xl`}
+                >
+                  <PlanComponent plans={plans} payout={payout} />
+                </div>
+              </section>
             </div>
           </section>
         </div>
@@ -187,512 +170,71 @@ export default function Membership({ subscriptionPlans }) {
                       </tr>
                     </thead>
                     <tbody
-                      className={`bg-white divide-y divide-gray-200 ${styles['table-body']}`}                     
+                      className={`bg-white divide-y divide-gray-200 ${styles['table-body']}`}
                     >
-                      <tr>
+                      {
+                        features.map(feature => {
+                          console.log(Boolean(feature.starter))
+                          return <tr key={feature.title}>
                         <td className='px-6 py-[14px]  text-secondary'>
-                          Author-maker Sign up
-                        </td>
-                        <td className='px-6 py-[14px]  text-secondary'>Free</td>
-                        <td className='px-6 py-[14px]  text-secondary'>Free</td>
-                        <td className='px-6 py-[14px]  text-secondary'>Free</td>
-                        <td className='px-6 py-[14px]  text-secondary'>Free</td>
-                      </tr>
-                      <tr>
-                        <td className='px-6 py-[14px]  text-secondary'>
-                          Member Sign up
-                        </td>
-                        <td className='px-6 py-[14px]  text-secondary'>Free</td>
-                        <td className='px-6 py-[14px]  text-secondary'>
-                          £50/Annum
+                          {feature.title}
                         </td>
                         <td className='px-6 py-[14px]  text-secondary'>
-                          £500/Annum
+                          {Array.isArray(feature.starter) ? <>
+                            {
+                                feature.starter[0] === true ? <TickIcon /> : <CancelIcon />
+                            }
+                            <p className='mt-1'>
+                              {
+                                feature.starter[1]
+                              }
+                            </p>
+                            </> : feature.starter === true || feature.starter === false ? feature.starter === true ? <TickIcon /> : <CancelIcon /> : feature.starter                              
+                          }
                         </td>
                         <td className='px-6 py-[14px]  text-secondary'>
-                          £5,000 (£1,250/Annum subsequently)
-                        </td>
-                      </tr>
-                      <tr>
-                        <td className='px-6 py-[14px]  text-secondary'>
-                          Dashboard
-                        </td>
-                        <td className='px-6 py-[14px]  text-secondary'>
-                          <TickIcon />
-                        </td>
-                        <td className='px-6 py-[14px]  text-secondary'>
-                          <TickIcon />
-                        </td>
-                        <td className='px-6 py-[14px]  text-secondary'>
-                          <TickIcon />
+                          {Array.isArray(feature.owner) ? <>
+                            {
+                                feature.owner[0] === true ? <TickIcon /> : <CancelIcon />
+                            }
+                            <p className='mt-1'>
+                              {
+                                feature.owner[1]
+                              }
+                            </p>
+                            </> : feature.owner === true || feature.owner === false ? feature.owner === true ? <TickIcon /> : <CancelIcon /> : feature.owner                              
+                          }
                         </td>
                         <td className='px-6 py-[14px]  text-secondary'>
-                          <TickIcon />
-                        </td>
-                      </tr>
-
-                      <tr>
-                        <td className='px-6 py-[14px]  text-secondary'>
-                          Assigned unique Referral/Marketing link
-                        </td>
-                        <td className='px-6 py-[14px]  text-secondary'>
-                          <TickIcon />
-                        </td>
-                        <td className='px-6 py-[14px]  text-secondary'>
-                          <TickIcon />
+                          {Array.isArray(feature.shaper) ? <>
+                            {
+                                feature.shaper[0] === true ? <TickIcon /> : <CancelIcon />
+                            }
+                            <p className='mt-1'>
+                              {
+                                feature.shaper[1]
+                              }
+                            </p>
+                              </> : feature.shaper === true || feature.shaper === false ? feature.shaper === true ? <TickIcon /> : <CancelIcon /> : feature.shaper                              
+                          }
                         </td>
                         <td className='px-6 py-[14px]  text-secondary'>
-                          <TickIcon />
-                        </td>
-                        <td className='px-6 py-[14px]  text-secondary'>
-                          <TickIcon />
-                        </td>
-                      </tr>
-
-                      <tr>
-                        <td className='px-6 py-[14px]  text-secondary'>
-                          Access to courses
-                        </td>
-                        <td className='px-6 py-[14px]  text-secondary'>
-                          <CancelIcon />
-                        </td>
-                        <td className='px-6 py-[14px] text-grey_40'>
-                          <TickIcon />
-                          <p className='mt-1'>1 Course/year</p>
-                        </td>
-                        <td className='px-6 py-[14px] text-grey_40'>
-                          <TickIcon />
-                          <p className='w-[80%] mt-1'>
-                            1 Course + 4 free courses or products/year
-                          </p>
-                        </td>
-                        <td className='px-6 py-[14px] text-grey_40'>
-                          <TickIcon />
-                          <p className='w-[80%] mt-1'>
-                            1 Course + 20 free courses or products/year
-                          </p>
+                          {Array.isArray(feature.innovator) ? <>
+                            {
+                                feature.innovator[0] === true ? <TickIcon /> : <CancelIcon />
+                            }
+                            <p className='mt-1'>
+                              {
+                                feature.innovator[1]
+                              }
+                            </p>
+                              </> : feature.innovator === true || feature.innovator === false ? feature.innovator === true ? <TickIcon /> : <CancelIcon /> : feature.innovator                              
+                          }
                         </td>
                       </tr>
-
-                      <tr>
-                        <td className='px-6 py-[14px]  text-secondary'>
-                          Access to other courses if free author-maker
-                        </td>
-                        <td className='px-6 py-[14px]  text-secondary'>
-                          <CancelIcon />
-                        </td>
-                        <td className='px-6 py-[14px]  text-secondary'>
-                          <CancelIcon />
-                        </td>
-                        <td className='px-6 py-[14px]  text-secondary'>
-                          <CancelIcon />
-                        </td>
-                        <td className='px-6 py-[14px]  text-secondary'>
-                          <CancelIcon />
-                        </td>
-                      </tr>
-
-                      <tr>
-                        <td className='px-6 py-[14px]  text-secondary'>
-                          Join business cohorts
-                        </td>
-                        <td className='px-6 py-[14px] text-grey_40'>
-                          <TickIcon />
-                          <p className='mt-1'>
-                            Unlimited after 1st course or product post
-                          </p>
-                        </td>
-                        <td className='px-6 py-[14px] text-grey_40'>
-                          <TickIcon />
-                          <p className='mt-1'>
-                            Unlimited after 1st course or product post
-                          </p>
-                        </td>
-                        <td className='px-6 py-[14px] text-grey_40'>
-                          <TickIcon />
-                          <p className='mt-1'>
-                            Unlimited after 1st course or product post
-                          </p>
-                        </td>
-                        <td className='px-6 py-[14px] text-grey_40'>
-                          <TickIcon />
-                          <p className='mt-1'>
-                            Unlimited after 1st course or product post
-                          </p>
-                        </td>
-                      </tr>
-
-                      <tr>
-                        <td className='px-6 py-[14px]  text-secondary'>
-                          Following and being followed
-                        </td>
-                        <td className='px-6 py-[14px] text-grey_40'>
-                          <TickIcon />
-                          <p className='w-[80%] mt-1'>Unlimited</p>
-                        </td>
-                        <td className='px-6 py-[14px] text-grey_40'>
-                          <TickIcon />
-                          <p className='w-[80%] mt-1'>Unlimited</p>
-                        </td>
-                        <td className='px-6 py-[14px] text-grey_40'>
-                          <TickIcon />
-                          <p className='w-[80%] mt-1'>Unlimited</p>
-                        </td>
-                        <td className='px-6 py-[14px] text-grey_40'>
-                          <TickIcon />
-                          <p className='w-[80%] mt-1'>Unlimited</p>
-                        </td>
-                      </tr>
-
-                      <tr>
-                        <td className='px-6 py-[14px]  text-secondary'>
-                          Invite/pre sign up affiliates
-                        </td>
-                        <td className='px-6 py-[14px]  text-secondary'>
-                          <TickIcon />
-                        </td>
-                        <td className='px-6 py-[14px] text-grey_40'>
-                          <TickIcon />
-                        </td>
-                        <td className='px-6 py-[14px] text-grey_40'>
-                          <TickIcon />
-                        </td>
-                        <td className='px-6 py-[14px] text-grey_40'>
-                          <TickIcon />
-                        </td>
-                      </tr>
-
-                      <tr>
-                        <td className='px-6 py-[14px]  text-secondary'>
-                          Welcome Kit and Business Intro
-                        </td>
-                        <td className='px-6 py-[14px]  text-secondary'>
-                          <TickIcon />
-                        </td>
-                        <td className='px-6 py-[14px] text-grey_40'>
-                          <TickIcon />
-                        </td>
-                        <td className='px-6 py-[14px] text-grey_40'>
-                          <TickIcon />
-                        </td>
-                        <td className='px-6 py-[14px] text-grey_40'>
-                          <TickIcon />
-                        </td>
-                      </tr>
-
-                      <tr>
-                        <td className='px-6 py-[14px]  text-secondary'>
-                          Added to Business Social Media Groups
-                        </td>
-                        <td className='px-6 py-[14px]  text-secondary'>
-                          <TickIcon />
-                        </td>
-                        <td className='px-6 py-[14px] text-grey_40'>
-                          <TickIcon />
-                        </td>
-                        <td className='px-6 py-[14px] text-grey_40'>
-                          <TickIcon />
-                        </td>
-                        <td className='px-6 py-[14px] text-grey_40'>
-                          <TickIcon />
-                        </td>
-                      </tr>
-
-                      <tr>
-                        <td className='px-6 py-[14px] text-grey_40 w-[20%]'>
-                          Advanced Marketing and Business Techniques
-                        </td>
-                        <td className='px-6 py-[14px]  text-secondary'>
-                          <CancelIcon />
-                        </td>
-                        <td className='px-6 py-[14px] text-grey_40'>
-                          <CancelIcon />
-                        </td>
-                        <td className='px-6 py-[14px] text-grey_40'>
-                          <TickIcon />
-                        </td>
-                        <td className='px-6 py-[14px] text-grey_40'>
-                          <TickIcon />
-                        </td>
-                      </tr>
-
-                      <tr>
-                        <td className='px-6 py-[14px]  text-secondary'>
-                          Entitled to payouts
-                        </td>
-                        <td className='px-6 py-[14px]  text-secondary'>
-                          <TickIcon />
-                        </td>
-                        <td className='px-6 py-[14px] text-grey_40'>
-                          <TickIcon />
-                        </td>
-                        <td className='px-6 py-[14px] text-grey_40'>
-                          <TickIcon />
-                        </td>
-                        <td className='px-6 py-[14px] text-grey_40'>
-                          <TickIcon />
-                        </td>
-                      </tr>
-
-                      <tr>
-                        <td className='px-6 py-[14px] text-grey_40 w-[20%]'>
-                          Full Business Owner Status Receive Payouts
-                        </td>
-                        <td className='px-6 py-[14px]  text-secondary'>
-                          <CancelIcon />
-                        </td>
-                        <td className='px-6 py-[14px] text-grey_40'>
-                          <TickIcon />
-                        </td>
-                        <td className='px-6 py-[14px] text-grey_40'>
-                          <TickIcon />
-                        </td>
-                        <td className='px-6 py-[14px] text-grey_40'>
-                          <TickIcon />
-                        </td>
-                      </tr>
-
-                      <tr>
-                        <td className='px-6 py-[14px]  text-secondary'>
-                          Receive Payouts if Free Author-Maker
-                        </td>
-                        <td className='px-6 py-[14px]  text-secondary'>
-                          <TickIcon />
-                        </td>
-                        <td className='px-6 py-[14px] text-grey_40'>
-                          <TickIcon />
-                        </td>
-                        <td className='px-6 py-[14px] text-grey_40'>
-                          <TickIcon />
-                        </td>
-                        <td className='px-6 py-[14px] text-grey_40'>
-                          <TickIcon />
-                        </td>
-                      </tr>
-
-                      <tr>
-                        <td className='px-6 py-[14px]  text-secondary'>
-                          Assign % commissions to affiliates
-                        </td>
-                        <td className='px-6 py-[14px]  text-secondary'>
-                          <CancelIcon />
-                        </td>
-                        <td className='px-6 py-[14px] text-grey_40'>
-                          <TickIcon />
-                        </td>
-                        <td className='px-6 py-[14px] text-grey_40'>
-                          <TickIcon />
-                        </td>
-                        <td className='px-6 py-[14px] text-grey_40'>
-                          <TickIcon />
-                        </td>
-                      </tr>
-
-                      <tr>
-                        <td className='px-6 py-[14px]  text-secondary'>
-                          Assign % commissions to affiliates if Free
-                          Author-Maker
-                        </td>
-                        <td className='px-6 py-[14px]  text-secondary'>
-                          <TickIcon />
-                        </td>
-                        <td className='px-6 py-[14px] text-grey_40'>
-                          <TickIcon />
-                        </td>
-                        <td className='px-6 py-[14px] text-grey_40'>
-                          <TickIcon />
-                        </td>
-                        <td className='px-6 py-[14px] text-grey_40'>
-                          <TickIcon />
-                        </td>
-                      </tr>
-
-                      <tr>
-                        <td className='px-6 py-[14px]  text-secondary'>
-                          Website Interface
-                        </td>
-                        <td className='px-6 py-[14px]  text-secondary'>
-                          <CancelIcon />
-                        </td>
-                        <td className='px-6 py-[14px] text-grey_40'>
-                          <CancelIcon />
-                        </td>
-                        <td className='px-6 py-[14px] text-grey_40'>
-                          <TickIcon />
-                        </td>
-                        <td className='px-6 py-[14px] text-grey_40'>
-                          <TickIcon />
-                        </td>
-                      </tr>
-
-                      <tr>
-                        <td className='px-6 py-[14px]  text-secondary'>
-                          General Classes and Workshops
-                        </td>
-                        <td className='px-6 py-[14px]  text-secondary'>
-                          <TickIcon />
-                        </td>
-                        <td className='px-6 py-[14px] text-grey_40'>
-                          <TickIcon />
-                        </td>
-                        <td className='px-6 py-[14px] text-grey_40'>
-                          <TickIcon />
-                        </td>
-                        <td className='px-6 py-[14px] text-grey_40'>
-                          <TickIcon />
-                        </td>
-                      </tr>
-
-                      <tr>
-                        <td className='px-6 py-[14px]  text-grey_40 w-[10%]'>
-                          Course-specific Question and Answer Sessions by the
-                          author-makers
-                        </td>
-                        <td className='px-6 py-[14px]  text-secondary'>
-                          <CancelIcon />
-                        </td>
-                        <td className='px-6 py-[14px] text-grey_40'>
-                          <CancelIcon />
-                          <p className='w-[80%] mt-1'>
-                            (unless by an author-maker’s invitation)
-                          </p>
-                        </td>
-                        <td className='px-6 py-[14px] text-grey_40'>
-                          <TickIcon />
-                        </td>
-                        <td className='px-6 py-[14px] text-grey_40'>
-                          <TickIcon />
-                        </td>
-                      </tr>
-
-                      <tr>
-                        <td className='px-6 py-[14px]  text-secondary'>
-                          Owners Mastermind
-                        </td>
-                        <td className='px-6 py-[14px]  text-secondary'>
-                          <CancelIcon />
-                        </td>
-                        <td className='px-6 py-[14px] text-grey_40'>
-                          <TickIcon />
-                        </td>
-                        <td className='px-6 py-[14px] text-grey_40'>
-                          <TickIcon />
-                        </td>
-                        <td className='px-6 py-[14px] text-grey_40'>
-                          <TickIcon />
-                        </td>
-                      </tr>
-
-                      <tr>
-                        <td className='px-6 py-[14px]  text-secondary'>
-                          Shapers Mastermind
-                        </td>
-                        <td className='px-6 py-[14px]  text-secondary'>
-                          <CancelIcon />
-                        </td>
-                        <td className='px-6 py-[14px] text-grey_40'>
-                          <CancelIcon />
-                        </td>
-                        <td className='px-6 py-[14px] text-grey_40'>
-                          <TickIcon />
-                        </td>
-                        <td className='px-6 py-[14px] text-grey_40'>
-                          <TickIcon />
-                        </td>
-                      </tr>
-
-                      <tr>
-                        <td className='px-6 py-[14px]  text-secondary'>
-                          Advanced Technical and Marketing Support
-                        </td>
-                        <td className='px-6 py-[14px]  text-secondary'>
-                          <CancelIcon />
-                        </td>
-                        <td className='px-6 py-[14px] text-grey_40'>
-                          <CancelIcon />
-                        </td>
-                        <td className='px-6 py-[14px] text-grey_40'>
-                          <TickIcon />
-                        </td>
-                        <td className='px-6 py-[14px] text-grey_40'>
-                          <TickIcon />
-                        </td>
-                      </tr>
-
-                      <tr>
-                        <td className='px-6 py-[14px]  text-secondary'>
-                          Shapers Milestone Incentives
-                        </td>
-                        <td className='px-6 py-[14px]  text-secondary'>
-                          <CancelIcon />
-                        </td>
-                        <td className='px-6 py-[14px] text-grey_40'>
-                          <CancelIcon />
-                        </td>
-                        <td className='px-6 py-[14px] text-grey_40'>
-                          <TickIcon />
-                          <p className='mt-1'>...</p>
-                        </td>
-                        <td className='px-6 py-[14px] text-grey_40'>
-                          <TickIcon />
-                          <p className='mt-1'>...</p>
-                        </td>
-                      </tr>
-
-                      <tr>
-                        <td className='px-6 py-[14px]  text-secondary'>
-                          Innovators Milestone Incentives
-                        </td>
-                        <td className='px-6 py-[14px]  text-secondary'>
-                          <CancelIcon />
-                        </td>
-                        <td className='px-6 py-[14px] text-grey_40'>
-                          <CancelIcon />
-                        </td>
-                        <td className='px-6 py-[14px] text-grey_40'>
-                          <CancelIcon />
-                        </td>
-                        <td className='px-6 py-[14px] text-grey_40'>
-                          <TickIcon />
-                          <p className='mt-1'>...</p>
-                        </td>
-                      </tr>
-
-                      <tr>
-                        <td className='px-6 py-[14px]  text-secondary'>
-                          Innovators Mastermind
-                        </td>
-                        <td className='px-6 py-[14px]  text-secondary'>
-                          <CancelIcon />
-                        </td>
-                        <td className='px-6 py-[14px] text-grey_40'>
-                          <CancelIcon />
-                        </td>
-                        <td className='px-6 py-[14px] text-grey_40'>
-                          <CancelIcon />
-                        </td>
-                        <td className='px-6 py-[14px] text-grey_40'>
-                          <TickIcon />
-                        </td>
-                      </tr>
-
-                      <tr>
-                        <td className='px-6 py-[14px]  text-secondary'>
-                          Founders Forum and Events
-                        </td>
-                        <td className='px-6 py-[14px]  text-secondary'>
-                          <CancelIcon />
-                        </td>
-                        <td className='px-6 py-[14px] text-grey_40'>
-                          <CancelIcon />
-                        </td>
-                        <td className='px-6 py-[14px] text-grey_40'>
-                          <CancelIcon />
-                        </td>
-                        <td className='px-6 py-[14px] text-grey_40'>
-                          <TickIcon />
-                        </td>
-                      </tr>
+                        })
+                      }
+                      
                     </tbody>
                   </table>
                 </div>
@@ -706,40 +248,12 @@ export default function Membership({ subscriptionPlans }) {
 }
 
 
-export async function getServerSideProps() {
+export async function getStaticProps() {
   return {
     props: {
-      subscriptionPlans: [
-        {
-          id: 1,
-          price: 0,
-          planName: "Starter",
-          zone: "FREE",
-          description: "Limited access (intro module or 7 day trial) to the specific/main course on this subscription.",
-        }, 
-        {
-          id: 2,
-          price: 50,
-          planName: "Owner",
-          zone: "BUYERS ZONE",
-          description: "Everyone is entitled to have access to only 1 free course on this subscription per annum.",
-          mostPopular: true
-        },
-        {
-          id: 3,
-          price: 500,
-          planName: "Shaper",
-          zone: "MAKERS ZONE",
-          description: "Everyone is entitled to have access to 5 free courses/items on this subscription per annum.",
-        },
-         {
-          id: 4,
-          price: 5000,
-          planName: "Innovator",
-          zone: "CORPORATE ZONE",
-          description: "This member has access to 20 free courses/items on this subscription per annum.",
-        }
-      ]
-    }, // will be passed to the page component as props
+      plans,
+      features
+    },
+    revalidate: 1800
   }
 }
