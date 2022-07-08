@@ -214,8 +214,6 @@ export default function Payout() {
     setValue("postal_code", watch("business_postal_code"));
   };
 
-  console.log(errors);
-
   return (
     <form onSubmit={handleSubmit(handleUpdatePayout)} className="px-4 md:px-0">
       <Card title="Get Paid">
@@ -232,7 +230,7 @@ export default function Payout() {
               </span>
             </h5>
 
-            <div className="flex md:flex-row flex-col w-[100%] md:mt-0 mt-2 space-x-4">
+            <div className="flex md:flex-row flex-col w-[100%] md:mt-0 mt-2 md:space-x-4">
               <button
                 className="md:w-[50%] w-[100%]"
                 onClick={(e) => {
@@ -700,8 +698,8 @@ export default function Payout() {
               <span className="text-lg">Bank Details</span>
             </h5>
 
-            <div className="flex space-x-6">
-              <div className="relative md:w-1/2">
+            <div className="flex flex-col md:flex-row md:space-x-6">
+              <div className="relative w-full mb-6 md:mb-0 md:w-1/2">
                 <BankSelect
                   label="Bank name"
                   defaultValue={{
@@ -716,7 +714,7 @@ export default function Payout() {
                   </p>
                 )}
               </div>
-              <div className="relative md:w-1/2">
+              <div className="relative w-full md:w-1/2">
                 <label
                   className="block text-secondary font-medium leading-4 mb-4"
                   htmlFor="account_number"
