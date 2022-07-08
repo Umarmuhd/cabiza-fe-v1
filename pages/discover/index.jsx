@@ -1,5 +1,4 @@
 import React from "react";
-import Link from "next/link";
 import Image from "next/image";
 import styles from "./index.module.css";
 import { useAllProducts } from "@/hooks/useProducts";
@@ -116,7 +115,7 @@ export default function Discover({ intro_products }) {
                   return <div
                   className={`shadow sm:w-sm:[max-content] overflow-hidden mr-5 h-[max-content] rounded-xl ${styles.card}`} key={item.title}
                 >                  
-                  <Image src="/images/book-small.png" alt="." width={400} height={300} objectFit="cover" loading="lazy"/>
+                  <Image src="/images/book-small.png" alt="." width={385} height={300} objectFit="cover" loading="lazy"/>
                   <div className="p-5 rounded-b">
                     <p className="text-lg text-secondary_sky_dark font-normal mb-1">
                       {item.category}
@@ -179,7 +178,7 @@ export default function Discover({ intro_products }) {
                   return <div
                   className={`shadow sm:w-sm:[max-content] overflow-hidden mr-5 h-[max-content] rounded-xl ${styles.card}`} key={item.title}
                 >                  
-                  <Image src="/images/book-small.png" alt="." width={400} height={300} objectFit="cover" loading="lazy"/>
+                  <Image src="/images/book-small.png" alt="." width={385} height={300} objectFit="cover" loading="lazy"/>
                   <div className="p-5 rounded-b">
                     <p className="text-lg text-secondary_sky_dark font-normal mb-1">
                       {item.category}

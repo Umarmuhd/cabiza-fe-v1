@@ -1,4 +1,6 @@
 import React from "react";
+import Image from "next/image";
+import Link from "next/link";
 
 const SearchIcon = ({ className }) => (
   <svg
@@ -86,7 +88,7 @@ export const ProductItem = ({ product }) => {
     <div
       className={`shadow sm:w-sm:[max-content] overflow-hidden mr-5 h-[max-content] rounded-xl ${styles.card}`}
     >
-      <Image src={product.thumbnail ?? "/images/book-small.png"} alt="." width={400} height={300} objectFit="cover" loading="lazy"/>
+      <Image src={product.thumbnail ?? "/images/book-small.png"} alt="." width={385} height={300} objectFit="cover" loading="lazy"/>
       <div className="p-5 rounded-b">
         <p className="text-lg text-secondary_sky_dark font-normal mb-1">
           Books
