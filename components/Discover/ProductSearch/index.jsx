@@ -103,13 +103,16 @@ export const ProductItem = ({ product }) => {
           <a className="text-2xl text-secondary font-medium">{product.name}</a>
         </Link>
         <div className="flex items-center mt-3">
-          {/* <Image
-            src={product.user.profile_picture}
+          <Image
+            src={
+              product?.user?.profile_picture ??
+              "https://via.placeholder.com/150"
+            }
             alt="..."
             className="h-9 w-9 rounded-full object-cover"
             width={36}
             height={36}
-          /> */}
+          />
 
           <Link href={`/${product?.user?.username}/products`}>
             <a className="font-medium ml-2 text-secondary_ink_lighter block border-b border-b-secondary_ink_lighter">

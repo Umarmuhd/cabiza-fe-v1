@@ -5,9 +5,17 @@ import Username from "@/layouts/Username";
 import { user_profile } from "@/atoms/user_profile";
 import ProductItem from "@/components/Username/products";
 import PostItem from "@/components/Username/posts";
+import axios from "@/libs/axiosInstance";
+import { API_URL } from "@/config/index";
+import { useRouter } from "next/router";
 
 export default function Products() {
   const { user } = useRecoilValue(user_profile);
+
+  const router = useRouter();
+  const { username } = router.query;
+
+  console.log(user);
 
   // for getting products
   const [products, setProducts] = useState([]);
@@ -62,12 +70,11 @@ export default function Products() {
     ]);
   }, [user]);
 
-
   // for getting posts
   const [posts, setPosts] = useState([]);
 
   useEffect(() => {
-    const fetchProducts = async () => {
+    const fetchPosts = async () => {
       try {
         setLoading(true);
         const url = `${API_URL}/posts/user?username=${username}`;
@@ -79,8 +86,10 @@ export default function Products() {
         setLoading(false);
       }
     };
-    fetchProducts();
+    fetchPosts();
   }, [user]);
+
+  console.log(posts);
 
   const [toggle, setToggle] = useState(false);
 
@@ -96,34 +105,49 @@ export default function Products() {
         </div>
 
         <div className="flex items-center flex-start mb-10">
-          <button className={!toggle ? "text-white bg-primary flex h-[max-content] items-center rounded-full px-6 py-2" : "bg-primary_brand_lightest text-primary flex h-[max-content] items-center rounded-full px-6 py-2"} onClick={() => setToggle(false)}>
+          <button
+            className={
+              !toggle
+                ? "text-white bg-primary flex h-[max-content] items-center rounded-full px-6 py-2"
+                : "bg-primary_brand_lightest text-primary flex h-[max-content] items-center rounded-full px-6 py-2"
+            }
+            onClick={() => setToggle(false)}
+          >
             Products
           </button>
-          <button className={`${!toggle ? "bg-primary_brand_lightest text-primary flex h-[max-content] items-center rounded-full px-6 py-2" : "text-white bg-primary flex h-[max-content] items-center rounded-full px-6 py-2"}  ml-6`} onClick={() => setToggle(true)}>
+          <button
+            className={`${
+              !toggle
+                ? "bg-primary_brand_lightest text-primary flex h-[max-content] items-center rounded-full px-6 py-2"
+                : "text-white bg-primary flex h-[max-content] items-center rounded-full px-6 py-2"
+            }  ml-6`}
+            onClick={() => setToggle(true)}
+          >
             Posts
           </button>
         </div>
 
-        <div className="grid grid-cols-3 gap-5">
-          {
-            !toggle ? products.length > 0 ? products.map((product, index) => (
-              <React.Fragment key={index}>
-                <ProductItem product={product} />
-              </React.Fragment>
-            )) : (
-              !loading && <p className="text-grey_60">No product found</p>
-            )
-              : posts.length > 0 ? posts.map((post, index) => (
-                <React.Fragment key={index}>
-                  <PostItem post={post} username={username} />
-                </React.Fragment>
-              )) : (
-                !loading && <p className="text-grey_60">No post found</p>
-              )
-          }
+        <div className="grid gap-5 mt-8 md:grid-cols-2 lg:grid-cols-3">
+          {!toggle &&
+            (products.length > 0
+              ? products.map((product, index) => (
+                  <React.Fragment key={index}>
+                    {/* <ProductItem product={product} /> */}
+                  </React.Fragment>
+                ))
+              : !loading && <p className="text-grey_60">No product found</p>)}
         </div>
 
-
+        <div className="">
+          {toggle &&
+            (posts.length > 0
+              ? posts.map((post, index) => (
+                  <React.Fragment key={index}>
+                    <PostItem post={post} username={username} />
+                  </React.Fragment>
+                ))
+              : !loading && <p className="text-grey_60">No post found</p>)}
+        </div>
       </div>
     </main>
   );
