@@ -1,6 +1,5 @@
 import React, { useContext, useState } from "react";
 import { useRouter } from "next/router";
-
 import Sidebar from "../components/Sidebar/index";
 
 import { Toaster } from "react-hot-toast";

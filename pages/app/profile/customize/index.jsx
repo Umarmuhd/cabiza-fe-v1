@@ -15,98 +15,60 @@ import ReferralStats from "./referral-stats";
 export default function Customize() {
   const { user } = useContext(AuthContext);
 
+  const [tabsDetails] = useState({
+    "Change Picture": {
+      id: 1,
+      component: <ChangePicture user={user} />,
+    },
+    Share: {
+      id: 1,
+      component: <Share />,
+    },
+    Referral: {
+      id: 1,
+      component: <Referral />,
+    },
+    "Referral Stats": {
+      id: 1,
+      component: <ReferralStats />,
+    },
+    // Connections: {}
+  });
+
   return (
     <div className="lg:w-[85%] w-[100%] ml-auto">
       <TopNav title="Settings" />
       <Tab.Group>
         <div className="md:px-0 pt-5">
           <div className="flex justify-start items-end mr-auto md:w-43/50 mx-auto">
-            <Tab.List as={"div"} className="flex w-[100%]">
-              <Tab
-                as={"button"}
-                className={({ selected }) =>
-                  classNames(
-                    "text-md mr-8 pb-2 font-medium",
-                    selected
-                      ? " font-bold text-primary border-b border-b-primary"
-                      : " text-secondary"
-                  )
-                }
-              >
-                Change Picture
-              </Tab>
-              {/* <Tab
-                as={"button"}
-                className={({ selected }) =>
-                  classNames(
-                    "text-md mr-8 pb-2 font-medium",
-                    selected
-                      ? " font-bold text-primary border-b border-b-primary"
-                      : " text-secondary"
-                  )
-                }
-              >
-                Connections
-              </Tab> */}
-              <Tab
-                as={"button"}
-                className={({ selected }) =>
-                  classNames(
-                    "text-md mr-8 pb-2 font-medium",
-                    selected
-                      ? " font-bold text-primary border-b border-b-primary"
-                      : " text-secondary"
-                  )
-                }
-              >
-                Share
-              </Tab>
-              <Tab
-                as={"button"}
-                className={({ selected }) =>
-                  classNames(
-                    "text-md mr-8 pb-2 font-medium",
-                    selected
-                      ? " font-bold text-primary border-b border-b-primary"
-                      : " text-secondary"
-                  )
-                }
-              >
-                Referral
-              </Tab>
-              <Tab
-                as={"button"}
-                className={({ selected }) =>
-                  classNames(
-                    "text-md mr-8 pb-2 font-medium",
-                    selected
-                      ? " font-bold text-primary border-b border-b-primary"
-                      : " text-secondary"
-                  )
-                }
-              >
-                Referral Stats
-              </Tab>
+            <Tab.List
+              as={"div"}
+              className="mx-4 md:mx-0 flex w-full overflow-x-auto"
+            >
+              {Object.keys(tabsDetails).map((detail) => (
+                <Tab
+                  key={detail}
+                  as={"button"}
+                  className={({ selected }) =>
+                    classNames(
+                      "text-md mr-8 pb-2 font-medium min-w-max",
+                      selected
+                        ? " font-bold text-primary border-b border-b-primary"
+                        : " text-secondary"
+                    )
+                  }
+                >
+                  {detail}
+                </Tab>
+              ))}
             </Tab.List>
           </div>
         </div>
 
-        <Tab.Panels>
-          <Tab.Panel>
-            <ChangePicture user={user} />
-          </Tab.Panel>
-          {/* <Tab.Panel>
-            <Connections />
-          </Tab.Panel> */}
-          <Tab.Panel>
-            <Share />
-          </Tab.Panel>
-          <Tab.Panel>
-            <Referral />
-          </Tab.Panel>
-          <Tab.Panel>
-            <ReferralStats />
-          </Tab.Panel>
+        <Tab.Panels as={"div"} className="px-4 md:px-0">
+          {Object.values(tabsDetails).map((detail, idx) => (
+            <Tab.Panel key={idx}>{detail.component}</Tab.Panel>
+          ))}
         </Tab.Panels>
       </Tab.Group>
     </div>
