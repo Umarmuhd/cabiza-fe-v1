@@ -57,7 +57,7 @@ export default function Discover({ intro_products }) {
                     border: "1px solid #E3E5E6",
                     boxShadow: "0px 4px 20px rgba(0, 0, 0, 0.04)",
                   }}>
-                  <Image src={`/${each.image}`} alt={each.title} width={300} height={200}/>
+                  <Image src={`/${each.image}`} alt={each.title} width={210} height={130} objectFit="cover" loading="lazy"/>
                 </div>
                 <div className="text-center">
                   <h3 className="font-bold text-2xl mb-2 text-secondary group-hover:text-white">
