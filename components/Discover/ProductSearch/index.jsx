@@ -86,10 +86,15 @@ export default ProductSearch;
 
 export const ProductItem = ({ product }) => {
   return (
-    <div
-      className={`shadow sm:w-sm:[max-content] overflow-hidden mr-5 h-[max-content] rounded-xl ${styles.card}`}
-    >
-      <Image src={product.thumbnail ?? "/images/book-small.png"} alt="." width={385} height={300} objectFit="cover" loading="lazy"/>
+    <div className="shadow sm:w-sm:[max-content] overflow-hidden mr-5 h-[max-content] rounded-xl w-[10%] md:w-auto mt-0">
+      <Image
+        src={product.thumbnail ?? "/images/book-small.png"}
+        alt="."
+        width={385}
+        height={300}
+        objectFit="cover"
+        loading="lazy"
+      />
       <div className="p-5 rounded-b">
         <p className="text-lg text-secondary_sky_dark font-normal mb-1">
           Books
@@ -115,17 +120,35 @@ export const ProductItem = ({ product }) => {
 
         <div className="flex items-center justify-between mt-4">
           <div className="flex items-center">
-            <Image src="/images/icons/star.svg" alt="." width={26} height={26} objectFit="cover" loading="lazy"/> 
+            <Image
+              src="/images/icons/star.svg"
+              alt="."
+              width={26}
+              height={26}
+              objectFit="cover"
+              loading="lazy"
+            />
             <span className="ml-2 font-semibold text-secondary_ink_lighter text-md">
               5.0
               <span className="font-normal ml-1">(25)</span>
             </span>
           </div>
-          <span
-            className={`text-sm font-normal py-2 px-5 pl-3 bg-primary rounded ${styles.price} text-white`}
-          >
+          <span className="text-sm font-normal py-2 px-5 pl-3 bg-primary rounded  text-white relative">
             ${product.price}+
           </span>
+
+          <style jsx>{`
+            .price::after {
+              content: "";
+              position: absolute;
+              width: 20%;
+              height: 100%;
+              top: 0;
+              right: -1%;
+              background-color: #fff;
+              clip-path: polygon(0 50%, 100% 100%, 100% 0);
+            }
+          `}</style>
         </div>
 
         <div className="rounded-xl border border-sky_light flex justify-between items-center mt-5 px-1 sm:px-3 py-1 pr-2 bg-secondary_sky_lightest">
