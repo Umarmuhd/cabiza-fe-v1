@@ -16,7 +16,7 @@ const PostItems = () => {
   const size = useWindowSize();
 
   return (
-    <div className="mb-4 !w-full md:w-[17.4rem] sm:w-[100%]">
+    <div className="mb-4 w-full sm:w-[100%]">
       <div
         className={
           "sm:p-6 py-6 px-3 rounded-2xl border border-secondary_sky_dark w-[100%] " +
@@ -176,9 +176,7 @@ export default function Scheduled() {
               All scheduled posts
             </h1>
             <div className={`${styles.cards}`}>
-              <ul
-                className={`flex flex-col gap-x-[5rem] overflow-hidden ${styles["product-cards"]} w-full`}
-              >
+              <ul className={`flex flex-col overflow-hidden w-full`}>
                 <PostItems />
                 <PostItems />
                 <PostItems />

@@ -2,7 +2,7 @@ import React, { useContext, useState, useEffect } from "react";
 import { useForm } from "react-hook-form";
 import Card from "@/components/Cards/Card";
 import AuthContext from "@/context/AuthContext";
-import CheckSwitch from "../CheckSwitch/index";
+import CheckSwitch from "@/components/CheckSwitch";
 import toast from "react-hot-toast";
 import axios from "@/libs/axiosInstance";
 import { API_URL } from "@/config/index";
