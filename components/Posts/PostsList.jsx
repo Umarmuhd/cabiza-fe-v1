@@ -214,7 +214,7 @@ export default function PostsList() {
   return (
     <main className="h-full sm:w-full relative w-[90%] mx-auto">
       <div className="md:w-43/50 mx-auto md:my-10">
-        <div className="sm:p-8 py-8 bg-white rounded-2xl shadow-lg">
+        <div className="py-0 sm:p-8 md:py-8 bg-white rounded-2xl shadow-lg">
           {loading ? (
             <Loading />
           ) : (

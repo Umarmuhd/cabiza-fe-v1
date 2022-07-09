@@ -136,7 +136,7 @@ export const ProductItem = ({ product }) => {
               <span className="font-normal ml-1">(25)</span>
             </span>
           </div>
-          <span className="text-sm font-normal py-2 px-5 pl-3 bg-primary rounded  text-white relative">
+          <span className="text-sm font-normal py-2 px-5 pl-3 bg-primary rounded  text-white relative price">
             ${product.price}+
           </span>
 
