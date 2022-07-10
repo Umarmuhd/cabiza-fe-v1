@@ -55,17 +55,19 @@ export default function AllAffiliates({ products }) {
                       </td>
                       <td className={tdClass}>
                         <p className="text-secondary_ink_dark whitespace-no-wrap">
-                          0
+                          ${product?.product?.price}
                         </p>
                       </td>
                       <td className={tdClass}>
                         <p className="text-secondary_ink_dark whitespace-no-wrap">
-                          $0
+                          {product?.sales}
                         </p>
                       </td>
                       <td className={tdClass}>
                         <span className="relative inline-block text-secondary_ink_dark leading-tight">
-                          ${product.price}
+                          $
+                          {product?.product?.affiliate?.percent *
+                            product?.sales}
                         </span>
                       </td>
                       <td className={tdClass}>
