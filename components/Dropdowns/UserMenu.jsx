@@ -4,7 +4,7 @@ import Transition from "../../context/Transition";
 import AuthContext from "@/context/AuthContext";
 import Image from "next/image";
 
-function UserMenu({ disableShow = false }) {
+function UserMenu({ disableShow = true }) {
   const [dropdownOpen, setDropdownOpen] = useState(false);
   const { user, logout } = useContext(AuthContext);
 
