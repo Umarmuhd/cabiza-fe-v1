@@ -1,7 +1,9 @@
-import React from "react";
+import React, { useState } from "react";
 import Image from "next/image";
 import Link from "next/link";
-import styles from "../../../pages/discover/index.module.css";
+import axios from "@/libs/axiosInstance";
+import { API_URL } from "@/config/index";
+import Alert from "@/components/Alert";
 
 const SearchIcon = ({ className }) => (
   <svg
@@ -85,11 +87,27 @@ const ProductSearch = () => {
 export default ProductSearch;
 
 export const ProductItem = ({ product }) => {
+  const [loading, setLoading] = useState(false);
+  const handleBecomeAffiliate = async () => {
+    try {
+      setLoading(true);
+      const url = `${API_URL}/products/affiliate/${product_id}`;
+      const { data } = await axios.put(url);
+      toast.custom(<Alert color="#24C78C" text={data?.data?.message} />);
+      setLoading(false);
+    } catch (error) {
+      console.log(error);
+      setLoading(false);
+      toast.custom(
+        <Alert color="#F50000" text={error?.response?.data?.message} />
+      );
+    }
+  };
   return (
     <div className="shadow sm:w-sm:[max-content] overflow-hidden mr-5 h-[max-content] rounded-xl w-[10%] md:w-auto mt-0">
       <Image
         src={product.thumbnail ?? "/images/book-small.png"}
-        alt="."
+        alt="..."
         width={385}
         height={300}
         objectFit="cover"
@@ -156,13 +174,14 @@ export const ProductItem = ({ product }) => {
 
         <div className="rounded-xl border border-sky_light flex justify-between items-center mt-5 px-1 sm:px-3 py-1 pr-2 bg-secondary_sky_lightest">
           <p className="text-xs text-secondary">40% Affiliate Commission</p>
-          <Link
-            href={`http://app.${window.location.host}/affiliate/${product.product_id}`}
+
+          <button
+            className="bg-primary text-white font-medium text-sm rounded px-3 py-2 sm:ml-10"
+            onClick={handleBecomeAffiliate}
+            disabled={loading}
           >
-            <a className="bg-primary text-white font-medium text-sm rounded px-3 py-2 sm:ml-10">
-              Become Affiliate
-            </a>
-          </Link>
+            {loading ? "Loading..." : "Become Affiliate"}
+          </button>
         </div>
       </div>
     </div>

@@ -1,6 +1,5 @@
 import { API_URL } from "@/config/index";
 import axios from "axios";
-import dayjs from "dayjs";
 import cookie from "cookie";
 import Cors from "cors";
 import initMiddleware from "../../libs/init-middleware";
@@ -33,7 +32,6 @@ function runMiddleware(req, res, fn) {
 
 const loginHandler = async (req, res) => {
   // await runMiddleware(req, res, cors);
-  console.log(req);
   if (req.method === "POST") {
     try {
       const payload = req.body;

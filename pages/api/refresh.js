@@ -45,6 +45,10 @@ const refresh = async (req, res) => {
             secure: process.env.NODE_ENV !== "development",
             maxAge: 60 * 30,
             sameSite: "lax",
+            domain:
+              process.env.NODE_ENV !== "development"
+                ? "cabiza.net"
+                : "localhost",
             path: "/api/",
           }),
           cookie.serialize("refresh", data.refreshToken, {
@@ -52,6 +56,10 @@ const refresh = async (req, res) => {
             secure: process.env.NODE_ENV !== "development",
             maxAge: 60 * 60 * 24,
             sameSite: "lax",
+            domain:
+              process.env.NODE_ENV !== "development"
+                ? "cabiza.net"
+                : "localhost",
             path: "/api/",
           }),
         ]);
