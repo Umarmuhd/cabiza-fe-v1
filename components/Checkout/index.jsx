@@ -166,7 +166,8 @@ const Checkout = ({ toggleCheckout }) => {
               .then((response) => {
                 console.log(response);
                 setData({ loading: false, success: true });
-                router.replace("/checkout/complete");
+                const order_id = response.data.order.order_id;
+                router.replace(`/checkout/complete/${order_id}`);
               })
               .catch((error) => {
                 console.error(error.message);
