@@ -34,6 +34,13 @@ const PostItem = ({ post, deletePost, user }) => {
     }
   };
 
+  const viewPost = () => {
+    let host =
+      process.env.NODE_ENV !== "production" ? "localhost" : "cabiza.net";
+    const url = `https://${user?.username}.` + host + `/posts/${post._id}`;
+    window.open(url, "_blank");
+  };
+
   return (
     <div className="">
       <div
@@ -133,11 +140,12 @@ const PostItem = ({ post, deletePost, user }) => {
               </Link>
             </li>
             <li className="md:pl-3">
-              <Link href={`/${user?.username}/posts/${post._id}`}>
-                <a className="leading-4 text-base font-medium text-primary py-2 px-3 rounded-4xl border border-primary">
-                  View
-                </a>
-              </Link>
+              <button
+                className="leading-4 text-base font-medium text-primary py-2 px-3 rounded-4xl border border-primary"
+                onClick={viewPost}
+              >
+                View
+              </button>
             </li>
             <li className="hidden md:flex md:pl-3">
               <button className="leading-4 text-base font-medium text-primary py-2 px-3 rounded-4xl border border-primary">
