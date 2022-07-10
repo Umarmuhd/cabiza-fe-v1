@@ -4,6 +4,7 @@ import Link from "next/link";
 import axios from "@/libs/axiosInstance";
 import { API_URL } from "@/config/index";
 import Alert from "@/components/Alert";
+import toast from "react-hot-toast";
 
 const SearchIcon = ({ className }) => (
   <svg
@@ -91,7 +92,7 @@ export const ProductItem = ({ product }) => {
   const handleBecomeAffiliate = async () => {
     try {
       setLoading(true);
-      const url = `${API_URL}/products/affiliate/${product_id}`;
+      const url = `${API_URL}/products/affiliate/${product.product_id}`;
       const { data } = await axios.put(url);
       toast.custom(<Alert color="#24C78C" text={data?.data?.message} />);
       setLoading(false);
