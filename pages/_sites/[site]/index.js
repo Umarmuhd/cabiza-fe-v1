@@ -39,8 +39,6 @@ export default function Index({ usernameDetails }) {
 
   const { user } = usernameDetails.data;
 
-  console.log(user);
-
   const [toggle, setToggle] = useState(false);
   const [loading, setLoading] = useState(false);
 

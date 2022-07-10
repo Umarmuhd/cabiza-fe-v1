@@ -72,7 +72,7 @@ const CloseIcon = () => (
   </svg>
 );
 
-const Checkout = ({ toggleCheckout }) => {
+const Checkout = ({ toggleCheckout, footer = true }) => {
   const {
     register,
     handleSubmit,
@@ -166,7 +166,7 @@ const Checkout = ({ toggleCheckout }) => {
               .then((response) => {
                 console.log(response);
                 setData({ loading: false, success: true });
-                const order_id = response.data.order.order_id;
+                const order_id = response.data.order_id;
                 router.replace(`/checkout/complete/${order_id}`);
               })
               .catch((error) => {
@@ -290,7 +290,7 @@ const Checkout = ({ toggleCheckout }) => {
           </form>
         </section>
       </div>
-      <PFooter />
+      {footer && <PFooter />}
     </div>
   );
 };

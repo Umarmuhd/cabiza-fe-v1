@@ -57,7 +57,7 @@ export default function Setting() {
               id="email"
               className="border border-sky_light mt-3 h-10 rounded-xl text-secondary_ink_lighter bg-white px-4"
               placeholder="jakecabiza@gmail.com"
-              value={user.email}
+              value={user?.email}
               readOnly
             />
           </div>

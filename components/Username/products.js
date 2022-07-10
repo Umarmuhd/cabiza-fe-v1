@@ -1,5 +1,6 @@
 import { PRODUCT_CATEGORIES } from "@/libs/constant";
 import Image from "next/image";
+import Link from "next/link";
 
 const ProductItem = ({ product, userDetails }) => {
   return (
@@ -18,10 +19,10 @@ const ProductItem = ({ product, userDetails }) => {
         <p className="text-lg text-secondary_sky_dark font-normal mb-1">
           {PRODUCT_CATEGORIES[product?.categories ?? "n"]}
         </p>
-        <h4 className="text-2xl text-secondary font-medium mb-3">
-          {product.name}
-        </h4>
-        <div className="flex items-center">
+        <Link href={`/products/${product.product_id}`}>
+          <a className="text-2xl text-secondary font-medium">{product.name}</a>
+        </Link>
+        <div className="flex items-center mt-3">
           <span className="text-lg text-grey_60 font-medium mr-2"></span>
           <Image
             src={userDetails?.profile_picture ?? "/images/avatar.png"}

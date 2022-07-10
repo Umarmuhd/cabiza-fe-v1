@@ -662,9 +662,11 @@ export default function Payout() {
                     onClickDay={() => setShowCalendar(false)}
                     defaultValue={[
                       new Date(
-                        user?.birthday?.split("/")[2],
-                        parseInt(user?.birthday?.split("/")[1]) - 1,
-                        user?.birthday?.split("/")[0]
+                        user?.birthday
+                          ? (user?.birthday?.split("/")[2],
+                            parseInt(user?.birthday?.split("/")[1]) - 1,
+                            user?.birthday?.split("/")[0])
+                          : null
                       ),
                     ]}
                   />
