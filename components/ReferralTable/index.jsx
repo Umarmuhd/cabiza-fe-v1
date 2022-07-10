@@ -47,26 +47,26 @@ const ReferralTable = () => {
 
   let [categories] = useState({
     Completed: [
-      {
-        id: 1,
-        name: "Ukpe Jacob",
-        status: "Completed",
-        earnings: 20,
-      },
-      {
-        id: 2,
-        name: "Umar Zakari",
-        status: "Completed",
-        earnings: 12,
-      },
+      // {
+      //   id: 1,
+      //   name: "Ukpe Jacob",
+      //   status: "Completed",
+      //   earnings: 20,
+      // },
+      // {
+      //   id: 2,
+      //   name: "Umar Zakari",
+      //   status: "Completed",
+      //   earnings: 12,
+      // },
     ],
     Pending: [
-      {
-        id: 1,
-        name: "Triumph Ojo",
-        status: "Pending",
-        earnings: 0,
-      },
+      // {
+      //   id: 1,
+      //   name: "Triumph Ojo",
+      //   status: "Pending",
+      //   earnings: 0,
+      // },
     ],
   });
 
