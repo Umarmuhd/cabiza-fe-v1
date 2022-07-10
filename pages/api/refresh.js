@@ -12,7 +12,7 @@ const cors = Cors({
 });
 
 const refresh = async (req, res) => {
-  await initMiddleware(req, res, cors);
+  // await initMiddleware(req, res, cors);
   if (req.method === "GET" || req.method === "OPTIONS") {
     const cookies = cookie.parse(req.headers.cookie ?? "");
     const refresh = cookies.refresh ?? false;
