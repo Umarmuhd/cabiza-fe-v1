@@ -6,17 +6,7 @@ import PostItem from "@/components/Username/posts";
 import { useRouter } from "next/router";
 import Username from "@/layouts/Username";
 
-export async function getStaticPaths(context) {
-  console.log(context);
-  const paths = [{ params: { site: "umar" } }, { params: { site: "test2" } }];
-
-  return {
-    paths: paths,
-    fallback: "blocking",
-  };
-}
-
-export const getStaticProps = async (context) => {
+export async function getServerSideProps(context) {
   const username = context.params.site;
 
   const fetchUserData = async () => {
@@ -36,11 +26,12 @@ export const getStaticProps = async (context) => {
       notFound: true,
     };
   }
-
   return {
-    props: { usernameDetails: result.data },
+    props: {
+      usernameDetails: result.data,
+    },
   };
-};
+}
 
 export default function Index({ usernameDetails }) {
   const router = useRouter();
