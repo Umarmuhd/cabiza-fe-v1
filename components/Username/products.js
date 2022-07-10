@@ -2,8 +2,6 @@ import { PRODUCT_CATEGORIES } from "@/libs/constant";
 import Image from "next/image";
 
 const ProductItem = ({ product, userDetails }) => {
-  console.log(product, userDetails);
-
   return (
     <div className="pb-4 overflow-hidden shadow rounded-xl">
       <div className="w-full relative rounded-t-xl">

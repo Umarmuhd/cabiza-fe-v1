@@ -6,7 +6,7 @@ const PostItem = ({ post, username }) => {
   return (
     <div className="border border-secondary_sky_base rounded-xl px-6 py-7 cursor-pointer w-full">
       <div className="flex justify-between">
-        <Link href={`/${username}/posts/${post._id}`} passHref>
+        <Link href={`/posts/${post._id}`} passHref>
           <h2 className="text-2xl font-semibold">{post.title}</h2>
         </Link>
         <RWebShare
