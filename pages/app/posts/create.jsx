@@ -236,7 +236,7 @@ export default function CreatePost() {
                     boxShadow: "0px 8px 15px rgba(0, 0, 0, 0.15)",
                   }}
                 >
-                  <div className="border-b border-b-[#979C9E] flex flex-col items-center pb-7">
+                  <div className="flex flex-col items-center">
                     <button
                       className="leading-4 text-base font-medium text-white py-2 px-12 rounded-4xl border border-primary bg-primary"
                       type="submit"
@@ -247,12 +247,14 @@ export default function CreatePost() {
                       Publish now
                     </button>
                   </div>
-                  <p className="mt-[-.9rem] w-[max-content] px-4 mx-auto z-[3] bg-white">
-                    {" "}
-                    or{" "}
-                  </p>
 
-                  <div className="mt-3 w-[max-content] mx-auto border border-sky_light pl-4 h-[3rem] rounded-xl flex items-center overflow-hidden relative">
+                  {/* <div className="border-t border-[#979C9E] my-4 py-2">
+                    <p className="w-[max-content] px-4 mx-auto z-[3] bg-white">
+                      or
+                    </p>
+                  </div>
+
+                  <div className="w-[max-content] mx-auto border border-sky_light pl-4 h-[3rem] rounded-xl flex items-center overflow-hidden relative">
                     <span
                       className="text-secondary_ink_dark pr-8 cursor-pointer"
                       onClick={() => setShowCalendar(!showCalendar)}
@@ -278,7 +280,7 @@ export default function CreatePost() {
                       {" "}
                       {time}{" "}
                     </span>
-                  </div>
+                  </div> */}
 
                   {showTimeDropdown && times ? (
                     <div
@@ -309,7 +311,7 @@ export default function CreatePost() {
                     ></div>
                   ) : null}
 
-                  <div
+                  {/* <div
                     className={`absolute right-0 top-[100%] left-[1.5rem] z-[101] ${
                       !showCalendar ? "hidden" : ""
                     }`}
@@ -328,7 +330,7 @@ export default function CreatePost() {
                     disabled={loading}
                   >
                     Schedule
-                  </button>
+                  </button> */}
                 </div>
               ) : null}
 

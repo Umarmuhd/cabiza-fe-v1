@@ -23,7 +23,7 @@ const EmptyAffiliates = () => (
 export default function Affiliated() {
   const [loading, setLoading] = useState(false);
   const [affiliates, setAffiliates] = useState([
-    { _id: "123", name: "Affiliate", product_id: "aff_123", price: 123 },
+    // { _id: "123", name: "Affiliate", product_id: "aff_123", price: 123 },
   ]);
 
   const router = useRouter();

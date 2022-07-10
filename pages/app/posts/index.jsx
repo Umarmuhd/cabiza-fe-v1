@@ -135,19 +135,20 @@ export default function Posts() {
     }
   };
 
-  console.log(window);
-
   return (
     <div className="md:w-[85%] w-[100%] ml-auto">
       <Tab.Group>
         <FullNav title="Posts">
           <div className="flex justify-between items-center md:w-43/50 mx-auto w-[100%]">
-            <Tab.List as={"div"} className="flex items-center">
+            <Tab.List
+              as={"div"}
+              className="flex items-center space-x-6 md:space-x-10"
+            >
               <Tab
                 as={"button"}
                 className={({ selected }) =>
                   classNames(
-                    "text-md sm:mr-10 mr-7 pb-2 font-medium border-b border-b-[transparent]",
+                    "text-md pb-2 font-medium border-b border-b-[transparent]",
                     selected
                       ? " sm:font-bold text-primary border-b !border-b-primary"
                       : " text-secondary"
@@ -156,11 +157,11 @@ export default function Posts() {
               >
                 Published
               </Tab>
-              <Tab
+              {/* <Tab
                 as={"button"}
                 className={({ selected }) =>
                   classNames(
-                    "text-md mr-10 pb-2 font-medium border-b border-b-[transparent]",
+                    "text-md pb-2 font-medium border-b border-b-[transparent]",
                     selected
                       ? " sm:font-bold text-primary border-b !border-b-primary"
                       : " text-secondary"
@@ -168,7 +169,7 @@ export default function Posts() {
                 }
               >
                 Scheduled
-              </Tab>
+              </Tab> */}
             </Tab.List>
 
             <div className="flex items-center justify-between">
@@ -341,9 +342,9 @@ export default function Posts() {
           <Tab.Panel>
             <PostsList />
           </Tab.Panel>
-          <Tab.Panel>
+          {/* <Tab.Panel>
             <Scheduled />
-          </Tab.Panel>
+          </Tab.Panel> */}
         </Tab.Panels>
       </Tab.Group>
     </div>
