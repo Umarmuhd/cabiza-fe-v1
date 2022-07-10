@@ -16,7 +16,7 @@ export default function Username({ children, userDetail }) {
   return (
     <div className="min-h-screen w-full bg-primary_brand_lightest">
       <div className="bg-white border border-b border-secondary_sky_base">
-        {!user && (
+        {user && (
           <TopNav showLanguage={false}>
             <button className="bg-primary flex h-[max-content] m-auto items-center rounded-full text-white px-4 py-2">
               <span>+</span> <span className="ml-2">Follow</span>

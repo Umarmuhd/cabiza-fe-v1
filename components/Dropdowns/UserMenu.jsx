@@ -8,6 +8,8 @@ function UserMenu() {
   const [dropdownOpen, setDropdownOpen] = useState(false);
   const { user, logout } = useContext(AuthContext);
 
+  console.log("User: ", user);
+
   const trigger = useRef(null);
   const dropdown = useRef(null);
 
