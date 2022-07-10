@@ -4,7 +4,7 @@ import Transition from "../../context/Transition";
 import AuthContext from "@/context/AuthContext";
 import Image from "next/image";
 
-function UserMenu() {
+function UserMenu({ disableShow = false }) {
   const [dropdownOpen, setDropdownOpen] = useState(false);
   const { user, logout } = useContext(AuthContext);
 
@@ -44,7 +44,7 @@ function UserMenu() {
         ref={trigger}
         className="inline-flex justify-center items-center group"
         aria-haspopup="true"
-        onClick={() => setDropdownOpen(!dropdownOpen)}
+        onClick={disableShow ? () => setDropdownOpen(!dropdownOpen) : () => {}}
         aria-expanded={dropdownOpen}
       >
         <div className="flex items-center truncate">

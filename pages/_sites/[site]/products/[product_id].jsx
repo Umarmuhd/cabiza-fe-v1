@@ -94,9 +94,25 @@ const SingleUserProduct = ({ productDetails }) => {
                   <div className="flex flex-col justify-between md:flex-row">
                     <div className="md:w-1/2 w-full">
                       <div className="mb-8">
-                        <span className="text-sm font-medium py-3 px-2.5 text-grey_98 bg-primary_brand_darkest rounded">
+                        <span className="text-sm font-medium py-3 px-5 text-grey_98 bg-primary_brand_darkest rounded price">
                           ${product.price}+
                         </span>
+                        <style jsx>{`
+                          .price {
+                            position: relative;
+                          }
+
+                          .price::after {
+                            content: "";
+                            position: absolute;
+                            width: 20%;
+                            height: 100%;
+                            top: 0;
+                            right: -1%;
+                            background-color: #fff;
+                            clip-path: polygon(0 50%, 100% 100%, 100% 0);
+                          }
+                        `}</style>
                       </div>
                       <p className="text-lg text-secondary_sky_dark font-medium mb-3">
                         Books
