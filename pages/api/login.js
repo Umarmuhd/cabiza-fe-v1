@@ -33,6 +33,7 @@ function runMiddleware(req, res, fn) {
 
 const loginHandler = async (req, res) => {
   // await runMiddleware(req, res, cors);
+  console.log(req);
   if (req.method === "POST") {
     try {
       const payload = req.body;

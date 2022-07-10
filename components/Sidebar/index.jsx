@@ -27,9 +27,7 @@ export default function Sidebar({ sidebarOpen, setSidebarOpen }) {
   const sidebar = useRef(null);
 
   const storedSidebarExpanded = localStorage.getItem("sidebar-expanded");
-  const [sidebarExpanded, setSidebarExpanded] = useState(
-    storedSidebarExpanded === null ? true : storedSidebarExpanded === "true"
-  );
+  const [sidebarExpanded, setSidebarExpanded] = useState(true);
 
   useEffect(() => {
     const clickHandler = ({ target }) => {
