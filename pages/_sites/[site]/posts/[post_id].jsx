@@ -184,6 +184,7 @@ export default function SinglePost() {
                   (!post?.attachment && "opacity-40 cursor-not-allowed")
                 }
                 disabled={!post?.attachment}
+                onClick={() => window.open(post?.attachment, "_blank")}
               >
                 <DownloadIcon />
                 <span className="ml-2 md:flex hidden">

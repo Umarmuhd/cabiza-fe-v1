@@ -61,6 +61,7 @@ export default function EditPost() {
       router.push("/posts");
     } catch (error) {
       console.error(error.message);
+      toast.custom(<Alert color="#F50000" text="Can't update post" />);
       setLoading(false);
     }
   };

@@ -34,8 +34,6 @@ const PostItem = ({ post, deletePost, user }) => {
     }
   };
 
-  console.log(post);
-
   return (
     <div className="">
       <div
@@ -93,6 +91,7 @@ const PostItem = ({ post, deletePost, user }) => {
                 (!post?.attachment && "opacity-40 cursor-not-allowed")
               }
               disabled={!post?.attachment}
+              onClick={() => window.open(post?.attachment, "_blank")}
             >
               <FileIcon />
               <span className="font-medium leading-4 text-primary ml-2">

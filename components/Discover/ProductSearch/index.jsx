@@ -94,7 +94,7 @@ export const ProductItem = ({ product }) => {
       setLoading(true);
       const url = `${API_URL}/products/affiliate/${product.product_id}`;
       const { data } = await axios.put(url);
-      toast.custom(<Alert color="#24C78C" text={data?.data?.message} />);
+      toast.custom(<Alert color="#24C78C" text={data?.message} />);
       setLoading(false);
     } catch (error) {
       console.log(error);
