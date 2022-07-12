@@ -43,7 +43,7 @@ export default function Customize() {
           <div className="flex justify-start items-end mr-auto md:w-43/50 mx-auto">
             <Tab.List
               as={"div"}
-              className="mx-4 md:mx-0 flex w-full overflow-x-auto"
+              className="mx-4 md:mx-0 flex w-full overflow-x-auto md:space-x-8 justify-between md:justify-start"
             >
               {Object.keys(tabsDetails).map((detail) => (
                 <Tab
@@ -51,7 +51,7 @@ export default function Customize() {
                   as={"button"}
                   className={({ selected }) =>
                     classNames(
-                      "text-md mr-8 pb-2 font-medium min-w-max",
+                      "text-md pb-2 font-medium min-w-max",
                       selected
                         ? " font-bold text-primary border-b border-b-primary"
                         : " text-secondary"
