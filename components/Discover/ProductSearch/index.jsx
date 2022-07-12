@@ -123,7 +123,14 @@ export const ProductItem = ({ product }) => {
 
         <div className="flex items-center justify-between mt-4">
           <div className="flex items-center">
-            <Image src="/images/icons/star.svg" alt="." width={26} height={26} objectFit="cover" loading="lazy" />
+            <Image
+              src="/images/icons/star.svg"
+              alt="."
+              width={26}
+              height={26}
+              objectFit="cover"
+              loading="lazy"
+            />
             <span className="ml-2 font-semibold text-secondary_ink_lighter text-md">
               5.0
               <span className="font-normal ml-1">(25)</span>
@@ -145,7 +152,7 @@ export const ProductItem = ({ product }) => {
               href=""
               className="bg-primary text-white font-medium text-sm rounded px-3 py-2 sm:ml-10"
             >
-              Become Affiliate
+              {loading ? "Loading..." : "Become Affiliate"}
             </a>
           </Link>
         </div>
