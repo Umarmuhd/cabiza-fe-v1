@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import Image from "next/image";
 import Link from "next/link";
 import styles from "../../../pages/discover/index.module.css";
@@ -24,42 +24,45 @@ const SearchIcon = ({ className }) => (
 );
 
 const ProductSearch = () => {
+  const [openSelectTab, setOpenSelectTab] = useState(false);
+
+  const handleSelectTab = () => {
+    setOpenSelectTab(!openSelectTab);
+  }
+
+  const [selectedOption, setSelectedOption] = useState("Education")
+
   return (
     <div className="bg-secondary_sky_lighter h-[100%]">
       <header className="py-16 mx-auto max-w-[1100px]">
         <div className="w-[90%] mx-auto">
           <form className="flex">
-            <div className="flex items-center border border-sky_light rounded-l-full overflow-hidden relative text-white mr-[-.1rem] h-[max-content]">
-              <select
-                name="t-zone"
-                id="t-zone"
-                className="h-[3.4rem] m-auto focus:outline-none text-white focus:ring-indigo-500 border-0 outline-none appearance-none bg-primary px-6 lg:w-[10rem] sm:w-2/6"
-              >
-                <option className="bg-primary" value="education">
-                  Education
-                </option>
-                <option className="bg-primary" value="fitness">
-                  Fitness
-                </option>
-                <option className="bg-primary" value="health">
-                  Health
-                </option>
-              </select>
-              <div className="pointer-events-none absolute inset-y-0 right-0 flex items-center text-gray-700 h-[100%] px-3">
-                <svg
-                  width="14"
-                  height="9"
-                  viewBox="0 0 18 9"
-                  fill="none"
-                  xmlns="http://www.w3.org/2000/svg"
-                  className="fill-current"
-                >
-                  <path
-                    d="M9.00002 8.80001C8.30002 8.80001 7.60002 8.53001 7.07002 8.00001L0.55002 1.48001C0.26002 1.19001 0.26002 0.710015 0.55002 0.420015C0.84002 0.130015 1.32002 0.130015 1.61002 0.420015L8.13002 6.94001C8.61002 7.42001 9.39002 7.42001 9.87002 6.94001L16.39 0.420015C16.68 0.130015 17.16 0.130015 17.45 0.420015C17.74 0.710015 17.74 1.19001 17.45 1.48001L10.93 8.00001C10.4 8.53001 9.70002 8.80001 9.00002 8.80001Z"
-                    fill="white"
-                  />
-                </svg>
+            <div className="h-[3.4rem]">
+              <div className="flex items-center border border-sky_light rounded-l-full overflow-hidden relative text-white mr-[-.1rem] h-[100%] bg-primary cursor-pointer" onClick={handleSelectTab}>
+                <span className="m-auto focus:outline-none text-white focus:ring-indigo-500 border-0 outline-none appearance-none bg-primary px-6 lg:w-[10rem] sm:w-2/6">{selectedOption}</span>
+
+                <div className="pointer-events-none absolute inset-y-0 right-0 flex items-center text-gray-700 h-[100%] px-3">
+                  <svg
+                    width="14"
+                    height="9"
+                    viewBox="0 0 18 9"
+                    fill="none"
+                    xmlns="http://www.w3.org/2000/svg"
+                    className="fill-current"
+                  >
+                    <path
+                      d="M9.00002 8.80001C8.30002 8.80001 7.60002 8.53001 7.07002 8.00001L0.55002 1.48001C0.26002 1.19001 0.26002 0.710015 0.55002 0.420015C0.84002 0.130015 1.32002 0.130015 1.61002 0.420015L8.13002 6.94001C8.61002 7.42001 9.39002 7.42001 9.87002 6.94001L16.39 0.420015C16.68 0.130015 17.16 0.130015 17.45 0.420015C17.74 0.710015 17.74 1.19001 17.45 1.48001L10.93 8.00001C10.4 8.53001 9.70002 8.80001 9.00002 8.80001Z"
+                      fill="white"
+                    />
+                  </svg>
+                </div>
               </div>
+
+              {openSelectTab ? <div className="bg-white shadow-lg w-[150%] mt-2 rounded overflow-hidden">
+                <p className={`hover:text-white hover:bg-primary cursor-pointer py-3 px-5 border-b border-b-sky_light z-[11] ${selectedOption === "Education" ? "text-white bg-primary border-b-white" : ""}`} onClick={() => setSelectedOption("Education")}>Education</p>
+                <p className={`hover:text-white hover:bg-primary cursor-pointer py-3 px-5 border-b border-b-sky_light z-[11] ${selectedOption === "Health" ? "text-white bg-primary border-b-white" : ""}`} onClick={() => setSelectedOption("Health")}>Health</p>
+                <p className={`hover:text-white hover:bg-primary cursor-pointer py-3 px-5 z-[11] ${selectedOption === "Fitness" ? "text-white bg-primary" : ""}`} onClick={() => setSelectedOption("Fitness")}>Fitness</p>
+              </div> : null}
             </div>
 
             <div className="flex justify-center border pl-6 w-full rounded-r-full bg-white">
@@ -88,8 +91,8 @@ export const ProductItem = ({ product }) => {
   return (
     <div
       className={`shadow sm:w-sm:[max-content] overflow-hidden mr-5 h-[max-content] rounded-xl ${styles.card}`}
-    >            
-      <Image src={product.thumbnail ?? "/images/book-small.png"} alt="." width={385} height={300} objectFit="cover" loading="lazy"/>
+    >
+      <Image src={product.thumbnail ?? "/images/book-small.png"} alt="." width={385} height={300} objectFit="cover" loading="lazy" />
       <div className="p-5 rounded-b">
         <p className="text-lg text-secondary_sky_dark font-normal mb-1">
           Books
@@ -115,7 +118,7 @@ export const ProductItem = ({ product }) => {
 
         <div className="flex items-center justify-between mt-4">
           <div className="flex items-center">
-            <Image src="/images/icons/star.svg" alt="." width={26} height={26} objectFit="cover" loading="lazy"/> 
+            <Image src="/images/icons/star.svg" alt="." width={26} height={26} objectFit="cover" loading="lazy" />
             <span className="ml-2 font-semibold text-secondary_ink_lighter text-md">
               5.0
               <span className="font-normal ml-1">(25)</span>
