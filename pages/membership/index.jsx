@@ -65,16 +65,16 @@ export default function Membership({ plans, features }) {
         </div>
       </header>
       <section className='md:py-10 py-5 bg-white'>
-        <div className='px-4 py-16 mx-auto sm:max-w-xl md:max-w-full lg:max-w-screen-xl lg:px-8'>
-          <div className='mx-auto lg:flex lg:items-center lg:justify-between md:mb-12 mb-5'>
+        <div className='px-4 py-16 md:mx-auto sm:max-w-xl md:max-w-full lg:max-w-screen-xl lg:px-8'>
+          <div className='mx-auto lg:flex lg:items-center lg:justify-between md:mb-12 mb-1'>
             <div className=''>
-              <h2 className='text-2xl font-bold text-secondary sm:text-4xl md:w-[50%] lg:w-3/5'>
+              <h2 className='text-2xl font-bold text-secondary sm:text-4xl w-4/5 md:w-[50%] lg:w-3/5'>
                 Get the right plan for future products/services
               </h2>
             </div>
 
             <div className='flex flex-col'>
-              <div className='mt-8 flex lg:mt-0 lg:flex-shrink-0'>
+              <div className='md:mt-8 mt-2 flex lg:mt-0 lg:flex-shrink-0'>
                 <div className='float-left flex mt-1 bg-secondary_sky_light rounded-xl border border-secondary_sky_light w-[max-content] p-[.1rem]'>
                   <button
                     className={`${payout.monthly
@@ -104,7 +104,7 @@ export default function Membership({ plans, features }) {
 
           <section id='membership' className={`${styles.membership} md:pt-2`}>
             <div className='flex'>
-              <section className='px-4 py-7 md:px-24 lg:px-8 lg:py-7 mt-16'>
+              <section className='px-4 py-7 md:px-24 md:py-0 lg:px-8 lg:py-7 mt-2 lg:mt-16'>
                 <div
                   id='membership'
                   className={`${styles.membership} mx-auto sm:max-w-xl md:max-w-full lg:max-w-screen-xl`}

@@ -29,7 +29,7 @@ export default function Discover({ intro_products }) {
       <ProductSearch />
       <div
         id="explore_cat"
-        className="px-4 py-16 mx-auto sm:max-w-xl md:max-w-full lg:max-w-screen-xl md:px-24 lg:px-8 lg:py-20"
+        className="px-4 py-16 mx-auto sm:max-w-xl md:max-w-full lg:max-w-screen-xl md:px-10 lg:px-8 lg:py-20"
       >
         <div className="mx-auto w-[100%] px-3 max-w-[1500px] overflow-hidden">
           <h2 className="text-lg text-lighter font-medium mb-6">
