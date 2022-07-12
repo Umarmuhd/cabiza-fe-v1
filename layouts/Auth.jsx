@@ -18,7 +18,7 @@ export default function Auth({ children }) {
   return (
     <div className="bg-secondary_sky_lighter min-h-screen h-full">
       <Toaster />
-      <AuthNavbar />
+      {/* <AuthNavbar /> */}
       <main className="h-full min-h-screen">{children}</main>
       {/* <AuthFooter /> */}
     </div>
