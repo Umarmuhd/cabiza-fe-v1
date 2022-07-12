@@ -66,7 +66,7 @@ const ProductSearch = () => {
               <input
                 type="search"
                 placeholder="Search for products..."
-                className="w-full outline-none text-secondary_sky_dark bg-transparent border-[transparent]"
+                className="w-full !outline-none text-secondary_sky_dark bg-transparent border-[transparent] border-none"
               />
               <button
                 type="submit"
