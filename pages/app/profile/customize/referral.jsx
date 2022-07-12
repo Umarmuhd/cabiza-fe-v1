@@ -6,6 +6,8 @@ import React, { useContext } from "react";
 import CopyToClipboard from "react-copy-to-clipboard";
 import toast from "react-hot-toast";
 import { useForm } from "react-hook-form";
+import { useMutation } from "react-query";
+import { sendEmailInvite } from "api_calls";
 
 const SendIcon = ({ className }) => (
   <svg
@@ -33,10 +35,23 @@ const Referral = () => {
   const {
     register,
     handleSubmit,
-    watch,
+    reset,
     formState: { errors },
   } = useForm();
-  const onSubmit = (data) => console.log(data);
+
+  const mutation = useMutation(sendEmailInvite, {
+    onSuccess: (res) => {
+      toast.custom(<Alert color="#24C78C">{res.message}</Alert>);
+      reset({ email: "" });
+    },
+    onError: (error) => {
+      console.log(error);
+    },
+  });
+
+  const { mutate, isLoading } = mutation;
+
+  const onSubmit = (data) => mutate(data);
 
   return (
     <div className="bg-white rounded-2xl p-12 px-3 md:w-43/50 mx-auto mt-10 shadow mb-12 md:px-10">
@@ -163,9 +178,13 @@ const Referral = () => {
             id="email"
             placeholder="Email Address..."
             className="ml-3 h-[100%] border-[transparent] bg-[transparent] w-11/12 border-none outline-0 p-0 px-8"
+            autoComplete="off"
             {...register("email", { required: true })}
           />
-          <button className="mr-3 bg-primary rounded-full p-3">
+          <button
+            className="mr-3 bg-primary rounded-full p-3"
+            disabled={isLoading}
+          >
             <SendIcon className="w-[1.5rem] h-[1.5rem]" />
           </button>
         </div>
@@ -188,10 +207,10 @@ const Referral = () => {
         <div className="flex justify-between items-center space-x-6 mt-6 place-items-center md:flex-row flex-col">
           <div className="flex items-center justify-between h-12 mx-auto sm:h-12 bg-secondary_sky_lighter px-6 py-4 rounded-full w-full">
             <span className="leading-4 text-secondary">
-              {`app.cabiza.net/auth/signup?ref=${user?.referral_code}`}
+              {`app.cabiza.net/auth/signup?ref=${user?.referral.referral_id}`}
             </span>
             <CopyToClipboard
-              text={`https://app.cabiza.net/auth/signup?ref=${user?.referral_code}`}
+              text={`https://app.cabiza.net/auth/signup?ref=${user?.referral.referral_id}`}
               onCopy={() =>
                 toast.custom(<Alert color="#24C78C" text="Copied success !" />)
               }

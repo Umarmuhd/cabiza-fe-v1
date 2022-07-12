@@ -7,8 +7,6 @@ import { toast } from "react-hot-toast";
 
 import axios from "axios";
 
-import styles from "./styles/index.module.css";
-
 import Auth from "layouts/Auth";
 
 export default function Signup() {
@@ -26,13 +24,12 @@ export default function Signup() {
     const { name, email, password } = values;
     try {
       setLoading(true);
-
-      const response = await axios.post(`${API_URL}/auth/signup`, {
+      await axios.post(`${API_URL}/auth/signup`, {
         full_name: name,
         email,
         password,
+        referral_id: router.query.ref,
       });
-
       toast.success("Signup successful");
       setLoading(false);
       return router.push("/auth/email-verification");
