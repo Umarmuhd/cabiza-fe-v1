@@ -89,9 +89,7 @@ export default ProductSearch;
 
 export const ProductItem = ({ product }) => {
   return (
-    <div
-      className={`shadow sm:w-sm:[max-content] overflow-hidden mr-5 h-[max-content] rounded-xl ${styles.card}`}
-    >
+    <div className="shadow sm:w-sm:[max-content] overflow-hidden mr-5 h-[max-content] rounded-xl w-[10%] md:w-auto mt-0">
       <Image src={product.thumbnail ?? "/images/book-small.png"} alt="." width={385} height={300} objectFit="cover" loading="lazy" />
       <div className="p-5 rounded-b">
         <p className="text-lg text-secondary_sky_dark font-normal mb-1">
