@@ -145,16 +145,13 @@ export const ProductItem = ({ product }) => {
 
         <div className="rounded-xl border border-sky_light flex justify-between items-center mt-5 px-1 sm:px-3 py-1 pr-2 bg-secondary_sky_lightest">
           <p className="text-xs text-secondary">40% Affiliate Commission</p>
-          <Link
-            href={`http://app.${window.location.host}/affiliate/${product.product_id}`}
+          <button
+            className="bg-primary text-white font-medium text-sm rounded px-3 py-2 sm:ml-10"
+            onClick={handleBecomeAffiliate}
+            disabled={loading}
           >
-            <a
-              href=""
-              className="bg-primary text-white font-medium text-sm rounded px-3 py-2 sm:ml-10"
-            >
-              {loading ? "Loading..." : "Become Affiliate"}
-            </a>
-          </Link>
+            {loading ? "Loading..." : "Become Affiliate"}
+          </button >
         </div>
       </div>
     </div>
