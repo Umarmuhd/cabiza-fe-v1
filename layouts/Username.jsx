@@ -1,56 +1,30 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useContext } from "react";
 import Link from "next/link";
 import { useRouter } from "next/router";
-import { useRecoilState } from "recoil";
-import axios from "axios";
-import { API_URL } from "../config/index";
-
-import { user_profile } from "@/atoms/user_profile";
 import Image from "next/image";
-import TopNav from '@/components/Navbars/DashboardNav/TopNav';
+import TopNav from "@/components/Navbars/DashboardNav/TopNav";
+import AuthContext from "@/context/AuthContext";
 
-const AddIcon = () => (
-  <svg width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
-    <path d="M4 8H12" stroke="white" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" />
-    <path d="M8 12V4" stroke="white" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" />
-  </svg>
-
-)
-
-export default function Username({ children }) {
+export default function Username({ children, userDetail }) {
   const router = useRouter();
-  const { username } = router.query;
-  const [user, setUser] = useState(null);
-  const [, setSelectedUser] = useRecoilState(user_profile);
   const [loading, setLoading] = useState(false);
 
-  useEffect(() => {
-    const fetchUserData = async () => {
-      try {
-        setLoading(true);
-        const response = await axios.get(
-          `${API_URL}/user/username/${username}`
-        );
-        setUser(response.data.data.user);
-        setSelectedUser({ user: response.data.data.user });
-        setLoading(false);
-      } catch (error) {
-        console.log(error);
-        setLoading(false);
-      }
-    };
-    fetchUserData();
-  }, [username, router, setSelectedUser]);
+  const { user } = useContext(AuthContext);
+
+  console.log(user);
 
   return (
     <div className="min-h-screen w-full bg-primary_brand_lightest">
-      <div className="bg-white border border-b border-secondary_sky_base">        
-          <TopNav showLanguage={false}>
-              <button className="bg-primary flex h-[max-content] m-auto items-center rounded-full text-white px-4 py-2">
-              <AddIcon /><span className="ml-2">Follow</span></button>
-          </TopNav>        
-      </div>            
-        {children}
+      <div className="bg-white border border-b border-secondary_sky_base">
+        {user && (
+          <TopNav showLanguage={false} disableShow={false}>
+            <button className="bg-primary flex h-[max-content] m-auto items-center rounded-full text-white px-4 py-2">
+              <span>+</span> <span className="ml-2">Follow</span>
+            </button>
+          </TopNav>
+        )}
+      </div>
+      {children}
       <div className="w-full flex justify-center md:py-9 py-6">
         <div className="flex items-end">
           <p className="text-base font-semibold uppercase text-secondary mr-2">

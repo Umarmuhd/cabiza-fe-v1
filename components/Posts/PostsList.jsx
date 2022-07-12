@@ -10,29 +10,9 @@ import moment from "moment";
 import { Switch } from "@headlessui/react";
 import PaginationComponent from "../PaginationComponent";
 import Alert from "../Alert";
-
-const SpinIcon = () => (
-  <svg
-    className="animate-spin -ml-1 h-8 w-8 md:h-10 md:w-10 text-white"
-    xmlns="http://www.w3.org/2000/svg"
-    fill="none"
-    viewBox="0 0 24 24"
-  >
-    <circle
-      className="opacity-25"
-      cx="12"
-      cy="12"
-      r="10"
-      stroke="#5F45F2"
-      strokeWidth="4"
-    ></circle>
-    <path
-      className="opacity-75"
-      fill="#5F45F2"
-      d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"
-    ></path>
-  </svg>
-);
+import EmptyPosts from "./EmptyPosts";
+import Loading from "../Loading";
+import FileIcon from "../Svgs/FileIcon";
 
 const PostItem = ({ post, deletePost, user }) => {
   const [expanded, setExpanded] = useState(false);
@@ -54,8 +34,15 @@ const PostItem = ({ post, deletePost, user }) => {
     }
   };
 
+  const viewPost = () => {
+    let host =
+      process.env.NODE_ENV !== "production" ? "localhost" : "cabiza.net";
+    const url = `https://${user?.username}.` + host + `/posts/${post._id}`;
+    window.open(url, "_blank");
+  };
+
   return (
-    <div className="mb-4">
+    <div className="">
       <div
         className={
           "p-6 rounded-2xl border border-secondary_sky_dark " +
@@ -105,27 +92,16 @@ const PostItem = ({ post, deletePost, user }) => {
       {expanded && (
         <div className="py-4 px-6 rounded-2xl rounded-t-none border border-t border-secondary_sky_dark bg-secondary_sky_lightest flex flex-col-reverse md:flex-row justify-between items-center">
           <div className="flex flex-col-reverse md:flex-row md:items-center w-full">
-            <button className="md:mr-6 py-2 px-4 rounded-4xl flex items-center md:justify-start justify-center bg-primary_brand_lightest mt-4 md:mt-0">
-              <svg
-                width="16"
-                height="16"
-                viewBox="0 0 16 16"
-                fill="none"
-                xmlns="http://www.w3.org/2000/svg"
-              >
-                <path
-                  d="M7.49984 9.22478V7.49992C7.49984 6.95044 7.04931 6.49992 6.49984 6.49992C5.95036 6.49992 5.49984 6.95044 5.49984 7.49992V9.21581C5.1495 9.09585 4.74439 9.17493 4.46628 9.45303L4.81984 9.80659L4.46628 9.45303C4.07769 9.84163 4.07769 10.4782 4.46628 10.8668L5.7707 12.1712C5.79636 12.2019 5.82205 12.2253 5.84243 12.2418C5.90985 12.304 6.00529 12.3754 6.12241 12.4222C6.24033 12.4728 6.36532 12.4999 6.49984 12.4999C6.63116 12.4999 6.75341 12.474 6.86886 12.4258C7.00488 12.3757 7.12072 12.2928 7.20672 12.2068L8.54006 10.8735C8.92865 10.4849 8.92865 9.84829 8.54006 9.4597C8.26019 9.17983 7.85169 9.10152 7.49984 9.22478ZM5.89644 12.2798C5.89687 12.2801 5.89533 12.2791 5.89269 12.2775L5.89539 12.2792L5.89615 12.2796L5.89635 12.2798L5.89644 12.2798ZM5.81294 12.2135L5.81295 12.2135C5.81295 12.2135 5.81294 12.2135 5.81294 12.2135ZM11.7398 7.29325H13.6665C13.757 7.29325 13.8332 7.36939 13.8332 7.45992V10.9533C13.8332 12.0206 13.4645 12.8117 12.9042 13.338C12.3389 13.8689 11.5394 14.1666 10.6198 14.1666H5.37984C4.46028 14.1666 3.66077 13.8689 3.09547 13.338C2.53512 12.8117 2.1665 12.0206 2.1665 10.9533V5.04659C2.1665 3.97924 2.53512 3.18816 3.09547 2.66188C3.66077 2.13095 4.46028 1.83325 5.37984 1.83325H8.2065C8.29703 1.83325 8.37317 1.90939 8.37317 1.99992V3.92659C8.37317 5.78273 9.88369 7.29325 11.7398 7.29325Z"
-                  fill="#5B44E9"
-                  stroke="#5B44E9"
-                />
-                <path
-                  d="M11.6252 5.37344L11.6252 5.37341H11.62C10.8762 5.37341 10.2866 4.77752 10.2866 4.09341V1.93392C10.9491 2.59723 11.8894 3.54619 12.7184 4.38273C13.08 4.74757 13.4203 5.09102 13.7072 5.38007C12.9964 5.38003 12.2059 5.37955 11.6252 5.37344Z"
-                  fill="#5B44E9"
-                  stroke="#5B44E9"
-                />
-              </svg>
-
-              <span className="font-medium leading-4 text-primary">
+            <button
+              className={
+                "md:mr-6 py-2 px-4 rounded-4xl flex items-center md:justify-start justify-center bg-primary_brand_lightest mt-4 md:mt-0 " +
+                (!post?.attachment && "opacity-40 cursor-not-allowed")
+              }
+              disabled={!post?.attachment}
+              onClick={() => window.open(post?.attachment, "_blank")}
+            >
+              <FileIcon />
+              <span className="font-medium leading-4 text-primary ml-2">
                 Download Attachments
               </span>
             </button>
@@ -164,11 +140,12 @@ const PostItem = ({ post, deletePost, user }) => {
               </Link>
             </li>
             <li className="md:pl-3">
-              <Link href={`/${user?.username}/posts/${post._id}`}>
-                <a className="leading-4 text-base font-medium text-primary py-2 px-3 rounded-4xl border border-primary">
-                  View
-                </a>
-              </Link>
+              <button
+                className="leading-4 text-base font-medium text-primary py-2 px-3 rounded-4xl border border-primary"
+                onClick={viewPost}
+              >
+                View
+              </button>
             </li>
             <li className="hidden md:flex md:pl-3">
               <button className="leading-4 text-base font-medium text-primary py-2 px-3 rounded-4xl border border-primary">
@@ -241,21 +218,12 @@ export default function PostsList() {
     }
   };
 
-  // posts.filter(post =>)
-
   return (
     <main className="h-full sm:w-full relative w-[90%] mx-auto">
       <div className="md:w-43/50 mx-auto md:my-10">
-        <div
-          className="sm:p-8 py-8 bg-white rounded-2xl"
-          style={{ boxShadow: "0px 20px 40px rgba(0, 0, 0, 0.06)" }}
-        >
+        <div className="py-0 sm:p-8 md:py-8 bg-white rounded-2xl shadow-lg">
           {loading ? (
-            <React.Fragment>
-              <div className="flex justify-center items-center text-center">
-                <SpinIcon />
-              </div>
-            </React.Fragment>
+            <Loading />
           ) : (
             <React.Fragment>
               {posts.length > 0 ? (
@@ -271,37 +239,7 @@ export default function PostsList() {
                   ))}
                 </div>
               ) : (
-                <div className="w-4/5 mx-auto md:py-12">
-                  <div className="text-center">
-                    <h1 className="text-secondary_ink_dark text-4xl leading-9 font-semibold mb-2">
-                      Empty post
-                    </h1>
-                    <div className="mb-10 mt-4">
-                      <p className="text-secondary_ink_lighter text-lg">
-                        Create a post and start sharing.
-                      </p>
-                      <p className="text-secondary_ink_lighter">
-                        Click on
-                        <Link href="/posts/create">
-                          <a className="text-primary"> New post</a>
-                        </Link>{" "}
-                        to create your first post!
-                      </p>
-                    </div>
-                    <Image
-                      src="/images/empty.svg"
-                      alt="..."
-                      className="mx-auto"
-                      width={245}
-                      height={240}
-                    />
-                    <Link href="/posts/create">
-                      <a className="text-primary block bg-primary_brand_lightest w-[max-content] mx-auto mt-7 px-8 py-2 rounded-full text-lg">
-                        Create post
-                      </a>
-                    </Link>{" "}
-                  </div>
-                </div>
+                <EmptyPosts />
               )}
             </React.Fragment>
           )}

@@ -57,14 +57,14 @@ export default function Setting() {
               id="email"
               className="border border-sky_light mt-3 h-10 rounded-xl text-secondary_ink_lighter bg-white px-4"
               placeholder="jakecabiza@gmail.com"
-              value={user.email}
+              value={user?.email}
               readOnly
             />
           </div>
         </div>
       </Card>
 
-      <Card title="Notifications">
+      {/* <Card title="Notifications">
         <p className="mb-5 text-secondary_ink_lighter">
           Depending on your preferences, you can choose whether to receive
           mobile notifications or email notifications. If you want to get
@@ -125,7 +125,7 @@ export default function Setting() {
             </tr>
           </table>
         </div>
-      </Card>
+      </Card> */}
 
       {/* <Card title="Local">
         <div>
@@ -263,7 +263,7 @@ export default function Setting() {
         </div>
       </Card> */}
 
-      <Card title="Discover">
+      {/* <Card title="Discover">
         <p className="mb-5 text-secondary_ink_lighter">
           Grow beyond your core audience through recommendations of related
           products. When enabled, your top-selling and best-reviewed products
@@ -313,12 +313,12 @@ export default function Setting() {
             <a className="text-primary mr-2 mt-5">Learn more</a>
           </div>
         </div>
-      </Card>
+      </Card> */}
 
       <div className="md:w-43/50 mx-auto mb-5">
-        <button className="bg-primary py-3 w-[100%] rounded-full text-white">
+        {/* <button className="bg-primary py-3 w-[100%] rounded-full text-white">
           Update settings
-        </button>
+        </button> */}
         <div className="rounded-3xl bg-secondary_sky_light mt-7 p-5 py-9 text-center">
           <a
             className="text-primary border-b border-b-primary py-[1px] text-lg cursor-pointer"

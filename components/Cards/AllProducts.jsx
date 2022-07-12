@@ -153,7 +153,7 @@ export default function AllProducts({ products }) {
                       </span>
                       <span className="px-5 py-5 text-sm w-[16%]">
                         <p className="text-secondary_ink_dark whitespace-no-wrap">
-                          ${product?.total ?? 0}
+                          ${product?.revenue}
                         </p>
                       </span>
                       <span className="px-5 py-5 text-sm w-[16%]">

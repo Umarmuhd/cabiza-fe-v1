@@ -11,23 +11,8 @@ const cors = Cors({
   origin: ["http://localhost:3000", "http://app.localhost:3000"],
 });
 
-// Helper method to wait for a middleware to execute before continuing
-// And to throw an error when an error happens in a middleware
-function runMiddleware(req, res, fn) {
-  return new Promise((resolve, reject) => {
-    fn(req, res, (result) => {
-      if (result instanceof Error) {
-        return reject(result);
-      }
-
-      return resolve(result);
-    });
-  });
-}
-
 const refresh = async (req, res) => {
-  // Run the middleware
-  await runMiddleware(req, res, cors);
+  // await initMiddleware(req, res, cors);
   if (req.method === "GET" || req.method === "OPTIONS") {
     const cookies = cookie.parse(req.headers.cookie ?? "");
     const refresh = cookies.refresh ?? false;
@@ -60,6 +45,10 @@ const refresh = async (req, res) => {
             secure: process.env.NODE_ENV !== "development",
             maxAge: 60 * 30,
             sameSite: "lax",
+            domain:
+              process.env.NODE_ENV !== "development"
+                ? "cabiza.net"
+                : "localhost",
             path: "/api/",
           }),
           cookie.serialize("refresh", data.refreshToken, {
@@ -67,6 +56,10 @@ const refresh = async (req, res) => {
             secure: process.env.NODE_ENV !== "development",
             maxAge: 60 * 60 * 24,
             sameSite: "lax",
+            domain:
+              process.env.NODE_ENV !== "development"
+                ? "cabiza.net"
+                : "localhost",
             path: "/api/",
           }),
         ]);

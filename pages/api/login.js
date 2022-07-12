@@ -1,6 +1,5 @@
 import { API_URL } from "@/config/index";
 import axios from "axios";
-import dayjs from "dayjs";
 import cookie from "cookie";
 import Cors from "cors";
 import initMiddleware from "../../libs/init-middleware";
@@ -10,7 +9,11 @@ const cors = Cors({
   methods: ["GET", "HEAD", "OPTIONS", "POST"],
   credentials: true,
   withCredentials: true,
-  origin: ["http://localhost:3000", "http://app.localhost:3000"],
+  origin: [
+    "http://localhost:3000",
+    "http://app.localhost:3000",
+    "http://umar.localhost:3000",
+  ],
 });
 
 // Helper method to wait for a middleware to execute before continuing
@@ -28,7 +31,7 @@ function runMiddleware(req, res, fn) {
 }
 
 const loginHandler = async (req, res) => {
-  await runMiddleware(req, res, cors);
+  // await runMiddleware(req, res, cors);
   if (req.method === "POST") {
     try {
       const payload = req.body;
@@ -43,6 +46,10 @@ const loginHandler = async (req, res) => {
             secure: process.env.NODE_ENV !== "development",
             maxAge: 60 * 30,
             sameSite: "lax",
+            domain:
+              process.env.NODE_ENV !== "development"
+                ? "cabiza.net"
+                : "localhost",
             path: "/api/",
           }),
           cookie.serialize("refresh", data.refreshToken, {
@@ -50,6 +57,10 @@ const loginHandler = async (req, res) => {
             secure: process.env.NODE_ENV !== "development",
             maxAge: 60 * 60 * 24 * 7,
             sameSite: "lax",
+            domain:
+              process.env.NODE_ENV !== "development"
+                ? "cabiza.net"
+                : "localhost",
             path: "/api/",
           }),
         ]);

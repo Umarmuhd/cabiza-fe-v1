@@ -1,7 +1,10 @@
 import React, { useState } from "react";
 import Image from "next/image";
 import Link from "next/link";
-import styles from "../../../pages/discover/index.module.css";
+import axios from "@/libs/axiosInstance";
+import { API_URL } from "@/config/index";
+import Alert from "@/components/Alert";
+import toast from "react-hot-toast";
 
 const SearchIcon = ({ className }) => (
   <svg
@@ -88,6 +91,22 @@ const ProductSearch = () => {
 export default ProductSearch;
 
 export const ProductItem = ({ product }) => {
+  const [loading, setLoading] = useState(false);
+  const handleBecomeAffiliate = async () => {
+    try {
+      setLoading(true);
+      const url = `${API_URL}/products/affiliate/${product.product_id}`;
+      const { data } = await axios.put(url);
+      toast.custom(<Alert color="#24C78C" text={data?.message} />);
+      setLoading(false);
+    } catch (error) {
+      console.log(error);
+      setLoading(false);
+      toast.custom(
+        <Alert color="#F50000" text={error?.response?.data?.message} />
+      );
+    }
+  };
   return (
     <div className="shadow sm:w-sm:[max-content] overflow-hidden mr-5 h-[max-content] rounded-xl w-[10%] md:w-auto mt-0">
       <Image
@@ -106,13 +125,16 @@ export const ProductItem = ({ product }) => {
           <a className="text-2xl text-secondary font-medium mb-3">{product.name}</a>
         </Link>
         <div className="flex items-center mt-3">
-          {/* <Image
-            src={product.user.profile_picture}
+          <Image
+            src={
+              product?.user?.profile_picture ??
+              "https://via.placeholder.com/150"
+            }
             alt="..."
             className="h-9 w-9 rounded-full object-cover"
             width={36}
             height={36}
-          /> */}
+          />
 
           <Link href={`/${product?.user?.username}/products`}>
             <a className="font-medium ml-2 text-secondary_ink_lighter block border-b border-b-secondary_ink_lighter">
@@ -136,11 +158,22 @@ export const ProductItem = ({ product }) => {
               <span className="font-normal ml-1">(25)</span>
             </span>
           </div>
-          <span
-            className={`text-sm font-normal py-2 px-5 pl-3 bg-primary rounded ${styles.price} text-white`}
-          >
+          <span className="text-sm font-normal py-2 px-5 pl-3 bg-primary rounded  text-white relative price">
             ${product.price}+
           </span>
+
+          <style jsx>{`
+            .price::after {
+              content: "";
+              position: absolute;
+              width: 20%;
+              height: 100%;
+              top: 0;
+              right: -1%;
+              background-color: #fff;
+              clip-path: polygon(0 50%, 100% 100%, 100% 0);
+            }
+          `}</style>
         </div>
 
         <div className="rounded-xl border border-sky_light flex justify-between items-center mt-5 px-1 sm:px-3 py-1 pr-2 bg-secondary_sky_lightest">
