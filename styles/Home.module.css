@@ -99,11 +99,6 @@
     list-style-position: inside;
 }
 
-.membership {
-    /* margin-top: 2rem; */
-    /* padding: 2rem 0; */
-}
-
 .membership h2 {
     font-style: normal;
     font-weight: 600;
@@ -123,16 +118,17 @@
 
 .plans .col {
     background: #ffffff;
-    /* Gray / 95 */
+    /*Gray/95*/
     border: 1px solid #f2f2f2;
     box-sizing: border-box;
-    /* Elevation / 2 */
+    /*Elevation/2*/
     box-shadow: 0px 4px 20px rgba(0, 0, 0, 0.04);
     border-radius: 24px;
     display: flex;
     flex-direction: column;
     justify-content: space-between;
-    /* height: 300px; */
+    /*height: 300px;
+    */
     padding: 3rem 1rem;
     width: 100%;
 }
@@ -146,10 +142,6 @@
     color: #fff;
     margin-bottom: 2rem;
     margin-top: 2rem;
-}
-
-.plans.flex .col:not(:last-of-type) {
-    /* margin-right: 1rem; */
 }
 
 .plans h3 {
@@ -829,9 +821,6 @@ section.testimony h3 {
 }
 
 @media only screen and (max-width: 600px) {
-    .testimony {
-        /* padding: 4rem 2rem !important; */
-    }
     .subscribe {
         padding: 4rem 2rem;
     }

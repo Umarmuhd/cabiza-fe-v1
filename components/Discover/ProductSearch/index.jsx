@@ -88,14 +88,14 @@ export const ProductItem = ({ product }) => {
   return (
     <div
       className={`shadow sm:w-sm:[max-content] overflow-hidden mr-5 h-[max-content] rounded-xl ${styles.card}`}
-    >
+    >            
       <Image src={product.thumbnail ?? "/images/book-small.png"} alt="." width={385} height={300} objectFit="cover" loading="lazy"/>
       <div className="p-5 rounded-b">
         <p className="text-lg text-secondary_sky_dark font-normal mb-1">
           Books
         </p>
         <Link href={`/discover/${product.product_id}`}>
-          <a className="text-2xl text-secondary font-medium">{product.name}</a>
+          <a className="text-2xl text-secondary font-medium mb-3">{product.name}</a>
         </Link>
         <div className="flex items-center mt-3">
           {/* <Image
@@ -133,7 +133,10 @@ export const ProductItem = ({ product }) => {
           <Link
             href={`http://app.${window.location.host}/affiliate/${product.product_id}`}
           >
-            <a className="bg-primary text-white font-medium text-sm rounded px-3 py-2 sm:ml-10">
+            <a
+              href=""
+              className="bg-primary text-white font-medium text-sm rounded px-3 py-2 sm:ml-10"
+            >
               Become Affiliate
             </a>
           </Link>

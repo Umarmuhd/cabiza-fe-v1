@@ -129,7 +129,7 @@ export default function Discover({ intro_products }) {
                         Sara Mitchell
                       </span>
                     </div>
-                    <div className="mt-3 flex items-center justify-between mt-4">
+                    <div className="flex items-center justify-between mt-4">
                       <div className="flex items-center">
                         <Image src="/images/icons/star.svg" alt="." width={26} height={26} objectFit="cover" loading="lazy"/>                        
                         <span className="ml-2 font-semibold text-secondary_ink_lighter text-md">
@@ -192,7 +192,7 @@ export default function Discover({ intro_products }) {
                         Sara Mitchell
                       </span>
                     </div>
-                    <div className="mt-3 flex items-center justify-between mt-4">
+                    <div className="flex items-center justify-between mt-4">
                       <div className="flex items-center">
                         <Image src="/images/icons/star.svg" alt="." width={26} height={26} objectFit="cover" loading="lazy"/>                        
                         <span className="ml-2 font-semibold text-secondary_ink_lighter text-md">
