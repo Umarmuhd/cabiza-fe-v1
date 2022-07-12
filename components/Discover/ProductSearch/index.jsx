@@ -145,13 +145,14 @@ export const ProductItem = ({ product }) => {
 
         <div className="rounded-xl border border-sky_light flex justify-between items-center mt-5 px-1 sm:px-3 py-1 pr-2 bg-secondary_sky_lightest">
           <p className="text-xs text-secondary">40% Affiliate Commission</p>
+
           <button
             className="bg-primary text-white font-medium text-sm rounded px-3 py-2 sm:ml-10"
             onClick={handleBecomeAffiliate}
             disabled={loading}
           >
             {loading ? "Loading..." : "Become Affiliate"}
-          </button >
+          </button>
         </div>
       </div>
     </div>
