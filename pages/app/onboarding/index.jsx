@@ -134,7 +134,7 @@ export default function Onboarding() {
           <img src="/images/onboarding-illustration.svg" alt="..." />
         </div>
       </div>
-      <div className="flex flex-col w-full md:w-1/2 p-10 px-4 md:px-10">
+      <div className="flex flex-col w-full md:w-1/2 p-10 px-6 md:px-10">
         <div className="w-[40%] mr-auto h-[auto]">
           <img
             src="/images/logo.png"
