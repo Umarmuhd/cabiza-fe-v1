@@ -97,11 +97,8 @@ export default function Onboarding() {
   const updateProfile = async (values) => {
     try {
       setLoading(true);
-
       const { username, photo, bio, country, category } = values;
-
       const form_data = new FormData();
-
       form_data.append("username", (username = username.toLowerCase()));
       form_data.append("photo", photo[0]);
       form_data.append("bio", bio);
@@ -111,9 +108,7 @@ export default function Onboarding() {
       const url = `${API_URL}/user/onboarding`;
 
       const response = await axios.post(url, form_data);
-
       toast.custom(<Alert color="#24C78C">{response.data.message}</Alert>);
-
       setLoading(false);
       router.replace("/profile");
     } catch (error) {
@@ -124,7 +119,7 @@ export default function Onboarding() {
 
   return (
     <div className="flex flex-wrap w-full min-h-screen h-full">
-      <div className="w-1/2 shadow-2xl bg-onboarding-pattern bg-contain inset-0 min-h-max flex items-center">
+      <div className="w-1/2 shadow-2xl bg-onboarding-pattern bg-contain inset-0 min-h-max hidden md:flex items-center">
         <div className="px-4 md:px-0 md:max-w-[80%] mx-auto">
           <div className="text-white text-center mb-20">
             <h1 className="font-bold text-5xl mb-10">
@@ -139,7 +134,7 @@ export default function Onboarding() {
           <img src="/images/onboarding-illustration.svg" alt="..." />
         </div>
       </div>
-      <div className="hidden md:flex flex-col w-full md:w-1/2 p-10">
+      <div className="flex flex-col w-full md:w-1/2 p-10">
         <div className="w-[40%] mr-auto h-[auto]">
           <img
             src="/images/logo.png"
