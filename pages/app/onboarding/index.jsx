@@ -125,7 +125,7 @@ export default function Onboarding() {
   return (
     <div className="flex flex-wrap w-full min-h-screen h-full">
       <div className="w-1/2 shadow-2xl bg-onboarding-pattern bg-contain inset-0 min-h-max flex items-center">
-        <div className="max-w-[80%] mx-auto">
+        <div className="px-4 md:px-0 md:max-w-[80%] mx-auto">
           <div className="text-white text-center mb-20">
             <h1 className="font-bold text-5xl mb-10">
               Welcome back, <br /> Set up your profile
@@ -139,7 +139,7 @@ export default function Onboarding() {
           <img src="/images/onboarding-illustration.svg" alt="..." />
         </div>
       </div>
-      <div className="flex flex-col w-full md:w-1/2 p-10">
+      <div className="hidden md:flex flex-col w-full md:w-1/2 p-10">
         <div className="w-[40%] mr-auto h-[auto]">
           <img
             src="/images/logo.png"
