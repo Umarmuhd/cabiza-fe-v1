@@ -109,17 +109,6 @@ export default function Payout() {
                 {bank.name}
               </option>
             ))}
-
-          <style jsx>{`
-            select {
-              padding: 1rem;
-              -webkit-appearance: none;
-              -moz-appearance: none;
-              appearance: none;
-              background: url("data:image/svg+xml,%3Csvg width='14' height='8' viewBox='0 0 14 8' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M1 1L7 7L13 1' stroke='%23090A0A' stroke-width='1.5' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E ")
-                97% / 3% no-repeat;
-            }
-          `}</style>
         </select>
       </>
     )
