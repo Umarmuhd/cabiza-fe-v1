@@ -99,7 +99,7 @@ export default function Onboarding() {
       setLoading(true);
       const { username, photo, bio, country, category } = values;
       const form_data = new FormData();
-      form_data.append("username", (username = username.toLowerCase()));
+      form_data.append("username", username);
       form_data.append("photo", photo[0]);
       form_data.append("bio", bio);
       form_data.append("country", country);
