@@ -4,7 +4,7 @@ import React from "react";
 
 const EmptyPosts = () => {
   return (
-    <div className="w-4/5 mx-auto md:py-12">
+    <div className="w-4/5 mx-auto md:py-12 py-8">
       <div className="text-center">
         <h1 className="text-secondary_ink_dark text-4xl leading-9 font-semibold mb-2">
           Empty post

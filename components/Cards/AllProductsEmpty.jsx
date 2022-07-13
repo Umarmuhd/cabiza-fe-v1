@@ -47,8 +47,8 @@ const PlusSmIcon = () => (
 
 export default function AllProductsEmpty({ user }) {
   return (
-    <div className="px-4 sm:px-6 md:px-0 w-full max-w-9xl mx-auto">
-      <div className="md:w-43/50 mx-auto my-10 items-center flex-col md:flex-row hidden">
+    <div className="sm:px-6 md:px-0 w-full max-w-9xl mx-auto">
+      <div className="md:w-43/50 mx-auto my-10 items-center flex-col md:flex-row hidden w-full">
         <div className="flex flex-col md:mb-0 mb-4">
           <h1 className="text-3xl font-semibold">
             Welcome,{" "}

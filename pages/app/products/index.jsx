@@ -86,7 +86,10 @@ const Products = ({}) => {
 
   const changeProductRequestQuery = () => {
     if (searchRef.current.value !== "") {
-      router.replace(router.pathname,`/products/?s=${searchRef.current.value}`);
+      router.replace(
+        router.pathname,
+        `/products/?s=${searchRef.current.value}`
+      );
       searchRef.current.value = "";
     }
   };
@@ -109,13 +112,16 @@ const Products = ({}) => {
     <div className="lg:w-[85%] w-[100%] ml-auto">
       <Tab.Group as={"div"} className="bg-secondary_sky_lighter">
         <FullNav title="Products">
-          <div className="flex justify-between items-center md:w-43/50 mx-auto pr-4">
-            <Tab.List as={"div"} className="flex items-center py-[.5rem]">
+          <div className="flex justify-between items-center md:w-43/50 mx-auto md:pr-4">
+            <Tab.List
+              as={"div"}
+              className="flex items-center py-[.5rem] space-x-10"
+            >
               <Tab
                 as={"button"}
                 className={({ selected }) =>
                   classNames(
-                    "text-md mr-10 w-[max-content] pb-2 font-medium",
+                    "text-md w-[max-content] pb-2 font-medium",
                     selected
                       ? " font-bold text-primary border-b border-b-primary"
                       : " text-secondary"
@@ -128,7 +134,7 @@ const Products = ({}) => {
                 as={"button"}
                 className={({ selected }) =>
                   classNames(
-                    "text-md mr-10 pb-2 font-medium",
+                    "text-md pb-2 font-medium",
                     selected
                       ? " font-bold text-primary border-b border-b-primary"
                       : " text-secondary"
@@ -140,7 +146,7 @@ const Products = ({}) => {
             </Tab.List>
 
             <div className="flex ml-auto items-center">
-              <div className="flex flex-row-reverse items-center justify-between mr-4">
+              <div className="flex flex-row-reverse items-center justify-between md:mr-4">
                 <button
                   className="flex items-center justify-center bg-primary_brand_lightest hover:bg-slate-200 transition duration-150 p-3 rounded-full peer w-[max-content]"
                   type="submit"
