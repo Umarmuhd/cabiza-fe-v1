@@ -122,7 +122,7 @@ export default function Index({ usernameDetails }) {
                 : !loading && <p className="text-grey_60">No product found</p>)}
           </div>
 
-          <div className="">
+          <div className="space-y-6">
             {toggle &&
               (posts.length > 0
                 ? posts.map((post, index) => (

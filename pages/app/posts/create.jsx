@@ -15,10 +15,9 @@ import FormGroup from "@/components/Forms/FormGroup";
 import Alert from "@/components/Alert";
 import CheckSwitch from "@/components/CheckSwitch";
 import TextFormat from "@/components/TextFormat";
-import Calendar from "react-calendar";
-import "react-calendar/dist/Calendar.css";
 import EyeIcon from "@/components/Svgs/EyeIcon";
 import CloseIcon from "@/components/Svgs/CloseIcon";
+import PublishSchedule from "@/components/PublishScedule";
 
 const CheckIcon = ({ classes }) => (
   <svg
@@ -79,11 +78,13 @@ export default function CreatePost() {
 
   const { user } = useContext(AuthContext);
 
+  const [post, setPost] = useState(null);
+
   const [loading, setLoading] = useState(false);
 
   const router = useRouter();
 
-  const handlePublish = async (values) => {
+  const handleSave = async (values) => {
     setLoading(true);
 
     const { title, description, call_to_action, attachment, audience } = values;
@@ -104,9 +105,7 @@ export default function CreatePost() {
       const response = await axios.post(`${API_URL}/posts/new`, form_data);
 
       setLoading(false);
-      toast.custom(
-        <Alert color="#24C78C" text={`${response.data.message} !`} />
-      );
+      toast.custom(<Alert color="#24C78C">{response.data.message}</Alert>);
 
       router.push("/posts");
     } catch (error) {
@@ -115,71 +114,15 @@ export default function CreatePost() {
     }
   };
 
-  const [showDropdown, setShowDropdown] = useState(false);
-  const [showTimeDropdown, setShowTimeDropdown] = useState(false);
-
-  //calendar
-  const [showCalendar, setShowCalendar] = useState(false);
-  const [time, setTime] = useState("PM");
-  const [exactTime, setExactTime] = useState(12);
-
-  const handleChangeTimePeriod = () => {
-    if (time !== "PM") {
-      setTime("PM");
-    } else {
-      setTime("AM");
-    }
-  };
-
-  const times = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12];
-  // const handleExactTimeChange = () => {
-
-  //   setExactTime()
-  // }
-
-  const [value, onChange] = useState(new Date());
-
-  const handleConvertDate = (month, day, year) => {
-    const months = [
-      "January",
-      "February",
-      "March",
-      "April",
-      "May",
-      "June",
-      "July",
-      "August",
-      "September",
-      "October",
-      "November",
-      "December",
-    ];
-
-    return `${months[month]} ${day}, ${year}`;
-  };
-
-  const [newConvertedDate, setNewConvertedDate] = useState(
-    handleConvertDate(value.getMonth(), value.getDate(), value.getFullYear())
-  );
-
-  useEffect(() => {
-    setNewConvertedDate(
-      handleConvertDate(value.getMonth(), value.getDate(), value.getFullYear())
-    );
-  }, [value]);
-
   const handlePublishNow = () => {
-    handleSubmit(handlePublish);
-    setTimeout(() => setShowDropdown(!showDropdown), 100);
+    if (!post) return toast.error("Please create a post first");
+    handleSubmit(handleSave);
   };
 
   const handlePreview = (values) => {
-    // const { title, description, call_to_action, attachment, audience } = values;
     localStorage.setItem("preview_form_data", JSON.stringify(values));
     window.open(`https://cabiza.net/preview`);
   };
-
-  // console.log("https://cabiza.net/" + user?.username + "/posts");
 
   return (
     <div className="lg:w-[85%] w-[100%] ml-auto overflow-y-hidden">
@@ -197,142 +140,20 @@ export default function CreatePost() {
               </a>
             </div>
 
-            <div className="flex items-center justify-between w-full md:w-auto relative">
+            <div className="flex items-center justify-between w-full md:w-auto relative md:space-x-6">
               <Link href="/posts">
-                <a className="leading-4 text-base font-medium text-primary py-2 px-3 rounded-4xl border border-primary flex items-center mr-6">
+                <a className="leading-4 text-base font-medium text-primary py-2 px-3 rounded-4xl border border-primary flex items-center">
                   <CloseIcon />
                   <span className="ml-2">Cancel</span>
                 </a>
               </Link>
 
-              <a
-                className="leading-4 text-base font-medium text-primary py-2 px-3 rounded-4xl border border-primary mr-6 flex items-center cursor-pointer"
-                onClick={() => setShowDropdown(!showDropdown)}
-              >
-                <span className="mr-2">Publish</span>
-                <svg
-                  width="14"
-                  height="7"
-                  viewBox="0 0 14 7"
-                  fill="none"
-                  xmlns="http://www.w3.org/2000/svg"
-                >
-                  <path
-                    d="M12.28 0.966553L7.9333 5.31322C7.41997 5.82655 6.57997 5.82655 6.06664 5.31322L1.71997 0.966553"
-                    stroke="#5B44E9"
-                    strokeWidth="1.5"
-                    strokeMiterlimit="10"
-                    strokeLinecap="round"
-                    strokeLinejoin="round"
-                  />
-                </svg>
-              </a>
-
-              {showDropdown ? (
-                <div
-                  className="absolute left-[.3rem] top-[4rem] rounded-xl bg-white px-3 py-5 z-[5] w-[25rem] flex flex-col"
-                  style={{
-                    border: "1px solid #E3E5E6",
-                    boxShadow: "0px 8px 15px rgba(0, 0, 0, 0.15)",
-                  }}
-                >
-                  <div className="flex flex-col items-center">
-                    <button
-                      className="leading-4 text-base font-medium text-white py-2 px-12 rounded-4xl border border-primary bg-primary"
-                      type="submit"
-                      form="post-form"
-                      disabled={loading}
-                      onClick={handlePublishNow}
-                    >
-                      Publish now
-                    </button>
-                  </div>
-
-                  {/* <div className="border-t border-[#979C9E] my-4 py-2">
-                    <p className="w-[max-content] px-4 mx-auto z-[3] bg-white">
-                      or
-                    </p>
-                  </div>
-
-                  <div className="w-[max-content] mx-auto border border-sky_light pl-4 h-[3rem] rounded-xl flex items-center overflow-hidden relative">
-                    <span
-                      className="text-secondary_ink_dark pr-8 cursor-pointer"
-                      onClick={() => setShowCalendar(!showCalendar)}
-                    >
-                      {" "}
-                      {newConvertedDate}{" "}
-                    </span>
-                    <span className="bg-secondary_sky_lighter h-[100%] flex items-center px-3 border-x border-x-sky_light text-secondary_ink_dark">
-                      {" "}
-                      @{" "}
-                    </span>
-                    <span
-                      className="px-3 cursor-pointer"
-                      onClick={() => setShowTimeDropdown(!showTimeDropdown)}
-                    >
-                      {" "}
-                      {exactTime}{" "}
-                    </span>
-                    <span
-                      className="bg-secondary_sky_lighter h-[100%] flex items-center px-3 border-x border-x-sky_light text-secondary_ink_dark cursor-pointer"
-                      onClick={() => handleChangeTimePeriod()}
-                    >
-                      {" "}
-                      {time}{" "}
-                    </span>
-                  </div> */}
-
-                  {showTimeDropdown && times ? (
-                    <div
-                      className="absolute right-[6.5rem] bg-white top-[9.5rem] shadow cursor-pointer z-[101]"
-                      onClick={() => setShowTimeDropdown(false)}
-                    >
-                      {times.map((each) => {
-                        return (
-                          <p
-                            className="border-b px-3 py-1"
-                            key={each}
-                            onClick={() => setExactTime(each)}
-                          >
-                            {each}
-                          </p>
-                        );
-                      })}
-                    </div>
-                  ) : null}
-
-                  {showCalendar || showTimeDropdown ? (
-                    <div
-                      className="fixed top-0 left-0 w-[100vw] h-[100vh] z-[99]"
-                      onClick={() => {
-                        setShowCalendar(false);
-                        setShowTimeDropdown(false);
-                      }}
-                    ></div>
-                  ) : null}
-
-                  {/* <div
-                    className={`absolute right-0 top-[100%] left-[1.5rem] z-[101] ${
-                      !showCalendar ? "hidden" : ""
-                    }`}
-                  >
-                    <Calendar
-                      onChange={onChange}
-                      value={value}
-                      onClickDay={() => setShowCalendar(false)}
-                    />
-                  </div>
-
-                  <button
-                    className="leading-4 text-base font-medium text-white py-2 px-12 rounded-4xl border border-primary bg-primary mt-4 w-[max-content] mx-auto"
-                    type="button"
-                    form="post-form"
-                    disabled={loading}
-                  >
-                    Schedule
-                  </button> */}
-                </div>
-              ) : null}
+              <div className="relative z-40">
+                <PublishSchedule
+                  handlePublishNow={handlePublishNow}
+                  disabled={!post}
+                />
+              </div>
 
               <button
                 className="leading-4 text-base font-medium text-white py-2 px-3 rounded-4xl border border-primary bg-primary"
@@ -348,7 +169,7 @@ export default function CreatePost() {
       </FullNav>
 
       <main className="w-full h-full relative bg-secondary_sky_lighter">
-        <form id="post-form" onSubmit={handleSubmit(handlePublish)}>
+        <form id="post-form" onSubmit={handleSubmit(handleSave)}>
           <div className="w-full md:w-43/50 px-4 md:px-0 mx-auto md:py-10 flex justify-between md:flex-row flex-col">
             <div className="w-full md:w-[34%] mb-6">
               <h1 className="font-semibold mb-6 text-secondary_ink_dark text-4xl">

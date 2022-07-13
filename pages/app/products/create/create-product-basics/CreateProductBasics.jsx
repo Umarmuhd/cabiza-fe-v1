@@ -159,7 +159,7 @@ const BasicProductStep = ({ ...props }) => {
             )}
           </div>
 
-          <div className="flex flex-col mt-6">
+          {/* <div className="flex flex-col mt-6">
             <label
               htmlFor="product_cover"
               className="leading-4 font-medium text-secondary_ink_darkest mb-3"
@@ -177,7 +177,7 @@ const BasicProductStep = ({ ...props }) => {
             <p className="mt-3 text-secondary_sky_dark w-[70%]">
               Image or Video, Requirements: 1280x720px and 72 DPI(dots per inch)
             </p>
-          </div>
+          </div> */}
         </form>
       </EditProductStepView>
     </React.Fragment>

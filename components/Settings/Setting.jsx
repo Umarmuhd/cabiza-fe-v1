@@ -40,9 +40,11 @@ export default function Setting() {
               View your profile at:{" "}
               <a
                 className="text-primary cursor-pointer"
-                href={"https://cabiza.net/" + user?.username}
+                href={`https://${user?.username}.cabiza.net/`}
+                target="_blank"
+                rel="noopener noreferrer"
               >
-                {"cabiza.net/" + user?.username}
+                {`${user?.username}.cabiza.net/`}
               </a>
             </p>
           </div>

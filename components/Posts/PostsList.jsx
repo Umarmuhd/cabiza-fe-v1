@@ -227,7 +227,7 @@ export default function PostsList() {
           ) : (
             <React.Fragment>
               {posts.length > 0 ? (
-                <div>
+                <div className="space-y-6">
                   {posts.map((post) => (
                     <React.Fragment key={post._id}>
                       <PostItem
