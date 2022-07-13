@@ -31,9 +31,9 @@ const ProductSearch = () => {
 
   const handleSelectTab = () => {
     setOpenSelectTab(!openSelectTab);
-  }
+  };
 
-  const [selectedOption, setSelectedOption] = useState("Education")
+  const [selectedOption, setSelectedOption] = useState("Education");
 
   return (
     <div className="bg-secondary_sky_lighter h-[100%]">
@@ -41,8 +41,13 @@ const ProductSearch = () => {
         <div className="w-[90%] mx-auto">
           <form className="flex h-[3.4rem]">
             <div className="hidden lg:block">
-              <div className="flex items-center border border-sky_light rounded-l-full overflow-hidden relative text-white mr-[-.1rem] h-[100%] bg-primary cursor-pointer" onClick={handleSelectTab}>
-                <span className="m-auto focus:outline-none text-white focus:ring-indigo-500 border-0 outline-none appearance-none bg-primary px-6 lg:w-[10rem] md:w-2/6 md:mr-0">{selectedOption}</span>
+              <div
+                className="flex items-center border border-sky_light rounded-l-full overflow-hidden relative text-white mr-[-.1rem] h-[100%] bg-primary cursor-pointer"
+                onClick={handleSelectTab}
+              >
+                <span className="m-auto focus:outline-none text-white focus:ring-indigo-500 border-0 outline-none appearance-none bg-primary px-6 lg:w-[10rem] md:w-2/6 md:mr-0">
+                  {selectedOption}
+                </span>
 
                 <div className="pointer-events-none absolute inset-y-0 right-0 flex items-center text-gray-700 px-3 h-[100%] self-center">
                   <svg
@@ -61,11 +66,40 @@ const ProductSearch = () => {
                 </div>
               </div>
 
-              {openSelectTab ? <div className="bg-white shadow-lg w-[150%] mt-2 rounded overflow-hidden">
-                <p className={`hover:text-white hover:bg-primary cursor-pointer py-3 px-5 border-b border-b-sky_light z-[11] ${selectedOption === "Education" ? "text-white bg-primary border-b-white" : ""}`} onClick={() => setSelectedOption("Education")}>Education</p>
-                <p className={`hover:text-white hover:bg-primary cursor-pointer py-3 px-5 border-b border-b-sky_light z-[11] ${selectedOption === "Health" ? "text-white bg-primary border-b-white" : ""}`} onClick={() => setSelectedOption("Health")}>Health</p>
-                <p className={`hover:text-white hover:bg-primary cursor-pointer py-3 px-5 z-[11] ${selectedOption === "Fitness" ? "text-white bg-primary" : ""}`} onClick={() => setSelectedOption("Fitness")}>Fitness</p>
-              </div> : null}
+              {openSelectTab ? (
+                <div className="bg-white shadow-lg w-[150%] mt-2 rounded overflow-hidden">
+                  <p
+                    className={`hover:text-white hover:bg-primary cursor-pointer py-3 px-5 border-b border-b-sky_light z-[11] ${
+                      selectedOption === "Education"
+                        ? "text-white bg-primary border-b-white"
+                        : ""
+                    }`}
+                    onClick={() => setSelectedOption("Education")}
+                  >
+                    Education
+                  </p>
+                  <p
+                    className={`hover:text-white hover:bg-primary cursor-pointer py-3 px-5 border-b border-b-sky_light z-[11] ${
+                      selectedOption === "Health"
+                        ? "text-white bg-primary border-b-white"
+                        : ""
+                    }`}
+                    onClick={() => setSelectedOption("Health")}
+                  >
+                    Health
+                  </p>
+                  <p
+                    className={`hover:text-white hover:bg-primary cursor-pointer py-3 px-5 z-[11] ${
+                      selectedOption === "Fitness"
+                        ? "text-white bg-primary"
+                        : ""
+                    }`}
+                    onClick={() => setSelectedOption("Fitness")}
+                  >
+                    Fitness
+                  </p>
+                </div>
+              ) : null}
             </div>
 
             <div className="flex justify-center border pl-6 w-full lg:rounded-l-[0] rounded-full bg-white">
@@ -78,7 +112,7 @@ const ProductSearch = () => {
                 type="submit"
                 className="bg-primary p-2 mr-2 rounded-full text-md h-[max-content] my-auto"
               >
-                <SearchIcon className="w-4 h-4 sm:w-6 sm:h-6"/>
+                <SearchIcon className="w-4 h-4 sm:w-6 sm:h-6" />
               </button>
             </div>
           </form>
@@ -107,6 +141,9 @@ export const ProductItem = ({ product }) => {
       );
     }
   };
+
+  console.log(product);
+  console.log(window.location);
   return (
     <div className="shadow sm:w-sm:[max-content] overflow-hidden mr-5 h-[max-content] rounded-xl w-[10%] md:w-auto mt-0">
       <Image
@@ -122,7 +159,9 @@ export const ProductItem = ({ product }) => {
           Books
         </p>
         <Link href={`/discover/${product.product_id}`}>
-          <a className="text-2xl text-secondary font-medium mb-3">{product.name}</a>
+          <a className="text-2xl text-secondary font-medium mb-3">
+            {product.name}
+          </a>
         </Link>
         <div className="flex items-center mt-3">
           <Image
@@ -136,11 +175,14 @@ export const ProductItem = ({ product }) => {
             height={36}
           />
 
-          <Link href={`/${product?.user?.username}/products`}>
-            <a className="font-medium ml-2 text-secondary_ink_lighter block border-b border-b-secondary_ink_lighter">
-              {product?.user?.full_name}
-            </a>
-          </Link>
+          <a
+            className="font-medium ml-2 text-secondary_ink_lighter block border-b border-b-secondary_ink_lighter"
+            target="_blank"
+            href={`${product?.user?.username}.${window.location.host}`}
+            rel="noopener noreferrer"
+          >
+            {product?.user?.full_name}
+          </a>
         </div>
 
         <div className="flex items-center justify-between mt-4">
@@ -176,17 +218,21 @@ export const ProductItem = ({ product }) => {
           `}</style>
         </div>
 
-        <div className="rounded-xl border border-sky_light flex justify-between items-center mt-5 px-1 sm:px-3 py-1 pr-2 bg-secondary_sky_lightest">
-          <p className="text-xs text-secondary">40% Affiliate Commission</p>
+        {product?.affiliate.can_affiliate && (
+          <div className="rounded-xl border border-sky_light flex justify-between items-center mt-5 px-1 sm:px-3 py-1 pr-2 bg-secondary_sky_lightest">
+            <p className="text-xs text-secondary">
+              {product?.affiliate?.percentage} % Affiliate Commission
+            </p>
 
-          <button
-            className="bg-primary text-white font-medium text-sm rounded px-3 py-2 sm:ml-10"
-            onClick={handleBecomeAffiliate}
-            disabled={loading}
-          >
-            {loading ? "Loading..." : "Become Affiliate"}
-          </button>
-        </div>
+            <button
+              className="bg-primary text-white font-medium text-sm rounded px-3 py-2 sm:ml-10"
+              onClick={handleBecomeAffiliate}
+              disabled={loading}
+            >
+              {loading ? "Loading..." : "Become Affiliate"}
+            </button>
+          </div>
+        )}
       </div>
     </div>
   );

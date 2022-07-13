@@ -25,7 +25,10 @@ export default function ReviewDropdown() {
   return (
     <Menu as="div" className="relative inline-block text-left w-full">
       <div>
-        <Menu.Button className="flex justify-between w-full rounded-lg border border-grey_80 shadow-sm px-4 py-3 bg-white text-sm font-medium text-grey_40 hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-offset-gray-100 focus:ring-indigo-500">
+        <Menu.Button
+          className="flex justify-between w-full rounded-lg border border-grey_80 shadow-sm px-4 py-3 bg-white text-sm font-medium text-grey_40 hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-offset-gray-100 focus:ring-indigo-500"
+          disabled
+        >
           <div className="flex items-center">
             <ul className="flex">
               <li className="mr-2">
