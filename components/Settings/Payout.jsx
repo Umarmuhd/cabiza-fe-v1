@@ -72,25 +72,6 @@ export default function Payout() {
 
   const { user } = useContext(AuthContext);
 
-  const handleConvertDate = (month, day, year) => {
-    const months = [
-      "January",
-      "February",
-      "March",
-      "April",
-      "May",
-      "June",
-      "July",
-      "August",
-      "September",
-      "October",
-      "November",
-      "December",
-    ];
-
-    return `${months[month]} ${day}, ${year}`;
-  };
-
   const [showBusiness, setShowBusiness] = useState(user?.is_business ?? false);
 
   const {
@@ -110,7 +91,7 @@ export default function Payout() {
           {label}
         </label>
         <select
-          className="border border-secondary_sky_base px-4 py-3 placeholder-grey_80 text-grey_40 bg-white focus:outline-none focus:ring w-full rounded-lg"
+          className="border border-sky_light px-4 py-2 text-secondary_ink_darkest bg-white focus:outline-none focus:ring w-full rounded h-10"
           name={name}
           ref={ref}
           onChange={onChange}
@@ -120,7 +101,11 @@ export default function Payout() {
           <option />
           {!banksLoading &&
             banks?.map((bank) => (
-              <option key={bank.slug} value={JSON.stringify(bank)}>
+              <option
+                key={bank.slug}
+                value={JSON.stringify(bank)}
+                className="text-secondary_ink_darkest"
+              >
                 {bank.name}
               </option>
             ))}
@@ -593,84 +578,15 @@ export default function Payout() {
 
               <div className="flex relative">
                 <input
-                  id="Day"
-                  name="Day"
-                  type="number"
-                  className="border border-sky_light mt-3 h-10 rounded  bg-white text-secondary_ink_darkest px-4 w-[50%] mr-2 text-left flex justify-between items-center focus:!border focus:border-sky_light"
+                  id="dob"
+                  type="date"
+                  className="border border-sky_light mt-3 h-10 rounded  bg-white text-secondary_ink_darkest px-4 text-left flex justify-between items-center focus:!border focus:border-sky_light w-full"
                   placeholder="Day"
-                  {...register("day", {
+                  {...register("dob", {
                     required: true,
-                    maxLength: 2,
-                    min: 0,
-                    max: 31,
                   })}
-                  defaultValue={user?.birthday?.split("/")[0]}
-                  value={value?.getDate()}
-                  onClick={() => setShowCalendar(true)}
-                  readOnly
+                  defaultValue={user?.birthday}
                 />
-                <input
-                  id="Month"
-                  name="Month"
-                  type="number"
-                  className="border border-sky_light mt-3 h-10 rounded text-secondary_ink_darkest bg-white px-4 w-[50%] mr-2 text-left flex justify-between items-center focus:!border focus:border-sky_light"
-                  placeholder="Month"
-                  {...register("month", {
-                    required: true,
-                    min: 0,
-                    max: 12,
-                    maxLength: 2,
-                  })}
-                  defaultValue={user?.birthday?.split("/")[1]}
-                  value={value?.getMonth() + 1}
-                  onClick={() => setShowCalendar(true)}
-                  readOnly
-                />
-                <input
-                  id="Year"
-                  name="year"
-                  type="number"
-                  className="border border-sky_light mt-3 h-10 rounded text-secondary_ink_darkest bg-white px-4 w-[50%] mr-2 text-left flex justify-between items-center focus:!border focus:border-sky_light"
-                  placeholder="Year"
-                  {...register("year", {
-                    max: 3000,
-                    minLength: 4,
-                  })}
-                  defaultValue={user?.birthday?.split("/")[2]}
-                  value={value?.getFullYear()}
-                  onClick={() => setShowCalendar(true)}
-                  readOnly
-                />
-
-                {showCalendar ? (
-                  <div
-                    className="fixed top-0 left-0 w-[100vw] h-[100vh] z-[99]"
-                    onClick={() => {
-                      setShowCalendar(false);
-                    }}
-                  ></div>
-                ) : null}
-
-                <div
-                  className={`absolute top-[100%] left-[1.5rem] z-[101] ${
-                    !showCalendar ? "hidden" : ""
-                  }`}
-                >
-                  <Calendar
-                    onChange={onChange}
-                    value={value}
-                    onClickDay={() => setShowCalendar(false)}
-                    defaultValue={[
-                      new Date(
-                        user?.birthday
-                          ? (user?.birthday?.split("/")[2],
-                            parseInt(user?.birthday?.split("/")[1]) - 1,
-                            user?.birthday?.split("/")[0])
-                          : null
-                      ),
-                    ]}
-                  />
-                </div>
               </div>
             </div>
           </div>
@@ -687,7 +603,6 @@ export default function Payout() {
                   name="Day"
                   type="text"
                   className="border border-sky_light mt-3 h-10 rounded  bg-white text-secondary_ink_darkest px-4 w-[100%] mr-2 text-left flex justify-between items-center"
-                  placeholder="Paypal Email"
                   {...register("paypal_email", { required: true })}
                   defaultValue={user?.paypal?.email}
                 />
@@ -725,10 +640,9 @@ export default function Payout() {
                 </label>
                 <input
                   type="number"
-                  className="border border-secondary_sky_base px-4 py-4 placeholder-grey_80 text-grey_40 bg-white focus:outline-none focus:ring w-full rounded-lg"
+                  className="border border-sky_light px-4 py-2 h-10 text-secondary_ink_darkest bg-white focus:outline-none focus:ring w-full rounded"
                   style={{ transition: "all 0.15s ease 0s" }}
                   id="account_number"
-                  placeholder="Enter your account number"
                   defaultValue={user?.bank_account?.account_number}
                   {...register("account_number", { required: true })}
                 />
