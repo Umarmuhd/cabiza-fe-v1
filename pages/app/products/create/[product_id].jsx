@@ -91,7 +91,7 @@ export default function UpdateProduct() {
     setProductSettings(defaultProductSettingsState);
   };
 
-  useLeavePageConfirm({ isConfirm: true, closeFn: clearRecoilCreateProduct });
+  // useLeavePageConfirm({ isConfirm: true, closeFn: clearRecoilCreateProduct });
 
   const backward = () => {
     setStepIndex(stepIndex - 1);
@@ -162,6 +162,7 @@ export default function UpdateProduct() {
 
       const { data } = await axios.post(uri, form_data);
       toast.custom(<Alert color="#24C78C">Product saved success!</Alert>);
+      router.replace('/products')
       setLoading(false);
     } catch (error) {
       toast.custom(<Alert color="#F50000">{`Error: ${error.message}`}</Alert>);
@@ -260,6 +261,8 @@ export default function UpdateProduct() {
 
       console.log(data);
 
+      router.replace('/products');
+
       toast.custom(
         <div className="rounded-lg py-4 px-8 bg-[#24C78C] flex items-center">
           <svg
@@ -279,8 +282,8 @@ export default function UpdateProduct() {
           </span>
         </div>
       );
-
-      setLoading(false);
+      
+      setLoading(false);      
     } catch (error) {
       console.log(error);
       console.error(error.message);

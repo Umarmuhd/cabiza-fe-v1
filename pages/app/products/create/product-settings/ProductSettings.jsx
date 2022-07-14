@@ -98,7 +98,7 @@ const ProductSettingsStep = ({ ...props }) => {
         <form className="mt-8" id="form">
           <div className="bg-white mt-5 border border-solid border-grey_80 p-3 rounded-xl">
             <div className="bg-grey_95 p-3 rounded flex items-center justify-between px-5 mb-2">
-              <p className="text-grey_40">Limit product sales</p>
+              <p className="text-grey_40">Limit pro duct sales</p>
               <Toggle label="LimitSales" />
             </div>
 
