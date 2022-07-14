@@ -20,7 +20,7 @@ export default function Login() {
             </div>
             <div className="border-t-2 border-grey_80 mt-6"></div>
 
-            <div className="py-6 text-center">
+            <div className="flex flex-col md:flex-row py-6 text-center">
               <p className="text-grey_40 text-lg">
                 Email not received?{" "}
                 <span className="text-primary ml-1">
