@@ -55,7 +55,7 @@ const PublishSchedule = ({ handlePublishNow, loading, disabled }) => {
   }, [value]);
 
   return (
-    <div className="w-full max-w-sm px-4">
+    <div className="w-full max-w-sm">
       <Popover className="relative">
         {({ open }) => (
           <>

@@ -74,7 +74,7 @@ export default function ProductPricingStep({ ...props }) {
                 name="Amount"
                 id="Amount"
                 placeholder="0+"
-                className="outline-none w-[98%] p-3 rounded-r-xl z-10"
+                className="outline-none w-[98%] p-3 rounded-r-xl z-10 border-[transparent]"
                 {...register("price", { required: true })}
               />
               {errors.price?.type === "required" && (
@@ -86,7 +86,7 @@ export default function ProductPricingStep({ ...props }) {
 
             <div className="flex justify-between items-center mt-5">
               <div>
-                <h3 className="text-xl text-grey_20">Settings</h3>
+                <h3 className="font-medium md:font-normal md:text-xl text-grey_20">Settings</h3>
                 <p className="text-grey_40">
                   Let customers pay what they want?
                 </p>

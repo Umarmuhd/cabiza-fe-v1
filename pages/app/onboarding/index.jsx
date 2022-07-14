@@ -119,23 +119,25 @@ export default function Onboarding() {
   };
 
   return (
-    <div className="flex flex-wrap w-full min-h-screen h-full">
-      <div className="w-1/2 shadow-2xl bg-onboarding-pattern bg-contain inset-0 min-h-max hidden md:flex items-center">
-        <div className="md:max-w-[80%] mx-auto">
+    <div className="flex flex-col lg:flex-row flex-wrap w-full min-h-screen h-full">
+      <div className="lg:w-1/2 pt-12 lg:py-0 shadow-2xl bg-onboarding-pattern bg-contain inset-0 min-h-max md:flex items-center">
+        <div className="md:max-w-[80%] mx-auto mt-12">
           <div className="text-white text-center mb-20">
-            <h1 className="font-bold text-5xl mb-10">
+            <h1 className="font-bold text-3xl md:text-5xl mb-4 md:mb-10">
               Welcome back, <br /> Set up your profile
             </h1>
-            <p className="text-lg font-medium">
+            <p className="text-md md:text-lg font-medium px-4 md:px-0">
               It just takes 2 minutes to get setup. Let’s start with your
               profile. This is what your customers will see on your profile
               page.
             </p>
           </div>
-          <img src="/images/onboarding-illustration.svg" alt="..." />
+          <div className="hidden lg:block">
+            <img src="/images/onboarding-illustration.svg" alt="..."/>
+          </div>
         </div>
       </div>
-      <div className="flex flex-col w-full md:w-1/2 p-10 px-6 md:px-10">
+      <div className="flex flex-col w-full lg:w-1/2 p-10 px-6 md:px-10">
         <div className="w-[40%] mr-auto h-[auto]">
           <img
             src="/images/logo.png"

@@ -18,7 +18,7 @@ export default function Dashboard({ children }) {
     <div className="flex min-h-screen h-full">
       <Sidebar user={user} sidebarOpen={showNav} setSidebarOpen={setShowNav} />
       <div className="relative flex flex-col flex-1 overflow-x-hidden bg-secondary_sky_lighter w-[50%] ml-auto h-[inherit]">
-        <Toaster position="top-center" toastOptions={{ duration: 5000 }} />
+        <Toaster position="top-center" toastOptions={{ duration: 3000 }} />
         {children}
       </div>
     </div>

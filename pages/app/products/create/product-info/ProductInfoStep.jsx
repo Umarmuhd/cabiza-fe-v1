@@ -88,7 +88,7 @@ export default function ProductInfoStep({ ...props }) {
             >
               Call-to-Action{" "}
             </label>
-            <div className="flex mt-2">
+            <div className="flex flex-col gap-y-2 md:flex-row mt-2">
               <RadioGroup
                 value={selected}
                 onChange={(e) => {
@@ -97,7 +97,7 @@ export default function ProductInfoStep({ ...props }) {
                   setValue("call_to_action", e);
                 }}
                 as={"div"}
-                className="flex items-center"
+                className="flex flex-col gap-y-2 md:flex-row md:items-center"
               >
                 <RadioGroup.Option
                   value="I want this"
@@ -224,7 +224,7 @@ export default function ProductInfoStep({ ...props }) {
               })
             ) : (
               <div className="border-dashed border border-secondary_sky_base mt-5 p-7 bg-secondary_sky_lightest">
-                <div className="w-[50%] mx-auto text-center">
+                <div className="md:w-[50%] mx-auto text-center">
                   <h3 className="text-secondary text-base font-medium">
                     Add Details
                   </h3>

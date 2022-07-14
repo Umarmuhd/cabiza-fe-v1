@@ -61,7 +61,7 @@ export default function ProductContentStep({ ...props }) {
                 {...register("file", { required: true })}
               />
               <label htmlFor="add_files" className="w-1/2 mx-auto text-center">
-                <h3 className="text-secondary text-base font-medium">
+                <h3 className="text-secondary text-base font-medium break-all">
                   {methods.getValues().file ??
                   (watch("file") !== undefined && watch("file")?.length > 0)
                     ? typeof watch("file") === "string"

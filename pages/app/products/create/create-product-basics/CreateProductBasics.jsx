@@ -82,11 +82,10 @@ const BasicProductStep = ({ ...props }) => {
               Description
             </label>
             <TextFormat />
-            <input
-              type="text"
+            <textarea
               name="product_desc"
               id="product_desc"
-              placeholder="Product Description"
+              defaultValue="Product Description"
               className="px-4 py-3 pd-12 h-[5rem] w-[100%] outline-none border border-solid border-sky_light rounded-b-lg"
               {...register("description", { required: true })}
               autoComplete="off"
@@ -141,12 +140,12 @@ const BasicProductStep = ({ ...props }) => {
                     : "/images/thumbnail.png"
                 }
                 alt="..."
-                width={160}
-                height={160}
+                width={300}
+                height={300}
               />
             </label>
 
-            <p className="mt-3 text-secondary_brand_light w-[70%]">
+            <p className="mt-3 text-secondary_brand_light md:w-[70%]">
               This image will appear in cabiza library, discover and profile
               pages. Requirement: square, atleast 600px by 600px, JPG, SVG, PNG,
               GIF format.

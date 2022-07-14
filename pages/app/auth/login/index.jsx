@@ -41,7 +41,7 @@ export default function Login() {
 
   return (
     <div className="pt-5 md:pt-24 h-full flex justify-center items-center place-content-center absolute left-1/2 top-1/2 w-full md:w-3/5 md:px-0 px-6 -translate-x-1/2 -translate-y-1/2">
-      <div className="md:w-3/5 max-w-lg bg-white py-10 px-10 w-full border border-grey_80 rounded-xl">
+      <div className="xl:w-3/5 max-w-lg bg-white py-10 px-10 w-full border border-grey_80 rounded-xl">
         <form onSubmit={handleSubmit(handleLogin)}>
           <h1 className="text-4xl mb-8 text-dark font-bold">Login</h1>
           <p className="my-3 text-sm text-red-500">{error}</p>

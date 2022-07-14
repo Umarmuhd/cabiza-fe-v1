@@ -296,7 +296,7 @@ export default function UpdateProduct() {
       <Tab.Group>
         <FullNav title="Products">
           <div className="md:px-0 w-[100%]">
-            <div className="flex md:flex-row flex-col justify-between items-center md:w-43/50 mx-auto mt-[.5rem]">
+            <div className="flex md:flex-row w-[80%] flex-col justify-between items-center md:w-43/50 mx-auto mt-[.5rem]">
               <Tab.List
                 as={"div"}
                 className="flex items-center md:w-auto w-full md:justify-start justify-between"
@@ -342,7 +342,7 @@ export default function UpdateProduct() {
                 </Tab>
               </Tab.List>
 
-              <div className="flex items-center justify-between mt-4 md:mt-[-.5rem] md:w-auto w-full relative md:space-x-4">
+              <div className="hidden md:flex md:items-center md:justify-between mt-4 md:mt-[-.5rem] w-[50%] md:w-auto lg:w-full relative md:space-x-4">
                 {product?.published ? (
                   <button
                     className="leading-4 text-base font-medium bg-transparent py-2 px-3 rounded-4xl border text-primary bg-primary flex items-center"
