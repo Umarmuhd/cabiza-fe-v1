@@ -83,7 +83,7 @@ export default function EditProductStepView({
           Step: {stepIndex + 2} of 6
         </span>
       </div>
-      <h1 className="text-4xl font-semibold text-secondary_ink_dark mt-8">
+      <h1 className="text-2xl md:text-4xl font-semibold text-secondary_ink_dark mt-8">
         {stepTitles[stepIndex]}
       </h1>
       {children}

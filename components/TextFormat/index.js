@@ -2,8 +2,8 @@ import React from "react";
 
 const TextFormat = () => {
   return (
-    <div className="flex text-lg items-end border rounded-t-lg border-secondary_sky_light sm:px-4 lg:px-4 py-1 pb-3">
-      <div className="flex items-center">
+    <div className="flex text-lg items-end border rounded-t-lg border-secondary_sky_light px-4 lg:px-4 py-1 pb-3">
+      <div className="flex items-center flex-wrap">
         <button className="mr-2 h-6 w-4 flex items-end mt-[.1rem]">
           <svg
             width="10"

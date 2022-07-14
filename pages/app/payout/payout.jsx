@@ -107,7 +107,7 @@ const Payments = () => {
                 payout.previous
                   ? 'bg-white text-secondary_ink_light rounded-l-xl'
                   : 'bg-secondary_sky_light text-secondary_brand_light'
-              } h-[2.4rem] w-[11rem] ml-[1px] rounded-l-xl m-auto`}
+              } h-[2.4rem] w-[100%] ml-[1px] rounded-l-xl m-auto`}
               onClick={() => setPayout({ previous: true, next: false })}
             >
               Previous payouts
@@ -117,7 +117,7 @@ const Payments = () => {
                 payout.next
                   ? 'bg-white text-secondary_ink_light rounded-r-xl'
                   : 'bg-secondary_sky_light text-secondary_brand_light'
-              } h-[2.4rem] w-[12rem] ml-[1px] rounded-r-xl m-auto mr-0 md:mr-auto`}
+              } h-[2.4rem] w-[100%] ml-[1px] rounded-r-xl m-auto mr-0 md:mr-auto`}
               onClick={() => setPayout({ previous: false, next: true })}
             >
               Next payout
