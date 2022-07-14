@@ -23,7 +23,6 @@ export default function Login() {
 
   const mutation = useMutation(login, {
     onSuccess: (res) => {
-      console.log(res);
       loginUser(res.user, res.token);
       toast.custom(<Alert color="#24C78C">Login successful !</Alert>);
       router.push(res.user?.username ? "/" : "/onboarding");
