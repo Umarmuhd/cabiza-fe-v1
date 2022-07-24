@@ -100,7 +100,7 @@ const Payments = () => {
           boxShadow: "0px 4px 20px rgba(0, 0, 0, 0.04)",
         }}
       >
-        <div className="md:w-43/50 mx-auto flex flex-col justify-between">
+        <div className="md:w-43/50 mx-auto flex md:flex-row flex-col justify-between">
           <div className="flex md:mt-0 mt-1 bg-secondary_sky_light rounded-xl border border-secondary_sky_light md:w-[max-content] p-[.1rem] w-full justify-between md:justify-start md:float-left w-[max-content]">
             <button
               className={`${

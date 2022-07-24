@@ -44,7 +44,7 @@ const ReferralStats = () => {
         </div>
         <div className="px-12 py-12 text-center sm:px-4 sm:py-4 bg-secondary_sky_lightest rounded-3xl">
           <h6 className="mb-2 text-2xl font-bold leading-8 tracking-wider uppercase text-secondary_ink_darkest">
-            1
+            0
           </h6>
           <div className="mb-2 text-secondary_ink_lighter text-lg font-medium">
             Pending

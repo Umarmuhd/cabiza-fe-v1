@@ -207,10 +207,10 @@ const Referral = () => {
         <div className="flex justify-between items-center space-x-6 mt-6 place-items-center md:flex-row flex-col">
           <div className="flex items-center justify-between h-12 mx-auto sm:h-12 bg-secondary_sky_lighter px-6 py-4 rounded-full w-full">
             <span className="leading-4 text-secondary">
-              {`app.cabiza.net/auth/signup?ref=${user?.referral.referral_id}`}
+              {`app.cabiza.net/auth/signup?ref=${user?.referral?.referral_id}`}
             </span>
             <CopyToClipboard
-              text={`https://app.cabiza.net/auth/signup?ref=${user?.referral.referral_id}`}
+              text={`https://app.cabiza.net/auth/signup?ref=${user?.referral?.referral_id}`}
               onCopy={() =>
                 toast.custom(<Alert color="#24C78C" text="Copied success !" />)
               }
