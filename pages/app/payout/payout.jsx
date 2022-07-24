@@ -1,10 +1,10 @@
 /* eslint-disable react/no-unknown-property */
-import React, { useState } from 'react';
-import Link from 'next/link';
-import styles from './styles/index.module.css';
+import React, { useState } from "react";
+import Link from "next/link";
+import styles from "./styles/index.module.css";
 // import Calendar from './../../../components/Calendar/index';
-import Calendar from 'react-calendar';
-import 'react-calendar/dist/Calendar.css';
+import Calendar from "react-calendar";
+import "react-calendar/dist/Calendar.css";
 
 const CalendarIcon = () => (
   <svg
@@ -88,7 +88,7 @@ const CalendarIcon = () => (
 
 const Payments = () => {
   const [payout, setPayout] = useState({ previous: true, next: false });
-  
+
   const [showCalendar, setShowCalendar] = useState(false);
   const [value, onChange] = useState(new Date());
 
@@ -97,7 +97,7 @@ const Payments = () => {
       <header
         className="bg-inherit py-4 h-20"
         style={{
-          boxShadow: '0px 4px 20px rgba(0, 0, 0, 0.04)',
+          boxShadow: "0px 4px 20px rgba(0, 0, 0, 0.04)",
         }}
       >
         <div className="md:w-43/50 mx-auto flex flex-col justify-between">
@@ -105,8 +105,8 @@ const Payments = () => {
             <button
               className={`${
                 payout.previous
-                  ? 'bg-white text-secondary_ink_light rounded-l-xl'
-                  : 'bg-secondary_sky_light text-secondary_brand_light'
+                  ? "bg-white text-secondary_ink_light rounded-l-xl"
+                  : "bg-secondary_sky_light text-secondary_brand_light"
               } h-[2.4rem] w-[100%] ml-[1px] rounded-l-xl m-auto`}
               onClick={() => setPayout({ previous: true, next: false })}
             >
@@ -115,8 +115,8 @@ const Payments = () => {
             <button
               className={`${
                 payout.next
-                  ? 'bg-white text-secondary_ink_light rounded-r-xl'
-                  : 'bg-secondary_sky_light text-secondary_brand_light'
+                  ? "bg-white text-secondary_ink_light rounded-r-xl"
+                  : "bg-secondary_sky_light text-secondary_brand_light"
               } h-[2.4rem] w-[100%] ml-[1px] rounded-r-xl m-auto mr-0 md:mr-auto`}
               onClick={() => setPayout({ previous: false, next: true })}
             >
@@ -126,26 +126,26 @@ const Payments = () => {
 
           <div className="w-full md:w-auto md:flex md:justify-between justify-start md:mt-10 md:float-right items-center hidden">
             <Link href="/settings">
-            <a className="bg-primary text-white flex items-center py-2 px-4 rounded-full mr-4 h-8">
-              <svg
-                width="16"
-                height="16"
-                viewBox="0 0 16 16"
-                fill="none"
-                xmlns="http://www.w3.org/2000/svg"
-                className="mr-2"
-              >
-                <path
-                  d="M1.33334 8.58679V7.41345C1.33334 6.72012 1.90001 6.14679 2.60001 6.14679C3.80668 6.14679 4.30001 5.29345 3.69334 4.24679C3.34668 3.64679 3.55334 2.86679 4.16001 2.52012L5.31334 1.86012C5.84001 1.54679 6.52001 1.73345 6.83334 2.26012L6.90668 2.38679C7.50668 3.43345 8.49334 3.43345 9.10001 2.38679L9.17334 2.26012C9.48668 1.73345 10.1667 1.54679 10.6933 1.86012L11.8467 2.52012C12.4533 2.86679 12.66 3.64679 12.3133 4.24679C11.7067 5.29345 12.2 6.14679 13.4067 6.14679C14.1 6.14679 14.6733 6.71345 14.6733 7.41345V8.58679C14.6733 9.28012 14.1067 9.85345 13.4067 9.85345C12.2 9.85345 11.7067 10.7068 12.3133 11.7535C12.66 12.3601 12.4533 13.1335 11.8467 13.4801L10.6933 14.1401C10.1667 14.4535 9.48668 14.2668 9.17334 13.7401L9.10001 13.6135C8.50001 12.5668 7.51334 12.5668 6.90668 13.6135L6.83334 13.7401C6.52001 14.2668 5.84001 14.4535 5.31334 14.1401L4.16001 13.4801C3.55334 13.1335 3.34668 12.3535 3.69334 11.7535C4.30001 10.7068 3.80668 9.85345 2.60001 9.85345C1.90001 9.85345 1.33334 9.28012 1.33334 8.58679Z"
-                  stroke="white"
-                  stroke-width="1.5"
-                  stroke-miterlimit="10"
-                  stroke-linecap="round"
-                  stroke-linejoin="round"
-                />
-              </svg>
-              Settings
-            </a>
+              <a className="bg-primary text-white flex items-center py-2 px-4 rounded-full mr-4 h-8">
+                <svg
+                  width="16"
+                  height="16"
+                  viewBox="0 0 16 16"
+                  fill="none"
+                  xmlns="http://www.w3.org/2000/svg"
+                  className="mr-2"
+                >
+                  <path
+                    d="M1.33334 8.58679V7.41345C1.33334 6.72012 1.90001 6.14679 2.60001 6.14679C3.80668 6.14679 4.30001 5.29345 3.69334 4.24679C3.34668 3.64679 3.55334 2.86679 4.16001 2.52012L5.31334 1.86012C5.84001 1.54679 6.52001 1.73345 6.83334 2.26012L6.90668 2.38679C7.50668 3.43345 8.49334 3.43345 9.10001 2.38679L9.17334 2.26012C9.48668 1.73345 10.1667 1.54679 10.6933 1.86012L11.8467 2.52012C12.4533 2.86679 12.66 3.64679 12.3133 4.24679C11.7067 5.29345 12.2 6.14679 13.4067 6.14679C14.1 6.14679 14.6733 6.71345 14.6733 7.41345V8.58679C14.6733 9.28012 14.1067 9.85345 13.4067 9.85345C12.2 9.85345 11.7067 10.7068 12.3133 11.7535C12.66 12.3601 12.4533 13.1335 11.8467 13.4801L10.6933 14.1401C10.1667 14.4535 9.48668 14.2668 9.17334 13.7401L9.10001 13.6135C8.50001 12.5668 7.51334 12.5668 6.90668 13.6135L6.83334 13.7401C6.52001 14.2668 5.84001 14.4535 5.31334 14.1401L4.16001 13.4801C3.55334 13.1335 3.34668 12.3535 3.69334 11.7535C4.30001 10.7068 3.80668 9.85345 2.60001 9.85345C1.90001 9.85345 1.33334 9.28012 1.33334 8.58679Z"
+                    stroke="white"
+                    stroke-width="1.5"
+                    stroke-miterlimit="10"
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                  />
+                </svg>
+                Settings
+              </a>
             </Link>
 
             {/* <button className="bg-primary text-white flex items-center py-2 px-[.6rem] rounded-[50%] w-8 h-8">
@@ -175,36 +175,56 @@ const Payments = () => {
       <main className="md:w-43/50 mx-auto mt-10 md:mt-20 bg-white rounded-xl px-6 md:px-12 md:py-8 pt-4 md:py-10 mb-10">
         {payout.previous ? (
           <>
-            {showCalendar ? <div className="fixed top-0 left-0 w-[100vw] h-[100vh] z-[99]" onClick={() => setShowCalendar(!showCalendar)}></div> : null}
-          <div className="mb-10">
-            <h3 className="font-medium text-grey_20 text-lg">Select Date</h3>
-            {/* <Calendar/> */}
-            <div className="input flex items-center mt-3 relative">
-              <input
-                type="date"
-                name="date"
-                id="date"
-                className={`w-[100%] p-2 px-4 border border-secondary_sky_light rounded-xl appearance-none mr-3 outline-none ${styles.input}`}
-                value={`${value.getFullYear()}-${value.getMonth() < 9 ? `0${value.getMonth() + 1}` : value.getMonth()}-${value.getDate() < 9 ? `0${value.getDate()}` : value.getDate()}`}
-                datepicker
-                datepicker-autohide
-              />
-
-              <div className={`absolute right-0 top-[3rem] z-[100] ${!showCalendar ? "hidden" : ""}`}>
-                <Calendar
-                  onChange={onChange}
-                  value={value}
-                  onClickDay={() => setShowCalendar(false)}
+            {showCalendar ? (
+              <div
+                className="fixed top-0 left-0 w-[100vw] h-[100vh] z-[99]"
+                onClick={() => setShowCalendar(!showCalendar)}
+              ></div>
+            ) : null}
+            <div className="mb-10">
+              <h3 className="font-medium text-grey_20 text-lg">Select Date</h3>
+              {/* <Calendar/> */}
+              <div className="input flex items-center mt-3 relative">
+                <input
+                  type="date"
+                  name="date"
+                  id="date"
+                  className={`w-[100%] p-2 px-4 border border-secondary_sky_light rounded-xl appearance-none mr-3 outline-none ${styles.input}`}
+                  value={`${value.getFullYear()}-${
+                    value.getMonth() < 9
+                      ? `0${value.getMonth() + 1}`
+                      : value.getMonth()
+                  }-${
+                    value.getDate() < 9
+                      ? `0${value.getDate()}`
+                      : value.getDate()
+                  }`}
+                  datepicker
+                  datepicker-autohide
                 />
-              </div>
 
-              <button className="bg-primary p-2 rounded-lg" onClick={() => setShowCalendar(!showCalendar)}>
-                <label htmlFor="date" className="cursor-pointer">
+                <div
+                  className={`absolute right-0 top-[3rem] z-[100] ${
+                    !showCalendar ? "hidden" : ""
+                  }`}
+                >
+                  <Calendar
+                    onChange={onChange}
+                    value={value}
+                    onClickDay={() => setShowCalendar(false)}
+                  />
+                </div>
+
+                <button
+                  className="bg-primary p-2 rounded-lg"
+                  onClick={() => setShowCalendar(!showCalendar)}
+                >
+                  {/* <label htmlFor="date" className="cursor-pointer"> */}
                   <CalendarIcon datepicker datepicker-autohide />
-                </label>
-              </button>
+                  {/* </label> */}
+                </button>
+              </div>
             </div>
-          </div>
           </>
         ) : null}
 
@@ -348,7 +368,7 @@ const Payments = () => {
             <div className="flex items-center justify-between pt-3 text-secondary px-10 mb-1">
               <p className="font-normal">To be sent to Paypal account:</p>
               <p className=" font-bold">$8,567.66</p>
-            </div>      
+            </div>
           </div>
         </div>
       </main>
