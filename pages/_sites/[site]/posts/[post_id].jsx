@@ -103,8 +103,6 @@ export default function SinglePost() {
   const [post, setPost] = useState(null);
   const [comments, setComments] = useState([]);
 
-  console.log(user);
-
   const router = useRouter();
   const { post_id } = router.query;
 

@@ -46,7 +46,10 @@ export default function EditPost() {
     form_data.append("title", title);
     form_data.append("description", description);
     form_data.append("call_to_action", call_to_action);
-    form_data.append("attachment", attachment[0] ?? post?.attachment);
+    form_data.append(
+      "attachment",
+      attachment.length > 0 ? attachment[0] : null ?? post.attachment
+    );
     form_data.append("audience", audience);
     form_data.append("send_email", values.channel.send_email);
     form_data.append("post_to_profile", values.channel.post_to_profile);

@@ -31,49 +31,39 @@ function runMiddleware(req, res, fn) {
 }
 
 const loginHandler = async (req, res) => {
-  // await runMiddleware(req, res, cors);
   if (req.method === "POST") {
     try {
       const payload = req.body;
       const response = await axios.post(`${API_URL}/auth/login`, payload);
 
-      if (response.status === 200) {
-        const data = response.data;
+      const data = response.data;
 
-        res.setHeader("Set-Cookie", [
-          cookie.serialize("access", data.accessToken, {
-            httpOnly: true,
-            secure: process.env.NODE_ENV !== "development",
-            maxAge: 60 * 30,
-            sameSite: "lax",
-            domain:
-              process.env.NODE_ENV !== "development"
-                ? "cabiza.net"
-                : "localhost",
-            path: "/api/",
-          }),
-          cookie.serialize("refresh", data.refreshToken, {
-            httpOnly: true,
-            secure: process.env.NODE_ENV !== "development",
-            maxAge: 60 * 60 * 24 * 7,
-            sameSite: "lax",
-            domain:
-              process.env.NODE_ENV !== "development"
-                ? "cabiza.net"
-                : "localhost",
-            path: "/api/",
-          }),
-        ]);
+      res.setHeader("Set-Cookie", [
+        cookie.serialize("access", data.accessToken, {
+          httpOnly: true,
+          secure: process.env.NODE_ENV !== "development",
+          maxAge: 60 * 30,
+          sameSite: "lax",
+          domain:
+            process.env.NODE_ENV !== "development" ? "cabiza.net" : "localhost",
+          path: "/api/",
+        }),
+        cookie.serialize("refresh", data.refreshToken, {
+          httpOnly: true,
+          secure: process.env.NODE_ENV !== "development",
+          maxAge: 60 * 60 * 24 * 7,
+          sameSite: "lax",
+          domain:
+            process.env.NODE_ENV !== "development" ? "cabiza.net" : "localhost",
+          path: "/api/",
+        }),
+      ]);
 
-        const { user, accessToken } = response.data;
+      const { user, accessToken } = response.data;
 
-        return res
-          .status(200)
-          .json({ success: true, user, token: accessToken });
-      } else {
-        return res.status(400).json({ success: false, data: response.data });
-      }
+      return res.status(200).json({ success: true, user, token: accessToken });
     } catch (error) {
+      console.log(error.response);
       if (error.errno === -4078) {
         return res
           .status(309)

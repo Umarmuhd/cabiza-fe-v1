@@ -16,7 +16,9 @@ export function getMe() {
 }
 
 export function login(payload) {
-  return fetcher(`/login`, payload).then((res) => res.json());
+  return fetcher(`/login`, payload)
+    .then((res) => res.json())
+    .catch((err) => null);
 }
 
 export function sendEmailInvite(payload) {

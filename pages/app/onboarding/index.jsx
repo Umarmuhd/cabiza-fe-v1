@@ -94,6 +94,8 @@ export default function Onboarding() {
 
   const { user } = useContext(AuthContext);
 
+  if (typeof window !== "undefined" && !user) router.push("/auth/login");
+
   const updateProfile = async (values) => {
     try {
       setLoading(true);
@@ -133,7 +135,7 @@ export default function Onboarding() {
             </p>
           </div>
           <div className="hidden lg:block">
-            <img src="/images/onboarding-illustration.svg" alt="..."/>
+            <img src="/images/onboarding-illustration.svg" alt="..." />
           </div>
         </div>
       </div>
